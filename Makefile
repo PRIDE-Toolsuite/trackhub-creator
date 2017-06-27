@@ -7,4 +7,9 @@ python_install:
 
 dev_environment: python_install install_requirements
 
-.PHONY: dev_environment install_requirements
+dev_clean:
+	rm -rf python_install
+
+clean: dev_clean
+
+.PHONY: dev_environment install_requirements dev_clean clean
