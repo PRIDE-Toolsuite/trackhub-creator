@@ -1,9 +1,13 @@
-#####################################################################################################################
-#										         Ensembl Service Access												#
-#####################################################################################################################
-#																Author: Manuel Bernal Llinares <mbdebian@gmail.com>	#
-#####################################################################################################################
+#
+# Author    : Manuel Bernal Llinares
+# Project   : trackhub-creator
+# Timestamp : 28-06-2017 10:13
+# ---
+# © 2017 Manuel Bernal Llinares <mbdebian@gmail.com>
+# All rights reserved.
+#
 
 """
-This module implements all we need to access and work with an Ensembl Service
+This module models an Ensembl service
 """
+
