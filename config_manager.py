@@ -157,6 +157,10 @@ class AppConfigManager(ConfigurationManager):
         # Configuration folder cannot be changed in this version of the pipeline
         return _folder_config
 
+    def get_folder_logs(self):
+        # Configuration for logging folder cannot be changed in this version of the pipeline
+        return _folder_logs
+
     def get_logger(self):
         # TODO
         pass
