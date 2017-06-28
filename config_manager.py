@@ -20,6 +20,7 @@ import logging
 import importlib
 # Package modules
 from exceptions import ConfigException
+import toolbox
 
 
 # Application defaults - NORMAL OPERATION MODE
@@ -54,11 +55,6 @@ def set_application_config_file(configuration_file):
 
 # Configuration Singleton
 __app_config_manager = None
-
-
-def __read_json_configuration(configuration_file):
-	# TODO
-	pass
 
 
 def get_app_config_manager():
