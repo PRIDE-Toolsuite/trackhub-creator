@@ -154,8 +154,15 @@ class AppConfigManager(ConfigurationManager):
         # Session ID
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
         # TODO config, folder_run, etc.
-        self.__session_working_dir = os.path.abspath(os.path.join(self.get_folder_run(), self.get_session_id())
+        self.__session_working_dir = os.path.abspath(os.path.join(self.get_folder_run(), self.get_session_id()))
         # TODO check and create folders (if needed)
+        folders_to_check = [self.get_folder_bin(),
+                            self.get_folder_logs(),
+                            self.get_folder_resources(),
+                            self.get_folder_run(),
+                            self.get_session_working_dir(),
+                            ]
+        toolbox.check_create_folders(folders_to_check)
         # TODO to be completed
         pass
 
