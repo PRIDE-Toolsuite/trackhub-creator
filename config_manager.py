@@ -102,6 +102,12 @@ def __check_create_folders(configuration_object):
 
 
 def get_config_manager_for(configuration_file):
+    """
+    Factory method for Configuration Managers, used by modules of the running pipeline for their specific configuration
+    files.
+    :param configuration_file: configuration file name or path
+    :return: a ConfigurationManager on top of that configuration information
+    """
     return ConfigurationManager(__read_config_from_file(configuration_file), configuration_file)
 
 
