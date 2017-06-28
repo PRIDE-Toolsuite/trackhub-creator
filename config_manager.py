@@ -172,6 +172,19 @@ class AppConfigManager(ConfigurationManager):
         self.__log_handlers = []
         log_handlers_prefix = self.get_session_id() + '-'
         log_handlers_extension = '.log'
+        self.__logger = logging.getLogger(__name__)
+        self.__logger.setLevel(getattr(logging, _log_level))
+        # TODO fix this code
+        for llevel, lformat in _logger_formatters.items():
+            logfile = os.path.join(self.__sessionLogFolder, logHandlersPrefix + llevel.lower() + logHandlersExtension)
+            lformatter = logging.Formatter(lformat)
+            lhandler = logging.FileHandler(logfile, mode='w')
+            lhandler.setLevel(getattr(logging, llevel))
+            lhandler.setFormatter(lformatter)
+            self.__logHandlers.append(lhandler)
+            # Add the handlers to my own logger
+            self.__logger.addHandler(lhandler)
+        self.__logger.debug("Logging system initialized")
         # TODO to be completed
 
     def get_folder_bin(self):
@@ -197,9 +210,13 @@ class AppConfigManager(ConfigurationManager):
     def get_session_working_dir(self):
         return self.__session_working_dir
 
-    def get_logger(self):
-        # TODO
+    def get_logger_for(self, name):
+        # TODO - create logger with the given name
         pass
+
+    def _get_logger(self):
+        # Get own logger
+        return self.__logger
 
     def get_session_id(self):
         return self.__session_id
