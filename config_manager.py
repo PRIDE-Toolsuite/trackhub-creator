@@ -169,6 +169,9 @@ class AppConfigManager(ConfigurationManager):
             _log_level = configuration_object["logger"]["loglevel"]
         if "formatters" in configuration_object["logger"]["formatters"]:
             _logger_formatters = configuration_object["logger"]["formatters"]
+        self.__log_handlers = []
+        log_handlers_prefix = self.get_session_id() + '-'
+        log_handlers_extension = '.log'
         # TODO to be completed
 
     def get_folder_bin(self):
