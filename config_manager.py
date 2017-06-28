@@ -168,3 +168,6 @@ class AppConfigManager(ConfigurationManager):
     def get_logger(self):
         # TODO
         pass
+
+    def get_session_id(self):
+        return self.__session_id
