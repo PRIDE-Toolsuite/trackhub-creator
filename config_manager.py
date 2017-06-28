@@ -27,6 +27,7 @@ _folder_config = os.path.abspath('config')
 _folder_docs = os.path.abspath('docs')
 _folder_logs = os.path.abspath('logs')
 _folder_resources = os.path.abspath('resources')
+_folder_run = os.path.abspath('run')
 __configuration_file_name = None
 __pipeline_name = None
 
@@ -152,6 +153,13 @@ class AppConfigManager(ConfigurationManager):
         super(AppConfigManager, self).__init__(configuration_object, configuration_file)
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
         # TODO check and create folders (if needed)
+        folders_to_check = [_folder_resources,
+                            _folder_logs,
+                            _folder_bin,
+                            _folder_config,
+                            _folder_run
+                            ]
+        toolbox.check_create_folders(folders_to_check)
         # TODO to be completed
         pass
 
