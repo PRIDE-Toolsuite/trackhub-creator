@@ -176,6 +176,9 @@ class AppConfigManager(ConfigurationManager):
         # Configuration for 'run' folder cannot be changed in this version of the pipeline
         return _folder_run
 
+    def get_session_working_dir(self):
+        return self.__session_working_dir
+
     def get_logger(self):
         # TODO
         pass
