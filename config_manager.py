@@ -64,3 +64,7 @@ def __read_json_configuration(configuration_file):
 def get_app_config_manager():
 	# TODO
 	pass
+
+
+class AppConfigManager:
+	pass
