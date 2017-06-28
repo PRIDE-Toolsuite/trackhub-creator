@@ -153,13 +153,6 @@ class AppConfigManager(ConfigurationManager):
         super(AppConfigManager, self).__init__(configuration_object, configuration_file)
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
         # TODO check and create folders (if needed)
-        folders_to_check = [_folder_resources,
-                            _folder_logs,
-                            _folder_bin,
-                            _folder_config,
-                            _folder_run
-                            ]
-        toolbox.check_create_folders(folders_to_check)
         # TODO to be completed
         pass
 
@@ -178,6 +171,10 @@ class AppConfigManager(ConfigurationManager):
     def get_folder_resources(self):
         # Configuration for resources folder cannot be changed in this version of the pipeline
         return _folder_resources
+
+    def _get_folder_run(self):
+        # Configuration for 'run' folder cannot be changed in this version of the pipeline
+        return _folder_run
 
     def get_logger(self):
         # TODO
