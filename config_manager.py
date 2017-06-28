@@ -167,8 +167,9 @@ class AppConfigManager(ConfigurationManager):
         # Prepare Logging subsystem
         if "loglevel" in configuration_object["logger"]:
             _log_level = configuration_object["logger"]["loglevel"]
+        if "formatters" in configuration_object["logger"]["formatters"]:
+            _logger_formatters = configuration_object["logger"]["formatters"]
         # TODO to be completed
-        pass
 
     def get_folder_bin(self):
         # 'Bin' folder cannot be changed in this version of the pipeline
