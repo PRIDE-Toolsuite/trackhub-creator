@@ -151,7 +151,10 @@ class AppConfigManager(ConfigurationManager):
 
     def __init__(self, configuration_object, configuration_file):
         super(AppConfigManager, self).__init__(configuration_object, configuration_file)
+        # Session ID
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
+        # TODO config, folder_run, etc.
+        self.__session_working_dir = os.path.abspath(os.path.join(self.get_folder_run(), self.get_session_id())
         # TODO check and create folders (if needed)
         # TODO to be completed
         pass
