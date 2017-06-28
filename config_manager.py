@@ -150,6 +150,7 @@ class AppConfigManager(ConfigurationManager):
     """
 
     def __init__(self, configuration_object, configuration_file):
+        global _log_level
         super(AppConfigManager, self).__init__(configuration_object, configuration_file)
         # Session ID
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
@@ -163,6 +164,9 @@ class AppConfigManager(ConfigurationManager):
                             self.get_session_working_dir(),
                             ]
         toolbox.check_create_folders(folders_to_check)
+        # Prepare Logging subsystem
+        if "loglevel" in configuration_object["logger"]:
+            _log_level = configuration_object["logger"]["loglevel"]
         # TODO to be completed
         pass
 
