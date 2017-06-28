@@ -91,3 +91,7 @@ class AppConfigManager:
 		self.__configuration_object = configuration_object
 		# TODO check and create folders (if needed)
 		self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
+		# TODO to be completed
+		pass
+
+
