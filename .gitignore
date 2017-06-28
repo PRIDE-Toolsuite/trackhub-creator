@@ -1,2 +1,5 @@
 # Ignore Python virtual environment
 python_install
+
+# Ignore PyCharm
+.idea
