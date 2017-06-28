@@ -19,7 +19,7 @@ import json
 import logging
 import importlib
 # Package modules
-from exceptions import ConfigException
+from exceptions import ConfigException, ConfigManagerException
 import toolbox
 
 
@@ -103,7 +103,32 @@ def __check_create_folders(configuration_object):
 	pass
 
 
+def get_config_manager_for(configuration_file):
+	return ConfigurationManager(__read_config_from_file(configuration_file), configuration_file)
+
+
+class ConfigurationManager:
+	"""
+	This class is a helper class for those submodules having to manage configuration files themselves, that are specific
+	to them
+	"""
+	def __init__(self, configuration_object, configuration_file):
+		self.__configuration_object = configuration_object
+		self.__configuration_file = configuration_file
+
+	def _get_value_for_key(self, key):
+		if key in self.__configuration_object:
+			return self.__configuration_object[key]
+		else:
+			msg = "Could not find '" + str(key) + "' in config file " + self.__configuration_file
+			get_app_config_manager().get_logger().error(msg)
+			raise ConfigManagerException(msg)
+
+
 class AppConfigManager:
+	"""
+	Application wide Configuration Manager
+	"""
 	def __init__(self, configuration_object):
 		self.__configuration_object = configuration_object
 		# TODO check and create folders (if needed)
@@ -112,5 +137,9 @@ class AppConfigManager:
 		pass
 
 	def get_config_folder(self):
+		# TODO
+		pass
+
+	def get_logger(self):
 		# TODO
 		pass
