@@ -124,6 +124,12 @@ class ConfigurationManager:
             get_app_config_manager().get_logger().error(msg)
             raise ConfigManagerException(msg)
 
+    def _get_value_for_key_with_default(self, key, default):
+        if key in self.__configuration_object:
+            return self.__configuration_object[key]
+        else:
+            return default
+
     def _get_configuration_object(self):
         return self.__configuration_object
 
