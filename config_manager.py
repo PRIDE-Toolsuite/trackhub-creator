@@ -81,6 +81,23 @@ def get_app_config_manager():
 	pass
 
 
+def __read_config_from_file(configuration_file):
+	"""
+	Given a file name or absolute path, read its configuration information in json format and return its object
+	representation
+	:param configuration_file: file name or absolute path for the file that contains the configuration information
+	:return: an object representation of the json formatted configuration information read from the file
+	"""
+	config_file_path = configuration_file
+	if not os.path.isabs(config_file_path):
+		config_file_path = os.path.join(get_app_config_manager().get_config_folder(), configuration_file)
+	try:
+		return toolbox.read_json(config_file_path)
+	except Exception as e:
+		msg = "Config file " + str(config_file_path) + " could not be read, because " + str(e)
+		raise ConfigException(msg)
+
+
 def __check_create_folders(configuration_object):
 	# TODO
 	pass
@@ -94,4 +111,6 @@ class AppConfigManager:
 		# TODO to be completed
 		pass
 
-
+	def get_config_folder(self):
+		# TODO
+		pass
