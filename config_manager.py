@@ -149,9 +149,9 @@ class AppConfigManager(ConfigurationManager):
         # TODO to be completed
         pass
 
-    def get_config_folder(self):
-        # TODO
-        pass
+    def get_folder_config(self):
+        # Configuration folder cannot be changed in this version of the pipeline
+        return _folder_config
 
     def get_logger(self):
         # TODO
