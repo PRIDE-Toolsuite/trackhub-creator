@@ -11,7 +11,9 @@
 This module implements some useful functions for the pipeline runner
 """
 
+import os
 import json
+from exceptions import ToolBoxException
 
 
 def read_json(json_file="json_file_not_specified.json"):
@@ -24,3 +26,21 @@ def read_json(json_file="json_file_not_specified.json"):
     """
     with open(json_file) as jf:
         return json.load(jf)
+
+
+def check_create_folders(folders):
+    """
+    Check if folders exist, create them otherwise
+    :param folders: list of folder paths to check
+    :return: no return value
+    """
+    for folder in folders:
+        if not os.path.isdir(folder):
+            if os.path.exists(folder):
+                raise ToolBoxException(folder + " is not a folder")
+            else:
+                try:
+                    os.mkdir(folder)
+                except Exception as e:
+                    raise ToolBoxException(str(e))
+
