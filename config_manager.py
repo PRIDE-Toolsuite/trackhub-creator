@@ -153,6 +153,10 @@ class AppConfigManager(ConfigurationManager):
         # Configuration folder cannot be changed in this version of the pipeline
         return _folder_config
 
+    def get_folder_bin(self):
+        # 'Bin' folder cannot be changed in this version of the pipeline
+        return _folder_bin
+
     def get_logger(self):
         # TODO
         pass
