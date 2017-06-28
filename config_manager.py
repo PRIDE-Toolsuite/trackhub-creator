@@ -81,11 +81,11 @@ def get_app_config_manager():
     """
     global __app_config_manager
     if __app_config_manager is None:
-        __app_config_manager = AppConfigManager(__read_config_from_file(__configuration_file_name), __configuration_file_name)
+        __app_config_manager = AppConfigManager(read_config_from_file(__configuration_file_name), __configuration_file_name)
     return __app_config_manager
 
 
-def __read_config_from_file(configuration_file):
+def read_config_from_file(configuration_file):
     """
     Given a file name or absolute path, read its configuration information in json format and return its object
     representation
@@ -109,7 +109,7 @@ def get_config_manager_for(configuration_file):
     :param configuration_file: configuration file name or path
     :return: a ConfigurationManager on top of that configuration information
     """
-    return ConfigurationManager(__read_config_from_file(configuration_file), configuration_file)
+    return ConfigurationManager(read_config_from_file(configuration_file), configuration_file)
 
 
 class ConfigurationManager:
