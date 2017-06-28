@@ -13,22 +13,22 @@ Application wide exceptions
 
 
 class AppException(Exception):
-	def __init__(self, value):
-		self.value = value
+    def __init__(self, value):
+        self.value = value
 
-	def __str__(self):
-		return repr(self.value)
+    def __str__(self):
+        return repr(self.value)
 
 
 class ConfigException(AppException):
-	def __init__(self, value):
-		super(ConfigException, self).__init__(value)
+    def __init__(self, value):
+        super(ConfigException, self).__init__(value)
 
 
 class ConfigManagerException(Exception):
-	def __init__(self, value):
-		Exception.__init__(self)
-		self.value = value
+    def __init__(self, value):
+        Exception.__init__(self)
+        self.value = value
 
-	def __str__(self):
-		return repr(self.value)
+    def __str__(self):
+        return repr(self.value)
