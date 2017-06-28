@@ -36,3 +36,4 @@ _logger_formatters = {
 	"INFO": "%(asctime)s [%(levelname)7s][%(name)48s] %(message)s"
 }
 _log_level = 'DEBUG'
+
