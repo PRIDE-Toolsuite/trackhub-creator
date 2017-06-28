@@ -136,13 +136,13 @@ class ConfigurationManager:
         return self.__configuration_file
 
 
-class AppConfigManager:
+class AppConfigManager(ConfigurationManager):
     """
     Application wide Configuration Manager
     """
 
-    def __init__(self, configuration_object):
-        self.__configuration_object = configuration_object
+    def __init__(self, configuration_object, configuration_file):
+        super(AppConfigManager, self).__init__(configuration_object, configuration_file)
         # TODO check and create folders (if needed)
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
         # TODO to be completed
