@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# TODO I'm not sure I'll use this setup anyway
 
 from setuptools import setup, find_packages
 
