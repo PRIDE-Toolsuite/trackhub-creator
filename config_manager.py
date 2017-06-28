@@ -129,6 +129,12 @@ class ConfigurationManager:
             get_app_config_manager().get_logger().error(msg)
             raise ConfigManagerException(msg)
 
+    def _get_configuration_object(self):
+        return self.__configuration_object
+
+    def _get_configuration_file(self):
+        return self.__configuration_file
+
 
 class AppConfigManager:
     """
