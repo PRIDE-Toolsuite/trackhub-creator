@@ -52,3 +52,15 @@ def set_application_config_file(configuration_file):
 	__configuration_file_name = configuration_file
 
 
+# Configuration Singleton
+__config_manager = None
+
+
+def __read_configuration(configuration_file):
+	# TODO
+	pass
+
+
+def get_manager():
+	# TODO
+	pass
