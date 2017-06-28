@@ -53,14 +53,14 @@ def set_application_config_file(configuration_file):
 
 
 # Configuration Singleton
-__config_manager = None
+__app_config_manager = None
 
 
-def __read_configuration(configuration_file):
+def __read_json_configuration(configuration_file):
 	# TODO
 	pass
 
 
-def get_manager():
+def get_app_config_manager():
 	# TODO
 	pass
