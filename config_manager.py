@@ -96,11 +96,6 @@ def __read_config_from_file(configuration_file):
         raise ConfigException(msg)
 
 
-def __check_create_folders(configuration_object):
-    # TODO
-    pass
-
-
 def get_config_manager_for(configuration_file):
     """
     Factory method for Configuration Managers, used by modules of the running pipeline for their specific configuration
@@ -143,8 +138,8 @@ class AppConfigManager(ConfigurationManager):
 
     def __init__(self, configuration_object, configuration_file):
         super(AppConfigManager, self).__init__(configuration_object, configuration_file)
-        # TODO check and create folders (if needed)
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
+        # TODO check and create folders (if needed)
         # TODO to be completed
         pass
 
