@@ -90,7 +90,7 @@ def __read_config_from_file(configuration_file):
 	"""
 	config_file_path = configuration_file
 	if not os.path.isabs(config_file_path):
-		config_file_path = os.path.join(get_app_config_manager().get_config_folder(), configuration_file)
+		config_file_path = os.path.join(_folder_config, configuration_file)
 	try:
 		return toolbox.read_json(config_file_path)
 	except Exception as e:
