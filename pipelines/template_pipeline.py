@@ -33,7 +33,9 @@ class Director:
         if not self._run_pipeline():
             self._get_logger().error("The PIPELINE execution has FAILED")
             return False
-        self._after()
+        if not self._after():
+            self._get_logger().error("The logic executed AFTER running the pipeline has FAILED")
+            return False
 
     def _run_pipeline(self):
         raise NotImplementedError("Implement your main pipeline logic here")
