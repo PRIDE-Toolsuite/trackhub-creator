@@ -17,6 +17,9 @@ import argparse
 import config_manager
 
 
+__DEFAULT_CONFIG_FILE = "config_default.json"
+
+
 def get_cmdl():
     cmdl_version = '2017.06.29'
     parser = argparse.ArgumentParser()
@@ -36,6 +39,8 @@ def main():
     args = get_cmdl()
     if args.config_file:
         config_manager.set_application_config_file(args.config_file)
+    else:
+        config_manager.set_application_config_file(__DEFAULT_CONFIG_FILE)
     if args.pipeline_name:
         config_manager.set_pipeline_name(args.pipeline_name)
     logger = config_manager.get_app_config_manager().get_logger_for(__name__)
