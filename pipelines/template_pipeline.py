@@ -35,8 +35,8 @@ class Director:
         raise NotImplementedError("Implement your main pipeline logic here")
 
     def _after(self):
-        # TODO
-        pass
+        self._get_logger().debug("No behaviour has been defined for 'after' running the pipeline")
+        return True
 
     def _get_logger(self):
         return self.__logger
