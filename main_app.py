@@ -13,6 +13,8 @@ Pipeline Runner - Main Application
 """
 
 import argparse
+# Modules from package
+import config_manager
 
 
 def get_cmdl():
@@ -26,7 +28,7 @@ def get_cmdl():
                         help='display version information',
                         action='version',
                         version=cmdl_version + ' %(prog)s ')
-    parser.add_argument('workflow_name',
+    parser.add_argument('pipeline_name',
                         metavar='pipeline_name',
                         help='Module Name that contains the director of the pipeline to run',
                         type=str)
@@ -36,6 +38,9 @@ def get_cmdl():
 
 def main():
     args = get_cmdl()
+    if args.config_file:
+        config_manager.set_application_config_file(args.config_file)
+
 
 if __name__ == "__main__":
     main()
