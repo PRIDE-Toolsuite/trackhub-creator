@@ -27,7 +27,7 @@ def get_cmdl():
                         action='version',
                         version=cmdl_version + ' %(prog)s ')
     parser.add_argument('workflow_name',
-                        metavar='workflow_name',
+                        metavar='pipeline_name',
                         help='Module Name that contains the director of the pipeline to run',
                         type=str)
     args = parser.parse_args()
@@ -35,9 +35,7 @@ def get_cmdl():
 
 
 def main():
-    # TODO
-    pass
-
+    args = get_cmdl()
 
 if __name__ == "__main__":
     main()
