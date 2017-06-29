@@ -11,3 +11,17 @@
 """
 Pipeline Runner - Main Application
 """
+
+
+def get_cmdl():
+    # TODO
+    pass
+
+
+def main():
+    # TODO
+    pass
+
+
+if __name__ == "__main__":
+    main()
