@@ -27,8 +27,12 @@ class Director():
         pass
 
     def run(self):
-        # TODO
-        pass
+        self._before()
+        self._run_pipeline()
+        self._after()
+
+    def _run_pipeline(self):
+        raise NotImplementedError("Implement your main pipeline logic here")
 
     def _after(self):
         # TODO
