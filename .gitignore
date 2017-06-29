@@ -9,3 +9,7 @@ logs/*log
 
 # Ignore python cache
 __pycache__
+
+# Ignore the application runs in the run folder
+run/*
+!run/empty
