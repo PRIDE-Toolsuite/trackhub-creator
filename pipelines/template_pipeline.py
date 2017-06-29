@@ -11,6 +11,8 @@
 This is a template pipeline for refactoring out things from final pipelines as I identify how they're gonna look like
 """
 
+import exceptions
+
 
 class Director():
     """
