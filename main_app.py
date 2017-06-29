@@ -19,19 +19,15 @@ import config_manager
 
 def get_cmdl():
     cmdl_version = '2017.06.29'
-    parser = argparse.ArgumentParser(conflict_handler='resolve')
-    parser.add_argument('-c', "--config_file_name",
-                        metavar='config_file',
-                        help='Application configuration file',
-                        type=str)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', "--config_file",
+                        help='Application configuration file')
     parser.add_argument('-v', '--version',
                         help='display version information',
                         action='version',
                         version=cmdl_version + ' %(prog)s ')
     parser.add_argument('pipeline_name',
-                        metavar='pipeline_name',
-                        help='Module Name that contains the director of the pipeline to run',
-                        type=str)
+                        help='Module Name that contains the director of the pipeline to run')
     args = parser.parse_args()
     return args
 
