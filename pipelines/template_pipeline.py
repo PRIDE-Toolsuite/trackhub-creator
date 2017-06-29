@@ -51,3 +51,4 @@ class Director:
     def _set_logger(self, new_logger):
         self.__logger = new_logger
         return self._get_logger()
+    
