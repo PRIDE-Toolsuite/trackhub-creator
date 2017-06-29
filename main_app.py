@@ -40,6 +40,8 @@ def main():
     args = get_cmdl()
     if args.config_file:
         config_manager.set_application_config_file(args.config_file)
+    if args.pipeline_name:
+        config_manager.set_pipeline_name(args.pipeline_name)
 
 
 if __name__ == "__main__":
