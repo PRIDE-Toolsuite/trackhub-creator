@@ -31,7 +31,8 @@ def get_cmdl():
                         help='Module Name that contains the director of the pipeline to run',
                         type=str)
     args = parser.parse_args()
-    
+    return args
+
 
 def main():
     # TODO
