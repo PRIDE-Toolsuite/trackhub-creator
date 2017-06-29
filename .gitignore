@@ -3,3 +3,6 @@ python_install
 
 # Ignore PyCharm
 .idea
+
+# Ignore logs from application runs
+logs/*log
