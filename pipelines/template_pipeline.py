@@ -27,7 +27,8 @@ class Director:
         return True
 
     def run(self):
-        self._before()
+        if not self._before():
+            return False
         self._run_pipeline()
         self._after()
 
