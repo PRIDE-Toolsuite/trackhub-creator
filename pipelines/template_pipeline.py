@@ -11,16 +11,16 @@
 This is a template pipeline for refactoring out things from final pipelines as I identify how they're gonna look like
 """
 
+import config_manager
 from exceptions import PipelineDirectorException
 
 
-class Director():
+class Director:
     """
     This is the director of the pipeline
     """
     def __init__(self, config_file_name, runner_id = 0):
-        #TODO
-        pass
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def _before(self):
         # TODO
@@ -37,3 +37,10 @@ class Director():
     def _after(self):
         # TODO
         pass
+
+    def _get_logger(self):
+        return self.__logger
+
+    def _set_logger(self, new_logger):
+        self.__logger = new_logger
+        return self._get_logger()
