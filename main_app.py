@@ -12,11 +12,26 @@
 Pipeline Runner - Main Application
 """
 
+import argparse
+
 
 def get_cmdl():
-    # TODO
-    pass
-
+    cmdl_version = '2017.06.29'
+    parser = argparse.ArgumentParser(conflict_handler='resolve')
+    parser.add_argument('-c', "--config_file_name",
+                        metavar='config_file',
+                        help='Application configuration file',
+                        type=str)
+    parser.add_argument('-v', '--version',
+                        help='display version information',
+                        action='version',
+                        version=cmdl_version + ' %(prog)s ')
+    parser.add_argument('workflow_name',
+                        metavar='workflow_name',
+                        help='Module Name that contains the director of the pipeline to run',
+                        type=str)
+    args = parser.parse_args()
+    
 
 def main():
     # TODO
