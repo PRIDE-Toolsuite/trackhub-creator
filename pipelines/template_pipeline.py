@@ -28,8 +28,11 @@ class Director:
 
     def run(self):
         if not self._before():
+            self._get_logger().error("The logic executed BEFORE running the pipeline has FAILED")
             return False
-        self._run_pipeline()
+        if not self._run_pipeline():
+            self._get_logger().error("The PIPELINE execution has FAILED")
+            return False
         self._after()
 
     def _run_pipeline(self):
