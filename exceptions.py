@@ -37,3 +37,8 @@ class ConfigManagerException(Exception):
 class ToolBoxException(AppException):
     def __init__(self, value):
         super(ToolBoxException, self).__init__(value)
+
+
+class PipelineDirectorException(AppException):
+    def __init__(self, value):
+        super(ToolBoxException, self).__init__(value)
