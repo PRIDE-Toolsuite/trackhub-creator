@@ -23,8 +23,8 @@ class Director:
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def _before(self):
-        # TODO
-        pass
+        self._get_logger().debug("No behaviour has been defined for 'before' running the pipeline")
+        return True
 
     def run(self):
         self._before()
