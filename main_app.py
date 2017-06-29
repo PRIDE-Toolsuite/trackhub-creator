@@ -38,7 +38,9 @@ def main():
         config_manager.set_application_config_file(args.config_file)
     if args.pipeline_name:
         config_manager.set_pipeline_name(args.pipeline_name)
-
+    logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+    logger.info("Session '{}' STARTED, pipeline '{}'".format(config_manager.get_app_config_manager().get_session_id(),
+                                                             args.pipeline_name))
 
 if __name__ == "__main__":
     main()
