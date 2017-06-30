@@ -19,6 +19,7 @@ from exceptions import PipelineDirectorException
 __configuration_file = None
 __configuration_manager = None
 
+
 def __get_configuration_manager():
     global __configuration_manager
     if __configuration_manager is None:
