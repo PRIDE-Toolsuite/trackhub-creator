@@ -41,7 +41,8 @@ class Director:
 
     def _before(self):
         """
-        This method implements some logic that is run before running the main pipeline director
+        This method implements some logic that is run before running the main pipeline director.
+        Subclasses implementing the pipeline logic, can override this method for establishing pre-pipeline logic.
         :return: it returns True if there was no problem, False otherwise
         """
         self._get_logger().debug("No behaviour has been defined for 'before' running the pipeline")
@@ -68,7 +69,7 @@ class Director:
 
     def _after(self):
         """
-        This method implements the logic that must be executed after the pipeline workflow has run
+        This method implements the logic that must be executed after the pipeline workflow has run.
         :return: True if success, False otherwise
         """
         self._get_logger().debug("No behaviour has been defined for 'after' running the pipeline")
