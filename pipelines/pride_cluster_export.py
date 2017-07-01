@@ -8,5 +8,7 @@
 # 
 
 """
-Document your module here
+This module implements the pipeline for exporting PRIDE Cluster to files using cluster-file-exporter, it will include
+PoGo formatted files for its later use
 """
+
