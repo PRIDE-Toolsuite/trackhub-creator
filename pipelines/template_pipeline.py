@@ -77,6 +77,10 @@ class Director:
         return True
 
     def _get_logger(self):
+        """
+        Get the logger to be used for logging messages
+        :return: it returns the logger set for the current instance of the class
+        """
         return self.__logger
 
     def _set_logger(self, new_logger):
