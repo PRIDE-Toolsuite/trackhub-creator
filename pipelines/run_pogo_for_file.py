@@ -26,6 +26,7 @@ def __get_configuration_manager():
                                                                __configuration_file)
     return __configuration_manager
 
+
 class DirectorConfigurationManager(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file):
         super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
