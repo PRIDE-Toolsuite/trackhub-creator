@@ -25,3 +25,8 @@ def __get_configuration_manager():
     if __configuration_manager is None:
         __configuration_manager = DirectorConfigurationManager(toolbox.read_json(__configuration_file), __configuration_file)
     return __configuration_manager
+
+
+class DirectorConfigurationManager(config_manager.ConfigurationManager):
+    def __init__(self, configuration_object, configuration_file):
+        super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
