@@ -50,7 +50,7 @@ class Director:
     def run(self):
         """
         Pipeline template director algorithm, it executes 'before' logic, then the 'pipeline' logic, and 'after' logic once the pipeline is finished
-        :return:
+        :return: True if the pipeline has been successful, False otherwise
         """
         if not self._before():
             self._get_logger().error("The logic executed BEFORE running the pipeline has FAILED")
