@@ -16,6 +16,8 @@ import toolbox
 from exceptions import PipelineDirectorException
 
 
+# The config manager singleton is just an example that only makes sense for specialized pipeline modules, not really for
+# this template
 __configuration_file = None
 __configuration_manager = None
 
