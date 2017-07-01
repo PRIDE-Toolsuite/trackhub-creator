@@ -14,6 +14,8 @@ folder where the input file is located
 
 import config_manager
 import toolbox
+# From this application
+import pipelines.template_pipeline as template_pipeline
 
 __configuration_file = None
 __configuration_manager = None
