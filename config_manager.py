@@ -233,3 +233,6 @@ class AppConfigManager(ConfigurationManager):
 
     def get_session_id(self):
         return self.__session_id
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
