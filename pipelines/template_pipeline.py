@@ -96,3 +96,6 @@ class Director:
         """
         self.__logger = new_logger
         return self._get_logger()
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
