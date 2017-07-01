@@ -18,3 +18,10 @@ import toolbox
 
 __configuration_file = None
 __configuration_manager = None
+
+
+def __get_configuration_manager():
+    global __configuration_manager
+    if __configuration_manager is None:
+        __configuration_manager = DirectorConfigurationManager(toolbox.read_json(__configuration_file), __configuration_file)
+    return __configuration_manager
