@@ -42,7 +42,7 @@ class Director:
     def _before(self):
         """
         This method implements some logic that is run before running the main pipeline director
-        :return: 
+        :return: it returns True if there was no problem, False otherwise
         """
         self._get_logger().debug("No behaviour has been defined for 'before' running the pipeline")
         return True
