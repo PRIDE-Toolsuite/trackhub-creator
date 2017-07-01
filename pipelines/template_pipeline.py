@@ -67,6 +67,10 @@ class Director:
         raise NotImplementedError("Implement your main pipeline logic here")
 
     def _after(self):
+        """
+        This method implements the logic that must be executed after the pipeline workflow has run
+        :return:
+        """
         self._get_logger().debug("No behaviour has been defined for 'after' running the pipeline")
         return True
 
