@@ -40,6 +40,10 @@ class Director:
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def _before(self):
+        """
+        This method implements some logic that is run before running the main pipeline director
+        :return: 
+        """
         self._get_logger().debug("No behaviour has been defined for 'before' running the pipeline")
         return True
 
