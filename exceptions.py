@@ -42,3 +42,6 @@ class ToolBoxException(AppException):
 class PipelineDirectorException(AppException):
     def __init__(self, value):
         super(ToolBoxException, self).__init__(value)
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
