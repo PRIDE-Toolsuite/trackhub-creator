@@ -68,7 +68,7 @@ class Director:
         """
         This abstract method must be implemented by the subclasses with the strategy / director logic that drives the
         pipeline they are performing
-        :return:  
+        :return: True if the pipeline is successful, False otherwise
         """
         raise NotImplementedError("Implement your main pipeline logic here")
 
