@@ -31,3 +31,5 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file):
         super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
 
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
