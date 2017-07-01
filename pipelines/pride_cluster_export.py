@@ -34,7 +34,16 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
         super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
 
 
-# TODO Pipeline Director
+# Pipeline Director
+class Director(template_pipeline.Director):
+    def __init__(self, config_file_name, runner_id=0):
+        super(Director, self).__init__(config_file_name, runner_id)
+        self._set_logger(config_manager.get_app_config_manager().get_logger_for(__name__))
+
+    def _run_pipeline(self):
+        # TODO
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
