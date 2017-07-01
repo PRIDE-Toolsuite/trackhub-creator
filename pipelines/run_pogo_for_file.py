@@ -15,9 +15,9 @@ folder where the input file is located
 import config_manager
 import toolbox
 
-
 __configuration_file = None
 __configuration_manager = None
+
 
 def __get_configuration_manager():
     global __configuration_manager
@@ -25,6 +25,7 @@ def __get_configuration_manager():
         __configuration_manager = DirectorConfigurationManager(toolbox.read_json(__configuration_file),
                                                                __configuration_file)
     return __configuration_manager
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
