@@ -14,3 +14,7 @@ PoGo formatted files for its later use
 
 import config_manager
 import toolbox
+
+
+__configuration_file = None
+__configuration_manager = None
