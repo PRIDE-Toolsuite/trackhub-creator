@@ -84,5 +84,10 @@ class Director:
         return self.__logger
 
     def _set_logger(self, new_logger):
+        """
+        This method allows subclasses to change the default logger created when instantiating an implementation of this abstract class.
+        :param new_logger: a new logger to set up as the default logger for a particular implementation subclass instance
+        :return: the newly set logger
+        """
         self.__logger = new_logger
         return self._get_logger()
