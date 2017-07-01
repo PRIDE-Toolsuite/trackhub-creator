@@ -15,7 +15,6 @@ import config_manager
 import toolbox
 from exceptions import PipelineDirectorException
 
-
 # The config manager singleton is just an example that only makes sense for specialized pipeline modules, not really for
 # this template
 __configuration_file = None
@@ -25,7 +24,8 @@ __configuration_manager = None
 def __get_configuration_manager():
     global __configuration_manager
     if __configuration_manager is None:
-        __configuration_manager = DirectorConfigurationManager(toolbox.read_json(__configuration_file), __configuration_file)
+        __configuration_manager = DirectorConfigurationManager(toolbox.read_json(__configuration_file),
+                                                               __configuration_file)
     return __configuration_manager
 
 
@@ -38,7 +38,8 @@ class Director:
     """
     This is the director of the pipeline
     """
-    def __init__(self, config_file_name, runner_id = 0):
+
+    def __init__(self, config_file_name, runner_id=0):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def _before(self):
@@ -98,6 +99,7 @@ class Director:
         """
         self.__logger = new_logger
         return self._get_logger()
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
