@@ -44,3 +44,5 @@ def check_create_folders(folders):
                 except Exception as e:
                     raise ToolBoxException(str(e))
 
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
