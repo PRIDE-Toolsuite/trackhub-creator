@@ -15,5 +15,10 @@ folder where the input file is located
 import config_manager
 import toolbox
 
+
+__configuration_file = None
+__configuration_manager = None
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
