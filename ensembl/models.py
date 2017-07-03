@@ -22,6 +22,10 @@ class Species:
     def _get_logger(self):
         return self.__logger
 
+    def get_division(self):
+        # TODO
+        pass
+
 
 class SpeciesService:
     # TODO
