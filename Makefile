@@ -17,4 +17,4 @@ dev_clean:
 
 clean: dev_clean
 
-.PHONY: dev_environment install_requirements dev_clean clean
+.PHONY: dev_environment install_requirements dev_clean update_requirements clean
