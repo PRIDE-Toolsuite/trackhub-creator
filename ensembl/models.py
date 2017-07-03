@@ -13,8 +13,8 @@ This module contains Ensembl models used as Entities and DAO/Services
 
 
 class Species:
-    # TODO
-    pass
+    def __init__(self, ensembl_species_entry):
+        self.__ensembl_species_entry = ensembl_species_entry
 
 
 class SpeciesService:
