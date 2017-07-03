@@ -22,7 +22,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
 
 # Ensembl Service model
-class EnsemblService():
+class Service():
     def __init__(self, configuration_object, configuration_file):
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         # Ensembl Release Number
