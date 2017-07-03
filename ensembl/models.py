@@ -41,7 +41,11 @@ class Species:
     def get_display_name(self):
         # TODO
         pass
-    
+
+    def get_assembly_accession(self):
+        # TODO
+        pass
+
 
 class SpeciesService:
     # TODO
