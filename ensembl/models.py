@@ -17,6 +17,7 @@ import config_manager
 class Species:
     def __init__(self, ensembl_species_entry):
         self.__ensembl_species_entry = ensembl_species_entry
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
 
 class SpeciesService:
