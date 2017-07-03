@@ -14,6 +14,11 @@ This module models an Ensembl service
 # App imports
 import config_manager
 
+# Configuration Keys
+__CONFIG_KEY_SERVICE = 'service'
+__CONFIG_KEY_ENSEMBL_API = 'ensembl_api'
+__CONFIG_KEY_SERVER = 'server'
+
 
 # Ensembl Service configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
