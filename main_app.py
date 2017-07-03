@@ -64,6 +64,7 @@ def app_bootstrap():
             "Session '{}' STARTED, pipeline '{}'".format(config_manager.get_app_config_manager().get_session_id(),
                                                          __args.pipeline_name))
 
+
 def modules_bootstrap():
     # TODO
     pass
