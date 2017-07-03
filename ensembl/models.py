@@ -12,7 +12,7 @@ This module contains Ensembl models used as Entities and DAO/Services
 """
 
 
-class SpeciesEntity:
+class Species:
     # TODO
     pass
 
