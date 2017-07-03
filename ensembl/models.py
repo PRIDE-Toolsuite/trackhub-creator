@@ -62,6 +62,10 @@ class Species:
         # TODO
         pass
 
+    def get_groups(self):
+        # TODO
+        pass
+
 
 class SpeciesService:
     # TODO
