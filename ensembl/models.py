@@ -66,6 +66,10 @@ class Species:
         # TODO
         pass
 
+    def get_assembly(self):
+        # TODO
+        pass
+
 
 class SpeciesService:
     # TODO
