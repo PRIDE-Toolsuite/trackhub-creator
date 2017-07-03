@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This module contains Ensembl models used as Entities and DAO/Services
 """
