@@ -10,3 +10,9 @@
 """
 Ensembl module related exceptions
 """
+from exceptions import AppException
+
+
+class EnsemblServiceException(AppException):
+    def __init__(self, value):
+        super(EnsemblServiceException, self).__init__(value)
