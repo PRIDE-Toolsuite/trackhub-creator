@@ -41,9 +41,9 @@ _log_level = 'DEBUG'
 
 # Configuration file Keys, I place them here in case I create another another Application Configuration Manager when
 # running in test mode
-__CONFIG_MODULES_SECTION = 'module_config_files'
-__CONFIG_MODULES_ENSEMBL = 'ensembl'
-__CONFIG_MODULES_ENSEMBL_SERVICE = 'service'
+_CONFIG_MODULES_SECTION = 'module_config_files'
+_CONFIG_MODULES_ENSEMBL = 'ensembl'
+_CONFIG_MODULES_ENSEMBL_SERVICE = 'service'
 
 
 def set_application_config_file(configuration_file):
@@ -239,6 +239,11 @@ class AppConfigManager(ConfigurationManager):
 
     def get_session_id(self):
         return self.__session_id
+
+    def get_file_name_config_modules_ensembl_service(self):
+        return \
+            self._get_configuration_object()\
+                [_CONFIG_MODULES_SECTION][_CONFIG_MODULES_ENSEMBL][_CONFIG_MODULES_ENSEMBL_SERVICE]
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
