@@ -106,7 +106,7 @@ def read_config_from_file(configuration_file):
     try:
         return toolbox.read_json(config_file_path)
     except Exception as e:
-        msg = "Config file " + str(config_file_path) + " could not be read, because " + str(e)
+        msg = "Config file {} could not be read, because {}".format(config_file_path, str(e))
         raise AppConfigException(msg)
 
 
