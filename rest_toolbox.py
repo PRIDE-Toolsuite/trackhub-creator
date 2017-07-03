@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Toolbox related to REST services
 """
