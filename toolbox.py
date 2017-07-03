@@ -37,7 +37,7 @@ def check_create_folders(folders):
     for folder in folders:
         if not os.path.isdir(folder):
             if os.path.exists(folder):
-                raise ToolBoxException(folder + " is not a folder")
+                raise ToolBoxException("'{}' is not a folder".format(folder))
             else:
                 try:
                     os.mkdir(folder)
