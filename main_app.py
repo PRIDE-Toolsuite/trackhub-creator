@@ -24,6 +24,7 @@ __DEFAULT_CONFIG_FILE = "config_default.json"
 # Running mode
 __run_test_mode = False
 __logger = None
+__ars = None
 
 
 def get_cmdl():
@@ -44,14 +45,15 @@ def get_cmdl():
 def app_bootstrap():
     global __run_test_mode
     global __logger
-    args = get_cmdl()
-    if args.config_file:
-        config_manager.set_application_config_file(args.config_file)
+    global __args
+    __args = get_cmdl()
+    if __args.config_file:
+        config_manager.set_application_config_file(__args.config_file)
     else:
         config_manager.set_application_config_file(__DEFAULT_CONFIG_FILE)
-    if args.pipeline_name:
-        config_manager.set_pipeline_name(args.pipeline_name)
-        if args.pipeline_name == 'test':
+    if __args.pipeline_name:
+        config_manager.set_pipeline_name(__args.pipeline_name)
+        if __args.pipeline_name == 'test':
             __run_test_mode = True
     __logger = config_manager.get_app_config_manager().get_logger_for(__name__)
     if __run_test_mode:
@@ -60,7 +62,11 @@ def app_bootstrap():
     else:
         __logger.info(
             "Session '{}' STARTED, pipeline '{}'".format(config_manager.get_app_config_manager().get_session_id(),
-                                                         args.pipeline_name))
+                                                         __args.pipeline_name))
+
+def modules_bootstrap():
+    # TODO
+    pass
 
 
 def run_unit_tests():
@@ -72,6 +78,7 @@ def run_unit_tests():
 
 def main():
     app_bootstrap()
+    modules_bootstrap()
     if __run_test_mode:
         run_unit_tests()
     else:
