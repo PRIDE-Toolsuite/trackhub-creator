@@ -11,6 +11,7 @@
 This module models an Ensembl service
 """
 
+import requests
 # App imports
 import config_manager
 from exceptions import ConfigManagerException
@@ -41,6 +42,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 class Service():
     def __init__(self, configuration_object, configuration_file):
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         # Ensembl Release Number
         self.__release_number = None
 
@@ -59,6 +61,9 @@ class Service():
         if self.__release_number is None:
             self.__request_release_number()
         return self.__release_number
+
+    def _get_logger(self):
+        return self.__logger
 
 
 if __name__ == '__main__':
