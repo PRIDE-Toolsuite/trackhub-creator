@@ -10,3 +10,16 @@
 """
 Unit tests for Ensembl module
 """
+
+import unittest
+
+class TestEnsemblService(unittest.TestCase):
+
+    __CONFIG_FILE_NAME = "config_ensembl_module.json"
+
+    def test_test(self):
+        pass
+
+
+if __name__ == '__main__':
+    unittest.main()
