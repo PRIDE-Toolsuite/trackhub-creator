@@ -24,7 +24,7 @@ __service_instance = None
 
 def set_configuration_file(config_file):
     global __configuration_file
-    if (__configuration_file is None):
+    if __configuration_file is None:
         __configuration_file = config_file
     return __configuration_file
 
