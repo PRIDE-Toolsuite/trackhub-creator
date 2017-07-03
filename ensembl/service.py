@@ -33,6 +33,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         return self.__logger
 
     def get_api_server(self):
+        self._get_logger().debug("get_api_server, from configuration object '{}'".format(self._get_configuration_object()))
         try:
             self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][
                 self._CONFIG_KEY_SERVER]

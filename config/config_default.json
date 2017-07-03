@@ -1,8 +1,8 @@
 {
 	"logger": {
 		"formatters": {
-			"DEBUG": "%(asctime)s [%(levelname)7s][%(name)48s][%(module)32s, %(lineno)4s] %(message)s",
-			"INFO": "%(asctime)s [%(levelname)7s][%(name)48s] %(message)s"
+			"DEBUG": "%(asctime)s [%(levelname)7s][%(name)38s][%(module)32s, %(lineno)4s] %(message)s",
+			"INFO": "%(asctime)s [%(levelname)7s][%(name)38s] %(message)s"
 		},
 		"loglevel": "DEBUG"
 	},

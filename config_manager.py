@@ -33,8 +33,8 @@ __pipeline_name = None
 
 # Logging defaults
 _logger_formatters = {
-    "DEBUG": "%(asctime)s [%(levelname)7s][%(name)48s][%(module)18s, %(lineno)4s] %(message)s",
-    "INFO": "%(asctime)s [%(levelname)7s][%(name)48s] %(message)s"
+    "DEBUG": "%(asctime)s [%(levelname)7s][%(name)28s][%(module)18s, %(lineno)4s] %(message)s",
+    "INFO": "%(asctime)s [%(levelname)7s][%(name)28s] %(message)s"
 }
 _log_level = 'DEBUG'
 
