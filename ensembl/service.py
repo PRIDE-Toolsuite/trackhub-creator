@@ -35,7 +35,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     def get_api_server(self):
         self._get_logger().debug("get_api_server, from configuration object '{}'".format(self._get_configuration_object()))
         try:
-            self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][
+            return self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][
                 self._CONFIG_KEY_SERVER]
         except Exception as e:
             raise ConfigManagerException(
@@ -61,7 +61,7 @@ class Service:
     def __request_release_number(self):
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
         current_release_data = rest_toolbox.make_rest_request(request_url)
-        self._get_logger().debug("Request Release Number response from Ensembl - '{}'" % str(current_release_data))
+        self._get_logger().debug("Request Release Number response from Ensembl - '{}'".format(current_release_data))
         return current_release_data['releases'][0]
 
     def get_release_number(self):
