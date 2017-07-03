@@ -14,6 +14,7 @@ This module models an Ensembl service
 import requests
 # App imports
 import config_manager
+import rest_toolbox
 from exceptions import ConfigManagerException
 
 
@@ -52,8 +53,10 @@ class Service():
         return self.__config_manager
 
     def __request_release_number(self):
-        # TODO
-        pass
+        request_url = self._get_config_manager().get_api_server() + "/info/data/?"
+        current_release_data = rest_toolbox.make_rest_request(url)
+        self._get_logger().debug("Request Release Number response from Ensembl - '{}'" % str(current_release_data))
+        return current_release_data['releases'][0]
 
     def get_release_number(self):
         """
@@ -61,7 +64,7 @@ class Service():
         :return: current Ensembl Release Number
         """
         if self.__release_number is None:
-            self.__request_release_number()
+            self.__release_number = self.__request_release_number()
         return self.__release_number
 
     def _get_logger(self):
