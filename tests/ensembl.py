@@ -13,11 +13,16 @@ Unit tests for Ensembl module
 
 import unittest
 
-class TestEnsemblService(unittest.TestCase):
 
+class TestEnsemblService(unittest.TestCase):
     __CONFIG_FILE_NAME = "config_ensembl_module.json"
 
     def test_test(self):
+        """
+        This test has been used just for setting up the unit testing subsystem.
+        It always passes.
+        :return: no return value
+        """
         pass
 
 
