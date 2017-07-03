@@ -38,6 +38,11 @@ class Species:
         # TODO
         pass
 
+    def get_display_name(self):
+        # TODO
+        pass
+    
+
 class SpeciesService:
     # TODO
     pass
