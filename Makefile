@@ -14,9 +14,12 @@ update_requirements_file: dev_environment
 tests: dev_environment
 	python_install/bin/nosetests
 
-dev_clean:
+clean_dev:
 	rm -rf python_install
 
-clean: dev_clean
+clean_logs:
+	rm -rf logs/*log
 
-.PHONY: dev_environment install_requirements dev_clean update_requirements_file tests clean
+clean: clean_logs clean_dev 
+
+.PHONY: dev_environment install_requirements update_requirements_file tests clean_logs clean_dev
