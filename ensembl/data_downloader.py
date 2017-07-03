@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This module implements en Ensembl data grabber for a given Ensembl Service instance
 """
