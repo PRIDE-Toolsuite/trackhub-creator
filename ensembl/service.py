@@ -13,8 +13,6 @@ This module models an Ensembl service
 
 # App imports
 import config_manager
-import toolbox
-import pipelines.template_pipeline as template_pipeline
 
 
 # Ensembl Service configuration manager
