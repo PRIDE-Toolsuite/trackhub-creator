@@ -50,6 +50,10 @@ class Species:
         # TODO
         pass
 
+    def get_common_name(self):
+        # TODO
+        pass
+
 
 class SpeciesService:
     # TODO
