@@ -12,9 +12,9 @@ This module implements the pipeline for exporting PRIDE Cluster to files using c
 PoGo formatted files for its later use
 """
 
+# App imports
 import config_manager
 import toolbox
-# From this application
 import pipelines.template_pipeline as template_pipeline
 
 __configuration_file = None
