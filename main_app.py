@@ -18,6 +18,9 @@ import config_manager
 
 __DEFAULT_CONFIG_FILE = "config_default.json"
 
+# Running mode
+__run_test_mode = False
+
 
 def get_cmdl():
     cmdl_version = '2017.06.29'
@@ -35,6 +38,7 @@ def get_cmdl():
 
 
 def app_bootstrap():
+    global __run_test_mode
     args = get_cmdl()
     if args.config_file:
         config_manager.set_application_config_file(args.config_file)
@@ -42,9 +46,16 @@ def app_bootstrap():
         config_manager.set_application_config_file(__DEFAULT_CONFIG_FILE)
     if args.pipeline_name:
         config_manager.set_pipeline_name(args.pipeline_name)
+        if args.pipeline_name == 'test':
+            __run_test_mode = True
     logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-    logger.info("Session '{}' STARTED, pipeline '{}'".format(config_manager.get_app_config_manager().get_session_id(),
-                                                             args.pipeline_name))
+    if __run_test_mode:
+        logger.info(
+            "Session '{}' STARTED, RUNNING UNIT TESTS".format(config_manager.get_app_config_manager().get_session_id()))
+    else:
+        logger.info(
+            "Session '{}' STARTED, pipeline '{}'".format(config_manager.get_app_config_manager().get_session_id(),
+                                                         args.pipeline_name))
 
 
 def main():
