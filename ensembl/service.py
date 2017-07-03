@@ -28,6 +28,14 @@ def set_configuration_file(config_file):
         __configuration_file = config_file
     return __configuration_file
 
+
+def get_service():
+    global __service_instance
+    if __service_instance is None:
+        __service_instance = Service(config_manager.read_config_from_file(__configuration_file), __configuration_file)
+    return __service_instance
+
+
 # Ensembl Service configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
     # Configuration Keys
