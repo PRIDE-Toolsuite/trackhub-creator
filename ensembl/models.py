@@ -54,6 +54,10 @@ class Species:
         # TODO
         pass
 
+    def get_strain(self):
+        # TODO
+        pass
+
 
 class SpeciesService:
     # TODO
