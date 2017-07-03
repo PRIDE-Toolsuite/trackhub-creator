@@ -33,7 +33,10 @@ class Species:
     def get_name(self):
         # TODO
         pass
-    
+
+    def get_ensembl_release(self):
+        # TODO
+        pass
 
 class SpeciesService:
     # TODO
