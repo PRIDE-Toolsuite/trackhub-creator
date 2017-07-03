@@ -29,13 +29,15 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def get_api_server(self):
         try:
-            self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][self._CONFIG_KEY_SERVER]
+            self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][
+                self._CONFIG_KEY_SERVER]
         except Exception as e:
-            raise ConfigManagerException("MISSING information about Ensembl '{}.{}.{}' API server in configuration file '{}'"
-                                         % self._CONFIG_KEY_SERVICE,
-                                         self._CONFIG_KEY_ENSEMBL_API,
-                                         self._CONFIG_KEY_SERVER,
-                                         self._get_configuration_file())
+            raise ConfigManagerException(
+                "MISSING information about Ensembl '{}.{}.{}' API server in configuration file '{}'"
+                % self._CONFIG_KEY_SERVICE,
+                self._CONFIG_KEY_ENSEMBL_API,
+                self._CONFIG_KEY_SERVER,
+                self._get_configuration_file())
 
 
 # Ensembl Service model
@@ -45,6 +47,13 @@ class Service():
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         # Ensembl Release Number
         self.__release_number = None
+
+    @staticmethod
+    def __make_rest_request(url):
+        response = requests.get(url, headers={"Content-Type": "application/json"})
+        if not response.ok:
+            response.raise_for_status()
+        return response.json()
 
     def _get_config_manager(self):
         return self.__config_manager
