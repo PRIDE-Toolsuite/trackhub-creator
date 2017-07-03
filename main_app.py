@@ -18,6 +18,7 @@ import argparse
 import unittest
 # Modules from package
 import config_manager
+import ensembl.service
 
 __DEFAULT_CONFIG_FILE = "config_default.json"
 
@@ -66,8 +67,9 @@ def app_bootstrap():
 
 
 def modules_bootstrap():
-    # TODO
-    pass
+    ensembl_config_file = config_manager.get_app_config_manager().get_file_name_config_modules_ensembl_service()
+    __logger.debug("Setting Ensembl configuration file -- {}".format(ensembl_config_file))
+    ensembl.service.set_configuration_file(ensembl_config_file)
 
 
 def run_unit_tests():
