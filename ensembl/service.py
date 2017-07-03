@@ -18,6 +18,10 @@ import rest_toolbox
 from exceptions import ConfigManagerException
 
 
+# Ensembl Service is going to be a Singleton, unique for the running session
+# TODO
+
+
 # Ensembl Service configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
     # Configuration Keys
