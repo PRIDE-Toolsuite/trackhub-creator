@@ -11,6 +11,8 @@
 This module contains Ensembl models used as Entities and DAO/Services
 """
 
+import config_manager
+
 
 class Species:
     def __init__(self, ensembl_species_entry):
