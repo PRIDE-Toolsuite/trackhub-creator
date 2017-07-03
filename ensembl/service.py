@@ -11,5 +11,10 @@
 This module models an Ensembl service
 """
 
+# App imports
+import config_manager
+import toolbox
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
