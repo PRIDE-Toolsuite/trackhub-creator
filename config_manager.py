@@ -134,7 +134,7 @@ class ConfigurationManager:
         if key in self.__configuration_object:
             return self.__configuration_object[key]
         else:
-            msg = "MISSING configuration key '{}' in configuration file '{}'" % str(key), str(self.__configuration_file)
+            msg = "MISSING configuration key '{}' in configuration file '{}'".format(key, self.__configuration_file)
             raise ConfigManagerException(msg)
 
     def _get_value_for_key_with_default(self, key, default):
