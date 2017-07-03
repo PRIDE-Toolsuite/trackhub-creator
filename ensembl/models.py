@@ -19,6 +19,9 @@ class Species:
         self.__ensembl_species_entry = ensembl_species_entry
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
+    def _get_logger(self):
+        return self.__logger
+
 
 class SpeciesService:
     # TODO
