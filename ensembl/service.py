@@ -62,6 +62,7 @@ class Service:
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
         current_release_data = rest_toolbox.make_rest_request(request_url)
         self._get_logger().debug("Request Release Number response from Ensembl - '{}'".format(current_release_data))
+        self._get_logger().info("This session is working with Ensembl Release {}".format(current_release_data['releases'][0]))
         return current_release_data['releases'][0]
 
     def get_release_number(self):
