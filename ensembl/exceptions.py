@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Ensembl module related exceptions
 """
