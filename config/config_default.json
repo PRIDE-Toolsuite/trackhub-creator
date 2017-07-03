@@ -7,6 +7,8 @@
 		"loglevel": "DEBUG"
 	},
 	"module_config_files": {
-		"ensembl": "config_ensembl_module.json"
+		"ensembl": {
+			"service": "config_ensembl_module.json"
+		}
 	}
 }
