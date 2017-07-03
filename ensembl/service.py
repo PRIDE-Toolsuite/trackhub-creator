@@ -19,7 +19,8 @@ from exceptions import ConfigManagerException
 
 
 # Ensembl Service is going to be a Singleton, unique for the running session
-# TODO
+__configuration_file = None
+__service_instance = None
 
 
 # Ensembl Service configuration manager
