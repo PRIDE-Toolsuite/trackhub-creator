@@ -39,6 +39,11 @@ _logger_formatters = {
 _log_level = 'DEBUG'
 
 
+# Configuration file Keys, I place them here in case I create another another Application Configuration Manager when
+# running in test mode
+
+
+
 def set_application_config_file(configuration_file):
     """
     This method sets the application wide configuration file that will be used
