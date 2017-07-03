@@ -15,3 +15,8 @@ This module contains Ensembl models used as Entities and DAO/Services
 class SpeciesEntity:
     # TODO
     pass
+
+
+class SpeciesService:
+    # TODO
+    pass
