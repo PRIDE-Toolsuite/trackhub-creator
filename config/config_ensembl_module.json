@@ -1,5 +1,7 @@
 {
-  "ensembl_api": {
-    "server": "http://rest.ensembl.org"
+  "service": {
+    "ensembl_api": {
+      "server": "http://rest.ensembl.org"
+    }
   }
 }
