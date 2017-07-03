@@ -14,7 +14,7 @@ This is a template pipeline for refactoring out things from final pipelines as I
 # App imports
 import config_manager
 import toolbox
-from exceptions import PipelineDirectorException
+from pipelines.exceptions import PipelineDirectorException
 
 # The config manager singleton is just an example that only makes sense for specialized pipeline modules, not really for
 # this template

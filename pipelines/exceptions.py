@@ -10,3 +10,9 @@
 """
 Pipeline related exceptions
 """
+from exceptions import AppException
+
+
+class PipelineDirectorException(AppException):
+    def __init__(self, value):
+        super(AppException, self).__init__(value)
