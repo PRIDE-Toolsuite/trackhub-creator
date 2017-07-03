@@ -29,6 +29,10 @@ class Species:
     def get_ncbi_taxonomy_id(self):
         # TODO
         pass
+
+    def get_name(self):
+        # TODO
+        pass
     
 
 class SpeciesService:
