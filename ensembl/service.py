@@ -25,9 +25,24 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 class EnsemblService():
     def __init__(self, configuration_object, configuration_file):
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
+        # Ensembl Release Number
+        self.__release_number = None
 
     def _get_config_manager(self):
         return self.__config_manager
+
+    def __request_release_number(self):
+        # TODO
+        pass
+
+    def get_release_number(self):
+        """
+        Get current Ensembl Release Number
+        :return: current Ensembl Release Number
+        """
+        if self.__release_number is None:
+            self.__request_release_number()
+        return self.__release_number
 
 
 if __name__ == '__main__':
