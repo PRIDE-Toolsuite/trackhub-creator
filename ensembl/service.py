@@ -14,16 +14,20 @@ This module models an Ensembl service
 # App imports
 import config_manager
 
-# Configuration Keys
-__CONFIG_KEY_SERVICE = 'service'
-__CONFIG_KEY_ENSEMBL_API = 'ensembl_api'
-__CONFIG_KEY_SERVER = 'server'
-
 
 # Ensembl Service configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
+    # Configuration Keys
+    _CONFIG_KEY_SERVICE = 'service'
+    _CONFIG_KEY_ENSEMBL_API = 'ensembl_api'
+    _CONFIG_KEY_SERVER = 'server'
+
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
+
+    def get_api_server(self):
+        try:
+            self._get_configuration_object()[self._CONFIG_KEY_SERVICE]
 
 
 # Ensembl Service model
