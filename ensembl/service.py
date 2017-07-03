@@ -13,6 +13,7 @@ This module models an Ensembl service
 
 # App imports
 import config_manager
+from exceptions import ConfigManagerException
 
 
 # Ensembl Service configuration manager
@@ -27,7 +28,13 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def get_api_server(self):
         try:
-            self._get_configuration_object()[self._CONFIG_KEY_SERVICE]
+            self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][self._CONFIG_KEY_SERVER]
+        except Exception as e:
+            raise ConfigManagerException("MISSING information about Ensembl '{}.{}.{}' API server in configuration file '{}'"
+                                         % self._CONFIG_KEY_SERVICE,
+                                         self._CONFIG_KEY_ENSEMBL_API,
+                                         self._CONFIG_KEY_SERVER,
+                                         self._get_configuration_file())
 
 
 # Ensembl Service model
