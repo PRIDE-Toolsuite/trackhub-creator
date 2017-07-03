@@ -27,6 +27,10 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+
+    def _get_logger(self):
+        return self.__logger
 
     def get_api_server(self):
         try:
@@ -35,7 +39,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         except Exception as e:
             raise ConfigManagerException(
                 "MISSING information about Ensembl '{}.{}.{}' API server in configuration file '{}'".format(
-                % self._CONFIG_KEY_SERVICE,
+                self._CONFIG_KEY_SERVICE,
                 self._CONFIG_KEY_ENSEMBL_API,
                 self._CONFIG_KEY_SERVER,
                 self._get_configuration_file()))
