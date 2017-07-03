@@ -42,10 +42,11 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
 
 # Ensembl Service model
-class Service():
+class Service:
     def __init__(self, configuration_object, configuration_file):
-        self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+        self._get_logger().debug("Using configuration file '{}'" % configuration_file)
+        self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         # Ensembl Release Number
         self.__release_number = None
 
@@ -54,7 +55,7 @@ class Service():
 
     def __request_release_number(self):
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
-        current_release_data = rest_toolbox.make_rest_request(url)
+        current_release_data = rest_toolbox.make_rest_request(request_url)
         self._get_logger().debug("Request Release Number response from Ensembl - '{}'" % str(current_release_data))
         return current_release_data['releases'][0]
 
