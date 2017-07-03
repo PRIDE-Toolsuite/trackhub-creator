@@ -17,11 +17,16 @@ import config_manager
 import rest_toolbox
 from exceptions import ConfigManagerException
 
-
 # Ensembl Service is going to be a Singleton, unique for the running session
 __configuration_file = None
 __service_instance = None
 
+
+def set_configuration_file(config_file):
+    global __configuration_file
+    if (__configuration_file is None):
+        __configuration_file = config_file
+    return __configuration_file
 
 # Ensembl Service configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
@@ -38,17 +43,18 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         return self.__logger
 
     def get_api_server(self):
-        self._get_logger().debug("get_api_server, from configuration object '{}'".format(self._get_configuration_object()))
+        self._get_logger().debug(
+            "get_api_server, from configuration object '{}'".format(self._get_configuration_object()))
         try:
             return self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][
                 self._CONFIG_KEY_SERVER]
         except Exception as e:
             raise ConfigManagerException(
                 "MISSING information about Ensembl '{}.{}.{}' API server in configuration file '{}'".format(
-                self._CONFIG_KEY_SERVICE,
-                self._CONFIG_KEY_ENSEMBL_API,
-                self._CONFIG_KEY_SERVER,
-                self._get_configuration_file()))
+                    self._CONFIG_KEY_SERVICE,
+                    self._CONFIG_KEY_ENSEMBL_API,
+                    self._CONFIG_KEY_SERVER,
+                    self._get_configuration_file()))
 
 
 # Ensembl Service model
@@ -67,7 +73,8 @@ class Service:
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
         current_release_data = rest_toolbox.make_rest_request(request_url)
         self._get_logger().debug("Request Release Number response from Ensembl - '{}'".format(current_release_data))
-        self._get_logger().info("This session is working with Ensembl Release {}".format(current_release_data['releases'][0]))
+        self._get_logger().info(
+            "This session is working with Ensembl Release {}".format(current_release_data['releases'][0]))
         return current_release_data['releases'][0]
 
     def get_release_number(self):
