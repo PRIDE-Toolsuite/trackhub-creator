@@ -127,8 +127,7 @@ class ConfigurationManager:
         if key in self.__configuration_object:
             return self.__configuration_object[key]
         else:
-            msg = "Could not find '" + str(key) + "' in config file " + self.__configuration_file
-            get_app_config_manager().get_logger().error(msg)
+            msg = "MISSING configuration key '{}' in configuration file '{}'" % str(key), str(self.__configuration_file)
             raise ConfigManagerException(msg)
 
     def _get_value_for_key_with_default(self, key, default):
