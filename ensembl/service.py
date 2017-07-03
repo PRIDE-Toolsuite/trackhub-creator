@@ -14,6 +14,20 @@ This module models an Ensembl service
 # App imports
 import config_manager
 import toolbox
+import pipelines.template_pipeline as template_pipeline
+
+
+class ConfigurationManager(config_manager.ConfigurationManager):
+    def __init__(self, configuration_object, configuration_file):
+        super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
+        
+
+# Ensembl Service configuration manager
+# TODO
+
+
+# Ensembl Service model
+# TODO
 
 
 if __name__ == '__main__':
