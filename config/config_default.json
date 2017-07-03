@@ -5,7 +5,7 @@
 			"INFO": "%(asctime)s [%(levelname)7s][%(name)48s] %(message)s"
 		},
 		"loglevel": "DEBUG"
-	}
+	},
 	"config_files": {
 		"ensembl": "config_ensembl_module.json"
 	}
