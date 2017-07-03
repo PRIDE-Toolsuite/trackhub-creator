@@ -41,7 +41,9 @@ _log_level = 'DEBUG'
 
 # Configuration file Keys, I place them here in case I create another another Application Configuration Manager when
 # running in test mode
-
+__CONFIG_MODULES_SECTION = 'module_config_files'
+__CONFIG_MODULES_ENSEMBL = 'ensembl'
+__CONFIG_MODULES_ENSEMBL_SERVICE = 'service'
 
 
 def set_application_config_file(configuration_file):
