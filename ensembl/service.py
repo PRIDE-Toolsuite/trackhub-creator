@@ -20,10 +20,16 @@ import pipelines.template_pipeline as template_pipeline
 class ConfigurationManager(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
-        
+
 
 # Ensembl Service configuration manager
-# TODO
+class EnsemblService():
+    def __init__(self, configuration_object, configuration_file):
+        self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
+
+    def _get_config_manager(self):
+        return self.__config_manager
+    
 
 
 # Ensembl Service model
