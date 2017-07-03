@@ -18,7 +18,7 @@ import json
 import logging
 import importlib
 # Package modules
-from exceptions import ConfigException, ConfigManagerException
+from exceptions import AppConfigException, ConfigManagerException
 import toolbox
 
 # Application defaults - NORMAL OPERATION MODE
@@ -49,7 +49,7 @@ def set_application_config_file(configuration_file):
     """
     global __configuration_file_name
     if __configuration_file_name is not None:
-        raise ConfigException(
+        raise AppConfigException(
             "Configuration file can't be changed once an initial configuartion file has been provided")
     __configuration_file_name = configuration_file
 
@@ -100,7 +100,7 @@ def read_config_from_file(configuration_file):
         return toolbox.read_json(config_file_path)
     except Exception as e:
         msg = "Config file " + str(config_file_path) + " could not be read, because " + str(e)
-        raise ConfigException(msg)
+        raise AppConfigException(msg)
 
 
 def get_config_manager_for(configuration_file):

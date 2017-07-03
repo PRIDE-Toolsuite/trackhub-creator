@@ -20,9 +20,9 @@ class AppException(Exception):
         return repr(self.value)
 
 
-class ConfigException(AppException):
+class AppConfigException(AppException):
     def __init__(self, value):
-        super(ConfigException, self).__init__(value)
+        super(AppConfigException, self).__init__(value)
 
 
 class ConfigManagerException(Exception):
