@@ -48,13 +48,6 @@ class Service():
         # Ensembl Release Number
         self.__release_number = None
 
-    @staticmethod
-    def __make_rest_request(url):
-        response = requests.get(url, headers={"Content-Type": "application/json"})
-        if not response.ok:
-            response.raise_for_status()
-        return response.json()
-
     def _get_config_manager(self):
         return self.__config_manager
 
