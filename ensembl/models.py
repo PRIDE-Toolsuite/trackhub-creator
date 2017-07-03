@@ -58,6 +58,10 @@ class Species:
         # TODO
         pass
 
+    def get_aliases(self):
+        # TODO
+        pass
+
 
 class SpeciesService:
     # TODO
