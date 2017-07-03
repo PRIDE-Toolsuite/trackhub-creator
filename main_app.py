@@ -12,7 +12,10 @@
 Pipeline Runner - Main Application
 """
 
+import sys
+import nose
 import argparse
+import unittest
 # Modules from package
 import config_manager
 
@@ -20,6 +23,7 @@ __DEFAULT_CONFIG_FILE = "config_default.json"
 
 # Running mode
 __run_test_mode = False
+__logger = None
 
 
 def get_cmdl():
@@ -39,6 +43,7 @@ def get_cmdl():
 
 def app_bootstrap():
     global __run_test_mode
+    global __logger
     args = get_cmdl()
     if args.config_file:
         config_manager.set_application_config_file(args.config_file)
@@ -48,18 +53,29 @@ def app_bootstrap():
         config_manager.set_pipeline_name(args.pipeline_name)
         if args.pipeline_name == 'test':
             __run_test_mode = True
-    logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+    __logger = config_manager.get_app_config_manager().get_logger_for(__name__)
     if __run_test_mode:
-        logger.info(
+        __logger.info(
             "Session '{}' STARTED, RUNNING UNIT TESTS".format(config_manager.get_app_config_manager().get_session_id()))
     else:
-        logger.info(
+        __logger.info(
             "Session '{}' STARTED, pipeline '{}'".format(config_manager.get_app_config_manager().get_session_id(),
                                                          args.pipeline_name))
 
 
+def run_unit_tests():
+    __logger.debug("Running Unit Tests")
+    test_loader = unittest.TestLoader()
+    test_suite = test_loader.discover('.')
+    nose.run(suite=test_suite)
+
+
 def main():
     app_bootstrap()
+    if __run_test_mode:
+        run_unit_tests()
+    else:
+        pass
 
 
 if __name__ == "__main__":

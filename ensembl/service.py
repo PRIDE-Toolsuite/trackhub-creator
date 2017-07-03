@@ -34,18 +34,18 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                 self._CONFIG_KEY_SERVER]
         except Exception as e:
             raise ConfigManagerException(
-                "MISSING information about Ensembl '{}.{}.{}' API server in configuration file '{}'"
+                "MISSING information about Ensembl '{}.{}.{}' API server in configuration file '{}'".format(
                 % self._CONFIG_KEY_SERVICE,
                 self._CONFIG_KEY_ENSEMBL_API,
                 self._CONFIG_KEY_SERVER,
-                self._get_configuration_file())
+                self._get_configuration_file()))
 
 
 # Ensembl Service model
 class Service:
     def __init__(self, configuration_object, configuration_file):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-        self._get_logger().debug("Using configuration file '{}'" % configuration_file)
+        self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         # Ensembl Release Number
         self.__release_number = None
