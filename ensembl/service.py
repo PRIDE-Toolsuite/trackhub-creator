@@ -105,8 +105,9 @@ class Service:
         return self.__release_number
 
     def get_species_data_service(self):
-        # TODO
-        pass
+        if self.__species_data_service is None:
+            self.__species_data_service = SpeciesService(self.__request_species_data())
+        return self.__species_data_service
 
 
 if __name__ == '__main__':
