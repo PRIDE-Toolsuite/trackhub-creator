@@ -14,9 +14,11 @@ Unit Tests for Ensembl Species Service
 import unittest
 # App modules
 import main_app
-from ensembl.service import Service
+import ensembl.service
 from ensembl.models import Species, SpeciesService
 
 
 class TestEnsemblSpeciesService(unittest.TestCase):
-    pass
+    def setUp(self):
+        self.ensembl_service = ensembl.service.get_service()
+
