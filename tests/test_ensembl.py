@@ -33,11 +33,6 @@ class TestEnsemblService(unittest.TestCase):
         current_release_number = service.get_release_number()
         print("Current release number ---> {}".format(current_release_number))
 
-    def test_get_species_data(self):
-        service = ensembl.service.get_service()
-        species_data_service = service.get_species_data_service()
-        self.assertIsNotNone(species_data_service.get_species_data())
-
 
 if __name__ == '__main__':
     main_app.app_bootstrap()
