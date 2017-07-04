@@ -87,6 +87,7 @@ class Service:
 
     def __request_species_data(self):
         request_url = self._get_config_manager().get_api_server() + "/info/species?"
+        self._get_logger().debug("Requesting Species Data to Ensembl, url '{}'".format(request_url))
         return rest_toolbox.make_rest_request(request_url)
 
     def _get_config_manager(self):
