@@ -92,7 +92,7 @@ class SpeciesService:
     def _get_logger(self):
         return self.__logger
 
-    def _get_species_from_species_data(self):
+    def _get_species_data_dao(self):
         """
         This method creates the DAO version of the ensembl species data, it could have been implemented as a generator
         but I want those DAO objects to be reused by the Python reference system, so having them in multiple indexes
@@ -111,7 +111,7 @@ class SpeciesService:
         """
         if self.__index_by_taxonomy_id is None:
             self.__index_by_taxonomy_id = \
-                self.__index_data_for_property(self._get_species_from_species_data(), 'get_ncbi_taxonomy_id')
+                self.__index_data_for_property(self._get_species_data_dao(), 'get_ncbi_taxonomy_id')
         return self.__index_by_taxonomy_id
 
     def get_species_data(self):
@@ -132,7 +132,7 @@ class SpeciesService:
         return None
 
     def count_ensembl_species(self):
-        return len(self._get_species_from_species_data())
+        return len(self._get_species_data_dao())
 
 
 if __name__ == '__main__':
