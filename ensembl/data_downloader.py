@@ -41,6 +41,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     # Configuration keys
     __CONFIG_KEY_DATA_DOWNLOADER = 'data_downloader'
     __CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
+    __CONFIG_KEY_BASE_URL = 'base_url'
     
 
     def __init__(self, configuration_object, configuration_file):
