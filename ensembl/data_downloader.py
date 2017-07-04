@@ -50,8 +50,9 @@ class DataDownloadService:
     """
     This Service is in charge of grabbing data (download) from Ensembl to a local repository
     """
-    pass
+    def __init__(self):
+        pass
 
 
 if __name__ == '__main__':
-    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode"):
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
