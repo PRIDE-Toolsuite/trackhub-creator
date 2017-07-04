@@ -57,6 +57,9 @@ class DataDownloadService:
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         # By default, downloaded data is prepared within the resources folder
         self.__local_folder_release = None
+        # Local folder for FASTA files
+        self.__local_folder_fasta = None
+
 
     def _get_logger(self):
         return self.__logger
