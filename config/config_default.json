@@ -8,7 +8,8 @@
 	},
 	"module_config_files": {
 		"ensembl": {
-			"service": "config_ensembl_service.json"
+			"service": "config_ensembl_service.json",
+			"data_downloader": "config_ensembl_data_downloader.json"
 		}
 	}
 }
