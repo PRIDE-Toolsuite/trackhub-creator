@@ -57,8 +57,7 @@ class Species:
         return self._get_value_for_key_or_default('common_name')
 
     def get_strain(self):
-        # TODO
-        pass
+        return self._get_value_for_key_or_default('strain')
 
     def get_aliases(self):
         # TODO
