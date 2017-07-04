@@ -43,6 +43,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     _CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
     _CONFIG_KEY_BASE_URL = 'base_url'
     _CONFIG_KEY_FOLDER_PREFIX_RELEASE = 'folder_prefix_release'
+    _CONFIG_KEY_FOLDER_NAME_FASTA = 'folder_name_fasta'
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
