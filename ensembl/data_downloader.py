@@ -40,7 +40,9 @@ def get_data_download_service():
 class ConfigurationManager(config_manager.ConfigurationManager):
     # Configuration keys
     __CONFIG_KEY_DATA_DOWNLOADER = 'data_downloader'
+    __CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
     
+
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
