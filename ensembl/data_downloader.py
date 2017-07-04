@@ -55,10 +55,9 @@ class DataDownloadService:
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
-        # By default, downloaded data is prepared within the resources folder
-        self.__local_folder_release = None
-        # Local folder for FASTA files
-        self.__local_folder_fasta = None
+        # Name for the current release folder, we'll use the same for both the FTP and the local storage
+        self.__folder_name_release = None
+        
 
 
     def _get_logger(self):
