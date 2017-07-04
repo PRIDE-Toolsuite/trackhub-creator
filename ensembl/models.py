@@ -34,7 +34,7 @@ class Species:
         return self._get_value_for_key_or_default('division')
 
     def get_ncbi_taxonomy_id(self):
-        return self._get_value_for_key_or_default('taxon_id', 'null')
+        return self._get_value_for_key_or_default('taxon_id')
 
     def get_name(self):
         return self._get_value_for_key_or_default('name')
@@ -85,7 +85,7 @@ class SpeciesService:
         :param property_getter: property on which the index should be created
         :return: a dictionary of the given data objects where the key is the indexed property
         """
-        return {property_getter(data_item): data_item for data_item in data}
+        return {property_getter.__get__(data_item, Species)(): data_item for data_item in data}
 
     def _get_logger(self):
         return self.__logger
