@@ -31,8 +31,7 @@ class Species:
         return self.__ensembl_species_entry
 
     def get_division(self):
-        # TODO
-        pass
+        return self._get_value_for_key_or_default('division')
 
     def get_ncbi_taxonomy_id(self):
         # TODO
