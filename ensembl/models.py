@@ -85,7 +85,7 @@ class SpeciesService:
         :param property_getter: property on which the index should be created
         :return: a dictionary of the given data objects where the key is the indexed property
         """
-        return {property_getter(data_item): data_item for data_item in data}
+        return {getattr(data_item, property_getter)(): data_item for data_item in data}
 
     def _get_logger(self):
         return self.__logger
@@ -100,7 +100,7 @@ class SpeciesService:
         """
         if self.__index_by_taxonomy_id is None:
             self.__index_by_taxonomy_id = \
-                self.__index_data_for_property(self._get_species_from_species_data(), Species.get_ncbi_taxonomy_id)
+                self.__index_data_for_property(self._get_species_from_species_data(), 'get_ncbi_taxonomy_id')
         return self.__index_by_taxonomy_id
 
     def get_species_data(self):
