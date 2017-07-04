@@ -14,7 +14,6 @@ Unit tests for Ensembl module
 import unittest
 # App modules
 import main_app
-import config_manager
 import ensembl.service
 
 
