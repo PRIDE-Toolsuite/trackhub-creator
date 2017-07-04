@@ -35,5 +35,4 @@ class TestEnsemblService(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    main_app.app_bootstrap()
-    unittest.main()
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
