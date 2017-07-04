@@ -110,7 +110,7 @@ class SpeciesService:
         """
         if self.__index_by_taxonomy_id is None:
             self.__index_by_taxonomy_id = \
-                self.__index_data_for_property(self._get_species_data_dao(), 'get_ncbi_taxonomy_id')
+                self.__index_data_for_property(self._get_species_data_dao(), Species.get_ncbi_taxonomy_id)
         return self.__index_by_taxonomy_id
 
     def get_species_data(self):
