@@ -22,3 +22,6 @@ class TestEnsemblSpeciesService(unittest.TestCase):
     def setUp(self):
         self.ensembl_service = ensembl.service.get_service()
 
+    def test_get_species_data(self):
+        species_data_service = self.ensembl_service.get_species_data_service()
+        self.assertIsNotNone(species_data_service.get_species_data())
