@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Unit Tests for Ensembl Species Service
 """
