@@ -47,6 +47,9 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
 
 class DataDownloadService:
+    """
+    This Service is in charge of grabbing data (download) from Ensembl to a local repository
+    """
     pass
 
 
