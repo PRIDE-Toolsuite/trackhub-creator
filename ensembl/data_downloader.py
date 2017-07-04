@@ -18,7 +18,7 @@ from ensembl.service import Service as EnsemblService
 
 # Common configuration for all instances of the download manager
 __configuration_file = None
-__configuration_manager = None
+__data_download_service = None
 
 
 def set_configuration_file(config_file):
@@ -29,15 +29,11 @@ def set_configuration_file(config_file):
 
 
 def get_data_download_service():
-    pass
-
-
-def get_configuration_manager():
-    global __configuration_manager
-    if __configuration_manager is None:
-        __configuration_manager = ConfigurationManager(config_manager.read_config_from_file(__configuration_file),
-                                                       __configuration_file)
-    return __configuration_manager
+    global __data_download_service
+    if __data_download_service is None:
+        __data_download_service = DataDownloadService(config_manager.read_config_from_file(__configuration_file),
+                                                      __configuration_file)
+    return __data_download_service
 
 
 # Ensembl Download Manager configuration manager
@@ -54,6 +50,7 @@ class DataDownloadService:
     """
     This Service is in charge of grabbing data (download) from Ensembl to a local repository
     """
+
     def __init__(self, configuration_object, configuration_file):
         pass
 
