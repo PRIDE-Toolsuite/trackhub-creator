@@ -17,3 +17,6 @@ import main_app
 from ensembl.service import Service
 from ensembl.models import Species, SpeciesService
 
+
+class TestEnsemblSpeciesService(unittest.TestCase):
+    pass
