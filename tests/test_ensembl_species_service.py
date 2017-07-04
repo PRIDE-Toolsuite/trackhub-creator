@@ -17,6 +17,8 @@ import ensembl.service
 
 
 class TestEnsemblSpeciesService(unittest.TestCase):
+    __NCB_TAXONOMY_HUMAN = 9606
+    
     def setUp(self):
         self.ensembl_service = ensembl.service.get_service()
 
