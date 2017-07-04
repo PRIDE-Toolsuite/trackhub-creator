@@ -104,6 +104,10 @@ class Service:
             self.__release_number = self.__request_release_number()
         return self.__release_number
 
+    def get_species_data_service(self):
+        # TODO
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
