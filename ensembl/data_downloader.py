@@ -42,7 +42,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     _CONFIG_KEY_DATA_DOWNLOADER = 'data_downloader'
     _CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
     _CONFIG_KEY_BASE_URL = 'base_url'
-    _CONFIG_KEY_RELEASE_FOLDER_PREFIX = 'release_folder_prefix'
+    _CONFIG_KEY_FOLDER_PREFIX_RELEASE = 'release_folder_prefix'
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
@@ -70,13 +70,13 @@ class ConfigurationManager(config_manager.ConfigurationManager):
             return self._get_configuration_object()\
                 [self._CONFIG_KEY_DATA_DOWNLOADER]\
                 [self._CONFIG_KEY_ENSEMBL_FTP]\
-                [self._CONFIG_KEY_RELEASE_FOLDER_PREFIX]
+                [self._CONFIG_KEY_FOLDER_PREFIX_RELEASE]
         except Exception as e:
             raise ConfigManagerException(
                 "MISSING configuration information '{}.{}.{}' in configuration file '{}'".format(
                     self._CONFIG_KEY_DATA_DOWNLOADER,
                     self._CONFIG_KEY_ENSEMBL_FTP,
-                    self._CONFIG_KEY_RELEASE_FOLDER_PREFIX,
+                    self._CONFIG_KEY_FOLDER_PREFIX_RELEASE,
                     self._get_configuration_file()))
 
 
