@@ -85,6 +85,7 @@ class SpeciesService:
         :return: a dictionary of the given data objects where the key is the indexed property
         """
         self._get_logger().debug("Creating index on getter '{}' for #{} entries".format(property_getter, len(data)))
+        self._get_logger().debug("Sample item: {}".format(str(data[0])))
         return {getattr(data_item, property_getter)(): data_item for data_item in data}
 
     def _get_logger(self):
