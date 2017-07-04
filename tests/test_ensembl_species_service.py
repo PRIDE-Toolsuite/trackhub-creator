@@ -30,6 +30,14 @@ class TestEnsemblSpeciesService(unittest.TestCase):
                             0,
                             "Ensembl has a non-zero number of species")
 
+    def test_human_species_is_present(self):
+        """
+        Test that Human taxonomy is present, this unit test is also testing the indexing mechanism
+        :return: no returned value
+        """
+        #TODO
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
