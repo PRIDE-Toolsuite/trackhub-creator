@@ -52,7 +52,7 @@ class DataDownloadService:
     """
 
     def __init__(self, configuration_object, configuration_file):
-        pass
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
 
 if __name__ == '__main__':
