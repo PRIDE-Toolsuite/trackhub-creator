@@ -118,3 +118,7 @@ class SpeciesService:
 
     def count_ensembl_species(self):
         return len(self._get_species_from_species_data())
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
