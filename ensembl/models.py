@@ -70,5 +70,5 @@ class Species:
 
 
 class SpeciesService:
-    # TODO
-    pass
+    def __init__(self, species_data):
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
