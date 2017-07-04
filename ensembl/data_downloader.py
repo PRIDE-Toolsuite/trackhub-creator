@@ -38,7 +38,8 @@ def get_configuration_manager():
 
 # Ensembl Download Manager configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
-    pass
+    def __init__(self, configuration_object, configuration_file):
+        super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
 
 
 if __name__ == '__main__':
