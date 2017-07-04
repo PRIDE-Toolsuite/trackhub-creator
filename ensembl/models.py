@@ -107,5 +107,6 @@ class SpeciesService:
         return self.__species_data
 
     def get_species_entry_for_taxonomy_id(self, taxonomy_id):
-        # TODO
-        pass
+        if taxonomy_id in self._get_index_taxonomy_id():
+            return self._get_index_taxonomy_id()[taxonomy_id]
+        return None
