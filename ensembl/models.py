@@ -76,7 +76,8 @@ class SpeciesService:
         self.__species_data = species_data
         self.__index_by_taxonomy_id = None
 
-    def __index_data_for_property(self, data, property_getter):
+    @staticmethod
+    def __index_data_for_property(data, property_getter):
         """
         Given an iterable data container, and a property getter to run on every object of that container, it returns a
         dictionary where the key is the property value for a particular data object part of the data collection
