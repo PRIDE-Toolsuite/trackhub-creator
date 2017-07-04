@@ -100,7 +100,8 @@ class SpeciesService:
         :return: a list of DAO accessors (Species) to the given RAW ensembl species data
         """
         if self.__ensembl_species_data_dao is None:
-            self.__ensembl_species_data_dao = [Species(species_entry) for species_entry in self.get_species_data()['species']]
+            self.__ensembl_species_data_dao = \
+                [Species(species_entry) for species_entry in self.get_species_data()['species']]
         return self.__ensembl_species_data_dao
 
     def _get_index_taxonomy_id(self):
