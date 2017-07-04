@@ -94,6 +94,9 @@ class SpeciesService:
         # TODO
         pass
 
+    def get_species_data(self):
+        return self.__species_data
+
     def get_species_entry_for_taxonomy_id(self, taxonomy_id):
         # TODO
         pass
