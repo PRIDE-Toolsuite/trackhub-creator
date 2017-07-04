@@ -29,3 +29,7 @@ class TestEnsemblSpeciesService(unittest.TestCase):
         self.assertNotEqual(self.ensembl_service.get_species_data_service().count_ensembl_species(),
                             0,
                             "Ensembl has a non-zero number of species")
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
