@@ -49,8 +49,9 @@ class Species:
         return self._get_value_for_key_or_default('accession')
 
     def get_strain_collection(self):
-        # TODO
-        pass
+        if self._get_value_for_key_or_default('strain_collection', 'null') == 'null':
+            return None
+        return self._get_value_for_key_or_default('strain_collection')
 
     def get_common_name(self):
         # TODO
