@@ -76,8 +76,7 @@ class SpeciesService:
         self.__species_data = species_data
         self.__index_by_taxonomy_id = None
 
-    @staticmethod
-    def __index_data_for_property(data, property_getter):
+    def __index_data_for_property(self, data, property_getter):
         """
         Given an iterable data container, and a property getter to run on every object of that container, it returns a
         dictionary where the key is the property value for a particular data object part of the data collection
@@ -85,7 +84,7 @@ class SpeciesService:
         :param property_getter: property on which the index should be created
         :return: a dictionary of the given data objects where the key is the indexed property
         """
-        return {getattr(data_item, property_getter)(): data_item for data_item in data if (data_item is not None)}
+        return {getattr(data_item, property_getter)(): data_item for data_item in data}
 
     def _get_logger(self):
         return self.__logger
