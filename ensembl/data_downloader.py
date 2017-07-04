@@ -17,6 +17,9 @@ from exceptions import ConfigManagerException
 from ensembl.service import Service as EnsemblService
 
 # Common configuration for all instances of the download manager
+__configuration_file = None
+__configuration_manager = None
+
 
 
 if __name__ == '__main__':
