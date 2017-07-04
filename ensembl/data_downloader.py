@@ -66,8 +66,18 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     self._get_configuration_file()))
 
     def get_ensembl_release_folder_name(self):
-        # TODO
-        pass
+        try:
+            return self._get_configuration_object()\
+                [self._CONFIG_KEY_DATA_DOWNLOADER]\
+                [self._CONFIG_KEY_ENSEMBL_FTP]\
+                [self._CONFIG_KEY_RELEASE_FOLDER_PREFIX]
+        except Exception as e:
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
+                    self._CONFIG_KEY_ENSEMBL_FTP,
+                    self._CONFIG_KEY_RELEASE_FOLDER_PREFIX,
+                    self._get_configuration_file()))
 
 
 class DataDownloadService:
