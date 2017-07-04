@@ -55,6 +55,10 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         # TODO
         pass
 
+    def get_ensembl_release_folder_name(self):
+        # TODO
+        pass
+
 
 class DataDownloadService:
     """
