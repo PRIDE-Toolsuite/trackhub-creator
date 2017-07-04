@@ -53,6 +53,7 @@ class DataDownloadService:
 
     def __init__(self, configuration_object, configuration_file):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+        self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
 
 
 if __name__ == '__main__':
