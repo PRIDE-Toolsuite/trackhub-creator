@@ -88,7 +88,7 @@ class Service:
             "This session is working with Ensembl Release {}".format(current_release_data['releases'][0]))
         return current_release_data['releases'][0]
 
-    def __request_species(self):
+    def __request_species_data(self):
         request_url = self._get_config_manager().get_api_server() + "/info/species?"
         return rest_toolbox.make_rest_request(request_url)
 
