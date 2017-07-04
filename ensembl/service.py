@@ -75,7 +75,7 @@ class Service:
         # Ensembl Release Number
         self.__release_number = None
         # Ensembl Species Data
-        self.__species_service = None
+        self.__species_data_service = None
 
     def __request_release_number(self):
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
