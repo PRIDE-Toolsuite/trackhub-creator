@@ -73,7 +73,7 @@ class SpeciesService:
     def __init__(self, species_data):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         # I've changed this, we store the original species data, and then we offer two different views
-        self.__species_data = species_data
+        self.__ensembl_species_data_raw = species_data
         self.__index_by_taxonomy_id = None
 
     def __index_data_for_property(self, data, property_getter):
@@ -105,7 +105,7 @@ class SpeciesService:
         return self.__index_by_taxonomy_id
 
     def get_species_data(self):
-        return self.__species_data
+        return self.__ensembl_species_data_raw
 
     def get_species_entry_for_taxonomy_id(self, taxonomy_id):
         """
