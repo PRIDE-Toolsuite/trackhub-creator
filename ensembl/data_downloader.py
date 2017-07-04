@@ -56,6 +56,9 @@ class DataDownloadService:
         self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
 
+    def _get_logger(self):
+        return self.__logger
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
