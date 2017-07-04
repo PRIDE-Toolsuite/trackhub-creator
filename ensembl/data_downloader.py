@@ -95,6 +95,20 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     self._CONFIG_KEY_FOLDER_NAME_FASTA,
                     self._get_configuration_file()))
 
+    def get_folder_name_protein_sequences(self):
+        try:
+            return self._get_configuration_object()\
+                [self._CONFIG_KEY_DATA_DOWNLOADER]\
+                [self._CONFIG_KEY_ENSEMBL_FTP]\
+                [self._CONFIG_KEY_FOLDER_NAME_PROTEIN_SEQUENCES]
+        except Exception as e:
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
+                    self._CONFIG_KEY_ENSEMBL_FTP,
+                    self._CONFIG_KEY_FOLDER_NAME_PROTEIN_SEQUENCES,
+                    self._get_configuration_file()))
+
 
 class DataDownloadService:
     """
