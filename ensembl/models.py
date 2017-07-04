@@ -63,8 +63,7 @@ class Species:
         return self._get_value_for_key_or_default('aliases', [])
 
     def get_groups(self):
-        # TODO
-        pass
+        return self._get_value_for_key_or_default('groups', [])
 
     def get_assembly(self):
         # TODO
