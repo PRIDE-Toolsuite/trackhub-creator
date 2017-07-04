@@ -86,8 +86,7 @@ class Service:
         return current_release_data['releases'][0]
 
     def __request_species(self):
-        # TODO
-        pass
+        request_url = self._get_config_manager().get_api_server() + "/info/species?"
 
     def get_release_number(self):
         """
