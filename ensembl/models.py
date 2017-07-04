@@ -22,10 +22,10 @@ class Species:
     def _get_logger(self):
         return self.__logger
 
-    def _get_value_for_key_or_default(self, key, default='-not_available-'):
+    def _get_value_for_key_or_default(self, key, defaultValue='-not_available-'):
         if key in self.get_ensembl_species_entry():
             return self.get_ensembl_species_entry()[key]
-        return default
+        return defaultValue
 
     def get_ensembl_species_entry(self):
         return self.__ensembl_species_entry
