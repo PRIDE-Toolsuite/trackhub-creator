@@ -57,7 +57,8 @@ class DataDownloadService:
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         # Name for the current release folder, we'll use the same for both the FTP and the local storage
         self.__folder_name_release = None
-        
+        # Name for the subfolder that contains per species fasta files
+        self.__folder_name_fasta = None
 
 
     def _get_logger(self):
