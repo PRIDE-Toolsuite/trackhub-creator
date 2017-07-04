@@ -115,3 +115,6 @@ class SpeciesService:
         if taxonomy_id in self._get_index_taxonomy_id():
             return self._get_index_taxonomy_id()[taxonomy_id]
         return None
+
+    def count_ensembl_species(self):
+        return len(self._get_species_from_species_data())
