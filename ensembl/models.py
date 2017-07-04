@@ -34,7 +34,7 @@ class Species:
         return self._get_value_for_key_or_default('division')
 
     def get_ncbi_taxonomy_id(self):
-        return self._get_value_for_key_or_default('taxon_id')
+        return self._get_value_for_key_or_default('taxon_id', 'null')
 
     def get_name(self):
         return self._get_value_for_key_or_default('name')
