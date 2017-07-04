@@ -76,7 +76,6 @@ class SpeciesService:
         self.__species_data = species_data
         self.__index_by_taxonomy_id = None
 
-    @staticmethod
     def __index_data_for_property(data, property_getter):
         """
         Given an iterable data container, and a property getter to run on every object of that container, it returns a
