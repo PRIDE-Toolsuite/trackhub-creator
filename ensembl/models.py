@@ -46,8 +46,7 @@ class Species:
         return self._get_value_for_key_or_default('display_name')
 
     def get_assembly_accession(self):
-        # TODO
-        pass
+        return self._get_value_for_key_or_default('accession')
 
     def get_strain_collection(self):
         # TODO
