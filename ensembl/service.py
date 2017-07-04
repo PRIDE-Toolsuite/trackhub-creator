@@ -11,7 +11,6 @@
 This module models an Ensembl service
 """
 
-import requests
 # App imports
 import config_manager
 import rest_toolbox
