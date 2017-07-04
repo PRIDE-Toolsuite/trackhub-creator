@@ -25,7 +25,6 @@ class Species:
     def get_ensembl_species_entry(self):
         return self.__ensembl_species_entry
 
-
     def get_division(self):
         # TODO
         pass
