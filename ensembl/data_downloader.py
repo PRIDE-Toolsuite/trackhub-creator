@@ -11,5 +11,9 @@
 This module implements en Ensembl data grabber for a given Ensembl Service instance
 """
 
+# App imports
+import config_manager
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
