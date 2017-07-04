@@ -74,6 +74,8 @@ class Service:
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         # Ensembl Release Number
         self.__release_number = None
+        # Ensembl Species Data
+        self.__species_service = None
 
     def _get_config_manager(self):
         return self.__config_manager
