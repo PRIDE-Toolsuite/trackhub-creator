@@ -50,7 +50,7 @@ class DataDownloadService:
     """
     This Service is in charge of grabbing data (download) from Ensembl to a local repository
     """
-    def __init__(self):
+    def __init__(self, configuration_object, configuration_file):
         pass
 
 
