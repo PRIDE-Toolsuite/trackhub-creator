@@ -16,5 +16,8 @@ import config_manager
 from exceptions import ConfigManagerException
 from ensembl.service import Service as EnsemblService
 
+# Common configuration for all instances of the download manager
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
