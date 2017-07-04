@@ -115,6 +115,10 @@ class SpeciesService:
         return self.__index_by_taxonomy_id
 
     def get_species_data(self):
+        """
+        Get the Ensembl species data unprocessed, as it came from the Ensembl REST API
+        :return: raw ensembl species data
+        """
         return self.__ensembl_species_data_raw
 
     def get_species_entry_for_taxonomy_id(self, taxonomy_id):
