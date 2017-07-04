@@ -12,3 +12,8 @@ Unit Tests for Ensembl Species Service
 """
 
 import unittest
+# App modules
+import main_app
+from ensembl.service import Service
+from ensembl.models import Species, SpeciesService
+
