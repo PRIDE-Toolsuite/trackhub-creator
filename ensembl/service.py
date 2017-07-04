@@ -16,6 +16,7 @@ import requests
 import config_manager
 import rest_toolbox
 from exceptions import ConfigManagerException
+from ensembl.models import SpeciesService, Species
 
 # Ensembl Service is going to be a Singleton, unique for the running session
 __configuration_file = None
