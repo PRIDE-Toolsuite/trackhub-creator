@@ -55,6 +55,8 @@ class DataDownloadService:
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
+        # By default, downloaded data is prepared within the resources folder
+        self.__local_folder_release = None
 
     def _get_logger(self):
         return self.__logger
