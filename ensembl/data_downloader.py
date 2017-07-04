@@ -51,6 +51,10 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     def _get_logger(self):
         return self.__logger
 
+    def get_ensembl_ftp_base_url(self):
+        # TODO
+        pass
+
 
 class DataDownloadService:
     """
