@@ -85,7 +85,7 @@ class SpeciesService:
         :param property_getter: property on which the index should be created
         :return: a dictionary of the given data objects where the key is the indexed property
         """
-        return {(lambda *args, **kwargs: property_getter(data_item, *args, **kwargs))(): data_item for data_item in data}
+        return {property_getter.__call__(data_item): data_item for data_item in data}
 
     def _get_logger(self):
         return self.__logger
