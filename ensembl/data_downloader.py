@@ -36,7 +36,7 @@ def get_data_download_service():
     return __data_download_service
 
 
-# Ensembl Download Manager configuration manager
+# Ensembl Data Grabbing Service configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
