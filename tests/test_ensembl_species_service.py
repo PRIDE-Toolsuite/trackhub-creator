@@ -15,7 +15,6 @@ import unittest
 # App modules
 import main_app
 import ensembl.service
-from ensembl.models import Species, SpeciesService
 
 
 class TestEnsemblSpeciesService(unittest.TestCase):
