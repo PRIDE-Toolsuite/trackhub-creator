@@ -66,8 +66,7 @@ class Species:
         return self._get_value_for_key_or_default('groups', [])
 
     def get_assembly(self):
-        # TODO
-        pass
+        return self._get_value_for_key_or_default('assembly')
 
 
 class SpeciesService:
