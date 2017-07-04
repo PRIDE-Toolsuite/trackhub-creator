@@ -92,6 +92,9 @@ class Service:
     def _get_config_manager(self):
         return self.__config_manager
 
+    def _get_logger(self):
+        return self.__logger
+
     def get_release_number(self):
         """
         Get current Ensembl Release Number
@@ -100,9 +103,6 @@ class Service:
         if self.__release_number is None:
             self.__release_number = self.__request_release_number()
         return self.__release_number
-
-    def _get_logger(self):
-        return self.__logger
 
 
 if __name__ == '__main__':
