@@ -93,7 +93,9 @@ class SpeciesService:
         return self.__logger
 
     def _get_species_from_species_data(self):
-        return self.get_species_data()['species']
+        if self.__ensembl_species_data_dao is None:
+            self.__ensembl_species_data_dao = [Species(species_entry) for species_entry in self.get_species_data()['species']]
+        return self.__ensembl_species_data_dao
 
     def _get_index_taxonomy_id(self):
         """
