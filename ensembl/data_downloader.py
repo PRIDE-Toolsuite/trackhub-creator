@@ -66,7 +66,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     self._CONFIG_KEY_BASE_URL,
                     self._get_configuration_file()))
 
-    def get_ensembl_release_folder_name(self):
+    def get_folder_prefix_ensembl_release(self):
         try:
             return self._get_configuration_object()\
                 [self._CONFIG_KEY_DATA_DOWNLOADER]\
