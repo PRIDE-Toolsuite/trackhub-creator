@@ -90,6 +90,10 @@ class SpeciesService:
     def _get_logger(self):
         return self.__logger
 
+    def _get_index_taxonomy_id(self):
+        # TODO
+        pass
+
     def get_species_entry_for_taxonomy_id(self, taxonomy_id):
         # TODO
         pass
