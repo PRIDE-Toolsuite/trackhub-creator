@@ -94,8 +94,10 @@ class SpeciesService:
         return self.get_species_data()['species']
 
     def _get_index_taxonomy_id(self):
-        # TODO
-        pass
+        if self.__index_by_taxonomy_id is None:
+            self.__index_by_taxonomy_id = \
+                self.__index_data_for_property(self._get_species_from_species_data(), Species.get_ncbi_taxonomy_id)
+        return self.__index_by_taxonomy_id
 
     def get_species_data(self):
         return self.__species_data
