@@ -13,7 +13,6 @@ Unit Tests for Ensembl Species Service
 
 import unittest
 # App modules
-import main_app
 import ensembl.service
 
 
