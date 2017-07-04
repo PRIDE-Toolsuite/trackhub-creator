@@ -59,6 +59,8 @@ class DataDownloadService:
         self.__folder_name_release = None
         # Name for the subfolder that contains per species fasta files
         self.__folder_name_fasta = None
+        # Name for the subfolder of species folder that contains protein sequences files
+        self.__folder_name_protein_sequences = None
 
 
     def _get_logger(self):
