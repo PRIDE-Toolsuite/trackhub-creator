@@ -73,6 +73,7 @@ class SpeciesService:
     def __init__(self, species_data):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.__species_data = species_data
+        self.__index_by_taxonomy_id = None
 
     def _get_logger(self):
         return self.__logger
