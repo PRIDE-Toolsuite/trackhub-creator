@@ -84,6 +84,7 @@ class SpeciesService:
         :param property_getter: property on which the index should be created
         :return: a dictionary of the given data objects where the key is the indexed property
         """
+        self._get_logger().debug("Creating index on getter '{}' for #{} entries".format(property_getter, len(data)))
         return {getattr(data_item, property_getter)(): data_item for data_item in data}
 
     def _get_logger(self):
