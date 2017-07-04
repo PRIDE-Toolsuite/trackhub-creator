@@ -77,9 +77,6 @@ class Service:
         # Ensembl Species Data
         self.__species_service = None
 
-    def _get_config_manager(self):
-        return self.__config_manager
-
     def __request_release_number(self):
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
         current_release_data = rest_toolbox.make_rest_request(request_url)
@@ -91,6 +88,9 @@ class Service:
     def __request_species_data(self):
         request_url = self._get_config_manager().get_api_server() + "/info/species?"
         return rest_toolbox.make_rest_request(request_url)
+
+    def _get_config_manager(self):
+        return self.__config_manager
 
     def get_release_number(self):
         """
