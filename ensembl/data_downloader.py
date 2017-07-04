@@ -42,7 +42,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     _CONFIG_KEY_DATA_DOWNLOADER = 'data_downloader'
     _CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
     _CONFIG_KEY_BASE_URL = 'base_url'
-    _CONFIG_KEY_FOLDER_PREFIX_RELEASE = 'release_folder_prefix'
+    _CONFIG_KEY_FOLDER_PREFIX_RELEASE = 'folder_prefix_release'
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
