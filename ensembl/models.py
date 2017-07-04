@@ -93,6 +93,12 @@ class SpeciesService:
         return self.__logger
 
     def _get_species_from_species_data(self):
+        """
+        This method creates the DAO version of the ensembl species data, it could have been implemented as a generator
+        but I want those DAO objects to be reused by the Python reference system, so having them in multiple indexes
+        does not require multiple times the same amount of memory
+        :return: a list of DAO accessors (Species) to the given RAW ensembl species data
+        """
         if self.__ensembl_species_data_dao is None:
             self.__ensembl_species_data_dao = [Species(species_entry) for species_entry in self.get_species_data()['species']]
         return self.__ensembl_species_data_dao
