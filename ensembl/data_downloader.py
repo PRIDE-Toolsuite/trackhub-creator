@@ -28,6 +28,10 @@ def set_configuration_file(config_file):
     return __configuration_file
 
 
+def get_data_download_service():
+    pass
+
+
 def get_configuration_manager():
     global __configuration_manager
     if __configuration_manager is None:
