@@ -52,8 +52,18 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         return self.__logger
 
     def get_ensembl_ftp_base_url(self):
-        # TODO
-        pass
+        try:
+            return self._get_configuration_object()\
+                [self._CONFIG_KEY_DATA_DOWNLOADER]\
+                [self._CONFIG_KEY_ENSEMBL_FTP]\
+                [self._CONFIG_KEY_BASE_URL]
+        except Exception as e:
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
+                    self._CONFIG_KEY_ENSEMBL_FTP,
+                    self._CONFIG_KEY_BASE_URL,
+                    self._get_configuration_file()))
 
     def get_ensembl_release_folder_name(self):
         # TODO
