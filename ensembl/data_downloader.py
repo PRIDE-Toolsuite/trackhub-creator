@@ -13,7 +13,8 @@ This module implements en Ensembl data grabber for a given Ensembl Service insta
 
 # App imports
 import config_manager
-
+from exceptions import ConfigManagerException
+from ensembl.service import Service as EnsemblService
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
