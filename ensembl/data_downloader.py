@@ -39,10 +39,10 @@ def get_data_download_service():
 # Ensembl Data Grabbing Service configuration manager
 class ConfigurationManager(config_manager.ConfigurationManager):
     # Configuration keys
-    __CONFIG_KEY_DATA_DOWNLOADER = 'data_downloader'
-    __CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
-    __CONFIG_KEY_BASE_URL = 'base_url'
-    __CONFIG_KEY_RELEASE_FOLDER_PREFIX = 'release_folder_prefix'
+    _CONFIG_KEY_DATA_DOWNLOADER = 'data_downloader'
+    _CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
+    _CONFIG_KEY_BASE_URL = 'base_url'
+    _CONFIG_KEY_RELEASE_FOLDER_PREFIX = 'release_folder_prefix'
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
