@@ -17,8 +17,8 @@ import ensembl.service
 
 
 class TestEnsemblSpeciesService(unittest.TestCase):
-    __NCB_TAXONOMY_HUMAN = 9606
-    
+    __NCB_TAXONOMY_HUMAN = '9606'
+
     def setUp(self):
         self.ensembl_service = ensembl.service.get_service()
 
@@ -37,8 +37,9 @@ class TestEnsemblSpeciesService(unittest.TestCase):
         Test that Human taxonomy is present, this unit test is also testing the indexing mechanism
         :return: no returned value
         """
-        #TODO
-        pass
+        self.assertIsNotNone(
+            self.ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(
+                self.__NCB_TAXONOMY_HUMAN), "Human NCBI taxonomy is in species data from Ensembl")
 
 
 if __name__ == '__main__':
