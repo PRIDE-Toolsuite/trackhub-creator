@@ -37,8 +37,7 @@ class Species:
         return self._get_value_for_key_or_default('taxon_id')
 
     def get_name(self):
-        # TODO
-        pass
+        return self._get_value_for_key_or_default('name')
 
     def get_ensembl_release(self):
         # TODO
