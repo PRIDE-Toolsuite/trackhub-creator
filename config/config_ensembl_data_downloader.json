@@ -3,7 +3,8 @@
     "ensembl_ftp": {
       "base_url": "ftp://ftp.ensembl.org/pub/",
       "folder_prefix_release": "release-",
-      "folder_name_fasta": "fasta"
+      "folder_name_fasta": "fasta",
+      "folder_name_protein_sequences": "pep"
     }
   }
 }
