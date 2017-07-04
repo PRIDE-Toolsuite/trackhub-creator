@@ -2,7 +2,7 @@
   "data_downloader": {
     "ensembl_ftp": {
       "base_url": "ftp://ftp.ensembl.org/pub/",
-      "release_folder_prefix": "release-"
+      "folder_prefix_release": "release-"
     }
   }
 }
