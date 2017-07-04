@@ -13,7 +13,6 @@ Unit tests for Ensembl module
 
 import unittest
 # App modules
-import main_app
 import ensembl.service
 
 
