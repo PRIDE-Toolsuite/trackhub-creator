@@ -54,7 +54,7 @@ class Species:
         return self._get_value_for_key_or_default('strain_collection')
 
     def get_common_name(self):
-        self._get_value_for_key_or_default('common_name')
+        return self._get_value_for_key_or_default('common_name')
 
     def get_strain(self):
         # TODO
