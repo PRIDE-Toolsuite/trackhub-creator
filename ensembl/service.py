@@ -85,6 +85,10 @@ class Service:
             "This session is working with Ensembl Release {}".format(current_release_data['releases'][0]))
         return current_release_data['releases'][0]
 
+    def __request_species(self):
+        # TODO
+        pass
+
     def get_release_number(self):
         """
         Get current Ensembl Release Number
