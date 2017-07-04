@@ -82,7 +82,8 @@ class SpeciesService:
         Given an iterable data container, and a property getter to run on every object of that container, it returns a
         dictionary where the key is the property value for a particular data object part of the data collection
         :param data: iterable of data objects to index
-        :param property_getter: property on which the index should be created
+        :param property_getter: property on which the index should be created, this property is a member function to a
+        getter for that property
         :return: a dictionary of the given data objects where the key is the indexed property
         """
         self._get_logger().debug("Creating index on getter '{}' for #{} entries".format(property_getter, len(data)))
