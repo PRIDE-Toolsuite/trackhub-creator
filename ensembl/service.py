@@ -90,7 +90,7 @@ class Service:
 
     def __request_species(self):
         request_url = self._get_config_manager().get_api_server() + "/info/species?"
-        species_data = rest_toolbox.make_rest_request(request_url)
+        return rest_toolbox.make_rest_request(request_url)
 
     def get_release_number(self):
         """
