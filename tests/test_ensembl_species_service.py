@@ -25,3 +25,8 @@ class TestEnsemblSpeciesService(unittest.TestCase):
     def test_get_species_data(self):
         species_data_service = self.ensembl_service.get_species_data_service()
         self.assertIsNotNone(species_data_service.get_species_data())
+
+    def test_count_of_species(self):
+        self.assertNotEqual(self.ensembl_service.get_species_data_service().count_ensembl_species(),
+                            0,
+                            "Ensembl has a non-zero number of species")
