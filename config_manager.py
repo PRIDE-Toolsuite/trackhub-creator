@@ -246,4 +246,4 @@ class AppConfigManager(ConfigurationManager):
                 [_CONFIG_MODULES_SECTION][_CONFIG_MODULES_ENSEMBL][_CONFIG_MODULES_ENSEMBL_SERVICE]
 
 if __name__ == '__main__':
-    print("ERROR: This script is part of a pipeline collection and it is not met to be run in stand alone mode")
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
