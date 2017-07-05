@@ -199,6 +199,13 @@ class DataDownloadService:
         # Name for the subfolder of species folder that contains protein sequences files
         self.__folder_name_protein_sequences = None
 
+    def post_constructor(self):
+        """
+        This is an initialization method that should be called just after building an instance of this class
+        :return: no return value
+        """
+        self.__prepare_local_ensembl_repository()
+
     def __prepare_local_ensembl_repository(self):
         self._get_logger().debug("Preparing local Ensembl repository, root folder - '{}'"
                                  .format(self.get_local_path_root_ensembl_repo()))
