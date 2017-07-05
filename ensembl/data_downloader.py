@@ -201,6 +201,15 @@ class DataDownloadService:
     def _get_configuration_manager(self):
         return self.__config_manager
 
+    def get_folder_name_ensembl_release(self):
+        if self.__folder_name_release is None:
+            ensembl_service = ensembl.service.get_service()
+            self.__folder_name_release = "{}{}"\
+                .format(self._get_configuration_manager().get_folder_prefix_ensembl_release(),
+                        ensembl_service.get_release_number())
+        return self.__folder_name_release
+
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
