@@ -19,7 +19,7 @@ Some of the use cases for this module:
 import os
 import config_manager
 from exceptions import ConfigManagerException
-from ensembl.service import Service as EnsemblService
+import ensembl.service
 
 # Common configuration for all instances of the download manager
 __configuration_file = None
@@ -197,6 +197,9 @@ class DataDownloadService:
     def _get_ensembl_service(self):
         # TODO
         pass
+
+    def _get_configuration_manager(self):
+        return self.__config_manager
 
 
 if __name__ == '__main__':
