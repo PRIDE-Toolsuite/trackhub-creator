@@ -204,11 +204,10 @@ class DataDownloadService:
     def get_ensembl_release_name(self):
         if self.__ensembl_release_name is None:
             ensembl_service = ensembl.service.get_service()
-            self.__ensembl_release_name = "{}{}"\
+            self.__ensembl_release_name = "{}{}" \
                 .format(self._get_configuration_manager().get_folder_prefix_ensembl_release(),
                         ensembl_service.get_release_number())
         return self.__ensembl_release_name
-
 
 
 if __name__ == '__main__':
