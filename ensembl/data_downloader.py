@@ -96,11 +96,12 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                 [self._CONFIG_KEY_FOLDER_NAME_FASTA]
         except Exception as e:
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
                     self._CONFIG_KEY_DATA_DOWNLOADER,
                     self._CONFIG_KEY_ENSEMBL_FTP,
                     self._CONFIG_KEY_FOLDER_NAME_FASTA,
-                    self._get_configuration_file()))
+                    self._get_configuration_file(),
+                    str(e)))
 
     def get_folder_name_protein_sequences(self):
         try:
