@@ -66,5 +66,10 @@ def check_create_folders_overwrite(folders):
     check_create_folders(folders)
 
 
+def create_latest_symlink(destination_path):
+    symlink_path = os.path.join(os.path.dirname(destination_path), 'latest')
+    os.symlink(destination_path, symlink_path)
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
