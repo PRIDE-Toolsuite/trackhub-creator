@@ -272,6 +272,7 @@ class DataDownloadService:
     def _get_logger(self):
         return self.__logger
 
+    @staticmethod
     def _get_ensembl_service(self):
         return ensembl.service.get_service()
 
