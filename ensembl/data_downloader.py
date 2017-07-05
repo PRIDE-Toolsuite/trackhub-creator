@@ -179,6 +179,10 @@ class DataDownloadService:
         # TODO
         pass
 
+    def __get_subpath_fasta_for_species(self):
+        # TODO
+        pass
+
     def _get_logger(self):
         return self.__logger
 
