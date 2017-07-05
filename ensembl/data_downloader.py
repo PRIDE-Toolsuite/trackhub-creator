@@ -225,7 +225,8 @@ class DataDownloadService:
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # The subpath is fasta/species.name
-        return "fasta/{}".format(ensembl.service
+        return "{}/{}".format(self._get_configuration_manager().get_folder_name_fasta(),
+                              ensembl.service
                                  .get_service()
                                  .get_species_data_service()
                                  .get_species_entry_for_taxonomy_id(taxonomy_id)
