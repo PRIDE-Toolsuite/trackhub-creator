@@ -67,6 +67,13 @@ def check_create_folders_overwrite(folders):
 
 
 def create_latest_symlink(destination_path):
+    """
+    Create a symlink 'latest' to the given destination_path in its parent folder, i.e. if the given path is
+    '/nfs/production/folder', the symlink will be
+            /nfs/production/latest -> /nfs/production/folder
+    :param destination_path: destination path where the symlink will point to
+    :return: no return value
+    """
     symlink_path = os.path.join(os.path.dirname(destination_path), 'latest')
     os.symlink(destination_path, symlink_path)
 
