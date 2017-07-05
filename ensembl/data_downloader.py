@@ -16,6 +16,7 @@ Some of the use cases for this module:
 """
 
 # App imports
+import os
 import config_manager
 from exceptions import ConfigManagerException
 from ensembl.service import Service as EnsemblService
@@ -59,6 +60,10 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def _get_logger(self):
         return self.__logger
+
+    def get_local_path_folder_ensembl_repo(self):
+        return os.path.abspath(os.path.join(config_manager.get_app_config_manager().get_folder_resources(),
+                                            self.__local_folder_ensembl_repo))
 
     def get_ensembl_ftp_base_url(self):
         try:
