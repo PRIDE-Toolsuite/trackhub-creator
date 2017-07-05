@@ -8,7 +8,10 @@
 # 
 
 """
-This module implements en Ensembl data grabber for a given Ensembl Service instance
+This module implements en Ensembl data grabber for a given Ensembl Service instance.
+
+Some of the use cases for this module:
+    1. Given a species ID, download its protein sequence data, with the option of decompressing it or not.
 """
 
 # App imports
