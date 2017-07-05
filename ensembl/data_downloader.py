@@ -223,7 +223,7 @@ class DataDownloadService:
     def _get_configuration_manager(self):
         return self.__config_manager
 
-    def get_local_path_ensembl_repo(self):
+    def get_local_path_root_ensembl_repo(self):
         if self.__local_path_ensembl_repo is None:
             # For improved reading and code maintenance later
             resources_folder_path = os.path.abspath(config_manager.get_app_config_manager().get_folder_resources())
