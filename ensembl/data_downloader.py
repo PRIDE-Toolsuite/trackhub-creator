@@ -205,7 +205,14 @@ class DataDownloadService:
         toolbox.check_create_folders([self.get_local_path_root_ensembl_repo()])
         self._get_logger().debug("Local path for Ensembl Release - '{}'"
                                  .format(self.get_local_path_ensembl_release()))
-        # TODO - create / rewrite
+        if self._get_configuration_manager().is_rewrite_local_path_ensembl_repo():
+            self._get_logger().debug("Creating folder in 'OVERWRITE' mode - '{}'"
+                                     .format(self.get_local_path_ensembl_release()))
+            toolbox.check_create_folders_overwrite([self.get_local_path_ensembl_release()])
+        else:
+            self._get_logger().debug("Creating folder if it doesn't exist - '{}'"
+                                     .format(self.get_local_path_ensembl_release()))
+            toolbox.check_create_folders([self.get_local_path_ensembl_release()])
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # TODO
