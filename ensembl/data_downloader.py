@@ -262,6 +262,7 @@ class DataDownloadService:
                               self._get_configuration_manager().get_folder_name_protein_sequences())
 
     def __get_subpath_genome_reference_gtf_for_species(self, taxonomy_id):
+        # The subpath is gtf/species.name
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_gtf(),
                               ensembl.service
                               .get_service()
