@@ -18,8 +18,9 @@ Some of the use cases for this module:
 import os
 # App imports
 import config_manager
-from exceptions import ConfigManagerException
+import toolbox
 import ensembl.service
+from exceptions import ConfigManagerException
 
 # Common configuration for all instances of the download manager
 __configuration_file = None
@@ -200,6 +201,7 @@ class DataDownloadService:
     def __prepare_local_ensembl_repository(self):
         self._get_logger().debug("Preparing local Ensembl repository, root folder '{}'"
                                  .format(self.get_local_path_root_ensembl_repo()))
+        toolbox.check_create_folders(self.get_local_path_root_ensembl_repo())
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # TODO
