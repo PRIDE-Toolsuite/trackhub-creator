@@ -161,6 +161,21 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     self._get_configuration_file(),
                     str(e)))
 
+    def get_folder_name_gtf(self):
+        try:
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_ENSEMBL_FTP] \
+                [self._CONFIG_KEY_FOLDER_NAME_GTF]
+        except Exception as e:
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
+                    self._CONFIG_KEY_ENSEMBL_FTP,
+                    self._CONFIG_KEY_FOLDER_NAME_GTF,
+                    self._get_configuration_file(),
+                    str(e)))
+
     def is_rewrite_local_path_ensembl_repo(self):
         """
         Find out whether we are required to overwrite the local Ensembl repository or not, in case there is an existing
