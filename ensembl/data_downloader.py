@@ -261,8 +261,13 @@ class DataDownloadService:
                               self._get_configuration_manager().get_folder_name_protein_sequences())
 
     def __get_subpath_genome_reference_gtf_for_species(self, taxonomy_id):
-        # TODO
-        pass
+        return "{}/{}".format(self._get_configuration_manager().get_folder_name_gtf(),
+                              ensembl.service
+                              .get_service()
+                              .get_species_data_service()
+                              .get_species_entry_for_taxonomy_id(taxonomy_id)
+                              .get_name()
+                              )
 
     def _get_logger(self):
         return self.__logger
