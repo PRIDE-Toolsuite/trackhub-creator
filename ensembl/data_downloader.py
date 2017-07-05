@@ -168,8 +168,8 @@ class DataDownloadService:
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
-        # Name for the current release folder, we'll use the same for both the FTP and the local storage
-        self.__folder_name_release = None
+        # Name for the current release
+        self.__ensembl_release_name = None
         # Name for the subfolder that contains per species fasta files
         self.__folder_name_fasta = None
         # Name for the subfolder of species folder that contains protein sequences files
@@ -201,13 +201,13 @@ class DataDownloadService:
     def _get_configuration_manager(self):
         return self.__config_manager
 
-    def get_folder_name_ensembl_release(self):
-        if self.__folder_name_release is None:
+    def get_ensembl_release_name(self):
+        if self.__ensembl_release_name is None:
             ensembl_service = ensembl.service.get_service()
-            self.__folder_name_release = "{}{}"\
+            self.__ensembl_release_name = "{}{}"\
                 .format(self._get_configuration_manager().get_folder_prefix_ensembl_release(),
                         ensembl_service.get_release_number())
-        return self.__folder_name_release
+        return self.__ensembl_release_name
 
 
 
