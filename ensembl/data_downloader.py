@@ -139,6 +139,10 @@ class DataDownloadService:
         # TODO
         pass
 
+    def _get_ensembl_service(self):
+        # TODO
+        pass
+
     def _get_logger(self):
         return self.__logger
 
