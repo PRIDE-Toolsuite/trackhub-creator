@@ -249,8 +249,7 @@ class DataDownloadService:
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # The subpath is fasta/species.name
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_fasta(),
-                              ensembl.service
-                                 .get_service()
+                              self._get_ensembl_service()
                                  .get_species_data_service()
                                  .get_species_entry_for_taxonomy_id(taxonomy_id)
                                  .get_name())
@@ -264,8 +263,7 @@ class DataDownloadService:
     def __get_subpath_genome_reference_gtf_for_species(self, taxonomy_id):
         # The subpath is gtf/species.name
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_gtf(),
-                              ensembl.service
-                              .get_service()
+                              self._get_ensembl_service()
                               .get_species_data_service()
                               .get_species_entry_for_taxonomy_id(taxonomy_id)
                               .get_name()
