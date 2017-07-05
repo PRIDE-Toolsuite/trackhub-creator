@@ -159,6 +159,19 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     self._get_configuration_file(),
                     str(e)))
 
+    def is_rewrite_local_path_ensembl_repo(self):
+        try:
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO]
+        except Exception as e:
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}' in configuration file '{}', becuase of '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
+                    self._CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO,
+                    self._get_configuration_file(),
+                    str(e)))
+
 
 class DataDownloadService:
     """
