@@ -221,6 +221,7 @@ class DataDownloadService:
             self._get_logger().debug("Creating folder if it doesn't exist - '{}'"
                                      .format(self.get_local_path_ensembl_release()))
             toolbox.check_create_folders([self.get_local_path_ensembl_release()])
+        # TODO Create 'latest' release to the ensembl release folder
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # TODO
