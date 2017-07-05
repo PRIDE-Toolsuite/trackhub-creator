@@ -162,6 +162,14 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_folder_name_gtf(self):
+        """
+        Get the name for the sub-folder that contains GTF data for a particular species, e.g. it is used to work out the
+        path to access GTF data for a given species, to download it from Ensembl.
+
+        This parameter is specified in the configuration file that is used in the pipeline session for the Ensembl
+        module.
+        :return: name fo the sub-folder as set in the configuration file
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_DATA_DOWNLOADER] \
