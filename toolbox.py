@@ -35,14 +35,14 @@ def check_create_folders(folders):
     :return: no return value
     """
     for folder in folders:
-        if not os.path.isdir(folder):
-            if os.path.exists(folder):
+        if not os.path.exists(folder):
+            try:
+                os.mkdir(folder)
+            except Exception as e:
+                raise ToolBoxException(str(e))
+        else:
+            if not os.path.isdir(folder):
                 raise ToolBoxException("'{}' is not a folder".format(folder))
-            else:
-                try:
-                    os.mkdir(folder)
-                except Exception as e:
-                    raise ToolBoxException(str(e))
 
 
 if __name__ == '__main__':

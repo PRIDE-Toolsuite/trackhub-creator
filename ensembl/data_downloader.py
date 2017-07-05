@@ -225,8 +225,10 @@ class DataDownloadService:
 
     def get_local_path_ensembl_repo(self):
         if self.__local_path_ensembl_repo is None:
-            # TODO
-            pass
+            # For improved reading and code maintenance later
+            resources_folder_path = os.path.abspath(config_manager.get_app_config_manager().get_folder_resources())
+            root_folder_ensembl_repo = self._get_configuration_manager().get_local_path_folder_ensembl_repo()
+            self.__local_path_ensembl_repo = os.path.join(resources_folder_path, root_folder_ensembl_repo)
         return self.__local_path_ensembl_repo
 
     def get_ensembl_release_name(self):
