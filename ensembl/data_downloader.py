@@ -12,6 +12,7 @@ This module implements en Ensembl data grabber for a given Ensembl Service insta
 
 Some of the use cases for this module:
     1. Given a species ID, download its protein sequence data, with the option of decompressing it or not.
+    2. Given a species ID, collect its GTF data, with the option of decompressing it or not.
 """
 
 # App imports
