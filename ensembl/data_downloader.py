@@ -91,6 +91,13 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_folder_prefix_ensembl_release(self):
+        """
+        Get the prefix for the ensembl release folder, e.g. Ensembl has been making releases in folders like
+        'release-89', so the prefix would be 'release-'.
+
+        This parameter is specified in the configuration file that used in the pipeline session for the Ensembl module.
+        :return: a string with the prefix for ensembl release folder name
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_DATA_DOWNLOADER] \
