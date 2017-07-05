@@ -71,6 +71,11 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                                             self.__local_folder_ensembl_repo))
 
     def get_ensembl_ftp_base_url(self):
+        """
+        Get the base URL for Ensembl FTP service, e.g. ftp://ftp.ensembl.org/pub/ .
+        This parameter is defined in the configuration file used in the pipeline session for the Ensembl module.
+        :return: a string with the configured Ensembl FTP base URL
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_DATA_DOWNLOADER] \
