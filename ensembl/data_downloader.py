@@ -39,6 +39,7 @@ def get_data_download_service():
     if __data_download_service is None:
         __data_download_service = DataDownloadService(config_manager.read_config_from_file(__configuration_file),
                                                       __configuration_file)
+        __data_download_service.post_constructor()
     return __data_download_service
 
 
