@@ -66,11 +66,12 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                 [self._CONFIG_KEY_BASE_URL]
         except Exception as e:
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
                     self._CONFIG_KEY_DATA_DOWNLOADER,
                     self._CONFIG_KEY_ENSEMBL_FTP,
                     self._CONFIG_KEY_BASE_URL,
-                    self._get_configuration_file()))
+                    self._get_configuration_file(),
+                    str(e)))
 
     def get_folder_prefix_ensembl_release(self):
         try:
