@@ -47,6 +47,12 @@ def check_create_folders(folders):
 
 
 def check_create_folders_overwrite(folders):
+    """
+    Given a list of folders, this method will create them, overwriting them in case they exist
+    :param folders: list of folders to create
+    :return: no return value
+    :except: if any element in the list of folders is not a folder, an exception will be raised
+    """
     invalid_folders = []
     for folder in folders:
         if os.path.exists(folder):
