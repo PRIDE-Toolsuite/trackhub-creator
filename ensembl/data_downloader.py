@@ -209,6 +209,10 @@ class DataDownloadService:
                         ensembl_service.get_release_number())
         return self.__ensembl_release_name
 
+    def get_protein_sequences_for_species(self, taxonomy_id):
+        # TODO
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
