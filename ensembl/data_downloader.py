@@ -224,8 +224,13 @@ class DataDownloadService:
         toolbox.create_latest_symlink(self.get_local_path_ensembl_release())
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
-        # TODO
-        pass
+        # The subpath is fasta/species.name
+        return "fasta/{}".format(ensembl.service
+                                 .get_service()
+                                 .get_species_data_service()
+                                 .get_species_entry_for_taxonomy_id(taxonomy_id)
+                                 .get_name())
+
 
     def __get_subpath_protein_sequence_for_species(self, taxonomy_id):
         # TODO
