@@ -257,6 +257,7 @@ class DataDownloadService:
 
 
     def __get_subpath_protein_sequence_for_species(self, taxonomy_id):
+        # The subpath is fasta/species.name/pep
         return "{}/{}".format(self.__get_subpath_fasta_for_species(taxonomy_id),
                               self._get_configuration_manager().get_folder_name_protein_sequences())
 
