@@ -13,6 +13,7 @@ This module implements some useful functions for the pipeline runner
 
 import os
 import json
+import shutil
 from exceptions import ToolBoxException
 
 
@@ -44,9 +45,19 @@ def check_create_folders(folders):
             if not os.path.isdir(folder):
                 raise ToolBoxException("'{}' is not a folder".format(folder))
 
+
 def check_create_folders_overwrite(folders):
-    # TODO
-    pass
+    invalid_folders = []
+    for folder in folders:
+        if os.path.exists(folder):
+            if not os.path.isdir(folder):
+                invalid_folders.append(folder)
+    if invalid_folders:
+        raise ToolBoxException("The following folders ARE NOT FOLDERS - '{}'"
+                               .format(invalid_folders))
+    for folder in folders:
+        shutil.rmtree(folder)
+    check_create_folders(folders)
 
 
 if __name__ == '__main__':
