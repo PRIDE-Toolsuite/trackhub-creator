@@ -62,6 +62,11 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         return self.__logger
 
     def get_local_path_folder_ensembl_repo(self):
+        """
+        Get the absolute path to the local folder where we are going to store all the data from the different releases
+        of Ensembl
+        :return: absolute path of the local repository for Ensembl releases data
+        """
         return os.path.abspath(os.path.join(config_manager.get_app_config_manager().get_folder_resources(),
                                             self.__local_folder_ensembl_repo))
 
