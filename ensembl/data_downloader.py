@@ -202,7 +202,7 @@ class DataDownloadService:
     def __prepare_local_ensembl_repository(self):
         self._get_logger().debug("Preparing local Ensembl repository, root folder - '{}'"
                                  .format(self.get_local_path_root_ensembl_repo()))
-        toolbox.check_create_folders(self.get_local_path_root_ensembl_repo())
+        toolbox.check_create_folders([self.get_local_path_root_ensembl_repo()])
         self._get_logger().debug("Local path for Ensembl Release - '{}'"
                                  .format(self.get_local_path_ensembl_release()))
         # TODO - create / rewrite
