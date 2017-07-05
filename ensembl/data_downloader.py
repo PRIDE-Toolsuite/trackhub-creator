@@ -54,6 +54,8 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+        # Local Ensembl repo parent folder name
+        self.__local_folder_ensembl_repo = 'ensembl'
 
     def _get_logger(self):
         return self.__logger
