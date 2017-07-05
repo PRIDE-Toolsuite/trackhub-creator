@@ -203,8 +203,10 @@ class DataDownloadService:
         return self.__config_manager
 
     def get_local_path_ensembl_repo(self):
-        # TODO
-        pass
+        if self.__local_path_ensembl_repo is None:
+            # TODO
+            pass
+        return self.__local_path_ensembl_repo
 
     def get_ensembl_release_name(self):
         if self.__ensembl_release_name is None:
