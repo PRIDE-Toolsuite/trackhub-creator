@@ -200,9 +200,12 @@ class DataDownloadService:
         self.__folder_name_protein_sequences = None
 
     def __prepare_local_ensembl_repository(self):
-        self._get_logger().debug("Preparing local Ensembl repository, root folder '{}'"
+        self._get_logger().debug("Preparing local Ensembl repository, root folder - '{}'"
                                  .format(self.get_local_path_root_ensembl_repo()))
         toolbox.check_create_folders(self.get_local_path_root_ensembl_repo())
+        self._get_logger().debug("Local path for Ensembl Release - '{}'"
+                                 .format(self.get_local_path_ensembl_release()))
+        # TODO - create / rewrite
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # TODO
@@ -232,8 +235,13 @@ class DataDownloadService:
             resources_folder_path = os.path.abspath(config_manager.get_app_config_manager().get_folder_resources())
             root_folder_ensembl_repo = self._get_configuration_manager().get_local_path_folder_ensembl_repo()
             self.__local_path_ensembl_repo = os.path.join(resources_folder_path, root_folder_ensembl_repo)
-            self.__prepare_local_ensembl_repository()
         return self.__local_path_ensembl_repo
+
+    def get_local_path_ensembl_release(self):
+        if self.__local_path_ensembl_release is None:
+            self.__local_path_ensembl_release = os.path.join(self.get_local_path_root_ensembl_repo(),
+                                                             self.get_ensembl_release_name())
+        return self.__local_path_ensembl_release
 
     def get_ensembl_release_name(self):
         if self.__ensembl_release_name is None:
