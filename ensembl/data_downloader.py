@@ -15,8 +15,8 @@ Some of the use cases for this module:
     2. Given a species ID, collect its GTF data, with the option of decompressing it or not.
 """
 
-# App imports
 import os
+# App imports
 import config_manager
 from exceptions import ConfigManagerException
 import ensembl.service
@@ -198,8 +198,9 @@ class DataDownloadService:
         self.__folder_name_protein_sequences = None
 
     def __prepare_local_ensembl_repository(self):
-        # TODO
-        pass
+        self._get_logger().debug("Preparing local Ensembl repository, root folder '{}'"
+                                 .format(self.get_local_path_root_ensembl_repo()))
+
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # TODO
@@ -229,6 +230,7 @@ class DataDownloadService:
             resources_folder_path = os.path.abspath(config_manager.get_app_config_manager().get_folder_resources())
             root_folder_ensembl_repo = self._get_configuration_manager().get_local_path_folder_ensembl_repo()
             self.__local_path_ensembl_repo = os.path.join(resources_folder_path, root_folder_ensembl_repo)
+            self.__prepare_local_ensembl_repository()
         return self.__local_path_ensembl_repo
 
     def get_ensembl_release_name(self):
