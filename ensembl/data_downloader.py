@@ -234,8 +234,8 @@ class DataDownloadService:
 
 
     def __get_subpath_protein_sequence_for_species(self, taxonomy_id):
-        # TODO
-        pass
+        return "{}/{}".format(self.__get_subpath_fasta_for_species(taxonomy_id),
+                              self._get_configuration_manager().get_folder_name_protein_sequences())
 
     def __get_subpath_genome_reference_gtf_for_species(self, taxonomy_id):
         # TODO
