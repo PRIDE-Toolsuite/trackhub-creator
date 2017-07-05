@@ -44,6 +44,10 @@ def check_create_folders(folders):
             if not os.path.isdir(folder):
                 raise ToolBoxException("'{}' is not a folder".format(folder))
 
+def check_create_folders_overwrite(folders):
+    # TODO
+    pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
