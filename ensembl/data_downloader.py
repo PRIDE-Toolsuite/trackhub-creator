@@ -187,6 +187,10 @@ class DataDownloadService:
         # TODO
         pass
 
+    def __get_subpath_genome_reference_gtf_for_species(self, taxonomy_id):
+        # TODO
+        pass
+
     def _get_logger(self):
         return self.__logger
 
