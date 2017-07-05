@@ -135,6 +135,10 @@ class DataDownloadService:
         # Name for the subfolder of species folder that contains protein sequences files
         self.__folder_name_protein_sequences = None
 
+    def __prepare_local_ensembl_repository(self):
+        # TODO
+        pass
+
     def _get_logger(self):
         return self.__logger
 
