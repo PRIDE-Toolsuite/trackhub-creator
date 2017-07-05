@@ -272,7 +272,8 @@ class DataDownloadService:
     def _get_logger(self):
         return self.__logger
 
-    def _get_ensembl_service(self):
+    @staticmethod
+    def _get_ensembl_service():
         return ensembl.service.get_service()
 
     def _get_configuration_manager(self):
