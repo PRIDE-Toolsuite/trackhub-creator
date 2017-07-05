@@ -191,6 +191,7 @@ class DataDownloadService:
         self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         self.__local_path_ensembl_repo = None
+        self.__local_path_ensembl_release = None
         # Name for the current release
         self.__ensembl_release_name = None
         # Name for the subfolder that contains per species fasta files
