@@ -275,8 +275,7 @@ class DataDownloadService:
         return self.__logger
 
     def _get_ensembl_service(self):
-        # TODO
-        pass
+        return ensembl.service.get_service()
 
     def _get_configuration_manager(self):
         return self.__config_manager
