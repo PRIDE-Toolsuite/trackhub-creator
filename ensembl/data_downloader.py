@@ -201,7 +201,6 @@ class DataDownloadService:
         self._get_logger().debug("Preparing local Ensembl repository, root folder '{}'"
                                  .format(self.get_local_path_root_ensembl_repo()))
 
-
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # TODO
         pass
