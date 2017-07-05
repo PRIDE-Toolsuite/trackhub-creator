@@ -95,7 +95,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         Get the prefix for the ensembl release folder, e.g. Ensembl has been making releases in folders like
         'release-89', so the prefix would be 'release-'.
 
-        This parameter is specified in the configuration file that used in the pipeline session for the Ensembl module.
+        This parameter is specified in the configuration file that is used in the pipeline session for the Ensembl module.
         :return: a string with the prefix for ensembl release folder name
         """
         try:
@@ -113,6 +113,14 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_folder_name_fasta(self):
+        """
+        Get the name for the folder that contains per-species fasta data, e.g. it is used to work out the path to access
+        FASTA data for a given species on the Ensembl FTP service.
+
+        This parameter is specified in the configuration file that is used in the pipeline session for the Ensembl
+        module.
+        :return: name of the folder as set in the configuration file
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_DATA_DOWNLOADER] \
