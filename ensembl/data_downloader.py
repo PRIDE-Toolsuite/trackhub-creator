@@ -179,7 +179,7 @@ class DataDownloadService:
         # TODO
         pass
 
-    def __get_subpath_fasta_for_species(self):
+    def __get_subpath_fasta_for_species(self, taxonomy_id):
         # TODO
         pass
 
