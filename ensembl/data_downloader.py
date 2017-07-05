@@ -55,9 +55,9 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def get_ensembl_ftp_base_url(self):
         try:
-            return self._get_configuration_object()\
-                [self._CONFIG_KEY_DATA_DOWNLOADER]\
-                [self._CONFIG_KEY_ENSEMBL_FTP]\
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_ENSEMBL_FTP] \
                 [self._CONFIG_KEY_BASE_URL]
         except Exception as e:
             raise ConfigManagerException(
@@ -69,9 +69,9 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def get_folder_prefix_ensembl_release(self):
         try:
-            return self._get_configuration_object()\
-                [self._CONFIG_KEY_DATA_DOWNLOADER]\
-                [self._CONFIG_KEY_ENSEMBL_FTP]\
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_ENSEMBL_FTP] \
                 [self._CONFIG_KEY_FOLDER_PREFIX_RELEASE]
         except Exception as e:
             raise ConfigManagerException(
@@ -83,9 +83,9 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def get_folder_name_fasta(self):
         try:
-            return self._get_configuration_object()\
-                [self._CONFIG_KEY_DATA_DOWNLOADER]\
-                [self._CONFIG_KEY_ENSEMBL_FTP]\
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_ENSEMBL_FTP] \
                 [self._CONFIG_KEY_FOLDER_NAME_FASTA]
         except Exception as e:
             raise ConfigManagerException(
@@ -97,9 +97,9 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def get_folder_name_protein_sequences(self):
         try:
-            return self._get_configuration_object()\
-                [self._CONFIG_KEY_DATA_DOWNLOADER]\
-                [self._CONFIG_KEY_ENSEMBL_FTP]\
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_ENSEMBL_FTP] \
                 [self._CONFIG_KEY_FOLDER_NAME_PROTEIN_SEQUENCES]
         except Exception as e:
             raise ConfigManagerException(
@@ -125,7 +125,6 @@ class DataDownloadService:
         self.__folder_name_fasta = None
         # Name for the subfolder of species folder that contains protein sequences files
         self.__folder_name_protein_sequences = None
-
 
     def _get_logger(self):
         return self.__logger
