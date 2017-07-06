@@ -423,6 +423,7 @@ class DataDownloadService:
         self._get_logger().debug("Working with Ensembl protein sequence file names for taxonomy ID '{}' - '{}'"
                                  .format(taxonomy_id, str(file_names)))
         # Work out their path in the local repository
+        protein_sequence_files_local_path = self._get_protein_sequence_file_path_local(file_names, taxonomy_id)
         # Check if they already exist locally
         # If not, work out their remote path on Ensembl FTP
         # Retrieve the files
