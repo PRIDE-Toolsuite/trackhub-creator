@@ -217,6 +217,12 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_ensembl_protein_sequence_file_suffixes(self):
+        """
+        Usually, protein sequence files in Ensembl have two suffixes (just before the file extension): 'all' and
+        'abinitio'. But it's been set in the application as a configurable parameter just in case they change that (very
+        unlikely) future.
+        :return: a list of suffixes for protein sequence files on Ensembl
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
