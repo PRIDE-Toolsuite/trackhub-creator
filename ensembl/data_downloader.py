@@ -303,6 +303,8 @@ class DataDownloadService:
 
     def _get_protein_sequence_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
+        # The name for a protein sequence file in Ensembl is <species_name_with_first_capital_letter>.<species_assembly>.pep.[all,abinitio].fa
+        # e.g. Homo_sapiens.GRCh38.pep.all.fa, on Ensembl will have the extension .gz, because it is a compressed file
         pass
 
     def get_protein_sequences_for_species(self, taxonomy_id):
