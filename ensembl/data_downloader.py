@@ -401,6 +401,10 @@ class DataDownloadService:
         # TODO
         pass
 
+    def _get_protein_sequence_file_path_remote(self, file_names):
+        # TODO
+        pass
+
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
         file_names = self._get_protein_sequence_ensembl_file_name_for_species(taxonomy_id)
