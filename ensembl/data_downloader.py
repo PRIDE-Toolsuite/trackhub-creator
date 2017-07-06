@@ -60,6 +60,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     _CONFIG_KEY_ENSEMBL_FILE_NAMES = 'ensembl_file_names'
     _CONFIG_KEY_PROTEIN_SEQUENCE_FILE = 'protein_sequence_file'
     _CONFIG_KEY_FILE_TYPE = 'file_type'
+    _CONFIG_KEY_SUFFIXES = 'suffixes'
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
