@@ -424,6 +424,8 @@ class DataDownloadService:
                                  .format(taxonomy_id, str(file_names)))
         # Work out their path in the local repository
         protein_sequence_files_local_path = self._get_protein_sequence_file_path_local(file_names, taxonomy_id)
+        self._get_logger().debug("Local Ensembl Repo protein sequence paths for taxonomy ID '{}', file paths '{}'"
+                                 .format(taxonomy_id, str(protein_sequence_files_local_path)))
         # Check if they already exist locally
         missing_files = [missing_file for missing_file in protein_sequence_files_local_path if not os.path.exists(missing_file)]
         # If not, work out their remote path on Ensembl FTP
