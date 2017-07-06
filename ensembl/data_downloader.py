@@ -301,6 +301,10 @@ class DataDownloadService:
                         ensembl_service.get_release_number())
         return self.__ensembl_release_name
 
+    def _get_protein_sequence_ensembl_file_name_for_specie(self, taxonomy_id):
+        # TODO
+        pass
+
     def get_protein_sequences_for_species(self, taxonomy_id):
         # TODO
         # Work out the file names for the data to retrieve from Ensembl
@@ -312,6 +316,11 @@ class DataDownloadService:
 
     def get_genome_reference_gtf_for_species(self, taxonomy_id):
         # TODO
+        # Work out the file names for the data to retrieve from Ensembl
+        # Work out their path in the local repository
+        # Check if they already exist locally
+        # If not, work out their remote path on Ensembl FTP
+        # Retrieve the files
         pass
 
 
