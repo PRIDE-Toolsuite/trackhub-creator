@@ -196,6 +196,10 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         # TODO
         pass
 
+    def get_ensembl_protein_sequence_file_suffixes(self):
+        # TODO
+        pass
+
     def is_rewrite_local_path_ensembl_repo(self):
         """
         Find out whether we are required to overwrite the local Ensembl repository or not, in case there is an existing
