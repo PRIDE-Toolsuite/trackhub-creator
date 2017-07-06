@@ -193,8 +193,19 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_ensembl_protein_sequence_file_type(self):
-        # TODO
-        pass
+        try:
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
+                [self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE] \
+                [self._CONFIG_KEY_FILE_TYPE]
+        except Exception as e:
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                    self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
+                    self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE,
+                    self._CONFIG_KEY_FILE_TYPE,
+                    self._get_configuration_file(),
+                    str(e)))
 
     def get_ensembl_protein_sequence_file_suffixes(self):
         # TODO
