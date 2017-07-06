@@ -209,8 +209,20 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_ensembl_protein_sequence_file_suffixes(self):
-        # TODO
-        pass
+        try:
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
+                [self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE] \
+                [self._CONFIG_KEY_FILE_SUFFIXES]
+        except Exception as e:
+            # TODO - Refactor this code whenever you have time, because a pattern has emerged here
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                    self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
+                    self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE,
+                    self._CONFIG_KEY_FILE_SUFFIXES,
+                    self._get_configuration_file(),
+                    str(e)))
 
     def get_ensembl_protein_sequence_file_extension(self):
         # TODO
