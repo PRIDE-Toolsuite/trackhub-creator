@@ -56,6 +56,8 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     _CONFIG_KEY_FOLDER_NAME_GTF = 'folder_name_gtf'
     # Rewrite option
     _CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO = 'rewrite_local_path_ensembl_repo'
+    # Ensembl file names
+    
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
