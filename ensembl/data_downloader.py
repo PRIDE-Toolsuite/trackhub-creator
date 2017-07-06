@@ -377,11 +377,25 @@ class DataDownloadService:
         return self.__ensembl_release_name
 
     def _get_protein_sequence_ensembl_file_name_for_species(self, taxonomy_id):
-        # TODO
         # The name for a protein sequence file in Ensembl is
         # <species_name_with_first_capital_letter>.<species_assembly>.<file_type e.g. 'pep'>.[all,abinitio].fa
         # e.g. Homo_sapiens.GRCh38.pep.all.fa, on Ensembl will have the extension .gz, because it is a compressed file
-        pass
+        species_name = self._get_ensembl_service()\
+            .get_species_data_service()\
+            .get_species_entry_for_taxonomy_id(taxonomy_id)\
+            .get_name().capitalize()
+        assembly = self._get_ensembl_service()\
+            .get_species_data_service()\
+            .get_species_entry_for_taxonomy_id(taxonomy_id)\
+            .get_assembly()
+        file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
+        file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
+        return ["{}.{}.{}.{}.{}".format(species_name,
+                                        assembly,
+                                        file_type,
+                                        suffix,
+                                        file_extension)
+                for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
     def get_protein_sequences_for_species(self, taxonomy_id):
         # TODO
