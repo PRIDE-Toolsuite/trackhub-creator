@@ -407,11 +407,11 @@ class DataDownloadService:
         <local_path_ensembl_release>/<subpath_protein_sequence_for_species>/file_name (local copies of Ensembl files are
         stored uncompressed, that's why we use the given name for every file)
         :param file_names: protein sequence file names
-        :return: absolute paths to those files in the local Ensembl repository
+        :return: a list of tuples of the form (file_name, absolute path to that file in the local Ensembl repository)
         """
-        return [os.path.abspath(os.path.join(self.get_local_path_ensembl_release(),
+        return [(file_name, os.path.abspath(os.path.join(self.get_local_path_ensembl_release(),
                                             self.__get_subpath_protein_sequence_for_species(taxonomy_id),
-                                            file_name)) for file_name in file_names]
+                                            file_name))) for file_name in file_names]
 
     def _get_protein_sequence_file_path_remote(self, file_names):
         # TODO
@@ -427,8 +427,21 @@ class DataDownloadService:
         self._get_logger().debug("Local Ensembl Repo protein sequence paths for taxonomy ID '{}', file paths '{}'"
                                  .format(taxonomy_id, str(protein_sequence_files_local_path)))
         # Check if they already exist locally
-        missing_files = [missing_file for missing_file in protein_sequence_files_local_path if not os.path.exists(missing_file)]
-        # If not, work out their remote path on Ensembl FTP
+        missing_files = [(missing_file_name, missing_file_path)
+                         for missing_file_name, missing_file_path
+                         in protein_sequence_files_local_path
+                         if not os.path.exists(missing_file_path)]
+        if missing_files:
+            # Work out their remote path on Ensembl FTP
+            self._get_logger()\
+                .debug("The following protein sequence files are missing from the local repository "
+                       "for taxonomy ID '{}': {}"
+                                     .format(taxonomy_id,
+                                             "[{}]".format(","
+                                                           .join(["'{} -> {}'"
+                                                                 .format(missing_file_name, missing_file_path)
+                                                                  for missing_file_name, missing_file_path
+                                                                  in missing_files]))))
         # Retrieve the files
         pass
 
