@@ -401,7 +401,7 @@ class DataDownloadService:
                                         file_extension)
                 for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
-    def _get_protein_sequence_file_path_local(self, file_names):
+    def _get_protein_sequence_file_path_local(self, taxonomy_id, file_names):
         """
         The local file path for a protein file name is
         <local_path_ensembl_release>/<subpath_protein_sequence_for_species>/file_name (local copies of Ensembl files are
