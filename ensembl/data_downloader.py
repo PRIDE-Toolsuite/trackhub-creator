@@ -58,6 +58,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     _CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO = 'rewrite_local_path_ensembl_repo'
     # Ensembl file names
     _CONFIG_KEY_ENSEMBL_FILE_NAMES = 'ensembl_file_names'
+    _CONFIG_KEY_PROTEIN_SEQUENCE_FILE = 'protein_sequence_file'
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
