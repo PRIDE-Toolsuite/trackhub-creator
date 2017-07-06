@@ -193,6 +193,14 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_ensembl_protein_sequence_file_type(self):
+        """
+        For protein sequence files, the file type string is usually 'pep', and it is found at the end of the file name,
+        just before the suffixes, e.g. all or abinitio.
+
+        Just in case Ensembl decides to change it in the future, it has been introduced in the software as a
+        configuration defined value.
+        :return: file type string for ensembl protein sequence files as specified in the configuration file
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
