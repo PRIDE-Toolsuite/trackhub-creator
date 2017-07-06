@@ -11,7 +11,7 @@
     "ensembl_file_names": {
       "protein_sequence_file": {
         "file_type": "pep",
-        "suffixes": ["all", "abinitio"],
+        "file_suffixes": ["all", "abinitio"],
         "file_extension": "fa"
       }
     }
