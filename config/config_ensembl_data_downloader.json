@@ -7,6 +7,13 @@
       "folder_name_protein_sequences": "pep",
       "folder_name_gtf": "gtf"
     },
-    "rewrite_local_path_ensembl_repo": "True"
+    "rewrite_local_path_ensembl_repo": "True",
+    "ensembl_file_names": {
+      "protein_sequence_file": {
+        "file_type": "pep",
+        "suffixes": ["all", "abinitio"],
+        "extension": "fa"
+      }
+    }
   }
 }
