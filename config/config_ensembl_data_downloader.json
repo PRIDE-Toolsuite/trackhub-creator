@@ -12,7 +12,7 @@
       "protein_sequence_file": {
         "file_type": "pep",
         "suffixes": ["all", "abinitio"],
-        "extension": "fa"
+        "file_extension": "fa"
       }
     }
   }
