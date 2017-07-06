@@ -301,7 +301,7 @@ class DataDownloadService:
                         ensembl_service.get_release_number())
         return self.__ensembl_release_name
 
-    def _get_protein_sequence_ensembl_file_name_for_specie(self, taxonomy_id):
+    def _get_protein_sequence_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
         pass
 
