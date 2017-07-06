@@ -47,6 +47,7 @@ def get_data_download_service():
 class ConfigurationManager(config_manager.ConfigurationManager):
     # Configuration keys
     _CONFIG_KEY_DATA_DOWNLOADER = 'data_downloader'
+    # Ensembl FTP section
     _CONFIG_KEY_ENSEMBL_FTP = 'ensembl_ftp'
     _CONFIG_KEY_BASE_URL = 'base_url'
     _CONFIG_KEY_FOLDER_PREFIX_RELEASE = 'folder_prefix_release'
