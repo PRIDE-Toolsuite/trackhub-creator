@@ -397,13 +397,16 @@ class DataDownloadService:
                                         file_extension)
                 for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
+    def _get_protein_sequence_file_path_local(self, file_names):
+        # TODO
+        pass
+
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
         file_names = self._get_protein_sequence_ensembl_file_name_for_species(taxonomy_id)
         self._get_logger().debug("Working with Ensembl protein sequence file names for taxonomy ID '{}' - '{}'"
                                  .format(taxonomy_id, str(file_names)))
         # Work out their path in the local repository
-
         # Check if they already exist locally
         # If not, work out their remote path on Ensembl FTP
         # Retrieve the files
