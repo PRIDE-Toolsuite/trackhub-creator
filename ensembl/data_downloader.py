@@ -434,9 +434,10 @@ class DataDownloadService:
         if missing_files:
             # Work out their remote path on Ensembl FTP
             self._get_logger()\
-                .debug("The following protein sequence files are missing from the local repository "
+                .debug("There are {} protein sequence files missing from the local repository "
                        "for taxonomy ID '{}': {}"
-                                     .format(taxonomy_id,
+                                     .format(len(missing_files),
+                                             taxonomy_id,
                                              "[{}]".format(","
                                                            .join(["'{} -> {}'"
                                                                  .format(missing_file_name, missing_file_path)
