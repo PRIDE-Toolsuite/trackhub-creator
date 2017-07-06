@@ -239,6 +239,11 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_ensembl_protein_sequence_file_extension(self):
+        """
+        Usually, protein sequence files have extension ".fa" in Ensembl, but it has been included here as a configurable
+        parameter just in case they change that in the future.
+        :return: the file extension, very likely to be 'fa'
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
