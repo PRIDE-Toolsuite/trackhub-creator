@@ -199,6 +199,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                 [self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE] \
                 [self._CONFIG_KEY_FILE_TYPE]
         except Exception as e:
+            # TODO - Refactor this code whenever you have time, because a pattern has emerged here
             raise ConfigManagerException(
                 "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
                     self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
