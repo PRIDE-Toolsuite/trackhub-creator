@@ -314,6 +314,10 @@ class DataDownloadService:
         # Retrieve the files
         pass
 
+    def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
+        # TODO
+        pass
+
     def get_genome_reference_gtf_for_species(self, taxonomy_id):
         # TODO
         # Work out the file names for the data to retrieve from Ensembl
