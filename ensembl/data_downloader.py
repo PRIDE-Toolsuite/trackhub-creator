@@ -139,7 +139,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                 [self._CONFIG_KEY_FOLDER_NAME_FASTA]
         except Exception as e:
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
                     self._CONFIG_KEY_DATA_DOWNLOADER,
                     self._CONFIG_KEY_ENSEMBL_FTP,
                     self._CONFIG_KEY_FOLDER_NAME_FASTA,
@@ -162,7 +162,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                 [self._CONFIG_KEY_FOLDER_NAME_PROTEIN_SEQUENCES]
         except Exception as e:
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
                     self._CONFIG_KEY_DATA_DOWNLOADER,
                     self._CONFIG_KEY_ENSEMBL_FTP,
                     self._CONFIG_KEY_FOLDER_NAME_PROTEIN_SEQUENCES,
@@ -185,7 +185,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                 [self._CONFIG_KEY_FOLDER_NAME_GTF]
         except Exception as e:
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
                     self._CONFIG_KEY_DATA_DOWNLOADER,
                     self._CONFIG_KEY_ENSEMBL_FTP,
                     self._CONFIG_KEY_FOLDER_NAME_GTF,
@@ -201,7 +201,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         except Exception as e:
             # TODO - Refactor this code whenever you have time, because a pattern has emerged here
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
                     self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
                     self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE,
                     self._CONFIG_KEY_FILE_TYPE,
@@ -217,7 +217,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         except Exception as e:
             # TODO - Refactor this code whenever you have time, because a pattern has emerged here
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
                     self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
                     self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE,
                     self._CONFIG_KEY_FILE_SUFFIXES,
@@ -233,7 +233,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         except Exception as e:
             # TODO - Refactor this code whenever you have time, because a pattern has emerged here
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}', becuase of '{}'".format(
+                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
                     self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
                     self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE,
                     self._CONFIG_KEY_FILE_EXTENSION,
