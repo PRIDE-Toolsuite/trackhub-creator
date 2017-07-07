@@ -18,5 +18,14 @@ class Agent():
 
 
 class Manager:
-    # TODO
-    pass
+    def __init__(self, urls, dst_folder, logger, n_tries=32, n_timeouts=3, download_timeout=120):
+        self.__urls = urls
+        self.__dst_folder = dst_folder
+        self.__logger = logger
+        self.__n_tries = n_tries
+        self.__n_timeouts = n_timeouts
+        self.__download_timeout = download_timeout
+        self.__agents = {}
+        self.__success = True
+
+
