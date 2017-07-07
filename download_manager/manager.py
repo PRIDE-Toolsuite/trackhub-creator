@@ -32,4 +32,6 @@ class Manager:
         # TODO
         pass
 
-    
+    def wait_all(self):
+        # TODO
+        pass
