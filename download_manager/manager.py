@@ -35,3 +35,6 @@ class Manager:
     def wait_all(self):
         # TODO
         pass
+
+    def is_success(self):
+        return self.__success
