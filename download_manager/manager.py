@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Download manager and its helper agents
 """
