@@ -28,4 +28,8 @@ class Manager:
         self.__agents = {}
         self.__success = True
 
+    def start_downloads(self):
+        # TODO
+        pass
 
+    
