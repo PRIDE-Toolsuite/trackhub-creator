@@ -10,3 +10,7 @@
 """
 Download manager and its helper agents
 """
+
+class Manager:
+    # TODO
+    pass
