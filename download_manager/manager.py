@@ -11,6 +11,12 @@
 Download manager and its helper agents
 """
 
+
+class Agent():
+    # TODO
+    pass
+
+
 class Manager:
     # TODO
     pass
