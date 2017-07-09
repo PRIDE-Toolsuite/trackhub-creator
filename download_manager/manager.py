@@ -13,8 +13,10 @@ Download manager and its helper agents
 
 
 class Agent():
-    # TODO
-    pass
+    def __init__(self):
+        pass
+
+    
 
 
 class Manager:
