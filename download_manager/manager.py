@@ -25,6 +25,9 @@ class Agent():
     def wait(self):
         pass
 
+    def get_result(self):
+        pass
+
 
 class Manager:
     def __init__(self, urls, dst_folder, logger, n_tries=32, n_timeouts=3, download_timeout=120):
