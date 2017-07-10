@@ -11,9 +11,12 @@
 Download manager and its helper agents
 """
 
+import threading
 
-class Agent():
+
+class Agent(threading.Thread):
     def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3, download_timeout=120):
+        super(Agent, self).__init__()
         self.__url = url
         self.__dst_folder = dst_folder
         self.__n_tries = n_attemps
