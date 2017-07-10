@@ -78,11 +78,16 @@ class Agent(threading.Thread):
             raise exception_download_timeout
 
     def __download_with_timeout_attempts(self):
+        """
+        Download the given URL given a time constraint with a limited number of attempts upon timeout errors.
+        :return: True if success, False if we reached the maximum number of attempts
+        :exception:
+        """
         timeout_attempt_counter = 0
         while timeout_attempt_counter < self.get_timeout_attempts():
             try:
                 timeout_attempt_counter += 1
-                self.__download_with_timeout()
+                return self.__download_with_timeout()
             except subprocess.TimeoutExpired as exception_download_timeout:
                 self._build_result("Download of '{}' TIMED OUT, attempt #{} out of #{}"
                                    .format(self.get_download_url(),
@@ -91,7 +96,7 @@ class Agent(threading.Thread):
                 # wait for a random amount of time before retrying the download
                 # WARNING! - MAGIC NUMBER AHEAD!!!
                 time.sleep(random.randint(0, 60))
-        return True
+        return False
 
     def run(self):
         """
