@@ -18,7 +18,9 @@ class Agent():
         self.__dst_folder = dst_folder
         self.__n_tries = n_attemps
         self.__n_timeout_errors = n_timeout_errors
+        # Compute destination file name, using the same file name as in the given URL
         self.__dst_filename = url[url.rfind("/") + 1:]
+        
 
     def _build_result(self):
         pass
