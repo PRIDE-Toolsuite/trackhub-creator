@@ -61,10 +61,13 @@ class Agent(threading.Thread):
         stdout = b' '
         stderr = b' '
         try:
+            self._build_result("Downloading '{}' with timeout set to {} seconds"
+                               .format(self.get_download_url(),
+                                       self.get_download_timeout()))
             (stdout, stderr) = download_subprocess.communicate(timeout=self.get_download_timeout())
             return True
         except subprocess.TimeoutExpired as exception_download_timeout:
-            self._build_result("Timeout ({} seconds) downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
+            self._build_result("Timeout ({} seconds) ERROR downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
                                .format(self.get_download_timeout(),
                                        self.get_download_url(),
                                        stdout.decode('utf8'),
