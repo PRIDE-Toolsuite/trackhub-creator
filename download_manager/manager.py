@@ -51,9 +51,9 @@ class Agent(threading.Thread):
     def __download_with_timeout(self):
         download_command = "cd " + str(self.get_dst_folder()) + "; curl -L -O -C - " + str(self.get_url())
         p = subprocess.Popen(download_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        stdout = b' '
+        stderr = b' '
         try:
-            stdout = b' '
-            stderr = b' '
             (stdout, stderr) = p.communicate(timeout=self.get_download_timeout())
             return True
         except subprocess.TimeoutExpired as t:
