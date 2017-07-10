@@ -58,7 +58,8 @@ class Agent(threading.Thread):
         self.join()
 
     def wait(self):
-        pass
+        self.join()
+        return self.get_result()
 
     def get_result(self):
         pass
