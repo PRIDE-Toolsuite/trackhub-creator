@@ -86,7 +86,9 @@ class Agent(threading.Thread):
                                    .format(self.get_download_url(),
                                            timeout_attempt_counter,
                                            self.get_timeout_attempts()))
-                # TODO - wait for a random amount of time before retrying the download
+                # wait for a random amount of time before retrying the download
+                # WARNING! - MAGIC NUMBER AHEAD!!!
+                time.sleep(random.randint(0, 60))
         return True
 
     def run(self):
