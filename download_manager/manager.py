@@ -108,7 +108,6 @@ class Agent(threading.Thread):
         """
         Download the given URL given a time constraint with a limited number of attempts upon timeout errors.
         :return: True if success, False if we reached the maximum number of attempts
-        :exception:
         """
         timeout_attempt_counter = 0
         while timeout_attempt_counter < self.get_timeout_attempts():
