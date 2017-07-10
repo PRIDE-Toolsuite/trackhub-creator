@@ -13,8 +13,8 @@ Download manager and its helper agents
 
 
 class Agent():
-    def __init__(self):
-        pass
+    def __init__(self, url):
+        self.__url = url
 
     def _build_result(self):
         pass
