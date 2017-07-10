@@ -17,3 +17,8 @@ from exceptions import AppException
 class DownloadException(AppException):
     def __init__(self, value):
         super(DownloadException, self).__init__(value)
+
+
+class AgentException(AppException):
+    def __init__(self, value):
+        super(AgentException, self).__init__(value)
