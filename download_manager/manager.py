@@ -13,9 +13,10 @@ Download manager and its helper agents
 
 
 class Agent():
-    def __init__(self, url, dst_folder):
+    def __init__(self, url, dst_folder, n_tries=32):
         self.__url = url
         self.__dst_folder = dst_folder
+        self.__n_tries = n_tries
 
     def _build_result(self):
         pass
