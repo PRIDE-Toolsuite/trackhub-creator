@@ -14,9 +14,9 @@ Exceptions related to the download manager module
 from exceptions import AppException
 
 
-class DownloadException(AppException):
+class ManagerException(AppException):
     def __init__(self, value):
-        super(DownloadException, self).__init__(value)
+        super(ManagerException, self).__init__(value)
 
 
 class AgentException(AppException):
