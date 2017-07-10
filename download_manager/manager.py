@@ -54,11 +54,11 @@ class Agent(threading.Thread):
         try:
             stdout = b' '
             stderr = b' '
-            (stdout, stderr) = p.communicate(timeout=self.get_timeout())
+            (stdout, stderr) = p.communicate(timeout=self.get_download_timeout())
             return True
         except subprocess.TimeoutExpired as t:
             self._build_result("Timeout ({} seconds) downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
-            .format(self.get_timeout(),
+            .format(self.get_download_timeout(),
                     self.get_url(),
                     stdout.decode('utf8'),
                     stderr.decode('utf8')))
@@ -105,7 +105,7 @@ class Agent(threading.Thread):
     def get_dst_folder(self):
         return self.__dst_folder
 
-    def get_timeout(self):
+    def get_download_timeout(self):
         return self.__download_timeout
 
 
