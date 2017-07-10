@@ -28,6 +28,15 @@ class Agent():
         self.__result = {'msg': '', 'success': True, 'url': str(self.__url)}
 
     def _build_result(self, msg, success=True):
+        """
+        Result object builder.
+
+        The result object will contain anything that happened during the process of downloading a file from the given
+        URL, and whether it was successful or not.
+        :param msg: message to add to the final result object
+        :param success: whether this extra informatoin makes the process successful or not
+        :return: no value is returned
+        """
         self.__result['msg'] = self.__result['msg'] + "\n" + msg
         self.__result['success'] = self.__result['success'] and success
 
