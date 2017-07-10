@@ -105,6 +105,9 @@ class Agent(threading.Thread):
     def get_dst_folder(self):
         return self.__dst_folder
 
+    def get_timeout(self):
+        return self.__download_timeout
+
 
 class Manager:
     def __init__(self, urls, dst_folder, logger, n_tries=32, n_timeouts=3, download_timeout=120):
