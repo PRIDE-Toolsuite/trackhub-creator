@@ -58,6 +58,10 @@ class Agent(threading.Thread):
         self.join()
 
     def wait(self):
+        """
+        Wait for this thread to finish its job (download a file), and get the result object.
+        :return: result object with information on the finished download process
+        """
         self.join()
         return self.get_result()
 
