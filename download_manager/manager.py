@@ -13,14 +13,14 @@ Download manager and its helper agents
 
 
 class Agent():
-    def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3):
+    def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3, download_timeout=120):
         self.__url = url
         self.__dst_folder = dst_folder
         self.__n_tries = n_attemps
         self.__n_timeout_errors = n_timeout_errors
+        self.__download_timeout = download_timeout
         # Compute destination file name, using the same file name as in the given URL
         self.__dst_filename = url[url.rfind("/") + 1:]
-        
 
     def _build_result(self):
         pass
