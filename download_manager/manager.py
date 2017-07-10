@@ -14,6 +14,7 @@ Download manager and its helper agents
 import os
 import time
 import threading
+import subprocess
 
 
 class Agent(threading.Thread):
@@ -48,7 +49,6 @@ class Agent(threading.Thread):
         self.__result['success'] = self.__result['success'] and success
 
     def __download_with_timeout(self):
-        # TODO
         pass
 
     def __download_with_timeout_attempts(self):
@@ -61,6 +61,7 @@ class Agent(threading.Thread):
         :return: no value is returned
         """
         # TODO - Validate URL
+
 
     def cancel(self):
         """
