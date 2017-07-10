@@ -49,6 +49,11 @@ class Agent(threading.Thread):
         pass
 
     def cancel(self):
+        """
+        I think this is the way to stop the thread, but I'm not sure, because the documentation about it is a little bit
+        tricky, or I didn't find the right documentation.
+        :return: no value is returned
+        """
         self.alive = False
         self.join()
 
