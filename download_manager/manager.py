@@ -94,6 +94,7 @@ class Agent(threading.Thread):
         :return: no value is returned
         """
         # TODO - Validate URL
+        pass
 
     def cancel(self):
         """
