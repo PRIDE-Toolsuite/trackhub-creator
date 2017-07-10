@@ -49,6 +49,12 @@ class Agent(threading.Thread):
         self.__result['success'] = self.__result['success'] and success
 
     def __download_with_timeout(self):
+        """
+        This is a helper method that will download the given URL setting a timeout limit.
+        :return: True if success
+        :except: a subprocess.TimeoutExpired exception is raised if the download can't be completed within the given
+        temporal constraints
+        """
         download_command = "cd " + str(self.get_dst_folder()) + "; curl -L -O -C - " + str(self.get_download_url())
         download_subprocess = subprocess.Popen(download_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                                shell=True)
