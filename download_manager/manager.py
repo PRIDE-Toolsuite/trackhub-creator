@@ -24,6 +24,8 @@ class Agent():
         # Prepare standard output and error output
         self.__stdout = b' '
         self.__stderr = b' '
+        # Result object
+        self.__result = {'msg': '', 'success': True, 'url': str(self.__url)}
 
     def _build_result(self):
         pass
