@@ -50,7 +50,8 @@ class Agent(threading.Thread):
 
     def __download_with_timeout(self):
         download_command = "cd " + str(self.get_dst_folder()) + "; curl -L -O -C - " + str(self.get_download_url())
-        download_subprocess = subprocess.Popen(download_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        download_subprocess = subprocess.Popen(download_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                               shell=True)
         stdout = b' '
         stderr = b' '
         try:
@@ -58,10 +59,10 @@ class Agent(threading.Thread):
             return True
         except subprocess.TimeoutExpired as exception_download_timeout:
             self._build_result("Timeout ({} seconds) downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
-            .format(self.get_download_timeout(),
-                    self.get_download_url(),
-                    stdout.decode('utf8'),
-                    stderr.decode('utf8')))
+                               .format(self.get_download_timeout(),
+                                       self.get_download_url(),
+                                       stdout.decode('utf8'),
+                                       stderr.decode('utf8')))
             raise exception_download_timeout
 
     def __download_with_timeout_attempts(self):
@@ -74,7 +75,6 @@ class Agent(threading.Thread):
         :return: no value is returned
         """
         # TODO - Validate URL
-
 
     def cancel(self):
         """
