@@ -27,8 +27,9 @@ class Agent():
         # Result object
         self.__result = {'msg': '', 'success': True, 'url': str(self.__url)}
 
-    def _build_result(self):
-        pass
+    def _build_result(self, msg, success=True):
+        self.__result['msg'] = self.__result['msg'] + "\n" + msg
+        self.__result['success'] = self.__result['success'] and success
 
     def run(self):
         pass
