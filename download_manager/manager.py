@@ -49,7 +49,7 @@ class Agent(threading.Thread):
         self.__result['success'] = self.__result['success'] and success
 
     def __download_with_timeout(self):
-        download_command = "cd " + str(self.get_dst_folder()) + "; curl -L -O -C - " + str(self.get_url())
+        download_command = "cd " + str(self.get_dst_folder()) + "; curl -L -O -C - " + str(self.get_download_url())
         download_subprocess = subprocess.Popen(download_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         stdout = b' '
         stderr = b' '
@@ -59,7 +59,7 @@ class Agent(threading.Thread):
         except subprocess.TimeoutExpired as exception_download_timeout:
             self._build_result("Timeout ({} seconds) downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
             .format(self.get_download_timeout(),
-                    self.get_url(),
+                    self.get_download_url(),
                     stdout.decode('utf8'),
                     stderr.decode('utf8')))
             raise exception_download_timeout
@@ -108,7 +108,7 @@ class Agent(threading.Thread):
     def get_download_timeout(self):
         return self.__download_timeout
 
-    def get_url(self):
+    def get_download_url(self):
         return self.__download_url
 
 
