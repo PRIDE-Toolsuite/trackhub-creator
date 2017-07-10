@@ -68,7 +68,6 @@ class Agent(threading.Thread):
                                .format(self.get_download_url(),
                                        self.get_download_timeout()))
             (stdout, stderr) = download_subprocess.communicate(timeout=self.get_download_timeout())
-            return True
         except subprocess.TimeoutExpired as exception_download_timeout:
             self._build_result("Timeout ({} seconds) ERROR downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
                                .format(self.get_download_timeout(),
@@ -76,6 +75,34 @@ class Agent(threading.Thread):
                                        stdout.decode('utf8'),
                                        stderr.decode('utf8')))
             raise exception_download_timeout
+        # Let's check the result from downloading the file
+        if download_subprocess.poll():
+            if download_subprocess.returncode != 0:
+                # ERROR
+                self._build_result("ERROR downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
+                                   .format(self.get_download_timeout(),
+                                           self.get_download_url(),
+                                           stdout.decode('utf8'),
+                                           stderr.decode('utf8')))
+                return False
+            # SUCCESS
+            self._build_result("SUCCESSFUL download for '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
+                               .format(self.get_download_timeout(),
+                                       self.get_download_url(),
+                                       stdout.decode('utf8'),
+                                       stderr.decode('utf8')))
+        else:
+            # TODO
+            # The child process is still running, and this is weird stuff because we are using a timeout parameter, we
+            # should never reach this part of the code
+            self._build_result("WEIRD DOWNLOAD - THE SUBPROCESS IS STILL RUNNING FOR '{}' DESPITE THE TIME OUT "
+                               "PARAMETER, STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
+                               .format(self.get_download_timeout(),
+                                       self.get_download_url(),
+                                       stdout.decode('utf8'),
+                                       stderr.decode('utf8')))
+            return False
+        return True
 
     def __download_with_timeout_attempts(self):
         """
