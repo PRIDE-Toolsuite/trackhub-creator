@@ -18,7 +18,7 @@ import subprocess
 
 
 class Agent(threading.Thread):
-    def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3, download_timeout=120):
+    def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3, download_timeout=600):
         super(Agent, self).__init__()
         self.__download_url = url
         self.__dst_folder = dst_folder
