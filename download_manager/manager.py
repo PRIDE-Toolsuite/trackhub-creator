@@ -49,7 +49,8 @@ class Agent(threading.Thread):
         pass
 
     def cancel(self):
-        pass
+        self.alive = False
+        self.join()
 
     def wait(self):
         pass
