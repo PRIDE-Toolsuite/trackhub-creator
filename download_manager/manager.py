@@ -13,10 +13,11 @@ Download manager and its helper agents
 
 
 class Agent():
-    def __init__(self, url, dst_folder, n_attemps=32):
+    def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3):
         self.__url = url
         self.__dst_folder = dst_folder
         self.__n_tries = n_attemps
+        self.__n_timeout_errors = n_timeout_errors
 
     def _build_result(self):
         pass
