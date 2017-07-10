@@ -51,6 +51,10 @@ class Agent(threading.Thread):
         # TODO
         pass
 
+    def __download_with_timeout_attempts(self):
+        # TODO
+        pass
+
     def run(self):
         """
         This is the main thread for the download agent
