@@ -18,12 +18,12 @@ import subprocess
 
 
 class Agent(threading.Thread):
-    def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3, download_timeout=600):
+    def __init__(self, url, dst_folder, n_attemps=32, timeout_attempts=3, download_timeout=600):
         super(Agent, self).__init__()
         self.__download_url = url
         self.__dst_folder = dst_folder
         self.__n_tries = n_attemps
-        self.__n_timeout_errors = n_timeout_errors
+        self.__timeout_attempts = timeout_attempts
         self.__download_timeout = download_timeout
         # Compute destination file name, using the same file name as in the given URL
         self.__dst_filename = url[url.rfind("/") + 1:]
@@ -129,6 +129,9 @@ class Agent(threading.Thread):
 
     def get_download_url(self):
         return self.__download_url
+
+    def get_timeout_attempts(self):
+        return self.__timeout_attempts
 
 
 class Manager:
