@@ -47,8 +47,16 @@ class Agent(threading.Thread):
         self.__result['msg'] = self.__result['msg'] + "\n" + msg
         self.__result['success'] = self.__result['success'] and success
 
-    def run(self):
+    def __download_with_timeout(self):
+        # TODO
         pass
+
+    def run(self):
+        """
+        This is the main thread for the download agent
+        :return: no value is returned
+        """
+        # TODO - Validate URL
 
     def cancel(self):
         """
