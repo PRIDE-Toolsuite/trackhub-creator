@@ -29,6 +29,8 @@ class Agent(threading.Thread):
         self.__stderr = b' '
         # Result object
         self.__result = {'msg': '', 'success': True, 'url': str(self.__url)}
+        # We have everything we need, auto-start the thread
+        self.start()
 
     def _build_result(self, msg, success=True):
         """
