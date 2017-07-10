@@ -20,7 +20,7 @@ import subprocess
 class Agent(threading.Thread):
     def __init__(self, url, dst_folder, n_attemps=32, n_timeout_errors=3, download_timeout=120):
         super(Agent, self).__init__()
-        self.__url = url
+        self.__download_url = url
         self.__dst_folder = dst_folder
         self.__n_tries = n_attemps
         self.__n_timeout_errors = n_timeout_errors
@@ -31,7 +31,7 @@ class Agent(threading.Thread):
         self.__stdout = b' '
         self.__stderr = b' '
         # Result object
-        self.__result = {'msg': '', 'success': True, 'url': str(self.__url)}
+        self.__result = {'msg': '', 'success': True, 'url': str(self.__download_url)}
         # We have everything we need, auto-start the thread
         self.start()
 
@@ -109,7 +109,7 @@ class Agent(threading.Thread):
         return self.__download_timeout
 
     def get_url(self):
-        return self.__url
+        return self.__download_url
 
 
 class Manager:
