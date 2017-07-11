@@ -20,6 +20,11 @@ clean_dev:
 clean_logs:
 	rm -rf logs/*log
 
-clean: clean_logs clean_dev 
+clean_sessions:
+	find run/* -type d -exec rm -rf \{} \;
 
-.PHONY: dev_environment install_requirements update_requirements_file tests clean_logs clean_dev
+clean: clean_logs clean_sessions
+
+clean_all: clean clean_dev
+
+.PHONY: dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean
