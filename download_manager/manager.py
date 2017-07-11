@@ -74,7 +74,7 @@ class Agent(threading.Thread):
                                        self.get_download_url(),
                                        stdout.decode('utf8'),
                                        stderr.decode('utf8')))
-            raise exception_download_timeout
+            raise
         # Let's check the result from downloading the file
         if download_subprocess.poll():
             if download_subprocess.returncode != 0:
