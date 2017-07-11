@@ -444,7 +444,7 @@ class DataDownloadService:
                                                                  .format(missing_file_name, missing_file_path)
                                                                   for missing_file_name, missing_file_path
                                                                   in missing_files]))))
-        # Retrieve the files
+        # TODO Retrieve the files
         pass
 
     def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
