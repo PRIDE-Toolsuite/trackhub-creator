@@ -21,7 +21,7 @@ clean_logs:
 	rm -rf logs/*log
 
 clean_sessions:
-	find run/* -type d -exec rm -rf \{} \;
+	find run/* -type d | xargs -I{} rm -rf {}
 
 clean: clean_logs clean_sessions
 
