@@ -16,3 +16,5 @@ import unittest
 from download_manager.manager import Manager as DownloadManager
 
 
+class TestDownloadManager(unittest.TestCase):
+    pass
