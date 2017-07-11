@@ -15,7 +15,7 @@ setup(
     long_description=readme,
     author='Manuel Bernal-Llinares',
     author_email='mbdebian@gmail.com',
-    url='https://github.com/PRIDE-Toolsuite/trackhub-creator',
+    url='https://github.com/Proteogenomics/trackhub-creator',
     license=license,
     packages=find_packages(exclude('tests', 'docs'))
 )
