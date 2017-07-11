@@ -170,6 +170,9 @@ class Agent(threading.Thread):
     def get_timeout_attempts(self):
         return self.__timeout_attempts
 
+    def get_download_attempts(self):
+        return self.__download_attempts
+
 
 class Manager:
     def __init__(self, urls, dst_folder, logger, n_tries=32, n_timeouts=3, download_timeout=120):
