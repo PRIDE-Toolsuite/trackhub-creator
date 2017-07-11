@@ -34,3 +34,7 @@ class TestDownloadManager(unittest.TestCase):
         download_manager.start_downloads()
         download_manager.wait_all()
         self.assertTrue(download_manager.is_success(), "Files downloaded successfully")
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
