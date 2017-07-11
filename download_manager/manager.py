@@ -228,6 +228,9 @@ class Manager:
     def __get_agent_entries(self):
         return [(url, self.__agents[url]) for url in self.__agents]
 
+    def __set_success(self):
+        return self.__success = True
+
     def _get_logger(self):
         return self.__logger
 
@@ -244,6 +247,14 @@ class Manager:
     def wait_all(self):
         self._get_logger().debug("Waiting for #{} download agents to finish"
                                  .format(self.__get_count_of_running_agents()))
+        for (url, agent) in self.__get_agent_entries():
+            self._get_logger().debug("Checking on Download Agent for '{}'".format(url))
+            result = agent.wait()
+            if result['success']:
+                self._get_logger().debug(result['msg'])
+            else:
+                self._get_logger().error(result['msg'])
+                # TODO
 
     def is_success(self):
         return self.__success
