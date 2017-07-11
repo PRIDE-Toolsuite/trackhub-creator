@@ -247,3 +247,6 @@ class Manager:
 
     def get_download_timeouts(self):
         return self.__download_timeout
+
+    def add_agent_for_url(self, url, agent):
+        self.__agents[url] = agent
