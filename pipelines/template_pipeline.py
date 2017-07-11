@@ -13,7 +13,7 @@ This is a template pipeline for refactoring out things from final pipelines as I
 
 # App imports
 import config_manager
-import toolbox
+import general
 from pipelines.exceptions import PipelineDirectorException
 
 # The config manager singleton is just an example that only makes sense for specialized pipeline modules, not really for
@@ -25,7 +25,7 @@ __configuration_manager = None
 def __get_configuration_manager():
     global __configuration_manager
     if __configuration_manager is None:
-        __configuration_manager = DirectorConfigurationManager(toolbox.read_json(__configuration_file),
+        __configuration_manager = DirectorConfigurationManager(general.read_json(__configuration_file),
                                                                __configuration_file)
     return __configuration_manager
 

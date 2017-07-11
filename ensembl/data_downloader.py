@@ -18,7 +18,7 @@ Some of the use cases for this module:
 import os
 # App imports
 import config_manager
-import toolbox
+import general
 import ensembl.service
 from exceptions import ConfigManagerException
 
@@ -308,18 +308,18 @@ class DataDownloadService:
     def __prepare_local_ensembl_repository(self):
         self._get_logger().debug("Preparing local Ensembl repository, root folder - '{}'"
                                  .format(self.get_local_path_root_ensembl_repo()))
-        toolbox.check_create_folders([self.get_local_path_root_ensembl_repo()])
+        general.check_create_folders([self.get_local_path_root_ensembl_repo()])
         self._get_logger().debug("Local path for Ensembl Release - '{}'"
                                  .format(self.get_local_path_ensembl_release()))
         if self._get_configuration_manager().is_rewrite_local_path_ensembl_repo():
             self._get_logger().debug("Creating folder in 'OVERWRITE' mode - '{}'"
                                      .format(self.get_local_path_ensembl_release()))
-            toolbox.check_create_folders_overwrite([self.get_local_path_ensembl_release()])
+            general.check_create_folders_overwrite([self.get_local_path_ensembl_release()])
         else:
             self._get_logger().debug("Creating folder if it doesn't exist - '{}'"
                                      .format(self.get_local_path_ensembl_release()))
-            toolbox.check_create_folders([self.get_local_path_ensembl_release()])
-        toolbox.create_latest_symlink(self.get_local_path_ensembl_release())
+            general.check_create_folders([self.get_local_path_ensembl_release()])
+        general.create_latest_symlink(self.get_local_path_ensembl_release())
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # The subpath is fasta/species.name

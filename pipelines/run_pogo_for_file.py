@@ -14,7 +14,7 @@ folder where the input file is located
 
 # App imports
 import config_manager
-import toolbox
+import general
 import pipelines.template_pipeline as template_pipeline
 
 __configuration_file = None
@@ -24,7 +24,7 @@ __configuration_manager = None
 def __get_configuration_manager():
     global __configuration_manager
     if __configuration_manager is None:
-        __configuration_manager = DirectorConfigurationManager(toolbox.read_json(__configuration_file),
+        __configuration_manager = DirectorConfigurationManager(general.read_json(__configuration_file),
                                                                __configuration_file)
     return __configuration_manager
 

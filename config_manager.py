@@ -19,7 +19,7 @@ import logging
 import importlib
 # Package modules
 from exceptions import AppConfigException, ConfigManagerException
-import toolbox
+import general
 
 # Application defaults - NORMAL OPERATION MODE
 _folder_bin = os.path.abspath('bin')
@@ -104,7 +104,7 @@ def read_config_from_file(configuration_file):
     if not os.path.isabs(config_file_path):
         config_file_path = os.path.join(_folder_config, configuration_file)
     try:
-        return toolbox.read_json(config_file_path)
+        return general.read_json(config_file_path)
     except Exception as e:
         msg = "Config file {} could not be read, because {}".format(config_file_path, str(e))
         raise AppConfigException(msg)
@@ -170,7 +170,7 @@ class AppConfigManager(ConfigurationManager):
                             self.get_folder_run(),
                             self.get_session_working_dir(),
                             ]
-        toolbox.check_create_folders(folders_to_check)
+        general.check_create_folders(folders_to_check)
         # Prepare Logging subsystem
         if "loglevel" in configuration_object["logger"]:
             _log_level = configuration_object["logger"]["loglevel"]
