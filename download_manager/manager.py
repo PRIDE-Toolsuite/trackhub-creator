@@ -23,7 +23,7 @@ class Agent(threading.Thread):
         super(Agent, self).__init__()
         self.__download_url = url
         self.__dst_folder = dst_folder
-        self.__n_tries = download_attempts
+        self.__download_attempts = download_attempts
         self.__timeout_attempts = timeout_attempts
         self.__download_timeout = download_timeout
         # Compute destination file name, using the same file name as in the given URL
