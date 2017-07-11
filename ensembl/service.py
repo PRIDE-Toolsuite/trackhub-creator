@@ -13,9 +13,9 @@ This module models an Ensembl service
 
 # App imports
 import config_manager
-import rest_toolbox
-from exceptions import ConfigManagerException
 from ensembl.models import SpeciesService
+from exceptions import ConfigManagerException
+from toolbox import rest
 
 # Ensembl Service is going to be a Singleton, unique for the running session
 __configuration_file = None
@@ -78,7 +78,7 @@ class Service:
 
     def __request_release_number(self):
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
-        current_release_data = rest_toolbox.make_rest_request(request_url)
+        current_release_data = rest.make_rest_request(request_url)
         self._get_logger().debug("Request Release Number response from Ensembl - '{}'".format(current_release_data))
         self._get_logger().info(
             "This session is working with Ensembl Release {}".format(current_release_data['releases'][0]))
@@ -87,7 +87,7 @@ class Service:
     def __request_species_data(self):
         request_url = self._get_config_manager().get_api_server() + "/info/species?"
         self._get_logger().debug("Requesting Species Data to Ensembl, url '{}'".format(request_url))
-        return rest_toolbox.make_rest_request(request_url)
+        return rest.make_rest_request(request_url)
 
     def _get_config_manager(self):
         return self.__config_manager
