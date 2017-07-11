@@ -259,7 +259,8 @@ class Manager:
                 self._get_logger().debug(result['msg'])
             else:
                 self._get_logger().error(result['msg'])
-                # TODO
+                self.__set_fail()
+        self.__set_success()
 
     def is_success(self):
         return self.__success
