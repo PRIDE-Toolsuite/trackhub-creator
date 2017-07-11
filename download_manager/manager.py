@@ -228,3 +228,6 @@ class Manager:
 
     def is_success(self):
         return self.__success
+
+    def get_urls_to_download(self):
+        return self.__urls
