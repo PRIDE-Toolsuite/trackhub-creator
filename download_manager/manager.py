@@ -240,3 +240,6 @@ class Manager:
 
     def get_download_attempts(self):
         return self.__download_attempts
+
+    def get_timeout_attempts(self):
+        return self.__timeout_attempts
