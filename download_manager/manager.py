@@ -247,7 +247,7 @@ class Manager:
                                            self.get_download_destination_folder(),
                                            download_attempts=self.get_download_attempts(),
                                            timeout_attempts=self.get_timeout_attempts(),
-                                           download_timeout=self.get_download_timeouts()))
+                                           download_timeout=self.get_download_timeout()))
 
     def wait_all(self):
         self._get_logger().debug("Waiting for #{} download agents to finish"
