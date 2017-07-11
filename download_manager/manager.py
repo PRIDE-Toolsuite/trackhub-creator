@@ -237,3 +237,6 @@ class Manager:
 
     def _get_logger(self):
         return self.__logger
+
+    def get_download_attempts(self):
+        return self.__download_attempts
