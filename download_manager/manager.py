@@ -231,3 +231,7 @@ class Manager:
 
     def get_urls_to_download(self):
         return self.__urls
+
+    def get_download_destination_folder(self):
+        return self.__dst_folder
+
