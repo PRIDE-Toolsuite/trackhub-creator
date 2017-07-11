@@ -21,10 +21,10 @@ class TestDownloadManager(unittest.TestCase):
     __logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def test_success_on_sample_files_download(self):
-        urls = ['http://mirror.internode.on.net/pub/test/50meg.test',
-                'http://mirror.internode.on.net/pub/test/100meg.test',
-                'http://mirror.internode.on.net/pub/test/10meg.test',
-                'http://error.nodomain.on.net/pub/test/1meg.tes']
+        urls = ['ftp://ftp.ensembl.org/pub/release-89/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz',
+                'ftp://ftp.ensembl.org/pub/release-89/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.abinitio.fa.gz',
+                'ftp://ftp.ensembl.org/pub/release-89/gtf/homo_sapiens/Homo_sapiens.GRCh38.89.abinitio.gtf.gz',
+                'ftp://ftp.ensembl.org/pub/release-89/gtf/homo_sapiens/Homo_sapiens.GRCh38.89.chr.gtf.gz']
         destination_folder = config_manager.get_app_config_manager().get_folder_run()
         # Log the test environment
         self.__logger.info("Sample file URLs to download: {}".format(",".join(urls)))
