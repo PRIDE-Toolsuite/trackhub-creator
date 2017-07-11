@@ -113,6 +113,10 @@ class Agent(threading.Thread):
         while timeout_attempt_counter < self.get_timeout_attempts():
             try:
                 timeout_attempt_counter += 1
+                self._build_result("Downloading '{}', attempt #{} out of #{}"
+                                   .format(self.get_download_url(),
+                                           timeout_attempt_counter,
+                                           self.get_timeout_attempts()))
                 return self.__download_with_timeout()
             except subprocess.TimeoutExpired as exception_download_timeout:
                 self._build_result("Download of '{}' TIMED OUT, attempt #{} out of #{}"
