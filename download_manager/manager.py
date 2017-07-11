@@ -235,3 +235,5 @@ class Manager:
     def get_download_destination_folder(self):
         return self.__dst_folder
 
+    def _get_logger(self):
+        return self.__logger
