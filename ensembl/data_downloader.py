@@ -16,11 +16,12 @@ Some of the use cases for this module:
 """
 
 import os
+
 # App imports
 import config_manager
-import general
 import ensembl.service
 from exceptions import ConfigManagerException
+from toolbox import general
 
 # Common configuration for all instances of the download manager
 __configuration_file = None

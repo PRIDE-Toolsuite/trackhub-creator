@@ -14,8 +14,8 @@ PoGo formatted files for its later use
 
 # App imports
 import config_manager
-import general
 import pipelines.template_pipeline as template_pipeline
+from toolbox import general
 
 __configuration_file = None
 __configuration_manager = None

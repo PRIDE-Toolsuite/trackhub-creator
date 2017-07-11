@@ -11,15 +11,14 @@
 This module manages the configuration for the running pipeline
 """
 
+import logging
 # System modules
 import os
 import time
-import json
-import logging
-import importlib
+
 # Package modules
 from exceptions import AppConfigException, ConfigManagerException
-import general
+from toolbox import general
 
 # Application defaults - NORMAL OPERATION MODE
 _folder_bin = os.path.abspath('bin')
