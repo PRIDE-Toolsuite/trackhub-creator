@@ -154,17 +154,18 @@ class Agent(threading.Thread):
                                            attempt_counter,
                                            self.get_download_attempts(),
                                            str(e)))
-            if download_completion:
-                self._build_result("Download for '{}' COMPLETED, on download attempt #{} out of #{}"
-                                   .format(self.get_download_url(),
-                                           attempt_counter,
-                                           self.get_download_attempts()))
-            else:
-                self._build_result("Download for '{}' FAILED, on download attempt #{} out of #{}"
-                                   .format(self.get_download_url(),
-                                           attempt_counter,
-                                           self.get_download_attempts()),
-                                   False)
+        if download_completion:
+            self._build_result("Download for '{}' COMPLETED, on download attempt #{} out of #{}"
+                               .format(self.get_download_url(),
+                                       attempt_counter,
+                                       self.get_download_attempts()),
+                               True)
+        else:
+            self._build_result("Download for '{}' FAILED, on download attempt #{} out of #{}"
+                               .format(self.get_download_url(),
+                                       attempt_counter,
+                                       self.get_download_attempts()),
+                               False)
 
     def cancel(self):
         """
@@ -258,6 +259,7 @@ class Manager:
             result = agent.wait()
             if result['success']:
                 self._get_logger().debug(result['msg'])
+                self.__set_success()
             else:
                 self._get_logger().error(result['msg'])
                 self.__set_fail()
