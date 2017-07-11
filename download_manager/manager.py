@@ -134,7 +134,36 @@ class Agent(threading.Thread):
         :return: no value is returned
         """
         # TODO - Validate URL
-
+        attempt_counter = 0
+        download_completion = False
+        while attempt_counter < self.get_download_attempts():
+            attempt_counter += 1
+            self._build_result("Downloading '{}', download attempt #{} out of #{}"
+                               .format(self.get_download_url(),
+                                       attempt_counter,
+                                       self.get_download_attempts()))
+            try:
+                download_completion = self.__download_with_timeout_attempts()
+                if download_completion:
+                    # Quit as soon as we succeed on downloading the file
+                    break
+            except Exception as e:
+                self._build_result("ERROR downloading '{}', on download attempt #{} out of #{}, ERROR: {}"
+                                   .format(self.get_download_url(),
+                                           attempt_counter,
+                                           self.get_download_attempts(),
+                                           str(e)))
+            if download_completion:
+                self._build_result("Download for '{}' COMPLETED, on download attempt #{} out of #{}"
+                                   .format(self.get_download_url(),
+                                           attempt_counter,
+                                           self.get_download_attempts()))
+            else:
+                self._build_result("Download for '{}' FAILED, on download attempt #{} out of #{}"
+                                   .format(self.get_download_url(),
+                                           attempt_counter,
+                                           self.get_download_attempts()),
+                                   False)
 
     def cancel(self):
         """
