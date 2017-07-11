@@ -76,7 +76,7 @@ class Agent(threading.Thread):
                                        stderr.decode('utf8')))
             raise
         # Let's check the result from downloading the file
-        if download_subprocess.poll():
+        if download_subprocess.poll() is not None:
             if download_subprocess.returncode != 0:
                 # ERROR
                 self._build_result("ERROR downloading '{}', STDOUT: |||> {} <|||, STDERR XXX> {} <XXX"
@@ -101,6 +101,7 @@ class Agent(threading.Thread):
                                        self.get_download_url(),
                                        stdout.decode('utf8'),
                                        stderr.decode('utf8')))
+            download_subprocess.kill()
             return False
         return True
 
