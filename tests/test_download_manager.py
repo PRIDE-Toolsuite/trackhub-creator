@@ -17,4 +17,5 @@ from download_manager.manager import Manager as DownloadManager
 
 
 class TestDownloadManager(unittest.TestCase):
-    pass
+    def test_success_on_sample_files_download(self):
+        pass
