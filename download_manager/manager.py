@@ -219,15 +219,21 @@ class Manager:
         self.__agents = {}
         self.__success = True
 
+    def __add_agent_for_url(self, url, agent):
+        self.__agents[url] = agent
+
+    def _get_logger(self):
+        return self.__logger
+
     def start_downloads(self):
         for url in self.get_urls_to_download():
             self._get_logger().debug("Launching download agent for URL '{}'".format(url))
-            self.add_agent_for_url(url,
-                                   Agent(url,
-                                         self.get_download_destination_folder(),
-                                         download_attempts=self.get_download_attempts(),
-                                         timeout_attempts=self.get_timeout_attempts(),
-                                         download_timeout=self.get_download_timeouts()))
+            self.__add_agent_for_url(url,
+                                     Agent(url,
+                                           self.get_download_destination_folder(),
+                                           download_attempts=self.get_download_attempts(),
+                                           timeout_attempts=self.get_timeout_attempts(),
+                                           download_timeout=self.get_download_timeouts()))
 
     def wait_all(self):
         # TODO
@@ -242,9 +248,6 @@ class Manager:
     def get_download_destination_folder(self):
         return self.__download_destination_folder
 
-    def _get_logger(self):
-        return self.__logger
-
     def get_download_attempts(self):
         return self.__download_attempts
 
@@ -253,6 +256,3 @@ class Manager:
 
     def get_download_timeout(self):
         return self.__download_timeout
-
-    def add_agent_for_url(self, url, agent):
-        self.__agents[url] = agent
