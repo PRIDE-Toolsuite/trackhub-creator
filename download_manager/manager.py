@@ -222,6 +222,9 @@ class Manager:
     def __add_agent_for_url(self, url, agent):
         self.__agents[url] = agent
 
+    def __get_count_of_running_agents(self):
+        return len(self.__agents)
+
     def _get_logger(self):
         return self.__logger
 
@@ -236,8 +239,7 @@ class Manager:
                                            download_timeout=self.get_download_timeouts()))
 
     def wait_all(self):
-        # TODO
-        pass
+        self._get_logger().debug("Waiting for ")
 
     def is_success(self):
         return self.__success
@@ -256,3 +258,4 @@ class Manager:
 
     def get_download_timeout(self):
         return self.__download_timeout
+
