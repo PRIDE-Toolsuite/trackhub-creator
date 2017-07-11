@@ -25,7 +25,7 @@ __DEFAULT_CONFIG_FILE = "config_default.json"
 # Running mode
 __run_test_mode = False
 __logger = None
-__ars = None
+__args = None
 
 
 def get_cmdl():
