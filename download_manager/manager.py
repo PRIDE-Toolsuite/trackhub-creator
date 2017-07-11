@@ -231,7 +231,7 @@ class Manager:
         return [(url, self.__agents[url]) for url in self.__agents]
 
     def __set_success(self):
-        self.__success = self.__success and False
+        self.__success = self.__success and True
         return self.__success
 
     def __set_fail(self):
