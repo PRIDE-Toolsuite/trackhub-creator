@@ -11,12 +11,10 @@
 This module manages the configuration for the running pipeline
 """
 
-import logging
-# System modules
 import os
 import time
-
-# Package modules
+import logging
+# App modules
 from exceptions import AppConfigException, ConfigManagerException
 from toolbox import general
 
