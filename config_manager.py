@@ -25,6 +25,8 @@ _folder_docs = os.path.abspath('docs')
 _folder_logs = os.path.abspath('logs')
 _folder_resources = os.path.abspath('resources')
 _folder_run = os.path.abspath('run')
+
+# Configuration file and pipeline to run
 __configuration_file_name = None
 __pipeline_name = None
 
