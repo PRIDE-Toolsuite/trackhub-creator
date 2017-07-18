@@ -292,6 +292,8 @@ class DataDownloadService:
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         self.__local_path_ensembl_repo = None
         self.__local_path_ensembl_release = None
+        self.__remote_path_ensembl_repo = None
+        self.__remote_path_ensembl_release = None
         # Name for the current release
         self.__ensembl_release_name = None
         # Name for the subfolder that contains per species fasta files
@@ -368,6 +370,10 @@ class DataDownloadService:
             self.__local_path_ensembl_release = os.path.join(self.get_local_path_root_ensembl_repo(),
                                                              self.get_ensembl_release_name())
         return self.__local_path_ensembl_release
+
+    def get_remote_path_root_ensembl_repo(self):
+        # TODO
+        pass
 
     def get_remote_path_ensembl_release(self):
         # TODO
