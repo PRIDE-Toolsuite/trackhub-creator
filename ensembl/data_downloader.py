@@ -374,8 +374,10 @@ class DataDownloadService:
         return self._get_configuration_manager().get_ensembl_ftp_base_url()
 
     def get_remote_path_ensembl_release(self):
-        # TODO
-        pass
+        if not self.__remote_path_ensembl_release:
+            self.__remote_path_ensembl_release = "{}/{}".format(self.get_remote_path_root_ensembl_repo(),
+                                                                self.get_ensembl_release_name())
+        return self.__remote_path_ensembl_release
 
     def get_ensembl_release_name(self):
         if self.__ensembl_release_name is None:
