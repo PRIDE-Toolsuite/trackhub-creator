@@ -369,6 +369,10 @@ class DataDownloadService:
                                                              self.get_ensembl_release_name())
         return self.__local_path_ensembl_release
 
+    def get_remote_path_ensembl_release(self):
+        # TODO
+        pass
+
     def get_ensembl_release_name(self):
         if self.__ensembl_release_name is None:
             ensembl_service = ensembl.service.get_service()
