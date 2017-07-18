@@ -21,6 +21,7 @@ import os
 import config_manager
 import ensembl.service
 from exceptions import ConfigManagerException
+from download_manager.manager import Manager as DownloadManager
 from toolbox import general
 
 # Common configuration for all instances of the download manager
@@ -483,9 +484,17 @@ class DataDownloadService:
                                                                  .format(missing_file_name, missing_file_path)
                                                                   for missing_file_name, missing_file_path
                                                                   in missing_files]))))
-            # TODO Retrieve the files
+            # Retrieve the files
             download_information = self._get_protein_sequence_file_path_remote(missing_files, taxonomy_id)
             destination_folder = self._get_protein_sequence_file_destination_path_local(taxonomy_id)
+            self._get_logger().info("Protein Sequence files to download to '{}': '{}'",
+                                    destination_folder,
+                                    ",".join([url for file_name, url in download_information]))
+            download_manager = DownloadManager([url for file_name, url in download_information],
+                                               destination_folder,
+                                               self._get_logger())
+            download_manager.start_downloads()
+            download_manager.wait_all()
             # TODO Uncompress the files
 
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
