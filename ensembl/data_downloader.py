@@ -485,6 +485,7 @@ class DataDownloadService:
                                                                   in missing_files]))))
             # TODO Retrieve the files
             download_information = self._get_protein_sequence_file_path_remote(missing_files, taxonomy_id)
+            destination_folder = self._get_protein_sequence_file_destination_path_local(taxonomy_id)
             # TODO Uncompress the files
 
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
