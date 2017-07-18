@@ -434,8 +434,8 @@ class DataDownloadService:
                                             file_name))) for file_name in file_names]
 
     def _get_protein_sequence_file_path_remote(self, file_names, species):
-        # TODO
-        pass
+        base_url = self.get_remote_path_ensembl_release() + self.__get_subpath_protein_sequence_for_species(species)
+        return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
 
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
