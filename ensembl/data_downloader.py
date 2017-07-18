@@ -421,6 +421,17 @@ class DataDownloadService:
                                         file_extension)
                 for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
+    def _get_protein_sequence_file_destination_path_local(self, taxonomy_id):
+        """
+        Get the local destination folder for protein sequence files given a taxonomy.
+
+        Usually like <local_ensembl_root_repo>/<current_ensembl_release>/fasta/<taxonomy_name>/pep
+        :param taxonomy_id: species for which to calculate the local destination path
+        :return: local destination path for protein sequence files for the given taxonomy and the current Ensembl release
+        """
+        return os.path.join(self.get_local_path_ensembl_release(),
+                            self.__get_subpath_protein_sequence_for_species(taxonomy_id))
+
     def _get_protein_sequence_file_path_local(self, taxonomy_id, file_names):
         """
         The local file path for a protein file name is
