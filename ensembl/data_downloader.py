@@ -473,7 +473,7 @@ class DataDownloadService:
                                                                   for missing_file_name, missing_file_path
                                                                   in missing_files]))))
         # TODO Retrieve the files
-        pass
+        # TODO Uncompress the files
 
     def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
