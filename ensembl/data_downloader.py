@@ -440,9 +440,9 @@ class DataDownloadService:
         :param file_names: protein sequence file names
         :return: a list of tuples of the form (file_name, absolute path to that file in the local Ensembl repository)
         """
-        return [(file_name, os.path.abspath(os.path.join(self.get_local_path_ensembl_release(),
-                                            self.__get_subpath_protein_sequence_for_species(taxonomy_id),
-                                            file_name))) for file_name in file_names]
+        return [(file_name, os.path.abspath(
+            os.path.join(self._get_protein_sequence_file_destination_path_local(taxonomy_id),
+                         file_name))) for file_name in file_names]
 
     def _get_protein_sequence_file_path_remote(self, file_names, species):
         """
