@@ -378,6 +378,11 @@ class DataDownloadService:
         return self._get_configuration_manager().get_ensembl_ftp_base_url()
 
     def get_remote_path_ensembl_release(self):
+        """
+        Get the remote URL for the current release of Ensembl, usually an FTP URL like
+        'ftp://ftp.ensembl.org/pub/release-89'
+        :return: Current Ensembl release repository URL
+        """
         if not self.__remote_path_ensembl_release:
             self.__remote_path_ensembl_release = "{}/{}".format(self.get_remote_path_root_ensembl_repo(),
                                                                 self.get_ensembl_release_name())
