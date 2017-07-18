@@ -433,7 +433,7 @@ class DataDownloadService:
                                             self.__get_subpath_protein_sequence_for_species(taxonomy_id),
                                             file_name))) for file_name in file_names]
 
-    def _get_protein_sequence_file_path_remote(self, file_names):
+    def _get_protein_sequence_file_path_remote(self, file_names, species):
         # TODO
         pass
 
