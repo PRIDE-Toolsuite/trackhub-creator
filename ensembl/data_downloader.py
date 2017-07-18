@@ -487,6 +487,10 @@ class DataDownloadService:
             download_information = self._get_protein_sequence_file_path_remote(missing_files, taxonomy_id)
             # TODO Uncompress the files
 
+    def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
+        # TODO
+        pass
+
     def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
         pass
