@@ -371,6 +371,10 @@ class DataDownloadService:
         return self.__local_path_ensembl_release
 
     def get_remote_path_root_ensembl_repo(self):
+        """
+        Get the root URL for the Ensembl remote repository, usually an FTP URL like 'ftp://ftp.ensembl.org/pub'
+        :return: Ensembl root repo URL
+        """
         return self._get_configuration_manager().get_ensembl_ftp_base_url()
 
     def get_remote_path_ensembl_release(self):
