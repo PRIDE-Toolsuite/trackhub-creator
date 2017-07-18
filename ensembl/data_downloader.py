@@ -21,6 +21,7 @@ import os
 import config_manager
 import ensembl.service
 from exceptions import ConfigManagerException
+from download_manager.manager import Manager as DownloadManager
 from toolbox import general
 
 # Common configuration for all instances of the download manager
@@ -292,6 +293,7 @@ class DataDownloadService:
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         self.__local_path_ensembl_repo = None
         self.__local_path_ensembl_release = None
+        self.__remote_path_ensembl_release = None
         # Name for the current release
         self.__ensembl_release_name = None
         # Name for the subfolder that contains per species fasta files
@@ -369,6 +371,24 @@ class DataDownloadService:
                                                              self.get_ensembl_release_name())
         return self.__local_path_ensembl_release
 
+    def get_remote_path_root_ensembl_repo(self):
+        """
+        Get the root URL for the Ensembl remote repository, usually an FTP URL like 'ftp://ftp.ensembl.org/pub'
+        :return: Ensembl root repo URL
+        """
+        return self._get_configuration_manager().get_ensembl_ftp_base_url()
+
+    def get_remote_path_ensembl_release(self):
+        """
+        Get the remote URL for the current release of Ensembl, usually an FTP URL like
+        'ftp://ftp.ensembl.org/pub/release-89'
+        :return: Current Ensembl release repository URL
+        """
+        if not self.__remote_path_ensembl_release:
+            self.__remote_path_ensembl_release = "{}/{}".format(self.get_remote_path_root_ensembl_repo(),
+                                                                self.get_ensembl_release_name())
+        return self.__remote_path_ensembl_release
+
     def get_ensembl_release_name(self):
         if self.__ensembl_release_name is None:
             ensembl_service = ensembl.service.get_service()
@@ -402,6 +422,17 @@ class DataDownloadService:
                                         file_extension)
                 for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
+    def _get_protein_sequence_file_destination_path_local(self, taxonomy_id):
+        """
+        Get the local destination folder for protein sequence files given a taxonomy.
+
+        Usually like <local_ensembl_root_repo>/<current_ensembl_release>/fasta/<taxonomy_name>/pep
+        :param taxonomy_id: species for which to calculate the local destination path
+        :return: local destination path for protein sequence files for the given taxonomy and the current Ensembl release
+        """
+        return os.path.join(self.get_local_path_ensembl_release(),
+                            self.__get_subpath_protein_sequence_for_species(taxonomy_id))
+
     def _get_protein_sequence_file_path_local(self, taxonomy_id, file_names):
         """
         The local file path for a protein file name is
@@ -410,13 +441,22 @@ class DataDownloadService:
         :param file_names: protein sequence file names
         :return: a list of tuples of the form (file_name, absolute path to that file in the local Ensembl repository)
         """
-        return [(file_name, os.path.abspath(os.path.join(self.get_local_path_ensembl_release(),
-                                            self.__get_subpath_protein_sequence_for_species(taxonomy_id),
-                                            file_name))) for file_name in file_names]
+        return [(file_name, os.path.abspath(
+            os.path.join(self._get_protein_sequence_file_destination_path_local(taxonomy_id),
+                         file_name))) for file_name in file_names]
 
-    def _get_protein_sequence_file_path_remote(self, file_names):
-        # TODO
-        pass
+    def _get_protein_sequence_file_path_remote(self, file_names, species):
+        """
+        Given a list of protein sequence file names, this will return a list of tuples, each with the file name and its
+        remote URL in the current Ensembl release.
+
+        Note that it will add them the extension .gz as that's the way they are on Ensembl
+        :param file_names: protein sequence file names
+        :param species: the species we want the files for
+        :return: a list of tuples containing the file name and its remote path on Ensembl FTP
+        """
+        base_url = self.get_remote_path_ensembl_release() + self.__get_subpath_protein_sequence_for_species(species)
+        return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
 
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
@@ -444,7 +484,24 @@ class DataDownloadService:
                                                                  .format(missing_file_name, missing_file_path)
                                                                   for missing_file_name, missing_file_path
                                                                   in missing_files]))))
-        # Retrieve the files
+            # Retrieve the files
+            download_information = self._get_protein_sequence_file_path_remote(missing_files, taxonomy_id)
+            destination_folder = self._get_protein_sequence_file_destination_path_local(taxonomy_id)
+            # Make sure that the destination folder exists
+            general.check_create_folders([destination_folder])
+            self._get_logger().info("Protein Sequence files to download to '{}': '{}'",
+                                    destination_folder,
+                                    ",".join([url for file_name, url in download_information]))
+            download_manager = DownloadManager([url for file_name, url in download_information],
+                                               destination_folder,
+                                               self._get_logger())
+            download_manager.start_downloads()
+            download_manager.wait_all()
+            # Once the files have been downloaded, we know they come compressed from Ensembl, with .gz extension
+            # TODO Uncompress the files
+
+    def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
+        # TODO
         pass
 
     def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):

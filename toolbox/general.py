@@ -78,5 +78,10 @@ def create_latest_symlink(destination_path):
     os.symlink(destination_path, symlink_path)
 
 
+def gunzip_files(files):
+    # TODO
+    pass
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
