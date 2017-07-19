@@ -155,9 +155,9 @@ class AppConfigManager(ConfigurationManager):
     """
 
     def __init__(self, configuration_object, configuration_file):
+        super(AppConfigManager, self).__init__(configuration_object, configuration_file)
         global _log_level
         global _logger_formatters
-        super(AppConfigManager, self).__init__(configuration_object, configuration_file)
         # Session ID
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
         # TODO config, folder_run, etc.
