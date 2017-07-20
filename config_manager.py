@@ -196,6 +196,10 @@ class AppConfigManager(ConfigurationManager):
     def _get_log_handlers(self):
         return self.__log_handlers
 
+    def _get_logger(self):
+        # Get own logger
+        return self.__logger
+
     def get_folder_bin(self):
         # 'Bin' folder cannot be changed in this version of the pipeline
         return _folder_bin
@@ -231,10 +235,6 @@ class AppConfigManager(ConfigurationManager):
             lg.addHandler(handler)
         lg.setLevel(_log_level)
         return lg
-
-    def _get_logger(self):
-        # Get own logger
-        return self.__logger
 
     def get_session_id(self):
         return self.__session_id
