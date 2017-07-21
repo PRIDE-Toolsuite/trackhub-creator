@@ -13,8 +13,10 @@ Unit Tests for toolboxes
 
 import unittest
 # App modules
+import config_manager
 import toolbox.general as general_toolbox
 
 
 class TestToolboxes(unittest.TestCase):
-    pass
+    def test_gunzip_files(self):
+        file_url = 'ftp://ftp.ensembl.org/pub/release-89/gtf/homo_sapiens/Homo_sapiens.GRCh38.89.abinitio.gtf.gz';
