@@ -31,4 +31,6 @@ class TestToolboxes(unittest.TestCase):
                                    file_url,
                                    destination_folder))
         download_manager = DownloadManager([file_url], destination_folder, self.__logger)
-        
+        download_manager.start_downloads()
+        download_manager.wait_all()
+        self.assertTrue(download_manager.is_success(), "Test files for gunzip unit test downloaded successfully")
