@@ -93,6 +93,12 @@ def gunzip_files(files):
                 # Timeout, in seconds, is either 10 seconds or the size of the file in MB * 10, e.g. 1MB -> 10 seconds
                 timeout = max(10, int(os.path.getsize(file) / (1024 * 1024)))
                 (stdout, stderr) = gunzip_subprocess.communicate(timeout=timeout)
+                if gunzip_subprocess.poll() is not None:
+                    if gunzip_subprocess.returncode != 0:
+                        # ERROR - Report this
+                        err_msg = "ERROR uncompressing file '{}' output from subprocess STDOUT: {}\nSTDERR: {}"\
+                            .format(file, stdout.decode('utf8'), stderr.decode('utf8'))
+                        files_with_error.append((file, err_msg))
             except subprocess.TimeoutExpired as e:
                 pass
             except Exception as e:
