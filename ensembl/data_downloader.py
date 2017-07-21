@@ -484,8 +484,10 @@ class DataDownloadService:
                                                                  .format(missing_file_name, missing_file_path)
                                                                   for missing_file_name, missing_file_path
                                                                   in missing_files]))))
-            # Retrieve the files
-            download_information = self._get_protein_sequence_file_path_remote(missing_files, taxonomy_id)
+            # Retrieve the files, keep in mind that _get_protein_sequence_file_path_remote operates on file names
+            download_information = self._get_protein_sequence_file_path_remote(
+                [file_entry[0] for file_entry in missing_files],
+                taxonomy_id)
             destination_folder = self._get_protein_sequence_file_destination_path_local(taxonomy_id)
             # Make sure that the destination folder exists
             general.check_create_folders([destination_folder])
