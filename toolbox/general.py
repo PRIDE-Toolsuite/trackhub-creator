@@ -80,6 +80,12 @@ def create_latest_symlink(destination_path):
 
 
 def gunzip_files(files):
+    """
+    Given a list of paths for Gzip compressed files, this method will uncompress them, returning a list with the files
+    that could not be gunzipped and the reason why that happened
+    :param files: list of paths to files that will be un-compressed
+    :return: a list of possible failing to uncompress files
+    """
     gunzip_command_template = "gunzip {}"
     files_with_error = []
     for file in files:
