@@ -14,6 +14,7 @@ This module implements some useful functions for the pipeline runner
 import os
 import json
 import shutil
+import subprocess
 from exceptions import ToolBoxException
 
 
@@ -80,7 +81,24 @@ def create_latest_symlink(destination_path):
 
 def gunzip_files(files):
     # TODO
-    pass
+    gunzip_command_template = "gunzip {}"
+    files_with_error = []
+    for file in files:
+        if os.path.isfile(file):
+            try:
+                gunzip_subprocess = subprocess.Popen(gunzip_command_template.format(file),
+                                                     stdout=subprocess.PIPE,
+                                                     stderr=subprocess.PIPE,
+                                                     shell=True)
+                # Timeout, in seconds, is either 10 seconds or the size of the file in MB * 10, e.g. 1MB -> 10 seconds
+                timeout = max(10, int(os.path.getsize(file) / (1024 * 1024)))
+                (stdout, stderr) = gunzip_subprocess.communicate(timeout=timeout)
+            except subprocess.TimeoutExpired as e:
+                pass
+            except Exception as e:
+                pass
+        else:
+            files_with_error.append((file, "it IS NOT A FILE"))
 
 
 if __name__ == '__main__':
