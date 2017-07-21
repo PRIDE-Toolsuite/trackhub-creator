@@ -30,3 +30,5 @@ class TestToolboxes(unittest.TestCase):
                            .format(file_name,
                                    file_url,
                                    destination_folder))
+        download_manager = DownloadManager([file_url], destination_folder, self.__logger)
+        
