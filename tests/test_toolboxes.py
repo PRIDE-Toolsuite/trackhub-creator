@@ -42,4 +42,6 @@ class TestToolboxes(unittest.TestCase):
         self.assertTrue(not errors, "No errors uncompressing test files for unit testing gunzip feature")
         self.assertTrue(os.path.isfile(destination_file_path_uncompressed), "The test file has been uncompressed, '{}'"
                         .format(destination_file_path_uncompressed))
-        
+        self.assertTrue(os.path.getsize(destination_file_path_uncompressed) > 0,
+                        "The uncompressed test file '{}' is not empty"
+                        .format(destination_file_path_uncompressed))
