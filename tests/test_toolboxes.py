@@ -25,6 +25,7 @@ class TestToolboxes(unittest.TestCase):
     def test_gunzip_files(self):
         file_url = 'ftp://ftp.ensembl.org/pub/release-89/gtf/homo_sapiens/Homo_sapiens.GRCh38.89.abinitio.gtf.gz'
         file_name = file_url[file_url.rfind('/') + 1:]
+        file_name_uncompressed = file_name[:file_name.rfind('.')]
         # Download the file to the session working directory
         destination_folder = config_manager.get_app_config_manager().get_session_working_dir()
         destination_file_path = os.path.join(destination_folder, file_name)
