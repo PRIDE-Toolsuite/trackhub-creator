@@ -25,4 +25,8 @@ class TestToolboxes(unittest.TestCase):
         file_name = file_url[file_url.rfind('/') + 1:]
         # Download the file to the session working directory
         destination_folder = config_manager.get_app_config_manager().get_session_working_dir()
-
+        self.__logger.info("Using test file '{}', from '{}' for testing gunzip functionality at folder '{}'"
+                           .format(file_name,
+                                   file_url,
+                                   destination_folder))
+        
