@@ -40,3 +40,6 @@ class TestToolboxes(unittest.TestCase):
         self.assertTrue(download_manager.is_success(), "Test files for gunzip unit test downloaded successfully")
         errors = general_toolbox.gunzip_files([destination_file_path])
         self.assertTrue(not errors, "No errors uncompressing test files for unit testing gunzip feature")
+        self.assertTrue(os.path.isfile(destination_file_path_uncompressed), "The test file has been uncompressed, '{}'"
+                        .format(destination_file_path_uncompressed))
+        
