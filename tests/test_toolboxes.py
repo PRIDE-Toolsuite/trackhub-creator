@@ -20,3 +20,5 @@ import toolbox.general as general_toolbox
 class TestToolboxes(unittest.TestCase):
     def test_gunzip_files(self):
         file_url = 'ftp://ftp.ensembl.org/pub/release-89/gtf/homo_sapiens/Homo_sapiens.GRCh38.89.abinitio.gtf.gz';
+        # Download the file to the session working directory
+        destination_folder = config_manager.get_app_config_manager().get_session_working_dir()
