@@ -109,7 +109,12 @@ def gunzip_files(files):
                             stderr.decode('utf8'))
                 files_with_error.append((file, err_msg))
             except Exception as e:
-                pass
+                err_msg = "UNKNOWN ERROR uncompressing file '{}' ---> {}\nOutput from subprocess STDOUT: {}\nSTDERR: {}" \
+                    .format(file,
+                            e,
+                            stdout.decode('utf8'),
+                            stderr.decode('utf8'))
+                files_with_error.append((file, err_msg))
         else:
             files_with_error.append((file, "it IS NOT A FILE"))
 
