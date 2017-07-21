@@ -15,3 +15,6 @@ import unittest
 # App modules
 import toolbox.general as general_toolbox
 
+
+class TestToolboxes(unittest.TestCase):
+    pass
