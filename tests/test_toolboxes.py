@@ -29,6 +29,7 @@ class TestToolboxes(unittest.TestCase):
         # Download the file to the session working directory
         destination_folder = config_manager.get_app_config_manager().get_session_working_dir()
         destination_file_path = os.path.join(destination_folder, file_name)
+        destination_file_path_uncompressed = os.path.join(destination_folder, file_name_uncompressed)
         self.__logger.info("Using test file '{}', from '{}' for testing gunzip functionality at folder '{}'"
                            .format(file_name,
                                    file_url,
@@ -39,4 +40,3 @@ class TestToolboxes(unittest.TestCase):
         self.assertTrue(download_manager.is_success(), "Test files for gunzip unit test downloaded successfully")
         errors = general_toolbox.gunzip_files([destination_file_path])
         self.assertTrue(not errors, "No errors uncompressing test files for unit testing gunzip feature")
-        
