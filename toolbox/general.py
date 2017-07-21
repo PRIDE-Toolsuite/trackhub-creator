@@ -80,7 +80,6 @@ def create_latest_symlink(destination_path):
 
 
 def gunzip_files(files):
-    # TODO
     gunzip_command_template = "gunzip {}"
     files_with_error = []
     for file in files:
@@ -117,7 +116,7 @@ def gunzip_files(files):
                 files_with_error.append((file, err_msg))
         else:
             files_with_error.append((file, "it IS NOT A FILE"))
-
+    return files_with_error
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
