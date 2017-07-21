@@ -500,7 +500,11 @@ class DataDownloadService:
             download_manager.start_downloads()
             download_manager.wait_all()
             # Once the files have been downloaded, we know they come compressed from Ensembl, with .gz extension
-            # TODO Uncompress the files
+            # Uncompress the files
+            # I have their local paths in 'missin_files' second component of the pairs in the list, I just need to add
+            # the '.gz' extension for them, as they come gzipped from Ensembl
+            errors = general.gunzip_files(["{}.gz".format(file_local_path) for file_name, file_local_path in missing_files])
+            # TODO Deal with possible errors
 
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
         # TODO
