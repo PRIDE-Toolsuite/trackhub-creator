@@ -14,6 +14,7 @@ Unit Tests for toolboxes
 import unittest
 # App modules
 import config_manager
+from download_manager.manager import Manager as DownloadManager
 import toolbox.general as general_toolbox
 
 
@@ -29,4 +30,3 @@ class TestToolboxes(unittest.TestCase):
                            .format(file_name,
                                    file_url,
                                    destination_folder))
-        
