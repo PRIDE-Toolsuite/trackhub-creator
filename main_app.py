@@ -12,7 +12,6 @@
 Pipeline Runner - Main Application
 """
 
-import sys
 import nose
 import argparse
 import unittest
