@@ -629,6 +629,7 @@ class DataDownloadService:
             download_manager.wait_all()
             if not download_manager.is_success():
                 self._get_logger().error("ERROR Downloading files from Ensembl !!!")
+                # TODO - Should I raise an exception here? See how the code goes and take a decission later
             # Once the files have been downloaded, we know they come compressed from Ensembl, with .gz extension
             # Uncompress the files
             # I have their local paths in 'missin_files' second component of the pairs in the list, I just need to add
@@ -647,7 +648,6 @@ class DataDownloadService:
                 raise EnsemblDownloadManagerException(msg)
 
     def get_genome_reference_for_species(self, taxonomy_id):
-        # TODO
         # Work out the file names for the data to retrieve from Ensembl
         file_names = self._get_genome_reference_ensembl_file_name_for_species(taxonomy_id)
         self._get_logger().debug("Working with Ensembl GTF file names for taxonomy ID '{}' - '{}'"
