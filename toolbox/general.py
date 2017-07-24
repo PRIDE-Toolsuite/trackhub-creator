@@ -85,6 +85,21 @@ def create_latest_symlink(destination_path):
     os.symlink(destination_path, symlink_path)
 
 
+def create_latest_symlink_overwrite(destination_path):
+    """
+    Create a symlink 'latest' to the given destination_path in its parent folder, i.e. if the given path is
+    '/nfs/production/folder', the symlink will be
+            /nfs/production/latest -> /nfs/production/folder
+    If there already is a 'latest' symlink, it will be overwritten
+    :param destination_path: destination path where the symlink will point to
+    :return: no return value
+    """
+    symlink_path = os.path.join(os.path.dirname(destination_path), 'latest')
+    if os.path.islink(symlink_path):
+        os.unlink(symlink_path)
+    os.symlink(destination_path, symlink_path)
+
+
 def gunzip_files(files):
     """
     Given a list of paths for Gzip compressed files, this method will uncompress them, returning a list with the files
