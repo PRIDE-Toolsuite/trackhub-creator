@@ -333,6 +333,7 @@ class DataDownloadService:
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # The subpath is fasta/species.name
+        self._get_logger().debug("__get_subpath_fasta_for_species for taxonomy id '{}'".format(taxonomy_id))
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_fasta(),
                               self._get_ensembl_service()
                                  .get_species_data_service()
@@ -342,6 +343,7 @@ class DataDownloadService:
 
     def __get_subpath_protein_sequence_for_species(self, taxonomy_id):
         # The subpath is fasta/species.name/pep
+        self._get_logger().debug("__get_subpath_protein_sequence_for_species for taxonomy id '{}'".format(taxonomy_id))
         return "{}/{}".format(self.__get_subpath_fasta_for_species(taxonomy_id),
                               self._get_configuration_manager().get_folder_name_protein_sequences())
 
@@ -471,7 +473,7 @@ class DataDownloadService:
         self._get_logger().debug("Working with Ensembl protein sequence file names for taxonomy ID '{}' - '{}'"
                                  .format(taxonomy_id, str(file_names)))
         # Work out their path in the local repository
-        protein_sequence_files_local_path = self._get_protein_sequence_file_path_local(file_names, taxonomy_id)
+        protein_sequence_files_local_path = self._get_protein_sequence_file_path_local(taxonomy_id, file_names)
         self._get_logger().debug("Local Ensembl Repo protein sequence paths for taxonomy ID '{}', file paths '{}'"
                                  .format(taxonomy_id, str(protein_sequence_files_local_path)))
         # Check if they already exist locally
