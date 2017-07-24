@@ -37,7 +37,6 @@ _logger_formatters = {
 }
 _log_level = 'DEBUG'
 
-
 # Configuration file Keys, I place them here in case I create another another Application Configuration Manager when
 # running in test mode
 _CONFIG_MODULES_SECTION = 'module_config_files'
@@ -89,7 +88,8 @@ def get_app_config_manager():
     """
     global __app_config_manager
     if __app_config_manager is None:
-        __app_config_manager = AppConfigManager(read_config_from_file(__configuration_file_name), __configuration_file_name)
+        __app_config_manager = AppConfigManager(read_config_from_file(__configuration_file_name),
+                                                __configuration_file_name)
     return __app_config_manager
 
 
@@ -183,7 +183,8 @@ class AppConfigManager(ConfigurationManager):
         self.__logger.setLevel(getattr(logging, _log_level))
         # TODO fix this code
         for llevel, lformat in _logger_formatters.items():
-            logfile = os.path.join(self.get_folder_logs(), log_handlers_prefix + llevel.lower() + log_handlers_extension)
+            logfile = os.path.join(self.get_folder_logs(),
+                                   log_handlers_prefix + llevel.lower() + log_handlers_extension)
             lformatter = logging.Formatter(lformat)
             lhandler = logging.FileHandler(logfile, mode='w')
             lhandler.setLevel(getattr(logging, llevel))
@@ -242,13 +243,14 @@ class AppConfigManager(ConfigurationManager):
 
     def get_file_name_config_modules_ensembl_service(self):
         return \
-            self._get_configuration_object()\
+            self._get_configuration_object() \
                 [_CONFIG_MODULES_SECTION][_CONFIG_MODULES_ENSEMBL][_CONFIG_MODULES_ENSEMBL_SERVICE]
 
     def get_file_name_config_modules_ensembl_data_downloader(self):
         return \
             self._get_configuration_object() \
                 [_CONFIG_MODULES_SECTION][_CONFIG_MODULES_ENSEMBL][_CONFIG_MODULES_ENSEMBL_DATA_DOWNLOADER]
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
