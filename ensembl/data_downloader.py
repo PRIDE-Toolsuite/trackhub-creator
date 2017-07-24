@@ -532,6 +532,13 @@ class DataDownloadService:
                 raise EnsemblDownloadManagerException(msg)
 
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
+        """
+        Get the local destination folder for GTF files given a taxonomy.
+
+        Usually like <local_ensembl_root_repo>/<current_ensembl_release>/gtf/<taxonomy_name>
+        :param taxonomy_id: species for which to calculate the local destination path
+        :return: local destination path for GTF files for the given taxonomy and the current Ensembl release
+        """
         return os.path.join(self.get_local_path_ensembl_release(),
                             self.__get_subpath_genome_reference_gtf_for_species(taxonomy_id))
 
