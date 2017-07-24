@@ -579,6 +579,13 @@ class DataDownloadService:
                 self._get_logger().error(msg)
                 raise EnsemblDownloadManagerException(msg)
 
+    def _get_genome_reference_file_path_remote(self, file_names, species):
+        base_url = "{}/{}".format(
+            self.get_remote_path_ensembl_release(),
+            self.__get_subpath_genome_reference_gtf_for_species(species)
+        )
+        return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
+
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
         """
         Get the local destination folder for GTF files given a taxonomy.
