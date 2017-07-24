@@ -67,6 +67,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
     _CONFIG_KEY_FILE_TYPE = 'file_type'
     _CONFIG_KEY_FILE_SUFFIXES = 'file_suffixes'
     _CONFIG_KEY_FILE_EXTENSION = 'file_extension'
+    _CONFIG_KEY_GTF_FILE = 'gtf_file'
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
