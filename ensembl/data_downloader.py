@@ -487,6 +487,11 @@ class DataDownloadService:
             os.path.join(self._get_protein_sequence_file_destination_path_local(taxonomy_id),
                          file_name))) for file_name in file_names]
 
+    def _get_genome_reference_file_path_local(self, taxonomy_id, file_names):
+        return [(file_name, os.path.abspath(
+            os.path.join(self._get_genome_reference_file_destination_path_local(taxonomy_id),
+                         file_name))) for file_name in file_names]
+
     def _get_protein_sequence_file_path_remote(self, file_names, species):
         """
         Given a list of protein sequence file names, this will return a list of tuples, each with the file name and its
