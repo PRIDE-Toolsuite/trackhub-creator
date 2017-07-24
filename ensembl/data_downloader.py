@@ -489,6 +489,17 @@ class DataDownloadService:
         return os.path.join(self.get_local_path_ensembl_release(),
                             self.__get_subpath_protein_sequence_for_species(taxonomy_id))
 
+    def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
+        """
+        Get the local destination folder for GTF files given a taxonomy.
+
+        Usually like <local_ensembl_root_repo>/<current_ensembl_release>/gtf/<taxonomy_name>
+        :param taxonomy_id: species for which to calculate the local destination path
+        :return: local destination path for GTF files for the given taxonomy and the current Ensembl release
+        """
+        return os.path.join(self.get_local_path_ensembl_release(),
+                            self.__get_subpath_genome_reference_gtf_for_species(taxonomy_id))
+
     def _get_protein_sequence_file_path_local(self, taxonomy_id, file_names):
         """
         The local file path for a protein file name is
@@ -594,17 +605,6 @@ class DataDownloadService:
                                                             ))
                 self._get_logger().error(msg)
                 raise EnsemblDownloadManagerException(msg)
-
-    def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
-        """
-        Get the local destination folder for GTF files given a taxonomy.
-
-        Usually like <local_ensembl_root_repo>/<current_ensembl_release>/gtf/<taxonomy_name>
-        :param taxonomy_id: species for which to calculate the local destination path
-        :return: local destination path for GTF files for the given taxonomy and the current Ensembl release
-        """
-        return os.path.join(self.get_local_path_ensembl_release(),
-                            self.__get_subpath_genome_reference_gtf_for_species(taxonomy_id))
 
     def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
