@@ -610,7 +610,7 @@ class DataDownloadService:
                 self._get_logger().error(msg)
                 raise EnsemblDownloadManagerException(msg)
 
-    def get_genome_reference_gtf_for_species(self, taxonomy_id):
+    def get_genome_reference_for_species(self, taxonomy_id):
         # TODO
         # Work out the file names for the data to retrieve from Ensembl
         # Work out their path in the local repository
