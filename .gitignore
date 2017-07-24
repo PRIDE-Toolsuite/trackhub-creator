@@ -13,3 +13,8 @@ __pycache__
 # Ignore the application runs in the run folder
 run/*
 !run/empty
+
+# Ignore resources
+resources/*
+!resources/empty
+!resources/tests/empty
