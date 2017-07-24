@@ -464,7 +464,10 @@ class DataDownloadService:
         :param species: the species we want the files for
         :return: a list of tuples containing the file name and its remote path on Ensembl FTP
         """
-        base_url = self.get_remote_path_ensembl_release() + self.__get_subpath_protein_sequence_for_species(species)
+        base_url = "{}/{}".format(
+            self.get_remote_path_ensembl_release(),
+            self.__get_subpath_protein_sequence_for_species(species)
+        )
         return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
 
     def get_protein_sequences_for_species(self, taxonomy_id):
@@ -500,14 +503,18 @@ class DataDownloadService:
             destination_folder = self._get_protein_sequence_file_destination_path_local(taxonomy_id)
             # Make sure that the destination folder exists
             general.check_create_folders([destination_folder])
-            self._get_logger().info("Protein Sequence files to download to '{}': '{}'",
+            download_urls = [url for file_name, url in download_information]
+            self._get_logger().info("Protein Sequence files to download to '{}': '{}'".format(
                                     destination_folder,
-                                    ",".join([url for file_name, url in download_information]))
-            download_manager = DownloadManager([url for file_name, url in download_information],
+                                    ",".join(download_urls)))
+            download_manager = DownloadManager(download_urls,
                                                destination_folder,
                                                self._get_logger())
             download_manager.start_downloads()
             download_manager.wait_all()
+            if not download_manager.is_success():
+                self._get_logger().error("ERROR Downloading files from Ensembl !!!")
+
             # Once the files have been downloaded, we know they come compressed from Ensembl, with .gz extension
             # Uncompress the files
             # I have their local paths in 'missin_files' second component of the pairs in the list, I just need to add
