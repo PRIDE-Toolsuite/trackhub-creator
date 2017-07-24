@@ -654,6 +654,9 @@ class DataDownloadService:
         self._get_logger().debug("Working with Ensembl GTF file names for taxonomy ID '{}' - '{}'"
                                  .format(taxonomy_id, str(file_names)))
         # Work out their path in the local repository
+        gtf_files_local_path = self._get_genome_reference_file_path_local(taxonomy_id, file_names)
+        self._get_logger().debug("Local Ensembl Repo GTF paths for taxonomy ID '{}', file paths '{}'"
+                                 .format(taxonomy_id, str(gtf_files_local_path)))
         # Check if they already exist locally
         # If not, work out their remote path on Ensembl FTP
         # Retrieve the files
