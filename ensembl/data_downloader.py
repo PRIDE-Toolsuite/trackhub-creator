@@ -22,6 +22,7 @@ import config_manager
 import ensembl.service
 from exceptions import ConfigManagerException
 from download_manager.manager import Manager as DownloadManager
+from ensembl.exceptions import EnsemblDownloadManagerException
 from toolbox import general
 
 # Common configuration for all instances of the download manager
@@ -504,7 +505,16 @@ class DataDownloadService:
             # I have their local paths in 'missin_files' second component of the pairs in the list, I just need to add
             # the '.gz' extension for them, as they come gzipped from Ensembl
             errors = general.gunzip_files(["{}.gz".format(file_local_path) for file_name, file_local_path in missing_files])
-            # TODO Deal with possible errors
+            # Deal with possible errors
+            if errors:
+                msg = "An ERROR occurred while obtaining the following protein sequence files " \
+                      "for taxonomy ID '{}' -> '{}'".format(taxonomy_id,
+                                                            ",".join(
+                                                                ["File '{}', ERROR '{}'"
+                                                                     .format(file, error) for file, error in errors]
+                                                            ))
+                self._get_logger().error(msg)
+                raise EnsemblDownloadManagerException(msg)
 
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
         # TODO
