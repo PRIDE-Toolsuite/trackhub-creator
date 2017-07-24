@@ -271,6 +271,25 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     self._get_configuration_file(),
                     str(e)))
 
+    def get_ensembl_gtf_file_suffixes(self):
+        try:
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
+                [self._CONFIG_KEY_GTF_FILE] \
+                [self._CONFIG_KEY_FILE_SUFFIXES]
+        except Exception as e:
+            # TODO - Refactor this code whenever you have time, because a pattern has emerged here
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}.{}' in configuration file '{}', because of '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
+                    self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
+                    self._CONFIG_KEY_GTF_FILE,
+                    self._CONFIG_KEY_FILE_SUFFIXES,
+                    self._get_configuration_file(),
+                    str(e)))
+
+
     def is_rewrite_local_path_ensembl_repo(self):
         """
         Find out whether we are required to overwrite the local Ensembl repository or not, in case there is an existing
@@ -279,8 +298,8 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         """
         try:
             return self._get_configuration_object() \
-                    [self._CONFIG_KEY_DATA_DOWNLOADER] \
-                    [self._CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO] == "True"
+                       [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                       [self._CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO] == "True"
         except Exception as e:
             raise ConfigManagerException(
                 "MISSING configuration information '{}.{}' in configuration file '{}', becuase of '{}'".format(
@@ -337,10 +356,9 @@ class DataDownloadService:
         self._get_logger().debug("__get_subpath_fasta_for_species for taxonomy id '{}'".format(taxonomy_id))
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_fasta(),
                               self._get_ensembl_service()
-                                 .get_species_data_service()
-                                 .get_species_entry_for_taxonomy_id(taxonomy_id)
-                                 .get_name())
-
+                              .get_species_data_service()
+                              .get_species_entry_for_taxonomy_id(taxonomy_id)
+                              .get_name())
 
     def __get_subpath_protein_sequence_for_species(self, taxonomy_id):
         # The subpath is fasta/species.name/pep
@@ -415,13 +433,13 @@ class DataDownloadService:
         :param taxonomy_id: taxonomy ID for which to work out the file name
         :return: the file name, without the .gz extension that is found on Ensembl FTP
         """
-        species_name = self._get_ensembl_service()\
-            .get_species_data_service()\
-            .get_species_entry_for_taxonomy_id(taxonomy_id)\
+        species_name = self._get_ensembl_service() \
+            .get_species_data_service() \
+            .get_species_entry_for_taxonomy_id(taxonomy_id) \
             .get_name().capitalize()
-        assembly = self._get_ensembl_service()\
-            .get_species_data_service()\
-            .get_species_entry_for_taxonomy_id(taxonomy_id)\
+        assembly = self._get_ensembl_service() \
+            .get_species_data_service() \
+            .get_species_entry_for_taxonomy_id(taxonomy_id) \
             .get_assembly()
         file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
         file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
@@ -487,16 +505,16 @@ class DataDownloadService:
                          if not os.path.exists(missing_file_path)]
         if missing_files:
             # Work out their remote path on Ensembl FTP
-            self._get_logger()\
+            self._get_logger() \
                 .debug("There are {} protein sequence files missing from the local repository "
                        "for taxonomy ID '{}': {}"
-                                     .format(len(missing_files),
-                                             taxonomy_id,
-                                             "[{}]".format(","
-                                                           .join(["'{} -> {}'"
-                                                                 .format(missing_file_name, missing_file_path)
-                                                                  for missing_file_name, missing_file_path
-                                                                  in missing_files]))))
+                       .format(len(missing_files),
+                               taxonomy_id,
+                               "[{}]".format(","
+                                             .join(["'{} -> {}'"
+                                                   .format(missing_file_name, missing_file_path)
+                                                    for missing_file_name, missing_file_path
+                                                    in missing_files]))))
             # Retrieve the files, keep in mind that _get_protein_sequence_file_path_remote operates on file names
             download_information = self._get_protein_sequence_file_path_remote(
                 [file_entry[0] for file_entry in missing_files],
@@ -506,8 +524,8 @@ class DataDownloadService:
             general.check_create_folders([destination_folder])
             download_urls = [url for file_name, url in download_information]
             self._get_logger().info("Protein Sequence files to download to '{}': '{}'".format(
-                                    destination_folder,
-                                    ",".join(download_urls)))
+                destination_folder,
+                ",".join(download_urls)))
             download_manager = DownloadManager(download_urls,
                                                destination_folder,
                                                self._get_logger())
@@ -520,7 +538,8 @@ class DataDownloadService:
             # Uncompress the files
             # I have their local paths in 'missin_files' second component of the pairs in the list, I just need to add
             # the '.gz' extension for them, as they come gzipped from Ensembl
-            errors = general.gunzip_files(["{}.gz".format(file_local_path) for file_name, file_local_path in missing_files])
+            errors = general.gunzip_files(
+                ["{}.gz".format(file_local_path) for file_name, file_local_path in missing_files])
             # Deal with possible errors
             if errors:
                 msg = "An ERROR occurred while obtaining the following protein sequence files " \
@@ -542,7 +561,6 @@ class DataDownloadService:
         """
         return os.path.join(self.get_local_path_ensembl_release(),
                             self.__get_subpath_genome_reference_gtf_for_species(taxonomy_id))
-
 
     def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
