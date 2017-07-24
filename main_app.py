@@ -18,6 +18,7 @@ import unittest
 # Modules from package
 import config_manager
 import ensembl.service
+import ensembl.data_downloader
 
 __DEFAULT_CONFIG_FILE = "config_default.json"
 
@@ -69,6 +70,8 @@ def modules_bootstrap():
     ensembl_config_file = config_manager.get_app_config_manager().get_file_name_config_modules_ensembl_service()
     __logger.debug("Setting Ensembl configuration file -- {}".format(ensembl_config_file))
     ensembl.service.set_configuration_file(ensembl_config_file)
+    # TODO - Should I delegate this to a main entry point for every module?.
+    # TODO - REFACTOR THIS IN THE FUTURE, WHEN MODULE FUNCTIONALITY HAS BEEN TESTED
 
 
 def run_unit_tests():
