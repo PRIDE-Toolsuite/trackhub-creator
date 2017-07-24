@@ -573,10 +573,10 @@ class DataDownloadService:
             .get_species_data_service() \
             .get_species_entry_for_taxonomy_id(taxonomy_id) \
             .get_assembly()
-        ensembl_release_number = str(self._get_ensembl_service()\
-            .get_species_data_service()\
-            .get_species_entry_for_taxonomy_id(taxonomy_id)\
-            .get_ensembl_release())
+        ensembl_release_number = str(self._get_ensembl_service() \
+                                     .get_species_data_service() \
+                                     .get_species_entry_for_taxonomy_id(taxonomy_id) \
+                                     .get_ensembl_release())
         file_extension = self._get_configuration_manager().get_ensembl_gtf_file_extension()
         return ["{}.{}.{}.{}.{}".format(species_name,
                                         assembly,
@@ -658,8 +658,21 @@ class DataDownloadService:
         self._get_logger().debug("Local Ensembl Repo GTF paths for taxonomy ID '{}', file paths '{}'"
                                  .format(taxonomy_id, str(gtf_files_local_path)))
         # Check if they already exist locally
-        # If not, work out their remote path on Ensembl FTP
-        # Retrieve the files
+        missing_files = [(missing_file_name, missing_file_path)
+                         for missing_file_name, missing_file_path
+                         in gtf_files_local_path
+                         if not os.path.exists(missing_file_path)]
+        if missing_files:
+            # If not, work out their remote path on Ensembl FTP
+            self._get_logger() \
+                .debug("There are {} GTF files missing from the local repository for taxonomy ID '{}': {}"
+                       .format(len(missing_files),
+                               taxonomy_id,
+                               "[{}]".format(",".join(["'{} -> {}'".format(
+                                   missing_file_name, missing_file_path)
+                                   for missing_file_name, missing_file_path
+                                   in missing_files]))))
+            # Retrieve the files
         pass
 
 
