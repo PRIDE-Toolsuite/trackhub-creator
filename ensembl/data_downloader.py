@@ -578,6 +578,8 @@ class DataDownloadService:
                                      .get_species_entry_for_taxonomy_id(taxonomy_id) \
                                      .get_ensembl_release())
         file_extension = self._get_configuration_manager().get_ensembl_gtf_file_extension()
+        # TODO - If, at any point I'm going to use suffixes for anything else, I should work then out in the code and
+        # TODO - leave them without the '.' in the configuration file
         return ["{}.{}.{}.{}{}".format(species_name,
                                         assembly,
                                         ensembl_release_number,
