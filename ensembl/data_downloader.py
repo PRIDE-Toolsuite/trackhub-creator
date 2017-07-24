@@ -295,6 +295,23 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     self._get_configuration_file(),
                     str(e)))
 
+    def get_ensembl_gtf_file_extension(self):
+        try:
+            return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
+                [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
+                [self._CONFIG_KEY_GTF_FILE] \
+                [self._CONFIG_KEY_FILE_EXTENSION]
+        except Exception as e:
+            # TODO - Refactor this code whenever you have time, because a pattern has emerged here
+            raise ConfigManagerException(
+                "MISSING configuration information '{}.{}.{}.{}' in configuration file '{}', because of '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
+                    self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
+                    self._CONFIG_KEY_GTF_FILE,
+                    self._CONFIG_KEY_FILE_EXTENSION,
+                    self._get_configuration_file(),
+                    str(e)))
 
     def is_rewrite_local_path_ensembl_repo(self):
         """
