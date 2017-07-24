@@ -8,9 +8,10 @@
 # 
 
 """
-Unit tests for Ensembl Service
+Unit tests for Ensembl Data Downloader
 """
 
 import unittest
 # Application imports
 import config_manager
+
