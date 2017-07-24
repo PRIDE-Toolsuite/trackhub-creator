@@ -127,6 +127,7 @@ class SpeciesService:
         :param taxonomy_id: taxonomy ID
         :return: the species entry or None if not found
         """
+        self._get_logger().debug("get_species_entry_for_taxonomy_id ---> taxonomy id '{}'".format(taxonomy_id))
         if taxonomy_id in self._get_index_taxonomy_id():
             return self._get_index_taxonomy_id()[taxonomy_id]
         return None
