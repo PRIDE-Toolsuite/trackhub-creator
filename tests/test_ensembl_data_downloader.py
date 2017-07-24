@@ -23,6 +23,10 @@ class TestEnsemblDataDownloader(unittest.TestCase):
         # TODO
         pass
 
+    def test_get_gtf_for_human(self):
+        # TODO
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
