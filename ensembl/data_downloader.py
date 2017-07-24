@@ -629,7 +629,6 @@ class DataDownloadService:
             download_manager.wait_all()
             if not download_manager.is_success():
                 self._get_logger().error("ERROR Downloading files from Ensembl !!!")
-
             # Once the files have been downloaded, we know they come compressed from Ensembl, with .gz extension
             # Uncompress the files
             # I have their local paths in 'missin_files' second component of the pairs in the list, I just need to add
