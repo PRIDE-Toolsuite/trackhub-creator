@@ -480,6 +480,7 @@ class DataDownloadService:
         The local file path for a protein file name is
         <local_path_ensembl_release>/<subpath_protein_sequence_for_species>/file_name (local copies of Ensembl files are
         stored uncompressed, that's why we use the given name for every file)
+        :param taxonomy_id: target taxonomy id
         :param file_names: protein sequence file names
         :return: a list of tuples of the form (file_name, absolute path to that file in the local Ensembl repository)
         """
