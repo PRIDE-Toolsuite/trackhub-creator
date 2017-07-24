@@ -545,6 +545,10 @@ class DataDownloadService:
                 for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
     def _get_genome_reference_ensembl_file_name_for_species(self, taxonomy_id):
+        species_name = self._get_ensembl_service() \
+            .get_species_data_service() \
+            .get_species_entry_for_taxonomy_id(taxonomy_id) \
+            .get_name().capitalize()
         # TODO
         pass
 
