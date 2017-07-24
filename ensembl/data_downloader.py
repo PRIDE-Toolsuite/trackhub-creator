@@ -272,6 +272,12 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_ensembl_gtf_file_suffixes(self):
+        """
+        Usually, GTF files in Ensembl have four suffixes (just before the file extension):
+        '', 'chr', 'chr_patch_hapl_scaff' and 'abinitio'. But it's been set in the application as a configurable
+        parameter just in case they change that (very unlikely) future.
+        :return: a list of suffixes for GTF files on Ensembl
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_DATA_DOWNLOADER] \
