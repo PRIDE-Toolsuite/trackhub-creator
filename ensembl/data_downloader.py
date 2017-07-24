@@ -676,7 +676,8 @@ class DataDownloadService:
             download_information = self._get_genome_reference_file_path_remote(
                 [file_entry[0] for file_entry in missing_files],
                 taxonomy_id)
-        pass
+            destination_folder = self._get_genome_reference_file_destination_path_local(taxonomy_id)
+            
 
 
 if __name__ == '__main__':
