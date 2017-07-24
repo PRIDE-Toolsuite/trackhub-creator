@@ -6,6 +6,9 @@ python_install:
 	@sudo pip install virtualenv
 	@virtualenv python_install
 
+tmp:
+	mkdir tmp
+
 dev_environment: python_install install_requirements
 
 install: dev_environment
@@ -22,11 +25,14 @@ clean_dev:
 clean_logs:
 	@rm -rf logs/*log
 
+clean_tmp:
+	@rm -rf tmp
+
 clean_sessions:
 	@find run/* -type d | xargs -I{} rm -rf {}
 
-clean: clean_logs clean_sessions
+clean: clean_logs clean_sessions clean_tmp
 
 clean_all: clean clean_dev
 
-.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean
+.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean
