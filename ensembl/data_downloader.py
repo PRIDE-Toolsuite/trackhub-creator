@@ -558,8 +558,12 @@ class DataDownloadService:
             .get_species_entry_for_taxonomy_id(taxonomy_id)\
             .get_ensembl_release())
         file_extension = self._get_configuration_manager().get_ensembl_gtf_file_extension()
-        # TODO
-        pass
+        return ["{}.{}.{}.{}.{}".format(species_name,
+                                        assembly,
+                                        ensembl_release_number,
+                                        suffix,
+                                        file_extension)
+                for suffix in self._get_configuration_manager().get_ensembl_gtf_file_suffixes()]
 
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
