@@ -553,6 +553,8 @@ class DataDownloadService:
             .get_species_data_service() \
             .get_species_entry_for_taxonomy_id(taxonomy_id) \
             .get_assembly()
+        file_extension = self._get_configuration_manager().get_ensembl_gtf_file_extension()
+
         # TODO
         pass
 
