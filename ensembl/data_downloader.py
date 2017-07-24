@@ -686,6 +686,9 @@ class DataDownloadService:
                                                self._get_logger())
             download_manager.start_downloads()
             download_manager.wait_all()
+            if not download_manager.is_success():
+                self._get_logger().error("ERROR Downloading files from Ensembl !!!")
+                # TODO - Should I raise an exception here? See how the code goes and take a decission later
 
 
 if __name__ == '__main__':
