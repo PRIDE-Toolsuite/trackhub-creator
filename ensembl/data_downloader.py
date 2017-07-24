@@ -394,7 +394,7 @@ class DataDownloadService:
         return "{}/{}".format(self.__get_subpath_fasta_for_species(taxonomy_id),
                               self._get_configuration_manager().get_folder_name_protein_sequences())
 
-    def __get_subpath_genome_reference_gtf_for_species(self, taxonomy_id):
+    def __get_subpath_genome_reference_for_species(self, taxonomy_id):
         # The subpath is gtf/species.name
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_gtf(),
                               self._get_ensembl_service()
@@ -498,7 +498,7 @@ class DataDownloadService:
         :return: local destination path for GTF files for the given taxonomy and the current Ensembl release
         """
         return os.path.join(self.get_local_path_ensembl_release(),
-                            self.__get_subpath_genome_reference_gtf_for_species(taxonomy_id))
+                            self.__get_subpath_genome_reference_for_species(taxonomy_id))
 
     def _get_protein_sequence_file_path_local(self, taxonomy_id, file_names):
         """
@@ -540,7 +540,7 @@ class DataDownloadService:
         """
         base_url = "{}/{}".format(
             self.get_remote_path_ensembl_release(),
-            self.__get_subpath_genome_reference_gtf_for_species(species)
+            self.__get_subpath_genome_reference_for_species(species)
         )
         return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
 
