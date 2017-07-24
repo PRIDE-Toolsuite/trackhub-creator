@@ -43,6 +43,7 @@ _log_level = 'DEBUG'
 _CONFIG_MODULES_SECTION = 'module_config_files'
 _CONFIG_MODULES_ENSEMBL = 'ensembl'
 _CONFIG_MODULES_ENSEMBL_SERVICE = 'service'
+_CONFIG_MODULES_ENSEMBL_DATA_DOWNLOADER = 'data_downloader'
 
 
 def set_application_config_file(configuration_file):
@@ -243,6 +244,11 @@ class AppConfigManager(ConfigurationManager):
         return \
             self._get_configuration_object()\
                 [_CONFIG_MODULES_SECTION][_CONFIG_MODULES_ENSEMBL][_CONFIG_MODULES_ENSEMBL_SERVICE]
+
+    def get_file_name_config_modules_ensembl_data_downloader(self):
+        return \
+            self._get_configuration_object() \
+                [_CONFIG_MODULES_SECTION][_CONFIG_MODULES_ENSEMBL][_CONFIG_MODULES_ENSEMBL_DATA_DOWNLOADER]
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
