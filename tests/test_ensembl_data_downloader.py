@@ -15,8 +15,13 @@ import unittest
 # Application imports
 import config_manager
 
+
 class TestEnsemblDataDownloader(unittest.TestCase):
     __logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+
+    def test_get_protein_sequences_for_human(self):
+        # TODO
+        pass
 
 
 if __name__ == '__main__':
