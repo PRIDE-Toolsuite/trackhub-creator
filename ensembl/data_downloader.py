@@ -544,6 +544,10 @@ class DataDownloadService:
                                         file_extension)
                 for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
+    def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
+        # TODO
+        pass
+
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
         file_names = self._get_protein_sequence_ensembl_file_name_for_species(taxonomy_id)
@@ -605,10 +609,6 @@ class DataDownloadService:
                                                             ))
                 self._get_logger().error(msg)
                 raise EnsemblDownloadManagerException(msg)
-
-    def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
-        # TODO
-        pass
 
     def get_genome_reference_gtf_for_species(self, taxonomy_id):
         # TODO
