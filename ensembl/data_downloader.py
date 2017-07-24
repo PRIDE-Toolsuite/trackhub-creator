@@ -551,7 +551,7 @@ class DataDownloadService:
             .get_assembly()
         file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
         file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
-        return ["{}.{}.{}.{}.{}".format(species_name,
+        return ["{}.{}.{}{}.{}".format(species_name,
                                         assembly,
                                         file_type,
                                         suffix,
