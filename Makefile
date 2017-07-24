@@ -7,7 +7,7 @@ python_install:
 	@virtualenv python_install
 
 tmp:
-	mkdir tmp
+	@mkdir tmp
 
 dev_environment: python_install install_requirements
 
