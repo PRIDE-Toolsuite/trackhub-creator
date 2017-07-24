@@ -679,6 +679,7 @@ class DataDownloadService:
             destination_folder = self._get_genome_reference_file_destination_path_local(taxonomy_id)
             # Make sure that the destination folder exists
             general.check_create_folders([destination_folder])
+            download_urls = [url for file_name, url in download_information]
 
 
 if __name__ == '__main__':
