@@ -72,6 +72,14 @@ def modules_bootstrap():
     ensembl.service.set_configuration_file(ensembl_config_file)
     # TODO - Should I delegate this to a main entry point for every module?.
     # TODO - REFACTOR THIS IN THE FUTURE, WHEN MODULE FUNCTIONALITY HAS BEEN TESTED
+    __logger.debug("Setting Ensembl Data Downloader configuration file -- {}"
+                   .format(config_manager
+                           .get_app_config_manager()
+                           .get_file_name_config_modules_ensembl_data_downloader()))
+    ensembl.data_downloader.set_configuration_file(
+        config_manager
+            .get_app_config_manager()
+            .get_file_name_config_modules_ensembl_data_downloader())
 
 
 def run_unit_tests():
