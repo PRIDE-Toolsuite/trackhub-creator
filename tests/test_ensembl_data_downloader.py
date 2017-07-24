@@ -16,4 +16,5 @@ import unittest
 import config_manager
 
 class TestEnsemblDataDownloader(unittest.TestCase):
-    pass
+    __logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+    
