@@ -549,6 +549,10 @@ class DataDownloadService:
             .get_species_data_service() \
             .get_species_entry_for_taxonomy_id(taxonomy_id) \
             .get_name().capitalize()
+        assembly = self._get_ensembl_service() \
+            .get_species_data_service() \
+            .get_species_entry_for_taxonomy_id(taxonomy_id) \
+            .get_assembly()
         # TODO
         pass
 
