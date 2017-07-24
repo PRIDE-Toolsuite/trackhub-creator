@@ -14,6 +14,7 @@ Unit tests for Ensembl Data Downloader
 import unittest
 # Application imports
 import config_manager
+import ensembl.data_downloader
 
 
 class TestEnsemblDataDownloader(unittest.TestCase):
