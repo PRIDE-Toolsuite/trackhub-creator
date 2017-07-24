@@ -323,7 +323,7 @@ class DataDownloadService:
             self._get_logger().debug("Creating folder if it doesn't exist - '{}'"
                                      .format(self.get_local_path_ensembl_release()))
             general.check_create_folders([self.get_local_path_ensembl_release()])
-        general.create_latest_symlink(self.get_local_path_ensembl_release())
+        general.create_latest_symlink_overwrite(self.get_local_path_ensembl_release())
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         # The subpath is fasta/species.name
