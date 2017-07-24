@@ -551,7 +551,7 @@ class DataDownloadService:
             .get_assembly()
         file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
         file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
-        return ["{}.{}.{}{}.{}".format(species_name,
+        return ["{}.{}.{}.{}.{}".format(species_name,
                                         assembly,
                                         file_type,
                                         suffix,
@@ -578,7 +578,7 @@ class DataDownloadService:
                                      .get_species_entry_for_taxonomy_id(taxonomy_id) \
                                      .get_ensembl_release())
         file_extension = self._get_configuration_manager().get_ensembl_gtf_file_extension()
-        return ["{}.{}.{}.{}.{}".format(species_name,
+        return ["{}.{}.{}.{}{}".format(species_name,
                                         assembly,
                                         ensembl_release_number,
                                         suffix,
