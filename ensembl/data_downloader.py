@@ -689,6 +689,12 @@ class DataDownloadService:
             if not download_manager.is_success():
                 self._get_logger().error("ERROR Downloading files from Ensembl !!!")
                 # TODO - Should I raise an exception here? See how the code goes and take a decission later
+            # Once the files have been downloaded, we know they come compressed from Ensembl, with .gz extension
+            # Uncompress the files
+            # I have their local paths in 'missin_files' second component of the pairs in the list, I just need to add
+            # the '.gz' extension for them, as they come gzipped from Ensembl
+            errors = general.gunzip_files(
+                ["{}.gz".format(file_local_path) for file_name, file_local_path in missing_files])
 
 
 if __name__ == '__main__':
