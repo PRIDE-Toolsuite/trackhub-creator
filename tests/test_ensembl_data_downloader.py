@@ -21,8 +21,8 @@ class TestEnsemblDataDownloader(unittest.TestCase):
     __logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def test_get_protein_sequences_for_human(self):
-        # TODO
-        pass
+        human_ncbi_tax_id = '9606'
+        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
 
     def test_get_gtf_for_human(self):
         # TODO
