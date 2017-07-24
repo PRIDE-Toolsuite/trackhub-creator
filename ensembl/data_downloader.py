@@ -636,6 +636,7 @@ class DataDownloadService:
     def get_genome_reference_for_species(self, taxonomy_id):
         # TODO
         # Work out the file names for the data to retrieve from Ensembl
+        file_names = self._get_genome_reference_ensembl_file_name_for_species(taxonomy_id)
         # Work out their path in the local repository
         # Check if they already exist locally
         # If not, work out their remote path on Ensembl FTP
