@@ -296,6 +296,11 @@ class ConfigurationManager(config_manager.ConfigurationManager):
                     str(e)))
 
     def get_ensembl_gtf_file_extension(self):
+        """
+        Usually, GTF files have extension ".gtf" in Ensembl, but it has been included here as a configurable
+        parameter just in case they change that in the future.
+        :return: the file extension, very likely to be 'gtf'
+        """
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_DATA_DOWNLOADER] \
