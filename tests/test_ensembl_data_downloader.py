@@ -30,10 +30,6 @@ class TestEnsemblDataDownloader(unittest.TestCase):
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         ensembl_downloader_service.get_genome_reference_for_species(human_ncbi_tax_id)
 
-    def test_get_gtf_for_human(self):
-        # TODO
-        pass
-
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
