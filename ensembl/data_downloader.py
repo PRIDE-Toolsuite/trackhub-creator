@@ -517,6 +517,22 @@ class DataDownloadService:
         )
         return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
 
+    def _get_genome_reference_file_path_remote(self, file_names, species):
+        """
+        Given a list of GTF file names, this will return a list of tuples, each with the file name and its
+        remote URL in the current Ensembl release.
+
+        Note that it will add them the extension .gz as that's the way they are on Ensembl
+        :param file_names: GTF file names
+        :param species: the species we want the files for
+        :return: a list of tuples containing the file name and its remote path on Ensembl FTP
+        """
+        base_url = "{}/{}".format(
+            self.get_remote_path_ensembl_release(),
+            self.__get_subpath_genome_reference_gtf_for_species(species)
+        )
+        return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
+
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
         file_names = self._get_protein_sequence_ensembl_file_name_for_species(taxonomy_id)
@@ -578,22 +594,6 @@ class DataDownloadService:
                                                             ))
                 self._get_logger().error(msg)
                 raise EnsemblDownloadManagerException(msg)
-
-    def _get_genome_reference_file_path_remote(self, file_names, species):
-        """
-        Given a list of GTF file names, this will return a list of tuples, each with the file name and its
-        remote URL in the current Ensembl release.
-
-        Note that it will add them the extension .gz as that's the way they are on Ensembl
-        :param file_names: GTF file names
-        :param species: the species we want the files for
-        :return: a list of tuples containing the file name and its remote path on Ensembl FTP
-        """
-        base_url = "{}/{}".format(
-            self.get_remote_path_ensembl_release(),
-            self.__get_subpath_genome_reference_gtf_for_species(species)
-        )
-        return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
 
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
         """
