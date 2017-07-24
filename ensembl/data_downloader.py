@@ -532,8 +532,9 @@ class DataDownloadService:
                 raise EnsemblDownloadManagerException(msg)
 
     def _get_genome_reference_file_destination_path_local(self, taxonomy_id):
-        # TODO
-        pass
+        return os.path.join(self.get_local_path_ensembl_release(),
+                            self.__get_subpath_genome_reference_gtf_for_species(taxonomy_id))
+
 
     def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
