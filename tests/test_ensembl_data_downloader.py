@@ -15,3 +15,5 @@ import unittest
 # Application imports
 import config_manager
 
+class TestEnsemblDataDownloader(unittest.TestCase):
+    pass
