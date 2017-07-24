@@ -685,6 +685,7 @@ class DataDownloadService:
                                                destination_folder,
                                                self._get_logger())
             download_manager.start_downloads()
+            download_manager.wait_all()
 
 
 if __name__ == '__main__':
