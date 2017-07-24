@@ -10,3 +10,7 @@
 """
 Unit tests for Ensembl Service
 """
+
+import unittest
+# Application imports
+import config_manager
