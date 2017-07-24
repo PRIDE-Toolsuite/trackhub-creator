@@ -15,6 +15,8 @@ Some of the use cases for this module:
     2. Given a species ID, collect its GTF data, with the option of decompressing it or not.
 """
 
+# TODO - This file just got too large, refactor it in the future to make it more simple
+
 import os
 
 # App imports
@@ -275,11 +277,9 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         :return: True if we have to rewrite it, False otherwise
         """
         try:
-            if self._get_configuration_object() \
+            return self._get_configuration_object() \
                     [self._CONFIG_KEY_DATA_DOWNLOADER] \
-                    [self._CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO] == "True":
-                return True
-            return False
+                    [self._CONFIG_KEY_REWRITE_LOCAL_PATH_ENSEMBL_REPO] == "True"
         except Exception as e:
             raise ConfigManagerException(
                 "MISSING configuration information '{}.{}' in configuration file '{}', becuase of '{}'".format(
