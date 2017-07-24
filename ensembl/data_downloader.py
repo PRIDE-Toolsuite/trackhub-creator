@@ -253,13 +253,15 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         """
         try:
             return self._get_configuration_object() \
+                [self._CONFIG_KEY_DATA_DOWNLOADER] \
                 [self._CONFIG_KEY_ENSEMBL_FILE_NAMES] \
                 [self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE] \
                 [self._CONFIG_KEY_FILE_EXTENSION]
         except Exception as e:
             # TODO - Refactor this code whenever you have time, because a pattern has emerged here
             raise ConfigManagerException(
-                "MISSING configuration information '{}.{}.{}' in configuration file '{}', because of '{}'".format(
+                "MISSING configuration information '{}.{}.{}.{}' in configuration file '{}', because of '{}'".format(
+                    self._CONFIG_KEY_DATA_DOWNLOADER,
                     self._CONFIG_KEY_ENSEMBL_FILE_NAMES,
                     self._CONFIG_KEY_PROTEIN_SEQUENCE_FILE,
                     self._CONFIG_KEY_FILE_EXTENSION,
