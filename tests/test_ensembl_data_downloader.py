@@ -26,6 +26,9 @@ class TestEnsemblDataDownloader(unittest.TestCase):
         ensembl_downloader_service.get_protein_sequences_for_species(human_ncbi_tax_id)
 
     def test_get_gtf_for_human(self):
+        human_ncbi_tax_id = '9606'
+
+    def test_get_gtf_for_human(self):
         # TODO
         pass
 
