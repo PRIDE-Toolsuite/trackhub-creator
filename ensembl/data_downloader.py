@@ -682,7 +682,9 @@ class DataDownloadService:
             download_urls = [url for file_name, url in download_information]
             self._get_logger().info("GTF files to download to '{}': '{}'"
                                     .format(destination_folder, ",".join(download_urls)))
-
+            download_manager = DownloadManager(download_urls,
+                                               destination_folder,
+                                               self._get_logger())
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
