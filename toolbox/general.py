@@ -61,10 +61,15 @@ def check_create_folders_overwrite(folders):
             if not os.path.isdir(folder):
                 invalid_folders.append(folder)
     if invalid_folders:
+        # If there's any invalid folder, we don't make any change, and we report the situation by raising an exception
         raise ToolBoxException("The following folders ARE NOT FOLDERS - '{}'"
                                .format(invalid_folders))
     for folder in folders:
-        shutil.rmtree(folder)
+        try:
+            shutil.rmtree(folder)
+        except FileNotFoundError as e:
+            # It is find if the folder is not there
+            pass
     check_create_folders(folders)
 
 
