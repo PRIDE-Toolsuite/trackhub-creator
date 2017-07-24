@@ -40,7 +40,7 @@ def check_create_folders(folders):
     for folder in folders:
         if not os.path.exists(folder):
             try:
-                os.mkdir(folder)
+                os.makedirs(folder)
             except Exception as e:
                 raise ToolBoxException(str(e))
         else:
