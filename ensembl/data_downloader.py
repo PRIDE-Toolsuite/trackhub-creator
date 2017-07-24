@@ -453,31 +453,6 @@ class DataDownloadService:
                         ensembl_service.get_release_number())
         return self.__ensembl_release_name
 
-    def _get_protein_sequence_ensembl_file_name_for_species(self, taxonomy_id):
-        """
-        The name for a protein sequence file in Ensembl is
-        <species_name_with_first_capital_letter>.<species_assembly>.<file_type e.g. 'pep'>.[all,abinitio].fa
-        e.g. Homo_sapiens.GRCh38.pep.all.fa, on Ensembl will have the extension .gz, because it is a compressed file
-        :param taxonomy_id: taxonomy ID for which to work out the file name
-        :return: the file name, without the .gz extension that is found on Ensembl FTP
-        """
-        species_name = self._get_ensembl_service() \
-            .get_species_data_service() \
-            .get_species_entry_for_taxonomy_id(taxonomy_id) \
-            .get_name().capitalize()
-        assembly = self._get_ensembl_service() \
-            .get_species_data_service() \
-            .get_species_entry_for_taxonomy_id(taxonomy_id) \
-            .get_assembly()
-        file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
-        file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
-        return ["{}.{}.{}.{}.{}".format(species_name,
-                                        assembly,
-                                        file_type,
-                                        suffix,
-                                        file_extension)
-                for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
-
     def _get_protein_sequence_file_destination_path_local(self, taxonomy_id):
         """
         Get the local destination folder for protein sequence files given a taxonomy.
@@ -543,6 +518,31 @@ class DataDownloadService:
             self.__get_subpath_genome_reference_for_species(species)
         )
         return [(file_name, "{}/{}.gz".format(base_url, file_name)) for file_name in file_names]
+
+    def _get_protein_sequence_ensembl_file_name_for_species(self, taxonomy_id):
+        """
+        The name for a protein sequence file in Ensembl is
+        <species_name_with_first_capital_letter>.<species_assembly>.<file_type e.g. 'pep'>.[all,abinitio].fa
+        e.g. Homo_sapiens.GRCh38.pep.all.fa, on Ensembl will have the extension .gz, because it is a compressed file
+        :param taxonomy_id: taxonomy ID for which to work out the file name
+        :return: the file name, without the .gz extension that is found on Ensembl FTP
+        """
+        species_name = self._get_ensembl_service() \
+            .get_species_data_service() \
+            .get_species_entry_for_taxonomy_id(taxonomy_id) \
+            .get_name().capitalize()
+        assembly = self._get_ensembl_service() \
+            .get_species_data_service() \
+            .get_species_entry_for_taxonomy_id(taxonomy_id) \
+            .get_assembly()
+        file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
+        file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
+        return ["{}.{}.{}.{}.{}".format(species_name,
+                                        assembly,
+                                        file_type,
+                                        suffix,
+                                        file_extension)
+                for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
