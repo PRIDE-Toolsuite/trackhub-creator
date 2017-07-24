@@ -640,7 +640,7 @@ class DataDownloadService:
             if errors:
                 msg = "An ERROR occurred while obtaining the following protein sequence files " \
                       "for taxonomy ID '{}' -> '{}'".format(taxonomy_id,
-                                                            ",".join(
+                                                            "\n".join(
                                                                 ["File '{}', ERROR '{}'"
                                                                      .format(file, error) for file, error in errors]
                                                             ))
@@ -695,6 +695,15 @@ class DataDownloadService:
             # the '.gz' extension for them, as they come gzipped from Ensembl
             errors = general.gunzip_files(
                 ["{}.gz".format(file_local_path) for file_name, file_local_path in missing_files])
+            # Deal with possible errors
+            if errors:
+                msg = "An ERROR occurred while obtaining the following GTF files for taxonomy ID '{}' -> '{}'" \
+                    .format(taxonomy_id,
+                            "\n".join(["File '{}', ERROR '{}'"
+                                      .format(file, error) for file, error in errors]
+                                      ))
+                self._get_logger().error(msg)
+                raise EnsemblDownloadManagerException(msg)
 
 
 if __name__ == '__main__':
