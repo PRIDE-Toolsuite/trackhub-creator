@@ -680,6 +680,8 @@ class DataDownloadService:
             # Make sure that the destination folder exists
             general.check_create_folders([destination_folder])
             download_urls = [url for file_name, url in download_information]
+            self._get_logger().info("GTF files to download to '{}': '{}'"
+                                    .format(destination_folder, ",".join(download_urls)))
 
 
 if __name__ == '__main__':
