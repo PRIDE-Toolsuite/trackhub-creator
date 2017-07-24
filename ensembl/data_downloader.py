@@ -673,6 +673,9 @@ class DataDownloadService:
                                    for missing_file_name, missing_file_path
                                    in missing_files]))))
             # Retrieve the files
+            download_information = self._get_genome_reference_file_path_remote(
+                [file_entry[0] for file_entry in missing_files],
+                taxonomy_id)
         pass
 
 
