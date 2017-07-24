@@ -13,6 +13,10 @@
         "file_type": "pep",
         "file_suffixes": ["all", "abinitio"],
         "file_extension": "fa"
+      },
+      "gtf_file": {
+        "file_suffixes": ["", "abinitio", "chr", "chr_patch_hapl_scaff"],
+        "file_extension": "gtf"
       }
     }
   }
