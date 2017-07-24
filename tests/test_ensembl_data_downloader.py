@@ -27,6 +27,7 @@ class TestEnsemblDataDownloader(unittest.TestCase):
 
     def test_get_gtf_for_human(self):
         human_ncbi_tax_id = '9606'
+        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
 
     def test_get_gtf_for_human(self):
         # TODO
