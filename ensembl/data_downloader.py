@@ -544,7 +544,7 @@ class DataDownloadService:
                                         file_extension)
                 for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
 
-    def _get_genome_reference_gtf_ensembl_file_name_for_species(self, taxonomy_id):
+    def _get_genome_reference_ensembl_file_name_for_species(self, taxonomy_id):
         # TODO
         pass
 
