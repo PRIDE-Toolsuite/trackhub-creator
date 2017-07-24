@@ -488,6 +488,14 @@ class DataDownloadService:
                          file_name))) for file_name in file_names]
 
     def _get_genome_reference_file_path_local(self, taxonomy_id, file_names):
+        """
+        The local file path for a gtf file name is
+        <local_path_ensembl_release>/<subpath_gtf_for_species>/file_name (local copies of Ensembl files are stored
+        uncompressed, that's why we use the given name for every file)
+        :param taxonomy_id: target taxonomy id
+        :param file_names: gtf file names
+        :return: a list of tuples of the form (file_name, absolute path to that file in the local Ensembl repository)(
+        """
         return [(file_name, os.path.abspath(
             os.path.join(self._get_genome_reference_file_destination_path_local(taxonomy_id),
                          file_name))) for file_name in file_names]
