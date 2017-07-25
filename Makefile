@@ -15,7 +15,7 @@ bin/cluster-file-exporter/cluster-file-exporter.jar: tmp
 tmp:
 	@mkdir tmp
 
-dev_environment: python_install install_requirements bin/cluster-file-exporter.jar
+dev_environment: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar
 
 install: dev_environment
 
