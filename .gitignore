@@ -22,3 +22,6 @@ resources/*
 # Ignore temporary folder
 tmp
 
+# Ignore contents of bin
+bin/*
+!bin/empty
