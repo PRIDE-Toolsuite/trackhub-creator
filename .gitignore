@@ -18,3 +18,7 @@ run/*
 resources/*
 !resources/empty
 !resources/tests/empty
+
+# Ignore temporary folder
+tmp
+
