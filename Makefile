@@ -37,8 +37,12 @@ clean_tmp:
 clean_sessions:
 	@find run/* -type d | xargs -I{} rm -rf {}
 
+clean_bin:
+	@rm -rf bin/*
+	@touch bin/empty
+
 clean: clean_logs clean_sessions clean_tmp
 
 clean_all: clean clean_dev
 
-.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean
+.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean
