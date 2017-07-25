@@ -6,10 +6,11 @@ python_install:
 	@sudo pip install virtualenv
 	@virtualenv python_install
 
-bin/cluster-file-exporter.jar: tmp
+bin/cluster-file-exporter/cluster-file-exporter.jar: tmp
 	@cd tmp; git clone git@github.com:PRIDE-Cluster/cluster-file-exporter.git
 	@cd tmp/cluster-file-exporter; mvn clean package
-	@cp tmp/cluster-file-exporter/target/cluster-file-exporter*.jar bin/cluster-file-exporter.jar
+	@mkdir bin/cluster-file-exporter
+	@cd bin/cluster-file-exporter; unzip ../../tmp/cluster-file-exporter/target/cluster-file-exporter*zip; cp cluster-file-exporter-*jar cluster-file-exporter.jar
 
 tmp:
 	@mkdir tmp
