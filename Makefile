@@ -7,8 +7,9 @@ python_install:
 	@virtualenv python_install
 
 bin/cluster-file-exporter.jar: tmp
-	cd tmp; git clone git@github.com:PRIDE-Cluster/cluster-file-exporter.git
-	cd tmp/cluster-file-exporter; mvn clean package; mv target/cluster-file-exporter*.jar ../../bin/cluster-file-exporter.jar
+	@cd tmp; git clone git@github.com:PRIDE-Cluster/cluster-file-exporter.git
+	@cd tmp/cluster-file-exporter; mvn clean package
+	@cp tmp/cluster-file-exporter/target/cluster-file-exporter*.jar bin/cluster-file-exporter.jar
 
 tmp:
 	@mkdir tmp
