@@ -80,8 +80,6 @@ class EnsemblDataCollector(Director):
     def _get_configuration_manager(self):
         return self.__config_manager
 
-    def
-
     def _run_pipeline(self):
         # Main pipeline algorithm
         # TODO
@@ -90,5 +88,6 @@ class EnsemblDataCollector(Director):
                                 .format(",".join(self._get_configuration_manager().get_ncbi_taxonomy_ids())))
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for ncbi_taxonomy_id in self._get_configuration_manager().get_ncbi_taxonomy_ids():
-            downloaded_files = ensembl_downloader_service.get_protein_sequences_for_species(ncbi_taxonomy_id)
+            downloaded_protein_sequences = ensembl_downloader_service.get_protein_sequences_for_species(ncbi_taxonomy_id)
+            downloaded_gtf_files = ensembl_downloader_service.get_genome_reference_for_species(ncbi_taxonomy_id)
         return True
