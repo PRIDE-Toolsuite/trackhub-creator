@@ -93,7 +93,7 @@ class SpeciesService:
         indexed_data = {}
         for data_item in data:
             if data_item.get_ncbi_taxonomy_id() not in indexed_data:
-                indexed_data[data.get_ncbi_taxonomy_id()] = data_item
+                indexed_data[data_item.get_ncbi_taxonomy_id()] = data_item
             else:
                 # Keep the one with aliases, that seems to be the main one for Ensembl
                 if data_item.get_aliases():
