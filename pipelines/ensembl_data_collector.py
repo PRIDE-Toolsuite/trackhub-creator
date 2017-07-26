@@ -50,6 +50,15 @@ class ConfigManager(DirectorConfigurationManager):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
         self.__pipeline_arguments_object = None
 
+    def _process_pipeline_arguments(self):
+        # Pipeline arguments for this pipeline are like: "ncbi_taxonomy_ids=id,id,id"
+        id_list = []
+        if self._get_pipeline_arguments():
+            id_list = self._get_pipeline_arguments().split('=')[1].split(',')
+        self.__pipeline_arguments_object = {
+            "ncbi_taxonomy_ids": id_list
+        }
+
 
 class EnsemblDataCollector(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
