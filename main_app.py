@@ -92,6 +92,7 @@ def run_unit_tests():
     test_suite = test_loader.discover('.')
     nose.run(suite=test_suite)
 
+
 def run_pipeline():
     # TODO
     pass
