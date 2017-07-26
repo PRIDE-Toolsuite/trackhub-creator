@@ -648,6 +648,8 @@ class DataDownloadService:
                                                             ))
                 self._get_logger().error(msg)
                 raise EnsemblDownloadManagerException(msg)
+        # Return the protein sequences file names and their local paths
+        return protein_sequence_files_local_path
 
     def get_genome_reference_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
