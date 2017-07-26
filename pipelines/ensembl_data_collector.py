@@ -17,3 +17,4 @@ from toolbox import general
 from pipelines.template_pipeline import DirectorConfigurationManager, Director
 
 __configuration_file = None
+__pipeline_arguments = None
