@@ -58,7 +58,7 @@ class ConfigManager(DirectorConfigurationManager):
         if self._get_pipeline_arguments():
             id_list = self._get_pipeline_arguments().split('=')[1].split(',')
         self.__pipeline_arguments_object = {
-            "ncbi_taxonomy_ids": id_list
+            self._CONFIG_OBJECT_KEY_NCBI_TAXONOMY_IDS: id_list
         }
 
     def _get_pipeline_arguments_object(self):
