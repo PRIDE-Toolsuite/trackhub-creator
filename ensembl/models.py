@@ -108,6 +108,7 @@ class SpeciesService:
                                                 .format(indexed_data[data.get_ncbi_taxonomy_id()],
                                                         data_item))
                         indexed_data[data.get_ncbi_taxonomy_id()] = data_item
+        return indexed_data
 
     def _get_logger(self):
         return self.__logger
@@ -131,7 +132,9 @@ class SpeciesService:
         """
         if self.__index_by_taxonomy_id is None:
             self.__index_by_taxonomy_id = \
-                self.__index_data_for_property(self._get_species_data_dao(), Species.get_ncbi_taxonomy_id)
+                self.__index_data_by_taxonomy_ensembl_special_case(self._get_species_data_dao())
+            # Generic and beautiful old way of building the index
+            # self.__index_data_for_property(self._get_species_data_dao(), Species.get_ncbi_taxonomy_id)
         return self.__index_by_taxonomy_id
 
     def get_species_data(self):
