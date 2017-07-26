@@ -581,10 +581,10 @@ class DataDownloadService:
         # TODO - If, at any point I'm going to use suffixes for anything else, I should work then out in the code and
         # TODO - leave them without the '.' in the configuration file
         return ["{}.{}.{}.{}{}".format(species_name,
-                                        assembly,
-                                        ensembl_release_number,
-                                        suffix,
-                                        file_extension)
+                                       assembly,
+                                       ensembl_release_number,
+                                       suffix,
+                                       file_extension)
                 for suffix in self._get_configuration_manager().get_ensembl_gtf_file_suffixes()]
 
     def get_protein_sequences_for_species(self, taxonomy_id):
