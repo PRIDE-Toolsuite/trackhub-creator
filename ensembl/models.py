@@ -100,12 +100,12 @@ class SpeciesService:
                     if indexed_data[data_item.get_ncbi_taxonomy_id()].get_aliases():
                         self._get_logger().error("ENSEMBL SPECIES INDEXING ERROR, already existing species entry '{}' "
                                                  "will not be replaced by non-empty aliases entry '{}'"
-                                                 .format(indexed_data[data.get_ncbi_taxonomy_id()],
+                                                 .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
                                                          data_item))
                     else:
                         self._get_logger().warn("ENSEMBL SPECIES INDEX REPLACEMENT, of existing entry '{}' "
                                                 "by new entry '{}'"
-                                                .format(indexed_data[data.get_ncbi_taxonomy_id()],
+                                                .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
                                                         data_item))
                         indexed_data[data_item.get_ncbi_taxonomy_id()] = data_item
         return indexed_data
