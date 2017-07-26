@@ -11,6 +11,8 @@
 This module contains Ensembl models used as Entities and DAO/Services
 """
 
+import json
+# Application imports
 import config_manager
 
 
@@ -69,8 +71,7 @@ class Species:
         return self._get_value_for_key_or_default('assembly')
 
     def __str__(self):
-        return self.get_ensembl_species_entry()
-
+        return json.dumps(self.get_ensembl_species_entry())
 
 class SpeciesService:
     def __init__(self, species_data):
@@ -103,18 +104,18 @@ class SpeciesService:
                     if indexed_data[data_item.get_ncbi_taxonomy_id()].get_aliases():
                         self._get_logger().error("ENSEMBL SPECIES INDEXING ERROR, already existing species entry '{}' "
                                                  "will not be replaced by non-empty aliases entry '{}'"
-                                                 .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
-                                                         data_item))
+                                                 .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
+                                                         str(data_item)))
                     else:
                         self._get_logger().warning("ENSEMBL SPECIES INDEX REPLACEMENT, of existing entry '{}' "
                                                    "by new entry '{}'"
-                                                   .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
-                                                           data_item))
+                                                   .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
+                                                           str(data_item)))
                         indexed_data[data_item.get_ncbi_taxonomy_id()] = data_item
                 else:
                     self._get_logger().warning("ALREADY INDEXED ENSEMBL SPECIES ENTRY '{}' "
                                                "WILL NOT BE REPLACED by '{}'"
-                                               .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
+                                               .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
                                                        str(data_item)))
         return indexed_data
 
