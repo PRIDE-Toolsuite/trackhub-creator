@@ -103,7 +103,9 @@ def run_pipeline():
     # Set the configuration file
     __logger.info("Pipeline configuration file '{}'".format(__args.pipeline_config_file))
     pipeline_factory_module.set_configuration_file(__args.pipeline_config_file)
-    # TODO Set the pipeline command line arguments
+    # Set the pipeline command line arguments
+    __logger.info("Pipeline command line arguments: '{}'".format(__args.pipeline_arguments))
+    pipeline_factory_module.set_pipeline_arguments(__args.pipeline_arguments)
 
 
 def main():
