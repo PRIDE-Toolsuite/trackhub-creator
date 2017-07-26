@@ -33,6 +33,8 @@ def get_cmdl():
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', "--config_file",
                         help='Application configuration file')
+    parser.add_argument('-p', '--pipeline_config_file',
+                        help='Configuration file for the pipeline that is going to be run')
     parser.add_argument('-v', '--version',
                         help='display version information',
                         action='version',
