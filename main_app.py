@@ -99,6 +99,8 @@ def run_pipeline():
     pipeline_factory_module = config_manager\
         .get_app_config_manager()\
         .get_pipeline_factory_instance(__args.pipeline_name)
+    # TODO Set the configuration file
+    # TODO Set the pipeline command line arguments
 
 
 def main():
