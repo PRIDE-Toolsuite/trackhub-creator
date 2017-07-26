@@ -67,7 +67,7 @@ class ConfigManager(DirectorConfigurationManager):
         return self.__pipeline_arguments_object
 
     def get_ncbi_taxonomy_ids(self):
-        pass
+        return self._get_pipeline_arguments_object()[self._CONFIG_OBJECT_KEY_NCBI_TAXONOMY_IDS]
 
 
 class EnsemblDataCollector(Director):
