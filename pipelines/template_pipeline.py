@@ -39,8 +39,11 @@ class Director:
     This is the director of the pipeline
     """
 
-    def __init__(self, config_file_name, runner_id=""):
-        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+    def __init__(self, config_file_name, runner_id=None):
+        logger_name = __name__
+        if runner_id:
+            logger_name = runner_id
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(logger_name)
 
     def _before(self):
         """
