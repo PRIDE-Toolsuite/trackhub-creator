@@ -68,6 +68,9 @@ class Species:
     def get_assembly(self):
         return self._get_value_for_key_or_default('assembly')
 
+    def __str__(self):
+        return self.get_ensembl_species_entry()
+
 
 class SpeciesService:
     def __init__(self, species_data):
@@ -112,7 +115,7 @@ class SpeciesService:
                     self._get_logger().warning("ALREADY INDEXED ENSEMBL SPECIES ENTRY '{}' "
                                                "WILL NOT BE REPLACED by '{}'"
                                                .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
-                                                       data_item))
+                                                       str(data_item)))
         return indexed_data
 
     def _get_logger(self):
