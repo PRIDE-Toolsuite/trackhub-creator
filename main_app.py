@@ -95,7 +95,10 @@ def run_unit_tests():
 
 def run_pipeline():
     # TODO
-    pass
+    global __args
+    pipeline_factory_module = config_manager\
+        .get_app_config_manager()\
+        .get_pipeline_factory_instance(__args.pipeline_name)
 
 
 def main():
