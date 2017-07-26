@@ -22,6 +22,13 @@ __pipeline_arguments = None
 __pipeline_director = None
 
 
+def set_configuration_file(config_file):
+    global __configuration_file
+    if __configuration_file is None:
+        __configuration_file = config_file
+    return __configuration_file
+
+
 class ConfigManager(DirectorConfigurationManager):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file)
