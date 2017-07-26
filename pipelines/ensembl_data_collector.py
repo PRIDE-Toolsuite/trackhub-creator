@@ -36,6 +36,15 @@ def set_pipeline_arguments(pipeline_arguments):
     return __pipeline_arguments
 
 
+def get_pipeline_director():
+    global __pipeline_director
+    if __pipeline_director is None:
+        __pipeline_director = EnsemblDataCollector(config_manager.read_config_from_file(__configuration_file),
+                                                   __configuration_file,
+                                                   __pipeline_arguments)
+    return __pipeline_director
+
+
 class ConfigManager(DirectorConfigurationManager):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file)
