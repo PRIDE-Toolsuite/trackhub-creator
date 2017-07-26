@@ -92,6 +92,10 @@ def run_unit_tests():
     test_suite = test_loader.discover('.')
     nose.run(suite=test_suite)
 
+def run_pipeline():
+    # TODO
+    pass
+
 
 def main():
     app_bootstrap()
@@ -99,7 +103,7 @@ def main():
     if __run_test_mode:
         run_unit_tests()
     else:
-        pass
+        run_pipeline()
 
 
 if __name__ == "__main__":
