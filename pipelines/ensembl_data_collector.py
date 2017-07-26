@@ -31,6 +31,7 @@ class EnsemblDataCollector(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super(EnsemblDataCollector, self).__init__(runner_id)
+        self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
 
     def _run_pipeline(self):
         # Main pipeline algorithm
