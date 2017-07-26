@@ -33,6 +33,9 @@ class EnsemblDataCollector(Director):
         super(EnsemblDataCollector, self).__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
 
+    def _get_configuration_manager(self):
+        return self.__config_manager
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         # TODO
