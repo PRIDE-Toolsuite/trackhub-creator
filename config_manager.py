@@ -14,6 +14,7 @@ This module manages the configuration for the running pipeline
 import os
 import time
 import logging
+import importlib
 # App modules
 from exceptions import AppConfigException, ConfigManagerException
 from toolbox import general
@@ -256,6 +257,20 @@ class AppConfigManager(ConfigurationManager):
 
     def get_pipelines_module_qualifier(self):
         return 'pipelines'
+
+    def get_pipeline_factory_instance(self, pipeline_name):
+        fqdn_pipeline_module = "{}.{}".format(self.get_pipelines_module_qualifier(), pipeline_name)
+        self._get_logger().debug("Getting instance of pipeline '{}'".format(fqdn_pipeline_module))
+        instance = None
+        try:
+            # TODO Make sure in the future that only one instance is loaded for every module, although it doesn't really
+            # TODO make sense...
+            instance = importlib.import_module(fqdn_pipeline_module)
+        except Exception as e:
+            self._get_logger().error("Error loading Factory Module for pipeline (FQDN) '{}'"
+                                     .format(fqdn_pipeline_module))
+            # TODO This will return None and everything else will fail, review this in the future for a better strategy
+        return instance
 
 
 if __name__ == '__main__':
