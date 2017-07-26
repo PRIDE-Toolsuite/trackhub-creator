@@ -30,3 +30,8 @@ class EnsemblDataCollector(Director):
     def __init__(self):
         runner_id = "{}-{}".format(__name__, time.time())
         super(EnsemblDataCollector, self).__init__(runner_id)
+
+    def _run_pipeline(self):
+        # Main pipeline algorithm
+        # TODO
+        self._get_logger().info("[START]---> Pipeline run")
