@@ -103,10 +103,10 @@ class SpeciesService:
                                                  .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
                                                          data_item))
                     else:
-                        self._get_logger().warn("ENSEMBL SPECIES INDEX REPLACEMENT, of existing entry '{}' "
-                                                "by new entry '{}'"
-                                                .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
-                                                        data_item))
+                        self._get_logger().warning("ENSEMBL SPECIES INDEX REPLACEMENT, of existing entry '{}' "
+                                                   "by new entry '{}'"
+                                                   .format(indexed_data[data_item.get_ncbi_taxonomy_id()],
+                                                           data_item))
                         indexed_data[data_item.get_ncbi_taxonomy_id()] = data_item
         return indexed_data
 
