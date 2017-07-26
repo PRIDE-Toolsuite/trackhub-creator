@@ -14,6 +14,7 @@ This pipeline collects data from Ensembl to avoid race conditions when running o
 import time
 # Application imports
 import config_manager
+import ensembl
 from toolbox import general
 from pipelines.template_pipeline import DirectorConfigurationManager, Director
 
@@ -79,10 +80,15 @@ class EnsemblDataCollector(Director):
     def _get_configuration_manager(self):
         return self.__config_manager
 
+    def
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         # TODO
         self._get_logger().info("[START]---> Pipeline run")
         self._get_logger().info("Collecting Ensembl data for NCBI Taxonomies: {}"
                                 .format(",".join(self._get_configuration_manager().get_ncbi_taxonomy_ids())))
-        return False
+        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
+        for ncbi_taxonomy_id in self._get_configuration_manager().get_ncbi_taxonomy_ids():
+            downloaded_files = ensembl_downloader_service.get_protein_sequences_for_species(ncbi_taxonomy_id)
+        return True
