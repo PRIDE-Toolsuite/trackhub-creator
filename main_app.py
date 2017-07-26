@@ -108,6 +108,8 @@ def run_pipeline():
     pipeline_factory_module.set_pipeline_arguments(__args.pipeline_arguments)
     # Get an instance of the pipeline
     pipeline_instance = pipeline_factory_module.get_pipeline_director()
+    # Run it
+    pipeline_instance.run()
 
 
 def main():
