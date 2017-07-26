@@ -708,6 +708,8 @@ class DataDownloadService:
                                       ))
                 self._get_logger().error(msg)
                 raise EnsemblDownloadManagerException(msg)
+        # Return the .gtf file names and their local paths for the given ncbi taxonomy id
+        return gtf_files_local_path
 
 
 if __name__ == '__main__':
