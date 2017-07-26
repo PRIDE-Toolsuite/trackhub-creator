@@ -10,3 +10,6 @@
 """
 This pipeline collects data from Ensembl to avoid race conditions when running other pipelines that use this data
 """
+
+# Application imports
+import config_manager
