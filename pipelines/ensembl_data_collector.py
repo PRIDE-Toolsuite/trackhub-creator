@@ -64,6 +64,9 @@ class ConfigManager(DirectorConfigurationManager):
             self._process_pipeline_arguments()
         return self.__pipeline_arguments_object
 
+    def get_ncbi_taxonomy_ids(self):
+        pass
+
 
 class EnsemblDataCollector(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
