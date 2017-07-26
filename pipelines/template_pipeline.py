@@ -34,6 +34,9 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
         super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
         self.__pipeline_arguments = pipeline_arguments
 
+    def _get_pipeline_arguments(self):
+        return self.__pipeline_arguments
+
 
 class Director:
     """
