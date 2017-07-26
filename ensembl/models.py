@@ -89,6 +89,10 @@ class SpeciesService:
         self._get_logger().debug("Creating index on getter '{}' for #{} entries".format(property_getter, len(data)))
         return {property_getter(data_item): data_item for data_item in data}
 
+    def __index_data_by_taxonomy_ensembl_special_case(self, data):
+        #TODO
+        pass
+
     def _get_logger(self):
         return self.__logger
 
