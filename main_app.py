@@ -35,6 +35,8 @@ def get_cmdl():
                         help='Application configuration file')
     parser.add_argument('-p', '--pipeline_config_file',
                         help='Configuration file for the pipeline that is going to be run')
+    parser.add_argument('-a', '--pipeline_arguments',
+                        help='Comma separated of pipeline command line arguments (key=value pairs)')
     parser.add_argument('-v', '--version',
                         help='display version information',
                         action='version',
