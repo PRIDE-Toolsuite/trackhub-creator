@@ -99,7 +99,10 @@ def run_pipeline():
     pipeline_factory_module = config_manager\
         .get_app_config_manager()\
         .get_pipeline_factory_instance(__args.pipeline_name)
-    # TODO Set the configuration file
+    # TODO I should refactor this in the future, in case I use this information anywhere else
+    # Set the configuration file
+    __logger.info("Pipeline configuration file '{}'".format(__args.pipeline_config_file))
+    pipeline_factory_module.set_configuration_file(__args.pipeline_config_file)
     # TODO Set the pipeline command line arguments
 
 
