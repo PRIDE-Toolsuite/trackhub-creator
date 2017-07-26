@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This pipeline collects data from Ensembl to avoid race conditions when running other pipelines that use this data
 """
