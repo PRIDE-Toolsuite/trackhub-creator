@@ -13,3 +13,4 @@ This pipeline collects data from Ensembl to avoid race conditions when running o
 
 # Application imports
 import config_manager
+from toolbox import general
