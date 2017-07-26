@@ -22,7 +22,7 @@ __pipeline_arguments = None
 
 
 class ConfigManager(DirectorConfigurationManager):
-    def __init__(self, configuration_object, configuration_file):
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file)
 
 
