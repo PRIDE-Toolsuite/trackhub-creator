@@ -18,3 +18,8 @@ from pipelines.template_pipeline import DirectorConfigurationManager, Director
 
 __configuration_file = None
 __pipeline_arguments = None
+
+
+class ConfigManager(DirectorConfigurationManager):
+    def __init__(self, configuration_object, configuration_file):
+        super(ConfigManager, self).__init__(configuration_object, configuration_file)
