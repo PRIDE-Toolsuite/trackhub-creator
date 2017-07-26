@@ -106,6 +106,8 @@ def run_pipeline():
     # Set the pipeline command line arguments
     __logger.info("Pipeline command line arguments: '{}'".format(__args.pipeline_arguments))
     pipeline_factory_module.set_pipeline_arguments(__args.pipeline_arguments)
+    # Get an instance of the pipeline
+    pipeline_instance = pipeline_factory_module.get_pipeline_director()
 
 
 def main():
