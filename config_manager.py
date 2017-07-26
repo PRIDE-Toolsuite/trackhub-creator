@@ -100,6 +100,9 @@ def read_config_from_file(configuration_file):
     :param configuration_file: file name or absolute path for the file that contains the configuration information
     :return: an object representation of the json formatted configuration information read from the file
     """
+    if (configuration_file is None):
+        # If there is no configuration file, we return an empty configuration object
+        return {}
     config_file_path = configuration_file
     if not os.path.isabs(config_file_path):
         config_file_path = os.path.join(_folder_config, configuration_file)
