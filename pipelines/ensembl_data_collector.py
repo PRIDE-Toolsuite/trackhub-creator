@@ -46,6 +46,8 @@ def get_pipeline_director():
 
 
 class ConfigManager(DirectorConfigurationManager):
+    _CONFIG_OBJECT_KEY_NCBI_TAXONOMY_IDS = 'ncbi_taxonomy_ids'
+
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
         self.__pipeline_arguments_object = None
