@@ -11,6 +11,7 @@
 This pipeline collects data from Ensembl to avoid race conditions when running other pipelines that use this data
 """
 
+import os
 import time
 # Application imports
 import config_manager
@@ -80,6 +81,14 @@ class EnsemblDataCollector(Director):
     def _get_configuration_manager(self):
         return self.__config_manager
 
+    def __check_downloaded_files(self, files_names_and_paths):
+        result = True
+        for file_name, file_path in files_names_and_paths:
+            if not os.path.exists(file_path):
+                result = False
+                self._get_logger().error("MISSING ENSEMBL file '{}' at '{}'".format(file_name, file_path))
+        return result
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         # TODO
@@ -88,6 +97,12 @@ class EnsemblDataCollector(Director):
                                 .format(",".join(self._get_configuration_manager().get_ncbi_taxonomy_ids())))
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for ncbi_taxonomy_id in self._get_configuration_manager().get_ncbi_taxonomy_ids():
-            downloaded_protein_sequences = ensembl_downloader_service.get_protein_sequences_for_species(ncbi_taxonomy_id)
-            downloaded_gtf_files = ensembl_downloader_service.get_genome_reference_for_species(ncbi_taxonomy_id)
+            downloaded_protein_sequences = ensembl_downloader_service\
+                .get_protein_sequences_for_species(ncbi_taxonomy_id)
+            if not self.__check_downloaded_files(downloaded_protein_sequences):
+                return False
+            downloaded_gtf_files = ensembl_downloader_service\
+                .get_genome_reference_for_species(ncbi_taxonomy_id)
+            if not self.__check_downloaded_files(downloaded_gtf_files):
+                return False
         return True
