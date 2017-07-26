@@ -92,12 +92,12 @@ class SpeciesService:
     def __index_data_by_taxonomy_ensembl_special_case(self, data):
         indexed_data = {}
         for data_item in data:
-            if data.get_ncbi_taxonomy_id() not in indexed_data:
+            if data_item.get_ncbi_taxonomy_id() not in indexed_data:
                 indexed_data[data.get_ncbi_taxonomy_id()] = data_item
             else:
                 # Keep the one with aliases, that seems to be the main one for Ensembl
                 if data_item.get_aliases():
-                    if indexed_data[data.get_ncbi_taxonomy_id()].get_aliases():
+                    if indexed_data[data_item.get_ncbi_taxonomy_id()].get_aliases():
                         self._get_logger().error("ENSEMBL SPECIES INDEXING ERROR, already existing species entry '{}' "
                                                  "will not be replaced by non-empty aliases entry '{}'"
                                                  .format(indexed_data[data.get_ncbi_taxonomy_id()],
@@ -107,7 +107,7 @@ class SpeciesService:
                                                 "by new entry '{}'"
                                                 .format(indexed_data[data.get_ncbi_taxonomy_id()],
                                                         data_item))
-                        indexed_data[data.get_ncbi_taxonomy_id()] = data_item
+                        indexed_data[data_item.get_ncbi_taxonomy_id()] = data_item
         return indexed_data
 
     def _get_logger(self):
