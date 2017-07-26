@@ -48,6 +48,7 @@ def get_pipeline_director():
 class ConfigManager(DirectorConfigurationManager):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
+        self.__pipeline_arguments_object = None
 
 
 class EnsemblDataCollector(Director):
