@@ -83,3 +83,5 @@ class EnsemblDataCollector(Director):
         # Main pipeline algorithm
         # TODO
         self._get_logger().info("[START]---> Pipeline run")
+        self._get_logger().info("Collecting Ensembl data for NCBI Taxonomies: {}"
+                                .format(",".join(self._get_configuration_manager().get_ncbi_taxonomy_ids())))
