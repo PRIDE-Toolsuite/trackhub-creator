@@ -28,7 +28,7 @@ class ConfigManager(DirectorConfigurationManager):
 
 
 class EnsemblDataCollector(Director):
-    def __init__(self):
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super(EnsemblDataCollector, self).__init__(runner_id)
 
