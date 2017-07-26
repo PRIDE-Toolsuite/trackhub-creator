@@ -90,8 +90,24 @@ class SpeciesService:
         return {property_getter(data_item): data_item for data_item in data}
 
     def __index_data_by_taxonomy_ensembl_special_case(self, data):
-        #TODO
-        pass
+        indexed_data = {}
+        for data_item in data:
+            if data.get_ncbi_taxonomy_id() not in indexed_data:
+                indexed_data[data.get_ncbi_taxonomy_id()] = data_item
+            else:
+                # Keep the one with aliases, that seems to be the main one for Ensembl
+                if data_item.get_aliases():
+                    if indexed_data[data.get_ncbi_taxonomy_id()].get_aliases():
+                        self._get_logger().error("ENSEMBL SPECIES INDEXING ERROR, already existing species entry '{}' "
+                                                 "will not be replaced by non-empty aliases entry '{}'"
+                                                 .format(indexed_data[data.get_ncbi_taxonomy_id()],
+                                                         data_item))
+                    else:
+                        self._get_logger().warn("ENSEMBL SPECIES INDEX REPLACEMENT, of existing entry '{}' "
+                                                "by new entry '{}'"
+                                                .format(indexed_data[data.get_ncbi_taxonomy_id()],
+                                                        data_item))
+                        indexed_data[data.get_ncbi_taxonomy_id()] = data_item
 
     def _get_logger(self):
         return self.__logger
