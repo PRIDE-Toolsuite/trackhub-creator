@@ -36,5 +36,9 @@ def set_pipeline_arguments(pipeline_arguments):
     return __pipeline_arguments
 
 
+class ConfigManager(DirectorConfigurationManager):
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
+        super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
