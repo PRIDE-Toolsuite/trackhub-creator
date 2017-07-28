@@ -21,5 +21,13 @@ __configuration_file = None
 __pipeline_arguments = None
 __pipeline_director = None
 
+
+def set_configuration_file(config_file):
+    global __configuration_file
+    if __configuration_file is None:
+        __configuration_file = config_file
+    return __configuration_file
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
