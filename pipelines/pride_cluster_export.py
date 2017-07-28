@@ -47,6 +47,9 @@ class PrideClusterExporter(Director):
         super(PrideClusterExporter, self).__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
 
+    def _get_configuration_manager(self):
+        return self.__config_manager
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
