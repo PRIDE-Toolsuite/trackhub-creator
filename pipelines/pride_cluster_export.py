@@ -54,6 +54,8 @@ class PrideClusterExporter(Director):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
         # TODO
+        # TODO - Run cluster file exporter
+        # TODO -
 
 
 if __name__ == '__main__':
