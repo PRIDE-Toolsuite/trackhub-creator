@@ -40,5 +40,13 @@ class ConfigManager(DirectorConfigurationManager):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
 
+
+class PrideClusterExporter(Director):
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
+        runner_id = "{}-{}".format(__name__, time.time())
+        super(PrideClusterExporter, self).__init__(runner_id)
+        self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
