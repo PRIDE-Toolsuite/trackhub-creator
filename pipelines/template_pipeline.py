@@ -33,6 +33,7 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
         self.__pipeline_arguments = pipeline_arguments
+        self.__pipeline_arguments_object = None
 
     def _get_pipeline_arguments(self):
         return self.__pipeline_arguments
@@ -42,7 +43,7 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
 
     def _get_pipeline_arguments_object(self):
         if self.__pipeline_arguments_object is None:
-            self._process_pipeline_arguments()
+            self.__pipeline_arguments_object = self._process_pipeline_arguments()
         return self.__pipeline_arguments_object
 
 
