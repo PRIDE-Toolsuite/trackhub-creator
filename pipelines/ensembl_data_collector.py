@@ -16,7 +16,6 @@ import time
 # Application imports
 import config_manager
 import ensembl
-from toolbox import general
 from pipelines.template_pipeline import DirectorConfigurationManager, Director
 
 __configuration_file = None
