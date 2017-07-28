@@ -97,12 +97,16 @@ class EnsemblDataCollector(Director):
                                 .format(",".join(self._get_configuration_manager().get_ncbi_taxonomy_ids())))
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for ncbi_taxonomy_id in self._get_configuration_manager().get_ncbi_taxonomy_ids():
-            downloaded_protein_sequences = ensembl_downloader_service\
+            downloaded_protein_sequences = ensembl_downloader_service \
                 .get_protein_sequences_for_species(ncbi_taxonomy_id)
             if not self.__check_downloaded_files(downloaded_protein_sequences):
                 return False
-            downloaded_gtf_files = ensembl_downloader_service\
+            downloaded_gtf_files = ensembl_downloader_service \
                 .get_genome_reference_for_species(ncbi_taxonomy_id)
             if not self.__check_downloaded_files(downloaded_gtf_files):
                 return False
         return True
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
