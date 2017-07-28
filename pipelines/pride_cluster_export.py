@@ -15,7 +15,7 @@ PoGo formatted files for its later use
 # App imports
 import config_manager
 import ensembl
-
+from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
