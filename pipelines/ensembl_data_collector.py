@@ -62,11 +62,6 @@ class ConfigManager(DirectorConfigurationManager):
             self._CONFIG_OBJECT_KEY_NCBI_TAXONOMY_IDS: id_list
         }
 
-    def _get_pipeline_arguments_object(self):
-        if self.__pipeline_arguments_object is None:
-            self._process_pipeline_arguments()
-        return self.__pipeline_arguments_object
-
     def get_ncbi_taxonomy_ids(self):
         return self._get_pipeline_arguments_object()[self._CONFIG_OBJECT_KEY_NCBI_TAXONOMY_IDS]
 

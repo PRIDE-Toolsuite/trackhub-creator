@@ -37,6 +37,14 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
     def _get_pipeline_arguments(self):
         return self.__pipeline_arguments
 
+    def _process_pipeline_arguments(self):
+        raise NotImplementedError("Implement how to process your pipeline arguments here")
+
+    def _get_pipeline_arguments_object(self):
+        if self.__pipeline_arguments_object is None:
+            self._process_pipeline_arguments()
+        return self.__pipeline_arguments_object
+
 
 class Director:
     """
