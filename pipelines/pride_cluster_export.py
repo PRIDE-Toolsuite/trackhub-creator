@@ -29,5 +29,12 @@ def set_configuration_file(config_file):
     return __configuration_file
 
 
+def set_pipeline_arguments(pipeline_arguments):
+    global __pipeline_arguments
+    if __pipeline_arguments is None:
+        __pipeline_arguments = pipeline_arguments
+    return __pipeline_arguments
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
