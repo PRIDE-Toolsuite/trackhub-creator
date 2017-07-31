@@ -126,7 +126,7 @@ class PrideClusterExporter(Director):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
         # time java -Xmx12G -jar cluster-file-exporter-1.0.0-SNAPSHOT.jar -out ~/tmp/pride-cluster/with_pogo -version 2016-05 -quality 2 -filter_out_multitaxonomies -include_pogo_export > output.log 2>&1 ; cd ..
-        # TODO
+        # Build cluster-file-exporter command
         cluster_file_exporter_command = \
             "time java -jar {} -out {} -version {} -quality {} " \
             "-filter_out_multitaxonomies -include_pogo_export > {} 2>&1".format(
