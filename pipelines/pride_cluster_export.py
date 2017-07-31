@@ -161,6 +161,7 @@ class PrideClusterExporter(Director):
             stdout, stderr = cluster_file_exporter_subprocess.communicate()
             return False
         # TODO
+        return True
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
