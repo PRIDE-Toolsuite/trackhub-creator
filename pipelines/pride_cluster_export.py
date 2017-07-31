@@ -136,6 +136,13 @@ class ConfigManager(DirectorConfigurationManager):
         return 7200
 
     def get_cluster_file_exporter_result_file_name_prefix(self):
+        """
+        Get the prefix cluster-file-exporter uses for result file names.
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: file name prefix for cluster-file-exporter result files
+        """
         return "pride_cluster_peptides_"
 
 
