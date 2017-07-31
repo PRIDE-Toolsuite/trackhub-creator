@@ -67,6 +67,9 @@ class ConfigManager(DirectorConfigurationManager):
         return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
                             self._CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR)
 
+    def get_cluster_file_exporter_quality_parameter(self):
+        return '2'
+
 
 class PrideClusterExporter(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
