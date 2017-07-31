@@ -145,6 +145,9 @@ class PrideClusterExporter(Director):
     def _get_configuration_manager(self):
         return self.__config_manager
 
+    def _process_cluster_file_exporter_result_files(self):
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
