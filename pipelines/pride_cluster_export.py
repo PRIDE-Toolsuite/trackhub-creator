@@ -276,6 +276,12 @@ class PrideClusterExporter(Director):
             if taxonomy == self.__CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL:
                 self._get_logger().warning("SKIPPING PoGo for taxonomy {}".format(taxonomy))
                 continue
+            pogo_file = cluster_file_exporter_result_mapping[taxonomy][
+                self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH]
+            self._get_logger().info(
+                "Processing taxonomy '{}' for PoGo file '{}'"
+                    .format(taxonomy,
+                            pogo_file))
         # TODO - Run PoGo on the given files
         # TODO - Convert files to BigBed format
         # TODO - Create trackhub structure
