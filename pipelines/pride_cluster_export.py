@@ -102,6 +102,13 @@ class ConfigManager(DirectorConfigurationManager):
                                          self._CONFIG_CLUSTER_FILE_EXPORTER_JAR_FILE_NAME))
 
     def get_cluster_file_exporter_output_log_file_path(self):
+        """
+        Get the path to the file where all output from running cluster-file-exporter will be dumped to.
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: cluster-file-exporter output log file path
+        """
         return os.path.join(self.get_cluster_file_exporter_destination_folder(),
                             "output.log")
 
