@@ -189,9 +189,12 @@ class PrideClusterExporter(Director):
                         self._get_configuration_manager().get_cluster_file_exporter_result_file_name_prefix()):
                     self._get_logger().info("Mapping result file '{}'".format(file))
                     result_file_path = os.path.join(cluster_file_exporter_folder, file)
-                    result_file_taxonomy = \
-                        file.split(self._get_configuration_manager()
-                                   .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
+                    # Taxonomy corner case 'pride_cluster_peptides_ALL.tsv'
+                    result_file_taxonomy = 'all'
+                    if 'ALL' not in file:
+                        result_file_taxonomy = \
+                            file.split(self._get_configuration_manager()
+                                       .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
                     result_file_extension = file[file.rfind('.') + 1:]
                     # Check the taxonomy for the result map
                     if result_file_taxonomy not in cluster_file_exporter_result_mapping:
