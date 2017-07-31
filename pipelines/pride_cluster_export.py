@@ -112,6 +112,9 @@ class ConfigManager(DirectorConfigurationManager):
         return os.path.join(self.get_cluster_file_exporter_destination_folder(),
                             "output.log")
 
+    def get_cluster_file_exporter_run_timeout(self):
+        return 7200
+
 
 class PrideClusterExporter(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
@@ -137,6 +140,7 @@ class PrideClusterExporter(Director):
                 self._get_configuration_manager().get_cluster_file_exporter_quality_parameter(),
                 self._get_configuration_manager().get_cluster_file_exporter_output_log_file_path()
             )
+        # TODO - Prepare the subprocess
         # TODO - Run cluster file exporter
         # TODO -
 
