@@ -156,6 +156,13 @@ class ConfigManager(DirectorConfigurationManager):
         return "tsv"
 
     def get_cluster_file_exporter_pogo_file_extension(self):
+        """
+        Get the file extension for the pogo files produced by the cluster-file-exporter
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: cluster-file-exporter 'pogo' file extension
+        """
         return "pogo"
 
 
