@@ -101,6 +101,10 @@ class ConfigManager(DirectorConfigurationManager):
                             os.path.join(self._CONFIG_CLUSTER_FILE_EXPORTER_BIN_SUBFOLDER,
                                          self._CONFIG_CLUSTER_FILE_EXPORTER_JAR_FILE_NAME))
 
+    def get_cluster_file_exporter_output_log_file_path(self):
+        return os.path.join(self.get_cluster_file_exporter_destination_folder(),
+                            "output.log")
+
 
 class PrideClusterExporter(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
