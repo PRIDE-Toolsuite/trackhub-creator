@@ -87,6 +87,11 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return '12G'
 
+    def get_cluster_file_exporter_jar_path(self):
+        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
+                            os.path.join("cluster-file-exporter",
+                                         "cluster-file-exporter.jar"))
+
 
 class PrideClusterExporter(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
