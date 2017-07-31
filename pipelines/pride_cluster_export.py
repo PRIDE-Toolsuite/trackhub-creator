@@ -56,6 +56,14 @@ class ConfigManager(DirectorConfigurationManager):
         return "{}-{:02}".format(time.gmtime().tm_year, time.gmtime().tm_mon)
 
     def get_cluster_file_exporter_destination_folder(self):
+        """
+        Get the destination folder for the cluster file exporter result files, it will typically be a subfolder of the
+        current running session working directory.
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: destination folder for pride cluster-file-exporter result files
+        """
         return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
                             self._CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR)
 
