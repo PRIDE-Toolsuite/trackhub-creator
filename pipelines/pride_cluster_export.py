@@ -39,6 +39,15 @@ def set_pipeline_arguments(pipeline_arguments):
     return __pipeline_arguments
 
 
+def get_pipeline_director():
+    global __pipeline_director
+    if __pipeline_director is None:
+        __pipeline_director = PrideClusterExporter(config_manager.read_config_from_file(__configuration_file),
+                                                   __configuration_file,
+                                                   __pipeline_arguments)
+    return __pipeline_director
+
+
 class ConfigManager(DirectorConfigurationManager):
     _CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR = "cluster-file-exporter"
     _CONFIG_CLUSTER_FILE_EXPORTER_BIN_SUBFOLDER = "cluster-file-exporter"
@@ -162,6 +171,7 @@ class PrideClusterExporter(Director):
             return False
         # TODO
         return True
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
