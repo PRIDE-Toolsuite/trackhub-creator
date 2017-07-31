@@ -88,6 +88,13 @@ class ConfigManager(DirectorConfigurationManager):
         return '12G'
 
     def get_cluster_file_exporter_jar_path(self):
+        """
+        Get the path to cluster-file-exporter jar file for running the software
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: cluster-file-exporter jar file path
+        """
         return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
                             os.path.join("cluster-file-exporter",
                                          "cluster-file-exporter.jar"))
