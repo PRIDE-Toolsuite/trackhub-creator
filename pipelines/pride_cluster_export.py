@@ -17,6 +17,7 @@ import time
 import subprocess
 # App imports
 import config_manager
+import ensembl.data_downloader
 from toolbox import general as general_toolbox
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
