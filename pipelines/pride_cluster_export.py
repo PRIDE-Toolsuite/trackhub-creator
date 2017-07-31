@@ -41,6 +41,7 @@ def set_pipeline_arguments(pipeline_arguments):
 class ConfigManager(DirectorConfigurationManager):
     _CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR = "cluster-file-exporter"
     _CONFIG_CLUSTER_FILE_EXPORTER_BIN_SUBFOLDER = "cluster-file-exporter"
+    _CONFIG_CLUSTER_FILE_EXPORTER_JAR_FILE_NAME = "cluster-file-exporter.jar"
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
@@ -98,7 +99,7 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
                             os.path.join(self._CONFIG_CLUSTER_FILE_EXPORTER_BIN_SUBFOLDER,
-                                         "cluster-file-exporter.jar"))
+                                         self._CONFIG_CLUSTER_FILE_EXPORTER_JAR_FILE_NAME))
 
 
 class PrideClusterExporter(Director):
