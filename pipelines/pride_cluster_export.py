@@ -174,6 +174,7 @@ class PrideClusterExporter(Director):
                     result_file_extension = file[file.rfind('.') + 1:]
                     if result_file_taxonomy not in cluster_file_exporter_result_mapping:
                         cluster_file_exporter_result_mapping[result_file_taxonomy] = {}
+                    # TODO
 
     def _run_pipeline(self):
         # Main pipeline algorithm
