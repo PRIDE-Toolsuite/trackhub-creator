@@ -243,7 +243,6 @@ class PrideClusterExporter(Director):
             cluster_file_exporter_subprocess.kill()
             stdout, stderr = cluster_file_exporter_subprocess.communicate()
             return False
-        # TODO
         if cluster_file_exporter_subprocess.poll() and (cluster_file_exporter_subprocess != 0):
             self._get_logger().error("An ERROR occurred while running cluster-file-exporter")
             return False
@@ -252,7 +251,11 @@ class PrideClusterExporter(Director):
         if not cluster_file_exporter_result_mapping:
             self._get_logger().error("ERROR processing cluster-file-exporter result files")
             return False
-        
+        # TODO - Run PoGo on the given files
+        # TODO - Convert files to BigBed format
+        # TODO - Create trackhub structure
+        # TODO - Sync Data and get public URL
+        # TODO - Publish trackhub
         return True
 
 
