@@ -249,6 +249,10 @@ class PrideClusterExporter(Director):
             return False
         # Process cluster-file-exporter result files
         cluster_file_exporter_result_mapping = self._process_cluster_file_exporter_result_files()
+        if not cluster_file_exporter_result_mapping:
+            self._get_logger().error("ERROR processing cluster-file-exporter result files")
+            return False
+        
         return True
 
 
