@@ -129,11 +129,12 @@ class PrideClusterExporter(Director):
         # TODO
         cluster_file_exporter_command = \
             "time java -jar {} -out {} -version {} -quality {} " \
-            "-filter_out_multitaxonomies -include_pogo_export".format(
+            "-filter_out_multitaxonomies -include_pogo_export > {} 2>&1".format(
                 self._get_configuration_manager().get_cluster_file_exporter_jar_path(),
                 self._get_configuration_manager().get_cluster_file_exporter_destination_folder(),
                 self._get_configuration_manager().get_cluster_file_exporter_version_parameter(),
-                self._get_configuration_manager().get_cluster_file_exporter_quality_parameter()
+                self._get_configuration_manager().get_cluster_file_exporter_quality_parameter(),
+                self._get_configuration_manager().get_cluster_file_exporter_output_log_file_path()
             )
         # TODO - Run cluster file exporter
         # TODO -
