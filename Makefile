@@ -12,10 +12,16 @@ bin/cluster-file-exporter/cluster-file-exporter.jar: tmp
 	@mkdir bin/cluster-file-exporter
 	@cd bin/cluster-file-exporter; unzip ../../tmp/cluster-file-exporter/target/cluster-file-exporter*zip; cp cluster-file-exporter-*jar cluster-file-exporter.jar
 
+bin/pogo/pogo: tmp
+	@cd tmp; git clone git@github.com:PRIDE-Toolsuite/PoGo.git pogo
+	@cd tmp/pogo/PoGo/src; make
+	@mkdir -p bin/pogo
+	@cp tmp/pogo/PoGo/src/PoGo bin/pogo/pogo
+
 tmp:
 	@mkdir tmp
 
-dev_environment: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar
+dev_environment: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
 
 install: dev_environment
 
