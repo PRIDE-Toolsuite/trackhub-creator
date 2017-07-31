@@ -135,6 +135,9 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return 7200
 
+    def get_cluster_file_exporter_result_file_name_prefix(self):
+        return "pride_cluster_peptides_"
+
 
 class PrideClusterExporter(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
