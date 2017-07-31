@@ -157,6 +157,7 @@ class PrideClusterExporter(Director):
 
     def _process_cluster_file_exporter_result_files(self):
         cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
+        # Prepare empty result map
         cluster_file_exporter_result_mapping = {}
         for root, dirs, files in \
                 os.walk(cluster_file_exporter_folder):
