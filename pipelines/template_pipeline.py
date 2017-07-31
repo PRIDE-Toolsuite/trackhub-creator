@@ -81,6 +81,7 @@ class Director:
         if not self._after():
             self._get_logger().error("The logic executed AFTER running the pipeline has FAILED")
             return False
+        self._get_logger().info("SUCCESSFUL Pipeline execution")
         return True
 
     def _run_pipeline(self):
