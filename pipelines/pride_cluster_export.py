@@ -52,6 +52,7 @@ class ConfigManager(DirectorConfigurationManager):
     _CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR = "cluster-file-exporter"
     _CONFIG_CLUSTER_FILE_EXPORTER_BIN_SUBFOLDER = "cluster-file-exporter"
     _CONFIG_CLUSTER_FILE_EXPORTER_JAR_FILE_NAME = "cluster-file-exporter.jar"
+    _CONFIG_POGO_BIN_SUBFOLDER = "pogo"
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
