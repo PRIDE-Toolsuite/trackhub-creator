@@ -113,6 +113,13 @@ class ConfigManager(DirectorConfigurationManager):
                             "output.log")
 
     def get_cluster_file_exporter_run_timeout(self):
+        """
+        Get how much time, in seconds, to wait before considering the run of cluster-file-exporter overtimed.
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: timeout for cluster-file-exporter command
+        """
         return 7200
 
 
