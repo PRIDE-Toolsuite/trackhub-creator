@@ -147,6 +147,9 @@ class ConfigManager(DirectorConfigurationManager):
 
 
 class PrideClusterExporter(Director):
+    __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
+    __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH = 'pride_cluster_file_path'
+
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super(PrideClusterExporter, self).__init__(runner_id)
@@ -169,6 +172,8 @@ class PrideClusterExporter(Director):
                         file.split(self._get_configuration_manager()
                                    .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
                     result_file_extension = file[file.rfind('.') + 1:]
+                    if result_file_taxonomy not in cluster_file_exporter_result_mapping:
+                        cluster_file_exporter_result_mapping[result_file_taxonomy] = {}
 
     def _run_pipeline(self):
         # Main pipeline algorithm
