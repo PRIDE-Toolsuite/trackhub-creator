@@ -77,6 +77,9 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return '2'
 
+    def get_cluster_file_exporter_java_max_memory(self):
+        return '12G'
+
 
 class PrideClusterExporter(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
@@ -92,6 +95,7 @@ class PrideClusterExporter(Director):
         self._get_logger().info("[START]---> Pipeline run")
         # time java -Xmx12G -jar cluster-file-exporter-1.0.0-SNAPSHOT.jar -out ~/tmp/pride-cluster/with_pogo -version 2016-05 -quality 2 -filter_out_multitaxonomies -include_pogo_export > output.log 2>&1 ; cd ..
         # TODO
+
         # TODO - Run cluster file exporter
         # TODO -
 
