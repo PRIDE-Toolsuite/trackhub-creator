@@ -78,6 +78,13 @@ class ConfigManager(DirectorConfigurationManager):
         return '2'
 
     def get_cluster_file_exporter_java_max_memory(self):
+        """
+        Get the maximum amount of memory we want Java to use for running pride cluster-file-exporter
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: maximum amount of memory to append to -Xmx java parameter
+        """
         return '12G'
 
 
