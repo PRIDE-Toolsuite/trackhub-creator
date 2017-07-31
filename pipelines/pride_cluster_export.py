@@ -14,6 +14,7 @@ PoGo formatted files for its later use
 
 import os
 import time
+import subprocess
 # App imports
 import config_manager
 import ensembl
@@ -147,10 +148,10 @@ class PrideClusterExporter(Director):
                 self._get_configuration_manager().get_cluster_file_exporter_quality_parameter(),
                 self._get_configuration_manager().get_cluster_file_exporter_output_log_file_path()
             )
-        # TODO - Prepare the subprocess
-        # TODO - Run cluster file exporter
-        # TODO -
-
+        # Run cluster file exporter
+        cluster_file_exporter_subprocess = subprocess.Popen(cluster_file_exporter_command,
+                                                            shell=True)
+        
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
