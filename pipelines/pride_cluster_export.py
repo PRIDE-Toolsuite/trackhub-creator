@@ -44,7 +44,10 @@ class ConfigManager(DirectorConfigurationManager):
     def get_cluster_file_exporter_version_parameter(self):
         """
         This method computes the 'version' parameter value for running pride cluster-file-exporter software, it usually
-        looks like '2016-05'
+        looks like '2016-05'.
+
+        This value is being computed here in case I want to make it either a configuration parameter or a command line
+        argument
         :return: the 'version' parameter value to use for running pride cluster-file-exporter
         """
         return "{}-{:02}".format(time.gmtime().tm_year, time.gmtime().tm_mon)
