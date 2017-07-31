@@ -77,7 +77,7 @@ class ConfigManager(DirectorConfigurationManager):
         :return: destination folder for pride cluster-file-exporter result files
         """
         destination_folder = os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
-                            self._CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR)
+                                          self._CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR)
         # Make sure the folder is there
         general_toolbox.check_create_folders([destination_folder])
         return destination_folder
@@ -157,6 +157,7 @@ class PrideClusterExporter(Director):
 
     def _process_cluster_file_exporter_result_files(self):
         cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
+        cluster_file_exporter_result_mapping = {}
         for root, dirs, files in \
                 os.walk(cluster_file_exporter_folder):
             for file in files:
@@ -166,7 +167,7 @@ class PrideClusterExporter(Director):
                     result_file_taxonomy = \
                         file.split(self._get_configuration_manager()
                                    .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
-
+                    result_file_extension = file[file.rfind('.') + 1:]
 
     def _run_pipeline(self):
         # Main pipeline algorithm
@@ -198,8 +199,8 @@ class PrideClusterExporter(Director):
             return False
         # TODO
         if cluster_file_exporter_subprocess.poll() and (cluster_file_exporter_subprocess != 0):
-                self._get_logger().error("An ERROR occurred while running cluster-file-exporter")
-                return False
+            self._get_logger().error("An ERROR occurred while running cluster-file-exporter")
+            return False
         # TODO - Process cluster-file-exporter result files
         return True
 
