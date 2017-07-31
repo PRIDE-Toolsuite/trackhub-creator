@@ -286,7 +286,7 @@ class PrideClusterExporter(Director):
                 "Processing taxonomy '{}' for PoGo file '{}'"
                 .format(taxonomy,
                         pogo_file))
-            # TODO - Get Protein Sequence files from Ensembl for this taxonomy
+            # TODO - Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
             # TODO - Get GTF files from Ensembl for this taxonomy
             # TODO - Run PoGo
             # TODO - Convert files to BigBed format
