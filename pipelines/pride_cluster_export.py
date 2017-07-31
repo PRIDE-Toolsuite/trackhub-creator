@@ -205,7 +205,7 @@ class PrideClusterExporter(Director):
                     self._get_logger().info("Mapping result file '{}'".format(file))
                     result_file_path = os.path.join(cluster_file_exporter_folder, file)
                     # Taxonomy corner case 'pride_cluster_peptides_ALL.tsv'
-                    result_file_taxonomy = 'all'
+                    result_file_taxonomy = self.__CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL
                     if 'ALL' not in file:
                         result_file_taxonomy = \
                             file.split(self._get_configuration_manager()
