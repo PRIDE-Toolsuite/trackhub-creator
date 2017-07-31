@@ -12,6 +12,7 @@ This module implements the pipeline for exporting PRIDE Cluster to files using c
 PoGo formatted files for its later use
 """
 
+import time
 # App imports
 import config_manager
 import ensembl
@@ -40,6 +41,9 @@ class ConfigManager(DirectorConfigurationManager):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
 
+    def get_cluster_file_exporter_version_parameter(self):
+        return "{}-{:02}".format(time.gmtime().tm_year, time.gmtime().tm_mon)
+
 
 class PrideClusterExporter(Director):
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
@@ -55,6 +59,7 @@ class PrideClusterExporter(Director):
         self._get_logger().info("[START]---> Pipeline run")
         # time java -Xmx12G -jar cluster-file-exporter-1.0.0-SNAPSHOT.jar -out ~/tmp/pride-cluster/with_pogo -version 2016-05 -quality 2 -filter_out_multitaxonomies -include_pogo_export > output.log 2>&1 ; cd ..
         # TODO
+
         # TODO - Run cluster file exporter
         # TODO -
 
