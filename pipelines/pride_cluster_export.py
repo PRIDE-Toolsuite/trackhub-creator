@@ -204,6 +204,15 @@ class PrideClusterExporter(Director):
                             return None
                         cluster_file_exporter_result_mapping[result_file_taxonomy][
                             self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH] = result_file_path
+                    # Check the file extension - cluster-file-exporter PoGo file
+                    if result_file_extension == self._get_configuration_manager()\
+                            .get_cluster_file_exporter_pogo_file_extension():
+                        if self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH in \
+                                cluster_file_exporter_result_mapping[result_file_taxonomy]:
+                            self._get_logger().error("DUPLICATED entry for file '{}'".format(file))
+                            return None
+                        cluster_file_exporter_result_mapping[result_file_taxonomy][
+                            self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH] = result_file_path
 
     def _run_pipeline(self):
         # Main pipeline algorithm
