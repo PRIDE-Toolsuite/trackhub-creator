@@ -156,10 +156,16 @@ class PrideClusterExporter(Director):
         return self.__config_manager
 
     def _process_cluster_file_exporter_result_files(self):
+        cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
         for root, dirs, files in \
-                os.walk(self._get_configuration_manager().get_cluster_file_exporter_destination_folder()):
+                os.walk(cluster_file_exporter_folder):
             for file in files:
-                pass
+                if file.startswith(
+                        self._get_configuration_manager().get_cluster_file_exporter_result_file_name_prefix()):
+                    result_file_path = os.path.join(cluster_file_exporter_folder, file)
+                    result_file_taxonomy = \
+                        file.split(self._get_configuration_manager()
+                                   .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
 
 
     def _run_pipeline(self):
