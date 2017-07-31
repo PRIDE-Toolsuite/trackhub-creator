@@ -174,6 +174,10 @@ class PrideClusterExporter(Director):
             stdout, stderr = cluster_file_exporter_subprocess.communicate()
             return False
         # TODO
+        if cluster_file_exporter_subprocess.poll() and (cluster_file_exporter_subprocess != 0):
+                self._get_logger().error("An ERROR occurred while running cluster-file-exporter")
+                return False
+        # TODO - Process cluster-file-exporter result files
         return True
 
 
