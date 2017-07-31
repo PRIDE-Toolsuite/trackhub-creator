@@ -183,6 +183,7 @@ class ConfigManager(DirectorConfigurationManager):
 class PrideClusterExporter(Director):
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH = 'pride_cluster_file_path'
+    __CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL = 'all'
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
