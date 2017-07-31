@@ -187,6 +187,7 @@ class PrideClusterExporter(Director):
             for file in files:
                 if file.startswith(
                         self._get_configuration_manager().get_cluster_file_exporter_result_file_name_prefix()):
+                    self._get_logger().info("Mapping result file '{}'".format(file))
                     result_file_path = os.path.join(cluster_file_exporter_folder, file)
                     result_file_taxonomy = \
                         file.split(self._get_configuration_manager()
@@ -213,6 +214,8 @@ class PrideClusterExporter(Director):
                             return None
                         cluster_file_exporter_result_mapping[result_file_taxonomy][
                             self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH] = result_file_path
+                else:
+                    self._get_logger().warning("Ignoring cluster-file-exporter non-result file '{}'".format(file))
         return cluster_file_exporter_result_mapping
 
     def _run_pipeline(self):
