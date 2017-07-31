@@ -195,6 +195,15 @@ class PrideClusterExporter(Director):
                     # Check the taxonomy for the result map
                     if result_file_taxonomy not in cluster_file_exporter_result_mapping:
                         cluster_file_exporter_result_mapping[result_file_taxonomy] = {}
+                    # Check the file extension - cluster-file-exporter result file
+                    if result_file_extension == self._get_configuration_manager() \
+                            .get_cluster_file_exporter_result_file_extension():
+                        if self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH in \
+                                cluster_file_exporter_result_mapping[result_file_taxonomy]:
+                            self._get_logger().error("DUPLICATED entry for file '{}'".format(file))
+                            return None
+                        cluster_file_exporter_result_mapping[result_file_taxonomy][
+                            self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH] = result_file_path
 
     def _run_pipeline(self):
         # Main pipeline algorithm
