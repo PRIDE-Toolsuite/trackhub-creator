@@ -12,6 +12,7 @@ This module implements the pipeline for exporting PRIDE Cluster to files using c
 PoGo formatted files for its later use
 """
 
+import os
 import time
 # App imports
 import config_manager
@@ -51,6 +52,9 @@ class ConfigManager(DirectorConfigurationManager):
         :return: the 'version' parameter value to use for running pride cluster-file-exporter
         """
         return "{}-{:02}".format(time.gmtime().tm_year, time.gmtime().tm_mon)
+
+    def get_cluster_file_exporter_destination_folder(self):
+        return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(), "cluster-file-exporter")
 
 
 class PrideClusterExporter(Director):
