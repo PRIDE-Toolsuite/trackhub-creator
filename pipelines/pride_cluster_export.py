@@ -224,7 +224,7 @@ class PrideClusterExporter(Director):
                         cluster_file_exporter_result_mapping[result_file_taxonomy][
                             self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH] = result_file_path
                     # Check the file extension - cluster-file-exporter PoGo file
-                    if result_file_extension == self._get_configuration_manager()\
+                    if result_file_extension == self._get_configuration_manager() \
                             .get_cluster_file_exporter_pogo_file_extension():
                         if self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH in \
                                 cluster_file_exporter_result_mapping[result_file_taxonomy]:
@@ -273,7 +273,9 @@ class PrideClusterExporter(Director):
             self._get_logger().error("ERROR processing cluster-file-exporter result files")
             return False
         for taxonomy in cluster_file_exporter_result_mapping:
-            pass
+            if taxonomy == self.__CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL:
+                self._get_logger().warning("SKIPPING PoGo for taxonomy {}".format(taxonomy))
+                continue
         # TODO - Run PoGo on the given files
         # TODO - Convert files to BigBed format
         # TODO - Create trackhub structure
