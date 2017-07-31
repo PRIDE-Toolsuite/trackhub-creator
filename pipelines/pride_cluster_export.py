@@ -146,6 +146,13 @@ class ConfigManager(DirectorConfigurationManager):
         return "pride_cluster_peptides_"
 
     def get_cluster_file_exporter_result_file_extension(self):
+        """
+        Get the result file extension used in the files produced by the cluster-file-exporter
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: cluster-file-exporter result file extension
+        """
         return "tsv"
 
 
