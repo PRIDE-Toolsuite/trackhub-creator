@@ -25,3 +25,6 @@ tmp
 # Ignore contents of bin
 bin/*
 !bin/empty
+
+# Ignore compiled tests
+tests/__init__.pyc
