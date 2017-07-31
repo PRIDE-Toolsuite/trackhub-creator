@@ -68,6 +68,13 @@ class ConfigManager(DirectorConfigurationManager):
                             self._CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR)
 
     def get_cluster_file_exporter_quality_parameter(self):
+        """
+        Get the value for the 'quality' parameter of 'cluster-file-exporter'
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: 'quality' parameter value for running pride cluster-file-exporter
+        """
         return '2'
 
 
