@@ -271,6 +271,8 @@ class PrideClusterExporter(Director):
         if not cluster_file_exporter_result_mapping:
             self._get_logger().error("ERROR processing cluster-file-exporter result files")
             return False
+        for taxonomy in cluster_file_exporter_result_mapping:
+            pass
         # TODO - Run PoGo on the given files
         # TODO - Convert files to BigBed format
         # TODO - Create trackhub structure
