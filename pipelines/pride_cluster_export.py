@@ -192,9 +192,9 @@ class PrideClusterExporter(Director):
                         file.split(self._get_configuration_manager()
                                    .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
                     result_file_extension = file[file.rfind('.') + 1:]
+                    # Check the taxonomy for the result map
                     if result_file_taxonomy not in cluster_file_exporter_result_mapping:
                         cluster_file_exporter_result_mapping[result_file_taxonomy] = {}
-                    # TODO
 
     def _run_pipeline(self):
         # Main pipeline algorithm
