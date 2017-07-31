@@ -116,7 +116,14 @@ class PrideClusterExporter(Director):
         self._get_logger().info("[START]---> Pipeline run")
         # time java -Xmx12G -jar cluster-file-exporter-1.0.0-SNAPSHOT.jar -out ~/tmp/pride-cluster/with_pogo -version 2016-05 -quality 2 -filter_out_multitaxonomies -include_pogo_export > output.log 2>&1 ; cd ..
         # TODO
-
+        cluster_file_exporter_command = \
+            "time java -jar {} -out {} -version {} -quality {} " \
+            "-filter_out_multitaxonomies -include_pogo_export".format(
+                self._get_configuration_manager().get_cluster_file_exporter_jar_path(),
+                self._get_configuration_manager().get_cluster_file_exporter_destination_folder(),
+                self._get_configuration_manager().get_cluster_file_exporter_version_parameter(),
+                self._get_configuration_manager().get_cluster_file_exporter_quality_parameter()
+            )
         # TODO - Run cluster file exporter
         # TODO -
 
