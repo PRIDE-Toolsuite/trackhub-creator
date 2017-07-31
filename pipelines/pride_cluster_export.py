@@ -167,6 +167,11 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return "pogo"
 
+    def get_pogo_binary_file_path(self):
+        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
+                            os.path.join(self._CONFIG_POGO_BIN_SUBFOLDER,
+                                         self._CONFIG_POGO_BIN_FILE_NAME))
+
 
 class PrideClusterExporter(Director):
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
