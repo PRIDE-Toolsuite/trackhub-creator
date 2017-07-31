@@ -279,6 +279,7 @@ class PrideClusterExporter(Director):
             if taxonomy == self.__CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL:
                 self._get_logger().warning("SKIPPING PoGo for taxonomy {}".format(taxonomy))
                 continue
+            # PoGo input file
             pogo_file = cluster_file_exporter_result_mapping[taxonomy][
                 self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH]
             self._get_logger().info(
