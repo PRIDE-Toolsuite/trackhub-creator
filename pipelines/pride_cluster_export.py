@@ -17,7 +17,6 @@ import time
 import subprocess
 # App imports
 import config_manager
-import ensembl
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
 __configuration_file = None
