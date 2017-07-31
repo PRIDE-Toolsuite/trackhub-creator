@@ -39,6 +39,8 @@ def set_pipeline_arguments(pipeline_arguments):
 
 
 class ConfigManager(DirectorConfigurationManager):
+    _CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR = "cluster-file-exporter"
+
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
 
@@ -54,7 +56,8 @@ class ConfigManager(DirectorConfigurationManager):
         return "{}-{:02}".format(time.gmtime().tm_year, time.gmtime().tm_mon)
 
     def get_cluster_file_exporter_destination_folder(self):
-        return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(), "cluster-file-exporter")
+        return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
+                            self._CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR)
 
 
 class PrideClusterExporter(Director):
