@@ -286,8 +286,10 @@ class PrideClusterExporter(Director):
                 "Processing taxonomy '{}' for PoGo file '{}'"
                 .format(taxonomy,
                         pogo_file))
-        # TODO - Run PoGo on the given files
-        # TODO - Convert files to BigBed format
+            # TODO - Get Protein Sequence files from Ensembl for this taxonomy
+            # TODO - Get GTF files from Ensembl for this taxonomy
+            # TODO - Run PoGo
+            # TODO - Convert files to BigBed format
         # TODO - Create trackhub structure
         # TODO - Sync Data and get public URL
         # TODO - Publish trackhub
