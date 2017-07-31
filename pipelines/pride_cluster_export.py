@@ -17,6 +17,7 @@ import time
 import subprocess
 # App imports
 import config_manager
+from toolbox import general as general_toolbox
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
 __configuration_file = None
@@ -75,8 +76,11 @@ class ConfigManager(DirectorConfigurationManager):
         in the near future
         :return: destination folder for pride cluster-file-exporter result files
         """
-        return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
+        destination_folder = os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
                             self._CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR)
+        # Make sure the folder is there
+        general_toolbox.check_create_folders([destination_folder])
+        return destination_folder
 
     def get_cluster_file_exporter_quality_parameter(self):
         """
