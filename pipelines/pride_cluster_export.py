@@ -151,7 +151,16 @@ class PrideClusterExporter(Director):
         # Run cluster file exporter
         cluster_file_exporter_subprocess = subprocess.Popen(cluster_file_exporter_command,
                                                             shell=True)
-        
+        try:
+            stdout, stderr = \
+                cluster_file_exporter_subprocess.communicate(
+                    timeout=self._get_configuration_manager().get_cluster_file_exporter_run_timeout())
+        except subprocess.TimeoutExpired as e:
+            self._get_logger().error("TIMEOUT ({} seconds) while running cluster-file-exporter, KILLING subprocess")
+            cluster_file_exporter_subprocess.kill()
+            stdout, stderr = cluster_file_exporter_subprocess.communicate()
+            return False
+        # TODO
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
