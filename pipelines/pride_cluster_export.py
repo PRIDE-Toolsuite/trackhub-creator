@@ -213,6 +213,7 @@ class PrideClusterExporter(Director):
                             return None
                         cluster_file_exporter_result_mapping[result_file_taxonomy][
                             self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH] = result_file_path
+        return cluster_file_exporter_result_mapping
 
     def _run_pipeline(self):
         # Main pipeline algorithm
