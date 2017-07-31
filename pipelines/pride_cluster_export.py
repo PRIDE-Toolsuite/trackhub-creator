@@ -155,6 +155,9 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return "tsv"
 
+    def get_cluster_file_exporter_pogo_file_extension(self):
+        return "pogo"
+
 
 class PrideClusterExporter(Director):
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
