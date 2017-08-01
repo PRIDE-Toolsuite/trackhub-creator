@@ -278,7 +278,7 @@ class PrideClusterExporter(Director):
         # Rsync the dummy data into the destination folder
         rsync_command = "rsync -vah --progress --stats {}/ {}/"\
             .format(rsync_source_folder, cluster_file_exporter_destination_folder)
-        
+        rsync_subprocess = subprocess.Popen(rsync_command, shell=True)
 
 
     def _run_pipeline(self):
