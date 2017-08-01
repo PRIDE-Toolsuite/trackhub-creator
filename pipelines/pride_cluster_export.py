@@ -268,6 +268,9 @@ class PrideClusterExporter(Director):
             return False
         return True
 
+    def __run_cluster_file_exporter_simulation(self):
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
