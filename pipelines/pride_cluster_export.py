@@ -324,24 +324,25 @@ class PrideClusterExporter(Director):
                             pogo_file))
             # TODO - Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
             protein_sequence_files = ensembl_downloader_service.get_protein_sequences_for_species(taxonomy)
-            pogo_protein_sequence_file_key = None
-            for file in protein_sequence_files:
-                self._get_logger().debug("Scanning protein sequence file name '{}'".format(file))
-                if "all" in file:
-                    pogo_protein_sequence_file_key = file
+            pogo_protein_sequence_file_path = None
+            for file_name, file_path in protein_sequence_files:
+                self._get_logger().debug("Scanning protein sequence file name '{}'".format(file_name))
+                if "all" in file_name:
+                    pogo_protein_sequence_file_path = file_path
                     break
-            if not pogo_protein_sequence_file_key:
+            if not pogo_protein_sequence_file_path:
                 self._get_logger().error("File 'pep all' containing all sequences NOT FOUND!")
                 return False
             gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
             # For PoGo, we will use the GTF file that has no suffixes, thus, it will be the shortest file name
-            pogo_gtf_file_key = None
-            for file in gtf_files:
-                if (not pogo_gtf_file_key) \
-                        or (len(pogo_gtf_file_key) > len(file)):
-                    pogo_gtf_file_key = file
-                    continue
-            if not pogo_gtf_file_key:
+            pogo_gtf_file_name = None
+            pogo_gtf_file_path = None
+            for file_name, file_path in gtf_files:
+                if (not pogo_gtf_file_name) \
+                        or (len(pogo_gtf_file_name) > len(file_name)):
+                    pogo_gtf_file_name = file_name
+                    pogo_gtf_file_path = file_path
+            if not pogo_gtf_file_name:
                 self._get_logger().error("GTF file NOT FOUND to use with PoGo")
                 return False
             # TODO - Get the more general GTF file from Ensembl for this taxonomy
