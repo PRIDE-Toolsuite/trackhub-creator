@@ -323,6 +323,12 @@ class PrideClusterExporter(Director):
                     .format(taxonomy,
                             pogo_file))
             # TODO - Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
+            protein_sequence_files = ensembl_downloader_service.get_protein_sequences_for_species(taxonomy)
+            pogo_protein_sequence_file_key = None
+            for file in protein_sequence_files:
+                if "all" in file:
+                    pogo_protein_sequence_file_key = file
+                    break
             # TODO - Get the more general GTF file from Ensembl for this taxonomy
             # TODO - Run PoGo
             # TODO - Convert files to BigBed format
