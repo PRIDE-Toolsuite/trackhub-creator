@@ -340,6 +340,9 @@ class PrideClusterExporter(Director):
                         or (len(pogo_gtf_file_key) > len(file)):
                     pogo_gtf_file_key = file
                     continue
+            if not pogo_gtf_file_key:
+                self._get_logger().error("GTF file NOT FOUND to use with PoGo")
+                return False
             # TODO - Get the more general GTF file from Ensembl for this taxonomy
             # TODO - Run PoGo
             # TODO - Convert files to BigBed format
