@@ -269,7 +269,10 @@ class PrideClusterExporter(Director):
         return True
 
     def __run_cluster_file_exporter_simulation(self):
-        pass
+        cluster_file_exporter_destination_folder = self\
+            ._get_configuration_manager()\
+            .get_cluster_file_exporter_destination_folder()
+        
 
     def _run_pipeline(self):
         # Main pipeline algorithm
