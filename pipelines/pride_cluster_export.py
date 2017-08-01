@@ -269,6 +269,13 @@ class PrideClusterExporter(Director):
         return True
 
     def __run_cluster_file_exporter_simulation(self):
+        """
+        This method is a helper that I'm using for building this pipeline, it is not even clear whether this pipeline
+        will have a "testing / development mode" where the most expensive parts of it are dummied, that's why I don't
+        think the code will stay, thus, I'm not spending much time on getting this code fit in the software in a
+        sensible way
+        :return: True if success on preparing the dummy data, False otherwise
+        """
         cluster_file_exporter_destination_folder = self \
             ._get_configuration_manager() \
             .get_cluster_file_exporter_destination_folder()
