@@ -300,7 +300,7 @@ class PrideClusterExporter(Director):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
         # Run cluster-file-exporter (for real)
-        #if not self.__run_cluster_file_exporter():
+        # if not self.__run_cluster_file_exporter():
         # Tun cluster-file-exporter (dummy step)
         if not self.__run_cluster_file_exporter_simulation():
             return False
@@ -332,11 +332,14 @@ class PrideClusterExporter(Director):
             if not pogo_protein_sequence_file_key:
                 self._get_logger().error("File 'pep all' containing all sequences NOT FOUND!")
                 return False
-            pogo_gtf_file_key = None
             gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
+            # For PoGo, we will use the GTF file that has no suffixes, thus, it will be the shortest file name
+            pogo_gtf_file_key = None
             for file in gtf_files:
-                # TODO
-                pass
+                if (not pogo_gtf_file_key) \
+                        or (len(pogo_gtf_file_key) > len(file)):
+                    pogo_gtf_file_key = file
+                    continue
             # TODO - Get the more general GTF file from Ensembl for this taxonomy
             # TODO - Run PoGo
             # TODO - Convert files to BigBed format
