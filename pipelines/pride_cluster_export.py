@@ -276,7 +276,10 @@ class PrideClusterExporter(Director):
                                            os.path.join("tests",
                                                         "cluster-file-exporter"))
         # Rsync the dummy data into the destination folder
-        rsync_command = "rsync -vah --progress --stats {} {}"
+        rsync_command = "rsync -vah --progress --stats {}/ {}/"\
+            .format(rsync_source_folder, cluster_file_exporter_destination_folder)
+        
+
 
     def _run_pipeline(self):
         # Main pipeline algorithm
