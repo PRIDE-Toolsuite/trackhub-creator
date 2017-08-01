@@ -210,7 +210,7 @@ class Agent(threading.Thread):
 
 class Manager:
     def __init__(self, urls, download_destination_folder, logger, download_attempts=32, timeout_attempts=3,
-                 download_timeout=120):
+                 download_timeout=600):
         self.__urls = urls
         self.__download_destination_folder = download_destination_folder
         self.__logger = logger
