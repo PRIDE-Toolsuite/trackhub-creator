@@ -562,8 +562,9 @@ class DataDownloadService:
                                             file_extension)
                     for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
         else:
-            self._get_logger().error("TAXONOMY ID #{} NOT FOUND in Ensembl".format(taxonomy_id))
-            return None
+            self._get_logger().error(
+                "TAXONOMY ID #{} NOT FOUND in Ensembl (protein sequence request)".format(taxonomy_id))
+        return None
 
     def _get_genome_reference_ensembl_file_name_for_species(self, taxonomy_id):
         """
@@ -573,27 +574,28 @@ class DataDownloadService:
         :return: the file name, without the .gz extension that is found on Ensembl FTP
         """
         # TODO - Deal with those taxonomy IDs that are not in Ensembl
-        species_name = self._get_ensembl_service() \
+        species_entry = self._get_ensembl_service() \
             .get_species_data_service() \
-            .get_species_entry_for_taxonomy_id(taxonomy_id) \
-            .get_name().capitalize()
-        assembly = self._get_ensembl_service() \
-            .get_species_data_service() \
-            .get_species_entry_for_taxonomy_id(taxonomy_id) \
-            .get_assembly()
-        ensembl_release_number = str(self._get_ensembl_service() \
-                                     .get_species_data_service() \
-                                     .get_species_entry_for_taxonomy_id(taxonomy_id) \
-                                     .get_ensembl_release())
-        file_extension = self._get_configuration_manager().get_ensembl_gtf_file_extension()
-        # TODO - If, at any point I'm going to use suffixes for anything else, I should work then out in the code and
-        # TODO - leave them without the '.' in the configuration file
-        return ["{}.{}.{}.{}{}".format(species_name,
-                                       assembly,
-                                       ensembl_release_number,
-                                       suffix,
-                                       file_extension)
-                for suffix in self._get_configuration_manager().get_ensembl_gtf_file_suffixes()]
+            .get_species_entry_for_taxonomy_id(taxonomy_id)
+        if species_entry:
+            species_name = species_entry \
+                .get_name().capitalize()
+            assembly = species_entry \
+                .get_assembly()
+            ensembl_release_number = str(species_entry \
+                                         .get_ensembl_release())
+            file_extension = self._get_configuration_manager().get_ensembl_gtf_file_extension()
+            # TODO - If, at any point I'm going to use suffixes for anything else, I should work then out in the code
+            # TODO - and leave them without the '.' in the configuration file
+            return ["{}.{}.{}.{}{}".format(species_name,
+                                           assembly,
+                                           ensembl_release_number,
+                                           suffix,
+                                           file_extension)
+                    for suffix in self._get_configuration_manager().get_ensembl_gtf_file_suffixes()]
+        else:
+            self._get_logger().error("TAXONOMY ID #{} NOT FOUND in Ensembl (gtf request)".format(taxonomy_id))
+        return None
 
     def get_protein_sequences_for_species(self, taxonomy_id):
         # Work out the file names for the data to retrieve from Ensembl
