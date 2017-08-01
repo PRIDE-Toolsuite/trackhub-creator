@@ -332,6 +332,11 @@ class PrideClusterExporter(Director):
             if not pogo_protein_sequence_file_key:
                 self._get_logger().error("File 'pep all' containing all sequences NOT FOUND!")
                 return False
+            pogo_gtf_file_key = None
+            gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
+            for file in gtf_files:
+                # TODO
+                pass
             # TODO - Get the more general GTF file from Ensembl for this taxonomy
             # TODO - Run PoGo
             # TODO - Convert files to BigBed format
