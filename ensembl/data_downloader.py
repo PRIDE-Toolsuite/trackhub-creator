@@ -598,6 +598,13 @@ class DataDownloadService:
         return None
 
     def get_protein_sequences_for_species(self, taxonomy_id):
+        """
+        This method will make sure the protein sequence files are available locally, before returning the result map
+        that contains the file names and their local paths
+        :param taxonomy_id: Taxonomy ID for which we want the protein sequences
+        :return: the list of protein sequences file names with their local paths or None in case the taxonomy has not
+        been found in Ensembl
+        """
         # Work out the file names for the data to retrieve from Ensembl
         file_names = self._get_protein_sequence_ensembl_file_name_for_species(taxonomy_id)
         if not file_names:
