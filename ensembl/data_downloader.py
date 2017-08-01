@@ -568,6 +568,7 @@ class DataDownloadService:
         :param taxonomy_id: taxonomy ID for which to work out the file name
         :return: the file name, without the .gz extension that is found on Ensembl FTP
         """
+        # TODO - Deal with those taxonomy IDs that are not in Ensembl
         species_name = self._get_ensembl_service() \
             .get_species_data_service() \
             .get_species_entry_for_taxonomy_id(taxonomy_id) \
