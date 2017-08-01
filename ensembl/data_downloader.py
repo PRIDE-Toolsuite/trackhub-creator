@@ -710,7 +710,10 @@ class DataDownloadService:
                                       .format(file, error) for file, error in errors]
                                       ))
                 self._get_logger().error(msg)
-                raise EnsemblDownloadManagerException(msg)
+                # I just found out that Ensembl does not have files for all the taxonomies using all the suffixes in a
+                # uniform way, thus, if some of the files where not found, I WILL NOT raise an exception, I will do the
+                # "Windows" here by keeping it quiet ^_^
+                # raise EnsemblDownloadManagerException(msg)
         # Return the .gtf file names and their local paths for the given ncbi taxonomy id
         return gtf_files_local_path
 
