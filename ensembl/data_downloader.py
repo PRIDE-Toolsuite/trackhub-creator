@@ -231,6 +231,7 @@ class ConfigurationManager(config_manager.ConfigurationManager):
         unlikely) future.
         :return: a list of suffixes for protein sequence files on Ensembl
         """
+        # TODO - Ensembl FTP IS NOT HOMOGENEOUS, find out the superset of suffixes
         try:
             return self._get_configuration_object() \
                 [self._CONFIG_KEY_DATA_DOWNLOADER] \
