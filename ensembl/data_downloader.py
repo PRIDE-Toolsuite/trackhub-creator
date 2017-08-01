@@ -541,25 +541,29 @@ class DataDownloadService:
         <species_name_with_first_capital_letter>.<species_assembly>.<file_type e.g. 'pep'>.[all,abinitio].fa
         e.g. Homo_sapiens.GRCh38.pep.all.fa, on Ensembl will have the extension .gz, because it is a compressed file
         :param taxonomy_id: taxonomy ID for which to work out the file name
-        :return: the file name, without the .gz extension that is found on Ensembl FTP
+        :return: the file name, without the .gz extension that is found on Ensembl FTP, or None, if the taxonomy is not
+        in Ensembl
         """
-        # TODO - Deal with those taxonomy IDs that are not in Ensembl
-        species_name = self._get_ensembl_service() \
+        # Deal with those taxonomy IDs that are not in Ensembl
+        species_entry = self._get_ensembl_service() \
             .get_species_data_service() \
-            .get_species_entry_for_taxonomy_id(taxonomy_id) \
-            .get_name().capitalize()
-        assembly = self._get_ensembl_service() \
-            .get_species_data_service() \
-            .get_species_entry_for_taxonomy_id(taxonomy_id) \
-            .get_assembly()
-        file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
-        file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
-        return ["{}.{}.{}.{}.{}".format(species_name,
-                                        assembly,
-                                        file_type,
-                                        suffix,
-                                        file_extension)
-                for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
+            .get_species_entry_for_taxonomy_id(taxonomy_id)
+        if species_entry:
+            species_name = species_entry \
+                .get_name().capitalize()
+            assembly = species_entry \
+                .get_assembly()
+            file_type = self._get_configuration_manager().get_ensembl_protein_sequence_file_type()
+            file_extension = self._get_configuration_manager().get_ensembl_protein_sequence_file_extension()
+            return ["{}.{}.{}.{}.{}".format(species_name,
+                                            assembly,
+                                            file_type,
+                                            suffix,
+                                            file_extension)
+                    for suffix in self._get_configuration_manager().get_ensembl_protein_sequence_file_suffixes()]
+        else:
+            self._get_logger().error("TAXONOMY ID #{} NOT FOUND in Ensembl".format(taxonomy_id))
+            return None
 
     def _get_genome_reference_ensembl_file_name_for_species(self, taxonomy_id):
         """
