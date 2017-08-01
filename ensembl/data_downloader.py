@@ -653,6 +653,7 @@ class DataDownloadService:
                 # raise EnsemblDownloadManagerException(msg)
         # Return the protein sequences file names and their local paths, those that were downloaded successfuly, which
         # means we may pontentially be missing files out
+        # TODO - I need to review this return value in the future
         return [(file_name, file_path)
                 for file_name, file_path in protein_sequence_files_local_path
                 if (os.path.isfile(file_path))]
@@ -717,8 +718,13 @@ class DataDownloadService:
                 # uniform way, thus, if some of the files where not found, I WILL NOT raise an exception, I will do the
                 # "Windows" here by keeping it quiet ^_^
                 # raise EnsemblDownloadManagerException(msg)
-        # Return the .gtf file names and their local paths for the given ncbi taxonomy id.
-        return gtf_files_local_path
+        # Return the .gtf file names and their local paths for the given ncbi taxonomy id. Return only those file that
+        # were successfuly downloaded.
+        # TODO - I need to review this return value in the future
+        return [(file_name, file_path)
+                for file_name, file_path in gtf_files_local_path
+                if os.path.isfile(file_path)]
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
