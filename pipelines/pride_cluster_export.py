@@ -279,6 +279,14 @@ class PrideClusterExporter(Director):
         rsync_command = "rsync -vah --progress --stats {}/ {}/"\
             .format(rsync_source_folder, cluster_file_exporter_destination_folder)
         rsync_subprocess = subprocess.Popen(rsync_command, shell=True)
+        try:
+            stdout, stderr = rsync_subprocess.communicate(timeout=600)
+        except subprocess.TimeoutExpired as e:
+            self._get_logger().error("TIMEOUT error while rsyncing dummy cluster-file-exporter data, KILLING subprocess")
+            rsync_subprocess.kill()
+            stdout, stderr = rsync_subprocess.wait()
+            return False
+        return True
 
 
     def _run_pipeline(self):
