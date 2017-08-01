@@ -269,10 +269,9 @@ class PrideClusterExporter(Director):
         return True
 
     def __run_cluster_file_exporter_simulation(self):
-        cluster_file_exporter_destination_folder = self\
-            ._get_configuration_manager()\
+        cluster_file_exporter_destination_folder = self \
+            ._get_configuration_manager() \
             .get_cluster_file_exporter_destination_folder()
-        
 
     def _run_pipeline(self):
         # Main pipeline algorithm
@@ -296,8 +295,8 @@ class PrideClusterExporter(Director):
                 self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH]
             self._get_logger().info(
                 "Processing taxonomy '{}' for PoGo file '{}'"
-                .format(taxonomy,
-                        pogo_file))
+                    .format(taxonomy,
+                            pogo_file))
             # TODO - Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
             # TODO - Get the more general GTF file from Ensembl for this taxonomy
             # TODO - Run PoGo
