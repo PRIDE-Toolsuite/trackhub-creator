@@ -647,6 +647,9 @@ class DataDownloadService:
                                                                      .format(file, error) for file, error in errors]
                                                             ))
                 self._get_logger().error(msg)
+                # I just found out that Ensembl does not have files for all the taxonomies using all the suffixes in a
+                # uniform way, thus, if some of the files where not found, I WILL NOT raise an exception, I will do the
+                # "Windows" here by keeping it quiet ^_^
                 raise EnsemblDownloadManagerException(msg)
         # Return the protein sequences file names and their local paths
         return protein_sequence_files_local_path
