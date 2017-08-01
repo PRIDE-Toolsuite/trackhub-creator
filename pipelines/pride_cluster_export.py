@@ -326,6 +326,7 @@ class PrideClusterExporter(Director):
             protein_sequence_files = ensembl_downloader_service.get_protein_sequences_for_species(taxonomy)
             pogo_protein_sequence_file_key = None
             for file in protein_sequence_files:
+                self._get_logger().debug("Scanning protein sequence file name '{}'".format(file))
                 if "all" in file:
                     pogo_protein_sequence_file_key = file
                     break
