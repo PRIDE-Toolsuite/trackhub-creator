@@ -237,6 +237,10 @@ class PrideClusterExporter(Director):
                     self._get_logger().warning("Ignoring cluster-file-exporter non-result file '{}'".format(file))
         return cluster_file_exporter_result_mapping
 
+    def __run_cluster_file_exporter(self):
+        # TODO
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
