@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This module contains models for dealing with PoGo stuff
 """
