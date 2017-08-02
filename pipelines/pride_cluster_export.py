@@ -180,6 +180,9 @@ class ConfigManager(DirectorConfigurationManager):
                             os.path.join(self._CONFIG_POGO_BIN_SUBFOLDER,
                                          self._CONFIG_POGO_BIN_FILE_NAME))
 
+    def get_pogo_run_timeout(self):
+        return 7200
+
 
 class PrideClusterExporter(Director):
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
