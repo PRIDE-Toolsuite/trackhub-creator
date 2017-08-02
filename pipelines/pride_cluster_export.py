@@ -382,6 +382,9 @@ class PrideClusterExporter(Director):
                 stdout, stderr = pogo_command_subprocess.communicate()
                 # TODO - How to signal this error? we just skip the file? It looks like it
                 continue
+            # TODO
+        # Return the results for running PoGo for the given cluster-file-exporter result files
+        return pogo_run_results
 
     def _run_pipeline(self):
         # Main pipeline algorithm
