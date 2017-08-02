@@ -297,21 +297,6 @@ class PrideClusterExporter(Director):
         return True
 
     def __run_pogo_on_pride_cluster_file_exporter_results(self, cluster_file_exporter_result_mapping):
-        pass
-
-    def _run_pipeline(self):
-        # Main pipeline algorithm
-        self._get_logger().info("[START]---> Pipeline run")
-        # Run cluster-file-exporter (for real)
-        # if not self.__run_cluster_file_exporter():
-        # Run cluster-file-exporter (dummy step)
-        if not self.__run_cluster_file_exporter_simulation():
-            return False
-        # Process cluster-file-exporter result files
-        cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
-        if not cluster_file_exporter_result_mapping:
-            self._get_logger().error("ERROR processing cluster-file-exporter result files")
-            return False
         # Get an instance of the Ensembl data downloader
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for taxonomy in cluster_file_exporter_result_mapping:
@@ -356,7 +341,22 @@ class PrideClusterExporter(Director):
                 self._get_logger().error("GTF file NOT FOUND to use with PoGo")
                 return False
             # TODO - Run PoGo
-            # TODO - Convert files to BigBed format
+
+    def _run_pipeline(self):
+        # Main pipeline algorithm
+        self._get_logger().info("[START]---> Pipeline run")
+        # Run cluster-file-exporter (for real)
+        # if not self.__run_cluster_file_exporter():
+        # Run cluster-file-exporter (dummy step)
+        if not self.__run_cluster_file_exporter_simulation():
+            return False
+        # Process cluster-file-exporter result files
+        cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
+        if not cluster_file_exporter_result_mapping:
+            self._get_logger().error("ERROR processing cluster-file-exporter result files")
+            return False
+        pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(cluster_file_exporter_result_mapping)
+        # TODO - Convert files to BigBed format
         # TODO - Create trackhub structure
         # TODO - Sync Data and get public URL
         # TODO - Publish trackhub
