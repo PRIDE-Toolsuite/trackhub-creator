@@ -287,6 +287,7 @@ class PrideClusterExporter(Director):
             .format(rsync_source_folder, cluster_file_exporter_destination_folder)
         rsync_subprocess = subprocess.Popen(rsync_command, shell=True)
         try:
+            # TODO - WARNING - OMG! Magic number there!
             stdout, stderr = rsync_subprocess.communicate(timeout=600)
         except subprocess.TimeoutExpired as e:
             self._get_logger().error(
