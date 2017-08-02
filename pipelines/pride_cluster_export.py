@@ -330,14 +330,14 @@ class PrideClusterExporter(Director):
                 return False
             gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
             # For PoGo, we will use the GTF file that has no suffixes, thus, it will be the shortest file name
-            pogo_gtf_file_name = None
+            pogo_parameter_gtf_file_name = None
             pogo_gtf_file_path = None
             for file_name, file_path in gtf_files:
-                if (not pogo_gtf_file_name) \
-                        or (len(pogo_gtf_file_name) > len(file_name)):
-                    pogo_gtf_file_name = file_name
+                if (not pogo_parameter_gtf_file_name) \
+                        or (len(pogo_parameter_gtf_file_name) > len(file_name)):
+                    pogo_parameter_gtf_file_name = file_name
                     pogo_gtf_file_path = file_path
-            if not pogo_gtf_file_name:
+            if not pogo_parameter_gtf_file_name:
                 self._get_logger().error("GTF file NOT FOUND to use with PoGo")
                 return False
             # TODO - Run PoGo
