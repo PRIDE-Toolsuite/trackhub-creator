@@ -312,7 +312,7 @@ class PrideClusterExporter(Director):
             # taxonomy is on Ensembl or not
             if not protein_sequence_files:
                 self._get_logger().warning("SKIP TAXONOMY ID #{}, not found on Ensembl, for PoGo file '{}'"
-                                           .format(taxonomy,pogo_parameter_file_input))
+                                           .format(taxonomy, pogo_parameter_file_input))
                 continue
             # Thus, we SHOULD NOT need to check this out for GTF files
             self._get_logger().info(
@@ -340,6 +340,11 @@ class PrideClusterExporter(Director):
             if not pogo_parameter_gtf_file_name:
                 self._get_logger().error("GTF file NOT FOUND to use with PoGo")
                 return False
+            self._get_logger().info("Running PoGo on input file '{}', "
+                                    "with protein sequence file '{}' and GTF file '{}'"
+                                    .format(pogo_parameter_file_input,
+                                            pogo_parameter_protein_sequence_file_path,
+                                            pogo_parameter_gtf_file_name))
             # TODO - Run PoGo
 
     def _run_pipeline(self):
