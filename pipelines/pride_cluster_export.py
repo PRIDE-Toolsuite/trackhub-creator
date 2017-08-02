@@ -301,7 +301,7 @@ class PrideClusterExporter(Director):
         self._get_logger().info("[START]---> Pipeline run")
         # Run cluster-file-exporter (for real)
         # if not self.__run_cluster_file_exporter():
-        # Tun cluster-file-exporter (dummy step)
+        # Run cluster-file-exporter (dummy step)
         if not self.__run_cluster_file_exporter_simulation():
             return False
         # Process cluster-file-exporter result files
