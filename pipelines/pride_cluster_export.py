@@ -360,7 +360,12 @@ class PrideClusterExporter(Director):
                         pogo_parameter_file_input)
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
             # TODO - Run PoGo
-
+            try:
+                stdout, stderr = pogo_command_subprocess \
+                    .communicate(timeout=self._get_configuration_manager().get_pogo_run_timeout())
+            except subprocess.TimeoutExpired as e:
+                pass
+            
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
