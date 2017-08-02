@@ -304,7 +304,7 @@ class PrideClusterExporter(Director):
                 self._get_logger().warning("SKIPPING PoGo for taxonomy {}".format(taxonomy))
                 continue
             # PoGo input file
-            pogo_file = cluster_file_exporter_result_mapping[taxonomy][
+            pogo_file_input = cluster_file_exporter_result_mapping[taxonomy][
                 self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH]
             # Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
             protein_sequence_files = ensembl_downloader_service.get_protein_sequences_for_species(taxonomy)
@@ -312,13 +312,13 @@ class PrideClusterExporter(Director):
             # taxonomy is on Ensembl or not
             if not protein_sequence_files:
                 self._get_logger().warning("SKIP TAXONOMY ID #{}, not found on Ensembl, for PoGo file '{}'"
-                                           .format(taxonomy,pogo_file))
+                                           .format(taxonomy,pogo_file_input))
                 continue
             # Thus, we SHOULD NOT need to check this out for GTF files
             self._get_logger().info(
                 "Processing taxonomy '{}' for PoGo file '{}'"
                     .format(taxonomy,
-                            pogo_file))
+                            pogo_file_input))
             pogo_protein_sequence_file_path = None
             for file_name, file_path in protein_sequence_files:
                 self._get_logger().debug("Scanning protein sequence file name '{}'".format(file_name))
