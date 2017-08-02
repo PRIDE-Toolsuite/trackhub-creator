@@ -364,8 +364,17 @@ class PrideClusterExporter(Director):
                 stdout, stderr = pogo_command_subprocess \
                     .communicate(timeout=self._get_configuration_manager().get_pogo_run_timeout())
             except subprocess.TimeoutExpired as e:
-                pass
-            
+                self._get_logger().error("TIMEOUT ERROR while running PoGo on input file '{}', "
+                                         "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
+                                         .format(pogo_parameter_file_input,
+                                                 pogo_parameter_protein_sequence_file_path,
+                                                 pogo_parameter_gtf_file_name,
+                                                 pogo_command))
+                pogo_command_subprocess.kill()
+                stdout, stderr = pogo_command_subprocess.communicate()
+                # TODO - How to signal this error? we just skip the file?
+                continue
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
