@@ -181,6 +181,10 @@ class ConfigManager(DirectorConfigurationManager):
                                          self._CONFIG_POGO_BIN_FILE_NAME))
 
     def get_pogo_run_timeout(self):
+        """
+        Maximum amount of time we should wait when running PoGo before considering the operation dead.
+        :return: time out in seconds
+        """
         return 7200
 
 
