@@ -319,13 +319,13 @@ class PrideClusterExporter(Director):
                 "Processing taxonomy '{}' for PoGo file '{}'"
                     .format(taxonomy,
                             pogo_parameter_file_input))
-            pogo_protein_sequence_file_path = None
+            pogo_parameter_protein_sequence_file_path = None
             for file_name, file_path in protein_sequence_files:
                 self._get_logger().debug("Scanning protein sequence file name '{}'".format(file_name))
                 if "all" in file_name:
-                    pogo_protein_sequence_file_path = file_path
+                    pogo_parameter_protein_sequence_file_path = file_path
                     break
-            if not pogo_protein_sequence_file_path:
+            if not pogo_parameter_protein_sequence_file_path:
                 self._get_logger().error("File 'pep all' containing all sequences NOT FOUND!")
                 return False
             gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
