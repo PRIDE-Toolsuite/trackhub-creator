@@ -296,6 +296,9 @@ class PrideClusterExporter(Director):
             return False
         return True
 
+    def __run_pogo_on_pride_cluster_file_exporter_results(self, cluster_file_exporter_result_mapping):
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
