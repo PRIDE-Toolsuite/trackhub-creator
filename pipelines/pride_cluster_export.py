@@ -382,7 +382,16 @@ class PrideClusterExporter(Director):
                 stdout, stderr = pogo_command_subprocess.communicate()
                 # TODO - How to signal this error? we just skip the file? It looks like it
                 continue
-            # TODO
+            if pogo_command_subprocess.poll() and (pogo_command_subprocess.returncode != 0):
+                # ERROR
+                self._get_logger().error("ERROR running PoGo on input file '{}', "
+                                         "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
+                                         .format(pogo_parameter_file_input,
+                                                 pogo_parameter_protein_sequence_file_path,
+                                                 pogo_parameter_gtf_file_name,
+                                                 pogo_command))
+                # TODO - We skip the file?
+                continue
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
 
