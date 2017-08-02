@@ -392,6 +392,7 @@ class PrideClusterExporter(Director):
                                                  pogo_command))
                 # TODO - We skip the file?
                 continue
+            # TODO - Successful PoGo run
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
 
