@@ -359,7 +359,13 @@ class PrideClusterExporter(Director):
                         pogo_parameter_gtf_file_name,
                         pogo_parameter_file_input)
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
-            # TODO - Run PoGo
+            # Run PoGo
+            # TODO - This is a place for future improvement by running PoGo in parallel for all the files. Obviously,
+            # TODO - I haven't done it straight away because the right way to do it, as PoGo is very memory hungry,
+            # TODO - is to distribute the PoGo runs across multiple nodes, and this kind of means using our LSF
+            # TODO - facilities, that means the PoGo run should be encapsulated as a 'bsub' job, and the pipeline should
+            # TODO - handle the submission of the jobs and their possible outcomes and status states. A complex task for
+            # TODO - a pipeline that it is not even clear yet how it's going to do many of the things it is going to do
             try:
                 stdout, stderr = pogo_command_subprocess \
                     .communicate(timeout=self._get_configuration_manager().get_pogo_run_timeout())
@@ -372,7 +378,7 @@ class PrideClusterExporter(Director):
                                                  pogo_command))
                 pogo_command_subprocess.kill()
                 stdout, stderr = pogo_command_subprocess.communicate()
-                # TODO - How to signal this error? we just skip the file?
+                # TODO - How to signal this error? we just skip the file? It looks like it
                 continue
 
     def _run_pipeline(self):
