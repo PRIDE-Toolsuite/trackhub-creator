@@ -33,9 +33,9 @@ class PogoRunResult:
         # Map<pogo_result_file_extension, pogo_result_file_path>
         self.__pogo_result_file_paths = {}
         self.set_ncbi_taxonomy_id(ncbi_taxonomy_id)
-        self.set_pogo_source_file_path(pogo_source_file_path)
         self.set_protein_sequence_file_path(protein_sequence_file_path)
         self.set_gtf_file_path(gtf_file_path)
+        self.set_pogo_source_file_path(pogo_source_file_path)
 
     def __generate_pogo_result_file_paths(self, pogo_source_file_path):
         self.__pogo_result_file_paths = {}
