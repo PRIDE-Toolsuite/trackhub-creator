@@ -306,7 +306,24 @@ class PrideClusterExporter(Director):
         return True
 
     def __get_pogo_protein_sequence_file_path_for_taxonomy(self, taxonomy_id):
-        pass
+        # Get an instance of the Ensembl data downloader
+        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
+        # Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
+        protein_sequence_files = ensembl_downloader_service.get_protein_sequences_for_species(taxonomy_id)
+        # Checking on whether we can find a protein sequence or not for the given taxonomy will tell us if the
+        # taxonomy is on Ensembl or not
+        if not protein_sequence_files:
+            return None
+        pogo_parameter_protein_sequence_file_path = None
+        for file_name, file_path in protein_sequence_files:
+            self._get_logger().debug("Scanning protein sequence file name '{}'".format(file_name))
+            if "all" in file_name:
+                pogo_parameter_protein_sequence_file_path = file_path
+                break
+        if not pogo_parameter_protein_sequence_file_path:
+            self._get_logger().error("File 'pep all' containing all sequences NOT FOUND!")
+            return None
+        return pogo_parameter_protein_sequence_file_path
 
     def __get_pogo_gtf_file_path_for_taxonomy(self):
         pass
