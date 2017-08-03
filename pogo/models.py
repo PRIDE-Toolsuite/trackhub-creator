@@ -76,6 +76,9 @@ class PogoRunResult:
     def set_gtf_file_path(self, gtf_file_path):
         self.__gtf_file_path = gtf_file_path
 
+    def get_ncbi_taxonomy_id(self):
+        return self.__ncbi_taxonomy_id
+
     def add_pogo_result_file_path(self, pogo_result_file_path):
         self.__pogo_result_file_paths.add(pogo_result_file_path)
 
