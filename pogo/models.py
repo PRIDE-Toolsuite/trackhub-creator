@@ -17,3 +17,6 @@ class PogoRunResult:
         self.__ncbi_taxonomy_id = None
         self.__pogo_source_file_path = None
         self.__pogo_result_file_paths = set()
+
+    def set_ncbi_taxonomy_id(self, taxonomy_id):
+        self.__ncbi_taxonomy_id = taxonomy_id
