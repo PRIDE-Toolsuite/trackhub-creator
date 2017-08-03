@@ -347,8 +347,6 @@ class PrideClusterExporter(Director):
                     or (len(pogo_parameter_gtf_file_name) > len(file_name)):
                 pogo_parameter_gtf_file_name = file_name
                 pogo_parameter_gtf_file_path = file_path
-        if not pogo_parameter_gtf_file_path:
-            self._get_logger().error("GTF file NOT FOUND to use with PoGo")
         return pogo_parameter_gtf_file_path
 
     def __run_pogo_on_pride_cluster_file_exporter_results(self, cluster_file_exporter_result_mapping):
@@ -372,30 +370,23 @@ class PrideClusterExporter(Director):
                                            .format(taxonomy, pogo_parameter_file_input))
                 continue
             # PoGo parameter GTF file
-
-            gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
-            # For PoGo, we will use the GTF file that has no suffixes, thus, it will be the shortest file name
-            pogo_parameter_gtf_file_name = None
-            pogo_parameter_gtf_file_path = None
-            for file_name, file_path in gtf_files:
-                if (not pogo_parameter_gtf_file_name) \
-                        or (len(pogo_parameter_gtf_file_name) > len(file_name)):
-                    pogo_parameter_gtf_file_name = file_name
-                    pogo_parameter_gtf_file_path = file_path
-
-            if not pogo_parameter_gtf_file_name:
+            pogo_parameter_gtf_file_path = self.__get_pogo_gtf_file_path_for_taxonomy(taxonomy)
+            if not pogo_parameter_gtf_file_path:
                 self._get_logger().error("GTF file NOT FOUND to use with PoGo")
                 return False
-            self._get_logger().info("Running PoGo on input file '{}', "
-                                    "with protein sequence file '{}' and GTF file '{}'"
-                                    .format(pogo_parameter_file_input,
-                                            pogo_parameter_protein_sequence_file_path,
-                                            pogo_parameter_gtf_file_path))
+            # Prepare PoGo run command
             pogo_command = "time {} -fasta {} -gtf {} -in {}" \
                 .format(self._get_configuration_manager().get_pogo_binary_file_path(),
                         pogo_parameter_protein_sequence_file_path,
                         pogo_parameter_gtf_file_path,
                         pogo_parameter_file_input)
+            # Log how we are going to run PoGo
+            self._get_logger().info("Running PoGo on input file '{}', "
+                                    "with protein sequence file '{}' and GTF file '{}'. PoGo command '{}'"
+                                    .format(pogo_parameter_file_input,
+                                            pogo_parameter_protein_sequence_file_path,
+                                            pogo_parameter_gtf_file_path,
+                                            pogo_command))
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
             # Run PoGo
             # TODO - This is a place for future improvement by running PoGo in parallel for all the files. Obviously,
