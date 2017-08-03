@@ -306,6 +306,11 @@ class PrideClusterExporter(Director):
         return True
 
     def __get_pogo_protein_sequence_file_path_for_taxonomy(self, taxonomy_id):
+        """
+        This is a helper method that, given a taxonomy, it finds the protein sequence file to use as a PoGo parameter
+        :param taxonomy_id: ncbi taxonomy ID
+        :return: the protein sequence file path if found, None otherwise
+        """
         # Get an instance of the Ensembl data downloader
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         # Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
