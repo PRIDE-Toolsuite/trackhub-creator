@@ -77,3 +77,7 @@ class PogoRunResult:
 
     def add_pogo_result_file_path(self, pogo_result_file_path):
         self.__pogo_result_file_paths.add(pogo_result_file_path)
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
