@@ -18,27 +18,20 @@ from . import config_manager as module_config_manager
 
 
 class PogoRunResult:
-    def __init__(self):
-        self.__ncbi_taxonomy_id = None
-        self.__pogo_source_file_path = None
-        self.__protein_sequence_file_path = None
-        self.__gtf_file_path = None
-        # Map<pogo_result_file_extension, pogo_result_file_path>
-        self.__pogo_result_file_paths = {}
-        # Logging
-        self.__logger = main_app_config_manager.get_app_config_manager().get_logger_for(__name__)
-
     def __init__(self,
-                 ncbi_taxonomy_id,
-                 pogo_source_file_path,
-                 protein_sequence_file_path,
-                 gtf_file_path):
+                 ncbi_taxonomy_id = None,
+                 pogo_source_file_path = None,
+                 protein_sequence_file_path = None,
+                 gtf_file_path = None):
         """
-        Syntactic sugar constructor
+        Just the constructor, I had this implemented as syntactic sugar, but I was wrong
         :param ncbi_taxonomy_id: ncbi taxonomy id for this PoGo run results
         :param pogo_source_file_path: path of the source file used to run PoGo
         """
-        self.__init__()
+        # Logging
+        self.__logger = main_app_config_manager.get_app_config_manager().get_logger_for(__name__)
+        # Map<pogo_result_file_extension, pogo_result_file_path>
+        self.__pogo_result_file_paths = {}
         self.set_ncbi_taxonomy_id(ncbi_taxonomy_id)
         self.set_pogo_source_file_path(pogo_source_file_path)
         self.set_protein_sequence_file_path(protein_sequence_file_path)
