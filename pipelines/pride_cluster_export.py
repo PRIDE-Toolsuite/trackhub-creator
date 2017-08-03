@@ -18,6 +18,7 @@ import subprocess
 # App imports
 import config_manager
 import ensembl.data_downloader
+from pogo.models import PogoRunResult
 from toolbox import general as general_toolbox
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
@@ -405,6 +406,7 @@ class PrideClusterExporter(Director):
                 # TODO - taxonomy, which is a weird error that I don't think will happen
                 continue
             # TODO - Build the pogo result object
+            pogo_run_results_object = PogoRunResult(taxonomy, pogo_parameter_file_input)
         # Return the results for running PoGo for the given cluster-file-exporter result files
         # TODO - PoGo run results should be an entity, as I'm going to use this in the future when running PoGo for
         # TODO - other projects, not just PRIDE Cluster
