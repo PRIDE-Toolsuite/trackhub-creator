@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+These are the models for representing and dealing with trackhubs
 """
