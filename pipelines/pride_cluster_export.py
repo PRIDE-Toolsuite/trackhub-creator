@@ -405,11 +405,13 @@ class PrideClusterExporter(Director):
                 # TODO - Let me guess! we skip this entry then, even if it's been successful because it is a duplicated
                 # TODO - taxonomy, which is a weird error that I don't think will happen
                 continue
-            # TODO - Build the pogo result object
+            # Build the pogo result object
             pogo_run_results_object = PogoRunResult(taxonomy,
                                                     pogo_parameter_file_input,
                                                     pogo_parameter_protein_sequence_file_path,
                                                     pogo_parameter_gtf_file_path)
+            # Add the result object to the results
+            pogo_run_results[taxonomy] = pogo_run_results_object
         # Return the results for running PoGo for the given cluster-file-exporter result files
         # TODO - PoGo run results should be an entity, as I'm going to use this in the future when running PoGo for
         # TODO - other projects, not just PRIDE Cluster
