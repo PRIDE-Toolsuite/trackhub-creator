@@ -10,3 +10,6 @@
 """
 This module contains models for dealing with PoGo stuff
 """
+
+class PogoRunResult:
+    pass
