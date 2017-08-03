@@ -79,6 +79,13 @@ class PogoRunResult:
     def get_ncbi_taxonomy_id(self):
         return self.__ncbi_taxonomy_id
 
+    def get_pogo_result_main_bed_file_path(self):
+        file_extension = module_config_manager.get_configuration_service().get_pogo_result_file_extension_for_main_bed_file()
+        if file_extension in self.__pogo_result_file_paths:
+            return self.__pogo_result_file_paths[file_extension]
+        return None
+
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
