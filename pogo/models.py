@@ -14,5 +14,5 @@ This module contains models for dealing with PoGo stuff
 
 class PogoRunResult:
     def __init__(self):
+        self.__ncbi_taxonomy_id = None
         self.__pogo_source_file_path = None
-
