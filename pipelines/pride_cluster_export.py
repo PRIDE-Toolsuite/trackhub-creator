@@ -393,9 +393,7 @@ class PrideClusterExporter(Director):
                 # TODO - We skip the file?
                 continue
             # TODO - Successful PoGo run
-            if taxonomy not in pogo_run_results:
-                pogo_run_results[taxonomy] = {}
-            else:
+            if taxonomy in pogo_run_results:
                 self._get_logger().error("DUPLICATED TAXONOMY ENTRY ERROR "
                                          "when registering successful run of PoGo on input file '{}', "
                                          "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
