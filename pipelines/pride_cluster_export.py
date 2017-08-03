@@ -331,6 +331,11 @@ class PrideClusterExporter(Director):
         return pogo_parameter_protein_sequence_file_path
 
     def __get_pogo_gtf_file_path_for_taxonomy(self, taxonomy_id):
+        """
+        This is a helper method that, given a taxonomy ID, it finds out which GTF file should be used for running PoGo
+        :param taxonomy_id: ncbi taxonomy ID
+        :return: the GTF file path if found, None otherwise
+        """
         # Get an instance of the Ensembl data downloader
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy_id)
