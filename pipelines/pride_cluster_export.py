@@ -305,7 +305,7 @@ class PrideClusterExporter(Director):
             return False
         return True
 
-    def __get_pogo_protein_sequence_for_taxonomy(self, taxonomy_id):
+    def __get_pogo_protein_sequence_file_path_for_taxonomy(self, taxonomy_id):
         pass
 
     def __get_pogo_gtf_file_path_for_taxonomy(self):
