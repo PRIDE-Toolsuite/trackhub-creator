@@ -14,6 +14,7 @@ This module contains models for dealing with PoGo stuff
 import os
 # Application imports
 import config_manager as main_app_config_manager
+from . import config_manager as module_config_manager
 
 
 class PogoRunResult:
