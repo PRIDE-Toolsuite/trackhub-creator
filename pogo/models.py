@@ -16,6 +16,7 @@ class PogoRunResult:
     def __init__(self):
         self.__ncbi_taxonomy_id = None
         self.__pogo_source_file_path = None
+        self.__protein_sequence_file_path = None
         self.__pogo_result_file_paths = set()
 
     def __init__(self, ncbi_taxonomy_id, pogo_source_file_path):
