@@ -11,6 +11,8 @@
 This module contains models for dealing with PoGo stuff
 """
 
+import os
+
 
 class PogoRunResult:
     def __init__(self):
@@ -38,7 +40,8 @@ class PogoRunResult:
         self.set_gtf_file_path(gtf_file_path)
 
     def __generate_pogo_result_file_paths(self, pogo_source_file_path):
-        pass
+        pogo_results_folder_path = os.path.dirname(pogo_source_file_path)
+        pogo_source_file_name = os.path.basename(pogo_source_file_path)
 
     def set_ncbi_taxonomy_id(self, taxonomy_id):
         self.__ncbi_taxonomy_id = taxonomy_id
