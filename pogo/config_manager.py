@@ -44,6 +44,7 @@ class ConfigurationService(config_manager.ConfigurationManager):
     _CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_BED = ".bed"
     _CONFIG_POGO_RESULT_FILE_EXTENSION_PATCH_HAPL_SCAFF_BED= "_patch_hapl_scaff.bed"
     _CONFIG_POGO_RESULT_FILE_EXTENSION_PATCH_HAPL_SCAFF_PTM_BED = "_patch_hapl_scaff_ptm.bed"
+    _CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_PTM_BED = "_ptm.bed"
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationService, self).__init__(configuration_object, configuration_file)
