@@ -84,7 +84,9 @@ class PogoRunResult:
             return self.__pogo_result_file_paths[file_extension]
         return None
 
-
+    def get_pogo_result_main_bed_file_path(self):
+        return self.__get_pogo_result_file_path(
+            module_config_manager.get_configuration_service().get_pogo_result_file_extension_for_main_bed_file())
 
 
 if __name__ == '__main__':
