@@ -56,6 +56,9 @@ class PogoRunResult:
                     pogo_result_file_extension = pogo_result_file_name.split(pogo_source_file_name)[1]
                     self.__pogo_result_file_paths[pogo_result_file_extension] = pogo_result_file_path
 
+    def _get_logger(self):
+        return self.__logger
+
     def set_ncbi_taxonomy_id(self, taxonomy_id):
         self.__ncbi_taxonomy_id = taxonomy_id
 
