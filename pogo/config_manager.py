@@ -16,3 +16,5 @@ Configuration manager for this module
 
 # Globals
 __configuration_file = None
+__configuration_service = None
+
