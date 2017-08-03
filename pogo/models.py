@@ -51,6 +51,11 @@ class PogoRunResult:
                     self.__pogo_result_file_paths[pogo_result_file_extension] = pogo_result_file_path
                     self._get_logger().info("PoGo run result file found at '{}'".format(pogo_result_file_path))
 
+    def __get_pogo_result_file_path(self, file_extension):
+        if file_extension in self.__pogo_result_file_paths:
+            return self.__pogo_result_file_paths[file_extension]
+        return None
+
     def _get_logger(self):
         return self.__logger
 
@@ -71,11 +76,6 @@ class PogoRunResult:
 
     def get_ncbi_taxonomy_id(self):
         return self.__ncbi_taxonomy_id
-
-    def __get_pogo_result_file_path(self, file_extension):
-        if file_extension in self.__pogo_result_file_paths:
-            return self.__pogo_result_file_paths[file_extension]
-        return None
 
     def get_pogo_result_main_bed_file_path(self):
         return self.__get_pogo_result_file_path(
