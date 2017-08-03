@@ -42,7 +42,7 @@ def get_configuration_service():
 class ConfigurationService(config_manager.ConfigurationManager):
     # TODO - Externalize to a configuration file these configuration parameters
     _CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_BED = ".bed"
-    _CONFIG_POGO_RESULT_FILE_EXTENSION_PATCH_HAPL_SCAFF_BED= "_patch_hapl_scaff.bed"
+    _CONFIG_POGO_RESULT_FILE_EXTENSION_PATCH_HAPL_SCAFF_BED = "_patch_hapl_scaff.bed"
     _CONFIG_POGO_RESULT_FILE_EXTENSION_PATCH_HAPL_SCAFF_PTM_BED = "_patch_hapl_scaff_ptm.bed"
     _CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_PTM_BED = "_ptm.bed"
 
