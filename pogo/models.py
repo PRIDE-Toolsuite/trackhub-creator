@@ -39,5 +39,8 @@ class PogoRunResult:
     def set_protein_sequence_file_path(self, protein_sequence_file_path):
         self.__protein_sequence_file_path = protein_sequence_file_path
 
+    def set_gtf_file_path(self, gtf_file_path):
+        self.__gtf_file_path = gtf_file_path
+
     def add_pogo_result_file_path(self, pogo_result_file_path):
         self.__pogo_result_file_paths.add(pogo_result_file_path)
