@@ -336,6 +336,7 @@ class PrideClusterExporter(Director):
     def __run_pogo_on_pride_cluster_file_exporter_results(self, cluster_file_exporter_result_mapping):
         # Prepare results object, it is a map like (taxonomy_id, PogoRunResult)
         pogo_run_results = {}
+
         # Get an instance of the Ensembl data downloader
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for taxonomy in cluster_file_exporter_result_mapping:
@@ -345,28 +346,13 @@ class PrideClusterExporter(Director):
             # PoGo input file
             pogo_parameter_file_input = cluster_file_exporter_result_mapping[taxonomy][
                 self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH]
-            # Get Protein Sequence file from Ensembl for this taxonomy, only the "*all*" kind
-            protein_sequence_files = ensembl_downloader_service.get_protein_sequences_for_species(taxonomy)
-            # Checking on whether we can find a protein sequence or not for the given taxonomy will tell us if the
-            # taxonomy is on Ensembl or not
-            if not protein_sequence_files:
+            # PoGo parameter protein sequence file
+            pogo_parameter_protein_sequence_file_path = self.__get_pogo_protein_sequence_file_path_for_taxonomy(
+                taxonomy)
+            if not pogo_parameter_protein_sequence_file_path:
                 self._get_logger().warning("SKIP TAXONOMY ID #{}, not found on Ensembl, for PoGo file '{}'"
                                            .format(taxonomy, pogo_parameter_file_input))
                 continue
-            # Thus, we SHOULD NOT need to check this out for GTF files
-            self._get_logger().info(
-                "Processing taxonomy '{}' for PoGo file '{}'"
-                    .format(taxonomy,
-                            pogo_parameter_file_input))
-            pogo_parameter_protein_sequence_file_path = None
-            for file_name, file_path in protein_sequence_files:
-                self._get_logger().debug("Scanning protein sequence file name '{}'".format(file_name))
-                if "all" in file_name:
-                    pogo_parameter_protein_sequence_file_path = file_path
-                    break
-            if not pogo_parameter_protein_sequence_file_path:
-                self._get_logger().error("File 'pep all' containing all sequences NOT FOUND!")
-                return False
             gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
             # For PoGo, we will use the GTF file that has no suffixes, thus, it will be the shortest file name
             pogo_parameter_gtf_file_name = None
