@@ -40,6 +40,9 @@ def get_configuration_service():
 
 
 class ConfigurationService(config_manager.ConfigurationManager):
+    # TODO - Externalize to a configuration file these configuration parameters
+    _CONFIG_POGO_RESULT_FILE_MAIN_BED_FILE_EXTENSION = ".bed"
+
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationService, self).__init__(configuration_object, configuration_file)
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
