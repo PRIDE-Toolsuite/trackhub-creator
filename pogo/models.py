@@ -40,7 +40,9 @@ class PogoRunResult:
         self.__ncbi_taxonomy_id = taxonomy_id
 
     def set_pogo_source_file_path(self, pogo_source_file_path):
-        self.__pogo_source_file_path = pogo_source_file_path
+        if not self.__pogo_source_file_path or (self.__pogo_source_file_path != pogo_source_file_path):
+            self.__pogo_source_file_path = pogo_source_file_path
+            # TODO - Regenerate pogo result file paths
 
     def set_protein_sequence_file_path(self, protein_sequence_file_path):
         self.__protein_sequence_file_path = protein_sequence_file_path
