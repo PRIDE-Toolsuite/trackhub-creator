@@ -359,7 +359,7 @@ class PrideClusterExporter(Director):
             pogo_command = "time {} -fasta {} -gtf {} -in {}" \
                 .format(self._get_configuration_manager().get_pogo_binary_file_path(),
                         pogo_parameter_protein_sequence_file_path,
-                        pogo_parameter_gtf_file_name,
+                        pogo_parameter_gtf_file_path,
                         pogo_parameter_file_input)
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
             # Run PoGo
