@@ -352,7 +352,6 @@ class PrideClusterExporter(Director):
     def __run_pogo_on_pride_cluster_file_exporter_results(self, cluster_file_exporter_result_mapping):
         # Prepare results object, it is a map like (taxonomy_id, PogoRunResult)
         pogo_run_results = {}
-
         # Get an instance of the Ensembl data downloader
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for taxonomy in cluster_file_exporter_result_mapping:
