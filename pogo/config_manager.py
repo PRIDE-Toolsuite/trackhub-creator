@@ -12,3 +12,7 @@ Configuration manager for this module
 """
 
 # TODO - Every module should have a configuration manager like this, refactor in the future, whenever you have time
+
+
+# Globals
+__configuration_file = None
