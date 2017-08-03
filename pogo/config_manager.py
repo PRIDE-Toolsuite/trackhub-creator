@@ -31,6 +31,14 @@ def set_configuration_file(config_file):
     return __configuration_file
 
 
+def get_configuration_service():
+    global __configuration_service
+    if not __configuration_service:
+        __configuration_service = ConfigurationService(config_manager.read_config_from_file(__configuration_file),
+                                                       __configuration_file)
+    return __configuration_service
+
+
 class ConfigurationService(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationService, self).__init__(configuration_object, configuration_file)
