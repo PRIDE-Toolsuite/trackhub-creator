@@ -342,12 +342,12 @@ class PrideClusterExporter(Director):
             gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy)
             # For PoGo, we will use the GTF file that has no suffixes, thus, it will be the shortest file name
             pogo_parameter_gtf_file_name = None
-            pogo_gtf_file_path = None
+            pogo_parameter_gtf_file_path = None
             for file_name, file_path in gtf_files:
                 if (not pogo_parameter_gtf_file_name) \
                         or (len(pogo_parameter_gtf_file_name) > len(file_name)):
                     pogo_parameter_gtf_file_name = file_name
-                    pogo_gtf_file_path = file_path
+                    pogo_parameter_gtf_file_path = file_path
             if not pogo_parameter_gtf_file_name:
                 self._get_logger().error("GTF file NOT FOUND to use with PoGo")
                 return False
@@ -409,7 +409,7 @@ class PrideClusterExporter(Director):
             pogo_run_results_object = PogoRunResult(taxonomy,
                                                     pogo_parameter_file_input,
                                                     pogo_parameter_protein_sequence_file_path,
-                                                    pogo_gtf_file_path)
+                                                    pogo_parameter_gtf_file_path)
         # Return the results for running PoGo for the given cluster-file-exporter result files
         # TODO - PoGo run results should be an entity, as I'm going to use this in the future when running PoGo for
         # TODO - other projects, not just PRIDE Cluster
