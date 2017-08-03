@@ -19,10 +19,10 @@ from . import config_manager as module_config_manager
 
 class PogoRunResult:
     def __init__(self,
-                 ncbi_taxonomy_id = None,
-                 pogo_source_file_path = None,
-                 protein_sequence_file_path = None,
-                 gtf_file_path = None):
+                 ncbi_taxonomy_id=None,
+                 pogo_source_file_path=None,
+                 protein_sequence_file_path=None,
+                 gtf_file_path=None):
         """
         Just the constructor, I had this implemented as syntactic sugar, but I was wrong
         :param ncbi_taxonomy_id: ncbi taxonomy id for this PoGo run results
