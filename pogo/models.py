@@ -12,6 +12,8 @@ This module contains models for dealing with PoGo stuff
 """
 
 import os
+# Application imports
+import config_manager
 
 
 class PogoRunResult:
@@ -22,6 +24,8 @@ class PogoRunResult:
         self.__gtf_file_path = None
         # Map<pogo_result_file_extension, pogo_result_file_path>
         self.__pogo_result_file_paths = {}
+        # Logging
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def __init__(self,
                  ncbi_taxonomy_id,
