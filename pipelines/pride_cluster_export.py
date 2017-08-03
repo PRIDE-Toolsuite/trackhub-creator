@@ -355,7 +355,7 @@ class PrideClusterExporter(Director):
                                     "with protein sequence file '{}' and GTF file '{}'"
                                     .format(pogo_parameter_file_input,
                                             pogo_parameter_protein_sequence_file_path,
-                                            pogo_parameter_gtf_file_name))
+                                            pogo_parameter_gtf_file_path))
             pogo_command = "time {} -fasta {} -gtf {} -in {}" \
                 .format(self._get_configuration_manager().get_pogo_binary_file_path(),
                         pogo_parameter_protein_sequence_file_path,
@@ -377,7 +377,7 @@ class PrideClusterExporter(Director):
                                          "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
                                          .format(pogo_parameter_file_input,
                                                  pogo_parameter_protein_sequence_file_path,
-                                                 pogo_parameter_gtf_file_name,
+                                                 pogo_parameter_gtf_file_path,
                                                  pogo_command))
                 pogo_command_subprocess.kill()
                 stdout, stderr = pogo_command_subprocess.communicate()
@@ -389,7 +389,7 @@ class PrideClusterExporter(Director):
                                          "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
                                          .format(pogo_parameter_file_input,
                                                  pogo_parameter_protein_sequence_file_path,
-                                                 pogo_parameter_gtf_file_name,
+                                                 pogo_parameter_gtf_file_path,
                                                  pogo_command))
                 # TODO - We skip the file?
                 continue
@@ -400,7 +400,7 @@ class PrideClusterExporter(Director):
                                          "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
                                          .format(pogo_parameter_file_input,
                                                  pogo_parameter_protein_sequence_file_path,
-                                                 pogo_parameter_gtf_file_name,
+                                                 pogo_parameter_gtf_file_path,
                                                  pogo_command))
                 # TODO - Let me guess! we skip this entry then, even if it's been successful because it is a duplicated
                 # TODO - taxonomy, which is a weird error that I don't think will happen
