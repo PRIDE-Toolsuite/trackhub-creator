@@ -21,9 +21,12 @@ class TrackHubBuilder:
 # Model for a TrackDb
 class TrackDb:
     def __init__(self, track, short_label, long_label):
+        # Client side of the model
         self.__track = track
         self.__short_label = short_label
         self.__long_label = long_label
+        # Builder side of the model
+        self.__type = None
 
 
 # Model for a trackhub
