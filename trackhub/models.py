@@ -15,7 +15,7 @@ These are the models for representing and dealing with trackhubs
 import config_manager
 
 
-# Trackhub builder
+# Trackhub builder - base class
 class TrackHubBuilder:
     def __init__(self, track_hub):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
