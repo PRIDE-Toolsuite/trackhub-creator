@@ -12,6 +12,12 @@ These are the models for representing and dealing with trackhubs
 """
 
 
+# Trackhub builder
+class TrackHubBuilder:
+    # TODO
+    pass
+
+
 # Model for a TrackDb
 class TrackDb:
     # TODO
