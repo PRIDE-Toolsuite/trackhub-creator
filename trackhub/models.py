@@ -31,6 +31,10 @@ class TrackHubBuilder:
         # TODO
         pass
 
+    def get_product(self):
+        # TODO
+        pass
+
 
 # Model for a TrackDb
 class TrackDb:
