@@ -29,6 +29,10 @@ class TrackDb:
         self.__type = None
         self.__big_data_url = None
 
+    def set_type(self, type):
+        # TODO - Refactor this in the future, as it is the responsibility of the model to identify the type of track
+        self.__type = type
+
 
 # Model for a trackhub
 class TrackHub:
