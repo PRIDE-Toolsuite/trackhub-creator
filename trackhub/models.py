@@ -36,6 +36,9 @@ class TrackDb:
     def set_type(self, file_path):
         self.__type = self.__identify_track_type_from_file(file_path)
 
+    def set_big_data_url(self, big_data_url):
+        self.__big_data_url = big_data_url
+
 
 # Model for a trackhub
 class TrackHub:
