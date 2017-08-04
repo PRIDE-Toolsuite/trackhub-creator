@@ -10,3 +10,9 @@
 """
 These are the models for representing and dealing with trackhubs
 """
+
+
+# Model for a Track
+class Track():
+    # TODO
+    pass
