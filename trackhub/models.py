@@ -18,6 +18,7 @@ import config_manager
 # Trackhub builder
 class TrackHubBuilder:
     def __init__(self, track_hub):
+        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         # TODO
         pass
 
