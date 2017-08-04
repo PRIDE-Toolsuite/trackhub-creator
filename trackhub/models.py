@@ -29,9 +29,12 @@ class TrackDb:
         self.__type = None
         self.__big_data_url = None
 
-    def set_type(self, type):
-        # TODO - Refactor this in the future, as it is the responsibility of the model to identify the type of track
-        self.__type = type
+    def __identify_track_type_from_file(self, file_path):
+        # TODO - We return the default type right now, but this will change in the future
+        return 'bed'
+
+    def set_type(self, file_path):
+        self.__type = self.__identify_track_type_from_file(file_path)
 
 
 # Model for a trackhub
