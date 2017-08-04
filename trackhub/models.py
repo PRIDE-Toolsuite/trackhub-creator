@@ -115,3 +115,7 @@ class TrackHub:
                             self._SEPARATOR_CHAR, self.get_genomes_file(),
                             self._SEPARATOR_CHAR, self.get_email(),
                             self._SEPARATOR_CHAR, self.get_description_url()))
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
