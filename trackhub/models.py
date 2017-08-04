@@ -24,3 +24,4 @@ class TrackHub:
         self.__hub = hub
         self.__short_label = short_label
         self.__long_label = long_label
+        self.__email = email
