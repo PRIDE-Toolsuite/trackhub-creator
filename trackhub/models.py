@@ -22,4 +22,4 @@ class Track:
 class TrackHub:
     def __init__(self, hub, short_label, long_label, email, description_url):
         self.__hub = hub
-        
+        self.__short_label = short_label
