@@ -50,6 +50,9 @@ class TrackDb:
     def get_long_label(self):
         return self.__long_label
 
+    def get_type(self):
+        return self.__type
+
     def dump_to_track_db_file(self, file_path):
         with open(file_path, 'w') as f:
             f.write("track{}{}\n"
