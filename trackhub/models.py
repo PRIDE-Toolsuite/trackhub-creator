@@ -44,6 +44,9 @@ class TrackDb:
     def get_track(self):
         return self.__track
 
+    def get_short_label(self):
+        return self.__short_label
+
     def dump_to_track_db_file(self, file_path):
         with open(file_path, 'w') as f:
             f.write("track{}{}\n"
