@@ -27,6 +27,7 @@ class TrackDb:
         self.__long_label = long_label
         # Builder side of the model
         self.__type = None
+        self.__big_data_url = None
 
 
 # Model for a trackhub
