@@ -26,4 +26,5 @@ class TrackHub:
         self.__long_label = long_label
         self.__email = email
         self.__description_url = description_url
-        
+        # Default genomes file
+        self.__genomes_file = 'genomes.txt'
