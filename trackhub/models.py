@@ -28,3 +28,6 @@ class TrackHub:
         self.__description_url = description_url
         # Default genomes file
         self.__genomes_file = 'genomes.txt'
+
+    def get_hub(self):
+        return self.__hub
