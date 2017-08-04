@@ -11,6 +11,9 @@
 These are the models for representing and dealing with trackhubs
 """
 
+# Application imports
+import config_manager
+
 
 # Trackhub builder
 class TrackHubBuilder:
