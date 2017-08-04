@@ -14,8 +14,10 @@ These are the models for representing and dealing with trackhubs
 
 # Trackhub builder
 class TrackHubBuilder:
-    # TODO
-    pass
+    def __init__(self, track_hub):
+        # TODO
+        pass
+    
 
 
 # Model for a TrackDb
