@@ -37,3 +37,6 @@ class TrackHub:
 
     def get_long_label(self):
         return self.__long_label
+
+    def get_email(self):
+        return self.__email
