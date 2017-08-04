@@ -20,6 +20,8 @@ class Track:
 
 # Model for a trackhub
 class TrackHub:
+    _SEPARATOR_CHAR = ' '
+
     def __init__(self, hub, short_label, long_label, email, description_url):
         self.__hub = hub
         self.__short_label = short_label
@@ -46,3 +48,18 @@ class TrackHub:
 
     def get_genomes_file(self):
         return self.__genomes_file
+
+    def dump_to_file(self, file_path):
+        with open(file_path, 'w') as f:
+            f.write("hub{}{}\n"
+                    "shortLabel{}{}\n"
+                    "longLabel{}{}\n"
+                    "genomesFile{}{}\n"
+                    "email{}{}\n"
+                    "descriptionUrl{}{}"
+                    .format(self._SEPARATOR_CHAR, self.get_hub(),
+                            self._SEPARATOR_CHAR, self.get_short_label(),
+                            self._SEPARATOR_CHAR, self.get_long_label(),
+                            self._SEPARATOR_CHAR, self.get_genomes_file(),
+                            self._SEPARATOR_CHAR, self.get_email(),
+                            self._SEPARATOR_CHAR, self.get_description_url()))
