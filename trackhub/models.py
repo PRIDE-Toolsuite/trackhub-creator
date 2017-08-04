@@ -40,3 +40,7 @@ class TrackHub:
 
     def get_email(self):
         return self.__email
+
+    def get_description_url(self):
+        return self.__description_url
+    
