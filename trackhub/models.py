@@ -22,6 +22,9 @@ class TrackHubBuilder:
         # TODO
         pass
 
+    def _get_logger(self):
+        return self.__logger
+
     def add_track(self, assembly, track_db, big_data_file):
         # TODO
         pass
