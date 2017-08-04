@@ -20,8 +20,8 @@ class TrackHubBuilder:
 
 # Model for a TrackDb
 class TrackDb:
-    # TODO
-    pass
+    def __init__(self, track, short_label, long_label):
+        pass
 
 
 # Model for a trackhub
