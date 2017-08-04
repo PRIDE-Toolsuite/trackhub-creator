@@ -23,6 +23,7 @@ class TrackDb:
     def __init__(self, track, short_label, long_label):
         self.__track = track
         self.__short_label = short_label
+        self.__long_label = long_label
 
 
 # Model for a trackhub
