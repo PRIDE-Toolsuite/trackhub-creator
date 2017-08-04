@@ -31,3 +31,6 @@ class TrackHub:
 
     def get_hub(self):
         return self.__hub
+
+    def get_short_label(self):
+        return self.__short_label
