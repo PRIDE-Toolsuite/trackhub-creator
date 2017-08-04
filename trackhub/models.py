@@ -62,7 +62,12 @@ class TrackDb:
                     "type{}{}\n"
                     "bigDataUrl{}{}\n"
                     "shortLabel{}{}\n"
-                    "longLabel{}{}")
+                    "longLabel{}{}"
+                    .format(self._SEPARATOR_CHAR, self.get_track(),
+                            self._SEPARATOR_CHAR, self.get_type(),
+                            self._SEPARATOR_CHAR, self.get_big_data_url(),
+                            self._SEPARATOR_CHAR, self.get_short_label(),
+                            self._SEPARATOR_CHAR, self.get_long_label()))
 
 
 # Model for a trackhub
