@@ -20,6 +20,8 @@ class TrackHubBuilder:
 
 # Model for a TrackDb
 class TrackDb:
+    _SEPARATOR_CHAR = ' '
+
     def __init__(self, track, short_label, long_label):
         # Client side of the model
         self.__track = track
@@ -38,6 +40,14 @@ class TrackDb:
 
     def set_big_data_url(self, big_data_url):
         self.__big_data_url = big_data_url
+
+    def dump_to_track_db_file(self, file_path):
+        with open(file_path, 'w') as f:
+            f.write("track{}{}\n"
+                    "type{}{}\n"
+                    "bigDataUrl{}{}\n"
+                    "shortLabel{}{}\n"
+                    "longLabel{}{}")
 
 
 # Model for a trackhub
