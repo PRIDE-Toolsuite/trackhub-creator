@@ -53,6 +53,9 @@ class TrackDb:
     def get_type(self):
         return self.__type
 
+    def get_big_data_url(self):
+        return self.__big_data_url
+
     def dump_to_track_db_file(self, file_path):
         with open(file_path, 'w') as f:
             f.write("track{}{}\n"
