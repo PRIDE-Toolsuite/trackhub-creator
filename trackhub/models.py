@@ -21,4 +21,5 @@ class Track:
 # Model for a trackhub
 class TrackHub:
     def __init__(self, hub, short_label, long_label, email, description_url):
-        pass
+        self.__hub = hub
+        
