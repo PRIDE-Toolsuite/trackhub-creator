@@ -25,3 +25,5 @@ class TrackHub:
         self.__short_label = short_label
         self.__long_label = long_label
         self.__email = email
+        self.__description_url = description_url
+        
