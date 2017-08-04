@@ -43,4 +43,6 @@ class TrackHub:
 
     def get_description_url(self):
         return self.__description_url
-    
+
+    def get_genomes_file(self):
+        return self.__genomes_file
