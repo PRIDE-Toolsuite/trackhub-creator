@@ -37,6 +37,8 @@ class TrackHubBuilder:
 
 
 # Specialized track hub builders
+# WARNING - A lot of parameters will be hard-coded here.
+# TODO - Refactor out to a configuration manager all those details you want to parameterize
 class PrideFtpTrackHubBuilder(TrackHubBuilder):
     def __init__(self, track_hub):
         super(PrideFtpTrackHubBuilder, self).__init__(track_hub)
