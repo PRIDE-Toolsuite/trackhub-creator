@@ -17,7 +17,10 @@ class TrackHubBuilder:
     def __init__(self, track_hub):
         # TODO
         pass
-    
+
+    def add_track(self, assembly, track_db, big_data_file):
+        # TODO
+        pass
 
 
 # Model for a TrackDb
