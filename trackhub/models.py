@@ -40,6 +40,11 @@ class TrackHubBuilder:
 # WARNING - A lot of parameters will be hard-coded here.
 # TODO - Refactor out to a configuration manager all those details you want to parameterize
 class PrideFtpTrackHubBuilder(TrackHubBuilder):
+    """
+    This TrackHub builder finalizes the product to be accessible at PRIDE FTP service, it should be the same for both
+    PRIDE Cluster data and every project, but I'm afraid it won't, so I'll probably need another specialized builder
+    for PXDs
+    """
     def __init__(self, track_hub):
         super(PrideFtpTrackHubBuilder, self).__init__(track_hub)
 
