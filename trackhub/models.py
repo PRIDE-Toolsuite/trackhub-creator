@@ -20,6 +20,8 @@ class TrackHubBuilder:
     def __init__(self, track_hub):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.__track_hub = track_hub
+        # Tracks is a Map <Assembly, TrackDb>
+        self.__tracks = {}
 
     def _get_logger(self):
         return self.__logger
