@@ -53,6 +53,12 @@ class PrideFtpTrackHubBuilder(TrackHubBuilder):
         super(PrideFtpTrackHubBuilder, self).__init__(track_hub)
 
 
+# Modeling TrackHubs
+class TrackCollector:
+    # TODO
+    pass
+
+
 # Model for a TrackDb
 class TrackDb:
     _SEPARATOR_CHAR = ' '
