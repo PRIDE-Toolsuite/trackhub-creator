@@ -46,7 +46,7 @@ class TrackHubGenomeAssembly:
 
 
 class TrackCollector:
-    # TODO
+    # TODO - This will be a superclass for possible different track collectors I implement in the future
     pass
 
 
