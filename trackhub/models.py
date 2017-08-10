@@ -50,6 +50,10 @@ class TrackCollector:
         # List of tracks in this track collector
         self.__tracks = []
 
+    def add_track(self, track):
+        # TODO
+        pass
+
 
 class SimpleTrackCollector(TrackCollector):
     def __init__(self):
