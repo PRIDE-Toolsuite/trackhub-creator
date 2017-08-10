@@ -50,6 +50,10 @@ class TrackCollector:
     pass
 
 
+class SimpleTrackCollector(TrackCollector):
+    def __init__(self):
+        super(SimpleTrackCollector, self).__init__()
+
 # Model for a Track
 class BaseTrack:
     _SEPARATOR_CHAR = ' '
