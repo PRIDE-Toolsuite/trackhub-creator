@@ -59,8 +59,8 @@ class TrackCollector:
     pass
 
 
-# Model for a TrackDb
-class TrackDb:
+# Model for a Track
+class Track:
     _SEPARATOR_CHAR = ' '
 
     def __init__(self, track, short_label, long_label):
