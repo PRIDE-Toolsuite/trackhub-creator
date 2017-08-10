@@ -49,11 +49,17 @@ class PrideFtpTrackHubBuilder(TrackHubBuilder):
     PRIDE Cluster data and every project, but I'm afraid it won't, so I'll probably need another specialized builder
     for PXDs
     """
+
     def __init__(self, track_hub):
         super(PrideFtpTrackHubBuilder, self).__init__(track_hub)
 
 
 # Modeling TrackHubs
+class Assembly:
+    # TODO
+    pass
+
+
 class TrackCollector:
     # TODO
     pass
