@@ -51,8 +51,7 @@ class TrackCollector:
         self.__tracks = []
 
     def add_track(self, track):
-        # TODO
-        pass
+        self.__tracks.append(track)
 
     def get_tracks(self):
         return self.__tracks
