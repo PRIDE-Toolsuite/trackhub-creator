@@ -55,7 +55,7 @@ class PrideFtpTrackHubBuilder(TrackHubBuilder):
 
 
 # Modeling TrackHubs
-class Assembly:
+class TrackHubGenomeAssembly:
     # TODO
     pass
 
