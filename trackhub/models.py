@@ -9,6 +9,8 @@
 
 """
 These are the models for representing and dealing with trackhubs
+DISCLAIMER - This is the first iteration of the software to create the trackhubs. In this iteration we are going for the
+simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.edu/goldenpath/help/hubQuickStart.html
 """
 
 # Application imports
