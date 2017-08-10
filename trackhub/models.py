@@ -24,6 +24,12 @@ import config_manager
 # TODO - How and where to define the building directors?
 
 
+def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
+    if value:
+        return "{}{}{}{}".format(key, separator, value, suffix)
+    return ""
+
+
 # Modeling TrackHubs
 class TrackHubGenomeAssembly:
     # TODO
