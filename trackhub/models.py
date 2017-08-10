@@ -64,16 +64,12 @@ class BaseTrack:
         self.__big_data_url = None
 
     def __str__(self):
-        return "track{}{}\n" \
-               "type{}{}\n" \
-               "bigDataUrl{}{}\n" \
-               "shortLabel{}{}\n" \
-               "longLabel{}{}" \
-            .format(self._SEPARATOR_CHAR, self.get_track(),
-                    self._SEPARATOR_CHAR, self.get_type(),
-                    self._SEPARATOR_CHAR, self.get_big_data_url(),
-                    self._SEPARATOR_CHAR, self.get_short_label(),
-                    self._SEPARATOR_CHAR, self.get_long_label())
+        return "{}{}{}{}{}" \
+            .format(key_value_to_str_if_not_none('track', self.get_track(), self._SEPARATOR_CHAR, '\n'),
+                    key_value_to_str_if_not_none('type', self.get_type(), self._SEPARATOR_CHAR, '\n'),
+                    key_value_to_str_if_not_none('bigDataUrl', self.get_big_data_url(), self._SEPARATOR_CHAR, '\n'),
+                    key_value_to_str_if_not_none('shortLabel', self.get_short_label(), self._SEPARATOR_CHAR, '\n'),
+                    key_value_to_str_if_not_none('longLabel', self.get_long_label(), self._SEPARATOR_CHAR, ''))
 
     def __identify_track_type_from_file(self, file_path):
         # TODO - We return the default type right now, but this will change in the future
