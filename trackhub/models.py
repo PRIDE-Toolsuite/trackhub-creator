@@ -36,7 +36,7 @@ class TrackCollector:
 
 
 # Model for a Track
-class Track:
+class BaseTrack:
     _SEPARATOR_CHAR = ' '
 
     def __init__(self, track, short_label, long_label):
