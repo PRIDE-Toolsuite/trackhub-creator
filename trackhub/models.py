@@ -46,8 +46,9 @@ class TrackHubGenomeAssembly:
 
 
 class TrackCollector:
-    # TODO - This will be a superclass for possible different track collectors I implement in the future
-    pass
+    def __init__(self):
+        # List of tracks in this track collector
+        self.__tracks = []
 
 
 class SimpleTrackCollector(TrackCollector):
