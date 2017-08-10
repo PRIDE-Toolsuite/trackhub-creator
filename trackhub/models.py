@@ -87,16 +87,7 @@ class Track:
 
     def dump_to_track_db_file(self, file_path):
         with open(file_path, 'w') as f:
-            f.write("track{}{}\n"
-                    "type{}{}\n"
-                    "bigDataUrl{}{}\n"
-                    "shortLabel{}{}\n"
-                    "longLabel{}{}"
-                    .format(self._SEPARATOR_CHAR, self.get_track(),
-                            self._SEPARATOR_CHAR, self.get_type(),
-                            self._SEPARATOR_CHAR, self.get_big_data_url(),
-                            self._SEPARATOR_CHAR, self.get_short_label(),
-                            self._SEPARATOR_CHAR, self.get_long_label()))
+            f.write(str(self))
 
 
 # Model for a trackhub
