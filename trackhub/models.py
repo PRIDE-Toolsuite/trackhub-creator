@@ -64,6 +64,9 @@ class SimpleTrackCollector(TrackCollector):
     def __init__(self):
         super(SimpleTrackCollector, self).__init__()
 
+    def accept(self, track_collector_visitor):
+        return track_collector_visitor.visit_simple_track_collector(self)
+
 
 # Model for a Track
 class BaseTrack:
