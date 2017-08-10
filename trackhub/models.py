@@ -56,6 +56,9 @@ class TrackCollector:
     def get_tracks(self):
         return self.__tracks
 
+    def accept(self, track_collector_visitor):
+        return track_collector_visitor.visit_track_collector(self)
+
 
 class SimpleTrackCollector(TrackCollector):
     def __init__(self):
