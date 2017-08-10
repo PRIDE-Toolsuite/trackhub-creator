@@ -17,41 +17,7 @@ simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.e
 import config_manager
 
 
-# Trackhub builder - base class
-class TrackHubBuilder:
-    def __init__(self, track_hub):
-        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-        self.__track_hub = track_hub
-        # Tracks is a Map <Assembly, TrackDb>
-        self.__tracks = {}
-
-    def _get_logger(self):
-        return self.__logger
-
-    def _set_logger(self, logger):
-        self.__logger = logger
-
-    def add_track(self, assembly, track_db, big_data_file):
-        # TODO
-        pass
-
-    def get_product(self):
-        # TODO
-        pass
-
-
-# Specialized track hub builders
-# WARNING - A lot of parameters will be hard-coded here.
-# TODO - Refactor out to a configuration manager all those details you want to parameterize
-class PrideFtpTrackHubBuilder(TrackHubBuilder):
-    """
-    This TrackHub builder finalizes the product to be accessible at PRIDE FTP service, it should be the same for both
-    PRIDE Cluster data and every project, but I'm afraid it won't, so I'll probably need another specialized builder
-    for PXDs
-    """
-
-    def __init__(self, track_hub):
-        super(PrideFtpTrackHubBuilder, self).__init__(track_hub)
+# Now, different trackhub builders for the different types of trackhubs (quickstart, custom, etc.)
 
 
 # Modeling TrackHubs
