@@ -25,6 +25,15 @@ import config_manager
 
 
 def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
+    """
+    Helper method that, given a key, value, separator and suffix, it will return the string
+    '<key><separator><value><suffix>' if value is not None, otherwise it will return the empty string ''
+    :param key: key
+    :param value: value
+    :param separator: character to use as separator, default ' '
+    :param suffix: character to use as suffix, default '\n'
+    :return: '<key><separator><value><suffix>' if value not None, '' otherwise
+    """
     if value:
         return "{}{}{}{}".format(key, separator, value, suffix)
     return ""
