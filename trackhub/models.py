@@ -54,6 +54,9 @@ class TrackCollector:
         # TODO
         pass
 
+    def get_tracks(self):
+        return self.__tracks
+
 
 class SimpleTrackCollector(TrackCollector):
     def __init__(self):
