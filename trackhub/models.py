@@ -18,6 +18,9 @@ import config_manager
 
 
 # Now, different trackhub builders for the different types of trackhubs (quickstart, custom, etc.)
+# DISCLAIMER - I'm aware this first iteration may look a little bit patchy, but it needs to be acknowledged that the
+# documentation for modeling this is not very developer friendly, this module it is not meant to be a general module for
+# building all sorts of trackhubs and this is the first iteration, so we're not very sure what we want
 # TODO - How and where to define the building directors?
 
 
