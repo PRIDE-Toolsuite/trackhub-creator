@@ -118,10 +118,12 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                 self.logger.info("For Assembly '{}', trackhub folder created at '{}'".format(assembly, assembly_folder))
                 # Per track in its track collector
                 for track in track_hub_builder.assemblies[assembly].track_collector.get_tracks():
-                    # TODO Copy track file to assembly folder
-                    destination_file_path = os.path.join(assembly_folder, os.path.basename(track.set_big_data_url()))
+                    # Copy track file to assembly folder
+                    big_data_file_name = os.path.basename(track.set_big_data_url())
+                    destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     shutil.copy(track.get_big_data_url(), destination_file_path)
-            # TODO -        Modify track file path to be relative to trackhub root path
+                    # Modify track file path to be relative to trackhub root path
+                    new_big_data_url = os.path.join(os.path.basename(assembly_folder), big_data_file_name)
             # TODO -        Export track collector data as string into a trackDB.txt file within the assembly folder
             # TODO -    Add assembly entry to genomes.txt files within trackhub root folder
             pass
