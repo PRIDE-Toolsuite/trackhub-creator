@@ -106,6 +106,11 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                 wf.write("{}\n".format(str(track_hub_builder.track_hub)))
             self.logger.info("TrackHub descriptor file at '{}'".format(file_trackhub_descriptor))
             # TODO - Per assembly
+            # TODO - I should also have an assembly collector and refactor TrackHubGenomeAssembly accordingly, but I'm
+            # TODO - cutting some corners here to get the first iteration up and running as soon as possible. Supporting
+            # TODO - more complex genomes.txt files is not as critical as getting the 'tracks' the right way
+            for assembly in track_hub_builder.assemblies:
+                assembly_folder = os.path.join(self.track_hub_destination_folder, assembly)
             # TODO -    Create the folder for the assembly
             # TODO -    Per track in its track collector
             # TODO -        Copy track file to assembly folder
