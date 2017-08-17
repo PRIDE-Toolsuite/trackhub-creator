@@ -43,7 +43,9 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
 class TrackHubBuilder:
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-
+        self.track_hub = None
+        self.assemblies = None
+        
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
     def __init__(self):
