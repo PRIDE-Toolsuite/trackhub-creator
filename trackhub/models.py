@@ -14,6 +14,7 @@ simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.e
 """
 
 import os
+import shutil
 from abc import ABCMeta, abstractmethod
 # Application imports
 import config_manager
@@ -115,8 +116,10 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                 # Create the folder for the assembly
                 general.check_create_folders([assembly_folder])
                 self.logger.info("For Assembly '{}', trackhub folder created at '{}'".format(assembly, assembly_folder))
-            # TODO -    Per track in its track collector
-            # TODO -        Copy track file to assembly folder
+                # Per track in its track collector
+                for track in track_hub_builder.assemblies[assembly].track_collector.get_tracks():
+                    # TODO Copy track file to assembly folder
+                    pass
             # TODO -        Modify track file path to be relative to trackhub root path
             # TODO -        Export track collector data as string into a trackDB.txt file within the assembly folder
             # TODO -    Add assembly entry to genomes.txt files within trackhub root folder
