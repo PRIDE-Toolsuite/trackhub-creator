@@ -41,8 +41,8 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
 
 # Modeling TrackHubs
 class TrackHubGenomeAssembly:
-    # TODO
-    pass
+    def __init__(self):
+        self.track_collector = None
 
 
 class TrackCollector:
