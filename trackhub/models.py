@@ -42,6 +42,7 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
 # Modeling TrackHubs
 class TrackHubGenomeAssembly:
     def __init__(self, assembly, track_collector):
+        # Let's try the Pythonist way, attributes are public by default
         self.track_collector = track_collector
         self.assembly = assembly
 
