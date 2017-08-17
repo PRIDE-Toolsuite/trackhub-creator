@@ -134,6 +134,8 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                 assembly_mapping[assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
                                                           os.path.basename(trackdb_file_path))
             # TODO - Export data to genomes.txt file
+            genomes_file_path = os.path.join(self.track_hub_destination_folder, 'genomes.txt')
+            
         return self.export_summary
 
 
