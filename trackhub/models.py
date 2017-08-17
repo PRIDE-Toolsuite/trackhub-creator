@@ -89,6 +89,10 @@ class TrackHubExporter(metaclass=ABCMeta):
 class TrackHubExporterPrideClusterFtp(TrackHubExporter):
     def __init__(self):
         super(TrackHubExporterPrideClusterFtp, self).__init__()
+        # Default destination folder for pride cluster trackhubs
+        self.track_hub_destination_folder = os.path.join(
+            config_manager.get_app_config_manager().get_session_working_dir(),
+            os.path.join('pride_cluster', 'track_hubs'))
 
     def export_simple_trackhub(self, track_hub_builder):
         if not self.export_summary:
