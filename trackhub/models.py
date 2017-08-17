@@ -40,6 +40,12 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
     return ""
 
 
+# TrackHub Exporters
+class TrackHubExporter(metaclass=ABCMeta):
+    # TODO
+    pass
+
+
 # TrackHub Builders
 class TrackHubBuilder(metaclass=ABCMeta):
     def __init__(self, track_hub_descriptor):
