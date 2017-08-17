@@ -13,8 +13,8 @@ DISCLAIMER - This is the first iteration of the software to create the trackhubs
 simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.edu/goldenpath/help/hubQuickStart.html
 """
 
-# Application imports
 from abc import ABCMeta, abstractmethod
+# Application imports
 import config_manager
 
 
