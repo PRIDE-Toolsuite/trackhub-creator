@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Module wide configuration management
 """
