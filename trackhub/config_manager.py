@@ -15,3 +15,9 @@ Module wide configuration management
 __configuration_file = None
 __configuration_service = None
 
+
+def set_configuration_file(config_file):
+    global __configuration_file
+    if __configuration_file is None:
+        __configuration_file = config_file
+    return __configuration_file
