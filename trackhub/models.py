@@ -45,6 +45,11 @@ class TrackHubBuilder:
     pass
 
 
+class SimpleTrackHubBuilder(TrackHubBuilder):
+    # TODO
+    pass
+
+
 # Modeling TrackHubs
 class TrackHubGenomeAssembly:
     def __init__(self, assembly, track_collector):
