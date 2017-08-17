@@ -97,8 +97,9 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
 
     def export_simple_trackhub(self, track_hub_builder):
         if not self.export_summary:
-            # TODO - Check / Create destination folder
-            # TODO - Create hub.txt file
+            self.logger.info("Export Simple TrackHub to '{}'".format(self.track_hub_destination_folder))
+            # Check / Create destination folder
+            general.check_create_folders([self.track_hub_destination_folder])
             # TODO - Per assembly
             # TODO -    Create the folder for the assembly
             # TODO -    Per track in its track collector
