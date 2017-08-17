@@ -16,6 +16,7 @@ simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.e
 from abc import ABCMeta, abstractmethod
 # Application imports
 import config_manager
+from . import config_manager as module_config_manager
 
 
 # Now, different trackhub builders for the different types of trackhubs (quickstart, custom, etc.)
