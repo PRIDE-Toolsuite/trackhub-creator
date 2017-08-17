@@ -46,6 +46,10 @@ class TrackCollectorSerializer(metaclass=ABCMeta):
     # TODO
     pass
 
+class TrackCollectorFileSerializer(TrackCollectorSerializer):
+    # TODO
+    pass
+
 
 # TrackHub Exporters
 class TrackHubExporter(metaclass=ABCMeta):
