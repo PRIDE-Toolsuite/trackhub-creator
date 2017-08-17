@@ -141,6 +141,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                     wf.write("genome {}\n"
                              "trackDb {}\n"
                              .format(assembly, assembly_mapping[assembly]))
+            self.logger.info("Genomes file with per-assembly data exported to '{}'".format(genomes_file_path))
         return self.export_summary
 
 
