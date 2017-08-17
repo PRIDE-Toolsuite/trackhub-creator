@@ -51,7 +51,7 @@ class TrackHubBuilder(metaclass=ABCMeta):
     def __create_track_collector(self):
         ...
 
-    def add_track_to_assembly(self, track):
+    def add_track_to_assembly(self, assembly, track):
         # TODO
         pass
 
