@@ -46,6 +46,10 @@ class TrackCollectorExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
+    @abstractmethod
+    def visit_simple_track_collector(self, track_collector):
+        ...
+
 
 class TrackCollectorFileExporter(TrackCollectorExporter):
     # TODO
