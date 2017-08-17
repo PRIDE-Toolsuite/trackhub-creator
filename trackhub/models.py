@@ -14,7 +14,7 @@ simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.e
 """
 
 # Application imports
-import abc
+from abc import ABCMeta
 import config_manager
 
 
@@ -41,13 +41,13 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
 
 
 # TrackHub Builders
-class TrackHubBuilder:
+class TrackHubBuilder(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.track_hub = None
         self.assemblies = None
 
-    
+
 class SimpleTrackHubBuilder(TrackHubBuilder):
     def __init__(self):
         super(SimpleTrackHubBuilder, self).__init__()
