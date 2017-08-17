@@ -36,6 +36,8 @@ def get_configuration_service():
 
 
 class ConfigurationService(config_manager.ConfigurationManager):
+    # TODO - This version is not really using the configuration object, thus it will need refactoring for that in the
+    # TODO - future
     # This is similar code to the one I have for other modules, but this time I'm trying the 'pythonist way' to get a
     # feeling of it
     def __init__(self, configuration_object, configuration_file):
