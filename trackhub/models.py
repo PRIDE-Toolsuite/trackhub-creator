@@ -49,9 +49,11 @@ class TrackHubBuilder(metaclass=ABCMeta):
 
     @abstractmethod
     def __create_track_collector(self):
-        ...
+        pass
 
-
+    def add_track_to_assembly(self, track):
+        # TODO
+        pass
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
     def __init__(self):
