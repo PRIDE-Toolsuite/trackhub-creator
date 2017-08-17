@@ -14,7 +14,7 @@ simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.e
 """
 
 # Application imports
-from abc import ABCMeta
+from abc import ABCMeta, abstractmethod
 import config_manager
 
 
@@ -46,6 +46,11 @@ class TrackHubBuilder(metaclass=ABCMeta):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.track_hub = None
         self.assemblies = None
+
+    @abstractmethod
+    def __create_track_collector(self):
+        ...
+
 
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
