@@ -51,8 +51,8 @@ class TrackHubExporter(metaclass=ABCMeta):
 
 
 class TrackHubExporterPrideClusterFtp(TrackHubExporter):
-    # TODO
-    pass
+    def __init__(self):
+        super(TrackHubExporterPrideClusterFtp, self).__init__()
 
 
 # TrackHub Builders
