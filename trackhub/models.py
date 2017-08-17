@@ -41,6 +41,12 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
     return ""
 
 
+# Track Collector Serializers
+class TrackCollectorSerializer(metaclass=ABCMeta):
+    # TODO
+    pass
+
+
 # TrackHub Exporters
 class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
@@ -57,7 +63,6 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
         super(TrackHubExporterPrideClusterFtp, self).__init__()
 
     def export_simple_trackhub(self, track_hub_builder):
-        # TODO
         # TODO - Check / Create destination folder
         # TODO - Create hub.txt file
         # TODO - Per assembly
