@@ -128,6 +128,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                     self.logger.info("Data for track '{}' prepared, track information updated".format(track.get_track()))
                 # Export track collector data as string into a trackDB.txt file within the assembly folder
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
+                track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
                 
             # TODO -    Add assembly entry to genomes.txt files within trackhub root folder
             pass
