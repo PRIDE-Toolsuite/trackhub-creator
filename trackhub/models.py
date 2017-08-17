@@ -13,6 +13,7 @@ DISCLAIMER - This is the first iteration of the software to create the trackhubs
 simple version of the hubs, "trackhub quickstart guide" at https://genome.ucsc.edu/goldenpath/help/hubQuickStart.html
 """
 
+import os
 from abc import ABCMeta, abstractmethod
 # Application imports
 import config_manager
@@ -74,6 +75,9 @@ class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.export_summary = None
+        self.track_hub_destination_folder = os.path.join(
+            config_manager.get_app_config_manager().get_session_working_dir(),
+            'track_hub')
 
     @abstractmethod
     def export_simple_trackhub(self, track_hub_builder):
