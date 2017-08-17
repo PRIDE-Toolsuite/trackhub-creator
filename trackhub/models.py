@@ -147,6 +147,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
             self.export_summary = TrackHubExportSummary()
             self.export_summary.track_hub_root_folder = self.track_hub_destination_folder
             self.export_summary.track_hub_descriptor_file_path = file_trackhub_descriptor
+            self.logger.info("Trackhub export summary prepared")
         return self.export_summary
 
 
