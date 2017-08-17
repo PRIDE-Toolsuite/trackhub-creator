@@ -46,8 +46,8 @@ class TrackHubBuilder:
 
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
-    # TODO
-    pass
+    def __init__(self):
+        super(SimpleTrackHubBuilder, self).__init__()
 
 
 # Modeling TrackHubs
