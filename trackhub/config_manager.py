@@ -43,10 +43,6 @@ class ConfigurationService(config_manager.ConfigurationManager):
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationService, self).__init__(configuration_object, configuration_file)
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-        # The default value for pride cluster trackhubs is located within the current session working directory
-        self.folder_pride_cluster_trackhub_root = os.path.join(
-            config_manager.get_app_config_manager().get_session_working_dir(),
-            os.path.join('pride_cluster', 'track_hubs'))
 
 
 if __name__ == '__main__':

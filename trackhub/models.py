@@ -75,6 +75,8 @@ class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.export_summary = None
+        # The default destination folder for exporting the trackhub is located within the current session working
+        # directory
         self.track_hub_destination_folder = os.path.join(
             config_manager.get_app_config_manager().get_session_working_dir(),
             'track_hub')
