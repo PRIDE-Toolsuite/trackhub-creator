@@ -39,6 +39,12 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
     return ""
 
 
+# TrackHub Builders
+class TrackHubBuilder:
+    # TODO - Abstract base class
+    pass
+
+
 # Modeling TrackHubs
 class TrackHubGenomeAssembly:
     def __init__(self, assembly, track_collector):
