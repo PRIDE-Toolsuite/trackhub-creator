@@ -49,7 +49,7 @@ class TrackHubBuilder(metaclass=ABCMeta):
 
     @abstractmethod
     def __create_track_collector(self):
-        pass
+        ...
 
     def add_track_to_assembly(self, track):
         # TODO
