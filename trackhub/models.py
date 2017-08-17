@@ -70,7 +70,7 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
 # TrackHub Exporters
 class TrackHubExportSummary:
     def __init__(self):
-        pass
+        self.track_hub_root_folder = None
 
 
 class TrackHubExporter(metaclass=ABCMeta):
