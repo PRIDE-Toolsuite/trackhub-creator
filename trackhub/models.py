@@ -97,12 +97,12 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
             os.path.join('pride_cluster', 'track_hubs'))
 
     def export_simple_trackhub(self, track_hub_builder):
+        file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
         if not self.export_summary:
             self.logger.info("Export Simple TrackHub to '{}'".format(self.track_hub_destination_folder))
             # Check / Create destination folder
             general.check_create_folders([self.track_hub_destination_folder])
             # Create hub.txt file
-            file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
             with open(file_trackhub_descriptor, 'w') as wf:
                 wf.write("{}\n".format(str(track_hub_builder.track_hub)))
             self.logger.info("TrackHub descriptor file at '{}'".format(file_trackhub_descriptor))
