@@ -143,6 +143,10 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                              "trackDb {}\n"
                              .format(assembly, assembly_mapping[assembly]))
             self.logger.info("Genomes file with per-assembly data exported to '{}'".format(genomes_file_path))
+            # Prepare summary object
+            self.export_summary = TrackHubExportSummary()
+            self.export_summary.track_hub_root_folder = self.track_hub_destination_folder
+            self.export_summary.track_hub_descriptor_file_path = file_trackhub_descriptor
         return self.export_summary
 
 
