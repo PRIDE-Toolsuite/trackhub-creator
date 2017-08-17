@@ -24,3 +24,7 @@ def set_configuration_file(config_file):
     if __configuration_file is None:
         __configuration_file = config_file
     return __configuration_file
+
+
+class ConfigurationService(config_manager.ConfigurationManager):
+    pass
