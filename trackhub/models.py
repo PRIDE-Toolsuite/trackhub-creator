@@ -42,12 +42,12 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
 
 
 # Track Collector Serializers
-class TrackCollectorSerializer(metaclass=ABCMeta):
+class TrackCollectorExporter(metaclass=ABCMeta):
     # TODO
     pass
 
 
-class TrackCollectorFileSerializer(TrackCollectorSerializer):
+class TrackCollectorFileExporter(TrackCollectorExporter):
     # TODO
     pass
 
