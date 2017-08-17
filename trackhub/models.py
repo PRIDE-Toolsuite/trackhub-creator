@@ -66,8 +66,8 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
 
 # TrackHub Exporters
 class TrackHubExportSummary:
-    # TODO
-    pass
+    def __init__(self):
+        pass
 
 
 class TrackHubExporter(metaclass=ABCMeta):
