@@ -42,9 +42,9 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
 
 # TrackHub Builders
 class TrackHubBuilder(metaclass=ABCMeta):
-    def __init__(self):
+    def __init__(self, track_hub_descriptor):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-        self.track_hub = None
+        self.track_hub = track_hub_descriptor
         self.assemblies = {}
 
     @abstractmethod
@@ -59,8 +59,8 @@ class TrackHubBuilder(metaclass=ABCMeta):
 
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
-    def __init__(self):
-        super(SimpleTrackHubBuilder, self).__init__()
+    def __init__(self, track_hub_descriptor):
+        super(SimpleTrackHubBuilder, self).__init__(track_hub_descriptor)
 
     def __create_track_collector(self):
         return TrackCollector()
