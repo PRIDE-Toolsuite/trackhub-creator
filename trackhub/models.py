@@ -45,10 +45,11 @@ def key_value_to_str_if_not_none(key, value, separator=' ', suffix='\n'):
 class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+        self.export_summary = None
 
     @abstractmethod
     def export_simple_trackhub(self, track_hub_builder):
-        ...
+        return self.export_summary
 
 
 class TrackHubExporterPrideClusterFtp(TrackHubExporter):
