@@ -69,6 +69,9 @@ class SimpleTrackHubBuilder(TrackHubBuilder):
     def __create_track_collector(self):
         return TrackCollector()
 
+    def accept_exporter(self, trackhub_exporter):
+        trackhub_exporter.export_simple_trackhub(self)
+
 
 # Modeling TrackHubs
 class TrackHubGenomeAssembly:
