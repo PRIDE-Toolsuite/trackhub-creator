@@ -57,7 +57,11 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
         self.destination_file_path = destination_file_path
 
     def visit_simple_track_collector(self, track_collector):
-        pass
+        self.logger.debug("Exporting #{} track(s) from Simple Track Collector to file '{}'"
+                          .format(len(track_collector.get_tracks()), self.destination_file_path))
+        with open(self.destination_file_path, 'w') as wf:
+            for track in track_collector.get_tracks():
+                wf.write(str(track) + "\n\n")
 
 
 # TrackHub Exporters
