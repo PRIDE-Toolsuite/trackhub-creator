@@ -55,9 +55,13 @@ class TrackHubBuilder(metaclass=ABCMeta):
         # TODO
         pass
 
+
 class SimpleTrackHubBuilder(TrackHubBuilder):
     def __init__(self):
         super(SimpleTrackHubBuilder, self).__init__()
+
+    def __create_track_collector(self):
+        return TrackCollector()
 
 
 # Modeling TrackHubs
