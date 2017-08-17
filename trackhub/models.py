@@ -65,6 +65,11 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
 
 
 # TrackHub Exporters
+class TrackHubExportSummary:
+    # TODO
+    pass
+
+
 class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
