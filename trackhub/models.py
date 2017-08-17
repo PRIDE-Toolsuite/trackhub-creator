@@ -80,16 +80,18 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
         super(TrackHubExporterPrideClusterFtp, self).__init__()
 
     def export_simple_trackhub(self, track_hub_builder):
-        # TODO - Check / Create destination folder
-        # TODO - Create hub.txt file
-        # TODO - Per assembly
-        # TODO -    Create the folder for the assembly
-        # TODO -    Per track in its track collector
-        # TODO -        Copy track file to assembly folder
-        # TODO -        Modify track file path to be relative to trackhub root path
-        # TODO -        Export track collector data as string into a trackDB.txt file within the assembly folder
-        # TODO -    Add assembly entry to genomes.txt files within trackhub root folder
-        pass
+        if not self.export_summary:
+            # TODO - Check / Create destination folder
+            # TODO - Create hub.txt file
+            # TODO - Per assembly
+            # TODO -    Create the folder for the assembly
+            # TODO -    Per track in its track collector
+            # TODO -        Copy track file to assembly folder
+            # TODO -        Modify track file path to be relative to trackhub root path
+            # TODO -        Export track collector data as string into a trackDB.txt file within the assembly folder
+            # TODO -    Add assembly entry to genomes.txt files within trackhub root folder
+            pass
+        return self.export_summary
 
 
 # TrackHub Builders
