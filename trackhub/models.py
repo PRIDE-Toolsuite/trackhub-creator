@@ -71,6 +71,7 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
 class TrackHubExportSummary:
     def __init__(self):
         self.track_hub_root_folder = None
+        self.track_hub_descriptor_file_path = None
 
 
 class TrackHubExporter(metaclass=ABCMeta):
