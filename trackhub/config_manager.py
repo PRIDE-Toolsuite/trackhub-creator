@@ -11,6 +11,7 @@
 Module wide configuration management
 """
 
+import os
 # Application imports
 import config_manager
 
@@ -35,6 +36,11 @@ def get_configuration_service():
 
 
 class ConfigurationService(config_manager.ConfigurationManager):
+    # The default value for pride cluster trackhubs is located within the current session working directory
+    _DEFAULT_FOLDER_PRIDE_CLUSTER_TRACKHUB_ROOT = os.path.join(
+        config_manager.get_app_config_manager().get_session_working_dir(),
+        os.path.join('pride_cluster', 'track_hubs'))
+
     # This is similar code to the one I have for other modules, but this time I'm trying the 'pythonist way' to get a
     # feeling of it
     def __init__(self, configuration_object, configuration_file):
