@@ -52,8 +52,10 @@ class TrackHubBuilder(metaclass=ABCMeta):
         ...
 
     def add_track_to_assembly(self, assembly, track):
-        # TODO
-        pass
+        if assembly not in self.assemblies:
+            self.logger.debug("For Trackhub '{}', new assembly '{}'".format(self.track_hub.get_hub(), assembly))
+            self.assemblies[assembly] = TrackHubGenomeAssembly(assembly, self.__create_track_collector)
+        self.assemblies[assembly].track_collector.add_track(track)
 
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
