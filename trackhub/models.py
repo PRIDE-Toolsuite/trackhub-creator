@@ -52,8 +52,12 @@ class TrackCollectorExporter(metaclass=ABCMeta):
 
 
 class TrackCollectorFileExporter(TrackCollectorExporter):
-    # TODO
-    pass
+    def __init__(self, destination_file_path):
+        super(TrackCollectorFileExporter, self).__init__()
+        self.destination_file_path = destination_file_path
+
+    def visit_simple_track_collector(self, track_collector):
+        pass
 
 
 # TrackHub Exporters
