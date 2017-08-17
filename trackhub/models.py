@@ -46,6 +46,7 @@ class TrackCollectorSerializer(metaclass=ABCMeta):
     # TODO
     pass
 
+
 class TrackCollectorFileSerializer(TrackCollectorSerializer):
     # TODO
     pass
