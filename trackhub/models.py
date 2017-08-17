@@ -45,6 +45,10 @@ class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
+    @abstractmethod
+    def export_simple_trackhub(self, track_hub_builder):
+        ...
+
 
 class TrackHubExporterPrideClusterFtp(TrackHubExporter):
     # TODO
