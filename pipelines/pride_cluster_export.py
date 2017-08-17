@@ -59,7 +59,7 @@ class ConfigManager(DirectorConfigurationManager):
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
-        # TODO - Process command line arguments
+        # TODO - Process command line arguments (e.g. pride cluster default trackhub root folder)
 
     def get_cluster_file_exporter_version_parameter(self):
         """
