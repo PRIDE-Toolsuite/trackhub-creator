@@ -45,7 +45,7 @@ class TrackHubBuilder(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.track_hub = None
-        self.assemblies = None
+        self.assemblies = {}
 
     @abstractmethod
     def __create_track_collector(self):
