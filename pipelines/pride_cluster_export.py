@@ -450,7 +450,7 @@ class PrideClusterExporter(Director):
     def __get_track_hub_builder(self, trackhub_descriptor):
         # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
         # TODO - destination folder from whatever comes in as a command line parameter
-        pass
+        return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
     def __get_trackhub_descriptor(self):
         # TODO - Some of these values are hardcoded here, but they could be parameterized later if needed
