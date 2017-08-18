@@ -191,6 +191,9 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return 7200
 
+    def get_pride_cluster_description_url(self):
+        pass
+
 
 class PrideClusterExporter(Director):
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
