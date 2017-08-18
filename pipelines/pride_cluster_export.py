@@ -454,10 +454,12 @@ class PrideClusterExporter(Director):
 
     def __get_trackhub_descriptor(self):
         # TODO - Create the trackhub descriptor
-        trackhub_title = "PRIDE Cluster Release {}"\
+        trackhub_title = "PRIDE Cluster Release {}" \
             .format(self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
         # TODO - Some of these values are hardcoded here, but they could be parameterized later if needed
         trackhub_short_label = "PRIDE Cluster latest release."
+        trackhub_long_label = "PRIDE Cluster clusters all MS/MS spectra submitted to the PRIDE Archive repository " \
+                              "using spectrum clustering algorithms."
 
     def _run_pipeline(self):
         # Main pipeline algorithm
