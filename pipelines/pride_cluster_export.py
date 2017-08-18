@@ -21,6 +21,7 @@ import ensembl.data_downloader
 from pogo.models import PogoRunResult
 from toolbox import general as general_toolbox
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
+import trackhub.models as trackhubs
 
 __configuration_file = None
 __pipeline_arguments = None
