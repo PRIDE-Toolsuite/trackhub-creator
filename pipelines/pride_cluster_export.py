@@ -461,6 +461,7 @@ class PrideClusterExporter(Director):
         trackhub_long_label = "PRIDE Cluster clusters all MS/MS spectra submitted to the PRIDE Archive repository " \
                               "using spectrum clustering algorithms."
         trackhub_email = "pride-support@ebi.ac.uk"
+        trackhub_description_url = self._get_configuration_manager().get_pride_cluster_description_url()
 
     def _run_pipeline(self):
         # Main pipeline algorithm
