@@ -442,7 +442,7 @@ class PrideClusterExporter(Director):
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
 
-    def _get_track_hub_builder(self):
+    def _get_track_hub_builder(self, trackhub_descriptor):
         # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
         # TODO - destination folder from whatever comes in as a command line parameter
         pass
