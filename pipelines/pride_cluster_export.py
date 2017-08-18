@@ -455,7 +455,7 @@ class PrideClusterExporter(Director):
             self._get_logger().error("ERROR processing cluster-file-exporter result files")
             return False
         pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(cluster_file_exporter_result_mapping)
-        # TODO - Convert files to BigBed format
+        # TODO - Convert files to BigBed format, this will be addressed in the future
         # TODO - Create trackhub structure
         # TODO - Sync Data and get public URL
         # TODO - Publish trackhub
