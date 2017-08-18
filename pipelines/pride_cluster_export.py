@@ -494,6 +494,9 @@ class PrideClusterExporter(Director):
             track_main_ptm_file = trackhubs.BaseTrack('main ptm bed file', 'short label', 'long label')
             track_main_bed_file.set_big_data_url(main_ptm_bed_file_path)
             track_main_bed_file.set_type(main_ptm_bed_file_path)
+            # Add tracks
+            trackhub_builder.add_track_to_assembly(genome_assembly, track_main_bed_file)
+            trackhub_builder.add_track_to_assembly(genome_assembly, track_main_ptm_file)
 
     def _run_pipeline(self):
         # Main pipeline algorithm
