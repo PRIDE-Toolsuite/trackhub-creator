@@ -443,7 +443,8 @@ class PrideClusterExporter(Director):
         return pogo_run_results
 
     def _get_track_hub_builder(self):
-        # TODO
+        # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
+        # TODO - destination folder from whatever comes in as a command line parameter
         pass
 
     def _run_pipeline(self):
