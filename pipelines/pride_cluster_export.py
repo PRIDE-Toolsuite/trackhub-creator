@@ -497,6 +497,7 @@ class PrideClusterExporter(Director):
             # Add tracks
             trackhub_builder.add_track_to_assembly(genome_assembly, track_main_bed_file)
             trackhub_builder.add_track_to_assembly(genome_assembly, track_main_ptm_file)
+            # TODO
 
     def _run_pipeline(self):
         # Main pipeline algorithm
