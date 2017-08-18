@@ -483,6 +483,8 @@ class PrideClusterExporter(Director):
                 # Ensembl, but just in case, if it ever happens, it will be logged
                 self._get_logger().warning("Ensembl has no entry for taxonomy '{}', SKIPPING".format(taxonomy))
                 continue
+            genome_assembly = ensembl_species_entry.get_assembly()
+            self._get_logger().info("Populating Assembly '{}' for Taxonomy '{}'".format(genome_assembly, taxonomy))
 
 
     def _run_pipeline(self):
