@@ -454,7 +454,8 @@ class PrideClusterExporter(Director):
 
     def __get_trackhub_descriptor(self):
         # TODO - Create the trackhub descriptor
-        pass
+        trackhub_title = "PRIDE Cluster, release {}"\
+            .format(self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
 
     def _run_pipeline(self):
         # Main pipeline algorithm
