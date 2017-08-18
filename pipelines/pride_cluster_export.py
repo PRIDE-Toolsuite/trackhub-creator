@@ -468,6 +468,10 @@ class PrideClusterExporter(Director):
                                   trackhub_email,
                                   trackhub_description_url)
 
+    def __populate_assemblies(self, trackhub_builder, pogo_run_results):
+        # TODO
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
