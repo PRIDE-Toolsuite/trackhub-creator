@@ -56,6 +56,9 @@ class ConfigurationService(config_manager.ConfigurationManager):
     def get_pogo_result_file_extension_for_main_bed_file(self):
         return self._CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_BED
 
+    def get_pogo_result_file_extension_for_main_ptm_bed_file(self):
+        return self._CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_PTM_BED
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
