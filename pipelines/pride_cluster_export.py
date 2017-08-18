@@ -486,7 +486,6 @@ class PrideClusterExporter(Director):
             genome_assembly = ensembl_species_entry.get_assembly()
             self._get_logger().info("Populating Assembly '{}' for Taxonomy '{}'".format(genome_assembly, taxonomy))
 
-
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
