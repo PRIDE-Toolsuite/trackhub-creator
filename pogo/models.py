@@ -81,6 +81,11 @@ class PogoRunResult:
         return self.__get_pogo_result_file_path(
             module_config_manager.get_configuration_service().get_pogo_result_file_extension_for_main_bed_file())
 
+    def get_pogo_result_main_ptm_bed_file_path(self):
+        return self.__get_pogo_result_file_path(
+            module_config_manager.get_configuration_service().get_pogo_result_file_extension_for_main_ptm_bed_file()
+        )
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
