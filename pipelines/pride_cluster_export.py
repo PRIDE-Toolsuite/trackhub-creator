@@ -479,6 +479,7 @@ class PrideClusterExporter(Director):
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
+        # TODO - Put a 'test' mode in the command line parameters for the pipeline
         # Run cluster-file-exporter (for real)
         # if not self.__run_cluster_file_exporter():
         # Run cluster-file-exporter (dummy step)
