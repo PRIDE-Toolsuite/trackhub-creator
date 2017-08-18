@@ -474,7 +474,6 @@ class PrideClusterExporter(Director):
         pass
 
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
-        # TODO
         for taxonomy in pogo_run_results:
             ensembl_species_entry = \
                 ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy)
@@ -485,6 +484,8 @@ class PrideClusterExporter(Director):
                 continue
             genome_assembly = ensembl_species_entry.get_assembly()
             self._get_logger().info("Populating Assembly '{}' for Taxonomy '{}'".format(genome_assembly, taxonomy))
+            # TODO - Add main .bed track to assembly
+            # TODO - Add main PTM .bed track to assembly
 
     def _run_pipeline(self):
         # Main pipeline algorithm
