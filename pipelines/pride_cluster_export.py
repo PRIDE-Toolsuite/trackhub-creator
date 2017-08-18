@@ -475,7 +475,10 @@ class PrideClusterExporter(Director):
 
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
         # TODO
-        pass
+        for taxonomy in pogo_run_results:
+            ensembl_species_entry = \
+                ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy)
+
 
     def _run_pipeline(self):
         # Main pipeline algorithm
