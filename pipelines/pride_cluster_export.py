@@ -23,6 +23,7 @@ from toolbox import general as general_toolbox
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 import trackhub.models as trackhubs
 
+# Globals
 __configuration_file = None
 __pipeline_arguments = None
 __pipeline_director = None
