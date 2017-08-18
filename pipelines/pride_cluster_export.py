@@ -487,7 +487,8 @@ class PrideClusterExporter(Director):
             # TODO - Add main .bed track to assembly
             main_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_bed_file_path()
             track_main_bed_file = trackhubs.BaseTrack('main bed file', 'short label', 'long label')
-            
+            track_main_bed_file.set_big_data_url(main_bed_file_path)
+            track_main_bed_file.set_type(main_bed_file_path)
             # TODO - Add main PTM .bed track to assembly
 
     def _run_pipeline(self):
