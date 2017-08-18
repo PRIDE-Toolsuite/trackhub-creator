@@ -469,10 +469,6 @@ class PrideClusterExporter(Director):
                                   trackhub_email,
                                   trackhub_description_url)
 
-    def __populate_tracks_for_assembly(self, trackhub_builder, assembly, pogo_result):
-        # TODO
-        pass
-
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
         for taxonomy in pogo_run_results:
             ensembl_species_entry = \
