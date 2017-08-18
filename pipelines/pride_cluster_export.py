@@ -480,6 +480,7 @@ class PrideClusterExporter(Director):
                 continue
             genome_assembly = ensembl_species_entry.get_assembly()
             self._get_logger().info("Populating Assembly '{}' for Taxonomy '{}'".format(genome_assembly, taxonomy))
+            # TODO - How are we going to annotate these tracks?
             # Main .bed track to assembly
             main_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_bed_file_path()
             track_main_bed_file = trackhubs.BaseTrack('main bed file', 'short label', 'long label')
