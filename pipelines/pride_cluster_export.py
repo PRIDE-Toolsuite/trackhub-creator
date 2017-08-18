@@ -192,7 +192,8 @@ class ConfigManager(DirectorConfigurationManager):
         return 7200
 
     def get_pride_cluster_description_url(self):
-        pass
+        # Default PRIDE Cluster URL
+        return 'https://www.ebi.ac.uk/pride/cluster/#/'
 
 
 class PrideClusterExporter(Director):
