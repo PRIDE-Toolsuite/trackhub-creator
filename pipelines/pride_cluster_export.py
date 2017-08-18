@@ -17,11 +17,12 @@ import time
 import subprocess
 # App imports
 import config_manager
+import ensembl.service
 import ensembl.data_downloader
+import trackhub.models as trackhubs
 from pogo.models import PogoRunResult
 from toolbox import general as general_toolbox
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
-import trackhub.models as trackhubs
 
 # Globals
 __configuration_file = None
