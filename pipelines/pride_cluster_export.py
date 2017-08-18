@@ -441,6 +441,10 @@ class PrideClusterExporter(Director):
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
 
+    def _get_track_hub_builder(self):
+        # TODO
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
