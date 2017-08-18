@@ -472,7 +472,6 @@ class PrideClusterExporter(Director):
         # TODO
         pass
 
-
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
         # TODO
         pass
