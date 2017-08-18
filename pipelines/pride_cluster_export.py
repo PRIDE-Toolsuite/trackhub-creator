@@ -447,6 +447,10 @@ class PrideClusterExporter(Director):
         # TODO - destination folder from whatever comes in as a command line parameter
         pass
 
+    def __get_trackhub_descriptor(self):
+        # TODO - Create the trackhub descriptor
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
