@@ -478,6 +478,11 @@ class PrideClusterExporter(Director):
         for taxonomy in pogo_run_results:
             ensembl_species_entry = \
                 ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy)
+            if not ensembl_species_entry:
+                # This is kind of non-sense because PoGo run results only contain results for taxonomies that are on
+                # Ensembl, but just in case, if it ever happens, it will be logged
+                self._get_logger().warning("Ensembl has no entry for taxonomy '{}', SKIPPING".format(taxonomy))
+                continue
 
 
     def _run_pipeline(self):
