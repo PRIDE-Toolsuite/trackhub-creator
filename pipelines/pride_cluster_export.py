@@ -484,9 +484,10 @@ class PrideClusterExporter(Director):
             # Main .bed track to assembly
             main_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_bed_file_path()
             track_main_bed_file = trackhubs.BaseTrack("{}".format(ensembl_species_entry.get_display_name()),
-                                                      "PRIDE Cluster Track - {}"
-                                                      .format(ensembl_species_entry.get_display_name()),
-                                                      'long label')
+                                                      "PRIDE Cluster Track - '{}'".format(
+                                                          ensembl_species_entry.get_display_name()),
+                                                      "PRIDE Cluster Track for main .bed file, species '{}'".format(
+                                                          ensembl_species_entry.get_display_name()))
             track_main_bed_file.set_big_data_url(main_bed_file_path)
             track_main_bed_file.set_type(main_bed_file_path)
             # Main PTM .bed track to assembly
