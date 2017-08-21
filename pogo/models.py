@@ -32,6 +32,8 @@ class PogoRunResult:
         self.__logger = main_app_config_manager.get_app_config_manager().get_logger_for(__name__)
         # Map<pogo_result_file_extension, pogo_result_file_path>
         self.__pogo_result_file_paths = {}
+        self.__pogo_source_file_path = None
+        # I knew this was going to give me trouble
         self.set_ncbi_taxonomy_id(ncbi_taxonomy_id)
         self.set_protein_sequence_file_path(protein_sequence_file_path)
         self.set_gtf_file_path(gtf_file_path)
