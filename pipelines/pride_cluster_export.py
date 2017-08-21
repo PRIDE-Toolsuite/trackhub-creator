@@ -480,7 +480,7 @@ class PrideClusterExporter(Director):
                 continue
             genome_assembly = ensembl_species_entry.get_assembly()
             self._get_logger().info("Populating Assembly '{}' for Taxonomy '{}'".format(genome_assembly, taxonomy))
-            # TODO - How are we going to annotate these tracks?
+            # TODO - How are we going to annotate these tracks? We need a meeting on this
             # Main .bed track to assembly
             main_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_bed_file_path()
             track_main_bed_file = trackhubs.BaseTrack("{}".format(ensembl_species_entry.get_display_name()),
@@ -490,6 +490,7 @@ class PrideClusterExporter(Director):
                                                           ensembl_species_entry.get_display_name()))
             track_main_bed_file.set_big_data_url(main_bed_file_path)
             track_main_bed_file.set_type(main_bed_file_path)
+            self._get_logger().debug("Assembly '{}', main .bed track information".format(genome_assembly))
             # Main PTM .bed track to assembly
             main_ptm_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_ptm_bed_file_path()
             track_main_ptm_file = trackhubs.BaseTrack("{} with PTMs".format(ensembl_species_entry.get_display_name()),
