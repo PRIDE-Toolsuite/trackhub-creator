@@ -516,7 +516,7 @@ class PrideClusterExporter(Director):
         # TODO
         pass
 
-    def __export_trackhub_to_destination_folder(self, trackhub_builder):
+    def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
         # TODO
         pass
 
