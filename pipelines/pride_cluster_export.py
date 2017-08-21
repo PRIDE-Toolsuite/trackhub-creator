@@ -505,6 +505,8 @@ class PrideClusterExporter(Director):
             trackhub_builder.add_track_to_assembly(genome_assembly, track_main_bed_file)
             trackhub_builder.add_track_to_assembly(genome_assembly, track_main_ptm_file)
             self._get_logger().debug("Assembly '{}', tracks added to the assembly".format(genome_assembly))
+        # I don't need to, but it makes sense to do it
+        return trackhub_builder
 
     def _run_pipeline(self):
         # Main pipeline algorithm
