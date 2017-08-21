@@ -508,6 +508,10 @@ class PrideClusterExporter(Director):
         # I don't need to, but it makes sense to do it
         return trackhub_builder
 
+    def __get_trackhub_exporter(self):
+        # TODO
+        pass
+
     def __prepare_trackhub_destination_folder(self, trackhub_exporter):
         # TODO
         pass
