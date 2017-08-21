@@ -516,7 +516,6 @@ class PrideClusterExporter(Director):
         # TODO
         self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
             trackhub_exporter.track_hub_destination_folder))
-        pass
 
     def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
         # TODO
