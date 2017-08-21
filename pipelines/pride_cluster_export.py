@@ -508,6 +508,10 @@ class PrideClusterExporter(Director):
         # I don't need to, but it makes sense to do it
         return trackhub_builder
 
+    def __prepare_trackhub_destination_folder(self, trackhub_builder):
+        # TODO
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
