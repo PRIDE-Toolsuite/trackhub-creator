@@ -500,6 +500,7 @@ class PrideClusterExporter(Director):
                                                           ensembl_species_entry.get_display_name()))
             track_main_bed_file.set_big_data_url(main_ptm_bed_file_path)
             track_main_bed_file.set_type(main_ptm_bed_file_path)
+            self._get_logger().debug("Assembly '{}', main .bed PTM track information".format(genome_assembly))
             # Add tracks
             trackhub_builder.add_track_to_assembly(genome_assembly, track_main_bed_file)
             trackhub_builder.add_track_to_assembly(genome_assembly, track_main_ptm_file)
