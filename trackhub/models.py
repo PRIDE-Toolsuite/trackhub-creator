@@ -175,7 +175,7 @@ class TrackHubBuilder(metaclass=ABCMeta):
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
     def __init__(self, track_hub_descriptor):
-        super(SimpleTrackHubBuilder, self).__init__(track_hub_descriptor)
+        super().__init__(track_hub_descriptor)
 
     def __create_track_collector(self):
         return TrackCollector()
