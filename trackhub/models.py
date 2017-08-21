@@ -159,13 +159,13 @@ class TrackHubBuilder(metaclass=ABCMeta):
         self.assemblies = {}
 
     @abstractmethod
-    def __create_track_collector(self):
+    def _create_track_collector(self):
         ...
 
     def add_track_to_assembly(self, assembly, track):
         if assembly not in self.assemblies:
             self.logger.debug("For Trackhub '{}', new assembly '{}'".format(self.track_hub.get_hub(), assembly))
-            self.assemblies[assembly] = TrackHubGenomeAssembly(assembly, self.__create_track_collector)
+            self.assemblies[assembly] = TrackHubGenomeAssembly(assembly, self._create_track_collector())
         self.assemblies[assembly].track_collector.add_track(track)
 
     @abstractmethod
@@ -177,7 +177,7 @@ class SimpleTrackHubBuilder(TrackHubBuilder):
     def __init__(self, track_hub_descriptor):
         super().__init__(track_hub_descriptor)
 
-    def __create_track_collector(self):
+    def _create_track_collector(self):
         return TrackCollector()
 
     def accept_exporter(self, trackhub_exporter):
