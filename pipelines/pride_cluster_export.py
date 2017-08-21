@@ -509,8 +509,7 @@ class PrideClusterExporter(Director):
         return trackhub_builder
 
     def __get_trackhub_exporter(self):
-        # TODO
-        pass
+        return trackhubs.TrackHubExporterPrideClusterFtp()
 
     def __prepare_trackhub_destination_folder(self, trackhub_exporter):
         # TODO
