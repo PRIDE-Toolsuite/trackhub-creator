@@ -55,7 +55,7 @@ class PogoRunResult:
                     self.__pogo_result_file_paths[pogo_result_file_extension] = os.path.join(pogo_results_folder_path,
                                                                                              pogo_result_file_path)
                     self._get_logger().info(
-                        "PoGo run result file found at '{}', full path '{}'".format(pogo_result_file_path,
+                        "PoGo run result file found '{}', at full path '{}'".format(pogo_result_file_path,
                                                                                     self.__pogo_result_file_paths[
                                                                                         pogo_result_file_extension]))
 
