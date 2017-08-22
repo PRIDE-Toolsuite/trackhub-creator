@@ -496,7 +496,8 @@ class PrideClusterExporter(Director):
             track_main_ptm_file = trackhubs.BaseTrack("{} with PTMs".format(ensembl_species_entry.get_display_name()),
                                                       "PRIDE Cluster Track (with PTMs) - '{}'".format(
                                                           ensembl_species_entry.get_display_name()),
-                                                      "PRIDE Cluster Track for main .bed file with PTMs, species '{}'".format(
+                                                      "PRIDE Cluster Track for main .bed file with PTMs, species '{}'"
+                                                      .format(
                                                           ensembl_species_entry.get_display_name()))
             track_main_bed_file.set_big_data_url(main_ptm_bed_file_path)
             track_main_bed_file.set_type(main_ptm_bed_file_path)
