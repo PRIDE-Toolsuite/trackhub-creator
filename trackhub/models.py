@@ -122,6 +122,11 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                     # Copy track file to assembly folder
                     # TODO - WARNING, as I've seen on the tests, big data url can be None for some cases, look for the
                     # TODO - source of this
+                    if not track.get_big_data_url():
+                        self.logger.warning("Assembly '{}' contains a track '{}' with NO BIG DATA URL, this track "
+                                            "will show up in the exported track information for the assembly, "
+                                            "but no data is being copied", assembly, track.get_track())
+                        continue
                     big_data_file_name = os.path.basename(track.get_big_data_url())
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     shutil.copy(track.get_big_data_url(), destination_file_path)
