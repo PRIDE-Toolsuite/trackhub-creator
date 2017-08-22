@@ -519,7 +519,8 @@ class PrideClusterExporter(Director):
 
     def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
         # TODO
-        pass
+        self._get_logger().info("Exporting PRIDE Cluster Trackhub to destination '{}'".format(
+            trackhub_exporter.track_hub_destination_folder))
 
     def _run_pipeline(self):
         # Main pipeline algorithm
