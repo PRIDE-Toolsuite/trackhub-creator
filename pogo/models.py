@@ -29,7 +29,8 @@ class PogoRunResult:
         :param pogo_source_file_path: path of the source file used to run PoGo
         """
         # Logging
-        self.__logger = main_app_config_manager.get_app_config_manager().get_logger_for(__name__)
+        self.__logger = main_app_config_manager.get_app_config_manager().get_logger_for(
+            "{}.{}".format(__name__, type(self).__name__))
         # Map<pogo_result_file_extension, pogo_result_file_path>
         self.__pogo_result_file_paths = {}
         self.__pogo_source_file_path = None
