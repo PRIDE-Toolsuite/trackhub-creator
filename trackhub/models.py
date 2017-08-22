@@ -185,7 +185,7 @@ class SimpleTrackHubBuilder(TrackHubBuilder):
         super().__init__(track_hub_descriptor)
 
     def _create_track_collector(self):
-        return TrackCollector()
+        return SimpleTrackCollector()
 
     def accept_exporter(self, trackhub_exporter):
         trackhub_exporter.export_simple_trackhub(self)
@@ -210,13 +210,14 @@ class TrackCollector:
     def get_tracks(self):
         return self.__tracks
 
+    @abstractmethod
     def accept(self, track_collector_visitor):
         return track_collector_visitor.visit_track_collector(self)
 
 
 class SimpleTrackCollector(TrackCollector):
     def __init__(self):
-        super(SimpleTrackCollector, self).__init__()
+        super().__init__()
 
     def accept(self, track_collector_visitor):
         return track_collector_visitor.visit_simple_track_collector(self)
