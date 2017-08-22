@@ -503,7 +503,7 @@ class PrideClusterExporter(Director):
             self._get_logger().debug("Assembly '{}', main .bed PTM track information".format(genome_assembly))
             # Add tracks
             self._get_logger().debug(
-                "Assembly '{}', adding main .bed PTM track information, main .bed file '{}'"
+                "Assembly '{}', adding main .bed track information, main .bed file '{}'"
                     .format(genome_assembly,
                             track_main_bed_file.get_big_data_url()))
             trackhub_builder.add_track_to_assembly(genome_assembly, track_main_bed_file)
