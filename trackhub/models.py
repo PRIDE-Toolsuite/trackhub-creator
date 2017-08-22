@@ -120,7 +120,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                 # Per track in its track collector
                 for track in track_hub_builder.assemblies[assembly].track_collector.get_tracks():
                     # Copy track file to assembly folder
-                    big_data_file_name = os.path.basename(track.set_big_data_url())
+                    big_data_file_name = os.path.basename(track.get_big_data_url())
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     shutil.copy(track.get_big_data_url(), destination_file_path)
                     # Modify track file path to be relative to trackhub root path
