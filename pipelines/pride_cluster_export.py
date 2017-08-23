@@ -65,6 +65,10 @@ class ConfigManager(DirectorConfigurationManager):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
         # TODO - Process command line arguments (e.g. pride cluster default trackhub root folder)
 
+    def _process_pipeline_arguments(self):
+        # TODO
+        pass
+
     def get_cluster_file_exporter_version_parameter(self):
         """
         This method computes the 'version' parameter value for running pride cluster-file-exporter software, it usually
