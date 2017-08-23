@@ -634,7 +634,7 @@ class PrideClusterExporter(Director):
                 self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
                 self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
             general_toolbox.check_create_folders([trackhub_destination_folder])
-            general_toolbox.create_latest_symlink(trackhub_destination_folder)
+            general_toolbox.create_latest_symlink_overwrite(trackhub_destination_folder)
             self._get_logger().info("PRIDE Cluster trackhub destination folder '{}' prepared")
         else:
             self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
