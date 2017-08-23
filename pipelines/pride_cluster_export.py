@@ -642,12 +642,14 @@ class PrideClusterExporter(Director):
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
-        # TODO - Put a 'test' mode in the command line parameters for the pipeline
-        # Run cluster-file-exporter (for real)
-        # if not self.__run_cluster_file_exporter():
-        # Run cluster-file-exporter (dummy step)
-        if not self.__run_cluster_file_exporter_simulation():
-            return False
+        if self._get_configuration_manager().get_running_mode() == self._get_configuration_manager().RUNNING_MODE_TEST:
+            # Run cluster-file-exporter (dummy step)
+            if not self.__run_cluster_file_exporter_simulation():
+                return False
+        else:
+            # Run cluster-file-exporter (for real)
+            if not self.__run_cluster_file_exporter():
+                return False
         # Process cluster-file-exporter result files
         cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
         if not cluster_file_exporter_result_mapping:
