@@ -700,7 +700,8 @@ class PrideClusterExporter(Director):
         self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
         # Sync Data and get public URL
         self.__sync_filesystem()
-        # TODO - Publish trackhub
+        # Publish trackhub
+        self.__publish_trackhub(trackhub_builder)
         return True
 
 
