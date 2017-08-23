@@ -10,3 +10,6 @@
 """
 This module models the trackhub registry
 """
+
+class TrackhubRegistryService:
+    pass
