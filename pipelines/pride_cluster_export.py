@@ -125,6 +125,10 @@ class ConfigManager(DirectorConfigurationManager):
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
+    def __get_value_for_pipeline_argument_key(self, key):
+        # TODO
+        pass
+
     def get_cluster_file_exporter_version_parameter(self):
         """
         This method computes the 'version' parameter value for running pride cluster-file-exporter software, it usually
