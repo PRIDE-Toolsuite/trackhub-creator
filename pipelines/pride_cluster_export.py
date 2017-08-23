@@ -161,6 +161,8 @@ class ConfigManager(DirectorConfigurationManager):
                 self.__running_mode = self._RUNNING_MODE_TEST
                 self.logger.info("This pipeline is RUNNING IN 'TEST' MODE")
             else:
+                self.logger.error("This pipeline RUNNING MODE IS INVALID - '{}'".format(
+                    self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE))
                 self.__running_mode = self._RUNNING_MODE_INVALID
         return self.__running_mode
 
