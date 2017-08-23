@@ -101,6 +101,8 @@ class ConfigManager(DirectorConfigurationManager):
         #   trackhub_registry_password=password
         #   # Testing mode flag
         #   running_mode=test
+        #   # Name of the script to use for synchronization of the file system
+        #   script_name_filesystem_sync=sync_data.sh
         nonlocal __pipeline_arguments
         if __pipeline_arguments:
             if self.__pipeline_arguments_object:
