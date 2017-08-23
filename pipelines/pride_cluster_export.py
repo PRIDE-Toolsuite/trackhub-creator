@@ -146,6 +146,9 @@ class ConfigManager(DirectorConfigurationManager):
     def get_trackhub_registry_password(self):
         pass
 
+    def get_running_mode(self):
+        pass
+
     def get_cluster_file_exporter_version_parameter(self):
         """
         This method computes the 'version' parameter value for running pride cluster-file-exporter software, it usually
