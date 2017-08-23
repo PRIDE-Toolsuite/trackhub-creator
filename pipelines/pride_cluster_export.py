@@ -126,8 +126,10 @@ class ConfigManager(DirectorConfigurationManager):
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
     def __get_value_for_pipeline_argument_key(self, key, default=None):
-        # TODO
-        pass
+        if key in self.__pipeline_arguments_object:
+            return self.__pipeline_arguments_object[key]
+        else:
+            return default
 
     def get_cluster_file_exporter_version_parameter(self):
         """
