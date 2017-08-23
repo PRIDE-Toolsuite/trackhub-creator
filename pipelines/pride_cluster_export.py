@@ -155,7 +155,12 @@ class ConfigManager(DirectorConfigurationManager):
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD)
 
     def get_running_mode(self):
-        pass
+        if not self.__running_mode:
+            if self.__get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE) == self._RUNNING_MODE_TEST:
+                self.__running_mode = self._RUNNING_MODE_TEST
+            else:
+                self.__running_mode = self._RUNNING_MODE_INVALID
+        return self.__running_mode
 
     def get_cluster_file_exporter_version_parameter(self):
         """
