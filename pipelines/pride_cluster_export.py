@@ -101,7 +101,6 @@ class ConfigManager(DirectorConfigurationManager):
         #   trackhub_registry_password=password
         #   # Testing mode flag
         #   running_mode=test
-        # TODO
         nonlocal __pipeline_arguments
         if __pipeline_arguments:
             if self.__pipeline_arguments_object:
