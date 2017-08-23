@@ -28,8 +28,6 @@ from pipelines.template_pipeline import Director, DirectorConfigurationManager
 __configuration_file = None
 __pipeline_arguments = None
 __pipeline_director = None
-# Command Line parameters
-__pipeline_arguments = None
 
 
 def set_configuration_file(config_file):
@@ -501,12 +499,13 @@ class PrideClusterExporter(Director):
 
             # Main PTM .bed track to assembly
             main_ptm_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_ptm_bed_file_path()
-            track_main_bed_with_ptm_file = trackhubs.BaseTrack("{} with PTMs".format(ensembl_species_entry.get_display_name()),
-                                                      "PRIDE Cluster Track (with PTMs) - '{}'".format(
-                                                          ensembl_species_entry.get_display_name()),
-                                                      "PRIDE Cluster Track for main .bed file with PTMs, species '{}'"
-                                                      .format(
-                                                          ensembl_species_entry.get_display_name()))
+            track_main_bed_with_ptm_file = trackhubs.BaseTrack(
+                "{} with PTMs".format(ensembl_species_entry.get_display_name()),
+                "PRIDE Cluster Track (with PTMs) - '{}'".format(
+                    ensembl_species_entry.get_display_name()),
+                "PRIDE Cluster Track for main .bed file with PTMs, species '{}'"
+                .format(
+                    ensembl_species_entry.get_display_name()))
             track_main_bed_with_ptm_file.set_big_data_url(main_ptm_bed_file_path)
             track_main_bed_with_ptm_file.set_type(main_ptm_bed_file_path)
             self._get_logger().debug("Assembly '{}', compiling main .bed PTM track information".format(genome_assembly))
