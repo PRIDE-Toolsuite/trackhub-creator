@@ -67,6 +67,16 @@ class ConfigManager(DirectorConfigurationManager):
         # TODO - Process command line arguments (e.g. pride cluster default trackhub root folder)
 
     def _process_pipeline_arguments(self):
+        # Command line arguments for this pipeline look like (';' will be used as a separator
+        #   # Root folder for all versions of pride cluster trackhubs, where this pipeline will build the new one
+        #   folder_pride_cluster_trackhubs=/wherever/path
+        #   # External URL where to build the final URL to the newly built trackhub
+        #   url_pride_cluster_trackhubs=http://whatever.co.uk/.../path
+        #   # Trackhub registry URL, if not specified, the default URL from the trackhub service will be used
+        #   trackhub_registry_url=https://www.trackhubregistry.org
+        #   # Trackhub registry credentials
+        #   trackhub_registry_username=username
+        #   trackhub_registry_password=password
         # TODO
         pass
 
