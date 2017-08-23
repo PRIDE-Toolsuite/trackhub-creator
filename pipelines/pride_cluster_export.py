@@ -84,6 +84,8 @@ class ConfigManager(DirectorConfigurationManager):
         #   # Trackhub registry credentials
         #   trackhub_registry_username=username
         #   trackhub_registry_password=password
+        #   # Testing mode flag
+        #   running_mode=test
         # TODO
         pass
 
