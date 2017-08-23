@@ -62,7 +62,7 @@ class ConfigManager(DirectorConfigurationManager):
     _CONFIG_POGO_BIN_SUBFOLDER = "pogo"
     _CONFIG_POGO_BIN_FILE_NAME = "pogo"
     # Command line arguments
-    _CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUGS = 'folder_pride_cluster_trackhubs'
+    _CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS = 'folder_pride_cluster_trackhubs'
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS = 'url_pride_cluster_trackhubs'
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL = 'trackhub_registry_url'
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME = 'trackhub_registry_username'
@@ -77,7 +77,7 @@ class ConfigManager(DirectorConfigurationManager):
         self.__pipeline_arguments_object = None
 
     def __get_allowed_configuration_keys(self):
-        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUGS,
+        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME,
