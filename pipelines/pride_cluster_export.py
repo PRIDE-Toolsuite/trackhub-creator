@@ -64,7 +64,8 @@ class ConfigManager(DirectorConfigurationManager):
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
-        # TODO - Process command line arguments (e.g. pride cluster default trackhub root folder)
+        # Lazy Process command line arguments (e.g. pride cluster default trackhub root folder)
+        self.__pipeline_arguments_object = None
 
     def _process_pipeline_arguments(self):
         # Command line arguments for this pipeline look like (';' will be used as a separator
