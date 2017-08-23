@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This module models the trackhub registry
 """
