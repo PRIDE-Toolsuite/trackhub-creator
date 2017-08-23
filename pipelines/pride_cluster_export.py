@@ -72,7 +72,7 @@ class ConfigManager(DirectorConfigurationManager):
     _CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR = '='
     # Running modes
     _RUNNING_MODE_TEST = 'test'
-    _RUNNING_MODE_INVALID = 'invalid_running_mode'
+    _RUNNING_MODE_DEFAULT = 'default_running_mode'
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
@@ -160,9 +160,9 @@ class ConfigManager(DirectorConfigurationManager):
                 self.__running_mode = self._RUNNING_MODE_TEST
                 self.logger.info("This pipeline is RUNNING IN 'TEST' MODE")
             else:
-                self.logger.error("This pipeline RUNNING MODE IS INVALID - '{}'".format(
+                self.logger.info("This pipeline IS RUNNING IN 'DEFAULT' MODE - provided '{}' as parameter".format(
                     self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE))
-                self.__running_mode = self._RUNNING_MODE_INVALID
+                self.__running_mode = self._RUNNING_MODE_DEFAULT
         return self.__running_mode
 
     def get_cluster_file_exporter_version_parameter(self):
