@@ -125,7 +125,7 @@ class ConfigManager(DirectorConfigurationManager):
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
-    def __get_value_for_pipeline_argument_key(self, key):
+    def __get_value_for_pipeline_argument_key(self, key, default=None):
         # TODO
         pass
 
