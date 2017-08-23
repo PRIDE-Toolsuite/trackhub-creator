@@ -54,9 +54,11 @@ def get_pipeline_director():
 
 
 class ConfigManager(DirectorConfigurationManager):
+    # Configuration keys for cluster-file-exporter
     _CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR = "cluster-file-exporter"
     _CONFIG_CLUSTER_FILE_EXPORTER_BIN_SUBFOLDER = "cluster-file-exporter"
     _CONFIG_CLUSTER_FILE_EXPORTER_JAR_FILE_NAME = "cluster-file-exporter.jar"
+    # Configuration keys for PoGo
     _CONFIG_POGO_BIN_SUBFOLDER = "pogo"
     _CONFIG_POGO_BIN_FILE_NAME = "pogo"
 
