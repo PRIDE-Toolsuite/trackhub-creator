@@ -648,6 +648,10 @@ class PrideClusterExporter(Director):
         self._get_logger().info(
             "PRIDE Cluster Trackhub export COMPLETED, at '{}'".format(trackhub_exporter.track_hub_destination_folder))
 
+    def __get_trackhub_registration_service(self):
+        # TODO
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
