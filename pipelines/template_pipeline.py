@@ -34,6 +34,9 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
         super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
         self.__pipeline_arguments = pipeline_arguments
         self.__pipeline_arguments_object = None
+        # Logger the pythonist way
+        self.logger = config_manager.get_app_config_manager().get_logger_for(
+            "{}.{}".format(__name__, type(self).__name__))
 
     def _get_pipeline_arguments(self):
         return self.__pipeline_arguments
