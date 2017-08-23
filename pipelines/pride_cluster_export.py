@@ -675,7 +675,7 @@ class PrideClusterExporter(Director):
         # for this trackhub
         trackhub_exporter = self.__get_trackhub_exporter()
         self.__prepare_trackhub_destination_folder(trackhub_exporter)
-        # TODO - Export trackhub to destination folder
+        # Export trackhub to destination folder
         self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
         # TODO - Sync Data and get public URL
         # TODO - Publish trackhub
