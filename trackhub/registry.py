@@ -17,3 +17,7 @@ class TrackhubRegistryService:
         self.username = username
         self.password = password
         self.trackhub_registry_base_url = 'https://www.trackhubregistry.org'
+
+    def publish_trackhub(self):
+        # TODO
+        pass
