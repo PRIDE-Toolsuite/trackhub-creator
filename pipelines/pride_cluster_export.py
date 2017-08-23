@@ -95,6 +95,12 @@ class ConfigManager(DirectorConfigurationManager):
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
             else:
                 self.logger.debug("Processing pipeline command line arguments")
+                allowed_keys = {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUGS,
+                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS,
+                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL,
+                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME,
+                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD,
+                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE}
                 # TODO
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
@@ -535,7 +541,7 @@ class PrideClusterExporter(Director):
                 "PRIDE Cluster Track (with PTMs) - '{}'".format(
                     ensembl_species_entry.get_display_name()),
                 "PRIDE Cluster Track for main .bed file with PTMs, species '{}'"
-                .format(
+                    .format(
                     ensembl_species_entry.get_display_name()))
             track_main_bed_with_ptm_file.set_big_data_url(main_ptm_bed_file_path)
             track_main_bed_with_ptm_file.set_type(main_ptm_bed_file_path)
