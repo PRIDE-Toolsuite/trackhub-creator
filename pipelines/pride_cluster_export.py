@@ -75,6 +75,14 @@ class ConfigManager(DirectorConfigurationManager):
         # Lazy Process command line arguments (e.g. pride cluster default trackhub root folder)
         self.__pipeline_arguments_object = None
 
+    def __get_allowed_configuration_keys(self):
+        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUGS,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE}
+
     def _process_pipeline_arguments(self):
         # Command line arguments for this pipeline look like (';' will be used as a separator
         #   # Root folder for all versions of pride cluster trackhubs, where this pipeline will build the new one
@@ -95,12 +103,7 @@ class ConfigManager(DirectorConfigurationManager):
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
             else:
                 self.logger.debug("Processing pipeline command line arguments")
-                allowed_keys = {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUGS,
-                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS,
-                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL,
-                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME,
-                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD,
-                                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE}
+                allowed_keys = self.__get_allowed_configuration_keys()
                 # TODO
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
