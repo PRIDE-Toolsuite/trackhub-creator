@@ -665,6 +665,10 @@ class PrideClusterExporter(Director):
         # TODO
         pass
 
+    def __publish_trackhub(self, trackhub_builder):
+        # TODO
+        pass
+
     def _run_pipeline(self):
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
