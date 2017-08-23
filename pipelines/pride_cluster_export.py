@@ -629,8 +629,14 @@ class PrideClusterExporter(Director):
 
     def __prepare_trackhub_destination_folder(self, trackhub_exporter):
         # TODO
-        self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
-            trackhub_exporter.track_hub_destination_folder))
+        if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
+            trackhub_destination_folder = os.path.join(
+                self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
+                self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
+            
+        else:
+            self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
+                trackhub_exporter.track_hub_destination_folder))
 
     def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
         self._get_logger().info("Exporting PRIDE Cluster Trackhub to destination '{}'".format(
@@ -659,7 +665,7 @@ class PrideClusterExporter(Director):
         pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(cluster_file_exporter_result_mapping)
         self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
         # TODO - Convert files to BigBed format, this will be addressed in the future
-        # TODO - Create trackhub structure
+        # Create trackhub structure
         trackhub_builder = self.__get_track_hub_builder(self.__get_trackhub_descriptor())
         self.__populate_assemblies(trackhub_builder, pogo_run_results)
         # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination folder
