@@ -633,7 +633,7 @@ class PrideClusterExporter(Director):
             trackhub_destination_folder = os.path.join(
                 self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
                 self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
-            
+            self._get_logger().info("PRIDE Cluster trackhub destination folder '{}' prepared")
         else:
             self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
                 trackhub_exporter.track_hub_destination_folder))
