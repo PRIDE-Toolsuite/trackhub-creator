@@ -69,6 +69,7 @@ class ConfigManager(DirectorConfigurationManager):
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD = 'trackhub_registry_password'
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE = 'running_mode'
     _CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR = ';'
+    _CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR = '='
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
@@ -105,6 +106,10 @@ class ConfigManager(DirectorConfigurationManager):
                 self.logger.debug("Processing pipeline command line arguments")
                 allowed_keys = self.__get_allowed_configuration_keys()
                 # TODO
+                for command_line_parameter in __pipeline_arguments.split(
+                        self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR):
+                    key, value = command_line_parameter.split(
+                        self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR)
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
