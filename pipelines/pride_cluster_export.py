@@ -71,8 +71,8 @@ class ConfigManager(DirectorConfigurationManager):
     _CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR = ';'
     _CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR = '='
     # Running modes
-    _RUNNING_MODE_TEST = 'test'
-    _RUNNING_MODE_DEFAULT = 'default_running_mode'
+    RUNNING_MODE_TEST = 'test'
+    RUNNING_MODE_DEFAULT = 'default_running_mode'
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
