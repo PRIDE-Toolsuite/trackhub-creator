@@ -10,7 +10,3 @@
 """
 This module models the trackhub registry
 """
-
-
-# Globals / Singletons
-__trackhub_registry_service = None
