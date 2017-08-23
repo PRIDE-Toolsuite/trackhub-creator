@@ -143,7 +143,8 @@ class ConfigManager(DirectorConfigurationManager):
         return self.__get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL)
 
     def get_trackhub_registry_username(self):
-        pass
+        return self.__get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME)
 
     def get_trackhub_registry_password(self):
         pass
