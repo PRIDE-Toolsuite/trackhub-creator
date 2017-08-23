@@ -88,7 +88,15 @@ class ConfigManager(DirectorConfigurationManager):
         #   # Testing mode flag
         #   running_mode=test
         # TODO
-        pass
+        nonlocal __pipeline_arguments
+        if __pipeline_arguments:
+            if self.__pipeline_arguments_object:
+                self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
+            else:
+                self.logger.debug("Processing pipeline command line arguments")
+                # TODO
+        else:
+            self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
     def get_cluster_file_exporter_version_parameter(self):
         """
