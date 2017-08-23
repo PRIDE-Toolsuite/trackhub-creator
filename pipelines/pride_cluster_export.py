@@ -78,6 +78,7 @@ class ConfigManager(DirectorConfigurationManager):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
         # Lazy Process command line arguments (e.g. pride cluster default trackhub root folder)
         self.__pipeline_arguments_object = None
+        self.__running_mode = None
 
     def __get_allowed_configuration_keys(self):
         return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS,
