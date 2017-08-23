@@ -28,7 +28,8 @@ from pipelines.template_pipeline import Director, DirectorConfigurationManager
 __configuration_file = None
 __pipeline_arguments = None
 __pipeline_director = None
-# TODO Command Line parameters
+# Command Line parameters
+__pipeline_arguments = None
 
 
 def set_configuration_file(config_file):
