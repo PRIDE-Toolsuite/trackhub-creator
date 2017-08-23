@@ -110,6 +110,11 @@ class ConfigManager(DirectorConfigurationManager):
                         self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR):
                     key, value = command_line_parameter.split(
                         self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR)
+                    if key not in allowed_keys:
+                        self.logger.error(
+                            "INVALID KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
+                                .format(key,
+                                        command_line_parameter))
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
