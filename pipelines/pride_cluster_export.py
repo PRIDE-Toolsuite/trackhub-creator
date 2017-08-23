@@ -120,7 +120,8 @@ class ConfigManager(DirectorConfigurationManager):
                         self.logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
                                 .format(key, command_line_parameter))
                         continue
-                    
+                    self.__pipeline_arguments_object[key] = value
+                    self.logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
