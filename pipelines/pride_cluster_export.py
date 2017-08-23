@@ -136,7 +136,8 @@ class ConfigManager(DirectorConfigurationManager):
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS)
 
     def get_url_pride_cluster_trackhubs(self):
-        pass
+        return self.__get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS)
 
     def get_trackhub_registry_url(self):
         pass
