@@ -11,5 +11,9 @@
 This module models the trackhub registry
 """
 
+
 class TrackhubRegistryService:
-    pass
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.trackhub_registry_base_url = 'https://www.trackhubregistry.org'
