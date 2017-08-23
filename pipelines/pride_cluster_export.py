@@ -118,7 +118,7 @@ class ConfigManager(DirectorConfigurationManager):
                         continue
                     if key in self.__pipeline_arguments_object:
                         self.logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
-                                .format(key, command_line_parameter))
+                                          .format(key, command_line_parameter))
                         continue
                     self.__pipeline_arguments_object[key] = value
                     self.logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
@@ -132,7 +132,8 @@ class ConfigManager(DirectorConfigurationManager):
             return default
 
     def get_folder_pride_cluster_trackhubs(self):
-        pass
+        return self.__get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS)
 
     def get_url_pride_cluster_trackhubs(self):
         pass
