@@ -87,7 +87,8 @@ class ConfigManager(DirectorConfigurationManager):
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD,
-                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE}
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_SCRIPT_NAME_FILESYSTEM_SYNC}
 
     def _process_pipeline_arguments(self):
         # Command line arguments for this pipeline look like (';' will be used as a separator
