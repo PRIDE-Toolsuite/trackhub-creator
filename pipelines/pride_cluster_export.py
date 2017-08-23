@@ -134,6 +134,9 @@ class ConfigManager(DirectorConfigurationManager):
     def get_folder_pride_cluster_trackhubs(self):
         pass
 
+    def get_url_pride_cluster_trackhubs(self):
+        pass
+
     def get_cluster_file_exporter_version_parameter(self):
         """
         This method computes the 'version' parameter value for running pride cluster-file-exporter software, it usually
