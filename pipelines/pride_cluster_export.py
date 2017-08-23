@@ -103,6 +103,7 @@ class ConfigManager(DirectorConfigurationManager):
             if self.__pipeline_arguments_object:
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
             else:
+                self.__pipeline_arguments_object = {}
                 self.logger.debug("Processing pipeline command line arguments")
                 allowed_keys = self.__get_allowed_configuration_keys()
                 # TODO
@@ -113,8 +114,13 @@ class ConfigManager(DirectorConfigurationManager):
                     if key not in allowed_keys:
                         self.logger.error(
                             "INVALID KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
-                                .format(key,
-                                        command_line_parameter))
+                                .format(key, command_line_parameter))
+                        continue
+                    if key in self.__pipeline_arguments_object:
+                        self.logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
+                                .format(key, command_line_parameter))
+                        continue
+                    
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
