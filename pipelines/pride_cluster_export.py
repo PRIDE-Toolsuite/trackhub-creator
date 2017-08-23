@@ -63,6 +63,7 @@ class ConfigManager(DirectorConfigurationManager):
     _CONFIG_POGO_BIN_FILE_NAME = "pogo"
     # Command line arguments
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUGS = 'folder_pride_cluster_trackhubs'
+    _CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS = 'url_pride_cluster_trackhubs'
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
