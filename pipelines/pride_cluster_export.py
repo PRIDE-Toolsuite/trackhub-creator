@@ -170,6 +170,10 @@ class ConfigManager(DirectorConfigurationManager):
                 self.__running_mode = self._RUNNING_MODE_DEFAULT
         return self.__running_mode
 
+    def get_script_path_filesystem_sync(self):
+        # TODO
+        pass
+
     def get_cluster_file_exporter_version_parameter(self):
         """
         This method computes the 'version' parameter value for running pride cluster-file-exporter software, it usually
