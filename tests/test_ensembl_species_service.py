@@ -42,6 +42,10 @@ class TestEnsemblSpeciesService(unittest.TestCase):
                 self.__NCB_TAXONOMY_HUMAN), "Human NCBI taxonomy is in species data from Ensembl")
 
     def test_assembly_to_taxonomy_translation(self):
+        """
+        Test that we can find Species entries by its assembly
+        :return: no returned value
+        """
         pass
 
 
