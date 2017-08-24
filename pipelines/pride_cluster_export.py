@@ -76,6 +76,8 @@ class ConfigManager(DirectorConfigurationManager):
     # Running modes
     RUNNING_MODE_TEST = 'test'
     RUNNING_MODE_DEFAULT = 'default_running_mode'
+    # Pipeline subfolders
+    _CONFIG_PIPELINE_SUBFOLDER_SCRIPTS = 'pride-cluster-export'
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
