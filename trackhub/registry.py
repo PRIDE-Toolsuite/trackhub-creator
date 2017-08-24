@@ -31,7 +31,7 @@ class TrackhubRegistryequestBodyModel():
             self.logger.error(
                 "DUPLICATED Assembly '{}' add request, existing accession '{}', "
                 "accession requested to be added '{}' - SKIPPED".format(assembly, self.assembly_accession_map[assembly],
-                                                              accession))
+                                                                        accession))
         else:
             self.assembly_accession_map[assembly] = accession
             self.logger.info("Assembly '{}' entry added to request body with accession '{}'"
@@ -49,7 +49,9 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
             self.export_summary = TrackhubRegistryequestBodyModel()
             ensembl_species_service = ensembl.service.get_service().get_species_data_service()
             for assembly in trackhub_builder.assemblies:
-                pass
+                self.export_summary \
+                    .add_accession_for_assembly(assembly,
+                                                ensembl_species_service.get_species_entry_for_assembly(assembly))
         return self.export_summary
 
 
