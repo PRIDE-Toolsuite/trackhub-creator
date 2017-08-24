@@ -16,8 +16,9 @@ from . import models as trackhub_models
 
 
 # Registry request body model
-class TrackhubRegistryRequestBodyModel:
-    pass
+class TrackhubRegistryRequestBodyModel(trackhub_models.TrackHubExporter):
+    def __init__(self):
+        super().__init__()
 
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
