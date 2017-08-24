@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Trackhub module exceptions
 """
