@@ -14,6 +14,7 @@ This module models the trackhub registry
 # App imports
 from . import models as trackhub_models
 
+
 # Registry request body model
 class TrackhubRegistryRequestBodyModel:
     pass
