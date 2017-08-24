@@ -34,3 +34,7 @@ class TrackhubRegistryService:
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
         pass
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
