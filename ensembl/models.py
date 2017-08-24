@@ -156,6 +156,7 @@ class SpeciesService:
         if not self.__index_by_assembly:
             self.__index_by_assembly = self.__index_data_for_property(self._get_species_data_dao(),
                                                                       Species.get_assembly)
+        return self.__index_by_assembly
 
     def get_species_data(self):
         """
