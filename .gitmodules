@@ -1,0 +1,3 @@
+[submodule "scripts/pride-cluster-export"]
+	path = scripts/pride-cluster-export
+	url = git@bitbucket.org:pride-ebi/py-pipeline-scripts.git
