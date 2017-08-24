@@ -317,6 +317,7 @@ class PrideClusterExporter(Director):
         runner_id = "{}-{}".format(__name__, time.time())
         super(PrideClusterExporter, self).__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
+        self.__trackhub_registry_service = None
 
     def _get_configuration_manager(self):
         return self.__config_manager
@@ -663,10 +664,12 @@ class PrideClusterExporter(Director):
         pass
 
     def __get_trackhub_registration_service(self):
-        trackhub_registry_service = trackhub_registry.TrackhubRegistryService()
-        trackhub_registry_service.trackhub_registry_base_url = \
-            self._get_configuration_manager().get_trackhub_registry_url()
-        return trackhub_registry_service
+        # Cache the registry service instance, we only need one
+        if not self.__trackhub_registry_service:
+            self.__trackhub_registry_service = trackhub_registry.TrackhubRegistryService()
+            self.__trackhub_registry_service.trackhub_registry_base_url = \
+                self._get_configuration_manager().get_trackhub_registry_url()
+        return self.__trackhub_registry_service
 
     def __publish_trackhub(self, trackhub_builder):
         # TODO
