@@ -312,6 +312,9 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return 7200
 
+    def get_filesystem_sync_run_timeout(self):
+        return 300
+
     def get_pride_cluster_description_url(self):
         # Default PRIDE Cluster URL
         return 'https://www.ebi.ac.uk/pride/cluster/#/'
@@ -676,6 +679,7 @@ class PrideClusterExporter(Director):
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
         self._get_logger().info("Filesystem command '{}'".format(sync_command))
         sync_subprocess = subprocess.Popen(sync_command, shell=True)
+
         # TODO
 
     def __get_trackhub_public_url(self, trackhub_builder):
