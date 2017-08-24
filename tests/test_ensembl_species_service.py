@@ -41,6 +41,9 @@ class TestEnsemblSpeciesService(unittest.TestCase):
             self.ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(
                 self.__NCB_TAXONOMY_HUMAN), "Human NCBI taxonomy is in species data from Ensembl")
 
+    def test_assembly_to_taxonomy_translation(self):
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
