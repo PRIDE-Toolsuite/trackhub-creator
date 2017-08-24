@@ -11,6 +11,7 @@
 This module models the trackhub registry
 """
 
+import json
 # App imports
 import config_manager
 import ensembl.service
@@ -36,6 +37,9 @@ class TrackhubRegistryRequestBodyModel():
             self.assembly_accession_map[assembly] = accession
             self.logger.info("Assembly '{}' entry added to request body with accession '{}'"
                              .format(assembly, accession))
+
+    def __str__(self):
+        return json.dumps({'url': self.url, 'assemblies': self.assembly_accession_map})
 
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
