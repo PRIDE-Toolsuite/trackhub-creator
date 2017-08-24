@@ -173,6 +173,9 @@ class ConfigManager(DirectorConfigurationManager):
                 self.__running_mode = self._RUNNING_MODE_DEFAULT
         return self.__running_mode
 
+    def __get_path_pipeline_scripts_folder(self):
+        pass
+
     def get_path_script_filesystem_sync(self):
         # TODO
         pass
