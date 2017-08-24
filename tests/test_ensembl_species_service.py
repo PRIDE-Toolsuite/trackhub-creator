@@ -18,6 +18,7 @@ import ensembl.service
 
 class TestEnsemblSpeciesService(unittest.TestCase):
     __NCB_TAXONOMY_HUMAN = '9606'
+    __ASSEMBLY_HUMAN = 'GRCh38'
 
     def setUp(self):
         self.ensembl_service = ensembl.service.get_service()
@@ -46,7 +47,10 @@ class TestEnsemblSpeciesService(unittest.TestCase):
         Test that we can find Species entries by its assembly
         :return: no returned value
         """
-        pass
+        self.assertTrue(
+            self.ensembl_service.get_species_data_service().get_species_entry_for_assembly(
+                self.__ASSEMBLY_HUMAN) == self.__NCB_TAXONOMY_HUMAN,
+            "Human Assembly is present in Ensembl species data and indexed by the Ensembl Species service wrapper")
 
 
 if __name__ == '__main__':
