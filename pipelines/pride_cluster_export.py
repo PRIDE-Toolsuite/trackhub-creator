@@ -668,8 +668,15 @@ class PrideClusterExporter(Director):
         pass
 
     def __get_current_trackhub_public_url(self):
-        # TODO
-        return "NO URL SET YET"
+        # We need to find out if we are dealing with a folder exposed to the public or not
+        if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
+            # To calculate the relative path, we remove the root part of the trackhub folder path,
+            # e.g. '/nfs/pride/pride-cluster/trackhubs' from '/nfs/pride/pride-cluster/trackhubs/2017-08'
+            # to obtain '/2017-08' that we can attach to the end of the base public URL for the trackhubs
+            relative_path = self.__trackhub_destination_folder\
+                .replace(self._get_configuration_manager().get_folder_pride_cluster_trackhubs(), '')
+            return self._get_configuration_manager().get_url_pride_cluster_trackhubs() + relative_path
+        return "---NO_PUBLIC_URL_CAN_BE_USED---"
 
     def __get_trackhub_registration_service(self):
         # Cache the registry service instance, we only need one
