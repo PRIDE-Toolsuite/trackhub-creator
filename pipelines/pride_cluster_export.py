@@ -674,6 +674,7 @@ class PrideClusterExporter(Director):
 
     def __sync_filesystem(self):
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
+        self._get_logger().info("Filesystem command '{}'".format(sync_command))
         # TODO
 
     def __get_trackhub_public_url(self, trackhub_builder):
