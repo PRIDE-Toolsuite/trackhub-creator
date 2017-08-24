@@ -48,8 +48,8 @@ class TestEnsemblSpeciesService(unittest.TestCase):
         :return: no returned value
         """
         self.assertTrue(
-            self.ensembl_service.get_species_data_service().get_species_entry_for_assembly(
-                self.__ASSEMBLY_HUMAN) == self.__NCBI_TAXONOMY_HUMAN,
+            str(self.ensembl_service.get_species_data_service().get_species_entry_for_assembly(
+                self.__ASSEMBLY_HUMAN).get_ncbi_taxonomy_id()) == self.__NCBI_TAXONOMY_HUMAN,
             "Human Assembly is present in Ensembl species data and indexed by the Ensembl Species service wrapper")
 
 
