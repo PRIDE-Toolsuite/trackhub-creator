@@ -148,6 +148,11 @@ class SpeciesService:
             # self.__index_data_for_property(self._get_species_data_dao(), Species.get_ncbi_taxonomy_id)
         return self.__index_by_taxonomy_id
 
+    def _get_index_assembly(self):
+        if not self.__index_by_assembly:
+            self.__index_by_assembly = self.__index_data_for_property(self._get_species_data_dao(),
+                                                                      Species.get_assembly)
+
     def get_species_data(self):
         """
         Get the Ensembl species data unprocessed, as it came from the Ensembl REST API
