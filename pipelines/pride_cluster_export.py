@@ -733,8 +733,9 @@ class PrideClusterExporter(Director):
             trackhub_registration_service = self.__get_trackhub_registration_service()
             trackhub_registration_service.publish_trackhub(trackhub_registration_profile)
         else:
-            self._get_logger().error("ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, "
-                                     "the trackhub COULD NOT BE REGISTERED")
+            error_msg = "ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, the trackhub COULD NOT BE REGISTERED"
+            self._get_logger().error(error_msg)
+            raise pipeline_exceptions.PipelineDirectorException(error_msg)
 
     def _run_pipeline(self):
         # Main pipeline algorithm
