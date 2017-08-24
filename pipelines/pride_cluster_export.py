@@ -23,6 +23,7 @@ import trackhub.models as trackhubs
 import trackhub.registry as trackhub_registry
 from pogo.models import PogoRunResult
 from toolbox import general as general_toolbox
+from . import exceptions as pipeline_exceptions
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
 # Globals
