@@ -176,6 +176,11 @@ class SpeciesService:
         return None
 
     def get_species_entry_for_assembly(self, assembly):
+        """
+        Given an Assembly, get its Ensembl species entry
+        :param assembly: assembly
+        :return: the species entry or None if not found
+        """
         self._get_logger().debug("get_species_entry_for_assembly '{}'".format(assembly))
         if assembly in self._get_index_assembly():
             return self._get_index_assembly()[assembly]
