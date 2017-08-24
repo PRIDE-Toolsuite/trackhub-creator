@@ -663,8 +663,10 @@ class PrideClusterExporter(Director):
         pass
 
     def __get_trackhub_registration_service(self):
-        # TODO
-        pass
+        trackhub_registry_service = trackhub_registry.TrackhubRegistryService()
+        trackhub_registry_service.trackhub_registry_base_url = \
+            self._get_configuration_manager().get_trackhub_registry_url()
+        return trackhub_registry_service
 
     def __publish_trackhub(self, trackhub_builder):
         # TODO
