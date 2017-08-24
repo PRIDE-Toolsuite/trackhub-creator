@@ -101,7 +101,8 @@ class TrackhubRegistryService:
 
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
-        # TODO Log in
+        # Log in
+        auth_token = self.__login()
         # TODO Register Trackhub
         # TODO Analyze response
         # TODO Log out
