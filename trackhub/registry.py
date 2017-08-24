@@ -12,6 +12,7 @@ This module models the trackhub registry
 """
 
 # App imports
+import ensembl.service
 from . import models as trackhub_models
 
 
