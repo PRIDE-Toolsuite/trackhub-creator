@@ -89,7 +89,10 @@ class TrackhubRegistryService:
 
     def __logout(self):
         if self.__auth_token:
-            # TODO
+            response = requests.get("{}{}"
+                                    .format(self.trackhub_registry_base_url,
+                                            self.__TRACKHUB_REGISTRY_API_SUBPATH_LOGOUT),
+                                    headers={'user': self.username, 'auth_token': self.__auth_token})
             self.logger.info("LOGGED OUT from '{}'".format(self.trackhub_registry_base_url))
 
     def publish_trackhub(self, hub_url, trackhub_registry_model):
