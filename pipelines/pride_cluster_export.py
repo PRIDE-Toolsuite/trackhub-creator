@@ -676,7 +676,12 @@ class PrideClusterExporter(Director):
         trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
         trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
         trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
-        # TODO
+        # Register the trackhub
+        if trackhub_registration_profile:
+            pass
+        else:
+            self._get_logger().error("ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, "
+                                     "the trackhub COULD NOT BE REGISTERED")
 
 
     def _run_pipeline(self):
