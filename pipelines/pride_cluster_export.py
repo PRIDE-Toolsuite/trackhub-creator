@@ -681,6 +681,7 @@ class PrideClusterExporter(Director):
             "PRIDE Cluster Trackhub export COMPLETED, at '{}'".format(trackhub_exporter.track_hub_destination_folder))
 
     def __sync_filesystem(self):
+        # TODO
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
         self._get_logger().info("Filesystem command '{}'".format(sync_command))
         sync_subprocess = subprocess.Popen(sync_command, shell=True)
@@ -688,83 +689,86 @@ class PrideClusterExporter(Director):
             stdout, stderr = sync_subprocess \
                 .communicate(timeout=self._get_configuration_manager().get_filesystem_sync_run_timeout())
         except subprocess.TimeoutExpired as e:
-            self._get_logger().error("TIMEOUT ERROR while running Filesystem synchronization script '{}', Command: '{}'"
-                                     .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
-                                             sync_command))
+            exception_message = "TIMEOUT ERROR while running Filesystem synchronization script '{}', Command: '{}'".format(self._get_configuration_manager().get_path_script_filesystem_sync(), sync_command)
+            self._get_logger().error(exception_message)
             sync_subprocess.kill()
             stdout, stderr = sync_subprocess.communicate()
-        # TODO
+            raise pipeline_exceptions.PipelineDirectorException(exception_message) from e
 
-    def __get_trackhub_public_url(self, trackhub_builder):
-        # We need to find out if we are dealing with a folder exposed to the public or not
-        if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
-            # To calculate the relative path, we remove the root part of the trackhub folder path,
-            # e.g. '/nfs/pride/pride-cluster/trackhubs' from '/nfs/pride/pride-cluster/trackhubs/2017-08'
-            # to obtain '/2017-08' that we can attach to the end of the base public URL for the trackhubs
-            relative_path = self.__trackhub_destination_folder \
-                .replace(self._get_configuration_manager().get_folder_pride_cluster_trackhubs(), '')
-            # URL to the hub.txt file within the root of the trackhub
-            return "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
-                                    relative_path,
-                                    trackhub_builder.track_hub.get_hub())
-        return "---NO_PUBLIC_URL_CAN_BE_USED---"
 
-    def __get_trackhub_registration_service(self):
-        # Cache the registry service instance, we only need one
-        if not self.__trackhub_registry_service:
-            self.__trackhub_registry_service = trackhub_registry.TrackhubRegistryService()
-            self.__trackhub_registry_service.trackhub_registry_base_url = \
-                self._get_configuration_manager().get_trackhub_registry_url()
-        return self.__trackhub_registry_service
+def __get_trackhub_public_url(self, trackhub_builder):
+    # We need to find out if we are dealing with a folder exposed to the public or not
+    if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
+        # To calculate the relative path, we remove the root part of the trackhub folder path,
+        # e.g. '/nfs/pride/pride-cluster/trackhubs' from '/nfs/pride/pride-cluster/trackhubs/2017-08'
+        # to obtain '/2017-08' that we can attach to the end of the base public URL for the trackhubs
+        relative_path = self.__trackhub_destination_folder \
+            .replace(self._get_configuration_manager().get_folder_pride_cluster_trackhubs(), '')
+        # URL to the hub.txt file within the root of the trackhub
+        return "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
+                                relative_path,
+                                trackhub_builder.track_hub.get_hub())
+    return "---NO_PUBLIC_URL_CAN_BE_USED---"
 
-    def __publish_trackhub(self, trackhub_builder):
-        # Build the description the trackhub registration service needs
-        trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
-        trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
-        trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
-        if trackhub_registration_profile:
-            # Register the trackhub
-            trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
-            trackhub_registration_service = self.__get_trackhub_registration_service()
-            trackhub_registration_service.publish_trackhub(trackhub_registration_profile)
-        else:
-            self._get_logger().error("ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, "
-                                     "the trackhub COULD NOT BE REGISTERED")
 
-    def _run_pipeline(self):
-        # Main pipeline algorithm
-        self._get_logger().info("[START]---> Pipeline run")
-        if self._get_configuration_manager().get_running_mode() == self._get_configuration_manager().RUNNING_MODE_TEST:
-            # Run cluster-file-exporter (dummy step)
-            if not self.__run_cluster_file_exporter_simulation():
-                return False
-        else:
-            # Run cluster-file-exporter (for real)
-            if not self.__run_cluster_file_exporter():
-                return False
-        # Process cluster-file-exporter result files
-        cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
-        if not cluster_file_exporter_result_mapping:
-            self._get_logger().error("ERROR processing cluster-file-exporter result files")
+def __get_trackhub_registration_service(self):
+    # Cache the registry service instance, we only need one
+    if not self.__trackhub_registry_service:
+        self.__trackhub_registry_service = trackhub_registry.TrackhubRegistryService()
+        self.__trackhub_registry_service.trackhub_registry_base_url = \
+            self._get_configuration_manager().get_trackhub_registry_url()
+    return self.__trackhub_registry_service
+
+
+def __publish_trackhub(self, trackhub_builder):
+    # Build the description the trackhub registration service needs
+    trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
+    trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
+    trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
+    if trackhub_registration_profile:
+        # Register the trackhub
+        trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
+        trackhub_registration_service = self.__get_trackhub_registration_service()
+        trackhub_registration_service.publish_trackhub(trackhub_registration_profile)
+    else:
+        self._get_logger().error("ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, "
+                                 "the trackhub COULD NOT BE REGISTERED")
+
+
+def _run_pipeline(self):
+    # Main pipeline algorithm
+    self._get_logger().info("[START]---> Pipeline run")
+    if self._get_configuration_manager().get_running_mode() == self._get_configuration_manager().RUNNING_MODE_TEST:
+        # Run cluster-file-exporter (dummy step)
+        if not self.__run_cluster_file_exporter_simulation():
             return False
-        self._get_logger().info("PRIDE Cluster File Exporter run completed")
-        pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(cluster_file_exporter_result_mapping)
-        self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
-        # TODO - Convert files to BigBed format, this will be addressed in the future
-        # Create trackhub structure
-        trackhub_builder = self.__get_track_hub_builder(self.__get_trackhub_descriptor())
-        self.__populate_assemblies(trackhub_builder, pogo_run_results)
-        # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination folder
-        # for this trackhub
-        trackhub_exporter = self.__get_trackhub_exporter()
-        self.__prepare_trackhub_destination_folder(trackhub_exporter)
-        # Export trackhub to destination folder
-        self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
-        # Sync Data and get public URL
-        self.__sync_filesystem()
-        # Publish trackhub
-        self.__publish_trackhub(trackhub_builder)
-        return True
+    else:
+        # Run cluster-file-exporter (for real)
+        if not self.__run_cluster_file_exporter():
+            return False
+    # Process cluster-file-exporter result files
+    cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
+    if not cluster_file_exporter_result_mapping:
+        self._get_logger().error("ERROR processing cluster-file-exporter result files")
+        return False
+    self._get_logger().info("PRIDE Cluster File Exporter run completed")
+    pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(cluster_file_exporter_result_mapping)
+    self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
+    # TODO - Convert files to BigBed format, this will be addressed in the future
+    # Create trackhub structure
+    trackhub_builder = self.__get_track_hub_builder(self.__get_trackhub_descriptor())
+    self.__populate_assemblies(trackhub_builder, pogo_run_results)
+    # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination folder
+    # for this trackhub
+    trackhub_exporter = self.__get_trackhub_exporter()
+    self.__prepare_trackhub_destination_folder(trackhub_exporter)
+    # Export trackhub to destination folder
+    self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
+    # Sync Data and get public URL
+    self.__sync_filesystem()
+    # Publish trackhub
+    self.__publish_trackhub(trackhub_builder)
+    return True
 
 
 if __name__ == '__main__':
