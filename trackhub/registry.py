@@ -105,6 +105,7 @@ class TrackhubRegistryService:
         try:
             # TODO Register Trackhub
             headers = {'user': self.username, 'auth_token': auth_token}
+            payload = str(trackhub_registry_model)
         finally:
             self.__logout()
         # TODO Analyze response
