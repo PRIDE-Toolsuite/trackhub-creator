@@ -30,6 +30,8 @@ class TrackhubRegistryRequestBodyModel:
         self.assembly_accession_map = {}
         # Trackhub is public by default
         self.public = 1
+        # Default type for trackhubs is PROTEOMICS
+        self.type = 'PROTEOMICS'
 
     def add_accession_for_assembly(self, assembly, accession):
         if assembly in self.assembly_accession_map:
@@ -45,6 +47,7 @@ class TrackhubRegistryRequestBodyModel:
     def __str__(self):
         return json.dumps({'url': self.url,
                            'public': self.public,
+                           'type': self.type,
                            'assemblies': self.assembly_accession_map})
 
 
