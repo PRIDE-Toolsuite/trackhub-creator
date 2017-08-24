@@ -33,7 +33,9 @@ class TrackhubRegistryequestBodyModel():
                 "accession requested to be added '{}' - SKIPPED".format(assembly, self.assembly_accession_map[assembly],
                                                               accession))
         else:
-            pass
+            self.assembly_accession_map[assembly] = accession
+            self.logger.info("Assembly '{}' entry added to request body with accession '{}'"
+                             .format(assembly, accession))
 
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
