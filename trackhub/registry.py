@@ -82,6 +82,7 @@ class TrackhubRegistryService:
             if not response.ok:
                 raise trackhub_exceptions.TrackhubRegistryServiceException(
                     "LOGIN ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
+            self.__auth_token = response.json()[u'auth_token']
 
     def __logout(self):
         # TODO
