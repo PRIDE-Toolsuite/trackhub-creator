@@ -174,7 +174,8 @@ class ConfigManager(DirectorConfigurationManager):
         return self.__running_mode
 
     def __get_path_pipeline_scripts_folder(self):
-        pass
+        return os.path.join(config_manager.get_app_config_manager().get_folder_scripts(),
+                            self._CONFIG_PIPELINE_SUBFOLDER_SCRIPTS)
 
     def get_path_script_filesystem_sync(self):
         # TODO
