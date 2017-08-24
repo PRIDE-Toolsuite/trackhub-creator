@@ -17,7 +17,7 @@ import ensembl.service
 
 
 class TestEnsemblSpeciesService(unittest.TestCase):
-    __NCB_TAXONOMY_HUMAN = '9606'
+    __NCBI_TAXONOMY_HUMAN = '9606'
     __ASSEMBLY_HUMAN = 'GRCh38'
 
     def setUp(self):
@@ -40,7 +40,7 @@ class TestEnsemblSpeciesService(unittest.TestCase):
         """
         self.assertIsNotNone(
             self.ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(
-                self.__NCB_TAXONOMY_HUMAN), "Human NCBI taxonomy is in species data from Ensembl")
+                self.__NCBI_TAXONOMY_HUMAN), "Human NCBI taxonomy is in species data from Ensembl")
 
     def test_assembly_to_taxonomy_translation(self):
         """
@@ -49,7 +49,7 @@ class TestEnsemblSpeciesService(unittest.TestCase):
         """
         self.assertTrue(
             self.ensembl_service.get_species_data_service().get_species_entry_for_assembly(
-                self.__ASSEMBLY_HUMAN) == self.__NCB_TAXONOMY_HUMAN,
+                self.__ASSEMBLY_HUMAN) == self.__NCBI_TAXONOMY_HUMAN,
             "Human Assembly is present in Ensembl species data and indexed by the Ensembl Species service wrapper")
 
 
