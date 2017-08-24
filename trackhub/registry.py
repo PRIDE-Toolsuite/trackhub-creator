@@ -79,7 +79,7 @@ class TrackhubRegistryService:
                                     auth=(self.username, self.password),
                                     verify=True)
             if not response.ok:
-                pass
+                self.logger.error("LOGIN ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
             # TODO
 
     def __logout(self):
