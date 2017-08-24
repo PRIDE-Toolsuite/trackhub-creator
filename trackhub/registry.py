@@ -18,7 +18,7 @@ from . import models as trackhub_models
 
 
 # Registry request body model
-class TrackhubRegistryequestBodyModel():
+class TrackhubRegistryRequestBodyModel():
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(
             "{}.{}".format(__name__, type(self).__name__))
@@ -46,7 +46,7 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
     def export_simple_trackhub(self, trackhub_builder):
         # In this case, the export summary will be an instance of TrackhubRegistryRequestBodyModelExporter
         if not self.export_summary:
-            self.export_summary = TrackhubRegistryequestBodyModel()
+            self.export_summary = TrackhubRegistryRequestBodyModel()
             ensembl_species_service = ensembl.service.get_service().get_species_data_service()
             for assembly in trackhub_builder.assemblies:
                 self.export_summary \
