@@ -175,6 +175,9 @@ class SpeciesService:
             return self._get_index_taxonomy_id()[taxonomy_id]
         return None
 
+    def get_species_entry_for_assembly(self, assembly):
+        pass
+
     def count_ensembl_species(self):
         return len(self._get_species_data_dao())
 
