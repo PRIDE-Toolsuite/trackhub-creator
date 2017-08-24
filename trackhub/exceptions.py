@@ -16,4 +16,5 @@ from exceptions import AppException
 
 
 class TrackhubRegistryServiceException(AppException):
-    pass
+    def __init__(self, value):
+        super().__init__(value)
