@@ -78,6 +78,14 @@ class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.export_summary = None
+
+    @abstractmethod
+    def export_simple_trackhub(self, track_hub_builder):
+        return self.export_summary
+
+
+class TrackHubLocalFilesystemExporter(TrackHubExporter):
+    def __init__(self):
         # The default destination folder for exporting the trackhub is located within the current session working
         # directory
         self.track_hub_destination_folder = os.path.join(
@@ -86,10 +94,12 @@ class TrackHubExporter(metaclass=ABCMeta):
 
     @abstractmethod
     def export_simple_trackhub(self, track_hub_builder):
-        return self.export_summary
+        # I'm not quite sure I really need to put this here if I want this class to stay abstract and it's not really
+        # modifying any behaviour from the superclass
+        return super().export_simple_trackhub(track_hub_builder)
 
 
-class TrackHubExporterPrideClusterFtp(TrackHubExporter):
+class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
     def __init__(self):
         super(TrackHubExporterPrideClusterFtp, self).__init__()
         # Default destination folder for pride cluster trackhubs
@@ -133,7 +143,8 @@ class TrackHubExporterPrideClusterFtp(TrackHubExporter):
                     # Modify track file path to be relative to trackhub root path
                     new_big_data_url = os.path.join(os.path.basename(assembly_folder), big_data_file_name)
                     track.set_big_data_url(new_big_data_url)
-                    self.logger.info("Data for track '{}' prepared, track information updated".format(track.get_track()))
+                    self.logger.info(
+                        "Data for track '{}' prepared, track information updated".format(track.get_track()))
                 # Export track collector data as string into a trackDB.txt file within the assembly folder
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
