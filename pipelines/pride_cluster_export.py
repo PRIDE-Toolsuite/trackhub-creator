@@ -672,8 +672,12 @@ class PrideClusterExporter(Director):
         return self.__trackhub_registry_service
 
     def __publish_trackhub(self, trackhub_builder):
+        # Build the description the trackhub registration service needs
+        trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
+        trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
+        trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
         # TODO
-        pass
+
 
     def _run_pipeline(self):
         # Main pipeline algorithm
