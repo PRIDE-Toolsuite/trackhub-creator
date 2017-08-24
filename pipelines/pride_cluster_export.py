@@ -667,7 +667,7 @@ class PrideClusterExporter(Director):
         # TODO
         pass
 
-    def __get_current_trackhub_public_url(self):
+    def __get_trackhub_public_url(self, trackhub_builder):
         # We need to find out if we are dealing with a folder exposed to the public or not
         if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
             # To calculate the relative path, we remove the root part of the trackhub folder path,
@@ -675,7 +675,10 @@ class PrideClusterExporter(Director):
             # to obtain '/2017-08' that we can attach to the end of the base public URL for the trackhubs
             relative_path = self.__trackhub_destination_folder\
                 .replace(self._get_configuration_manager().get_folder_pride_cluster_trackhubs(), '')
-            return self._get_configuration_manager().get_url_pride_cluster_trackhubs() + relative_path
+            # URL to the hub.txt file within the root of the trackhub
+            return "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
+                                    relative_path,
+                                    trackhub_builder.track_hub.get_hub())
         return "---NO_PUBLIC_URL_CAN_BE_USED---"
 
     def __get_trackhub_registration_service(self):
@@ -693,7 +696,7 @@ class PrideClusterExporter(Director):
         trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
         if trackhub_registration_profile:
             # Register the trackhub
-            trackhub_registration_profile.url = self.__get_current_trackhub_public_url()
+            trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
             trackhub_registration_service = self.__get_trackhub_registration_service()
             trackhub_registration_service.publish_trackhub(trackhub_registration_profile)
         else:
