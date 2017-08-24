@@ -104,13 +104,16 @@ class TrackhubRegistryService:
         # TODO
         auth_token = self.__login()
         try:
-            # TODO Register Trackhub
+            # Register Trackhub
             headers = {'user': self.username, 'auth_token': auth_token}
             payload = str(trackhub_registry_model)
             response = requests.post("{}{}"
                                      .format(self.trackhub_registry_base_url,
                                              self.__TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB),
                                      headers=headers, json=payload, verify=True)
+            if not response.ok:
+                raise trackhub_exceptions.TrackhubRegistryServiceException(
+                    "TRACKHUB REGISTRATION ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
         finally:
             self.__logout()
         # TODO Analyze response
