@@ -23,6 +23,12 @@ class TrackhubRegistryequestBodyModel():
         self.url = None
         self.assembly_accession_map = {}
 
+    def add_accession_for_assembly(self, assembly, accession):
+        if assembly in self.assembly_accession_map:
+            pass
+        else:
+            pass
+
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
 class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter):
