@@ -318,6 +318,7 @@ class PrideClusterExporter(Director):
         super(PrideClusterExporter, self).__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
         self.__trackhub_registry_service = None
+        self.__trackhub_destination_folder = None
 
     def _get_configuration_manager(self):
         return self.__config_manager
@@ -639,17 +640,21 @@ class PrideClusterExporter(Director):
         return trackhubs.TrackHubExporterPrideClusterFtp()
 
     def __prepare_trackhub_destination_folder(self, trackhub_exporter):
-        if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
-            trackhub_destination_folder = os.path.join(
-                self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
-                self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
-            general_toolbox.check_create_folders([trackhub_destination_folder])
-            general_toolbox.create_latest_symlink_overwrite(trackhub_destination_folder)
-            trackhub_exporter.track_hub_destination_folder = trackhub_destination_folder
-            self._get_logger().info("PRIDE Cluster trackhub destination folder '{}' prepared")
-        else:
-            self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
-                trackhub_exporter.track_hub_destination_folder))
+        if not self.__trackhub_destination_folder:
+            if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
+                trackhub_destination_folder = os.path.join(
+                    self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
+                    self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
+                general_toolbox.check_create_folders([trackhub_destination_folder])
+                general_toolbox.create_latest_symlink_overwrite(trackhub_destination_folder)
+                trackhub_exporter.track_hub_destination_folder = trackhub_destination_folder
+                self._get_logger().info("PRIDE Cluster trackhub destination folder '{}' prepared")
+                self.__trackhub_destination_folder = trackhub_destination_folder
+            else:
+                self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
+                    trackhub_exporter.track_hub_destination_folder))
+                self.__trackhub_destination_folder = trackhub_exporter.track_hub_destination_folder
+        return self.__trackhub_destination_folder
 
     def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
         self._get_logger().info("Exporting PRIDE Cluster Trackhub to destination '{}'".format(
