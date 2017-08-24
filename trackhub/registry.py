@@ -17,6 +17,11 @@ class TrackhubRegistryRequestBodyModel:
     pass
 
 
+# Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
+class TrackhubRegistryRequestBodyModelExporter:
+    pass
+
+
 class TrackhubRegistryService:
     def __init__(self, username, password):
         self.username = username
