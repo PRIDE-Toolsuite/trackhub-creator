@@ -173,7 +173,7 @@ class ConfigManager(DirectorConfigurationManager):
                 self.__running_mode = self._RUNNING_MODE_DEFAULT
         return self.__running_mode
 
-    def get_script_path_filesystem_sync(self):
+    def get_path_script_filesystem_sync(self):
         # TODO
         pass
 
