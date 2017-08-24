@@ -29,10 +29,11 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
     def __init__(self):
         super().__init__()
 
-    def export_simple_trackhub(self, track_hub_builder):
+    def export_simple_trackhub(self, trackhub_builder):
         # In this case, the export summary will be an instance of TrackhubRegistryRequestBodyModelExporter
         if not self.export_summary:
             self.export_summary = TrackhubRegistryequestBodyModel()
+            ensembl_species_service = ensembl.service.get_service().get_species_data_service()
         return self.export_summary
 
 
