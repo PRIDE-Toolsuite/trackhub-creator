@@ -176,7 +176,10 @@ class SpeciesService:
         return None
 
     def get_species_entry_for_assembly(self, assembly):
-        pass
+        self._get_logger().debug("get_species_entry_for_assembly '{}'".format(assembly))
+        if assembly in self._get_index_assembly():
+            return self._get_index_assembly()[assembly]
+        return None
 
     def count_ensembl_species(self):
         return len(self._get_species_data_dao())
