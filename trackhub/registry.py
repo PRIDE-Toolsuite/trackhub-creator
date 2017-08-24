@@ -64,6 +64,8 @@ class TrackhubRegistryService:
     __TRACKHUB_REGISTRY_API_SUBPATH_LOGIN = '/api/login'
 
     def __init__(self, username, password):
+        self.logger = config_manager.get_app_config_manager().get_logger_for("{}.{}"
+                                                                             .format(__name__, type(self).__name__))
         self.username = username
         self.password = password
         self.trackhub_registry_base_url = 'https://www.trackhubregistry.org'
