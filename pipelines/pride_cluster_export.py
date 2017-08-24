@@ -673,8 +673,8 @@ class PrideClusterExporter(Director):
             "PRIDE Cluster Trackhub export COMPLETED, at '{}'".format(trackhub_exporter.track_hub_destination_folder))
 
     def __sync_filesystem(self):
+        sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
         # TODO
-        pass
 
     def __get_trackhub_public_url(self, trackhub_builder):
         # We need to find out if we are dealing with a folder exposed to the public or not
