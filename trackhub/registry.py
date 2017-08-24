@@ -19,7 +19,7 @@ from . import models as trackhub_models
 
 
 # Registry request body model
-class TrackhubRegistryRequestBodyModel():
+class TrackhubRegistryRequestBodyModel:
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(
             "{}.{}".format(__name__, type(self).__name__))
