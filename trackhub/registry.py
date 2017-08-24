@@ -76,6 +76,8 @@ class TrackhubRegistryService:
                                             self.__TRACKHUB_REGISTRY_API_SUBPATH_LOGIN),
                                     auth=(self.username, self.password),
                                     verify=True)
+            if not response.ok:
+                pass
             # TODO
 
     def __logout(self):
