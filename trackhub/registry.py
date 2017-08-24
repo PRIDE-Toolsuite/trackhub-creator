@@ -20,6 +20,7 @@ class TrackhubRegistryequestBodyModel():
     def __init__(self):
         # hub.txt URL
         self.url = None
+        self.assembly_accession_map = {}
 
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
