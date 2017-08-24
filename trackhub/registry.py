@@ -20,6 +20,8 @@ from . import models as trackhub_models
 # Registry request body model
 class TrackhubRegistryequestBodyModel():
     def __init__(self):
+        self.logger = config_manager.get_app_config_manager().get_logger_for(
+            "{}.{}".format(__name__, type(self).__name__))
         # hub.txt URL
         self.url = None
         self.assembly_accession_map = {}
