@@ -313,6 +313,10 @@ class ConfigManager(DirectorConfigurationManager):
         return 7200
 
     def get_filesystem_sync_run_timeout(self):
+        """
+        Maximum amount of time we should wait when running the Filesystem Synchronization script
+        :return: time out in seconds
+        """
         return 300
 
     def get_pride_cluster_description_url(self):
