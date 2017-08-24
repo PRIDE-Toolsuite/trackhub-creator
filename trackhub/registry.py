@@ -31,7 +31,7 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
     def export_simple_trackhub(self, track_hub_builder):
         # In this case, the export summary will be an instance of TrackhubRegistryRequestBodyModelExporter
         if not self.export_summary:
-            pass
+            self.export_summary = TrackhubRegistryequestBodyModel()
         return self.export_summary
 
 
