@@ -73,6 +73,7 @@ class Species:
     def __str__(self):
         return json.dumps(self.get_ensembl_species_entry())
 
+
 class SpeciesService:
     def __init__(self, species_data):
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
@@ -80,6 +81,7 @@ class SpeciesService:
         self.__ensembl_species_data_raw = species_data
         self.__ensembl_species_data_dao = None
         self.__index_by_taxonomy_id = None
+        self.__index_by_assembly = None
 
     def __index_data_for_property(self, data, property_getter):
         """
