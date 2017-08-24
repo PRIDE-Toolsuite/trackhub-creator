@@ -34,6 +34,7 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
         if not self.export_summary:
             self.export_summary = TrackhubRegistryequestBodyModel()
             ensembl_species_service = ensembl.service.get_service().get_species_data_service()
+            for assembly in trackhub_builder
         return self.export_summary
 
 

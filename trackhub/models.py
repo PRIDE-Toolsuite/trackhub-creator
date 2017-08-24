@@ -107,7 +107,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
             config_manager.get_app_config_manager().get_session_working_dir(),
             os.path.join('pride_cluster', 'track_hubs'))
 
-    def export_simple_trackhub(self, track_hub_builder):
+    def export_simple_trackhub(self, trackhub_builder):
         file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
         if not self.export_summary and not os.path.isfile(file_trackhub_descriptor):
             self.logger.info("Export Simple TrackHub to '{}'".format(self.track_hub_destination_folder))
@@ -115,20 +115,20 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
             general.check_create_folders([self.track_hub_destination_folder])
             # Create hub.txt file
             with open(file_trackhub_descriptor, 'w') as wf:
-                wf.write("{}\n".format(str(track_hub_builder.track_hub)))
+                wf.write("{}\n".format(str(trackhub_builder.track_hub)))
             self.logger.info("TrackHub descriptor file at '{}'".format(file_trackhub_descriptor))
             # Per assembly
             # TODO - I should also have an assembly collector and refactor TrackHubGenomeAssembly accordingly, but I'm
             # TODO - cutting some corners here to get the first iteration up and running as soon as possible. Supporting
             # TODO - more complex genomes.txt files is not as critical as getting the 'tracks' the right way
             assembly_mapping = {}
-            for assembly in track_hub_builder.assemblies:
+            for assembly in trackhub_builder.assemblies:
                 assembly_folder = os.path.join(self.track_hub_destination_folder, assembly)
                 # Create the folder for the assembly
                 general.check_create_folders([assembly_folder])
                 self.logger.info("For Assembly '{}', trackhub folder created at '{}'".format(assembly, assembly_folder))
                 # Per track in its track collector
-                for track in track_hub_builder.assemblies[assembly].track_collector.get_tracks():
+                for track in trackhub_builder.assemblies[assembly].track_collector.get_tracks():
                     # Copy track file to assembly folder
                     # TODO - WARNING, as I've seen on the tests, big data url can be None for some cases, look for the
                     # TODO - source of this
@@ -148,7 +148,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                 # Export track collector data as string into a trackDB.txt file within the assembly folder
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
-                track_hub_builder.assemblies[assembly].track_collector.accept(track_collector_exporter)
+                trackhub_builder.assemblies[assembly].track_collector.accept(track_collector_exporter)
                 # Add assembly entry to genomes.txt files within trackhub root folder
                 assembly_mapping[assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
                                                           os.path.basename(trackdb_file_path))
