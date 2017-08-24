@@ -86,8 +86,8 @@ class TrackhubRegistryService:
         return self.__auth_token
 
     def __logout(self):
-        # TODO
-        pass
+        if self.__auth_token:
+            pass
 
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
