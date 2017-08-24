@@ -12,6 +12,11 @@ This module models the trackhub registry
 """
 
 
+# Registry request body model
+class TrackhubRegistryRequestBodyModel:
+    pass
+
+
 class TrackhubRegistryService:
     def __init__(self, username, password):
         self.username = username
