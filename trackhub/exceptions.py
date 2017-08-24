@@ -10,3 +10,10 @@
 """
 Trackhub module exceptions
 """
+
+# App imports
+from exceptions import AppException
+
+
+class TrackhubRegistryServiceException(AppException):
+    pass
