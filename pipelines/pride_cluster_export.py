@@ -774,6 +774,7 @@ def _run_pipeline(self):
         # It will be the helpers logging the exception
         return False
     except Exception as e:
+        self._get_logger().error("NOT CATCHED ERROR while running the pipeline - '{}'".format(e))
         return False
     return True
 
