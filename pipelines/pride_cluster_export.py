@@ -663,6 +663,10 @@ class PrideClusterExporter(Director):
         # TODO
         pass
 
+    def __get_current_trackhub_public_url(self):
+        # TODO
+        return "NO URL SET YET"
+
     def __get_trackhub_registration_service(self):
         # Cache the registry service instance, we only need one
         if not self.__trackhub_registry_service:
@@ -676,9 +680,11 @@ class PrideClusterExporter(Director):
         trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
         trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
         trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
-        # Register the trackhub
         if trackhub_registration_profile:
-            pass
+            # Register the trackhub
+            trackhub_registration_profile.url = self.__get_current_trackhub_public_url()
+            trackhub_registration_service = self.__get_trackhub_registration_service()
+            trackhub_registration_service.publish_trackhub(trackhub_registration_profile)
         else:
             self._get_logger().error("ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, "
                                      "the trackhub COULD NOT BE REGISTERED")
