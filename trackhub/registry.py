@@ -67,15 +67,16 @@ class TrackhubRegistryService:
         self.username = username
         self.password = password
         self.trackhub_registry_base_url = 'https://www.trackhubregistry.org'
+        self.__auth_token = None
 
     def __login(self):
-        # TODO
-        response = requests.get("{}{}"
-                                .format(self.trackhub_registry_base_url,
-                                        self.__TRACKHUB_REGISTRY_API_SUBPATH_LOGIN),
-                                auth=(self.username, self.password),
-                                verify=True)
-        
+        if not self.__auth_token:
+            response = requests.get("{}{}"
+                                    .format(self.trackhub_registry_base_url,
+                                            self.__TRACKHUB_REGISTRY_API_SUBPATH_LOGIN),
+                                    auth=(self.username, self.password),
+                                    verify=True)
+            # TODO
 
     def __logout(self):
         # TODO
