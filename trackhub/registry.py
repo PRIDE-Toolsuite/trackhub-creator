@@ -100,6 +100,11 @@ class TrackhubRegistryService:
             self.__auth_token = None
             self.logger.info("LOGGED OUT from '{}'".format(self.trackhub_registry_base_url))
 
+    def __analyze_success_trackhub_registration(self, response):
+        # TODO
+        self.logger.debug("Trackhub Registration Response: '{}'".format(response.json()))
+        return response.json()
+
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
         auth_token = self.__login()
@@ -116,8 +121,8 @@ class TrackhubRegistryService:
                     "TRACKHUB REGISTRATION ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
         finally:
             self.__logout()
-        # TODO Analyze response
-        pass
+        # Analyze response
+        return self.__analyze_success_trackhub_registration(response)
 
 
 if __name__ == '__main__':
