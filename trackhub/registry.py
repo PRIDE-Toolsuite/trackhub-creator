@@ -101,8 +101,6 @@ class TrackhubRegistryService:
 
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
-        # TODO Build request body
-        # TODO Set trackhub URL
         # TODO Log in
         # TODO Register Trackhub
         # TODO Analyze response
