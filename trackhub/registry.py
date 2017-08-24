@@ -103,9 +103,12 @@ class TrackhubRegistryService:
         # TODO
         # Log in
         auth_token = self.__login()
-        # TODO Register Trackhub
+        try:
+            # TODO Register Trackhub
+            pass
+        finally:
+            self.__logout()
         # TODO Analyze response
-        # TODO Log out
         pass
 
 
