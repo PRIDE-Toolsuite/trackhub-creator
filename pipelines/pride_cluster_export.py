@@ -763,8 +763,8 @@ class PrideClusterExporter(Director):
             # Create trackhub structure
             trackhub_builder = self.__get_track_hub_builder(self.__get_trackhub_descriptor())
             self.__populate_assemblies(trackhub_builder, pogo_run_results)
-            # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination folder
-            # for this trackhub
+            # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination
+            # folder for this trackhub
             trackhub_exporter = self.__get_trackhub_exporter()
             self.__prepare_trackhub_destination_folder(trackhub_exporter)
             # Export trackhub to destination folder
