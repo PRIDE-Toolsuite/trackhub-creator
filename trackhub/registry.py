@@ -28,7 +28,10 @@ class TrackhubRegistryequestBodyModel():
 
     def add_accession_for_assembly(self, assembly, accession):
         if assembly in self.assembly_accession_map:
-            pass
+            self.logger.error(
+                "DUPLICATED Assembly '{}' add request, existing accession '{}', "
+                "accession requested to be added '{}' - SKIPPED".format(assembly, self.assembly_accession_map[assembly],
+                                                              accession))
         else:
             pass
 
