@@ -28,6 +28,8 @@ class TrackhubRegistryRequestBodyModel:
         # hub.txt URL
         self.url = None
         self.assembly_accession_map = {}
+        # Trackhub is public by default
+        self.public = 1
 
     def add_accession_for_assembly(self, assembly, accession):
         if assembly in self.assembly_accession_map:
@@ -41,7 +43,9 @@ class TrackhubRegistryRequestBodyModel:
                              .format(assembly, accession))
 
     def __str__(self):
-        return json.dumps({'url': self.url, 'assemblies': self.assembly_accession_map})
+        return json.dumps({'url': self.url,
+                           'public': self.public,
+                           'assemblies': self.assembly_accession_map})
 
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
