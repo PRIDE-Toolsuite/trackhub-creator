@@ -101,11 +101,10 @@ class TrackhubRegistryService:
 
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
-        # Log in
         auth_token = self.__login()
         try:
             # TODO Register Trackhub
-            pass
+            headers = {'user': self.username, 'auth_token': auth_token}
         finally:
             self.__logout()
         # TODO Analyze response
