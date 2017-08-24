@@ -17,6 +17,7 @@ import requests
 import config_manager
 import ensembl.service
 from . import models as trackhub_models
+from . import exceptions as trackhub_exceptions
 
 
 # Registry request body model
@@ -79,8 +80,8 @@ class TrackhubRegistryService:
                                     auth=(self.username, self.password),
                                     verify=True)
             if not response.ok:
-                self.logger.error("LOGIN ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
-                # TODO
+                raise trackhub_exceptions.TrackhubRegistryServiceException(
+                    "LOGIN ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
 
     def __logout(self):
         # TODO
