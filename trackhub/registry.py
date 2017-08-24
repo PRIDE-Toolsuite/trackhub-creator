@@ -65,6 +65,10 @@ class TrackhubRegistryService:
         # TODO
         pass
 
+    def __logout(self):
+        # TODO
+        pass
+
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
         pass
