@@ -683,7 +683,15 @@ class PrideClusterExporter(Director):
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
         self._get_logger().info("Filesystem command '{}'".format(sync_command))
         sync_subprocess = subprocess.Popen(sync_command, shell=True)
-
+        try:
+            stdout, stderr = sync_subprocess \
+                .communicate(timeout=self._get_configuration_manager().get_filesystem_sync_run_timeout())
+        except subprocess.TimeoutExpired as e:
+            self._get_logger().error("TIMEOUT ERROR while running Filesystem synchronization script '{}', Command: '{}'"
+                                     .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
+                                             sync_command))
+            sync_subprocess.kill()
+            stdout, stderr = sync_subprocess.communicate()
         # TODO
 
     def __get_trackhub_public_url(self, trackhub_builder):
