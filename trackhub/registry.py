@@ -61,6 +61,8 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
 
 
 class TrackhubRegistryService:
+    __TRACKHUB_REGISTRY_API_SUBPATH_LOGIN = '/api/login'
+
     def __init__(self, username, password):
         self.username = username
         self.password = password
