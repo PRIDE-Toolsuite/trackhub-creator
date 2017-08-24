@@ -106,7 +106,6 @@ class TrackhubRegistryService:
         return response.json()
 
     def publish_trackhub(self, hub_url, trackhub_registry_model):
-        # TODO
         auth_token = self.__login()
         headers = {'user': self.username, 'auth_token': auth_token}
         payload = str(trackhub_registry_model)
