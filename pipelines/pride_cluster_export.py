@@ -178,8 +178,11 @@ class ConfigManager(DirectorConfigurationManager):
                             self._CONFIG_PIPELINE_SUBFOLDER_SCRIPTS)
 
     def get_path_script_filesystem_sync(self):
-        # TODO
-        pass
+        script_name = self.__get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_SCRIPT_NAME_FILESYSTEM_SYNC,
+            default=self._CONFIG_COMMAND_LINE_ARGUMENT_DEFAULT_VALUE_SCRIPT_NAME_FILESYSTEM_SYNC)
+        return os.path.join(self.__get_path_pipeline_scripts_folder(),
+                            script_name)
 
     def get_cluster_file_exporter_version_parameter(self):
         """
