@@ -70,7 +70,12 @@ class TrackhubRegistryService:
 
     def __login(self):
         # TODO
-        pass
+        response = requests.get("{}{}"
+                                .format(self.trackhub_registry_base_url,
+                                        self.__TRACKHUB_REGISTRY_API_SUBPATH_LOGIN),
+                                auth=(self.username, self.password),
+                                verify=True)
+        
 
     def __logout(self):
         # TODO
