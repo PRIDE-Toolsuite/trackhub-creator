@@ -738,36 +738,43 @@ def __publish_trackhub(self, trackhub_builder):
 def _run_pipeline(self):
     # Main pipeline algorithm
     self._get_logger().info("[START]---> Pipeline run")
-    if self._get_configuration_manager().get_running_mode() == self._get_configuration_manager().RUNNING_MODE_TEST:
-        # Run cluster-file-exporter (dummy step)
-        if not self.__run_cluster_file_exporter_simulation():
+    try:
+        # I'll capture exceptions from the helpers to decide whether the pipeline is successful or not
+        if self._get_configuration_manager().get_running_mode() == self._get_configuration_manager().RUNNING_MODE_TEST:
+            # Run cluster-file-exporter (dummy step)
+            if not self.__run_cluster_file_exporter_simulation():
+                return False
+        else:
+            # Run cluster-file-exporter (for real)
+            if not self.__run_cluster_file_exporter():
+                return False
+        # Process cluster-file-exporter result files
+        cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
+        if not cluster_file_exporter_result_mapping:
+            self._get_logger().error("ERROR processing cluster-file-exporter result files")
             return False
-    else:
-        # Run cluster-file-exporter (for real)
-        if not self.__run_cluster_file_exporter():
-            return False
-    # Process cluster-file-exporter result files
-    cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
-    if not cluster_file_exporter_result_mapping:
-        self._get_logger().error("ERROR processing cluster-file-exporter result files")
+        self._get_logger().info("PRIDE Cluster File Exporter run completed")
+        pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(cluster_file_exporter_result_mapping)
+        self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
+        # TODO - Convert files to BigBed format, this will be addressed in the future
+        # Create trackhub structure
+        trackhub_builder = self.__get_track_hub_builder(self.__get_trackhub_descriptor())
+        self.__populate_assemblies(trackhub_builder, pogo_run_results)
+        # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination folder
+        # for this trackhub
+        trackhub_exporter = self.__get_trackhub_exporter()
+        self.__prepare_trackhub_destination_folder(trackhub_exporter)
+        # Export trackhub to destination folder
+        self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
+        # Sync Data and get public URL
+        self.__sync_filesystem()
+        # Publish trackhub
+        self.__publish_trackhub(trackhub_builder)
+    except pipeline_exceptions.PipelineDirectorException as e:
+        # It will be the helpers logging the exception
         return False
-    self._get_logger().info("PRIDE Cluster File Exporter run completed")
-    pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(cluster_file_exporter_result_mapping)
-    self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
-    # TODO - Convert files to BigBed format, this will be addressed in the future
-    # Create trackhub structure
-    trackhub_builder = self.__get_track_hub_builder(self.__get_trackhub_descriptor())
-    self.__populate_assemblies(trackhub_builder, pogo_run_results)
-    # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination folder
-    # for this trackhub
-    trackhub_exporter = self.__get_trackhub_exporter()
-    self.__prepare_trackhub_destination_folder(trackhub_exporter)
-    # Export trackhub to destination folder
-    self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
-    # Sync Data and get public URL
-    self.__sync_filesystem()
-    # Publish trackhub
-    self.__publish_trackhub(trackhub_builder)
+    except Exception as e:
+        return False
     return True
 
 
