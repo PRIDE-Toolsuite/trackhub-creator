@@ -673,7 +673,7 @@ class PrideClusterExporter(Director):
             # To calculate the relative path, we remove the root part of the trackhub folder path,
             # e.g. '/nfs/pride/pride-cluster/trackhubs' from '/nfs/pride/pride-cluster/trackhubs/2017-08'
             # to obtain '/2017-08' that we can attach to the end of the base public URL for the trackhubs
-            relative_path = self.__trackhub_destination_folder\
+            relative_path = self.__trackhub_destination_folder \
                 .replace(self._get_configuration_manager().get_folder_pride_cluster_trackhubs(), '')
             # URL to the hub.txt file within the root of the trackhub
             return "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
@@ -702,7 +702,6 @@ class PrideClusterExporter(Director):
         else:
             self._get_logger().error("ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, "
                                      "the trackhub COULD NOT BE REGISTERED")
-
 
     def _run_pipeline(self):
         # Main pipeline algorithm
