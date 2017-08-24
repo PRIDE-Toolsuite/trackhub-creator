@@ -103,10 +103,10 @@ class TrackhubRegistryService:
     def publish_trackhub(self, hub_url, trackhub_registry_model):
         # TODO
         auth_token = self.__login()
+        headers = {'user': self.username, 'auth_token': auth_token}
+        payload = str(trackhub_registry_model)
         try:
             # Register Trackhub
-            headers = {'user': self.username, 'auth_token': auth_token}
-            payload = str(trackhub_registry_model)
             response = requests.post("{}{}"
                                      .format(self.trackhub_registry_base_url,
                                              self.__TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB),
