@@ -83,6 +83,7 @@ class TrackhubRegistryService:
                 raise trackhub_exceptions.TrackhubRegistryServiceException(
                     "LOGIN ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
             self.__auth_token = response.json()[u'auth_token']
+            self.logger.info("LOGGED IN at '{}'".format(self.trackhub_registry_base_url))
         return self.__auth_token
 
     def __logout(self):
