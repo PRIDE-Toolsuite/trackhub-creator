@@ -16,17 +16,18 @@ from . import models as trackhub_models
 
 
 # Registry request body model
-class TrackhubRegistryequestBodyModel(trackhub_models.TrackHubExporter):
+class TrackhubRegistryequestBodyModel():
+    pass
+
+
+# Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
+class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter):
     def __init__(self):
         super().__init__()
 
     def export_simple_trackhub(self, track_hub_builder):
+        # In this case, the export summary will be an instance of TrackhubRegistryRequestBodyModelExporter
         pass
-
-
-# Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
-class TrackhubRegistryRequestBodyModelExporter:
-    pass
 
 
 class TrackhubRegistryService:
