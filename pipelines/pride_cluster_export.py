@@ -746,7 +746,8 @@ class PrideClusterExporter(Director):
         self._get_logger().info("[START]---> Pipeline run")
         try:
             # I'll capture exceptions from the helpers to decide whether the pipeline is successful or not
-            if self._get_configuration_manager().get_running_mode() == self._get_configuration_manager().RUNNING_MODE_TEST:
+            if self._get_configuration_manager().get_running_mode() \
+                    == self._get_configuration_manager().RUNNING_MODE_TEST:
                 # Run cluster-file-exporter (dummy step)
                 if not self.__run_cluster_file_exporter_simulation():
                     return False
