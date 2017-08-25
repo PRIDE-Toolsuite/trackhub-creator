@@ -718,8 +718,10 @@ class PrideClusterExporter(Director):
         # Cache the registry service instance, we only need one
         if not self.__trackhub_registry_service:
             self.__trackhub_registry_service = trackhub_registry.TrackhubRegistryService()
+            # Set the registry base URL
             self.__trackhub_registry_service.trackhub_registry_base_url = \
                 self._get_configuration_manager().get_trackhub_registry_url()
+            
         return self.__trackhub_registry_service
 
     def __publish_trackhub(self, trackhub_builder):
