@@ -55,6 +55,10 @@ def get_pipeline_director():
     return __pipeline_director
 
 
+def get_pipeline_arguments():
+    return __pipeline_arguments
+
+
 class ConfigManager(DirectorConfigurationManager):
     # Configuration keys for cluster-file-exporter
     _CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR = "cluster-file-exporter"
@@ -110,8 +114,7 @@ class ConfigManager(DirectorConfigurationManager):
         #   running_mode=test
         #   # Name of the script to use for synchronization of the file system
         #   script_name_filesystem_sync=sync_data.sh
-        global __pipeline_arguments
-        if __pipeline_arguments:
+        if get_pipeline_arguments():
             if self.__pipeline_arguments_object:
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
             else:
@@ -691,7 +694,7 @@ class PrideClusterExporter(Director):
             exception_message = "TIMEOUT ERROR while running Filesystem synchronization script '{}'," \
                                 " Command: '{}'\n" \
                                 "STDOUT: '{}'\n" \
-                                "STDERR: '{}'"\
+                                "STDERR: '{}'" \
                 .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
                         sync_command,
                         stdout.decode(),
@@ -702,9 +705,9 @@ class PrideClusterExporter(Director):
             raise pipeline_exceptions.PipelineDirectorException(exception_message) from e
         if sync_subprocess.poll() and (sync_subprocess.returncode != 0):
             error_msg = "ERROR while running Filesystem synchronization script '{}'," \
-                                " Command: '{}'\n" \
-                                "STDOUT: '{}'\n" \
-                                "STDERR: '{}'"\
+                        " Command: '{}'\n" \
+                        "STDOUT: '{}'\n" \
+                        "STDERR: '{}'" \
                 .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
                         sync_command,
                         stdout.decode(),
