@@ -752,7 +752,7 @@ class PrideClusterExporter(Director):
                                          .format(trackhub_registration_profile.url))
                 # Register the trackhub
                 trackhub_registration_service = self.__get_trackhub_registration_service()
-                trackhub_registration_service.publish_trackhub(trackhub_registration_profile)
+                trackhub_registration_service.register_trackhub(trackhub_registration_profile)
             else:
                 error_msg = "ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, the trackhub COULD NOT BE REGISTERED"
                 self._get_logger().error(error_msg)

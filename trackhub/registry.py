@@ -112,7 +112,7 @@ class TrackhubRegistryService:
         self.logger.debug("Trackhub Registration Response: '{}'".format(response.json()))
         return response.json()
 
-    def publish_trackhub(self, trackhub_registry_model):
+    def register_trackhub(self, trackhub_registry_model):
         auth_token = self.__login()
         headers = {'user': self.username, 'auth_token': auth_token}
         payload = str(trackhub_registry_model)
