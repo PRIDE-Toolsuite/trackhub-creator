@@ -680,21 +680,33 @@ class PrideClusterExporter(Director):
 
     def __sync_filesystem(self):
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
-        self._get_logger().info("Filesystem command '{}'".format(sync_command))
+        self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
         sync_subprocess = subprocess.Popen(sync_command, shell=True)
         try:
             stdout, stderr = sync_subprocess \
                 .communicate(timeout=self._get_configuration_manager().get_filesystem_sync_run_timeout())
         except subprocess.TimeoutExpired as e:
-            exception_message = "TIMEOUT ERROR while running Filesystem synchronization script '{}', Command: '{}'".format(
-                self._get_configuration_manager().get_path_script_filesystem_sync(), sync_command)
+            exception_message = "TIMEOUT ERROR while running Filesystem synchronization script '{}'," \
+                                " Command: '{}'\n" \
+                                "STDOUT: '{}'\n" \
+                                "STDERR: '{}'"\
+                .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
+                        sync_command,
+                        stdout.decode(),
+                        stderr.decode())
             self._get_logger().error(exception_message)
             sync_subprocess.kill()
             stdout, stderr = sync_subprocess.communicate()
             raise pipeline_exceptions.PipelineDirectorException(exception_message) from e
         if sync_subprocess.poll() and (sync_subprocess.returncode != 0):
-            error_msg = "ERROR while running Filesystem synchronization script '{}', Command: '{}'".format(
-                self._get_configuration_manager().get_path_script_filesystem_sync(), sync_command)
+            error_msg = "ERROR while running Filesystem synchronization script '{}'," \
+                                " Command: '{}'\n" \
+                                "STDOUT: '{}'\n" \
+                                "STDERR: '{}'"\
+                .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
+                        sync_command,
+                        stdout.decode(),
+                        stderr.decode())
             self._get_logger().error(error_msg)
             raise pipeline_exceptions.PipelineDirectorException(error_msg)
 
