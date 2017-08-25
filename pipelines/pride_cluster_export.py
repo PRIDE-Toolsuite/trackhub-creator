@@ -736,7 +736,7 @@ class PrideClusterExporter(Director):
                 self._get_configuration_manager().get_trackhub_registry_url()
         return self.__trackhub_registry_service
 
-    def __publish_trackhub(self, trackhub_builder):
+    def __register_trackhub(self, trackhub_builder):
         if self.__get_trackhub_public_url(trackhub_builder) == '':
             self._get_logger().warning("THIS TRACKHUB WILL NOT BE PUBLISHED, "
                                        "a trackhub public URL could not be worked out")
@@ -794,7 +794,7 @@ class PrideClusterExporter(Director):
             # Sync Data and get public URL
             self.__sync_filesystem()
             # Publish trackhub
-            self.__publish_trackhub(trackhub_builder)
+            self.__register_trackhub(trackhub_builder)
         except pipeline_exceptions.PipelineDirectorException as e:
             # It will be the helpers logging the exception
             return False
