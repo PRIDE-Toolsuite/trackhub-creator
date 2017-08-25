@@ -414,7 +414,7 @@ class PrideClusterExporter(Director):
             return False
         return True
 
-    def __run_cluster_file_exporter_simulation(self):
+    def __run_mode_test_cluster_file_exporter(self):
         """
         This method is a helper that I'm using for building this pipeline, it is not even clear whether this pipeline
         will have a "testing / development mode" where the most expensive parts of it are dummied, that's why I don't
@@ -753,7 +753,7 @@ class PrideClusterExporter(Director):
             if self._get_configuration_manager().get_running_mode() \
                     == self._get_configuration_manager().RUNNING_MODE_TEST:
                 # Run cluster-file-exporter (dummy step)
-                if not self.__run_cluster_file_exporter_simulation():
+                if not self.__run_mode_test_cluster_file_exporter():
                     return False
             else:
                 # Run cluster-file-exporter (for real)
