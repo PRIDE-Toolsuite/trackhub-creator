@@ -658,19 +658,17 @@ class PrideClusterExporter(Director):
 
     def __prepare_trackhub_destination_folder(self, trackhub_exporter):
         if not self.__trackhub_destination_folder:
+            self.__trackhub_destination_folder = trackhub_exporter.track_hub_destination_folder
             if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
-                trackhub_destination_folder = os.path.join(
+                self.__trackhub_destination_folder = os.path.join(
                     self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
                     self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
-                general_toolbox.check_create_folders([trackhub_destination_folder])
-                general_toolbox.create_latest_symlink_overwrite(trackhub_destination_folder)
-                trackhub_exporter.track_hub_destination_folder = trackhub_destination_folder
-                self._get_logger().info("PRIDE Cluster trackhub destination folder '{}' prepared")
-                self.__trackhub_destination_folder = trackhub_destination_folder
-            else:
-                self._get_logger().warning("TODO - USING DEFAULT TRACKHUB DESTINATION FOLDER '{}'".format(
-                    trackhub_exporter.track_hub_destination_folder))
-                self.__trackhub_destination_folder = trackhub_exporter.track_hub_destination_folder
+            # Make sure the destination folder is there
+            general_toolbox.check_create_folders([self.__trackhub_destination_folder])
+            general_toolbox.create_latest_symlink_overwrite(self.__trackhub_destination_folder)
+            # Set the destination folder for the exporter of the trackhub
+            trackhub_exporter.track_hub_destination_folder = self.__trackhub_destination_folder
+            self._get_logger().info("PRIDE Cluster trackhub destination folder '{}' prepared")
         return self.__trackhub_destination_folder
 
     def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
