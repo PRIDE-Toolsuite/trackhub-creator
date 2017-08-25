@@ -272,8 +272,8 @@ class AppConfigManager(ConfigurationManager):
             # TODO make sense...
             instance = importlib.import_module(fqdn_pipeline_module)
         except Exception as e:
-            self._get_logger().error("Error loading Factory Module for pipeline (FQDN) '{}'"
-                                     .format(fqdn_pipeline_module))
+            self._get_logger().error("Error loading Factory Module for pipeline (FQDN) '{}' - '{}'"
+                                     .format(fqdn_pipeline_module, e))
             # TODO This will return None and everything else will fail, review this in the future for a better strategy
         return instance
 
