@@ -742,6 +742,7 @@ class PrideClusterExporter(Director):
                                        "a trackhub public URL could not be worked out")
         else:
             # Build the description the trackhub registration service needs
+            self._get_logger().debug("Building trackhub registration profile")
             trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
             trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
             trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
