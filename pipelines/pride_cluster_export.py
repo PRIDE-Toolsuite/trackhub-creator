@@ -340,7 +340,7 @@ class PrideClusterExporter(Director):
     def _get_configuration_manager(self):
         return self.__config_manager
 
-    def _map_cluster_file_exporter_result_files(self):
+    def __map_cluster_file_exporter_result_files(self):
         cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
         # Prepare empty result map
         cluster_file_exporter_result_mapping = {}
@@ -760,7 +760,7 @@ class PrideClusterExporter(Director):
                 if not self.__run_cluster_file_exporter():
                     return False
             # Process cluster-file-exporter result files
-            cluster_file_exporter_result_mapping = self._map_cluster_file_exporter_result_files()
+            cluster_file_exporter_result_mapping = self.__map_cluster_file_exporter_result_files()
             if not cluster_file_exporter_result_mapping:
                 self._get_logger().error("ERROR processing cluster-file-exporter result files")
                 return False
