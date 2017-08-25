@@ -777,7 +777,7 @@ class PrideClusterExporter(Director):
             # It will be the helpers logging the exception
             return False
         except Exception as e:
-            self._get_logger().error("NOT CATCHED ERROR while running the pipeline - '{}'".format(e))
+            self._get_logger().error("NOT CAUGHT ERROR while running the pipeline - '{}'".format(e))
             return False
         return True
 
