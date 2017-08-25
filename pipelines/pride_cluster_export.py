@@ -122,7 +122,7 @@ class ConfigManager(DirectorConfigurationManager):
                 self.logger.debug("Processing pipeline command line arguments")
                 allowed_keys = self.__get_allowed_configuration_keys()
                 # TODO
-                for command_line_parameter in __pipeline_arguments.split(
+                for command_line_parameter in get_pipeline_arguments().split(
                         self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR):
                     key, value = command_line_parameter.split(
                         self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR)
