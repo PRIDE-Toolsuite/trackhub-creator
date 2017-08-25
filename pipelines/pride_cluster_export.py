@@ -170,13 +170,13 @@ class ConfigManager(DirectorConfigurationManager):
     def get_running_mode(self):
         if not self.__running_mode:
             if self.__get_value_for_pipeline_argument_key(
-                    self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE) == self._RUNNING_MODE_TEST:
-                self.__running_mode = self._RUNNING_MODE_TEST
+                    self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE) == self.RUNNING_MODE_TEST:
+                self.__running_mode = self.RUNNING_MODE_TEST
                 self.logger.info("This pipeline is RUNNING IN 'TEST' MODE")
             else:
                 self.logger.info("This pipeline IS RUNNING IN 'DEFAULT' MODE - provided '{}' as parameter".format(
                     self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE))
-                self.__running_mode = self._RUNNING_MODE_DEFAULT
+                self.__running_mode = self.RUNNING_MODE_DEFAULT
         return self.__running_mode
 
     def __get_path_pipeline_scripts_folder(self):
