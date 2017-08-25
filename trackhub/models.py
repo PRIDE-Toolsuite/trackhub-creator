@@ -86,6 +86,7 @@ class TrackHubExporter(metaclass=ABCMeta):
 
 class TrackHubLocalFilesystemExporter(TrackHubExporter):
     def __init__(self):
+        super().__init__()
         # The default destination folder for exporting the trackhub is located within the current session working
         # directory
         self.track_hub_destination_folder = os.path.join(
@@ -101,7 +102,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
 
 class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
     def __init__(self):
-        super(TrackHubExporterPrideClusterFtp, self).__init__()
+        super().__init__()
         # Default destination folder for pride cluster trackhubs
         self.track_hub_destination_folder = os.path.join(
             config_manager.get_app_config_manager().get_session_working_dir(),
