@@ -138,6 +138,8 @@ class ConfigManager(DirectorConfigurationManager):
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
     def __get_value_for_pipeline_argument_key(self, key, default=None):
+        if not self.__pipeline_arguments_object:
+            self._process_pipeline_arguments()
         if key in self.__pipeline_arguments_object:
             return self.__pipeline_arguments_object[key]
         else:
@@ -797,9 +799,6 @@ class PrideClusterExporter(Director):
             self.__register_trackhub(trackhub_builder)
         except pipeline_exceptions.PipelineDirectorException as e:
             # It will be the helpers logging the exception
-            return False
-        except Exception as e:
-            self._get_logger().error("NOT CAUGHT ERROR while running the pipeline - '{}'".format(e))
             return False
         return True
 
