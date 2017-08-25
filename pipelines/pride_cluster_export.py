@@ -747,10 +747,10 @@ class PrideClusterExporter(Director):
             trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
             trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
             if trackhub_registration_profile:
+                trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
                 self._get_logger().debug("Trackhub '{}' registration profile built!"
                                          .format(trackhub_registration_profile.url))
                 # Register the trackhub
-                trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
                 trackhub_registration_service = self.__get_trackhub_registration_service()
                 trackhub_registration_service.publish_trackhub(trackhub_registration_profile)
             else:
