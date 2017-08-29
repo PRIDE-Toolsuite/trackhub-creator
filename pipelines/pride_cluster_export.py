@@ -697,8 +697,8 @@ class PrideClusterExporter(Director):
                                 "STDERR: '{}'" \
                 .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
                         sync_command,
-                        stdout.decode(),
-                        stderr.decode())
+                        stdout,
+                        stderr)
             self._get_logger().error(exception_message)
             sync_subprocess.kill()
             stdout, stderr = sync_subprocess.communicate()
@@ -710,8 +710,8 @@ class PrideClusterExporter(Director):
                         "STDERR: '{}'" \
                 .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
                         sync_command,
-                        stdout.decode(),
-                        stderr.decode())
+                        stdout,
+                        stderr)
             self._get_logger().error(error_msg)
             raise pipeline_exceptions.PipelineDirectorException(error_msg)
 
