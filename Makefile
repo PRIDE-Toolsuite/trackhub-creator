@@ -54,7 +54,10 @@ update_requirements_file: dev_environment
 lsf_tests: tests
 	@echo "[LSF] - Unit Tests under LSF environment run"
 
-tests:
+tests: dev_environment
+	@python_install/bin/python main_app.py test
+
+lsf_tests: lsf_install
 	@python_install/bin/python main_app.py test
 
 clean_dev: clean_bin
