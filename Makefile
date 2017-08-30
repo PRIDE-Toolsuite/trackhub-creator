@@ -45,7 +45,7 @@ dev_environment: python_install install_requirements bin/cluster-file-exporter/c
 
 install: dev_environment
 
-lsf_install: lsf_python_install lsf_install_requirements bin/pogo/pogo
+lsf_install: lsf_python_install lsf_install_requirements bin/lsf-cluster-file-exporter bin/pogo/pogo
 
 update_requirements_file: dev_environment
 	@python_install/bin/pipreqs --use-local --savepath requirements.txt $(PWD)
