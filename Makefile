@@ -52,7 +52,7 @@ update_requirements_file: dev_environment
 	@python_install/bin/pipreqs --use-local --savepath requirements.txt $(PWD)
 
 lsf_tests: tests
-	@echo "LSF - Unit Tests under LSF environment run"
+	@echo "[LSF] - Unit Tests under LSF environment run"
 
 tests: dev_environment
 	@python_install/bin/python main_app.py test
@@ -74,7 +74,7 @@ clean_bin:
 	@touch bin/empty
 
 lsf_clean: clean
-	@echo "LSF - Clean run"
+	@echo "[LSF] - Clean run"
 
 clean: clean_logs clean_sessions clean_tmp
 
