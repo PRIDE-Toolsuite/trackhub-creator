@@ -4,7 +4,7 @@ install_requirements:
 
 lsf_python_install:
 	source scripts/commons-priv/ebi-lsf-clean-environment.sh; pip install --upgrade --user virtualenv
-	source scripts/commons-priv/ebi-lsf-clean-environment.sh; virtualenv -p $(which python3) lsf_python_install
+	source scripts/commons-priv/ebi-lsf-clean-environment.sh; virtualenv -p `which python3` lsf_python_install
 	ln -s lsf_python_install python_install
 
 python_install:
