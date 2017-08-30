@@ -21,7 +21,7 @@ bin/maven:
 	
 bin/cluster-file-exporter/cluster-file-exporter.jar: tmp bin/maven
 	@cd tmp; git clone https://github.com/PRIDE-Cluster/cluster-file-exporter.git
-	@cd tmp/cluster-file-exporter; mvn clean package -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
+	@cd tmp/cluster-file-exporter; bin/maven/bin/mvn clean package -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
 	@mkdir bin/cluster-file-exporter
 	@cd bin/cluster-file-exporter; unzip ../../tmp/cluster-file-exporter/target/cluster-file-exporter*zip; cp cluster-file-exporter-*jar cluster-file-exporter.jar
 
