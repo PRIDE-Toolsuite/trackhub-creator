@@ -20,7 +20,7 @@ bin/maven:
 	@cd tmp; tar xzvf apache-maven-3.5.0-bin.tar.gz
 	@mv tmp/apache-maven-3.5.0 bin/maven
 
-bin/lsf-cluster-file-exporter: tmp
+bin/lsf-cluster-file-exporter: tmp bin/maven
 	@cd tmp; git clone https://github.com/PRIDE-Cluster/cluster-file-exporter.git
 	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; @source scripts/commons-priv/ebi-lsf-java8-environment.sh; cd tmp/cluster-file-exporter; bin/maven/bin/mvn clean package -s ../../config/private/maven/settings.xml -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
 	@mkdir bin/lsf-cluster-file-exporter
