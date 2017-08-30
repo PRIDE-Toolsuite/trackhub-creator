@@ -71,4 +71,4 @@ lsf_clean_all: clean
 
 clean_all: clean clean_dev
 
-.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean
+.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean lsf_install_requirements lsf_python_install lsf_install lsf_tests lsf_clean lsf_clean_all
