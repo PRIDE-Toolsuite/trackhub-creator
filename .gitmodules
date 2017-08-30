@@ -4,3 +4,6 @@
 [submodule "scripts/commons-priv"]
 	path = scripts/commons-priv
 	url = git@bitbucket.org:pride-ebi/commons.git
+[submodule "config/private"]
+	path = config/private
+	url = git@bitbucket.org:pride-ebi/py-pipeline-runner.git
