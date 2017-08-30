@@ -22,7 +22,7 @@ bin/maven:
 
 bin/lsf-cluster-file-exporter: tmp bin/maven
 	@cd tmp; git clone https://github.com/PRIDE-Cluster/cluster-file-exporter.git
-	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; @source scripts/commons-priv/ebi-lsf-java8-environment.sh; cd tmp/cluster-file-exporter; bin/maven/bin/mvn clean package -s ../../config/private/maven/settings.xml -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
+	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; source scripts/commons-priv/ebi-lsf-java8-environment.sh; cd tmp/cluster-file-exporter; bin/maven/bin/mvn clean package -s ../../config/private/maven/settings.xml -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
 	@mkdir bin/lsf-cluster-file-exporter
 	@cd bin/cluster-file-exporter; unzip ../../tmp/cluster-file-exporter/target/cluster-file-exporter*zip; cp cluster-file-exporter-*jar cluster-file-exporter.jar
 	@cd bin; ln -s lsf-cluster-file-exporter cluster-file-exporter
