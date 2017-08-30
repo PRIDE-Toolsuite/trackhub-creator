@@ -65,6 +65,10 @@ lsf_clean: clean
 
 clean: clean_logs clean_sessions clean_tmp
 
+lsf_clean_all: clean
+	@rm python_install
+	@rm -rf lsf_python_install
+
 clean_all: clean clean_dev
 
 .PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean
