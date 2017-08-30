@@ -1,3 +1,6 @@
+lsf_install_requirements: install_requirements
+	@echo "LSF - Requirements installed"
+
 install_requirements:
 	@python_install/bin/pip install pipreqs nose
 	@python_install/bin/pip install -r requirements.txt
