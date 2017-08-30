@@ -1,5 +1,5 @@
 lsf_install_requirements: install_requirements
-	echo -e "[LSF] Requirements installed <---\n\n"
+	@echo -e "\n[LSF] Requirements installed <---\n\n"
 
 install_requirements:
 	@python_install/bin/pip install pipreqs nose
@@ -9,7 +9,7 @@ lsf_python_install:
 	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; pip install --upgrade --user virtualenv
 	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; virtualenv -p `which python3` lsf_python_install
 	@ln -s lsf_python_install python_install
-	echo -e "[LSF] Local Python Environment READY <---\n\n"
+	@echo -e "\n[LSF] Local Python Environment READY <---\n\n"
 
 python_install:
 	@sudo pip install virtualenv
@@ -24,7 +24,7 @@ bin/lsf-cluster-file-exporter: tmp bin/maven
 	@cd tmp; git clone https://github.com/PRIDE-Cluster/cluster-file-exporter.git
 	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; source scripts/commons-priv/ebi-lsf-java8-environment.sh; cd tmp/cluster-file-exporter; ../../bin/maven/bin/mvn clean package -s ../../config/private/maven/settings.xml -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
 	@mkdir bin/lsf-cluster-file-exporter
-	@cd bin/cluster-file-exporter; unzip ../../tmp/cluster-file-exporter/target/cluster-file-exporter*zip; cp cluster-file-exporter-*jar cluster-file-exporter.jar
+	@cd bin/lsf-cluster-file-exporter; unzip ../../tmp/cluster-file-exporter/target/cluster-file-exporter*zip; cp cluster-file-exporter-*jar cluster-file-exporter.jar
 	@cd bin; ln -s lsf-cluster-file-exporter cluster-file-exporter
 
 bin/cluster-file-exporter/cluster-file-exporter.jar: tmp
