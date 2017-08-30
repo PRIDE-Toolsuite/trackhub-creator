@@ -14,6 +14,11 @@ python_install:
 	@sudo pip install virtualenv
 	@virtualenv python_install
 
+bin/maven:
+	@cd tmp; wget http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+	@cd tmp; tar xzvf apache-maven-3.5.0-bin.tar.gz
+	@mv tmp/apache-maven-3.5.0 bin/maven
+	
 bin/cluster-file-exporter/cluster-file-exporter.jar: tmp
 	@cd tmp; git clone git@github.com:PRIDE-Cluster/cluster-file-exporter.git
 	@cd tmp/cluster-file-exporter; mvn clean package -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
