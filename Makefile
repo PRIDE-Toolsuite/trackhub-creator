@@ -57,7 +57,7 @@ lsf_tests: tests
 tests: dev_environment
 	@python_install/bin/python main_app.py test
 
-clean_dev:
+clean_dev: clean_bin
 	@rm -rf python_install
 
 clean_logs:
@@ -73,7 +73,7 @@ clean_bin:
 	@rm -rf bin/*
 	@touch bin/empty
 
-lsf_clean: clean
+lsf_clean: clean clean_bin
 	@echo "[LSF] - Clean run"
 
 clean: clean_logs clean_sessions clean_tmp
