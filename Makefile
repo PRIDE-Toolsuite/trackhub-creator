@@ -1,5 +1,5 @@
 lsf_install_requirements: install_requirements
-	@echo -e "[LSF] Requirements installed <---\n\n"
+	echo -e "[LSF] Requirements installed <---\n\n"
 
 install_requirements:
 	@python_install/bin/pip install pipreqs nose
@@ -9,7 +9,7 @@ lsf_python_install:
 	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; pip install --upgrade --user virtualenv
 	@source scripts/commons-priv/ebi-lsf-clean-environment.sh; virtualenv -p `which python3` lsf_python_install
 	@ln -s lsf_python_install python_install
-	@echo -e "[LSF] Local Python Environment READY <---\n\n"
+	echo -e "[LSF] Local Python Environment READY <---\n\n"
 
 python_install:
 	@sudo pip install virtualenv
