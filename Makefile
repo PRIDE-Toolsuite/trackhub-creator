@@ -38,6 +38,9 @@ lsf_install: lsf_python_install lsf_install_requirements bin/pogo/pogo
 update_requirements_file: dev_environment
 	@python_install/bin/pipreqs --use-local --savepath requirements.txt $(PWD)
 
+lsf_tests: tests
+	@echo "LSF - Unit Tests under LSF environment run"
+
 tests: dev_environment
 	@python_install/bin/python main_app.py test
 
