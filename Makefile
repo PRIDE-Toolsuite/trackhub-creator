@@ -60,6 +60,9 @@ clean_bin:
 	@rm -rf bin/*
 	@touch bin/empty
 
+lsf_clean: clean
+	@echo "LSF - Clean run"
+
 clean: clean_logs clean_sessions clean_tmp
 
 clean_all: clean clean_dev
