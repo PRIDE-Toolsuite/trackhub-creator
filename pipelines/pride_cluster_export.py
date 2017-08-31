@@ -710,7 +710,6 @@ class PrideClusterExporter(Director):
         # TODO - Update this taking into account the new responsibilities of the synchronization script
         if self._get_configuration_manager().is_do_sync():
             # Sync script parameters
-            script_full_path = self._get_configuration_manager().get_path_script_filesystem_sync()
             app_root_dir = config_manager.get_app_config_manager().get_application_root_folder()
             source_trackhub_container_folder = os.path.dirname(trackhub_exporter.track_hub_destination_folder)
             source_trackhub_folder = trackhub_exporter.track_hub_destination_folder
