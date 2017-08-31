@@ -116,6 +116,8 @@ class ConfigManager(DirectorConfigurationManager):
         #   script_name_filesystem_sync=sync_data.sh
         #   # Boolean to tell the pipeline whether running the synchronization or not (default: yes)
         #   do_sync=yes
+        #   # Boolean to tell the pipeline whether tu publish the trackhub or not (default: yes)
+        #   do_register_trackhub=yes
         if get_pipeline_arguments():
             if self.__pipeline_arguments_object:
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
