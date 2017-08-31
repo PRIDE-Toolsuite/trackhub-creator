@@ -707,6 +707,7 @@ class PrideClusterExporter(Director):
         # TODO - Update this taking into account the new responsibilities of the synchronization script
         # Sync script parameters
         script_full_path = self._get_configuration_manager().get_path_script_filesystem_sync()
+        app_root_dir = config_manager.get_app_config_manager().get_application_root_folder()
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
         self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
         sync_subprocess = subprocess.Popen(sync_command, shell=True)
