@@ -684,6 +684,7 @@ class PrideClusterExporter(Director):
             # Set the default trackhub destination folder by default
             self.__trackhub_destination_folder = trackhub_exporter.track_hub_destination_folder
             if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
+                # If specified, the destination folder will be a subfolder there
                 self.__trackhub_destination_folder = os.path.join(
                     self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
                     self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
@@ -692,7 +693,8 @@ class PrideClusterExporter(Director):
             general_toolbox.create_latest_symlink_overwrite(self.__trackhub_destination_folder)
             # Set the destination folder for the exporter of the trackhub
             trackhub_exporter.track_hub_destination_folder = self.__trackhub_destination_folder
-            self._get_logger().info("PRIDE Cluster trackhub destination folder '{}' prepared")
+        # TODO - Workout the parameters that will be used later when synchronizing
+        self._get_logger().info("PRIDE Cluster trackhub destination folder at '{}'")
         return self.__trackhub_destination_folder
 
     def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
