@@ -679,14 +679,17 @@ class PrideClusterExporter(Director):
         return trackhubs.TrackHubExporterPrideClusterFtp()
 
     def __prepare_trackhub_destination_folder(self, trackhub_exporter):
-        # TODO - Review this taking into account the new responsibilities of the synchronization script
         if not self.__trackhub_destination_folder:
-            # Set the default trackhub destination folder by default
-            self.__trackhub_destination_folder = trackhub_exporter.track_hub_destination_folder
+            # Check if anything was specified
             if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
-                # If specified, the destination folder will be a subfolder there
+                # The destination folder will be a subfolder there
                 self.__trackhub_destination_folder = os.path.join(
                     self._get_configuration_manager().get_folder_pride_cluster_trackhubs(),
+                    self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
+            else:
+                # Set the default trackhub destination folder by default
+                self.__trackhub_destination_folder = os.path.join(
+                    trackhub_exporter.track_hub_destination_folder,
                     self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
             # Make sure the destination folder is there
             general_toolbox.check_create_folders([self.__trackhub_destination_folder])
@@ -708,6 +711,7 @@ class PrideClusterExporter(Director):
         # Sync script parameters
         script_full_path = self._get_configuration_manager().get_path_script_filesystem_sync()
         app_root_dir = config_manager.get_app_config_manager().get_application_root_folder()
+
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
         self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
         sync_subprocess = subprocess.Popen(sync_command, shell=True)
