@@ -681,6 +681,7 @@ class PrideClusterExporter(Director):
     def __prepare_trackhub_destination_folder(self, trackhub_exporter):
         # TODO - Review this taking into account the new responsibilities of the synchronization script
         if not self.__trackhub_destination_folder:
+            # Set the default trackhub destination folder by default
             self.__trackhub_destination_folder = trackhub_exporter.track_hub_destination_folder
             if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
                 self.__trackhub_destination_folder = os.path.join(
