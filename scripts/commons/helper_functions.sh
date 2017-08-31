@@ -4,3 +4,7 @@
 #
 # Manuel Bernal Llinares <mbdebian@gmail.com>
 
+# Simple logger
+function log() {
+    echo -e "[$($DATE +%G%m%d_%H.%M)] $@"
+}
