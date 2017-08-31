@@ -693,7 +693,6 @@ class PrideClusterExporter(Director):
             general_toolbox.create_latest_symlink_overwrite(self.__trackhub_destination_folder)
             # Set the destination folder for the exporter of the trackhub
             trackhub_exporter.track_hub_destination_folder = self.__trackhub_destination_folder
-        # TODO - Workout the parameters that will be used later when synchronizing
         self._get_logger().info("PRIDE Cluster trackhub destination folder at '{}'")
         return self.__trackhub_destination_folder
 
