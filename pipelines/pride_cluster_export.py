@@ -116,9 +116,9 @@ class ConfigManager(DirectorConfigurationManager):
         #   running_mode=test
         #   # Name of the script to use for synchronization of the file system
         #   script_name_filesystem_sync=sync_data.sh
-        #   # Boolean to tell the pipeline whether running the synchronization or not (default: yes)
+        #   # Boolean to tell the pipeline whether running the synchronization or not (default: yes). Values: yes/no
         #   do_sync=yes
-        #   # Boolean to tell the pipeline whether tu publish the trackhub or not (default: yes)
+        #   # Boolean to tell the pipeline whether tu publish the trackhub or not (default: yes). Values: yes/no
         #   do_register_trackhub=yes
         if get_pipeline_arguments():
             if self.__pipeline_arguments_object:
