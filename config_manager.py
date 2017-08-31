@@ -231,7 +231,7 @@ class AppConfigManager(ConfigurationManager):
 
     def get_folder_run(self):
         # Configuration for 'run' folder cannot be changed in this version of the pipeline
-        return _folder_run
+        return os.path.abspath(_folder_run)
 
     def get_folder_scripts(self):
         # Configuration for 'scripts' folder cannot be changed in this version of the pipeline
