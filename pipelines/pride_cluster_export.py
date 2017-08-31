@@ -200,7 +200,8 @@ class ConfigManager(DirectorConfigurationManager):
                             script_name)
 
     def is_do_sync(self):
-        pass
+        return (self.__get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_DO_SYNC, 'yes')
+                == 'yes')
 
     def is_do_register_trackhub(self):
         pass
