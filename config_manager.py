@@ -288,7 +288,7 @@ class AppConfigManager(ConfigurationManager):
         Getter for the absolute path of the root folder for the current application, e.g. where the main script is
         :return: absolute path to the root folder of this application
         """
-        pass
+        return os.getcwd()
 
 
 if __name__ == '__main__':
