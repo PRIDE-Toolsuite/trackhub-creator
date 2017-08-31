@@ -778,22 +778,26 @@ class PrideClusterExporter(Director):
             self._get_logger().warning("THIS TRACKHUB WILL NOT BE PUBLISHED, "
                                        "a trackhub public URL could not be worked out")
         else:
-            # Build the description the trackhub registration service needs
-            self._get_logger().debug("Building trackhub registration profile")
-            trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
-            trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
-            trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
-            if trackhub_registration_profile:
-                trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
-                self._get_logger().debug("Trackhub '{}' registration profile built!"
-                                         .format(trackhub_registration_profile.url))
-                # Register the trackhub
-                trackhub_registration_service = self.__get_trackhub_registration_service()
-                trackhub_registration_service.register_trackhub(trackhub_registration_profile)
+            if self._get_configuration_manager().is_do_register_trackhub():
+                # Build the description the trackhub registration service needs
+                self._get_logger().debug("Building trackhub registration profile")
+                trackhub_registration_profile_builder = trackhub_registry.TrackhubRegistryRequestBodyModelExporter()
+                trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
+                trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
+                if trackhub_registration_profile:
+                    trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
+                    self._get_logger().debug("Trackhub '{}' registration profile built!"
+                                             .format(trackhub_registration_profile.url))
+                    # Register the trackhub
+                    trackhub_registration_service = self.__get_trackhub_registration_service()
+                    trackhub_registration_service.register_trackhub(trackhub_registration_profile)
+                else:
+                    error_msg = "ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, the trackhub COULD NOT BE REGISTERED"
+                    self._get_logger().error(error_msg)
+                    raise pipeline_exceptions.PipelineDirectorException(error_msg)
             else:
-                error_msg = "ERROR BUILDING TRACKHUB REGISTRATION PROFILE!, the trackhub COULD NOT BE REGISTERED"
-                self._get_logger().error(error_msg)
-                raise pipeline_exceptions.PipelineDirectorException(error_msg)
+                self._get_logger().warning("This session was launch with DO NOT REGISTER Trackhub flag set, "
+                                           "thus, this trackhub will not be registered")
 
     def _run_pipeline(self):
         # Main pipeline algorithm
