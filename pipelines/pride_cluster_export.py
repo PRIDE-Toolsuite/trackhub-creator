@@ -706,12 +706,11 @@ class PrideClusterExporter(Director):
         self._get_logger().info(
             "PRIDE Cluster Trackhub export COMPLETED, at '{}'".format(trackhub_exporter.track_hub_destination_folder))
 
-    def __sync_filesystem(self):
+    def __sync_filesystem(self, trackhub_exporter):
         # TODO - Update this taking into account the new responsibilities of the synchronization script
         # Sync script parameters
         script_full_path = self._get_configuration_manager().get_path_script_filesystem_sync()
         app_root_dir = config_manager.get_app_config_manager().get_application_root_folder()
-
         sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
         self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
         sync_subprocess = subprocess.Popen(sync_command, shell=True)
@@ -826,7 +825,7 @@ class PrideClusterExporter(Director):
             # Export trackhub to destination folder
             self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
             # Sync Data and get public URL
-            self.__sync_filesystem()
+            self.__sync_filesystem(trackhub_exporter)
             # Publish trackhub
             self.__register_trackhub(trackhub_builder)
         except pipeline_exceptions.PipelineDirectorException as e:
