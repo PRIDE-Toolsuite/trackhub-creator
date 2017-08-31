@@ -223,7 +223,7 @@ class AppConfigManager(ConfigurationManager):
 
     def get_folder_logs(self):
         # Configuration for logging folder cannot be changed in this version of the pipeline
-        return _folder_logs
+        return os.path.abspath(_folder_logs)
 
     def get_folder_resources(self):
         # Configuration for resources folder cannot be changed in this version of the pipeline
