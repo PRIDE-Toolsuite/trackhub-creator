@@ -202,6 +202,9 @@ class ConfigManager(DirectorConfigurationManager):
     def is_do_sync(self):
         pass
 
+    def is_do_register_trackhub(self):
+        pass
+
     def get_cluster_file_exporter_version_parameter(self):
         """
         This method computes the 'version' parameter value for running pride cluster-file-exporter software, it usually
