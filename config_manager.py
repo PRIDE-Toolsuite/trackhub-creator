@@ -215,7 +215,7 @@ class AppConfigManager(ConfigurationManager):
 
     def get_folder_bin(self):
         # 'Bin' folder cannot be changed in this version of the pipeline
-        return _folder_bin
+        return os.path.abspath(_folder_bin)
 
     def get_folder_config(self):
         # Configuration folder cannot be changed in this version of the pipeline
