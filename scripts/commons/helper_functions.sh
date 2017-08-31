@@ -5,6 +5,6 @@
 # Manuel Bernal Llinares <mbdebian@gmail.com>
 
 # Simple logger
-function log() {
+function logger() {
     echo -e "[$($DATE +%G%m%d_%H.%M)] $@"
 }
