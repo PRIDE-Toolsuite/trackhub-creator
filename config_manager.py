@@ -169,7 +169,7 @@ class AppConfigManager(ConfigurationManager):
         if os.environ.get('LSB_JOBID'):
             lsf_jobid = "-{}-".format(os.environ.get('LSB_JOBID'))
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') \
-                            + lsf_jobid\
+                            + lsf_jobid \
                             + "-" \
                             + get_pipeline_name()
         # TODO config, folder_run, etc.
@@ -284,6 +284,10 @@ class AppConfigManager(ConfigurationManager):
         return instance
 
     def get_application_root_folder(self):
+        """
+        Getter for the absolute path of the root folder for the current application, e.g. where the main script is
+        :return: absolute path to the root folder of this application
+        """
         pass
 
 
