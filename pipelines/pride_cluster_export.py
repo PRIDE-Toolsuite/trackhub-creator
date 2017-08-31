@@ -204,7 +204,8 @@ class ConfigManager(DirectorConfigurationManager):
                 == 'yes')
 
     def is_do_register_trackhub(self):
-        pass
+        return (self.__get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_DO_REGISTER_TRACKHUB, 'yes') == 'yes')
 
     def get_cluster_file_exporter_version_parameter(self):
         """
