@@ -283,6 +283,9 @@ class AppConfigManager(ConfigurationManager):
             # TODO This will return None and everything else will fail, review this in the future for a better strategy
         return instance
 
+    def get_application_root_folder(self):
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
