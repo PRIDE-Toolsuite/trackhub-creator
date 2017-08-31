@@ -165,7 +165,13 @@ class AppConfigManager(ConfigurationManager):
         global _log_level
         global _logger_formatters
         # Session ID
-        self.__session_id = time.strftime('%Y.%m.%d_%H.%M') + "-" + get_pipeline_name()
+        lsf_jobid = ''
+        if os.environ.get('LSB_JOBID'):
+            lsf_jobid = "-{}-".format(os.environ.get('LSB_JOBID'))
+        self.__session_id = time.strftime('%Y.%m.%d_%H.%M') \
+                            + lsf_jobid\
+                            + "-" \
+                            + get_pipeline_name()
         # TODO config, folder_run, etc.
         self.__session_working_dir = os.path.abspath(os.path.join(self.get_folder_run(), self.get_session_id()))
         # TODO check and create folders (if needed)
