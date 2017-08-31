@@ -708,42 +708,43 @@ class PrideClusterExporter(Director):
 
     def __sync_filesystem(self, trackhub_exporter):
         # TODO - Update this taking into account the new responsibilities of the synchronization script
-        # Sync script parameters
-        script_full_path = self._get_configuration_manager().get_path_script_filesystem_sync()
-        app_root_dir = config_manager.get_app_config_manager().get_application_root_folder()
-        source_trackhub_container_folder = os.path.dirname(trackhub_exporter.track_hub_destination_folder)
-        source_trackhub_folder = trackhub_exporter.track_hub_destination_folder
-        # TODO - Build the synchronization command
-        sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
-        self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
-        sync_subprocess = subprocess.Popen(sync_command, shell=True)
-        try:
-            stdout, stderr = sync_subprocess \
-                .communicate(timeout=self._get_configuration_manager().get_filesystem_sync_run_timeout())
-        except subprocess.TimeoutExpired as e:
-            exception_message = "TIMEOUT ERROR while running Filesystem synchronization script '{}'," \
-                                " Command: '{}'\n" \
-                                "STDOUT: '{}'\n" \
-                                "STDERR: '{}'" \
-                .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
-                        sync_command,
-                        stdout,
-                        stderr)
-            self._get_logger().error(exception_message)
-            sync_subprocess.kill()
-            stdout, stderr = sync_subprocess.communicate()
-            raise pipeline_exceptions.PipelineDirectorException(exception_message) from e
-        if sync_subprocess.poll() and (sync_subprocess.returncode != 0):
-            error_msg = "ERROR while running Filesystem synchronization script '{}'," \
-                        " Command: '{}'\n" \
-                        "STDOUT: '{}'\n" \
-                        "STDERR: '{}'" \
-                .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
-                        sync_command,
-                        stdout,
-                        stderr)
-            self._get_logger().error(error_msg)
-            raise pipeline_exceptions.PipelineDirectorException(error_msg)
+        if self._get_configuration_manager().is_do_sync():
+            # Sync script parameters
+            script_full_path = self._get_configuration_manager().get_path_script_filesystem_sync()
+            app_root_dir = config_manager.get_app_config_manager().get_application_root_folder()
+            source_trackhub_container_folder = os.path.dirname(trackhub_exporter.track_hub_destination_folder)
+            source_trackhub_folder = trackhub_exporter.track_hub_destination_folder
+            # TODO - Build the synchronization command
+            sync_command = self._get_configuration_manager().get_path_script_filesystem_sync()
+            self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
+            sync_subprocess = subprocess.Popen(sync_command, shell=True)
+            try:
+                stdout, stderr = sync_subprocess \
+                    .communicate(timeout=self._get_configuration_manager().get_filesystem_sync_run_timeout())
+            except subprocess.TimeoutExpired as e:
+                exception_message = "TIMEOUT ERROR while running Filesystem synchronization script '{}'," \
+                                    " Command: '{}'\n" \
+                                    "STDOUT: '{}'\n" \
+                                    "STDERR: '{}'" \
+                    .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
+                            sync_command,
+                            stdout,
+                            stderr)
+                self._get_logger().error(exception_message)
+                sync_subprocess.kill()
+                stdout, stderr = sync_subprocess.communicate()
+                raise pipeline_exceptions.PipelineDirectorException(exception_message) from e
+            if sync_subprocess.poll() and (sync_subprocess.returncode != 0):
+                error_msg = "ERROR while running Filesystem synchronization script '{}'," \
+                            " Command: '{}'\n" \
+                            "STDOUT: '{}'\n" \
+                            "STDERR: '{}'" \
+                    .format(self._get_configuration_manager().get_path_script_filesystem_sync(),
+                            sync_command,
+                            stdout,
+                            stderr)
+                self._get_logger().error(error_msg)
+                raise pipeline_exceptions.PipelineDirectorException(error_msg)
 
     def __get_trackhub_public_url(self, trackhub_builder):
         # TODO - Update this to calculate the URL regardless a folder was supplied or not
