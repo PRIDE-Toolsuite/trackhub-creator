@@ -157,6 +157,7 @@ class ConfigManager(DirectorConfigurationManager):
             return default
 
     def get_folder_pride_cluster_trackhubs(self):
+        # TODO - Review this taking into account the new responsibilities of the synchronization script
         return self.__get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS)
 
