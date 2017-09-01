@@ -64,6 +64,9 @@ clean_dev: clean_bin
 clean_logs:
 	@rm -rf logs/*log
 
+lsf_clean_logs:
+	@rm -rf logs/lsf-*
+
 clean_tmp:
 	@rm -rf tmp
 
@@ -74,7 +77,7 @@ clean_bin:
 	@rm -rf bin/*
 	@touch bin/empty
 
-lsf_clean: clean
+lsf_clean: clean lsf_clean_logs
 	@echo "[LSF] - Clean run"
 
 clean: clean_logs clean_sessions clean_tmp
@@ -85,4 +88,4 @@ lsf_clean_all: clean clean_bin
 
 clean_all: clean clean_dev
 
-.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean lsf_install_requirements lsf_python_install lsf_install lsf_tests lsf_clean lsf_clean_all
+.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean lsf_install_requirements lsf_python_install lsf_install lsf_tests lsf_clean lsf_clean_all lsf_clean_logs
