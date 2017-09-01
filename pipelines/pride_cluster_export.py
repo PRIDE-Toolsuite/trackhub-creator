@@ -748,6 +748,9 @@ class PrideClusterExporter(Director):
 
     def __get_trackhub_public_url(self, trackhub_builder):
         # TODO - Update this to calculate the URL regardless a folder was supplied or not
+        # Check if we have been given the public base URL as a parameter
+        if self._get_configuration_manager().get_url_pride_cluster_trackhubs():
+            pass
         # We need to find out if we are dealing with a folder exposed to the public or not
         if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
             # To calculate the relative path, we remove the root part of the trackhub folder path,
