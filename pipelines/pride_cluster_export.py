@@ -406,7 +406,14 @@ class PrideClusterExporter(Director):
         return cluster_file_exporter_result_mapping
 
     def __run_cluster_file_exporter(self):
-        # time java -Xmx12G -jar cluster-file-exporter-1.0.0-SNAPSHOT.jar -out ~/tmp/pride-cluster/with_pogo -version 2016-05 -quality 2 -filter_out_multitaxonomies -include_pogo_export > output.log 2>&1 ; cd ..
+        # time java -Xmx12G -jar
+        #   cluster-file-exporter-1.0.0-SNAPSHOT.jar
+        #   -out ~/tmp/pride-cluster/with_pogo
+        #   -version 2016-05
+        #   -quality 2
+        #   -filter_out_multitaxonomies
+        #   -include_pogo_export
+        #   > output.log 2>&1 ; cd ..
         # Build cluster-file-exporter command
         cluster_file_exporter_command = \
             "time java -Xmx{} -jar {} -out {} -version {} -quality {} " \
