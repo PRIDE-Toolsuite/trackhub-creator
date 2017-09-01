@@ -748,7 +748,7 @@ class PrideClusterExporter(Director):
 
     def __get_trackhub_public_url(self, trackhub_builder):
         # Check if we have been given the public base URL as a parameter
-        trackhub_publid_url = ""
+        trackhub_public_url = ""
         if self._get_configuration_manager().get_url_pride_cluster_trackhubs():
             # To calculate the relative path, we remove the root part of the trackhub folder path,
             # e.g. '/nfs/pride/pride-cluster/trackhubs' from '/nfs/pride/pride-cluster/trackhubs/2017-08'
@@ -763,11 +763,11 @@ class PrideClusterExporter(Director):
                 relative_path = self.__trackhub_destination_folder \
                     .replace(os.path.dirname(self.__trackhub_destination_folder), '')
             # URL to the hub.txt file within the root of the trackhub
-            trackhub_publid_url = "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
+            trackhub_public_url = "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
                                     relative_path,
                                     trackhub_builder.track_hub.get_hub())
-        self._get_logger().info("Trackhub Public URL is '{}'".format(trackhub_publid_url))
-        return trackhub_publid_url
+        self._get_logger().info("Trackhub Public URL is '{}'".format(trackhub_public_url))
+        return trackhub_public_url
 
     def __get_trackhub_registration_service(self):
         # Cache the registry service instance, we only need one
