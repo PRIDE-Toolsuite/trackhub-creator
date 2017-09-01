@@ -714,7 +714,6 @@ class PrideClusterExporter(Director):
             "PRIDE Cluster Trackhub export COMPLETED, at '{}'".format(trackhub_exporter.track_hub_destination_folder))
 
     def __sync_filesystem(self, trackhub_exporter):
-        # TODO - Update this taking into account the new responsibilities of the synchronization script
         if self._get_configuration_manager().is_do_sync():
             # Sync script parameters
             sync_script_launcher = self._get_configuration_manager().get_path_script_filesystem_sync()
