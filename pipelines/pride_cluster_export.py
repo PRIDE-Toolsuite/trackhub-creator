@@ -720,7 +720,7 @@ class PrideClusterExporter(Director):
             app_root_dir = config_manager.get_app_config_manager().get_application_root_folder()
             source_trackhub_container_folder = os.path.dirname(trackhub_exporter.track_hub_destination_folder)
             source_trackhub_folder = trackhub_exporter.track_hub_destination_folder
-            # TODO - Build the synchronization command
+            # Build the synchronization command
             sync_command = "{} {} {}".format(app_root_dir, source_trackhub_container_folder, source_trackhub_folder)
             self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
             sync_subprocess = subprocess.Popen(sync_command, shell=True)
