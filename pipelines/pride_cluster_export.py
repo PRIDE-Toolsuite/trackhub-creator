@@ -760,18 +760,16 @@ class PrideClusterExporter(Director):
             # e.g. '/nfs/pride/pride-cluster/trackhubs' from '/nfs/pride/pride-cluster/trackhubs/2017-08'
             # to obtain '/2017-08' that we can attach to the end of the base public URL for the trackhubs
             relative_path = ''
+            # Default base folder is the parent folder of the trackhub destination folder
+            base_folder = os.path.dirname(self.__trackhub_destination_folder)
             if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
                 # If a pride cluster folder has been specified, we do it relative to that
-                relative_path = self.__trackhub_destination_folder \
-                    .replace(self._get_configuration_manager().get_folder_pride_cluster_trackhubs(), '')
-            else:
-                # If not, we build it relative to the trackhub_destination_folder's parent folder
-                relative_path = self.__trackhub_destination_folder \
-                    .replace(os.path.dirname(self.__trackhub_destination_folder), '')
+                base_folder = self._get_configuration_manager().get_folder_pride_cluster_trackhubs()
+            relative_path = self.__trackhub_destination_folder.replace(base_folder, '')
             # URL to the hub.txt file within the root of the trackhub
             trackhub_public_url = "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
-                                    relative_path,
-                                    trackhub_builder.track_hub.get_hub())
+                                                   relative_path,
+                                                   trackhub_builder.track_hub.get_hub())
         self._get_logger().info("Trackhub Public URL is '{}'".format(trackhub_public_url))
         return trackhub_public_url
 
