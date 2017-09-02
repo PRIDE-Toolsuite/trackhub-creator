@@ -755,7 +755,7 @@ class PrideClusterExporter(Director):
                 self._get_logger().error(error_msg)
                 raise pipeline_exceptions.PipelineDirectorException(error_msg)
 
-    def __get_trackhub_public_url(self, trackhub_builder):
+    def __get_trackhub_public_url(self, trackhub_exporter):
         # Check if we have been given the public base URL as a parameter
         trackhub_public_url = ""
         if self._get_configuration_manager().get_url_pride_cluster_trackhubs():
@@ -772,7 +772,9 @@ class PrideClusterExporter(Director):
             # URL to the hub.txt file within the root of the trackhub
             trackhub_public_url = "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
                                                    relative_path,
-                                                   trackhub_builder.track_hub.get_hub())
+                                                   os.path.basename(trackhub_exporter
+                                                                    .export_summary
+                                                                    .track_hub_descriptor_file_path))
         self._get_logger().info("Trackhub Public URL is '{}'".format(trackhub_public_url))
         return trackhub_public_url
 
@@ -783,13 +785,14 @@ class PrideClusterExporter(Director):
                 trackhub_registry.TrackhubRegistryService(
                     self._get_configuration_manager().get_trackhub_registry_username(),
                     self._get_configuration_manager().get_trackhub_registry_password())
-            # Set the registry base URL
-            self.__trackhub_registry_service.trackhub_registry_base_url = \
-                self._get_configuration_manager().get_trackhub_registry_url()
+            # Set the registry base URL, if set, use default otherwise
+            if self._get_configuration_manager().get_trackhub_registry_url():
+                self.__trackhub_registry_service.trackhub_registry_base_url = \
+                    self._get_configuration_manager().get_trackhub_registry_url()
         return self.__trackhub_registry_service
 
-    def __register_trackhub(self, trackhub_builder):
-        if self.__get_trackhub_public_url(trackhub_builder) == '':
+    def __register_trackhub(self, trackhub_builder, trackhub_exporter):
+        if self.__get_trackhub_public_url(trackhub_exporter) == '':
             self._get_logger().warning("THIS TRACKHUB WILL NOT BE PUBLISHED, "
                                        "a trackhub public URL could not be worked out")
         else:
@@ -800,7 +803,7 @@ class PrideClusterExporter(Director):
                 trackhub_builder.accept_exporter(trackhub_registration_profile_builder)
                 trackhub_registration_profile = trackhub_registration_profile_builder.export_summary
                 if trackhub_registration_profile:
-                    trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_builder)
+                    trackhub_registration_profile.url = self.__get_trackhub_public_url(trackhub_exporter)
                     self._get_logger().debug("Trackhub '{}' registration profile built!"
                                              .format(trackhub_registration_profile.url))
                     # Register the trackhub
@@ -850,7 +853,7 @@ class PrideClusterExporter(Director):
             # Sync Data and get public URL
             self.__sync_filesystem(trackhub_exporter)
             # Publish trackhub
-            self.__register_trackhub(trackhub_builder)
+            self.__register_trackhub(trackhub_builder, trackhub_exporter)
         except pipeline_exceptions.PipelineDirectorException as e:
             # It will be the helpers logging the exception
             return False
