@@ -45,7 +45,10 @@ class TrackhubRegistryRequestBodyModel:
                              .format(assembly, accession))
 
     def as_payload_object(self):
-        pass
+        return {'url': self.url,
+                'public': self.public,
+                'type': self.type,
+                'assemblies': self.assembly_accession_map}
 
     def __str__(self):
         return json.dumps({'url': self.url,
