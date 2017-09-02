@@ -46,9 +46,11 @@ class TrackhubRegistryRequestBodyModel:
 
     def __str__(self):
         return json.dumps({'url': self.url,
-                           'public': self.public,
-                           'type': self.type,
                            'assemblies': self.assembly_accession_map})
+#        return json.dumps({'url': self.url,
+#                           'public': self.public,
+#                           'type': self.type,
+#                           'assemblies': self.assembly_accession_map})
 
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
