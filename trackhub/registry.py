@@ -29,7 +29,7 @@ class TrackhubRegistryRequestBodyModel:
         self.url = None
         self.assembly_accession_map = {}
         # Trackhub is public by default
-        self.public = 1
+        self.public = '1'
         # Default type for trackhubs is PROTEOMICS
         self.type = 'PROTEOMICS'
 
