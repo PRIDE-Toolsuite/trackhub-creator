@@ -118,11 +118,12 @@ class TrackhubRegistryService:
         auth_token = self.__login()
         headers = {'user': self.username, 'auth_token': auth_token}
         payload = str(trackhub_registry_model)
+        api_register_endpoint = "{}{}".format(self.trackhub_registry_base_url,
+                                              self.__TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB)
+        self.logger.debug("REGISTER TRACKHUB, endpoint '{}', payload '{}'".format(api_register_endpoint, payload))
         try:
             # Register Trackhub
-            response = requests.post("{}{}"
-                                     .format(self.trackhub_registry_base_url,
-                                             self.__TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB),
+            response = requests.post(api_register_endpoint,
                                      headers=headers, json=payload, verify=True)
             if not response.ok:
                 raise trackhub_exceptions.TrackhubRegistryServiceException(
