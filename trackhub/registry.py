@@ -64,7 +64,9 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
             for assembly in trackhub_builder.assemblies:
                 self.export_summary \
                     .add_accession_for_assembly(assembly,
-                                                ensembl_species_service.get_species_entry_for_assembly(assembly))
+                                                ensembl_species_service
+                                                .get_species_entry_for_assembly(assembly)
+                                                .get_assembly_accession())
         return self.export_summary
 
 
