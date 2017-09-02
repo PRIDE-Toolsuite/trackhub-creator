@@ -123,7 +123,7 @@ class TrackhubRegistryService:
     def register_trackhub(self, trackhub_registry_model):
         auth_token = self.__login()
         headers = {'user': self.username, 'auth_token': auth_token}
-        payload = str(trackhub_registry_model)
+        payload = trackhub_registry_model.as_payload_object()
         api_register_endpoint = "{}{}".format(self.trackhub_registry_base_url,
                                               self.__TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB)
         self.logger.debug("REGISTER TRACKHUB, endpoint '{}', payload '{}'".format(api_register_endpoint, payload))
