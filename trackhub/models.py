@@ -108,6 +108,9 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
             config_manager.get_app_config_manager().get_session_working_dir(),
             os.path.join('pride_cluster', 'track_hubs'))
 
+    def __get_tracks_with_non_empty_bed_files(self):
+        pass
+
     def export_simple_trackhub(self, trackhub_builder):
         file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
         if not self.export_summary and not os.path.isfile(file_trackhub_descriptor):
