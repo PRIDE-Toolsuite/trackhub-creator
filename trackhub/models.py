@@ -153,6 +153,9 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                 tracks_with_non_empty_bed_files = \
                     self.__get_tracks_with_non_empty_bed_files(assembly,
                                                                trackhub_builder.assemblies[assembly].track_collector)
+                if not tracks_with_non_empty_bed_files:
+                    self.logger.warning("Assembly '{}' contains ALL EMPTY BIG DATA FILE TRACKS -- SKIPPED --"
+                                        .format(assembly))
                 assembly_folder = os.path.join(self.track_hub_destination_folder, assembly)
                 # Create the folder for the assembly
                 general.check_create_folders([assembly_folder])
