@@ -541,8 +541,9 @@ class PrideClusterExporter(Director):
                 self._get_logger().error("GTF file NOT FOUND to use with PoGo")
                 return False
             # Prepare PoGo run command
-            pogo_command = "time {} -fasta {} -gtf {} -in {}" \
+            pogo_command = "time {} -species {} -fasta {} -gtf {} -in {}" \
                 .format(self._get_configuration_manager().get_pogo_binary_file_path(),
+                        taxonomy,
                         pogo_parameter_protein_sequence_file_path,
                         pogo_parameter_gtf_file_path,
                         pogo_parameter_file_input)
