@@ -150,6 +150,9 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
             # TODO - more complex genomes.txt files is not as critical as getting the 'tracks' the right way
             assembly_mapping = {}
             for assembly in trackhub_builder.assemblies:
+                tracks_with_non_empty_bed_files = \
+                    self.__get_tracks_with_non_empty_bed_files(assembly,
+                                                               trackhub_builder.assemblies[assembly].track_collector)
                 assembly_folder = os.path.join(self.track_hub_destination_folder, assembly)
                 # Create the folder for the assembly
                 general.check_create_folders([assembly_folder])
