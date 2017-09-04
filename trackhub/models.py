@@ -123,6 +123,14 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                                     track.get_track(),
                                     track.get_big_data_url())
                 continue
+            big_file_stat_info = os.stat(track.get_big_data_url())
+            if big_file_stat_info.st_size == 0:
+                self.logger.warning("Assembly '{}' contains a track '{}' with AN EMPTY BIG DATA FILE at '{}', "
+                                    "-- SKIPPED --",
+                                    assembly,
+                                    track.get_track(),
+                                    track.get_big_data_url())
+                continue
         return non_empty_file_tracks
 
     def export_simple_trackhub(self, trackhub_builder):
