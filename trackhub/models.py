@@ -131,6 +131,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                                     track.get_track(),
                                     track.get_big_data_url())
                 continue
+            non_empty_file_tracks.append(track)
         return non_empty_file_tracks
 
     def export_simple_trackhub(self, trackhub_builder):
