@@ -108,7 +108,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
             config_manager.get_app_config_manager().get_session_working_dir(),
             os.path.join('pride_cluster', 'track_hubs'))
 
-    def __get_tracks_with_non_empty_bed_files(self, track_collector):
+    def __get_tracks_with_non_empty_bed_files(self, assembly, track_collector):
         non_empty_file_tracks = []
         for track in track_collector.get_tracks():
             if not track.get_big_data_url():
