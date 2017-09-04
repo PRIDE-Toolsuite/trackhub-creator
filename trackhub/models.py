@@ -110,7 +110,12 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
 
     def __get_tracks_with_non_empty_bed_files(self, track_collector):
         non_empty_file_tracks = []
-        # TODO
+        for track in track_collector.get_tracks():
+            if not track.get_big_data_url():
+                self.logger.warning("Assembly '{}' contains a track '{}' with NO BIG DATA URL, this track "
+                                    "will show up in the exported track information for the assembly, "
+                                    "but no data is being copied", assembly, track.get_track())
+                continue
         return non_empty_file_tracks
 
     def export_simple_trackhub(self, trackhub_builder):
@@ -138,11 +143,6 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                     # Copy track file to assembly folder
                     # TODO - WARNING, as I've seen on the tests, big data url can be None for some cases, look for the
                     # TODO - source of this
-                    if not track.get_big_data_url():
-                        self.logger.warning("Assembly '{}' contains a track '{}' with NO BIG DATA URL, this track "
-                                            "will show up in the exported track information for the assembly, "
-                                            "but no data is being copied", assembly, track.get_track())
-                        continue
                     big_data_file_name = os.path.basename(track.get_big_data_url())
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     shutil.copy(track.get_big_data_url(), destination_file_path)
