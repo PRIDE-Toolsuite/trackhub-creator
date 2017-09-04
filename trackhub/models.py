@@ -181,11 +181,10 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                     self.logger.info(
                         "Assembly '{}' ---> Data for track '{}' prepared, track information updated"
                             .format(assembly, track.get_track()))
-                # Export track collector data as string into a trackDB.txt file within the assembly folder
+                # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
-                # TODO - I need a new TrackCollector that works only over a collection of tracks
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
-                trackhub_builder.assemblies[assembly].track_collector.accept(track_collector_exporter)
+                track_collector_exporter.export_from_track_collection(tracks_with_non_empty_bed_files)
                 # Add assembly entry to genomes.txt files within trackhub root folder
                 assembly_mapping[assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
                                                           os.path.basename(trackdb_file_path))
