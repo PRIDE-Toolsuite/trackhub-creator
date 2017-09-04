@@ -66,6 +66,9 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
             for track in track_collector.get_tracks():
                 wf.write(str(track) + "\n\n")
 
+    def export_from_track_collection(self, tracks):
+        pass
+
 
 # TrackHub Exporters
 class TrackHubExportSummary:
