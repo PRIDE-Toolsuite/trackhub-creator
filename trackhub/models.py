@@ -160,8 +160,8 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                 # Create the folder for the assembly
                 general.check_create_folders([assembly_folder])
                 self.logger.info("For Assembly '{}', trackhub folder created at '{}'".format(assembly, assembly_folder))
-                # Per track in its track collector
-                for track in trackhub_builder.assemblies[assembly].track_collector.get_tracks():
+                # Per track in its track collector, we'll process only those tracks with non-empty big data files
+                for track in tracks_with_non_empty_bed_files:
                     # Copy track file to assembly folder
                     # TODO - WARNING, as I've seen on the tests, big data url can be None for some cases, look for the
                     # TODO - source of this
