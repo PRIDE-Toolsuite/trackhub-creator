@@ -163,7 +163,6 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                 # Per track in its track collector, we'll process only those tracks with non-empty big data files
                 for track in tracks_with_non_empty_bed_files:
                     # Copy track file to assembly folder
-                    # TODO - WARNING, as I've seen on the tests, big data url can be None for some cases, look for the
                     # TODO - source of this
                     big_data_file_name = os.path.basename(track.get_big_data_url())
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
