@@ -67,7 +67,11 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
                 wf.write(str(track) + "\n\n")
 
     def export_from_track_collection(self, tracks):
-        pass
+        self.logger.debug("Exporting #{} track(s) from a given collection to file '{}'"
+                          .format(len(tracks), self.destination_file_path))
+        with open(self.destination_file_path, 'w') as wf:
+            for track in tracks:
+                wf.write(str(track) + "\n\n")
 
 
 # TrackHub Exporters
