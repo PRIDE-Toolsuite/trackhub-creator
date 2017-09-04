@@ -176,6 +176,7 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                             .format(assembly, track.get_track()))
                 # Export track collector data as string into a trackDB.txt file within the assembly folder
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
+                # TODO - I need a new TrackCollector that works only over a collection of tracks
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
                 trackhub_builder.assemblies[assembly].track_collector.accept(track_collector_exporter)
                 # Add assembly entry to genomes.txt files within trackhub root folder
