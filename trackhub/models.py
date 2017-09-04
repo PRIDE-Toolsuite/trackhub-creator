@@ -112,9 +112,16 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
         non_empty_file_tracks = []
         for track in track_collector.get_tracks():
             if not track.get_big_data_url():
-                self.logger.warning("Assembly '{}' contains a track '{}' with NO BIG DATA URL, this track "
-                                    "will show up in the exported track information for the assembly, "
-                                    "but no data is being copied", assembly, track.get_track())
+                self.logger.warning("Assembly '{}' contains a track '{}' with NO BIG DATA URL, -- SKIPPED --",
+                                    assembly,
+                                    track.get_track())
+                continue
+            if not os.path.exists(track.get_big_data_url()):
+                self.logger.warning("Assembly '{}' contains a track '{}' with AN INVALID BIG DATA URL '{}', "
+                                    "-- SKIPPED --",
+                                    assembly,
+                                    track.get_track(),
+                                    track.get_big_data_url())
                 continue
         return non_empty_file_tracks
 
