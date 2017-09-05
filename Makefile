@@ -43,6 +43,8 @@ tmp:
 	@mkdir tmp
 
 install_dev: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
+	@echo "Preparing submodules to follow their 'master' branch..."
+	@git submodule foreach git checkout master
 
 install: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
 
