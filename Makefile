@@ -12,8 +12,8 @@ lsf_python_install:
 	@echo -e "\n[LSF] Local Python Environment READY <---\n\n"
 
 python_install:
-	@sudo pip install virtualenv
-	@virtualenv python_install
+	@pip install --upgrade --user virtualenv
+	@virtualenv -p `which python3` python_install
 
 bin/maven:
 	@cd tmp; wget http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
@@ -29,7 +29,7 @@ bin/lsf-cluster-file-exporter: tmp bin/maven
 
 bin/cluster-file-exporter/cluster-file-exporter.jar: tmp bin/maven
 	@cd tmp; git clone https://github.com/PRIDE-Cluster/cluster-file-exporter.git
-	@cd tmp/cluster-file-exporter; ../../bin/maven/mvn clean package -s ../../config/private/maven/settings.xml -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
+	@cd tmp/cluster-file-exporter; ../../bin/maven/bin/mvn clean package -s ../../config/private/maven/settings.xml -P ebi-repo-profile,db-pride-repo-pridepro,db-pride-repo-pridecluster-user
 	@mkdir bin/cluster-file-exporter
 	@cd bin/cluster-file-exporter; unzip ../../tmp/cluster-file-exporter/target/cluster-file-exporter*zip; cp cluster-file-exporter-*jar cluster-file-exporter.jar
 
