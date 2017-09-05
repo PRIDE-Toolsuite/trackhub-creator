@@ -51,7 +51,7 @@ lsf_install: lsf_python_install lsf_install_requirements bin/lsf-cluster-file-ex
 update_requirements_file: dev_environment
 	@python_install/bin/pipreqs --use-local --savepath requirements.txt $(PWD)
 
-tests: dev_environment
+tests: 
 	@python_install/bin/python main_app.py test
 
 lsf_tests: 
