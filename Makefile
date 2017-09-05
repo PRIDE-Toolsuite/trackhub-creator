@@ -42,7 +42,7 @@ bin/pogo/pogo: tmp
 tmp:
 	@mkdir tmp
 
-dev_environment: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
+install_dev: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
 
 install: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
 
@@ -88,4 +88,4 @@ lsf_clean_all: clean clean_bin
 
 clean_all: clean clean_dev
 
-.PHONY: install dev_environment install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean lsf_install_requirements lsf_python_install lsf_install lsf_tests lsf_clean lsf_clean_all lsf_clean_logs
+.PHONY: install install_dev install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean lsf_install_requirements lsf_python_install lsf_install lsf_tests lsf_clean lsf_clean_all lsf_clean_logs
