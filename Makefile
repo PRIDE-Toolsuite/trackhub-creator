@@ -48,7 +48,7 @@ install_dev: python_install install_requirements bin/cluster-file-exporter/clust
 
 install: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
 
-lsf_install: lsf_python_install lsf_install_requirements bin/lsf-cluster-file-exporter bin/pogo/pogo
+install_lsf: lsf_python_install lsf_install_requirements bin/lsf-cluster-file-exporter bin/pogo/pogo
 
 update_requirements_file:
 	@python_install/bin/pipreqs --use-local --savepath requirements.txt $(PWD)
@@ -90,4 +90,4 @@ lsf_clean_all: clean clean_bin
 
 clean_all: clean clean_dev
 
-.PHONY: install install_dev install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean lsf_install_requirements lsf_python_install lsf_install lsf_tests lsf_clean lsf_clean_all lsf_clean_logs
+.PHONY: install install_dev install_lsf install_requirements update_requirements_file tests clean_logs clean_sessions clean_dev clean_all clean_tmp clean_bin clean lsf_install_requirements lsf_python_install lsf_tests lsf_clean lsf_clean_all lsf_clean_logs
