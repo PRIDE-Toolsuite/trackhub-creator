@@ -44,7 +44,7 @@ tmp:
 
 dev_environment: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
 
-install: dev_environment
+install: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
 
 lsf_install: lsf_python_install lsf_install_requirements bin/lsf-cluster-file-exporter bin/pogo/pogo
 
