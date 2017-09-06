@@ -125,7 +125,10 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                 continue
             if not os.path.exists(track.get_big_data_url()):
                 self.logger.warning("Assembly '{}' contains a track '{}' with AN INVALID BIG DATA URL '{}', "
-                                    "-- SKIPPED --".format(assembly,track.get_track(),track.get_big_data_url()))
+                                    "-- SKIPPED --"
+                                    .format(assembly,
+                                            track.get_track(),
+                                            track.get_big_data_url()))
                 continue
             big_file_stat_info = os.stat(track.get_big_data_url())
             if big_file_stat_info.st_size == 0:
