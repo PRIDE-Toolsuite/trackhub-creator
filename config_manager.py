@@ -305,6 +305,14 @@ class AppConfigManager(ConfigurationManager):
                             os.path.join(self._CONFIG_POGO_BIN_SUBFOLDER,
                                          self._CONFIG_POGO_BIN_FILE_NAME))
 
+    def get_pogo_run_timeout(self):
+        """
+        Maximum amount of time we should wait when running PoGo before considering the operation dead.
+        This is a general, application wide timeout parameter to use straight away or as a reference.
+        :return: time out in seconds
+        """
+        return 7200
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
