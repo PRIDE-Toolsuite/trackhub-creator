@@ -29,6 +29,8 @@ can be seen on this sample:
 
 # Globals
 __configuration_file = None
+__pipeline_arguments = None
+
 
 # Pipeline properties access
 
