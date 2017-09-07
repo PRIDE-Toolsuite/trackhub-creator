@@ -28,6 +28,7 @@ can be seen on this sample:
 """
 
 # Globals
+__configuration_file = None
 
 # Pipeline properties access
 
