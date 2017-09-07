@@ -30,7 +30,7 @@ can be seen on this sample:
 # Globals
 __configuration_file = None
 __pipeline_arguments = None
-
+__pipeline_director = None
 
 # Pipeline properties access
 
