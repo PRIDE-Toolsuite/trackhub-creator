@@ -35,14 +35,17 @@ __pipeline_director = None
 
 # Pipeline properties access
 def set_configuration_file(config_file):
+    # TODO
     pass
 
 
 def set_pipeline_arguments(pipeline_arguments):
+    # TODO
     pass
 
 
 def get_pipeline_director():
+    # TODO
     pass
 
 if __name__ == '__main__':
