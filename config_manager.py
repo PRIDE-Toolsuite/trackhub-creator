@@ -301,7 +301,7 @@ class AppConfigManager(ConfigurationManager):
         in the near future
         :return: PoGo binary file path
         """
-        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
+        return os.path.join(self.get_folder_bin(),
                             os.path.join(self._CONFIG_POGO_BIN_SUBFOLDER,
                                          self._CONFIG_POGO_BIN_FILE_NAME))
 
