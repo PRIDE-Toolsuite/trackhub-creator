@@ -38,5 +38,9 @@ def set_configuration_file(config_file):
     pass
 
 
+def set_pipeline_arguments(pipeline_arguments):
+    pass
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
