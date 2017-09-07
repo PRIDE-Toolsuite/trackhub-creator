@@ -42,8 +42,10 @@ def set_configuration_file(config_file):
 
 
 def set_pipeline_arguments(pipeline_arguments):
-    # TODO
-    pass
+    global __pipeline_arguments
+    if __pipeline_arguments is None:
+        __pipeline_arguments = pipeline_arguments
+    return __pipeline_arguments
 
 
 def get_pipeline_director():
