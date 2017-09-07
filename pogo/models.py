@@ -58,8 +58,8 @@ class PogoRunResult:
                     self._get_logger().info(
                         "PoGo run result '{}' ---> '{}', at full path '{}'".format(pogo_result_file_extension,
                                                                                    pogo_result_file_path,
-                                                                                    self.__pogo_result_file_paths[
-                                                                                        pogo_result_file_extension]))
+                                                                                   self.__pogo_result_file_paths[
+                                                                                       pogo_result_file_extension]))
 
     def __get_pogo_result_file_path(self, file_extension):
         if file_extension in self.__pogo_result_file_paths:
@@ -95,6 +95,12 @@ class PogoRunResult:
         return self.__get_pogo_result_file_path(
             module_config_manager.get_configuration_service().get_pogo_result_file_extension_for_main_ptm_bed_file()
         )
+
+
+# PoGo Runners
+def get_pogo_runner():
+    # TODO
+    pass
 
 
 if __name__ == '__main__':
