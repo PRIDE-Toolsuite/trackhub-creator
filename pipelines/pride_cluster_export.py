@@ -12,6 +12,8 @@ This module implements the pipeline for exporting PRIDE Cluster to files using c
 PoGo formatted files for its later use
 """
 
+# TODO - Refactor-out the part that runs pogo for a .pogo file for the given parameters
+
 import os
 import time
 import subprocess
