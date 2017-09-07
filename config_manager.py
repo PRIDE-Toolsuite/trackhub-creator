@@ -293,6 +293,18 @@ class AppConfigManager(ConfigurationManager):
         """
         return os.getcwd()
 
+    def get_pogo_binary_file_path(self):
+        """
+        Get the file path to PoGo binary.
+
+        This is computed here just in case I want to make it either a configuration parameter or a command line argument
+        in the near future
+        :return: PoGo binary file path
+        """
+        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
+                            os.path.join(self._CONFIG_POGO_BIN_SUBFOLDER,
+                                         self._CONFIG_POGO_BIN_FILE_NAME))
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
