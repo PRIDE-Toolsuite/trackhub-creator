@@ -318,25 +318,6 @@ class ConfigManager(DirectorConfigurationManager):
         """
         return "pogo"
 
-    def get_pogo_binary_file_path(self):
-        """
-        Get the file path to PoGo binary.
-
-        This is computed here just in case I want to make it either a configuration parameter or a command line argument
-        in the near future
-        :return: PoGo binary file path
-        """
-        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
-                            os.path.join(self._CONFIG_POGO_BIN_SUBFOLDER,
-                                         self._CONFIG_POGO_BIN_FILE_NAME))
-
-    def get_pogo_run_timeout(self):
-        """
-        Maximum amount of time we should wait when running PoGo before considering the operation dead.
-        :return: time out in seconds
-        """
-        return 7200
-
     def get_filesystem_sync_run_timeout(self):
         """
         Maximum amount of time we should wait when running the Filesystem Synchronization script
