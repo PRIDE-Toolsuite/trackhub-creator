@@ -159,6 +159,9 @@ class AppConfigManager(ConfigurationManager):
     """
     Application wide Configuration Manager
     """
+    # Configuration keys for PoGo
+    _CONFIG_POGO_BIN_SUBFOLDER = "pogo"
+    _CONFIG_POGO_BIN_FILE_NAME = "pogo"
 
     def __init__(self, configuration_object, configuration_file):
         super(AppConfigManager, self).__init__(configuration_object, configuration_file)
