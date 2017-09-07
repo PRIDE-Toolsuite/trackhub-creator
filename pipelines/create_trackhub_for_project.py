@@ -27,6 +27,9 @@ can be seen on this sample:
 }
 """
 
+# App imports
+from pipelines.template_pipeline import Director, DirectorConfigurationManager
+
 # Globals
 __configuration_file = None
 __pipeline_arguments = None
@@ -51,6 +54,12 @@ def set_pipeline_arguments(pipeline_arguments):
 def get_pipeline_director():
     # TODO
     pass
+
+
+class ConfigManager(DirectorConfigurationManager):
+    # TODO
+    pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
