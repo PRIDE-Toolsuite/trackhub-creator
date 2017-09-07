@@ -27,6 +27,7 @@ can be seen on this sample:
 }
 """
 
+import time
 # App imports
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
@@ -67,7 +68,11 @@ class ConfigManager(DirectorConfigurationManager):
 
 class TrackhubCreatorForProject(Director):
     # TODO
-    pass
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
+        runner_id = "{}-{}".format(__name__, time.time())
+        super(TrackhubCreatorForProject, self).__init__(runner_id)
+        self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
+        self.__trackhub_destination_folder = None
 
 
 if __name__ == '__main__':
