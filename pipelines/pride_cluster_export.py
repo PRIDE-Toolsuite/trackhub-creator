@@ -544,7 +544,7 @@ class PrideClusterExporter(Director):
                 return False
             # Prepare PoGo run command
             pogo_command = "time {} -species {} -fasta {} -gtf {} -in {}" \
-                .format(self._get_configuration_manager().get_pogo_binary_file_path(),
+                .format(config_manager.get_app_config_manager().get_pogo_binary_file_path(),
                         taxonomy,
                         pogo_parameter_protein_sequence_file_path,
                         pogo_parameter_gtf_file_path,
@@ -566,7 +566,7 @@ class PrideClusterExporter(Director):
             # TODO - a pipeline that it is not even clear yet how it's going to do many of the things it is going to do
             try:
                 stdout, stderr = pogo_command_subprocess \
-                    .communicate(timeout=self._get_configuration_manager().get_pogo_run_timeout())
+                    .communicate(timeout=config_manager.get_app_config_manager().get_pogo_run_timeout())
             except subprocess.TimeoutExpired as e:
                 self._get_logger().error("TIMEOUT ERROR while running PoGo on input file '{}', "
                                          "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
