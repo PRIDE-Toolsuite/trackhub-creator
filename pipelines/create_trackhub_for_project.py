@@ -28,3 +28,5 @@ can be seen on this sample:
 """
 
 # Globals
+
+# Pipeline properties access
