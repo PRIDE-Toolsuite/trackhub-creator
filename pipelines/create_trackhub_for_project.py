@@ -58,7 +58,11 @@ def get_pipeline_director():
 
 class ConfigManager(DirectorConfigurationManager):
     # TODO
-    pass
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
+        super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
+        # Lazy Process command line arguments
+        self.__pipeline_arguments_object = None
+        self.__running_mode = None
 
 
 class TrackhubCreatorForProject(Director):
