@@ -144,6 +144,7 @@ class ConfigManager(DirectorConfigurationManager):
                     self.logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
+        return self.__pipeline_arguments_object
 
     def _get_value_for_pipeline_argument_key(self, key, default=None):
         if key in self._get_pipeline_arguments_object():
