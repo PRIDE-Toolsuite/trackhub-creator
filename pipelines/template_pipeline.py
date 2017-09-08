@@ -72,8 +72,9 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
                             .format(key, command_line_parameter))
                         continue
                     if key in self.__pipeline_arguments_object:
-                        self._logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
-                                           .format(key, command_line_parameter))
+                        self._logger.error(
+                            "DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
+                            .format(key, command_line_parameter))
                         continue
                     self.__pipeline_arguments_object[key] = value
                     self._logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
