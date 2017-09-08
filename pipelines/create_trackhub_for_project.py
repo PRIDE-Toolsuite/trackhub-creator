@@ -155,6 +155,9 @@ class ProjectDescriptor:
     def get_trackhub_email(self):
         pass
 
+    def get_trackhub_destination_path(self):
+        pass
+
 
 class TrackhubCreatorForProject(Director):
     # TODO
