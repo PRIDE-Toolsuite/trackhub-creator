@@ -70,12 +70,22 @@ class ConfigManager(DirectorConfigurationManager):
 
     # Command Line Argument keys
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_PROJECT_DATA_FILE = 'project_data_file'
-    
+
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
         # Lazy Process command line arguments
         self.__pipeline_arguments_object = None
         self.__running_mode = None
+
+
+# Models for dealing with the data file that describes the project
+class ProjectTrackDescriptor:
+    # TODO
+    pass
+
+class ProjectDescriptor:
+    # TODO
+    pass
 
 
 class TrackhubCreatorForProject(Director):
