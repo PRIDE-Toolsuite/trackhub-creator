@@ -125,6 +125,7 @@ class ProjectDescriptor:
 
     def __init__(self, project_data_file_path):
         self.__project_data_file_path = project_data_file_path
+        self.__trackmaps = None
 
 
 class TrackhubCreatorForProject(Director):
