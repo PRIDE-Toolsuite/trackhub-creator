@@ -29,6 +29,7 @@ can be seen on this sample:
 
 import time
 # App imports
+import config_manager
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
 # Globals
@@ -53,8 +54,12 @@ def set_pipeline_arguments(pipeline_arguments):
 
 
 def get_pipeline_director():
-    # TODO
-    pass
+    global __pipeline_director
+    if __pipeline_director is None:
+        __pipeline_director = TrackhubCreatorForProject(config_manager.read_config_from_file(__configuration_file),
+                                                        __configuration_file,
+                                                        __pipeline_arguments)
+    return __pipeline_director
 
 
 class ConfigManager(DirectorConfigurationManager):
