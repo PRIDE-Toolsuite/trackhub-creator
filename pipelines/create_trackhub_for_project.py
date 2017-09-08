@@ -158,6 +158,9 @@ class ProjectDescriptor:
     def get_trackhub_destination_path(self):
         pass
 
+    def get_trackhub_project_defined_tracks(self):
+        pass
+
 
 class TrackhubCreatorForProject(Director):
     # TODO
