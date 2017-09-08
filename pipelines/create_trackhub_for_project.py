@@ -85,8 +85,8 @@ class ProjectTrackDescriptor:
 
 
 class ProjectDescriptor:
-    # TODO
-    pass
+    def __init__(self, project_data_file_path):
+        self.__project_data_file_path = project_data_file_path
 
 
 class TrackhubCreatorForProject(Director):
