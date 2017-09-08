@@ -49,13 +49,43 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
         # Allowed configuration keys set is empty by default
         return {}
 
-    def _process_pipeline_arguments(self):
-        raise NotImplementedError("Implement how to process your pipeline arguments here")
-
     def _get_pipeline_arguments_object(self):
         if self.__pipeline_arguments_object is None:
             self.__pipeline_arguments_object = self._process_pipeline_arguments()
         return self.__pipeline_arguments_object
+
+    def _process_pipeline_arguments(self):
+        if self._get_pipeline_arguments():
+            if self.__pipeline_arguments_object:
+                self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
+            else:
+                self.__pipeline_arguments_object = {}
+                self.logger.debug("Processing pipeline command line arguments")
+                allowed_keys = self._get_allowed_configuration_keys()
+                for command_line_parameter in self._get_pipeline_arguments().split(
+                        self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR):
+                    key, value = command_line_parameter.split(
+                        self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR)
+                    if key not in allowed_keys:
+                        self.logger.error(
+                            "INVALID KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
+                            .format(key, command_line_parameter))
+                        continue
+                    if key in self.__pipeline_arguments_object:
+                        self.logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
+                                          .format(key, command_line_parameter))
+                        continue
+                    self.__pipeline_arguments_object[key] = value
+                    self.logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
+        else:
+            self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
+        return self.__pipeline_arguments_object
+
+    def _get_value_for_pipeline_argument_key(self, key, default=None):
+        if key in self._get_pipeline_arguments_object():
+            return self._get_pipeline_arguments_object()[key]
+        else:
+            return default
 
 
 class Director:
