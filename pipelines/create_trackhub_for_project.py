@@ -66,7 +66,11 @@ class ConfigManager(DirectorConfigurationManager):
     # Command Line Arguments for this pipeline look like
     #   # This is a JSON formatted file that contains all the relevant information needed for processing the project
     #   # data and create its trackhub
-    #   project_data=project_data.json
+    #   project_data_file=project_data.json
+
+    # Command Line Argument keys
+    _CONFIG_COMMAND_LINE_ARGUMENT_KEY_PROJECT_DATA_FILE = 'project_data_file'
+    
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(ConfigManager, self).__init__(configuration_object, configuration_file, pipeline_arguments)
         # Lazy Process command line arguments
