@@ -162,7 +162,7 @@ class ProjectDescriptor:
                                        "pride-support@ebi.ac.uk")
 
     def get_trackhub_destination_path(self):
-        pass
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_INTERNAL_ABSOLUTE_PATH)
 
     def get_trackhub_project_defined_tracks(self):
         pass
