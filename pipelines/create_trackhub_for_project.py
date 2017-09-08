@@ -129,7 +129,9 @@ class ProjectDescriptor:
         self.__trackmaps = None
 
     def _get_project_data_object(self):
-        pass
+        if not self.__project_data_object:
+            pass
+        return self.__project_data_object
 
 
 class TrackhubCreatorForProject(Director):
