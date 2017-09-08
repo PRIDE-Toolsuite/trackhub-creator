@@ -105,6 +105,9 @@ class ProjectTrackDescriptor:
     def get_track_long_label(self):
         pass
 
+    def get_track_species(self):
+        pass
+
 class ProjectDescriptor:
     # TODO
     # Project Data File keys
