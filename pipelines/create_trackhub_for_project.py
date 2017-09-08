@@ -91,6 +91,7 @@ class ProjectDescriptor:
     _PROJECT_DATA_FILE_KEY_TRACKHUB_LONG_LABEL = 'trackHubLongLabel'
     _PROJECT_DATA_FILE_KEY_TRACKHUB_HUB_TYPE = 'trackHubType'
     _PROJECT_DATA_FILE_KEY_TRACKHUB_EMAIL = 'trackHubEmail'
+    _PROJECT_DATA_FILE_KEY_TRACKHUB_INTERNAL_ABSOLUTE_PATH = 'trackHubInternalAbsolutePath'
 
     def __init__(self, project_data_file_path):
         self.__project_data_file_path = project_data_file_path
