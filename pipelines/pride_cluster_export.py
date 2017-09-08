@@ -134,7 +134,7 @@ class ConfigManager(DirectorConfigurationManager):
                     if key not in allowed_keys:
                         self.logger.error(
                             "INVALID KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
-                                .format(key, command_line_parameter))
+                            .format(key, command_line_parameter))
                         continue
                     if key in self.__pipeline_arguments_object:
                         self.logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
