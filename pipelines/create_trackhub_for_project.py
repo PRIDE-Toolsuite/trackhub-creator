@@ -134,6 +134,9 @@ class ProjectDescriptor:
             self.__project_data_object = general_toolbox.read_json(self.__project_data_file_path)
         return self.__project_data_object
 
+    def _get_value_for_key(self):
+        pass
+
 
 class TrackhubCreatorForProject(Director):
     # TODO
