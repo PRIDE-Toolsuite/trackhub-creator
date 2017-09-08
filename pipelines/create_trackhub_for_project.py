@@ -96,6 +96,10 @@ class ProjectTrackDescriptor:
             return self.__project_track_descriptor_object[key]
         return default
 
+    def get_track_name(self):
+        pass
+
+
 
 
 class ProjectDescriptor:
