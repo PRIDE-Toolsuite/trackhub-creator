@@ -119,7 +119,7 @@ class ConfigManager(DirectorConfigurationManager):
         #   do_sync=yes
         #   # Boolean to tell the pipeline whether tu publish the trackhub or not (default: yes). Values: yes/no
         #   do_register_trackhub=yes
-        if get_pipeline_arguments():
+        if self._get_pipeline_arguments():
             if self.__pipeline_arguments_object:
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
             else:
