@@ -145,7 +145,7 @@ class ConfigManager(DirectorConfigurationManager):
         else:
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
-    def __get_value_for_pipeline_argument_key(self, key, default=None):
+    def _get_value_for_pipeline_argument_key(self, key, default=None):
         if key in self._get_pipeline_arguments_object():
             return self._get_pipeline_arguments_object()[key]
         else:
@@ -153,27 +153,27 @@ class ConfigManager(DirectorConfigurationManager):
 
     def get_folder_pride_cluster_trackhubs(self):
         # TODO - Review this taking into account the new responsibilities of the synchronization script
-        return self.__get_value_for_pipeline_argument_key(
+        return self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS)
 
     def get_url_pride_cluster_trackhubs(self):
-        return self.__get_value_for_pipeline_argument_key(
+        return self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS)
 
     def get_trackhub_registry_url(self):
-        return self.__get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL)
+        return self._get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL)
 
     def get_trackhub_registry_username(self):
-        return self.__get_value_for_pipeline_argument_key(
+        return self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME)
 
     def get_trackhub_registry_password(self):
-        return self.__get_value_for_pipeline_argument_key(
+        return self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD)
 
     def get_running_mode(self):
         if not self.__running_mode:
-            if self.__get_value_for_pipeline_argument_key(
+            if self._get_value_for_pipeline_argument_key(
                     self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE) == self.RUNNING_MODE_TEST:
                 self.__running_mode = self.RUNNING_MODE_TEST
                 self.logger.info("This pipeline is RUNNING IN 'TEST' MODE")
@@ -188,18 +188,18 @@ class ConfigManager(DirectorConfigurationManager):
                             self._CONFIG_PIPELINE_SUBFOLDER_SCRIPTS)
 
     def get_path_script_filesystem_sync(self):
-        script_name = self.__get_value_for_pipeline_argument_key(
+        script_name = self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_SCRIPT_NAME_FILESYSTEM_SYNC,
             default=self._CONFIG_COMMAND_LINE_ARGUMENT_DEFAULT_VALUE_SCRIPT_NAME_FILESYSTEM_SYNC)
         return os.path.join(self.__get_path_pipeline_scripts_folder(),
                             script_name)
 
     def is_do_sync(self):
-        return (self.__get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_DO_SYNC, 'yes')
+        return (self._get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_DO_SYNC, 'yes')
                 == 'yes')
 
     def is_do_register_trackhub(self):
-        return (self.__get_value_for_pipeline_argument_key(
+        return (self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_DO_REGISTER_TRACKHUB, 'yes') == 'yes')
 
     def get_cluster_file_exporter_version_parameter(self):
