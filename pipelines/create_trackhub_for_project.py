@@ -143,6 +143,9 @@ class ProjectDescriptor:
     def get_trackhub_name(self):
         pass
 
+    def get_trackhub_short_label(self):
+        pass
+
 
 class TrackhubCreatorForProject(Director):
     # TODO
