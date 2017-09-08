@@ -140,6 +140,9 @@ class ProjectDescriptor:
             return self._get_project_data_object()[key]
         return default
 
+    def get_trackhub_name(self):
+        pass
+
 
 class TrackhubCreatorForProject(Director):
     # TODO
