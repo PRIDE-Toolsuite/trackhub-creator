@@ -147,7 +147,7 @@ class ConfigManager(DirectorConfigurationManager):
 
     def __get_value_for_pipeline_argument_key(self, key, default=None):
         if key in self._get_pipeline_arguments_object():
-            return self.__pipeline_arguments_object[key]
+            return self._get_pipeline_arguments_object()[key]
         else:
             return default
 
