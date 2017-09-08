@@ -149,6 +149,9 @@ class ProjectDescriptor:
     def get_trackhub_long_label(self):
         pass
 
+    def get_trackhub_hub_type(self):
+        pass
+
 
 class TrackhubCreatorForProject(Director):
     # TODO
