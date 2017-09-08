@@ -102,8 +102,8 @@ class ProjectTrackDescriptor:
     def get_track_short_label(self):
         pass
 
-
-
+    def get_track_long_label(self):
+        pass
 
 class ProjectDescriptor:
     # TODO
