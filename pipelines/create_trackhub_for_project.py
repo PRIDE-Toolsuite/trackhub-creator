@@ -27,6 +27,7 @@ can be seen on this sample:
 }
 """
 
+import os
 import time
 # App imports
 import config_manager
@@ -142,7 +143,7 @@ class ProjectDescriptor:
 
     def get_trackhub_name(self):
         return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_NAME,
-                                       "--- NO NAME HAS BEEN SET FOR THIS TRACKHUB ---")
+                                       os.path.basename(self.__project_data_file_path))
 
     def get_trackhub_short_label(self):
         return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_SHORT_LABEL,
