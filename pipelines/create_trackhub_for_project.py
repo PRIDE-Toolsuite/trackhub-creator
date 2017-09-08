@@ -88,6 +88,9 @@ class ProjectTrackDescriptor:
     _PROJECT_DATA_FILE_KEY_TRACK_SPECIES = 'trackSpecie'
     _PROJECT_DATA_FILE_KEY_TRACK_POGO_FILE_PATH = 'pogoFile'
 
+    def __init__(self, project_track_descriptor_object):
+        self.__project_track_descriptor_object = project_track_descriptor_object
+
 
 class ProjectDescriptor:
     # TODO
