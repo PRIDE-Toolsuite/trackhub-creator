@@ -166,7 +166,15 @@ class ProjectDescriptor:
 
     def get_trackhub_project_defined_tracks(self):
         if not self.__project_tracks_descriptors:
-            pass
+            # Default value is an empty list of tracks
+            self.__project_tracks_descriptors = []
+            data_file_project_track_description_objects = \
+                self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_SECTION_TRACKMAPS)
+            if data_file_project_track_description_objects:
+                self.__project_tracks_descriptors = \
+                    [ProjectTrackDescriptor(data_file_project_track_description_object)
+                     for data_file_project_track_description_object
+                     in data_file_project_track_description_objects]
         return self.__project_tracks_descriptors
 
 
