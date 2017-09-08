@@ -86,6 +86,7 @@ class ProjectTrackDescriptor:
     _PROJECT_DATA_FILE_KEY_TRACK_SHORT_LABEL = 'trackShortLabel'
     _PROJECT_DATA_FILE_KEY_TRACK_LONG_LABEL = 'trackLongLabel'
     _PROJECT_DATA_FILE_KEY_TRACK_SPECIES = 'trackSpecie'
+    _PROJECT_DATA_FILE_KEY_TRACK_POGO_FILE_PATH = 'pogoFile'
 
 
 class ProjectDescriptor:
