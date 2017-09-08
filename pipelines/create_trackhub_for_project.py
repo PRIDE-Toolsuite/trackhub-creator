@@ -154,7 +154,8 @@ class ProjectDescriptor:
                                        "--- NO LONG LABEL HAS BEEN DEFINED FOR THIS TRACKHUB ---")
 
     def get_trackhub_hub_type(self):
-        pass
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_HUB_TYPE,
+                                       "PROTEOMICS")
 
     def get_trackhub_email(self):
         pass
