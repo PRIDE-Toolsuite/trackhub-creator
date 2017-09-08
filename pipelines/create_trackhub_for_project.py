@@ -136,7 +136,9 @@ class ProjectDescriptor:
 
     def _get_value_for_key(self, key, default=""):
         # TODO - I should start thinking about refactoring this out
-        pass
+        if key in self._get_project_data_object():
+            return self._get_project_data_object()[key]
+        return default
 
 
 class TrackhubCreatorForProject(Director):
