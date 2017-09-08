@@ -108,7 +108,7 @@ class ConfigManager(DirectorConfigurationManager):
         self.__pipeline_arguments_object = None
         self.__running_mode = None
 
-    def __get_allowed_configuration_keys(self):
+    def _get_allowed_configuration_keys(self):
         return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL,
@@ -126,7 +126,7 @@ class ConfigManager(DirectorConfigurationManager):
             else:
                 self.__pipeline_arguments_object = {}
                 self.logger.debug("Processing pipeline command line arguments")
-                allowed_keys = self.__get_allowed_configuration_keys()
+                allowed_keys = self._get_allowed_configuration_keys()
                 for command_line_parameter in get_pipeline_arguments().split(
                         self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR):
                     key, value = command_line_parameter.split(
