@@ -103,7 +103,7 @@ class ProjectTrackDescriptor:
         return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACK_SHORT_LABEL)
 
     def get_track_long_label(self):
-        pass
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACK_LONG_LABEL)
 
     def get_track_species(self):
         pass
