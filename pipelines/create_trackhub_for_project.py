@@ -83,6 +83,7 @@ class ProjectTrackDescriptor:
     # TODO
     # Project Data File keys relative to every TrackMap object
     _PROJECT_DATA_FILE_KEY_TRACK_NAME = 'trackName'
+    _PROJECT_DATA_FILE_KEY_TRACK_SHORT_LABEL = 'trackShortLabel'
 
 
 class ProjectDescriptor:
