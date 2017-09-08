@@ -121,7 +121,7 @@ class ConfigManager(DirectorConfigurationManager):
 
     def _process_pipeline_arguments(self):
         if self._get_pipeline_arguments():
-            if self.__pipeline_arguments_object:
+            if self._get_pipeline_arguments_object():
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
             else:
                 self.__pipeline_arguments_object = {}
