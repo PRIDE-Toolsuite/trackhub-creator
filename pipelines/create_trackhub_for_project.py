@@ -134,7 +134,7 @@ class ProjectDescriptor:
             self.__project_data_object = general_toolbox.read_json(self.__project_data_file_path)
         return self.__project_data_object
 
-    def _get_value_for_key(self):
+    def _get_value_for_key(self, key, default=""):
         # TODO - I should start thinking about refactoring this out
         pass
 
