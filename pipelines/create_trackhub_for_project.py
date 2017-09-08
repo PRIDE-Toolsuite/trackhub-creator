@@ -165,7 +165,9 @@ class ProjectDescriptor:
         return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_INTERNAL_ABSOLUTE_PATH)
 
     def get_trackhub_project_defined_tracks(self):
-        pass
+        if not self.__project_tracks_descriptors:
+            pass
+        return self.__project_tracks_descriptors
 
 
 class TrackhubCreatorForProject(Director):
