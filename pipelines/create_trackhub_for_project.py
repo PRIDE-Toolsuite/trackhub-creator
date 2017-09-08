@@ -128,7 +128,7 @@ class ProjectDescriptor:
     def __init__(self, project_data_file_path):
         self.__project_data_file_path = project_data_file_path
         self.__project_data_object = None
-        self.__trackmaps = None
+        self.__project_tracks_descriptors = None
 
     def _get_project_data_object(self):
         if not self.__project_data_object:
