@@ -16,13 +16,13 @@ can be seen on this sample:
   "trackHubLongLabel" : "Experimental design For the label-free ...",
   "trackHubType" : "PROTEOMICS",
   "trackHubEmail" : "pride-support@ebi.ac.uk",
-  "trackHubInternalAbsolutePath" : "/nfs/pride/prod/archive/2014/05/PXD000625/internal/trackHub",
+  "trackHubInternalAbsolutePath" : "...",
   "trackMaps" : [ {
     "trackName" : "PXD000625_10090_Original",
     "trackShortLabel" : "<a href=\"http://www.ebi.ac.uk/pride/archive/projects/PXD000625\">PXD000625</a> - Mus musc...",
     "trackLongLabel" : "Experimental design For the label-free proteome analysis 17 mice were used composed of 5 ...",
     "trackSpecie" : "10090",
-    "pogoFile" : "/nfs/pride/prod/archive/2014/05/PXD000625/internal/PXD000625-10090.pogo"
+    "pogoFile" : "..."
   } ]
 }
 """
@@ -158,7 +158,8 @@ class ProjectDescriptor:
                                        "PROTEOMICS")
 
     def get_trackhub_email(self):
-        pass
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_EMAIL,
+                                       "pride-support@ebi.ac.uk")
 
     def get_trackhub_destination_path(self):
         pass
