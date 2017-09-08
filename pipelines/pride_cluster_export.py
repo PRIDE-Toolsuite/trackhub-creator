@@ -144,9 +144,9 @@ class ConfigManager(DirectorConfigurationManager):
             if self._get_value_for_pipeline_argument_key(
                     self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE) == self.RUNNING_MODE_TEST:
                 self.__running_mode = self.RUNNING_MODE_TEST
-                self.logger.info("This pipeline is RUNNING IN 'TEST' MODE")
+                self._logger.info("This pipeline is RUNNING IN 'TEST' MODE")
             else:
-                self.logger.info("This pipeline IS RUNNING IN 'DEFAULT' MODE - provided '{}' as parameter".format(
+                self._logger.info("This pipeline IS RUNNING IN 'DEFAULT' MODE - provided '{}' as parameter".format(
                     self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE))
                 self.__running_mode = self.RUNNING_MODE_DEFAULT
         return self.__running_mode

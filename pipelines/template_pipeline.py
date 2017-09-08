@@ -39,7 +39,7 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
         self.__pipeline_arguments = pipeline_arguments
         self.__pipeline_arguments_object = None
         # Logger the pythonist way
-        self.logger = config_manager.get_app_config_manager().get_logger_for(
+        self._logger = config_manager.get_app_config_manager().get_logger_for(
             "{}.{}".format(__name__, type(self).__name__))
 
     def _get_pipeline_arguments(self):
@@ -57,28 +57,28 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
     def _process_pipeline_arguments(self):
         if self._get_pipeline_arguments():
             if self.__pipeline_arguments_object:
-                self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
+                self._logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
             else:
                 self.__pipeline_arguments_object = {}
-                self.logger.debug("Processing pipeline command line arguments")
+                self._logger.debug("Processing pipeline command line arguments")
                 allowed_keys = self._get_allowed_configuration_keys()
                 for command_line_parameter in self._get_pipeline_arguments().split(
                         self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR):
                     key, value = command_line_parameter.split(
                         self._CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR)
                     if key not in allowed_keys:
-                        self.logger.error(
+                        self._logger.error(
                             "INVALID KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
                             .format(key, command_line_parameter))
                         continue
                     if key in self.__pipeline_arguments_object:
-                        self.logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
-                                          .format(key, command_line_parameter))
+                        self._logger.error("DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
+                                           .format(key, command_line_parameter))
                         continue
                     self.__pipeline_arguments_object[key] = value
-                    self.logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
+                    self._logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
         else:
-            self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
+            self._logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
         return self.__pipeline_arguments_object
 
     def _get_value_for_pipeline_argument_key(self, key, default=None):
