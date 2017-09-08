@@ -108,6 +108,9 @@ class ProjectTrackDescriptor:
     def get_track_species(self):
         pass
 
+    def get_track_file_path_pogo(self):
+        pass
+
 class ProjectDescriptor:
     # TODO
     # Project Data File keys
