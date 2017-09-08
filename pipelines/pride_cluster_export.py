@@ -108,6 +108,10 @@ class ConfigManager(DirectorConfigurationManager):
         self.__pipeline_arguments_object = None
         self.__running_mode = None
 
+    def __get_path_pipeline_scripts_folder(self):
+        return os.path.join(config_manager.get_app_config_manager().get_folder_scripts(),
+                            self._CONFIG_PIPELINE_SUBFOLDER_SCRIPTS)
+
     def _get_allowed_configuration_keys(self):
         return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_FOLDER_PRIDE_CLUSTER_TRACKHUBS,
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS,
@@ -150,10 +154,6 @@ class ConfigManager(DirectorConfigurationManager):
                     self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_RUNNING_MODE))
                 self.__running_mode = self.RUNNING_MODE_DEFAULT
         return self.__running_mode
-
-    def __get_path_pipeline_scripts_folder(self):
-        return os.path.join(config_manager.get_app_config_manager().get_folder_scripts(),
-                            self._CONFIG_PIPELINE_SUBFOLDER_SCRIPTS)
 
     def get_path_script_filesystem_sync(self):
         script_name = self._get_value_for_pipeline_argument_key(
