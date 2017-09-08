@@ -91,7 +91,7 @@ class ProjectTrackDescriptor:
     def __init__(self, project_track_descriptor_object):
         self.__project_track_descriptor_object = project_track_descriptor_object
 
-    def _get_value_for_key(self, key, default=None):
+    def _get_value_for_key(self, key, default=""):
         if self.__project_track_descriptor_object and (key in self.__project_track_descriptor_object):
             return self.__project_track_descriptor_object[key]
         return default
