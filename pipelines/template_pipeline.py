@@ -45,6 +45,10 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
     def _get_pipeline_arguments(self):
         return self.__pipeline_arguments
 
+    def _get_allowed_configuration_keys(self):
+        # Allowed configuration keys set is empty by default
+        return {}
+
     def _process_pipeline_arguments(self):
         raise NotImplementedError("Implement how to process your pipeline arguments here")
 
