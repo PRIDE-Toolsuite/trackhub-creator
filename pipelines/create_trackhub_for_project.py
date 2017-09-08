@@ -111,6 +111,7 @@ class ProjectTrackDescriptor:
     def get_track_file_path_pogo(self):
         return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACK_POGO_FILE_PATH)
 
+
 class ProjectDescriptor:
     # TODO
     # Project Data File keys
