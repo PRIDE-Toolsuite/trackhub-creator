@@ -149,7 +149,8 @@ class ProjectDescriptor:
                                        "--- NO SHORT LABEL HAS BEEN DEFINED FOR THIS TRACKHUB ---")
 
     def get_trackhub_long_label(self):
-        pass
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_LONG_LABEL,
+                                       "--- NO LONG LABEL HAS BEEN DEFINED FOR THIS TRACKHUB ---")
 
     def get_trackhub_hub_type(self):
         pass
