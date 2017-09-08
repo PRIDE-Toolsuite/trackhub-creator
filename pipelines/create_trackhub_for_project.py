@@ -97,7 +97,7 @@ class ProjectTrackDescriptor:
         return default
 
     def get_track_name(self):
-        pass
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACK_NAME)
 
     def get_track_short_label(self):
         pass
