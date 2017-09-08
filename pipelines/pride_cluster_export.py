@@ -62,6 +62,25 @@ def get_pipeline_arguments():
 
 
 class ConfigManager(DirectorConfigurationManager):
+    # Command line arguments for this pipeline look like (';' will be used as a separator
+    #   # Root folder for all versions of pride cluster trackhubs, where this pipeline will build the new one
+    #   folder_pride_cluster_trackhubs=/wherever/path
+    #   # External URL where to build the final URL to the newly built trackhub
+    #   url_pride_cluster_trackhubs=http://whatever.co.uk/.../path
+    #   # Trackhub registry URL, if not specified, the default URL from the trackhub service will be used
+    #   trackhub_registry_url=https://www.trackhubregistry.org
+    #   # Trackhub registry credentials
+    #   trackhub_registry_username=username
+    #   trackhub_registry_password=password
+    #   # Testing mode flag
+    #   running_mode=test
+    #   # Name of the script to use for synchronization of the file system
+    #   script_name_filesystem_sync=sync_data.sh
+    #   # Boolean to tell the pipeline whether running the synchronization or not (default: yes). Values: yes/no
+    #   do_sync=yes
+    #   # Boolean to tell the pipeline whether tu publish the trackhub or not (default: yes). Values: yes/no
+    #   do_register_trackhub=yes
+
     # Configuration keys for cluster-file-exporter
     _CONFIG_CLUSTER_FILE_EXPORTER_WORKING_SUBDIR = "cluster-file-exporter"
     _CONFIG_CLUSTER_FILE_EXPORTER_BIN_SUBFOLDER = "cluster-file-exporter"
@@ -101,24 +120,6 @@ class ConfigManager(DirectorConfigurationManager):
                 self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_DO_REGISTER_TRACKHUB}
 
     def _process_pipeline_arguments(self):
-        # Command line arguments for this pipeline look like (';' will be used as a separator
-        #   # Root folder for all versions of pride cluster trackhubs, where this pipeline will build the new one
-        #   folder_pride_cluster_trackhubs=/wherever/path
-        #   # External URL where to build the final URL to the newly built trackhub
-        #   url_pride_cluster_trackhubs=http://whatever.co.uk/.../path
-        #   # Trackhub registry URL, if not specified, the default URL from the trackhub service will be used
-        #   trackhub_registry_url=https://www.trackhubregistry.org
-        #   # Trackhub registry credentials
-        #   trackhub_registry_username=username
-        #   trackhub_registry_password=password
-        #   # Testing mode flag
-        #   running_mode=test
-        #   # Name of the script to use for synchronization of the file system
-        #   script_name_filesystem_sync=sync_data.sh
-        #   # Boolean to tell the pipeline whether running the synchronization or not (default: yes). Values: yes/no
-        #   do_sync=yes
-        #   # Boolean to tell the pipeline whether tu publish the trackhub or not (default: yes). Values: yes/no
-        #   do_register_trackhub=yes
         if self._get_pipeline_arguments():
             if self.__pipeline_arguments_object:
                 self.logger.error("DUPLICATED CALL for processing command line arguments for this pipeline, IGNORED")
