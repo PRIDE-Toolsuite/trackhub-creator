@@ -146,9 +146,7 @@ class ConfigManager(DirectorConfigurationManager):
             self.logger.warning("This pipeline was provided with NO COMMAND LINE ARGUMENTS")
 
     def __get_value_for_pipeline_argument_key(self, key, default=None):
-        if not self.__pipeline_arguments_object:
-            self._process_pipeline_arguments()
-        if key in self.__pipeline_arguments_object:
+        if key in self._get_pipeline_arguments_object():
             return self.__pipeline_arguments_object[key]
         else:
             return default
