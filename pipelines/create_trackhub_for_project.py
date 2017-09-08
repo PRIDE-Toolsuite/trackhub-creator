@@ -88,6 +88,7 @@ class ProjectDescriptor:
     # Project Data File keys
     _PROJECT_DATA_FILE_KEY_TRACKHUB_NAME = 'trackHubName'
     _PROJECT_DATA_FILE_KEY_TRACKHUB_SHORT_LABEL = 'trackHubShortLabel'
+    _PROJECT_DATA_FILE_KEY_TRACKHUB_LONG_LABEL = 'trackHubLongLabel'
 
     def __init__(self, project_data_file_path):
         self.__project_data_file_path = project_data_file_path
