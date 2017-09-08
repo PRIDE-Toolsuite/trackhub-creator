@@ -30,6 +30,10 @@ def __get_configuration_manager():
 
 
 class DirectorConfigurationManager(config_manager.ConfigurationManager):
+    # Command line arguments special characters
+    _CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_SEPARATOR = ','
+    _CONFIG_COMMAND_LINE_ARGUMENT_PARAMETER_ASSIGNMENT_CHAR = '='
+
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super(DirectorConfigurationManager, self).__init__(configuration_object, configuration_file)
         self.__pipeline_arguments = pipeline_arguments
