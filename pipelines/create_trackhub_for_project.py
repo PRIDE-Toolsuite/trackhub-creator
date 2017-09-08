@@ -131,7 +131,7 @@ class ProjectDescriptor:
 
     def _get_project_data_object(self):
         if not self.__project_data_object:
-            pass
+            self.__project_data_object = general_toolbox.read_json(self.__project_data_file_path)
         return self.__project_data_object
 
 
