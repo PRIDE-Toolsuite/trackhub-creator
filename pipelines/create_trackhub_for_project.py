@@ -106,7 +106,7 @@ class ProjectTrackDescriptor:
         return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACK_LONG_LABEL)
 
     def get_track_species(self):
-        pass
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACK_SPECIES)
 
     def get_track_file_path_pogo(self):
         pass
