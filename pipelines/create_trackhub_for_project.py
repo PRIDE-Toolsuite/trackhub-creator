@@ -99,6 +99,9 @@ class ProjectTrackDescriptor:
     def get_track_name(self):
         pass
 
+    def get_track_short_label(self):
+        pass
+
 
 
 
