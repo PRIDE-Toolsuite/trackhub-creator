@@ -62,7 +62,7 @@ def get_pipeline_arguments():
 
 
 class ConfigManager(DirectorConfigurationManager):
-    # Command line arguments for this pipeline look like (';' will be used as a separator
+    # Command line arguments for this pipeline look like
     #   # Root folder for all versions of pride cluster trackhubs, where this pipeline will build the new one
     #   folder_pride_cluster_trackhubs=/wherever/path
     #   # External URL where to build the final URL to the newly built trackhub
