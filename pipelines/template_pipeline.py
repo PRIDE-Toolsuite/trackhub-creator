@@ -69,12 +69,12 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
                     if key not in allowed_keys:
                         self._logger.error(
                             "INVALID KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
-                            .format(key, command_line_parameter))
+                                .format(key, command_line_parameter))
                         continue
                     if key in self.__pipeline_arguments_object:
                         self._logger.error(
                             "DUPLICATED KEY '{}' while parsing pipeline arguments, parameter '{}' SKIPPED"
-                            .format(key, command_line_parameter))
+                                .format(key, command_line_parameter))
                         continue
                     self.__pipeline_arguments_object[key] = value
                     self._logger.debug("Pipeline argument '{}' parsed and set with value '{}'".format(key, value))
@@ -159,8 +159,10 @@ class Director:
         self.__logger = new_logger
         return self._get_logger()
 
+
 class PogoBasedPipeline(Director):
-    pass
+    def __init__(self, runner_id=None):
+        super().__init__(runner_id)
 
 
 if __name__ == '__main__':
