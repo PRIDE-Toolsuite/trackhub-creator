@@ -191,6 +191,11 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         self.__valid_project_tracks = []
 
     def __get_valid_project_tracks(self):
+        """
+        This helper creates a list of valid trackhub tracks from the given project, i.e. tracks that meet this cirteria:
+            - Its taxonomy ID is available on Ensembl
+        :return: a list of valid trackhub tracks for the given project
+        """
         pass
 
     def _before(self):
