@@ -200,6 +200,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         self.__project_trackhub_descriptor = None
         # Only the valid project tracks will be processed for being included in the trackhub
         self.__valid_project_tracks = None
+        # Pipeline result object
+        self.__pipeline_result_object = PipelineResult()
 
     def __get_valid_project_tracks(self):
         """
