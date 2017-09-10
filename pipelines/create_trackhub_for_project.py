@@ -31,6 +31,7 @@ import os
 import time
 # App imports
 import config_manager
+import ensembl.service
 import toolbox.general as general_toolbox
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
