@@ -198,7 +198,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         """
         ensembl_service = ensembl.service.get_service()
         for project_track_descriptor in self.__project_trackhub_descriptor.get_trackhub_project_defined_tracks():
-            pass
+            if ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(project_track_descriptor.get_track_species()):
+                self.__valid_project_tracks.append(project_track_descriptor)
         return self.__valid_project_tracks
 
     def _before(self):
