@@ -186,6 +186,8 @@ class TrackhubCreatorForProject(Director):
         super(TrackhubCreatorForProject, self).__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
         self.__project_trackhub_descriptor = None
+        # Only the valid project tracks will be processed for being included in the trackhub
+        self.__valid_project_tracks = []
 
     def _before(self):
         if self.__config_manager.get_project_data_file_path():
