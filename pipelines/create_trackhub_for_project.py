@@ -180,6 +180,10 @@ class ProjectTrackhubDescriptor:
         return self.__project_tracks_descriptors
 
 
+class PipelineResult:
+    pass
+
+
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     # TODO
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
