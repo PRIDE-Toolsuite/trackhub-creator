@@ -184,8 +184,9 @@ class PipelineResult:
     # TODO
     _VALUE_STATUS_SUCCESS = 'success'
     _VALUE_STATUS_ERROR = 'error'
+
     def __init__(self):
-        pass
+        self.status = self._VALUE_STATUS_SUCCESS
 
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
@@ -208,7 +209,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             self.__valid_project_tracks = []
             ensembl_service = ensembl.service.get_service()
             for project_track_descriptor in self.__project_trackhub_descriptor.get_trackhub_project_defined_tracks():
-                if ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(project_track_descriptor.get_track_species()):
+                if ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(
+                        project_track_descriptor.get_track_species()):
                     self.__valid_project_tracks.append(project_track_descriptor)
         return self.__valid_project_tracks
 
