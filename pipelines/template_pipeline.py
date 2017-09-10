@@ -198,7 +198,6 @@ class PogoBasedPipelineDirector(Director):
         return pogo_parameter_protein_sequence_file_path
 
     def _get_pogo_gtf_file_path_for_taxonomy(self, taxonomy_id):
-        # TODO - Refactor out to a superclass
         """
         This is a helper method that, given a taxonomy ID, it finds out which GTF file should be used for running PoGo
         :param taxonomy_id: ncbi taxonomy ID
