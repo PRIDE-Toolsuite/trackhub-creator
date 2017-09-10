@@ -13,6 +13,8 @@ This is a template pipeline for refactoring out things from final pipelines as I
 
 # App imports
 import config_manager
+import ensembl.service
+import ensembl.data_downloader
 from toolbox import general
 
 # The config manager singleton is just an example that only makes sense for specialized pipeline modules, not really for
