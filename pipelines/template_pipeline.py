@@ -105,6 +105,9 @@ class Director:
         self.__logger = config_manager.get_app_config_manager().get_logger_for(logger_name)
         self.pipeline_status = self._PIPELINE_STATUS_OK
 
+    def is_pipeline_status_ok(self):
+        return self.pipeline_status == self._PIPELINE_STATUS_OK
+
     def _before(self):
         """
         This method implements some logic that is run before running the main pipeline director.
