@@ -414,7 +414,7 @@ class PrideClusterExporter(Director):
             return False
         return True
 
-    def __get_pogo_protein_sequence_file_path_for_taxonomy(self, taxonomy_id):
+    def _get_pogo_protein_sequence_file_path_for_taxonomy(self, taxonomy_id):
         # TODO - Refactor out to a superclass
         """
         This is a helper method that, given a taxonomy, it finds the protein sequence file to use as a PoGo parameter
@@ -473,7 +473,7 @@ class PrideClusterExporter(Director):
             pogo_parameter_file_input = cluster_file_exporter_result_mapping[taxonomy][
                 self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH]
             # PoGo parameter protein sequence file
-            pogo_parameter_protein_sequence_file_path = self.__get_pogo_protein_sequence_file_path_for_taxonomy(
+            pogo_parameter_protein_sequence_file_path = self._get_pogo_protein_sequence_file_path_for_taxonomy(
                 taxonomy)
             if not pogo_parameter_protein_sequence_file_path:
                 self._get_logger().warning("SKIP TAXONOMY ID #{}, not found on Ensembl, for PoGo file '{}'"
