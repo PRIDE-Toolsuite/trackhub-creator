@@ -196,7 +196,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             - Its taxonomy ID is available on Ensembl
         :return: a list of valid trackhub tracks for the given project
         """
-        pass
+        ensembl_service = ensembl.service.get_service()
+        for project_track_descriptor in self.__project_trackhub_descriptor.get_trackhub_project_defined_tracks():
+            pass
+        return self.__valid_project_tracks
 
     def _before(self):
         if self.__config_manager.get_project_data_file_path():
