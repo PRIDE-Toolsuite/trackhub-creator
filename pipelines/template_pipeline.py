@@ -162,7 +162,7 @@ class Director:
         return self._get_logger()
 
 
-class PogoBasedPipeline(Director):
+class PogoBasedPipelineDirector(Director):
     """
     Abstract class pipeline director class for those pipelines running PoGo in PRIDE
     """
