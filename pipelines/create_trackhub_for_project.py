@@ -238,6 +238,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                                  .format(self.__config_manager.get_project_data_file_path()))
         return False
 
+    def _after(self):
+        # TODO - Export to file the pipeline result object
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
