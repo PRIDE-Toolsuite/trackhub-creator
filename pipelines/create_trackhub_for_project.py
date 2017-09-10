@@ -189,6 +189,9 @@ class TrackhubCreatorForProject(Director):
         # Only the valid project tracks will be processed for being included in the trackhub
         self.__valid_project_tracks = []
 
+    def __get_valid_project_tracks(self):
+        pass
+
     def _before(self):
         if self.__config_manager.get_project_data_file_path():
             self._get_logger().info("Reading Project Trackhub Descriptor from file at '{}'"
