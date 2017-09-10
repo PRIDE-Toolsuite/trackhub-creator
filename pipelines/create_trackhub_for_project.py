@@ -188,7 +188,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
         self.__project_trackhub_descriptor = None
         # Only the valid project tracks will be processed for being included in the trackhub
-        self.__valid_project_tracks = []
+        self.__valid_project_tracks = None
 
     def __get_valid_project_tracks(self):
         """
@@ -196,10 +196,12 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             - Its taxonomy ID is available on Ensembl
         :return: a list of valid trackhub tracks for the given project
         """
-        ensembl_service = ensembl.service.get_service()
-        for project_track_descriptor in self.__project_trackhub_descriptor.get_trackhub_project_defined_tracks():
-            if ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(project_track_descriptor.get_track_species()):
-                self.__valid_project_tracks.append(project_track_descriptor)
+        if not self.__valid_project_tracks:
+            self.__valid_project_tracks = []
+            ensembl_service = ensembl.service.get_service()
+            for project_track_descriptor in self.__project_trackhub_descriptor.get_trackhub_project_defined_tracks():
+                if ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(project_track_descriptor.get_track_species()):
+                    self.__valid_project_tracks.append(project_track_descriptor)
         return self.__valid_project_tracks
 
     def _before(self):
