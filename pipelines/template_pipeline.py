@@ -95,6 +95,7 @@ class Director:
     """
     This is the director of the pipeline
     """
+    _PIPELINE_STATUS_OK = "ok"
 
     def __init__(self, runner_id=None):
         logger_name = __name__
