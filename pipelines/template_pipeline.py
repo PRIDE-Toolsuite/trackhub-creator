@@ -198,6 +198,26 @@ class PogoBasedPipelineDirector(Director):
             return None
         return pogo_parameter_protein_sequence_file_path
 
+    def _get_pogo_gtf_file_path_for_taxonomy(self, taxonomy_id):
+        # TODO - Refactor out to a superclass
+        """
+        This is a helper method that, given a taxonomy ID, it finds out which GTF file should be used for running PoGo
+        :param taxonomy_id: ncbi taxonomy ID
+        :return: the GTF file path if found, None otherwise
+        """
+        # Get an instance of the Ensembl data downloader
+        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
+        gtf_files = ensembl_downloader_service.get_genome_reference_for_species(taxonomy_id)
+        # For PoGo, we will use the GTF file that has no suffixes, thus, it will be the shortest file name
+        pogo_parameter_gtf_file_name = None
+        pogo_parameter_gtf_file_path = None
+        for file_name, file_path in gtf_files:
+            if (not pogo_parameter_gtf_file_name) \
+                    or (len(pogo_parameter_gtf_file_name) > len(file_name)):
+                pogo_parameter_gtf_file_name = file_name
+                pogo_parameter_gtf_file_path = file_path
+        return pogo_parameter_gtf_file_path
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
