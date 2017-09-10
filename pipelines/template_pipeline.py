@@ -124,6 +124,11 @@ class Director:
         """
         Pipeline template director algorithm, it executes 'before' logic, then the 'pipeline' logic, and 'after' logic
         once the pipeline is finished
+        It delegates to specific pipeline implementations the decision of flagging the pipeline as FAIL or not, but the
+        pipeline will only be reported as 'successful' after the successful execution of all its stages. This gives the
+        developer enough flexibility to have failing stages but still be able to keep going with the pipeline, alghough
+        not being considered a complete success. Also, it delegates to subclasses the responsibility of deciding when
+        it is not acceptable to keep running the pipeline, which makes sense, as it is their responsibility.
         :return: True if the pipeline has been successful, False otherwise
         """
         result = True
