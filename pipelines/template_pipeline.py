@@ -103,6 +103,7 @@ class Director:
         if runner_id:
             logger_name = runner_id
         self.__logger = config_manager.get_app_config_manager().get_logger_for(logger_name)
+        self.pipeline_status = self._PIPELINE_STATUS_OK
 
     def _before(self):
         """
