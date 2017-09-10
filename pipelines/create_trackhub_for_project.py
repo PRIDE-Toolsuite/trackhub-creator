@@ -181,7 +181,9 @@ class ProjectTrackhubDescriptor:
 
 
 class PipelineResult:
-    pass
+    # TODO
+    def __init__(self):
+        self.status_success = True
 
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
