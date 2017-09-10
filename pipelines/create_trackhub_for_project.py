@@ -33,7 +33,7 @@ import time
 import config_manager
 import ensembl.service
 import toolbox.general as general_toolbox
-from pipelines.template_pipeline import Director, DirectorConfigurationManager
+from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
 
 # Globals
 __configuration_file = None
@@ -180,7 +180,7 @@ class ProjectTrackhubDescriptor:
         return self.__project_tracks_descriptors
 
 
-class TrackhubCreatorForProject(Director):
+class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     # TODO
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
