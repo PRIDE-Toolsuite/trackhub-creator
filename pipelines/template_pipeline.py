@@ -161,6 +161,9 @@ class Director:
 
 
 class PogoBasedPipeline(Director):
+    """
+    Abstract class pipeline director class for those pipelines running PoGo in PRIDE
+    """
     def __init__(self, runner_id=None):
         super().__init__(runner_id)
 
