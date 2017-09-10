@@ -111,7 +111,8 @@ class Director:
 
     def run(self):
         """
-        Pipeline template director algorithm, it executes 'before' logic, then the 'pipeline' logic, and 'after' logic once the pipeline is finished
+        Pipeline template director algorithm, it executes 'before' logic, then the 'pipeline' logic, and 'after' logic
+        once the pipeline is finished
         :return: True if the pipeline has been successful, False otherwise
         """
         if not self._before():
@@ -152,8 +153,9 @@ class Director:
 
     def _set_logger(self, new_logger):
         """
-        This method allows subclasses to change the default logger created when instantiating an implementation of this abstract class.
-        :param new_logger: a new logger to set up as the default logger for a particular implementation subclass instance
+        This method allows subclasses to change the default logger created when instantiating an implementation of this
+        abstract class.
+        :param new_logger: new logger to set up as the default logger for a particular implementation subclass instance
         :return: the newly set logger
         """
         self.__logger = new_logger
