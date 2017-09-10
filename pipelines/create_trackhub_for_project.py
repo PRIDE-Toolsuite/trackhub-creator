@@ -187,6 +187,7 @@ class PipelineResult:
 
     def __init__(self):
         self.status = self._VALUE_STATUS_SUCCESS
+        self.error_message = ""
 
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
