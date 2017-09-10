@@ -185,7 +185,7 @@ class TrackhubCreatorForProject(Director):
         runner_id = "{}-{}".format(__name__, time.time())
         super(TrackhubCreatorForProject, self).__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
-        self.__trackhub_destination_folder = None
+        self.__project_trackhub_descriptor = None
 
 
 if __name__ == '__main__':
