@@ -26,7 +26,7 @@ import trackhub.registry as trackhub_registry
 from pogo.models import PogoRunResult
 from toolbox import general as general_toolbox
 from . import exceptions as pipeline_exceptions
-from pipelines.template_pipeline import Director, DirectorConfigurationManager
+from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
 
 # Globals
 __configuration_file = None
@@ -289,7 +289,7 @@ class ConfigManager(DirectorConfigurationManager):
         return 'https://www.ebi.ac.uk/pride/cluster/#/'
 
 
-class PrideClusterExporter(Director):
+class PrideClusterExporter(PogoBasedPipelineDirector):
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH = 'pride_cluster_file_path'
     __CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL = 'all'
