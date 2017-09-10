@@ -117,17 +117,19 @@ class Director:
         once the pipeline is finished
         :return: True if the pipeline has been successful, False otherwise
         """
+        result = True
         if not self._before():
             self._get_logger().error("The logic executed BEFORE running the pipeline has FAILED")
-            return False
+            result = result and False
         if not self._run_pipeline():
             self._get_logger().error("The PIPELINE execution has FAILED")
-            return False
+            result = result and False
         if not self._after():
             self._get_logger().error("The logic executed AFTER running the pipeline has FAILED")
-            return False
-        self._get_logger().info("SUCCESSFUL Pipeline execution")
-        return True
+            result = result and False
+        if result:
+            self._get_logger().info("SUCCESSFUL Pipeline execution")
+        return result
 
     def _run_pipeline(self):
         """
