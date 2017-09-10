@@ -173,7 +173,6 @@ class PogoBasedPipelineDirector(Director):
         super().__init__(runner_id)
 
     def _get_pogo_protein_sequence_file_path_for_taxonomy(self, taxonomy_id):
-        # TODO - Refactor out to a superclass
         """
         This is a helper method that, given a taxonomy, it finds the protein sequence file to use as a PoGo parameter
         :param taxonomy_id: ncbi taxonomy ID
