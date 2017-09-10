@@ -193,6 +193,7 @@ class TrackhubCreatorForProject(Director):
                                     .format(self.__config_manager.get_project_data_file_path()))
             self.__project_trackhub_descriptor = \
                 ProjectTrackhubDescriptor(self.__config_manager.get_project_data_file_path())
+            # TODO - Check that the destination folder exists
             return True
         self._get_logger().error("INVALID / MISSING Project Trackhub Descriptor file, '{}'"
                                  .format(self.__config_manager.get_project_data_file_path()))
