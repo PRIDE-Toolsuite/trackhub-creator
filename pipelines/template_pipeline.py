@@ -108,6 +108,9 @@ class Director:
     def is_pipeline_status_ok(self):
         return self.pipeline_status == self._PIPELINE_STATUS_OK
 
+    def set_pipeline_status_fail(self):
+        self.pipeline_status = self._PIPELINE_STATUS_FAIL
+
     def _before(self):
         """
         This method implements some logic that is run before running the main pipeline director.
