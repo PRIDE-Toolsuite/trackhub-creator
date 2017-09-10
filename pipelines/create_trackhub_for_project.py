@@ -187,6 +187,15 @@ class TrackhubCreatorForProject(Director):
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
         self.__project_trackhub_descriptor = None
 
+    def _before(self):
+        if self.__config_manager.get_project_data_file_path():
+            self._get_logger().info("Reading Project Trackhub Descriptor from file at '{}'"
+                                    .format(self.__config_manager.get_project_data_file_path()))
+            # TODO
+        self._get_logger().error("INVALID / MISSING Project Trackhub Descriptor file, '{}'"
+                                 .format(self.__config_manager.get_project_data_file_path()))
+        return False
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
