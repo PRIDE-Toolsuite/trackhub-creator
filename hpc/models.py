@@ -12,4 +12,4 @@ Models representing different HPC environments
 """
 
 class HpcServiceFactory:
-    pass
+    _HPC_TYPE_LSF = 'lsf'
