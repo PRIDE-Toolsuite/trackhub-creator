@@ -12,6 +12,7 @@ Models representing different HPC environments
 """
 
 import os
+import abc
 # Application imports
 import config_manager
 from .exceptions import HpcServiceFactoryException, HpcServiceException
@@ -34,6 +35,10 @@ class HpcServiceFactory:
         if os.environ.get('LSB_JOBID'):
             return HpcServiceFactory._HPC_TYPE_LSF
         return HpcServiceFactory._HPC_TYPE_NONE
+
+
+class HpcService(metaclass=abc.ABCMeta):
+    pass
 
 
 class HpcServiceLsf:
