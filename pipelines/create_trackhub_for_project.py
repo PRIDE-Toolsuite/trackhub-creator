@@ -255,10 +255,13 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                 self.__pipeline_result_object.add_error_message(error_message)
                 self._get_logger().error(error_message)
                 return False
-            # TODO - Check valid project tracks
+            # Check valid project tracks
             if not self.__get_valid_project_tracks():
-                # TODO
-                pass
+                # It makes no sense to go ahead if this project has no valid tracks
+                error_message = "Project Trackhub contains NO VALID TRACKS"
+                self._get_logger().error(error_message)
+                self.__pipeline_result_object.add_error_message(error_message)
+                return False
             return True
         error_message = "INVALID / MISSING Project Trackhub Descriptor file, '{}'"\
             .format(self.__config_manager.get_project_data_file_path())
