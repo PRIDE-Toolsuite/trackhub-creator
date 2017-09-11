@@ -43,6 +43,10 @@ class HpcService(metaclass=abc.ABCMeta):
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
+    @abc.abstractmethod
+    def get_current_job_id(self):
+        ...
+
 
 class HpcServiceLsf(HpcService):
     # Constants
