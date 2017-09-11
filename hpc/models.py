@@ -14,7 +14,7 @@ Models representing different HPC environments
 import os
 # Application imports
 import config_manager
-from .exceptions import HpcServiceFactoryException
+from .exceptions import HpcServiceFactoryException, HpcServiceException
 
 
 class HpcServiceFactory:
@@ -41,9 +41,12 @@ class HpcServiceLsf:
     _ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
 
     def __init__(self):
-        self._logger = config_manager\
-            .get_app_config_manager()\
+        self._logger = config_manager \
+            .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def get_current_job_id(self):
-        pass
+        if os.environ.get(HpcServiceLsf._ENVIRONMENT_VAR_JOB_ID):
+            return os.environ.get(HpcServiceLsf._ENVIRONMENT_VAR_JOB_ID)
+        raise HpcServiceException("Could not retrieve LSF Job ID from environment variable '{}'"
+                                  .format(HpcServiceLsf._ENVIRONMENT_VAR_JOB_ID))
