@@ -190,6 +190,9 @@ class PipelineResult:
         self.error_messages = []
         self.hub_descriptor_file_path = ""
 
+    def set_status_error(self):
+        self.status = self._VALUE_STATUS_ERROR
+
     def add_error_message(self, error_message):
         pass
 
