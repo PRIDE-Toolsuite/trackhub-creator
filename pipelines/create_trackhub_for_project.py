@@ -292,7 +292,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
 
     def _run_pipeline(self):
         # TODO
-        pass
+        return True
 
     def _after(self):
         if not self.is_pipeline_status_ok():
