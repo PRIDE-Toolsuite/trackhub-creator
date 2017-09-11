@@ -258,8 +258,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                 # TODO
                 pass
             return True
-        self._get_logger().error("INVALID / MISSING Project Trackhub Descriptor file, '{}'"
-                                 .format(self.__config_manager.get_project_data_file_path()))
+        error_message = "INVALID / MISSING Project Trackhub Descriptor file, '{}'"\
+            .format(self.__config_manager.get_project_data_file_path())
+        self.__pipeline_result_object.add_error_message(error_message)
+        self._get_logger().error(error_message)
         return False
 
     def _after(self):
