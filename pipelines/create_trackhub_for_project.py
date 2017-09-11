@@ -199,6 +199,9 @@ class PipelineResult:
         self.set_status_error()
         self.error_messages.append(error_message)
 
+    def add_success_message(self, success_message):
+        self.success_messages.append(success_message)
+
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     # TODO
