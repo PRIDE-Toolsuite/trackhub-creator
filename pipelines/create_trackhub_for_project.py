@@ -17,6 +17,7 @@ can be seen on this sample:
   "trackHubType" : "PROTEOMICS",
   "trackHubEmail" : "pride-support@ebi.ac.uk",
   "trackHubInternalAbsolutePath" : "...",
+  "TrackhubCreationReportFilePath": "...",
   "trackMaps" : [ {
     "trackName" : "PXD000625_10090_Original",
     "trackShortLabel" : "<a href=\"http://www.ebi.ac.uk/pride/archive/projects/PXD000625\">PXD000625</a> - Mus musc...",
