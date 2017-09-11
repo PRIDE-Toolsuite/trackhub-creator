@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Configuration Manager for this HPC Module
 """
