@@ -81,7 +81,8 @@ class HpcServiceLsf(HpcService):
 
     def get_current_job_file_output_error(self):
         if os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR):
-            return os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR)
+            # Assume it is a relative path to the current working dir
+            return os.path.abspath(os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR))
         return ""
 
     def get_current_job_file_logs(self):
