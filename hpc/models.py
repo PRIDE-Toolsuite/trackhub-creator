@@ -12,6 +12,7 @@ Models representing different HPC environments
 """
 
 class HpcServiceFactory:
+    # Constants
     _HPC_TYPE_LSF = 'lsf'
 
     @staticmethod
