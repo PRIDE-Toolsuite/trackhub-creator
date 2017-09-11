@@ -194,7 +194,9 @@ class PipelineResult:
         self.status = self._VALUE_STATUS_ERROR
 
     def add_error_message(self, error_message):
-        pass
+        # This is the report on the final result from running the pipeline
+        self.set_status_error()
+        self.error_messages.append(error_message)
 
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
