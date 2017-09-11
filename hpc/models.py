@@ -14,6 +14,7 @@ Models representing different HPC environments
 import os
 # Application imports
 import config_manager
+from .exceptions import HpcServiceFactoryException
 
 
 class HpcServiceFactory:
