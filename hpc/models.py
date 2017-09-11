@@ -12,6 +12,8 @@ Models representing different HPC environments
 """
 
 import os
+# Application imports
+import config_manager
 
 
 class HpcServiceFactory:
@@ -31,4 +33,6 @@ class HpcServiceFactory:
 
 class HpcServiceLsf:
     def __init__(self):
-        pass
+        self._logger = config_manager\
+            .get_app_config_manager()\
+            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
