@@ -24,7 +24,9 @@ class HpcServiceFactory:
 
     @staticmethod
     def get_hpc_service():
-        pass
+        if HpcServiceFactory.get_hpc_environment_type() == HpcServiceFactory._HPC_TYPE_LSF:
+            return HpcServiceLsf()
+        raise HpcServiceFactoryException("NO HPC Environment present")
 
     @staticmethod
     def get_hpc_environment_type():
