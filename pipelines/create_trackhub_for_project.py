@@ -250,8 +250,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                 ProjectTrackhubDescriptor(self.__config_manager.get_project_data_file_path())
             # Check that the destination folder exists
             if not os.path.isdir(self.__project_trackhub_descriptor.get_trackhub_destination_path()):
-                self._get_logger().error("Trackhub destination path NOT VALID, '{}'"
-                                         .format(self.__project_trackhub_descriptor.get_trackhub_destination_path()))
+                error_message = "Trackhub destination path NOT VALID, '{}'"\
+                    .format(self.__project_trackhub_descriptor.get_trackhub_destination_path())
+                self.__pipeline_result_object.add_error_message(error_message)
+                self._get_logger().error(error_message)
                 return False
             # TODO - Check valid project tracks
             if not self.__get_valid_project_tracks():
