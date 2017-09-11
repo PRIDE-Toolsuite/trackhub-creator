@@ -37,6 +37,8 @@ class HpcServiceFactory:
         return HpcServiceFactory._HPC_TYPE_NONE
 
 
+# HPC Service models
+# Abstract base class
 class HpcService(metaclass=abc.ABCMeta):
     def __init__(self):
         self._logger = config_manager \
@@ -48,6 +50,7 @@ class HpcService(metaclass=abc.ABCMeta):
         ...
 
 
+# LSF
 class HpcServiceLsf(HpcService):
     # Constants
     _ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
