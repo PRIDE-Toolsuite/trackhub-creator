@@ -294,7 +294,13 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     def _after(self):
         if not self.is_pipeline_status_ok():
             self._get_logger().warning("This Pipeline is finishing with NON-OK status.")
-
+        report_files = [self.__config_manager.get_file_path_trackhub_creation_report()]
+        if self.__project_trackhub_descriptor.get_trackhub_report_file_path():
+            report_files.append(self.__project_trackhub_descriptor.get_trackhub_report_file_path())
+        for report_file in report_files:
+            self._get_logger().info("Dumping Pipeline Report to '{}'".format(report_file))
+            with open(report_file, 'w') as f:
+                f.write(str(self.__pipeline_result_object))
 
 
 if __name__ == '__main__':
