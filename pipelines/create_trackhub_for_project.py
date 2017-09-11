@@ -238,6 +238,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         return self.__valid_project_tracks
 
     def _before(self):
+        # Set Pipeline Session working directory
+        self.__pipeline_result_object.file_path_pipeline_session = \
+            config_manager.get_app_config_manager().get_session_working_dir()
+        # TODO - Add the log files to the result report
         if self.__config_manager.get_project_data_file_path():
             self._get_logger().info("Reading Project Trackhub Descriptor from file at '{}'"
                                     .format(self.__config_manager.get_project_data_file_path()))
