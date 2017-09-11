@@ -71,3 +71,6 @@ class HpcServiceLsf(HpcService):
 
     def get_current_job_file_output(self):
         pass
+
+    def get_current_job_file_output_error(self):
+        pass
