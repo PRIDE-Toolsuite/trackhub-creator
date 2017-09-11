@@ -196,6 +196,7 @@ class AppConfigManager(ConfigurationManager):
         self.__logger = logging.getLogger(__name__)
         self.__logger.setLevel(getattr(logging, _log_level))
         # TODO fix this code
+        self.__log_files = []
         for llevel, lformat in _logger_formatters.items():
             logfile = os.path.join(self.get_folder_logs(),
                                    log_handlers_prefix + llevel.lower() + log_handlers_extension)
@@ -206,6 +207,8 @@ class AppConfigManager(ConfigurationManager):
             self.__log_handlers.append(lhandler)
             # Add the handlers to my own logger
             self.__logger.addHandler(lhandler)
+            # Keep the path to the log file
+            self.__log_files.append(logfile)
         self._get_logger().debug("Logging system initialized")
         # TODO to be completed
 
