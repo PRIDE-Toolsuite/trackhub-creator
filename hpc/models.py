@@ -54,8 +54,8 @@ class HpcService(metaclass=abc.ABCMeta):
 class HpcServiceLsf(HpcService):
     # Constants
     _LSF_ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
-    _LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR = 'LSB_ERRORFILE'
     _LSF_ENVIRONMENT_VAR_FILE_OUTPUT = 'LSB_OUTPUTFILE'
+    _LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR = 'LSB_ERRORFILE'
 
     def __init__(self):
         super().__init__()
@@ -70,7 +70,9 @@ class HpcServiceLsf(HpcService):
                                   .format(HpcServiceLsf._LSF_ENVIRONMENT_VAR_JOB_ID))
 
     def get_current_job_file_output(self):
-        pass
+        if os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT):
+            return os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT)
+        return ""
 
     def get_current_job_file_output_error(self):
         pass
