@@ -206,6 +206,9 @@ class PipelineResult:
     def add_success_message(self, success_message):
         self.success_messages.append(success_message)
 
+    def add_log_files(self, log_files):
+        self.file_path_log_files.extend(log_files)
+
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     # TODO
