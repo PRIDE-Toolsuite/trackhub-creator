@@ -16,8 +16,10 @@ import time
 import logging
 import importlib
 # App modules
-from exceptions import AppConfigException, ConfigManagerException
 from toolbox import general
+from hpc.models import HpcServiceFactory
+from hpc.exceptions import HpcServiceFactoryException, HpcServiceException
+from exceptions import AppConfigException, ConfigManagerException
 
 # Application defaults - NORMAL OPERATION MODE
 _folder_bin = os.path.abspath('bin')
@@ -168,9 +170,17 @@ class AppConfigManager(ConfigurationManager):
         global _log_level
         global _logger_formatters
         # Session ID
+        hpc_service = None
+        try:
+            hpc_service = HpcServiceFactory.get_hpc_service()
+        except HpcServiceFactoryException as e:
+            pass
         lsf_jobid = ''
-        if os.environ.get('LSB_JOBID'):
-            lsf_jobid = "-{}-".format(os.environ.get('LSB_JOBID'))
+        if hpc_service:
+            try:
+                lsf_jobid = "-{}-".format(hpc_service.get_current_job_id())
+            except HpcServiceException as e:
+                lsf_jobid = "-NO_JOB_ID-"
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') \
                             + lsf_jobid \
                             + "-" \
