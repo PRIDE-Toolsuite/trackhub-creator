@@ -80,7 +80,12 @@ class HpcServiceLsf(HpcService):
         return ""
 
     def get_current_job_file_logs(self):
-        pass
+        log_files = []
+        if self.get_current_job_file_output() != "":
+            log_files.append(self.get_current_job_file_output())
+        if self.get_current_job_file_output_error() != "":
+            log_files.append(self.get_current_job_file_output_error())
+        return log_files
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
