@@ -44,11 +44,12 @@ class HpcService(metaclass=abc.ABCMeta):
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
 
-class HpcServiceLsf:
+class HpcServiceLsf(HpcService):
     # Constants
     _ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
 
     def __init__(self):
+        super().__init__()
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
