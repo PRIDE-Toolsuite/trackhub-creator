@@ -13,3 +13,8 @@ HPC module exceptions
 
 # App imports
 from exceptions import AppException
+
+
+class HpcServiceException(AppException):
+    def __init__(self, value):
+        super().__init__(value)
