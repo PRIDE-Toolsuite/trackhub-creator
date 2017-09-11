@@ -41,9 +41,7 @@ class HpcServiceFactory:
 # Abstract base class
 class HpcService(metaclass=abc.ABCMeta):
     def __init__(self):
-        self._logger = config_manager \
-            .get_app_config_manager() \
-            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+        pass
 
     @abc.abstractmethod
     def get_current_job_id(self):
@@ -63,9 +61,6 @@ class HpcServiceLsf(HpcService):
 
     def __init__(self):
         super().__init__()
-        self._logger = config_manager \
-            .get_app_config_manager() \
-            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def get_current_job_id(self):
         if os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_JOB_ID):
