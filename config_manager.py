@@ -256,6 +256,9 @@ class AppConfigManager(ConfigurationManager):
     def get_session_working_dir(self):
         return self.__session_working_dir
 
+    def get_session_log_files(self):
+        pass
+
     def get_logger_for(self, name):
         """
         Create a logger on demand
