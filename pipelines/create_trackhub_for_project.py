@@ -243,7 +243,6 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             config_manager.get_app_config_manager().get_session_working_dir()
         # Add this pipeline session log files to the final report
         self.__pipeline_result_object.add_log_files(config_manager.get_app_config_manager().get_session_log_files())
-        # TODO - Add the log files to the result report
         if self.__config_manager.get_project_data_file_path():
             self._get_logger().info("Reading Project Trackhub Descriptor from file at '{}'"
                                     .format(self.__config_manager.get_project_data_file_path()))
