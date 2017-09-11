@@ -190,6 +190,9 @@ class PipelineResult:
         self.error_messages = []
         self.hub_descriptor_file_path = ""
 
+    def add_error_message(self, error_message):
+        pass
+
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     # TODO
