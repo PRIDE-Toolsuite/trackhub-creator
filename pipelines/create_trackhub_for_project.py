@@ -181,6 +181,9 @@ class ProjectTrackhubDescriptor:
                      in data_file_project_track_description_objects]
         return self.__project_tracks_descriptors
 
+    def get_trackhub_report_file_path(self):
+        return self._get_value_for_key(self._PROJECT_DATA_FILE_KEY_TRACKHUB_REPORT_FILE)
+
 
 class PipelineResult:
     # TODO
