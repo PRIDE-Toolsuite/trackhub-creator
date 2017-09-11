@@ -19,6 +19,7 @@ import config_manager
 class HpcServiceFactory:
     # Constants
     _HPC_TYPE_LSF = 'lsf'
+    _HPC_TYPE_NONE = 'no_hpc_environment_present'
 
     @staticmethod
     def get_hpc_service():
