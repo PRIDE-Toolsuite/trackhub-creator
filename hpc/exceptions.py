@@ -10,3 +10,6 @@
 """
 HPC module exceptions
 """
+
+# App imports
+from exceptions import AppException
