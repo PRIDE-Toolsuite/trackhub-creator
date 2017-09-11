@@ -218,6 +218,9 @@ class PipelineResult:
     def add_log_files(self, log_files):
         self.file_path_log_files.extend(log_files)
 
+    def __str__(self):
+        pass
+
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     # TODO
@@ -285,7 +288,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     def _after(self):
         if not self.is_pipeline_status_ok():
             self._get_logger().warning("This Pipeline is finishing with NON-OK status.")
-        
+
 
 
 if __name__ == '__main__':
