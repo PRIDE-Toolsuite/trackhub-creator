@@ -27,3 +27,7 @@ class HpcServiceFactory:
         # More HPC environments will be added in the future
         if os.environ.get('LSB_JOBID'):
             return HpcServiceFactory._HPC_TYPE_LSF
+
+
+class HpcServiceLsf:
+    pass
