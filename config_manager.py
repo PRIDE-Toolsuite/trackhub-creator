@@ -257,7 +257,9 @@ class AppConfigManager(ConfigurationManager):
         return self.__session_working_dir
 
     def get_session_log_files(self):
-        pass
+        log_files = []
+        # Add the application logs
+        log_files.extend(self.__log_files)
 
     def get_logger_for(self, name):
         """
