@@ -54,7 +54,8 @@ class HpcService(metaclass=abc.ABCMeta):
 class HpcServiceLsf(HpcService):
     # Constants
     _ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
-    _ENVIRONMENT_VAR_ERROR_FILE = 'LSB_ERRORFILE'
+    _ENVIRONMENT_VAR_FILE_OUTPUT_ERROR = 'LSB_ERRORFILE'
+    _ENVIRONMENT_VAR_FILE_OUTPUT = 'LSB_OUTPUTFILE'
 
     def __init__(self):
         super().__init__()
