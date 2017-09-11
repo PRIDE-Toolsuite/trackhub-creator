@@ -53,7 +53,7 @@ class HpcService(metaclass=abc.ABCMeta):
 # LSF
 class HpcServiceLsf(HpcService):
     # Constants
-    _ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
+    _LSF_ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
     _ENVIRONMENT_VAR_FILE_OUTPUT_ERROR = 'LSB_ERRORFILE'
     _ENVIRONMENT_VAR_FILE_OUTPUT = 'LSB_OUTPUTFILE'
 
@@ -64,7 +64,7 @@ class HpcServiceLsf(HpcService):
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def get_current_job_id(self):
-        if os.environ.get(HpcServiceLsf._ENVIRONMENT_VAR_JOB_ID):
-            return os.environ.get(HpcServiceLsf._ENVIRONMENT_VAR_JOB_ID)
+        if os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_JOB_ID):
+            return os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_JOB_ID)
         raise HpcServiceException("Could not retrieve LSF Job ID from environment variable '{}'"
-                                  .format(HpcServiceLsf._ENVIRONMENT_VAR_JOB_ID))
+                                  .format(HpcServiceLsf._LSF_ENVIRONMENT_VAR_JOB_ID))
