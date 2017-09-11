@@ -18,3 +18,7 @@ class HpcServiceFactory:
     @staticmethod
     def get_hpc_service():
         pass
+
+    @staticmethod
+    def get_hpc_environment_type():
+        pass
