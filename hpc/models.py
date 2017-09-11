@@ -79,5 +79,8 @@ class HpcServiceLsf(HpcService):
             return os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR)
         return ""
 
+    def get_current_job_file_logs(self):
+        pass
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
