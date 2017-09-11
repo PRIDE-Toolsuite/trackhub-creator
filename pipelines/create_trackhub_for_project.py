@@ -192,8 +192,8 @@ class ProjectTrackhubDescriptor:
 
 class PipelineResult:
     # TODO
-    _VALUE_STATUS_SUCCESS = 'success'
-    _VALUE_STATUS_ERROR = 'error'
+    _VALUE_STATUS_SUCCESS = 'SUCCESS'
+    _VALUE_STATUS_ERROR = 'ERROR'
 
     def __init__(self):
         self.status = self._VALUE_STATUS_SUCCESS
