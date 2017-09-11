@@ -29,6 +29,7 @@ can be seen on this sample:
 """
 
 import os
+import json
 import time
 # App imports
 import config_manager
@@ -219,7 +220,12 @@ class PipelineResult:
         self.file_path_log_files.extend(log_files)
 
     def __str__(self):
-        pass
+        return json.dumps({'status': self.status,
+                           'success_messages': self.success_messages,
+                           'error_messages': self.error_messages,
+                           'hub_descriptor_file_path': self.hub_descriptor_file_path,
+                           "pipeline_session_working_dir": self.file_path_pipeline_session,
+                           "log_files": self.file_path_log_files})
 
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
