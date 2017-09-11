@@ -37,6 +37,9 @@ class HpcServiceFactory:
 
 
 class HpcServiceLsf:
+    # Constants
+    _ENVIRONMENT_VAR_JOB_ID = 'LSB_JOBID'
+
     def __init__(self):
         self._logger = config_manager\
             .get_app_config_manager()\
