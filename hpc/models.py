@@ -10,3 +10,6 @@
 """
 Models representing different HPC environments
 """
+
+class HpcServiceFactory:
+    pass
