@@ -49,6 +49,10 @@ class HpcService(metaclass=abc.ABCMeta):
     def get_current_job_id(self):
         ...
 
+    @abc.abstractmethod
+    def get_current_job_file_logs(self):
+        ...
+
 
 # LSF
 class HpcServiceLsf(HpcService):
