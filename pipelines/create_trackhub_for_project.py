@@ -291,12 +291,15 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         return False
 
     def _run_pipeline(self):
-        # TODO
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
             self._get_logger().warning(error_message)
             self.__pipeline_result_object.add_error_message(error_message)
             return False
+        # TODO - Run PoGo for every project track (.pogo file)
+        # TODO - Populate assemblies with the PoGo run results
+        # TODO - Create Trackhub descriptor
+        # TODO - Export Trackhub
         return True
 
     def _after(self):
