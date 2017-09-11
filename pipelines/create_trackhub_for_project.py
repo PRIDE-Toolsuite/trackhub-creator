@@ -84,6 +84,10 @@ class ConfigManager(DirectorConfigurationManager):
     def get_project_data_file_path(self):
         return self._get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_PROJECT_DATA_FILE)
 
+    def get_file_path_trackhub_creation_report(self):
+        return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
+                            "trackhub_creation.report")
+
 
 # Models for dealing with the data file that describes the project
 class ProjectTrackDescriptor:
