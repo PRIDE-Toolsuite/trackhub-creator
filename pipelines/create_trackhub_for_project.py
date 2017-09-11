@@ -188,6 +188,7 @@ class PipelineResult:
     def __init__(self):
         self.status = self._VALUE_STATUS_SUCCESS
         self.error_messages = []
+        self.success_messages = []
         self.hub_descriptor_file_path = ""
 
     def set_status_error(self):
