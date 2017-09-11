@@ -269,6 +269,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         self.__pipeline_result_object.add_error_message(error_message)
         return False
 
+    def _run_pipeline(self):
+        # TODO
+        pass
+
     def _after(self):
         # TODO - Export to file the pipeline result object
         pass
