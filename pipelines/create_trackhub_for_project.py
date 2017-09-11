@@ -193,7 +193,7 @@ class PipelineResult:
         # Absolute file path to the folder that represents the running session of the pipeline
         self.file_path_pipeline_session = ""
         # Absolute file path to the log files that belong to the running session of the pipeline
-        self.file_path_log_files = ""
+        self.file_path_log_files = []
 
     def set_status_error(self):
         self.status = self._VALUE_STATUS_ERROR
