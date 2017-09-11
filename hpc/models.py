@@ -13,3 +13,7 @@ Models representing different HPC environments
 
 class HpcServiceFactory:
     _HPC_TYPE_LSF = 'lsf'
+
+    @staticmethod
+    def get_hpc_service():
+        pass
