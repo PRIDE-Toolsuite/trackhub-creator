@@ -11,6 +11,9 @@
 Models representing different HPC environments
 """
 
+import os
+
+
 class HpcServiceFactory:
     # Constants
     _HPC_TYPE_LSF = 'lsf'
@@ -21,4 +24,6 @@ class HpcServiceFactory:
 
     @staticmethod
     def get_hpc_environment_type():
-        pass
+        # More HPC environments will be added in the future
+        if os.environ.get('LSB_JOBID'):
+            return HpcServiceFactory._HPC_TYPE_LSF
