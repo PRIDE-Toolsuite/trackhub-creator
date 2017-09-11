@@ -283,8 +283,9 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         pass
 
     def _after(self):
-        # TODO - Export to file the pipeline result object
-        pass
+        if not self.is_pipeline_status_ok():
+            self._get_logger().warning("This Pipeline is finishing with NON-OK status.")
+        
 
 
 if __name__ == '__main__':
