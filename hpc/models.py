@@ -68,3 +68,6 @@ class HpcServiceLsf(HpcService):
             return os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_JOB_ID)
         raise HpcServiceException("Could not retrieve LSF Job ID from environment variable '{}'"
                                   .format(HpcServiceLsf._LSF_ENVIRONMENT_VAR_JOB_ID))
+
+    def get_current_job_file_output(self):
+        pass
