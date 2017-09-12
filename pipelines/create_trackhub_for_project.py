@@ -224,8 +224,8 @@ class PipelineResult:
                            'success_messages': self.success_messages,
                            'error_messages': self.error_messages,
                            'hub_descriptor_file_path': self.hub_descriptor_file_path,
-                           "pipeline_session_working_dir": self.file_path_pipeline_session,
-                           "log_files": self.file_path_log_files})
+                           'pipeline_session_working_dir': self.file_path_pipeline_session,
+                           'log_files': self.file_path_log_files})
 
 
 class TrackhubCreatorForProject(PogoBasedPipelineDirector):
