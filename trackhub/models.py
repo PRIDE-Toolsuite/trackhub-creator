@@ -175,8 +175,9 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
                     big_data_file_name = os.path.basename(track.get_big_data_url())
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     shutil.copy(track.get_big_data_url(), destination_file_path)
-                    # Modify track file path to be relative to trackhub root path
-                    new_big_data_url = os.path.join(os.path.basename(assembly_folder), big_data_file_name)
+                    # Modify the track (irreversible) to point to the big data file relative to the trackDB.txt file
+                    # path
+                    new_big_data_url = big_data_file_name
                     track.set_big_data_url(new_big_data_url)
                     self.logger.info(
                         "Assembly '{}' ---> Data for track '{}' prepared, track information updated"
