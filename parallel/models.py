@@ -21,3 +21,7 @@ class CommandLineRunnerFactory:
 
 class CommandLineRunner(metaclass=abc.ABCMeta):
     pass
+
+
+class CommandLineRunnerAsThread(CommandLineRunner):
+    pass
