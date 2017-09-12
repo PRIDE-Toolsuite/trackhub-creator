@@ -17,3 +17,7 @@ import abc
 # Execution of commands
 class CommandLineRunnerFactory:
     pass
+
+
+class CommandLineRunner(metaclass=abc.ABCMeta):
+    pass
