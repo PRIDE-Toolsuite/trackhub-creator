@@ -626,6 +626,8 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                                 source_trackhub_folder)
             self._get_logger().info("Filesystem synchronization command '{}'".format(sync_command))
             sync_subprocess = subprocess.Popen(sync_command, shell=True)
+            stdout = ''
+            stderr = ''
             try:
                 stdout, stderr = sync_subprocess \
                     .communicate(timeout=self._get_configuration_manager().get_filesystem_sync_run_timeout())
