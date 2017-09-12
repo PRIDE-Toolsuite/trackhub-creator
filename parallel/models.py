@@ -12,3 +12,5 @@ This file contains different models for the execution of subprocesses / external
 """
 
 # Execution of commands
+class CommandLineRunnerFactory:
+    pass
