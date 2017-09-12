@@ -12,6 +12,7 @@ This module contains models for dealing with PoGo stuff
 """
 
 import os
+import abc
 # Application imports
 import config_manager as main_app_config_manager
 from . import config_manager as module_config_manager
@@ -100,6 +101,11 @@ class PogoRunResult:
 # PoGo Runners
 def get_pogo_runner():
     # TODO
+    pass
+
+
+# PoGo Runners
+class PogoRunner(metaclass=abc.ABCMeta):
     pass
 
 
