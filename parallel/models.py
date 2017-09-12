@@ -11,6 +11,9 @@
 This file contains different models for the execution of subprocesses / external processes, e.g. via the command line
 """
 
+import abc
+
+
 # Execution of commands
 class CommandLineRunnerFactory:
     pass
