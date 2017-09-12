@@ -25,3 +25,7 @@ class CommandLineRunner(metaclass=abc.ABCMeta):
 
 class CommandLineRunnerAsThread(CommandLineRunner):
     pass
+
+
+class CommandLineRunnerOnHpc(CommandLineRunner):
+    pass
