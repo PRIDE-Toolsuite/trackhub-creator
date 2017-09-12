@@ -99,12 +99,10 @@ class PogoRunResult:
 
 
 # PoGo Runners
-def get_pogo_runner():
-    # TODO
+class PogoRunningFactory(metaclass=abc.ABCMeta):
     pass
 
 
-# PoGo Runners
 class PogoRunner(metaclass=abc.ABCMeta):
     pass
 
