@@ -26,11 +26,7 @@ class ParallelManager:
     pass
 
 
-class ParallelRunner:
-    pass
-
-
-class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
+class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
     def __init__(self):
         super().__init__()
         self._logger = config_manager\
@@ -60,6 +56,9 @@ class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
     def get_stderr(self):
         pass
 
+
+class CommandLineRunner(ParallelRunner):
+    pass
 
 class CommandLineRunnerAsThread(CommandLineRunner):
     pass
