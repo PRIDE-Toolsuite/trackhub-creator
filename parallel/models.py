@@ -34,6 +34,9 @@ class ParallelRunnerManager:
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
         self.runners = []
 
+    def start_runners(self):
+        pass
+
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def __init__(self):
