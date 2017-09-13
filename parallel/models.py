@@ -47,6 +47,9 @@ class ParallelRunnerManager:
     def add_runners(self, runners):
         self.__runners.union(set(runners))
 
+    def add_runner(self, runner):
+        self.__runners.add(runner)
+
     def start_runners(self):
         self._logger.debug("Starting #{} Runners".format(len(self.__runners)))
         for runner in self.__runners:
