@@ -290,6 +290,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         self.set_pipeline_status_fail()
         return False
 
+    # Helpers
+
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
