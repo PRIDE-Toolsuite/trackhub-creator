@@ -294,6 +294,9 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     def __run_pogo_for_project_tracks(self):
         pass
 
+    def __populate_assemblies(self):
+        pass
+
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
