@@ -76,6 +76,9 @@ class ParallelRunnerManager:
             time.sleep(random.randint(0, 10))
         return runner_found
 
+    def get_not_started_runners(self):
+        return set(self.__runners)
+
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def __init__(self):
