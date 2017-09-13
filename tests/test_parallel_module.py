@@ -14,6 +14,7 @@ Unit tests for the parallelization module
 import unittest
 # App imports
 import config_manager
+from parallel.models import CommandLineRunnerFactory
 
 
 class TestCommandLineRunner(unittest.TestCase):
@@ -21,7 +22,8 @@ class TestCommandLineRunner(unittest.TestCase):
 
     def test_success_on_running_simple_command_without_timeout(self):
         command = "echo Successful_run"
-
+        runner = CommandLineRunnerFactory.get_command_line_runner()
+        runner.command = command
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
