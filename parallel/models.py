@@ -36,8 +36,6 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
-        self.command = None
-        self.timeout = None
         self._stdout = b' '
         self._stderr = b' '
         self._done = False
@@ -84,6 +82,8 @@ class CommandLineRunner(ParallelRunner):
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+        self.command = None
+        self.timeout = None
 
 
 class CommandLineRunnerAsThread(CommandLineRunner):
