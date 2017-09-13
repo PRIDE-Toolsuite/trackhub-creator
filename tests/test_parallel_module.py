@@ -38,7 +38,7 @@ class TestCommandLineRunner(unittest.TestCase):
         for command in commands:
             runner = CommandLineRunnerFactory.get_command_line_runner()
             runner.command = command
-            parallel_runner_manager.add_runner([runner])
+            parallel_runner_manager.add_runner(runner)
         parallel_runner_manager.start_runners()
         parallel_runner_manager.wait_all()
         for runner in parallel_runner_manager.get_finished_runners():
