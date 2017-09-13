@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Exceptions related to this parallelization module
 """
