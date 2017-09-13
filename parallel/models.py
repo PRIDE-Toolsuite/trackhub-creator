@@ -79,6 +79,9 @@ class ParallelRunnerManager:
     def get_not_started_runners(self):
         return set(self.__runners)
 
+    def get_alive_runners(self):
+        return set(self.__alive_runners)
+
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def __init__(self):
