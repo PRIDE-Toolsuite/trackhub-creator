@@ -10,3 +10,11 @@
 """
 Exceptions related to this parallelization module
 """
+
+# App imports
+from exceptions import AppException
+
+
+class ParallelRunnerException(AppException):
+    def __init__(self, value):
+        super().__init__(value)
