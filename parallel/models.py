@@ -27,10 +27,14 @@ class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
         self.timeout = None
         self._stdout = b' '
         self._stderr = b' '
+        self.is_alive()
 
     def run(self):
         pass
 
+    def cancel(self):
+        pass
+    
     def wait(self):
         pass
 
