@@ -20,7 +20,8 @@ class CommandLineRunnerFactory:
 
 
 class CommandLineRunner(metaclass=abc.ABCMeta):
-    pass
+    def __init__(self):
+        self.command = None
 
 
 class CommandLineRunnerAsThread(CommandLineRunner):
