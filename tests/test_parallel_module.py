@@ -18,7 +18,7 @@ from parallel.models import CommandLineRunnerFactory
 
 
 class TestCommandLineRunner(unittest.TestCase):
-    __logger = config_manager.get_app_config_manager().get_logger_for("{}.{}".format(__name__, type(self).__name__))
+    __logger = config_manager.get_app_config_manager().get_logger_for(__name__)
 
     def test_success_on_running_simple_command_without_timeout(self):
         command = "echo Successful_run"
