@@ -112,8 +112,7 @@ class CommandLineRunnerAsThread(CommandLineRunner):
         try:
             self._stdout, self._stderr = command_subprocess.communicate(timeout=self.timeout)
         except subprocess.TimeoutExpired as e:
-            pass
-
+            command_subprocess.kill()
 
 class CommandLineRunnerOnHpc(CommandLineRunner):
     def __init__(self):
