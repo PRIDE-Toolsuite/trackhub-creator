@@ -32,7 +32,7 @@ class ParallelRunnerManager:
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
-        self.runners = []
+        self.runners = {}
 
     def start_runners(self):
         pass
