@@ -46,7 +46,7 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
         ...
 
     def run(self):
-        self._logger.debug("Parallel Runner ID '{}' --- START ---".format(threading.current_thread().getName()))
+        self._logger.debug("Runner Thread ID '{}' --- START ---".format(threading.current_thread().getName()))
         try:
             self._run()
         finally:
