@@ -13,6 +13,8 @@ This file contains different models for the execution of subprocesses / external
 
 import abc
 import threading
+# App imports
+import config_manager
 
 
 # Execution of commands
@@ -23,6 +25,9 @@ class CommandLineRunnerFactory:
 class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
     def __init__(self):
         super().__init__()
+        self._logger = config_manager\
+            .get_app_config_manager()\
+            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
         self.command = None
         self.timeout = None
         self._stdout = b' '
