@@ -20,7 +20,7 @@ class TestCommandLineRunner(unittest.TestCase):
     __logger = config_manager.get_app_config_manager().get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def test_success_on_running_simple_command_without_timeout(self):
-        pass
+        command = "echo Successful_run"
 
 
 if __name__ == '__main__':
