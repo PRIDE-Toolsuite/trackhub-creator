@@ -131,6 +131,13 @@ class CommandLineRunnerAsThread(CommandLineRunner):
                                                                             self.command,
                                                                             self.current_working_directory,
                                                                             self.timeout))
+        # I don't think I really need this flag over here, as any other situation would throw an exception but, it looks
+        # good and, keep into account that whatever you do with a possible exception is independent than whatever you
+        # can express by the combination of flags '_done' and 'command_success'. This allows you to react by capturing
+        # the exception (that also provides the return code for the command) but still keep the information that the
+        # process finished Ok, but the command failed, and you also have the stdout and stderr content for further
+        # analysis
+        self.command_success = True
 
 
 class CommandLineRunnerOnHpc(CommandLineRunner):
