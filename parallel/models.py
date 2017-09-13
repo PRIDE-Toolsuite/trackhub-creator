@@ -20,7 +20,10 @@ from .exceptions import ParallelRunnerException
 
 # Execution of commands
 class CommandLineRunnerFactory:
-    pass
+    @staticmethod
+    def get_command_line_runner():
+        # TODO - This Factory is creating only local runners in the first iteration
+        return CommandLineRunnerAsThread()
 
 
 class ParallelManager:
