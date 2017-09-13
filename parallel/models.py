@@ -13,6 +13,7 @@ This file contains different models for the execution of subprocesses / external
 
 import abc
 import threading
+import subprocess
 # App imports
 import config_manager
 from .exceptions import ParallelRunnerException
