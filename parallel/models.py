@@ -16,7 +16,7 @@ import threading
 import subprocess
 # App imports
 import config_manager
-from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadException
+from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadException, ParallelRunnerManagerException
 
 
 # Execution of commands
@@ -51,7 +51,11 @@ class ParallelRunnerManager:
         pass
 
     def get_next_finished_runner(self):
-        pass
+        if not self.__alive_runners:
+            raise ParallelRunnerManagerException("No more runners left! They've all finished")
+        self._logger.debug("Searching for the next finished runner among #{} runners".format(len(self.__alive_runners)))
+        for runner in self.__alive_runners:
+            pass
 
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
@@ -96,6 +100,9 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
         if not self._done:
             raise ParallelRunnerException("Runner is NOT DONE doing its job, thus 'stderr' is NOT AVAILABLE")
         return self._stderr
+
+    def is_done(self):
+        return self._done
 
 
 class CommandLineRunner(ParallelRunner):
