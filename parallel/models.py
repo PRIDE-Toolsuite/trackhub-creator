@@ -83,6 +83,7 @@ class CommandLineRunner(ParallelRunner):
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
         self.command = None
         self.timeout = None
+        self.current_working_directory = None
 
 
 class CommandLineRunnerAsThread(CommandLineRunner):
