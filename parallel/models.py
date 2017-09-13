@@ -104,6 +104,12 @@ class CommandLineRunnerAsThread(CommandLineRunner):
                                               stdout=subprocess.PIPE,
                                               stderr=subprocess.PIPE,
                                               shell=True)
+        self._logger.debug("Communicating with subprocess for command '{}', "
+                           "current working directory at '{}', "
+                           "timeout '{}s'".format(self.command,
+                                                  self.current_working_directory,
+                                                  self.timeout))
+        self._stdout, self._stderr = command_subprocess.communicate(timeout=self.timeout)
 
 
 class CommandLineRunnerOnHpc(CommandLineRunner):
