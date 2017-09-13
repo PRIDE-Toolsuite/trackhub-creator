@@ -26,6 +26,9 @@ class CommandLineRunner(metaclass=abc.ABCMeta):
         self._stdout = b' '
         self._stderr = b' '
 
+    def get_stdout(self):
+        pass
+
 
 class CommandLineRunnerAsThread(CommandLineRunner):
     pass
