@@ -27,7 +27,7 @@ class CommandLineRunnerFactory:
         return CommandLineRunnerAsThread()
 
 
-class ParallelManager:
+class ParallelRunnerManager:
     pass
 
 
