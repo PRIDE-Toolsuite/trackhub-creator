@@ -14,7 +14,7 @@ Unit tests for the parallelization module
 import unittest
 # App imports
 import config_manager
-from parallel.models import CommandLineRunnerFactory
+from parallel.models import CommandLineRunnerFactory, ParallelRunnerManagerFactory
 
 
 class TestCommandLineRunner(unittest.TestCase):
@@ -31,6 +31,19 @@ class TestCommandLineRunner(unittest.TestCase):
                             .format(command,
                                     runner.get_stdout().decode('utf8'),
                                     runner.get_stderr().decode('utf8')))
+
+    def test_simple_commands_with_parallel_runner_manager(self):
+        commands = ["Successful_run-{:03}".format(i) for i in range(0, 1000)]
+        parallel_runner_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
+        for command in commands:
+            runner = CommandLineRunnerFactory.get_command_line_runner()
+            runner.command = command
+            parallel_runner_manager.add_runner([runner])
+        parallel_runner_manager.start_runners()
+        parallel_runner_manager.wait_all()
+        for runner in parallel_runner_manager.get_finished_runners():
+            self.assertTrue(runner.is_done(), "Runner is Done")
+            self.assertTrue(runner.command_success, "Run command was successful")
 
 
 if __name__ == '__main__':
