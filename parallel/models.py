@@ -29,8 +29,8 @@ class ParallelManager:
 class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
     def __init__(self):
         super().__init__()
-        self._logger = config_manager\
-            .get_app_config_manager()\
+        self._logger = config_manager \
+            .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
         self.command = None
         self.timeout = None
@@ -59,6 +59,7 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
 
 class CommandLineRunner(ParallelRunner):
     pass
+
 
 class CommandLineRunnerAsThread(CommandLineRunner):
     pass
