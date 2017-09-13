@@ -22,10 +22,14 @@ class CommandLineRunnerFactory:
 
 class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
     def __init__(self):
+        super().__init__()
         self.command = None
         self.timeout = None
         self._stdout = b' '
         self._stderr = b' '
+
+    def run(self):
+        pass
 
     def get_stdout(self):
         pass
