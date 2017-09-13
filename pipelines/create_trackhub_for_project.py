@@ -291,6 +291,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         return False
 
     # Helpers
+    def __run_pogo_for_project_tracks(self):
+        pass
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
