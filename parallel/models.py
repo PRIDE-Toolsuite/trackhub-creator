@@ -51,11 +51,17 @@ class ParallelRunnerManager:
         pass
 
     def get_next_finished_runner(self):
-        if not self.__alive_runners:
-            raise ParallelRunnerManagerException("No more runners left! They've all finished")
         self._logger.debug("Searching for the next finished runner among #{} runners".format(len(self.__alive_runners)))
+        runner_found = None
         for runner in self.__alive_runners:
-            pass
+            if runner.is_done():
+                runner_found = runner
+                break
+        if runner_found:
+            self.__alive_runners.remove(runner_found)
+            self.__finished_runners.add(runner_found)
+            return runner_found
+        raise ParallelRunnerManagerException("No more runners left! They've all finished")
 
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
