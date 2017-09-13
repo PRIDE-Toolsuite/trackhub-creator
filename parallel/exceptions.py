@@ -15,6 +15,11 @@ Exceptions related to this parallelization module
 from exceptions import AppException
 
 
+class ParallelRunnerManagerException(AppException):
+    def __init__(self, value):
+        super().__init__(value)
+
+
 class ParallelRunnerException(AppException):
     def __init__(self, value):
         super().__init__(value)
