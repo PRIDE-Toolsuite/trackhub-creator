@@ -60,9 +60,12 @@ class ParallelRunnerManager:
     def get_next_finished_runner(self):
         if not self.__alive_runners:
             raise ParallelRunnerManagerException("No more runners left! They've all finished")
-        self._logger.debug("Searching for the next finished runner among #{} runners".format(len(self.__alive_runners)))
         runner_found = None
+        counter = 1
         while True:
+            self._logger.debug("Searching for the next finished runner among #{} runners, ROUND #{}"
+                               .format(len(self.__alive_runners),
+                                       counter))
             for runner in self.__alive_runners:
                 if runner.is_done():
                     runner_found = runner
@@ -74,6 +77,7 @@ class ParallelRunnerManager:
             # WARNING! - MAGIC NUMBER AHEAD!!!
             # We haven't found any runner on this round, let's wait a random amount of time before we try again
             time.sleep(random.randint(0, 10))
+            counter += 1
         return runner_found
 
     def get_not_started_runners(self):
