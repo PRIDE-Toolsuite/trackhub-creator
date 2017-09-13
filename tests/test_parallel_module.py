@@ -12,7 +12,9 @@ Unit tests for the parallelization module
 """
 
 import unittest
+# App imports
+import config_manager
 
 
 class TestCommandLineRunner(unittest.TestCase):
-    pass
+    __logger = config_manager.get_app_config_manager().get_logger_for("{}.{}".format(__name__, type(self).__name__))
