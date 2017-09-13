@@ -109,7 +109,10 @@ class CommandLineRunnerAsThread(CommandLineRunner):
                            "timeout '{}s'".format(self.command,
                                                   self.current_working_directory,
                                                   self.timeout))
-        self._stdout, self._stderr = command_subprocess.communicate(timeout=self.timeout)
+        try:
+            self._stdout, self._stderr = command_subprocess.communicate(timeout=self.timeout)
+        except subprocess.TimeoutExpired as e:
+            pass
 
 
 class CommandLineRunnerOnHpc(CommandLineRunner):
