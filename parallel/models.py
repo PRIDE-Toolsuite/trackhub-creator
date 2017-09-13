@@ -94,7 +94,11 @@ class CommandLineRunnerAsThread(CommandLineRunner):
             .get_logger_for("{}.{}-{}".format(__name__, type(self).__name__, threading.current_thread().getName()))
 
     def _run(self):
-        self._logger.debug("Preparing for running command '{}'")
+        self._logger.debug("Preparing for running command '{}', "
+                           "current working directory at '{}', "
+                           "timeout '{}s'".format(self.command,
+                                                  self.current_working_directory,
+                                                  self.timeout))
 
 
 class CommandLineRunnerOnHpc(CommandLineRunner):
