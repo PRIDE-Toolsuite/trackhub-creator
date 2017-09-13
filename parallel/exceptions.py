@@ -30,7 +30,7 @@ class CommandLineRunnerAsThreadException(CommandLineRunnerException):
         super().__init__(value)
 
 
-class CommandLineRunnerOnHpc(CommandLineRunnerException):
+class CommandLineRunnerOnHpcException(CommandLineRunnerException):
     def __init__(self, value):
         super().__init__(value)
 
