@@ -33,6 +33,7 @@ class ParallelRunnerManager:
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
         self.runners = {}
+        self.__alive_runners = {}
         self.__finished_runners = {}
 
     def start_runners(self):
