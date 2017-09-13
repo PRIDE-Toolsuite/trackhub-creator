@@ -50,7 +50,12 @@ class ParallelRunnerManager:
         self.__runners.clear()
 
     def wait_all(self):
-        pass
+        self._logger.debug("Waiting for all #{} runners to finish".format(len(self.__alive_runners)))
+        try:
+            while True:
+                self.get_next_finished_runner()
+        except ParallelRunnerManagerException as e:
+            self._logger.debug("All runners are (should be) finished")
 
     def get_next_finished_runner(self):
         if not self.__alive_runners:
