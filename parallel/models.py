@@ -72,7 +72,7 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
     def get_stderr(self):
         # Never give it back until the runner is done with whatever it is doing
         if not self._done:
-            raise ParallelRunnerException("Runner Thread ID '{}' is NOT DONE doing its job, "
+            raise ParallelRunnerException("Runner is NOT DONE doing its job, "
                                           "thus 'stderr' is NOT AVAILABLE".format(threading.current_thread().getName()))
         return self._stderr
 
