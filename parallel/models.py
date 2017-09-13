@@ -40,6 +40,9 @@ class ParallelRunnerManager:
     def wait_all(self):
         pass
 
+    def get_next_finished_runner(self):
+        pass
+
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def __init__(self):
