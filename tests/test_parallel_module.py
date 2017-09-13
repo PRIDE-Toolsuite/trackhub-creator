@@ -24,6 +24,14 @@ class TestCommandLineRunner(unittest.TestCase):
         command = "echo Successful_run"
         runner = CommandLineRunnerFactory.get_command_line_runner()
         runner.command = command
+        runner.start()
+        runner.wait()
+        self.assertTrue(runner.command_success, "Command finishes with success")
+        self.__logger.debug("Command '{}', STDOUT - '{}', STDERR - '{}'"
+                            .format(command,
+                                    runner.get_stdout().decode('utf8'),
+                                    runner.get_stderr().decode('utf8')))
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
