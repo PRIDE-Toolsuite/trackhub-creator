@@ -25,7 +25,7 @@ class CommandLineRunnerException(ParallelRunnerException):
         super().__init__(value)
 
 
-class CommandLineRunnerAsThread(CommandLineRunnerException):
+class CommandLineRunnerAsThreadException(CommandLineRunnerException):
     def __init__(self, value):
         super().__init__(value)
 
