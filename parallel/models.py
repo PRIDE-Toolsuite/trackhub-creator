@@ -31,7 +31,7 @@ class ParallelManager:
     pass
 
 
-class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
+class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def __init__(self):
         super().__init__()
         self._logger = config_manager \
