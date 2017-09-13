@@ -46,7 +46,10 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
 
     def run(self):
         self._logger.debug("Parallel Runner ID '{}' --- START ---".format(threading.current_thread().getName()))
-        self._run()
+        try:
+            self._run()
+        finally:
+            self._done = True
 
     def cancel(self):
         self._logger.debug("Parallel Runner ID '{}' --- CANCEL ---".format(threading.current_thread().getName()))
