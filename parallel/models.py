@@ -32,13 +32,13 @@ class ParallelRunnerManager:
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
-        self.runners = {}
+        self.__runners = {}
         self.__alive_runners = {}
         self.__finished_runners = {}
 
     def start_runners(self):
-        self._logger.debug("Starting #{} Runners".format(len(self.runners)))
-        for runner in self.runners:
+        self._logger.debug("Starting #{} Runners".format(len(self.__runners)))
+        for runner in self.__runners:
             runner.start()
 
     def wait_all(self):
