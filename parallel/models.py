@@ -85,6 +85,9 @@ class CommandLineRunner(ParallelRunner):
         self.command = None
         self.timeout = None
 
+    def _run(self):
+        pass
+
 
 class CommandLineRunnerAsThread(CommandLineRunner):
     pass
