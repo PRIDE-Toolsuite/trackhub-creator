@@ -28,7 +28,8 @@ class CommandLineRunnerFactory:
 
 
 class ParallelRunnerManager:
-    pass
+    def __init__(self):
+        self.runners = []
 
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
