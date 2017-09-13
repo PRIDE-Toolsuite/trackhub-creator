@@ -33,6 +33,10 @@ class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
         self._stdout = b' '
         self._stderr = b' '
 
+    @abc.abstractmethod
+    def _run(self):
+        pass
+
     def run(self):
         pass
 
