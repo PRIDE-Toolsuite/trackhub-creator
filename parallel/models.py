@@ -12,6 +12,7 @@ This file contains different models for the execution of subprocesses / external
 """
 
 import abc
+import threading
 
 
 # Execution of commands
@@ -19,7 +20,7 @@ class CommandLineRunnerFactory:
     pass
 
 
-class CommandLineRunner(metaclass=abc.ABCMeta):
+class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
     def __init__(self):
         self.command = None
         self.timeout = None
