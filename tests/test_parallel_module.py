@@ -33,7 +33,7 @@ class TestCommandLineRunner(unittest.TestCase):
                                     runner.get_stderr().decode('utf8')))
 
     def test_simple_commands_with_parallel_runner_manager(self):
-        commands = ["echo Successful_run-{:03}".format(i) for i in range(0, 10)]
+        commands = ["echo Successful_run-{:03}".format(i) for i in range(0, 1000)]
         parallel_runner_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
         for command in commands:
             runner = CommandLineRunnerFactory.get_command_line_runner()
