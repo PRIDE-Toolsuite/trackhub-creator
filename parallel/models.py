@@ -58,7 +58,7 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
         self._stop()
 
     def wait(self):
-        self._logger.debug("Parallel Runner ID '{}' --- WAIT ---".format(threading.current_thread().getName()))
+        self._logger.debug("Runner Thread ID '{}' --- WAIT ---".format(threading.current_thread().getName()))
         self.join()
 
     def get_stdout(self):
