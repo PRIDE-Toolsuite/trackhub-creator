@@ -65,8 +65,7 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
     def get_stdout(self):
         # Never give it back until the runner is done with whatever it is doing
         if not self._done:
-            raise ParallelRunnerException("Runner is NOT DONE doing its job, "
-                                          "thus 'stdout' is NOT AVAILABLE".format(threading.current_thread().getName()))
+            raise ParallelRunnerException("Runner is NOT DONE doing its job, thus 'stdout' is NOT AVAILABLE")
         return self._stdout
 
     def get_stderr(self):
