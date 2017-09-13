@@ -31,6 +31,9 @@ class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
     def run(self):
         pass
 
+    def wait(self):
+        pass
+
     def get_stdout(self):
         pass
 
