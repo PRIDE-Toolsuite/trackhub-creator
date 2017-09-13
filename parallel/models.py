@@ -22,6 +22,7 @@ class CommandLineRunnerFactory:
 class CommandLineRunner(metaclass=abc.ABCMeta):
     def __init__(self):
         self.command = None
+        self.timeout = None
 
 
 class CommandLineRunnerAsThread(CommandLineRunner):
