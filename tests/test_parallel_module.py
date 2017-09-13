@@ -10,3 +10,9 @@
 """
 Unit tests for the parallelization module
 """
+
+import unittest
+
+
+class TestCommandLineRunner(unittest.TestCase):
+    pass
