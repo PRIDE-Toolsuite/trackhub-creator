@@ -93,7 +93,7 @@ class CommandLineRunnerAsThread(CommandLineRunner):
             .get_logger_for("{}.{}-{}".format(__name__, type(self).__name__, threading.current_thread().getName()))
 
     def _run(self):
-        pass
+        self._logger.debug("Preparing for running command '{}'")
 
 
 class CommandLineRunnerOnHpc(CommandLineRunner):
