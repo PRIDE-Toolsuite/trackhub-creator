@@ -37,6 +37,7 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
         self._stdout = b' '
         self._stderr = b' '
         self._done = False
+        self._shutdown = False
 
     @abc.abstractmethod
     def _run(self):
