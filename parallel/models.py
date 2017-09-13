@@ -15,6 +15,7 @@ import abc
 import threading
 # App imports
 import config_manager
+from .exceptions import ParallelRunnerException
 
 
 # Execution of commands
@@ -57,7 +58,11 @@ class ParallelRunner(metaclass=abc.ABCMeta, threading.Thread):
         self.join()
 
     def get_stdout(self):
-        pass
+        # Never give it back until the runner is done with whatever it is doing
+        if not self._done:
+            raise ParallelRunnerException("Parallel Runner ID '{}' is NOT DONE doing its job, "
+                                          "thus 'stdout' is NOT AVAILABLE".format(threading.current_thread().getName()))
+        return self._stdout
 
     def get_stderr(self):
         pass
