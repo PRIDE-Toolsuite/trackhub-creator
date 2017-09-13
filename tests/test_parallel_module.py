@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+Unit tests for the parallelization module
 """
