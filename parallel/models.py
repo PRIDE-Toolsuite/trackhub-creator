@@ -37,6 +37,9 @@ class ParallelRunnerManager:
     def start_runners(self):
         pass
 
+    def wait_all(self):
+        pass
+
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def __init__(self):
