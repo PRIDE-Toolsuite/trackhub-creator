@@ -12,6 +12,8 @@ This file contains different models for the execution of subprocesses / external
 """
 
 import abc
+import time
+import random
 import threading
 import subprocess
 # App imports
@@ -51,17 +53,23 @@ class ParallelRunnerManager:
         pass
 
     def get_next_finished_runner(self):
+        if not self.__alive_runners:
+            raise ParallelRunnerManagerException("No more runners left! They've all finished")
         self._logger.debug("Searching for the next finished runner among #{} runners".format(len(self.__alive_runners)))
         runner_found = None
-        for runner in self.__alive_runners:
-            if runner.is_done():
-                runner_found = runner
+        while True:
+            for runner in self.__alive_runners:
+                if runner.is_done():
+                    runner_found = runner
+                    break
+            if runner_found:
+                self.__alive_runners.remove(runner_found)
+                self.__finished_runners.add(runner_found)
                 break
-        if runner_found:
-            self.__alive_runners.remove(runner_found)
-            self.__finished_runners.add(runner_found)
-            return runner_found
-        raise ParallelRunnerManagerException("No more runners left! They've all finished")
+            # WARNING! - MAGIC NUMBER AHEAD!!!
+            # We haven't found any runner on this round, let's wait a random amount of time before we try again
+            time.sleep(random.randint(0, 10))
+        return runner_found
 
 
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
