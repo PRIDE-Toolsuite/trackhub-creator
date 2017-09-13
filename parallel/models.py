@@ -26,6 +26,10 @@ class ParallelManager:
     pass
 
 
+class ParallelRunner:
+    pass
+
+
 class CommandLineRunner(metaclass=abc.ABCMeta, threading.Thread):
     def __init__(self):
         super().__init__()
