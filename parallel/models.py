@@ -23,7 +23,8 @@ class CommandLineRunner(metaclass=abc.ABCMeta):
     def __init__(self):
         self.command = None
         self.timeout = None
-        self.__stdout = b' '
+        self._stdout = b' '
+        self._stderr = b' '
 
 
 class CommandLineRunnerAsThread(CommandLineRunner):
