@@ -245,7 +245,7 @@ class TrackhubCreationDirector:
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
-    def _get_track_hub_builder(self, trackhub_descriptor):
+    def _get_trackhub_builder(self, trackhub_descriptor):
         # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
         return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
