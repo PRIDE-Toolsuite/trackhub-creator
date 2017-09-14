@@ -350,6 +350,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                                                             "")
         return self.__trackhub_descriptor
 
+    # Override
+    def _get_track_for_taxonomy(self, taxonomy_id):
+        pass
+
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"

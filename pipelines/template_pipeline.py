@@ -282,7 +282,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
         ...
 
     @abc.abstractmethod
-    def _get_track_for_taxonomy(self):
+    def _get_track_for_taxonomy(self, taxonomy_id):
         ...
 
     def _get_assemblies_from_pogo_results(self):
