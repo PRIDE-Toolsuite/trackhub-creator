@@ -289,6 +289,9 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
                 .get_service()\
                 .get_species_data_service()\
                 .get_species_entry_for_taxonomy_id(taxonomy)
+            if not ensembl_species_entry:
+                self._get_logger().error("Ensembl has NO ENTRY for taxonomy ID {} - SKIP -".format(taxonomy))
+                continue
 
     def _get_assemblies(self):
         self._get_assemblies_from_pogo_results()
