@@ -34,6 +34,7 @@ import time
 # App imports
 import config_manager
 import ensembl.service
+import ensembl.data_downloader
 import toolbox.general as general_toolbox
 from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
 
@@ -292,7 +293,9 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
 
     # Helpers
     def __run_pogo_for_project_tracks(self):
-        pass
+        # Get an instance of the Ensembl data downloader service
+        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
+        # TODO
 
     def __populate_assemblies(self):
         pass
