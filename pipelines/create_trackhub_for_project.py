@@ -329,7 +329,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                                                 pogo_runner.pogo_input_file))
                 pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
         except NoMoreAliveRunnersException as e:
-            pass
+            self._get_logger().debug("All PoGo runners results collected!")
+        return pogo_run_results
 
     def __populate_assemblies(self):
         pass
