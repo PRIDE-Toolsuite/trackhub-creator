@@ -137,6 +137,8 @@ class PogoRunner(ParallelRunner):
                     self.protein_sequence_file_path,
                     self.gtf_file_path,
                     self.pogo_input_file)
+        self._logger.debug("Command for running PoGo - '{}'".format(pogo_command))
+        return pogo_command
 
     @abc.abstractmethod
     def _get_command_line_runner(self):
