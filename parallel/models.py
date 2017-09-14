@@ -18,7 +18,7 @@ import threading
 import subprocess
 # App imports
 import config_manager
-from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadException, ParallelRunnerManagerException
+from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadException, NoMoreAliveRunnersException
 
 
 # Execution of commands
@@ -76,12 +76,12 @@ class ParallelRunnerManager:
         try:
             while True:
                 self.get_next_finished_runner()
-        except ParallelRunnerManagerException as e:
+        except NoMoreAliveRunnersException as e:
             self._logger.debug("All runners are (should be) finished")
 
     def get_next_finished_runner(self):
         if not self.__alive_runners:
-            raise ParallelRunnerManagerException("No more runners left! They've all finished")
+            raise NoMoreAliveRunnersException("No more runners left! They've all finished")
         runner_found = None
         counter = 1
         while True:
