@@ -165,8 +165,9 @@ class CommandLineRunner(ParallelRunner):
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
-        self.command_success = False
         self.command = None
+        self.command_success = False
+        self.command_return_code = 0
         self.timeout = None
         self.current_working_directory = None
 
@@ -209,6 +210,7 @@ class CommandLineRunnerAsThread(CommandLineRunner):
                                                   self.current_working_directory,
                                                   self.timeout))
         if command_subprocess.poll() and (command_subprocess.returncode != 0):
+            self.command_return_code = command_subprocess.returncode
             raise CommandLineRunnerAsThreadException("ERROR - Return Code '{}' for command '{}', "
                                                      "current working directory at '{}', "
                                                      "timeout '{}s'".format(command_subprocess.returncode,
