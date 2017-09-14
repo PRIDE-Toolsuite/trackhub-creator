@@ -205,6 +205,9 @@ class PogoRunner(ParallelRunner):
                                                    self.gtf_file_path)
         return self.__pogo_run_result
 
+    def is_success(self):
+        return self.__success
+
 
 class PogoRunnerLocalThread(PogoRunner):
     def __init__(self,
