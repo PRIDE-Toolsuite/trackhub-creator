@@ -340,7 +340,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
         return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
-    def __get_trackhub_descriptor(self):
+    def _get_trackhub_descriptor(self):
         # TODO
         pass
 
