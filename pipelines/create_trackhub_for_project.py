@@ -245,7 +245,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         self.__project_trackhub_descriptor = None
         # Only the valid project tracks will be processed for being included in the trackhub
         self.__valid_project_tracks = None
-        self.__indexed_project_tracks_by_taxonomy_id = {}
+        self.__indexed_project_tracks_by_taxonomy_id = None
         # Pipeline result object
         self.__pipeline_result_object = PipelineResult()
         self.__trackhub_descriptor = None
@@ -264,6 +264,11 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                         project_track_descriptor.get_track_species()):
                     self.__valid_project_tracks.append(project_track_descriptor)
         return self.__valid_project_tracks
+
+    def __get_project_track_for_taxonomy_id(self):
+        if not self.__indexed_project_tracks_by_taxonomy_id:
+            pass
+        return self.__indexed_project_tracks_by_taxonomy_id
 
     def _before(self):
         # Set Pipeline Session working directory
