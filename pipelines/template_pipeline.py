@@ -249,6 +249,10 @@ class TrackhubCreationDirector:
         # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
         return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
+    @abc.abstractmethod
+    def _get_trackhub_descriptor(self):
+        ...
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
