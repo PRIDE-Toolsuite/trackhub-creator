@@ -314,7 +314,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             while True:
                 pogo_runner = parallel_run_manager.get_next_finished_runner()
                 if not pogo_runner.is_success():
-                    self._get_logger().error("PoGo FAILED running on file '{}'".format(pogo_runner.pogo_input_file))
+                    self._get_logger().error("PoGo FAILED running on file '{}' - SKIPPING its results"
+                                             .format(pogo_runner.pogo_input_file))
         # TODO
 
     def __populate_assemblies(self):
