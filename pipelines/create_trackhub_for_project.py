@@ -327,6 +327,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                                         .format(pogo_runner.ncbi_taxonomy_id,
                                                 pogo_runner.pogo_input_file))
                 pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
+        except
 
     def __populate_assemblies(self):
         pass

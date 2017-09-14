@@ -80,11 +80,11 @@ class ParallelRunnerManager:
             self._logger.debug("All runners are (should be) finished")
 
     def get_next_finished_runner(self):
+        if not self.__alive_runners:
+            raise ParallelRunnerManagerException("No more runners left! They've all finished")
         runner_found = None
         counter = 1
         while True:
-            if not self.__alive_runners:
-                raise ParallelRunnerManagerException("No more runners left! They've all finished")
             self._logger.debug("Searching for the next finished runner among #{} runners, ROUND #{}"
                                .format(len(self.__alive_runners),
                                        counter))
