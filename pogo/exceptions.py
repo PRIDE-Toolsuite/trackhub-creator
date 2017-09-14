@@ -10,3 +10,13 @@
 """
 Exceptions for 'pogo' module
 """
+
+# App imports
+from exceptions import AppException
+
+
+class PogoRunnerFactoryException(AppException):
+    def __init__(self, value):
+        super().__init__(value)
+
+
