@@ -29,6 +29,9 @@ class CommandLineRunnerFactory:
         # TODO - This Factory is creating only local runners in the first iteration
         return CommandLineRunnerAsThread()
 
+    # Having the following two methods allows the application to use a multithreaded command line runner in an HPC
+    # system, e.g. in those situations where you don't want your command line runners to queue more jobs in an
+    # sHPC environment
     @staticmethod
     def get_multithread_command_line_runner():
         return CommandLineRunnerAsThread()
