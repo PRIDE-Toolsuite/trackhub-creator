@@ -100,7 +100,7 @@ class PogoRunResult:
 
 
 # PoGo Runners
-class PogoRunningFactory(metaclass=abc.ABCMeta):
+class PogoRunnerFactory:
     pass
 
 
