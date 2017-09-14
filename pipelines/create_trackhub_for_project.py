@@ -381,6 +381,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         trackhub_track_title = "- NOT PROVIDED -"
         trackhub_track_short_label = "- NOT PROVIDED -"
         trackhub_track_long_label = "- NOT PROVIDED -"
+        # TODO - Fill in the project trackhub track information
+        return trackhubs.BaseTrack(trackhub_track_title,
+                                   trackhub_track_short_label,
+                                   trackhub_track_long_label)
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
