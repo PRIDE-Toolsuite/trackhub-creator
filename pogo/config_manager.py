@@ -68,6 +68,9 @@ class ConfigurationService(config_manager.ConfigurationManager):
         return config_manager.get_app_config_manager().get_pogo_run_timeout()
 
     def get_pogo_binary_file_path(self):
+        # Again, at this iteration of the software lifecycle, it duplicates the method from the application wide
+        # configuration manager but, it belongs here, and this extra level of abstraction will help us in the process
+        # of refactoring the parameter.
         pass
 
 
