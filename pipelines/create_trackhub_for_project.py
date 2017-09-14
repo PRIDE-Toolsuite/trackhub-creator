@@ -317,6 +317,9 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                     self._get_logger().error("PoGo FAILED running on file '{}' - SKIPPING its results"
                                              .format(pogo_runner.pogo_input_file))
                     break
+                self._get_logger().info("PoGo SUCCESS for taxonomy '{}', input file '{}'"
+                                        .format(pogo_runner.ncbi_taxonomy_id,
+                                                pogo_runner.pogo_input_file))
         # TODO
 
     def __populate_assemblies(self):
