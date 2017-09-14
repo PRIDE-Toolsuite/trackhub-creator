@@ -307,7 +307,9 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                                                                               pogo_input_file_path,
                                                                               pogo_protein_sequence_file_path,
                                                                               pogo_gtf_file_path))
-            # TODO
+        self._get_logger().debug("Running PoGo for #{} Project Tracks".format(len(self.__get_valid_project_tracks())))
+        parallel_run_manager.start_runners()
+        # TODO
 
     def __populate_assemblies(self):
         pass
