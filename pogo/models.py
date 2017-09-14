@@ -122,10 +122,24 @@ class PogoRunner(ParallelRunner):
         self.gtf_file_path = gtf_file_path
 
     def _validate_environment_for_running_pogo(self):
-        return os.path.isfile(self.pogo_input_file) \
-               and os.path.isfile(self.protein_sequence_file_path) \
-               and os.path.isfile(self.gtf_file_path) \
-               and os.path.isfile(module_config_manager.get_configuration_service().get_pogo_binary_file_path())
+        validation_ok = True
+        if not self.ncbi_taxonomy_id:
+            self._logger.warning("NO NCBI TAXONOMY ID has been specified for running PoGo with input file '{}'"
+                                 .format(self.pogo_input_file))
+        if not os.path.isfile(self.pogo_input_file):
+            self._logger.error("PoGo input file '{}' IS NOT VALID".format(self.pogo_input_file))
+            validation_ok = False
+        if not os.path.isfile(self.protein_sequence_file_path):
+            self._logger.error("Protein sequence file '{}' IS NOT VALID".format(self.protein_sequence_file_path))
+            validation_ok = False
+        if not os.path.isfile(self.gtf_file_path):
+            self._logger.error("GTF file '{}' IS NOT VALID".format(self.gtf_file_path))
+            validation_ok = False
+        if not os.path.isfile(module_config_manager.get_configuration_service().get_pogo_binary_file_path()):
+            self._logger.error("PoGo binary file '{}' IS NOT VALID"
+                               .format(module_config_manager.get_configuration_service().get_pogo_binary_file_path()))
+            validation_ok = False
+        return validation_ok
 
     def _get_pogo_run_command(self):
         pogo_parameter_species = ''
