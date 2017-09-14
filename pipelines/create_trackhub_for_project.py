@@ -340,6 +340,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
         return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
+    def __get_trackhub_descriptor(self):
+        # TODO
+        pass
+
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
         # TODO - This method is pretty identical to the one I have for pride_cluster_export pipeline, but I still need
         # TODO - to figure out the best way to refactor this
