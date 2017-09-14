@@ -294,8 +294,6 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
 
     # Helpers
     def __run_pogo_for_project_tracks(self):
-        # Get an instance of the Ensembl data downloader service
-        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         # This is a map (project_track_descriptor, PogoRunResult)
         pogo_run_results = {}
         parallel_run_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
