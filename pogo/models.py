@@ -127,6 +127,9 @@ class PogoRunner(ParallelRunner):
 
     @abc.abstractmethod
     def _get_command_line_runner(self):
+        # Although a factory is used to get a command line runner, its initialization differs depending on the final
+        # PogoRunner, i.e. we delegate to subclasses the provisioning of an initialized CommandLineRunner, how we use
+        # it, is the same for all subclasses
         ...
 
 
