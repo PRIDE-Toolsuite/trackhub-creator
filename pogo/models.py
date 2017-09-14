@@ -193,7 +193,9 @@ class PogoRunner(ParallelRunner):
                               .format(self.pogo_input_file, command_line_runner.command))
 
     def get_pogo_run_result(self):
-        pass
+        if not self.__pogo_run_result:
+            pass
+        return self.__pogo_run_result
 
 
 class PogoRunnerLocalThread(PogoRunner):
