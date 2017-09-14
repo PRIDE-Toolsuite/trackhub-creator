@@ -120,6 +120,7 @@ class PogoRunner(ParallelRunner):
         self.pogo_input_file = pogo_input_file
         self.protein_sequence_file_path = protein_sequence_file_path
         self.gtf_file_path = gtf_file_path
+        self.success = False
 
     def _validate_environment_for_running_pogo(self):
         validation_ok = True
@@ -165,7 +166,9 @@ class PogoRunner(ParallelRunner):
         ...
 
     def _run(self):
-        pass
+        if not self._validate_environment_for_running_pogo():
+            self._logger.error("Can't run PoGo for file '{}'".format(self.pogo_input_file))
+
 
 
 class PogoRunnerLocalThread(PogoRunner):
