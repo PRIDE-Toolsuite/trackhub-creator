@@ -126,7 +126,7 @@ class PogoRunner(ParallelRunner):
         self.success = False
 
     def _set_success_to_run_pogo(self):
-        self.success = True
+        self.success = self.success and True
 
     def _validate_environment_for_running_pogo(self):
         validation_ok = True
