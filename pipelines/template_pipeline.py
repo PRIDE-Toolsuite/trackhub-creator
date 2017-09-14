@@ -258,7 +258,7 @@ class TrackhubCreationDirector:
         ...
 
     @abc.abstractmethod
-    def _populate_assemblies(self):
+    def _get_assemblies(self):
         ...
 
     def _create_trackhub(self):
@@ -285,7 +285,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _get_pogo_results_for_input_data(self):
         ...
 
-    def _populate_assemblies(self):
+    def _get_assemblies(self):
         self._get_assemblies_from_pogo_results()
 
 
