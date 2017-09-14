@@ -120,7 +120,7 @@ class PogoRunner(ParallelRunner):
         self.pogo_input_file = pogo_input_file
         self.protein_sequence_file_path = protein_sequence_file_path
         self.gtf_file_path = gtf_file_path
-        self.success = False
+        self.success = True
 
     def _set_failed_to_run_pogo(self):
         self.success = False
