@@ -29,6 +29,10 @@ class CommandLineRunnerFactory:
         # TODO - This Factory is creating only local runners in the first iteration
         return CommandLineRunnerAsThread()
 
+    @staticmethod
+    def get_multithread_command_line_runner():
+        return CommandLineRunnerAsThread()
+
 
 class ParallelRunnerManagerFactory:
     @staticmethod
