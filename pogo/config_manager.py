@@ -67,6 +67,9 @@ class ConfigurationService(config_manager.ConfigurationManager):
         # default value, but later on, it can be made configurable as a parameter to this software.
         return config_manager.get_app_config_manager().get_pogo_run_timeout()
 
+    def get_pogo_binary_file_path(self):
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
