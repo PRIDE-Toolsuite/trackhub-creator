@@ -341,7 +341,13 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
     # Override
     def _get_trackhub_descriptor(self):
         if not self.__trackhub_descriptor:
-            pass
+            # TODO - This iteration has no description URL for the project trackhub, we should include it in the project
+            # TODO - input json file the pipeline gets as a parameter
+            self.__trackhub_descriptor = trackhubs.TrackHub(self.__project_trackhub_descriptor.get_trackhub_name(),
+                                                            self.__project_trackhub_descriptor.get_trackhub_short_label(),
+                                                            self.__project_trackhub_descriptor.get_trackhub_long_label(),
+                                                            self.__project_trackhub_descriptor.get_trackhub_email(),
+                                                            "")
         return self.__trackhub_descriptor
 
     def _run_pipeline(self):
