@@ -125,6 +125,10 @@ class PogoRunner(ParallelRunner):
     def _get_pogo_run_command(self):
         pass
 
+    @abc.abstractmethod
+    def _get_command_line_runner(self):
+        ...
+
 
 class PogoRunnerLocalThread(PogoRunner):
     def __init__(self,
