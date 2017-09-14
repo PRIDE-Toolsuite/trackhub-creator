@@ -30,3 +30,8 @@ class PogoRunnerLocalThreadException(PogoRunnerException):
         super().__init__(value)
 
 
+class PogoRunnerHpcException(PogoRunnerException):
+    def __init__(self, value):
+        super().__init__(value)
+
+
