@@ -193,6 +193,8 @@ class PogoRunner(ParallelRunner):
                               .format(self.pogo_input_file, command_line_runner.command))
 
     def get_pogo_run_result(self):
+        if not self.is_done():
+            raise PogoRunnerException("PoGo runner IS NOT FINISHED YET, thus, results can't be retrieved")
         if not self.__pogo_run_result:
             pass
         return self.__pogo_run_result
