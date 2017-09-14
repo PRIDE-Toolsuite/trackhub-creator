@@ -77,7 +77,7 @@ class ConfigurationService(config_manager.ConfigurationManager):
         of refactoring the parameter.
         :return: absolute file path to the pogo binary
         """
-        pass
+        return config_manager.get_app_config_manager().get_pogo_binary_file_path()
 
 
 if __name__ == '__main__':
