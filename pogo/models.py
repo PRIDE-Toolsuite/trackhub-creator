@@ -120,7 +120,10 @@ class PogoRunner(ParallelRunner):
         self.gtf_file_path = gtf_file_path
 
     def _check_if_parameters_are_ok(self):
-        pass
+        return os.path.isfile(self.pogo_input_file) \
+               and os.path.isfile(self.protein_sequence_file_path) \
+               and os.path.isfile(self.gtf_file_path) \
+               and os.path.isfile(module_config_manager.get_configuration_service().get_pogo_binary_file_path())
 
     def _get_pogo_run_command(self):
         pass
