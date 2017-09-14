@@ -14,6 +14,7 @@ This is a template pipeline for refactoring out things from final pipelines as I
 import abc
 # App imports
 import config_manager
+import trackhub.models as trackhubs
 import ensembl.service
 import ensembl.data_downloader
 from toolbox import general
@@ -238,8 +239,10 @@ class TrackhubCreationDirector:
     """
     This is the abstract base class for those pipelines devoted to the creation of a trackhub
     """
-    # TODO
-    pass
+
+    def _get_track_hub_builder(self, trackhub_descriptor):
+        # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
+        return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
 
 if __name__ == '__main__':
