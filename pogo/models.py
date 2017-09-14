@@ -127,7 +127,9 @@ class PogoRunner(ParallelRunner):
                and os.path.isfile(module_config_manager.get_configuration_service().get_pogo_binary_file_path())
 
     def _get_pogo_run_command(self):
-        pass
+        pogo_parameter_species = ''
+        if self.ncbi_taxonomy_id:
+            pogo_parameter_species = " -species {} ".format(self.ncbi_taxonomy_id)
 
     @abc.abstractmethod
     def _get_command_line_runner(self):
