@@ -113,6 +113,7 @@ class PogoRunner(ParallelRunner, metaclass=abc.ABCMeta):
                  pogo_input_file=None,
                  protein_sequence_file_path=None,
                  gtf_file_path=None):
+        super().__init__()
         self.ncbi_taxonomy_id = ncbi_taxonomy_id
         self.pogo_input_file = pogo_input_file
         self.protein_sequence_file_path = protein_sequence_file_path
