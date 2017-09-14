@@ -247,6 +247,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         self.__valid_project_tracks = None
         # Pipeline result object
         self.__pipeline_result_object = PipelineResult()
+        self.__trackhub_descriptor = None
 
     def __get_valid_project_tracks(self):
         """
