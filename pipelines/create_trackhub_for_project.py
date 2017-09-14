@@ -40,7 +40,7 @@ import toolbox.general as general_toolbox
 from parallel.models import ParallelRunnerManagerFactory
 from parallel.exceptions import NoMoreAliveRunnersException
 from pogo.models import PogoRunnerFactory
-from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
+from pipelines.template_pipeline import TrackhubCreationPogoBasedDirector, DirectorConfigurationManager
 
 # Globals
 __configuration_file = None
@@ -236,7 +236,7 @@ class PipelineResult:
                            'log_files': self.file_path_log_files})
 
 
-class TrackhubCreatorForProject(PogoBasedPipelineDirector):
+class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
     # TODO
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
