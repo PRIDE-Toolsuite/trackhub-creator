@@ -123,7 +123,12 @@ class PogoRunner(ParallelRunner, metaclass=abc.ABCMeta):
 
 
 class PogoRunnerLocalThread(PogoRunner):
-    pass
+    def __init__(self,
+                 ncbi_taxonomy_id=None,
+                 pogo_input_file=None,
+                 protein_sequence_file_path=None,
+                 gtf_file_path=None):
+        super().__init__(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path)
 
 
 class PogoRunnerHpc(PogoRunner):
