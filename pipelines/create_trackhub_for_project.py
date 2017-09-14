@@ -336,6 +336,9 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self._get_logger().debug("All PoGo runners results collected!")
         return pogo_run_results
 
+    def _populate_assemblies_with_pogo_results(self):
+        pass
+
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
