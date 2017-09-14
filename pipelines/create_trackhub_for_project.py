@@ -309,6 +309,12 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                                                                               pogo_gtf_file_path))
         self._get_logger().debug("Running PoGo for #{} Project Tracks".format(len(self.__get_valid_project_tracks())))
         parallel_run_manager.start_runners()
+        self._get_logger().debug("Processing PoGo runners results")
+        try:
+            while True:
+                pogo_runner = parallel_run_manager.get_next_finished_runner()
+                if not pogo_runner.is_success():
+                    self._get_logger().error("PoGo FAILED running on file '{}'".format(pogo_runner.pogo_input_file))
         # TODO
 
     def __populate_assemblies(self):
