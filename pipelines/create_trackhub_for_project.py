@@ -351,7 +351,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         return self.__trackhub_descriptor
 
     # Override
-    def _get_track_for_taxonomy(self, taxonomy_id):
+    def _get_trackhub_track_for_taxonomy(self, taxonomy_id):
         pass
 
     def _run_pipeline(self):
