@@ -37,6 +37,7 @@ import ensembl.service
 import ensembl.data_downloader
 import toolbox.general as general_toolbox
 from parallel.models import ParallelRunnerManagerFactory
+from parallel.exceptions import NoMoreAliveRunnersException
 from pogo.models import PogoRunnerFactory
 from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
 
@@ -327,7 +328,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                                         .format(pogo_runner.ncbi_taxonomy_id,
                                                 pogo_runner.pogo_input_file))
                 pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
-        except
+        except NoMoreAliveRunnersException as e:
+            pass
 
     def __populate_assemblies(self):
         pass
