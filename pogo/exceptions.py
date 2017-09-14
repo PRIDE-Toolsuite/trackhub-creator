@@ -20,3 +20,8 @@ class PogoRunnerFactoryException(AppException):
         super().__init__(value)
 
 
+class PogoRunnerException(AppException):
+    def __init__(self, value):
+        super().__init__(value)
+
+
