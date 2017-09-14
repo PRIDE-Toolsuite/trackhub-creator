@@ -86,6 +86,9 @@ class ConfigManager(DirectorConfigurationManager):
         self.__pipeline_arguments_object = None
         self.__running_mode = None
 
+    def _get_allowed_configuration_keys(self):
+        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_PROJECT_DATA_FILE}
+
     def get_project_data_file_path(self):
         return self._get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_PROJECT_DATA_FILE)
 
