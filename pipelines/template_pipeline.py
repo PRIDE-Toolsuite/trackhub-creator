@@ -309,6 +309,13 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             trackhub_track_main_with_ptm = "{} with PTMs".format(trackhub_track_main_with_ptm.get_track())
             trackhub_track_main_with_ptm.set_big_data_url(bed_ptm_file_path)
             trackhub_track_main_with_ptm.set_type(bed_ptm_file_path)
+            # Add tracks
+            trackhub_builder.add_track_to_assembly(genome_assembly, trackhub_track_main)
+            trackhub_builder.add_track_to_assembly(genome_assembly, trackhub_track_main_with_ptm)
+            self._get_logger().debug("Assembly '{}', tracks added with files '({})'"
+                                     .format(genome_assembly,
+                                             ",".join([bed_file_path, bed_ptm_file_path])))
+        return trackhub_builder
 
     def _get_assemblies(self):
         self._get_assemblies_from_pogo_results()
