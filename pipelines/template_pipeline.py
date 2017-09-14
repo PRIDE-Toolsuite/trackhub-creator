@@ -278,12 +278,12 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             .get_logger_for(logger_name)
 
     @abc.abstractmethod
-    def _get_assemblies_from_pogo_results(self):
-        ...
-
-    @abc.abstractmethod
     def _get_pogo_results_for_input_data(self):
         ...
+
+    def _get_assemblies_from_pogo_results(self):
+        # TODO
+        pass
 
     def _get_assemblies(self):
         self._get_assemblies_from_pogo_results()
