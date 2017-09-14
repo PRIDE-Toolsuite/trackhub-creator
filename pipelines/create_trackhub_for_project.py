@@ -351,8 +351,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             return False
         # Run PoGo for every project track (.pogo file)
         self.__run_pogo_for_project_tracks()
-        # TODO - Populate assemblies with the PoGo run results
         # TODO - Create Trackhub descriptor
+        # TODO - Populate assemblies with the PoGo run results
         # TODO - Export Trackhub
         return True
 
