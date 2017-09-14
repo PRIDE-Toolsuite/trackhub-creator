@@ -381,7 +381,12 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         trackhub_track_title = "- NOT PROVIDED -"
         trackhub_track_short_label = "- NOT PROVIDED -"
         trackhub_track_long_label = "- NOT PROVIDED -"
-        # TODO - Fill in the project trackhub track information
+        # Fill in the project trackhub track information if found
+        project_track = self.__get_project_track_for_taxonomy_id(taxonomy_id)
+        if project_track:
+            trackhub_track_title = project_track.get_track_name()
+            trackhub_track_short_label = project_track.get_track_short_label()
+            trackhub_track_long_label = project_track.get_track_long_label()
         return trackhubs.BaseTrack(trackhub_track_title,
                                    trackhub_track_short_label,
                                    trackhub_track_long_label)
