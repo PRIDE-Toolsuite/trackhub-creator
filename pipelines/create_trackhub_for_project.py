@@ -283,6 +283,9 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                                                  project_track.get_track_species()))
         return self.__indexed_project_tracks_by_taxonomy_id
 
+    def __get_project_track_for_taxonomy_id(self):
+        pass
+
     def _before(self):
         # Set Pipeline Session working directory
         self.__pipeline_result_object.file_path_pipeline_session = \
