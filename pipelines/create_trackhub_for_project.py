@@ -344,7 +344,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         # TODO
         pass
 
-    def __get_trackhub_exporter(self):
+    def _get_trackhub_exporter(self):
         # TODO
         pass
 
