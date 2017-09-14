@@ -17,6 +17,7 @@ import abc
 import config_manager as main_app_config_manager
 from parallel.models import ParallelRunner
 from . import config_manager as module_config_manager
+from .exceptions import PogoRunnerFactoryException, PogoRunnerException
 
 
 class PogoRunResult:
