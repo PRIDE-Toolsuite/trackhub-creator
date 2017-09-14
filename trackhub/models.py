@@ -305,6 +305,9 @@ class BaseTrack:
     def get_track(self):
         return self.__track
 
+    def set_track(self, track_name):
+        self.__track = track_name
+
     def get_short_label(self):
         return self.__short_label
 

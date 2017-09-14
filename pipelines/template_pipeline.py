@@ -302,7 +302,12 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             trackhub_track_main = self._get_trackhub_track_for_taxonomy_id(taxonomy)
             trackhub_track_main.set_big_data_url(bed_file_path)
             trackhub_track_main.set_type(bed_file_path)
-            #
+            # TODO Main .bed track with PTMs
+            bed_ptm_file_path = pogo_results[taxonomy].get_pogo_result_main_ptm_bed_file_path()
+            trackhub_track_main_with_ptm = self._get_trackhub_track_for_taxonomy_id(taxonomy)
+            trackhub_track_main_with_ptm
+            trackhub_track_main_with_ptm.set_big_data_url(bed_file_path)
+            trackhub_track_main_with_ptm.set_type(bed_file_path)
 
     def _get_assemblies(self):
         self._get_assemblies_from_pogo_results()
