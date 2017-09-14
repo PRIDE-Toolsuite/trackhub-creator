@@ -262,7 +262,10 @@ class TrackhubCreationDirector:
         ...
 
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
-    pass
+    def __init__(self, runner_id=None):
+        PogoBasedPipelineDirector.__init__(runner_id)
+        TrackhubCreationDirector.__init__()
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
