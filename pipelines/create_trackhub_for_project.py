@@ -341,7 +341,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             self._get_logger().warning(error_message)
             self.__pipeline_result_object.add_error_message(error_message)
             return False
-        # TODO - Run PoGo for every project track (.pogo file)
+        # Run PoGo for every project track (.pogo file)
+        self.__run_pogo_for_project_tracks()
         # TODO - Populate assemblies with the PoGo run results
         # TODO - Create Trackhub descriptor
         # TODO - Export Trackhub
