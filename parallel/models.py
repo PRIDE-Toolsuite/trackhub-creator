@@ -33,6 +33,10 @@ class CommandLineRunnerFactory:
     def get_multithread_command_line_runner():
         return CommandLineRunnerAsThread()
 
+    @staticmethod
+    def get_hpc_command_line_runner():
+        return CommandLineRunnerOnHpc()
+
 
 class ParallelRunnerManagerFactory:
     @staticmethod
