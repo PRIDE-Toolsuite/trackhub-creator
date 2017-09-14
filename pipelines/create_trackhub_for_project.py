@@ -299,6 +299,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         return False
 
     # Helpers
+    # Override
     def _get_pogo_results_for_input_data(self):
         # This is a map (project_track_descriptor, PogoRunResult)
         pogo_run_results = {}
@@ -336,6 +337,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self._get_logger().debug("All PoGo runners results collected!")
         return pogo_run_results
 
+    # Override
     def _get_assemblies_from_pogo_results(self):
         pass
 
