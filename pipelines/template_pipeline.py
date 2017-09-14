@@ -276,9 +276,9 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _populate_assemblies(self):
         self._populate_assemblies_with_pogo_results()
 
+    @abc.abstractmethod
     def _populate_assemblies_with_pogo_results(self):
-        # TODO
-        pass
+        ...
 
 
 if __name__ == '__main__':
