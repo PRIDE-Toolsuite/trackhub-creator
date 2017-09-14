@@ -317,16 +317,16 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
                     self._get_logger().error("PoGo FAILED running on file '{}' - SKIPPING its results"
                                              .format(pogo_runner.pogo_input_file))
                     break
-                self._get_logger().info("PoGo SUCCESS for taxonomy '{}', input file '{}'"
-                                        .format(pogo_runner.ncbi_taxonomy_id,
-                                                pogo_runner.pogo_input_file))
                 if pogo_runner.ncbi_taxonomy_id in pogo_run_results:
                     self._get_logger().error("DUPLICATED taxonomy ID '{}' when registering PoGo success on file '{}'"
                                              " - SKIPPING its results"
                                              .format(pogo_runner.ncbi_taxonomy_id,
                                                      pogo_runner.pogo_input_file))
                     break
-        # TODO
+                self._get_logger().info("PoGo SUCCESS for taxonomy '{}', input file '{}'"
+                                        .format(pogo_runner.ncbi_taxonomy_id,
+                                                pogo_runner.pogo_input_file))
+                pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
 
     def __populate_assemblies(self):
         pass
