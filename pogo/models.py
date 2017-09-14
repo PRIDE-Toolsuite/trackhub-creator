@@ -122,6 +122,9 @@ class PogoRunner(ParallelRunner):
         self.gtf_file_path = gtf_file_path
         self.success = False
 
+    def _set_failed_to_run_pogo(self):
+        self.success = False
+
     def _validate_environment_for_running_pogo(self):
         validation_ok = True
         if not self.ncbi_taxonomy_id:
