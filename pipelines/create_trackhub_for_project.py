@@ -36,6 +36,7 @@ import config_manager
 import ensembl.service
 import ensembl.data_downloader
 import toolbox.general as general_toolbox
+from parallel.models import ParallelRunnerManagerFactory
 from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
 
 # Globals
@@ -297,6 +298,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         # This is a map (project_track_descriptor, PogoRunResult)
         pogo_run_results = {}
+        parallel_run_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
         for project_track in self.__get_valid_project_tracks():
             pass
         # TODO
