@@ -299,7 +299,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         return False
 
     # Helpers
-    def __run_pogo_for_project_tracks(self):
+    def _get_pogo_results_for_input_data(self):
         # This is a map (project_track_descriptor, PogoRunResult)
         pogo_run_results = {}
         parallel_run_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
@@ -360,7 +360,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             self.__pipeline_result_object.add_error_message(error_message)
             return False
         # Run PoGo for every project track (.pogo file)
-        self.__run_pogo_for_project_tracks()
+        self._get_pogo_results_for_input_data()
         # TODO - Create Trackhub descriptor
         # TODO - Populate assemblies with the PoGo run results
         # TODO - Export Trackhub
