@@ -66,7 +66,7 @@ class ConfigurationService(config_manager.ConfigurationManager):
         manager in the future, as this is a parameter that, even if it's configurable in the future, is within the
         responsiblity boundaries of the 'pogo' module. At this iteration of the software lifecycle, it just returns a
         default value, but later on, it can be made configurable as a parameter to this software.
-        :return:
+        :return: configured timeout (seconds) for running PoGo
         """
         return config_manager.get_app_config_manager().get_pogo_run_timeout()
 
