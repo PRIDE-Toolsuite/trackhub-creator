@@ -144,6 +144,9 @@ class PogoRunnerLocalThread(PogoRunner):
                  gtf_file_path=None):
         super().__init__(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path)
 
+    def _get_command_line_runner(self):
+        pass
+
 
 class PogoRunnerHpc(PogoRunner):
     pass
