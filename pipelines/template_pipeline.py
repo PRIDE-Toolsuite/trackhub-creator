@@ -261,6 +261,10 @@ class TrackhubCreationDirector:
     def _populate_assemblies(self):
         ...
 
+    def _create_trackhub(self):
+        # TODO
+        pass
+
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
     def __init__(self, runner_id=None):
         PogoBasedPipelineDirector.__init__(runner_id)
