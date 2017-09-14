@@ -25,3 +25,8 @@ class PogoRunnerException(AppException):
         super().__init__(value)
 
 
+class PogoRunnerLocalThreadException(PogoRunnerException):
+    def __init__(self, value):
+        super().__init__(value)
+
+
