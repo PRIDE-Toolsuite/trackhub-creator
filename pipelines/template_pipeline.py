@@ -288,6 +288,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _get_assemblies_from_pogo_results(self):
         pogo_results = self._get_pogo_results_for_input_data()
         self._get_logger().info("Processing #{} Taxonomies from PoGo results".format(len(pogo_results)))
+        trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
         for taxonomy in pogo_results:
             ensembl_species_entry = ensembl.service\
                 .get_service()\
