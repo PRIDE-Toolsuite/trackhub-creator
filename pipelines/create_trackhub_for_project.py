@@ -278,6 +278,9 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                                            project_track.get_track_species()].get_track_name()))
                     continue
                 self.__indexed_project_tracks_by_taxonomy_id[project_track.get_track_species()] = project_track
+                self._get_logger().debug("Project track '{}' indexed with taxonomy ID '{}'"
+                                         .format(project_track.get_track_name(),
+                                                 project_track.get_track_species()))
         return self.__indexed_project_tracks_by_taxonomy_id
 
     def _before(self):
