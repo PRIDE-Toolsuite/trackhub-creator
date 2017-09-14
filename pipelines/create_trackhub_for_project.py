@@ -35,6 +35,7 @@ import time
 import config_manager
 import ensembl.service
 import ensembl.data_downloader
+import trackhub.models as trackhubs
 import toolbox.general as general_toolbox
 from parallel.models import ParallelRunnerManagerFactory
 from parallel.exceptions import NoMoreAliveRunnersException
@@ -334,6 +335,10 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         except NoMoreAliveRunnersException as e:
             self._get_logger().debug("All PoGo runners results collected!")
         return pogo_run_results
+
+    def __get_track_hub_builder(self, trackhub_descriptor):
+        # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
+        return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
     def __populate_assemblies(self):
         pass
