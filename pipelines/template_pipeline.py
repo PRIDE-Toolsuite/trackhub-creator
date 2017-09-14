@@ -281,6 +281,10 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _get_pogo_results_for_input_data(self):
         ...
 
+    @abc.abstractmethod
+    def _get_track_for_taxonomy(self):
+        ...
+
     def _get_assemblies_from_pogo_results(self):
         pogo_results = self._get_pogo_results_for_input_data()
         self._get_logger().info("Processing #{} Taxonomies from PoGo results".format(len(pogo_results)))
