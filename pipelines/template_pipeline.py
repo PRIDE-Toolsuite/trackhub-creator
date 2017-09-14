@@ -261,7 +261,7 @@ class TrackhubCreationDirector:
     def _populate_assemblies(self):
         ...
 
-class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector):
+class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
     pass
 
 if __name__ == '__main__':
