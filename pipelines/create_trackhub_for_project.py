@@ -295,6 +295,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
     def __run_pogo_for_project_tracks(self):
         # Get an instance of the Ensembl data downloader service
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
+        for project_track in self.__get_valid_project_tracks():
+            pass
         # TODO
 
     def __populate_assemblies(self):
