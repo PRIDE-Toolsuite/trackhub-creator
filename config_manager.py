@@ -264,6 +264,7 @@ class AppConfigManager(ConfigurationManager):
             log_files.extend(HpcServiceFactory.get_hpc_service().get_current_job_file_logs())
         except HpcServiceFactoryException as e:
             self._get_logger().info("No HPC environment log files where found, {}".format(e))
+        return log_files
 
     def get_logger_for(self, name):
         """
