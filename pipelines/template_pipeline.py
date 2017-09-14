@@ -234,12 +234,12 @@ class PogoBasedPipelineDirector(Director):
         return pogo_parameter_gtf_file_path
 
 
-class TrackhubCreationDirector(Director):
+class TrackhubCreationDirector:
     """
     This is the abstract base class for those pipelines devoted to the creation of a trackhub
     """
-    def __init__(self, runner_id=None):
-        super().__init__(runner_id)
+    # TODO
+    pass
 
 
 if __name__ == '__main__':
