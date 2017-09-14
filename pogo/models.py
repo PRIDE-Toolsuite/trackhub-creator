@@ -192,6 +192,9 @@ class PogoRunner(ParallelRunner):
             self._logger.info("PoGo SUCCESS on input file '{}', command '{}'"
                               .format(self.pogo_input_file, command_line_runner.command))
 
+    def get_pogo_run_result(self):
+        pass
+
 
 class PogoRunnerLocalThread(PogoRunner):
     def __init__(self,
