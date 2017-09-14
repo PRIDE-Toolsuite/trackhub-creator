@@ -376,7 +376,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         return self.__trackhub_descriptor
 
     # Override
-    def _get_trackhub_track_for_taxonomy(self, taxonomy_id):
+    def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id):
         # Default values
         trackhub_track_title = "- NOT PROVIDED -"
         trackhub_track_short_label = "- NOT PROVIDED -"
