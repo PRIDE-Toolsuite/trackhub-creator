@@ -292,6 +292,9 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             if not ensembl_species_entry:
                 self._get_logger().error("Ensembl has NO ENTRY for taxonomy ID {} - SKIP -".format(taxonomy))
                 continue
+            genome_assembly = ensembl_species_entry.get_assembly()
+            # Min .bed track
+            bed_file_path = pogo_results[taxonomy].get_pogo_result_main_bed_file_path()
 
     def _get_assemblies(self):
         self._get_assemblies_from_pogo_results()
