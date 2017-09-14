@@ -114,6 +114,9 @@ class PogoRunner(metaclass=abc.ABCMeta):
         self.protein_sequence_file_path = protein_sequence_file_path
         self.gtf_file_path = gtf_file_path
 
+    def _run(self):
+        pass
+
 
 class PogoRunnerLocalThread(PogoRunner):
     pass
