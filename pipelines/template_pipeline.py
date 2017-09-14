@@ -265,6 +265,13 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def __init__(self, runner_id=None):
         PogoBasedPipelineDirector.__init__(runner_id)
         TrackhubCreationDirector.__init__()
+        # Override superclass logger to use this one
+        logger_name = "{}.{}".format(__name__, type(self).__name__)
+        if runner_id:
+            logger_name = runner_id
+        self._logger = config_manager \
+            .get_app_config_manager() \
+            .get_logger_for(logger_name)
 
 
 if __name__ == '__main__':
