@@ -37,6 +37,7 @@ import ensembl.service
 import ensembl.data_downloader
 import toolbox.general as general_toolbox
 from parallel.models import ParallelRunnerManagerFactory
+from pogo.models import PogoRunnerFactory
 from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
 
 # Globals
@@ -301,6 +302,11 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             pogo_input_file_path = project_track.get_track_file_path_pogo()
             pogo_protein_sequence_file_path = \
                 self._get_pogo_protein_sequence_file_path_for_taxonomy(project_track.get_track_species())
+            pogo_gtf_file_path = self._get_pogo_gtf_file_path_for_taxonomy(project_track.get_track_species())
+            parallel_run_manager.add_runner(PogoRunnerFactory.get_pogo_runner(project_track.get_track_species(),
+                                                                              pogo_input_file_path,
+                                                                              pogo_protein_sequence_file_path,
+                                                                              pogo_gtf_file_path))
             # TODO
 
     def __populate_assemblies(self):
