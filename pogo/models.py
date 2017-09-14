@@ -130,6 +130,12 @@ class PogoRunner(ParallelRunner):
         pogo_parameter_species = ''
         if self.ncbi_taxonomy_id:
             pogo_parameter_species = " -species {} ".format(self.ncbi_taxonomy_id)
+        pogo_command = "time {}{} -fasta {} -gtf {} -in {}" \
+            .format(module_config_manager.get_configuration_service().get_pogo_binary_file_path(),
+                    pogo_parameter_species,
+                    self.protein_sequence_file_path,
+                    self.gtf_file_path,
+                    self.pogo_input_file)
 
     @abc.abstractmethod
     def _get_command_line_runner(self):
