@@ -377,7 +377,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
 
     # Override
     def _get_trackhub_track_for_taxonomy(self, taxonomy_id):
-        pass
+        # Default values
+        trackhub_track_title = "- NOT PROVIDED -"
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
