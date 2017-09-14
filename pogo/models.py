@@ -132,6 +132,9 @@ class PogoRunner(ParallelRunner):
         # it, is the same for all subclasses
         ...
 
+    def _run(self):
+        pass
+
 
 class PogoRunnerLocalThread(PogoRunner):
     def __init__(self,
