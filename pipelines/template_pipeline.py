@@ -273,12 +273,16 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             .get_app_config_manager() \
             .get_logger_for(logger_name)
 
-    def _populate_assemblies(self):
-        self._populate_assemblies_with_pogo_results()
-
     @abc.abstractmethod
     def _populate_assemblies_with_pogo_results(self):
         ...
+
+    @abc.abstractmethod
+    def _get_pogo_results_for_input_data(self):
+        ...
+
+    def _populate_assemblies(self):
+        self._populate_assemblies_with_pogo_results()
 
 
 if __name__ == '__main__':
