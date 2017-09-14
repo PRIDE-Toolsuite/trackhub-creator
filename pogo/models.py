@@ -185,7 +185,10 @@ class PogoRunner(ParallelRunner):
                 self._logger.debug("PoGo --- STARTED --- command '{}'".format(command_line_runner.command))
                 command_line_runner.wait()
             except CommandLineRunnerException as e:
-                self._logger.error("ERROR RUNNING PoGo - {}".format(e.value))
+                self._logger.error("ERROR RUNNING PoGo - {}, STDOUT ---> '{}', STDERR ---> '{}'"
+                                   .format(e.value,
+                                           command_line_runner.get_stdout().decode('utf8'),
+                                           command_line_runner.get_stderr().decode('utf8')))
                 self._set_failed_to_run_pogo()
             # Successful run of PoGo
             self._set_success_to_run_pogo()
@@ -196,7 +199,10 @@ class PogoRunner(ParallelRunner):
         if not self.is_done():
             raise PogoRunnerException("PoGo runner IS NOT FINISHED YET, thus, results can't be retrieved")
         if not self.__pogo_run_result:
-            pass
+            self.__pogo_run_result = PogoRunResult(self.ncbi_taxonomy_id,
+                                                   self.pogo_input_file,
+                                                   self.protein_sequence_file_path,
+                                                   self.gtf_file_path)
         return self.__pogo_run_result
 
 
