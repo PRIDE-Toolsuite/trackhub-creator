@@ -178,7 +178,7 @@ class PogoRunner(ParallelRunner):
             self._set_failed_to_run_pogo()
         else:
             command_line_runner = self._get_command_line_runner()
-
+            command_line_runner.start()
 
 
 class PogoRunnerLocalThread(PogoRunner):
