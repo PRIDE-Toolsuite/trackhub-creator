@@ -220,6 +220,7 @@ class PogoRunnerLocalThread(PogoRunner):
     def _get_command_line_runner(self):
         command_line_runner = CommandLineRunnerFactory.get_multithread_command_line_runner()
         command_line_runner.command = self._get_pogo_run_command()
+        command_line_runner.timeout = module_config_manager.get_configuration_service().get_pogo_run_timeout()
 
 
 class PogoRunnerHpc(PogoRunner):
