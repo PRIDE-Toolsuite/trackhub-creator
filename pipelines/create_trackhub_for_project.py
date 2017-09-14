@@ -300,7 +300,8 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
         pogo_run_results = {}
         parallel_run_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
         for project_track in self.__get_valid_project_tracks():
-            pogo_input_file = project_track.get_track_file_path_pogo()
+            pogo_input_file_path = project_track.get_track_file_path_pogo()
+            pogo_protein_sequence_file_path = self._get_pogo_protein_sequence_file_path_for_taxonomy(project_track.get_track_species())
             # TODO
 
     def __populate_assemblies(self):
