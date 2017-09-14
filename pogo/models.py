@@ -119,7 +119,7 @@ class PogoRunner(ParallelRunner):
         self.protein_sequence_file_path = protein_sequence_file_path
         self.gtf_file_path = gtf_file_path
 
-    def _check_if_parameters_are_ok(self):
+    def _validate_environment_for_running_pogo(self):
         return os.path.isfile(self.pogo_input_file) \
                and os.path.isfile(self.protein_sequence_file_path) \
                and os.path.isfile(self.gtf_file_path) \
