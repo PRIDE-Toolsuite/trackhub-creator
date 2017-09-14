@@ -276,7 +276,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                 ProjectTrackhubDescriptor(self.__config_manager.get_project_data_file_path())
             # Check that the destination folder exists
             if not os.path.isdir(self.__project_trackhub_descriptor.get_trackhub_destination_path()):
-                error_message = "Trackhub destination path NOT VALID, '{}'"\
+                error_message = "Trackhub destination path NOT VALID, '{}'" \
                     .format(self.__project_trackhub_descriptor.get_trackhub_destination_path())
                 self._get_logger().error(error_message)
                 self.__pipeline_result_object.add_error_message(error_message)
@@ -291,7 +291,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                 self.set_pipeline_status_fail()
                 return False
             return True
-        error_message = "INVALID / MISSING Project Trackhub Descriptor file, '{}'"\
+        error_message = "INVALID / MISSING Project Trackhub Descriptor file, '{}'" \
             .format(self.__config_manager.get_project_data_file_path())
         self._get_logger().error(error_message)
         self.__pipeline_result_object.add_error_message(error_message)
@@ -336,6 +336,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         except NoMoreAliveRunnersException as e:
             self._get_logger().debug("All PoGo runners results collected!")
         return pogo_run_results
+
+    # Override
+    def _get_trackhub_descriptor(self):
+        pass
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
