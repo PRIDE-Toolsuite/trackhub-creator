@@ -16,7 +16,7 @@ import abc
 import threading
 # Application imports
 import config_manager as main_app_config_manager
-from parallel.models import ParallelRunner
+from parallel.models import ParallelRunner, CommandLineRunnerFactory
 from parallel.exceptions import CommandLineRunnerException
 from . import config_manager as module_config_manager
 from .exceptions import PogoRunnerFactoryException, PogoRunnerException
@@ -218,7 +218,8 @@ class PogoRunnerLocalThread(PogoRunner):
             .get_logger_for("{}.{}-{}".format(__name__, type(self).__name__, threading.current_thread().getName()))
 
     def _get_command_line_runner(self):
-        pass
+        command_line_runner = CommandLineRunnerFactory.get_multithread_command_line_runner()
+        
 
 
 class PogoRunnerHpc(PogoRunner):
