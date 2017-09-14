@@ -122,6 +122,9 @@ class PogoRunner(ParallelRunner):
     def _check_if_parameters_are_ok(self):
         pass
 
+    def _get_pogo_run_command(self):
+        pass
+
 
 class PogoRunnerLocalThread(PogoRunner):
     def __init__(self,
