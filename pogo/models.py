@@ -32,6 +32,8 @@ class PogoRunResult:
         Just the constructor, I had this implemented as syntactic sugar, but I was wrong
         :param ncbi_taxonomy_id: ncbi taxonomy id for this PoGo run results
         :param pogo_source_file_path: path of the source file used to run PoGo
+        :param protein_sequence_file_path: FASTA file
+        :param gtf_file_path: GTF file
         """
         # Logging
         self.__logger = main_app_config_manager.get_app_config_manager().get_logger_for(
