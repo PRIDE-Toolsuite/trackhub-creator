@@ -235,6 +235,9 @@ class PogoBasedPipelineDirector(Director):
 
 
 class TrackhubCreationDirector(Director):
+    """
+    This is the abstract base class for those pipelines devoted to the creation of a trackhub
+    """
     def __init__(self, runner_id=None):
         super().__init__(runner_id)
 
