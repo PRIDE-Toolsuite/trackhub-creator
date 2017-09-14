@@ -125,6 +125,9 @@ class PogoRunner(ParallelRunner):
     def _set_failed_to_run_pogo(self):
         self.success = False
 
+    def _set_success_to_run_pogo(self):
+        self.success = True
+
     def _validate_environment_for_running_pogo(self):
         validation_ok = True
         if not self.ncbi_taxonomy_id:
