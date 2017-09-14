@@ -273,6 +273,10 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             .get_app_config_manager() \
             .get_logger_for(logger_name)
 
+    def _populate_assemblies_with_pogo_results(self):
+        # TODO
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
