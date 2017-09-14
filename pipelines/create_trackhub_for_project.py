@@ -362,6 +362,7 @@ class TrackhubCreatorForProject(PogoBasedPipelineDirector):
             self._get_logger().info("Dumping Pipeline Report to '{}'".format(report_file))
             with open(report_file, 'w') as f:
                 f.write(str(self.__pipeline_result_object))
+        return True
 
 
 if __name__ == '__main__':
