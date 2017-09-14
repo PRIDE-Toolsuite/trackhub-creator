@@ -15,6 +15,7 @@ import os
 import abc
 # Application imports
 import config_manager as main_app_config_manager
+from parallel.models import ParallelRunner
 from . import config_manager as module_config_manager
 
 
@@ -103,7 +104,7 @@ class PogoRunningFactory(metaclass=abc.ABCMeta):
     pass
 
 
-class PogoRunner(metaclass=abc.ABCMeta):
+class PogoRunner(ParallelRunner, metaclass=abc.ABCMeta):
     def __init__(self,
                  ncbi_taxonomy_id=None,
                  pogo_input_file=None,
