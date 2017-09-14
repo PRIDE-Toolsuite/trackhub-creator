@@ -166,7 +166,8 @@ class PogoRunner(ParallelRunner):
         """
         Although a factory is used to get a command line runner, its initialization differs depending on the final
         PogoRunner, i.e. we delegate to subclasses the provisioning of an initialized CommandLineRunner, how we use
-        it, is the same for all subclasses
+        it, is the same for all subclasses.
+        It will prepare the command line runner completely, including the command it has to run.
         :return: a CommandLineRunner for running PoGo
         """
         ...
@@ -177,7 +178,6 @@ class PogoRunner(ParallelRunner):
             self._set_failed_to_run_pogo()
         else:
             command_line_runner = self._get_command_line_runner()
-            
 
 
 
