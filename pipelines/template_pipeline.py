@@ -233,6 +233,9 @@ class PogoBasedPipelineDirector(Director):
                 pogo_parameter_gtf_file_path = file_path
         return pogo_parameter_gtf_file_path
 
+class TrackhubCreationDirector(Director):
+    pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
