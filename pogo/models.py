@@ -186,6 +186,10 @@ class PogoRunner(ParallelRunner):
             except CommandLineRunnerException as e:
                 self._logger.error("ERROR RUNNING PoGo - {}".format(e.value))
                 self._set_failed_to_run_pogo()
+            # Successful run of PoGo
+            self._set_success_to_run_pogo()
+            self._logger.info("PoGo SUCCESS on input file '{}', command '{}'"
+                              .format(self.pogo_input_file, command_line_runner.command))
 
 
 class PogoRunnerLocalThread(PogoRunner):
