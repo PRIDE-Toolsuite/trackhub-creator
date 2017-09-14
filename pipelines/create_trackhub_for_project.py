@@ -336,7 +336,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self._get_logger().debug("All PoGo runners results collected!")
         return pogo_run_results
 
-    def _populate_assemblies_with_pogo_results(self):
+    def _get_assemblies_from_pogo_results(self):
         pass
 
     def _run_pipeline(self):
