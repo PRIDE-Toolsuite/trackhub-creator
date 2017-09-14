@@ -101,7 +101,10 @@ class PogoRunResult:
 
 # PoGo Runners
 class PogoRunnerFactory:
-    pass
+    @staticmethod
+    def get_pogo_runner(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path):
+        # TODO - In the future, more PoGo runners will be implemented
+        return PogoRunnerLocalThread(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path)
 
 
 class PogoRunner(ParallelRunner, metaclass=abc.ABCMeta):
