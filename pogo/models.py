@@ -107,7 +107,7 @@ class PogoRunnerFactory:
         return PogoRunnerLocalThread(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path)
 
 
-class PogoRunner(ParallelRunner, metaclass=abc.ABCMeta):
+class PogoRunner(ParallelRunner):
     def __init__(self,
                  ncbi_taxonomy_id=None,
                  pogo_input_file=None,
@@ -118,9 +118,6 @@ class PogoRunner(ParallelRunner, metaclass=abc.ABCMeta):
         self.pogo_input_file = pogo_input_file
         self.protein_sequence_file_path = protein_sequence_file_path
         self.gtf_file_path = gtf_file_path
-
-    def _run(self):
-        pass
 
 
 class PogoRunnerLocalThread(PogoRunner):
