@@ -60,11 +60,14 @@ class ConfigurationService(config_manager.ConfigurationManager):
         return self._CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_PTM_BED
 
     def get_pogo_run_timeout(self):
-        # This method is duplicating the one at the application wide configuration manager at this stage and iteration
-        # of this application development with the idea of refactoring it out of the application wide configuration
-        # manager in the future, as this is a parameter that, even if it's configurable in the future, is within the
-        # responsiblity boundaries of the 'pogo' module. At this iteration of the software lifecycle, it just returns a
-        # default value, but later on, it can be made configurable as a parameter to this software.
+        """
+        This method is duplicating the one at the application wide configuration manager at this stage and iteration
+        of this application development with the idea of refactoring it out of the application wide configuration
+        manager in the future, as this is a parameter that, even if it's configurable in the future, is within the
+        responsiblity boundaries of the 'pogo' module. At this iteration of the software lifecycle, it just returns a
+        default value, but later on, it can be made configurable as a parameter to this software.
+        :return:
+        """
         return config_manager.get_app_config_manager().get_pogo_run_timeout()
 
     def get_pogo_binary_file_path(self):
