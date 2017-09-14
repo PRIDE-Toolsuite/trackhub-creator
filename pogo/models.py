@@ -174,6 +174,10 @@ class PogoRunner(ParallelRunner):
     def _run(self):
         if not self._validate_environment_for_running_pogo():
             self._logger.error("Can't run PoGo for file '{}'".format(self.pogo_input_file))
+            self._set_failed_to_run_pogo()
+        else:
+            command_line_runner = self._get_command_line_runner()
+            
 
 
 
