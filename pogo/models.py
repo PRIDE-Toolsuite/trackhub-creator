@@ -104,7 +104,15 @@ class PogoRunningFactory(metaclass=abc.ABCMeta):
 
 
 class PogoRunner(metaclass=abc.ABCMeta):
-    pass
+    def __init__(self,
+                 ncbi_taxonomy_id=None,
+                 pogo_input_file=None,
+                 protein_sequence_file_path=None,
+                 gtf_file_path=None):
+        self.ncbi_taxonomy_id = ncbi_taxonomy_id
+        self.pogo_input_file = pogo_input_file
+        self.protein_sequence_file_path = protein_sequence_file_path
+        self.gtf_file_path = gtf_file_path
 
 
 class PogoRunnerLocalThread(PogoRunner):
