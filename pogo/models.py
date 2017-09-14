@@ -17,6 +17,7 @@ import threading
 # Application imports
 import config_manager as main_app_config_manager
 from parallel.models import ParallelRunner
+from parallel.exceptions import CommandLineRunnerException
 from . import config_manager as module_config_manager
 from .exceptions import PogoRunnerFactoryException, PogoRunnerException
 
@@ -182,6 +183,9 @@ class PogoRunner(ParallelRunner):
                 command_line_runner.start()
                 self._logger.debug("PoGo --- STARTED --- command '{}'".format(command_line_runner.command))
                 command_line_runner.wait()
+            except CommandLineRunnerException as e:
+                self._logger.error("ERROR RUNNING PoGo - {}".format(e.value))
+                self._set_failed_to_run_pogo()
 
 
 class PogoRunnerLocalThread(PogoRunner):
