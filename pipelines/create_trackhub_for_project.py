@@ -340,7 +340,9 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
 
     # Override
     def _get_trackhub_descriptor(self):
-        pass
+        if not self.__trackhub_descriptor:
+            pass
+        return self.__trackhub_descriptor
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
