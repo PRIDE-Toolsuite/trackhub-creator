@@ -11,6 +11,7 @@
 This is a template pipeline for refactoring out things from final pipelines as I identify how they're gonna look like
 """
 
+import abc
 # App imports
 import config_manager
 import ensembl.service
@@ -91,7 +92,7 @@ class DirectorConfigurationManager(config_manager.ConfigurationManager):
             return default
 
 
-class Director:
+class Director(metaclass=abc.ABCMeta):
     """
     This is the director of the pipeline
     """
