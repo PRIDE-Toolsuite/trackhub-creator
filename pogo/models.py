@@ -13,6 +13,7 @@ This module contains models for dealing with PoGo stuff
 
 import os
 import abc
+import threading
 # Application imports
 import config_manager as main_app_config_manager
 from parallel.models import ParallelRunner
@@ -158,6 +159,9 @@ class PogoRunnerLocalThread(PogoRunner):
                  protein_sequence_file_path=None,
                  gtf_file_path=None):
         super().__init__(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path)
+        self._logger = main_app_config_manager \
+            .get_app_config_manager() \
+            .get_logger_for("{}.{}-{}".format(__name__, type(self).__name__, threading.current_thread().getName()))
 
     def _get_command_line_runner(self):
         pass
