@@ -283,8 +283,11 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                                                  project_track.get_track_species()))
         return self.__indexed_project_tracks_by_taxonomy_id
 
-    def __get_project_track_for_taxonomy_id(self):
-        pass
+    def __get_project_track_for_taxonomy_id(self, taxonomy_id):
+        if taxonomy_id in self.__get_index_project_track_for_taxonomy_id():
+            return self.__get_index_project_track_for_taxonomy_id()[taxonomy_id]
+        # I know, we should never return None
+        return None
 
     def _before(self):
         # Set Pipeline Session working directory
