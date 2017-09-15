@@ -276,7 +276,7 @@ class TrackhubCreationDirector:
         # Export trackhub
         trackhub_builder.accept_exporter(trackhub_exporter)
         self._logger.info("Trackhub '{}' export to '{}' - COMPLETED"
-                          .format(self._get_trackhub_descriptor().get_track(),
+                          .format(self._get_trackhub_descriptor().get_hub(),
                                   trackhub_exporter.track_hub_destination_folder))
 
 
