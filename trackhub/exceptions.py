@@ -20,6 +20,6 @@ class TrackhubRegistryServiceException(AppException):
         super().__init__(value)
 
 
-class TrackHubExporter(AppException):
+class TrackHubExporterException(AppException):
     def __init__(self, value):
         super().__init__(value)
