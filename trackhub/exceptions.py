@@ -18,3 +18,8 @@ from exceptions import AppException
 class TrackhubRegistryServiceException(AppException):
     def __init__(self, value):
         super().__init__(value)
+
+
+class TrackHubExporter(AppException):
+    def __init__(self, value):
+        super().__init__(value)
