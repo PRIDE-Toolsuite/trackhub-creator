@@ -331,7 +331,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
                                              ",".join([bed_file_path, bed_ptm_file_path])))
 
     def _process_assemblies(self, trackhub_builder):
-        self._get_assemblies_from_pogo_results()
+        self._get_assemblies_from_pogo_results(trackhub_builder)
 
 
 if __name__ == '__main__':
