@@ -100,21 +100,6 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
             config_manager.get_app_config_manager().get_session_working_dir(),
             'track_hub')
 
-    @abstractmethod
-    def export_simple_trackhub(self, track_hub_builder):
-        # I'm not quite sure I really need to put this here if I want this class to stay abstract and it's not really
-        # modifying any behaviour from the superclass
-        return super().export_simple_trackhub(track_hub_builder)
-
-
-class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
-    def __init__(self):
-        super().__init__()
-        # Default destination folder for pride cluster trackhubs
-        self.track_hub_destination_folder = os.path.join(
-            config_manager.get_app_config_manager().get_session_working_dir(),
-            os.path.join('pride_cluster', 'track_hubs'))
-
     def __get_tracks_with_non_empty_bed_files(self, assembly, track_collector):
         non_empty_file_tracks = []
         for track in track_collector.get_tracks():
@@ -141,7 +126,8 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
             non_empty_file_tracks.append(track)
         return non_empty_file_tracks
 
-    def export_simple_trackhub(self, trackhub_builder):
+    @abstractmethod
+    def export_simple_trackhub(self, track_hub_builder):
         file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
         if not self.export_summary and not os.path.isfile(file_trackhub_descriptor):
             self.logger.info("Export Simple TrackHub to '{}'".format(self.track_hub_destination_folder))
@@ -204,6 +190,15 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
             self.export_summary.track_hub_descriptor_file_path = file_trackhub_descriptor
             self.logger.info("Trackhub export summary prepared")
         return self.export_summary
+
+
+class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
+    def __init__(self):
+        super().__init__()
+        # Default destination folder for pride cluster trackhubs
+        self.track_hub_destination_folder = os.path.join(
+            config_manager.get_app_config_manager().get_session_working_dir(),
+            os.path.join('pride_cluster', 'track_hubs'))
 
 
 # TrackHub Builders
