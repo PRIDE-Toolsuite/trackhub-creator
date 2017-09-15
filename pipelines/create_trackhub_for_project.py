@@ -396,6 +396,13 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         self._get_logger().info("Default trackhub exporter - 'TrackHubLocalFilesystemExporter'")
         return trackhubs.TrackHubLocalFilesystemExporter()
 
+    # Override
+    def _prepare_trackhub_destination_folder(self, trackhub_exporter):
+        self._get_logger().info("Trackhub destination folder ---> '{}'"
+                                .format(self.__project_trackhub_descriptor.get_trackhub_destination_path()))
+        trackhub_exporter.track_hub_destination_folder = \
+            self.__project_trackhub_descriptor.get_trackhub_destination_path()
+
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
