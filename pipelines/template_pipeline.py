@@ -262,8 +262,8 @@ class TrackhubCreationDirector:
         ...
 
     def _create_trackhub(self):
-        # TODO
-        pass
+        # Instantiate the trackhub builder we are going to use
+        trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
 
 
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
