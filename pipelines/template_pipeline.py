@@ -282,8 +282,8 @@ class TrackhubCreationDirector:
 
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
     def __init__(self, runner_id=None):
-        PogoBasedPipelineDirector.__init__(runner_id)
-        TrackhubCreationDirector.__init__()
+        super().__init__(runner_id)
+        TrackhubCreationDirector.__init__(self)
         # Override superclass logger to use this one
         logger_name = "{}.{}".format(__name__, type(self).__name__)
         if runner_id:

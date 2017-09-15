@@ -240,7 +240,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
     # TODO
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
-        super(TrackhubCreatorForProject, self).__init__(runner_id)
+        super().__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
         self.__project_trackhub_descriptor = None
         # Only the valid project tracks will be processed for being included in the trackhub
