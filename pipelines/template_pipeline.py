@@ -271,7 +271,8 @@ class TrackhubCreationDirector:
         # Process and prepare the assemblies with their respective tracks
         self._process_assemblies(trackhub_builder)
         # Prepare the trackhub exporter
-        # TODO
+        trackhub_exporter = self._get_trackhub_exporter()
+        self._prepare_trackhub_destination_folder(trackhub_exporter)
 
 
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
