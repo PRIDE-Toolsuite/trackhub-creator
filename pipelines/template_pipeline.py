@@ -273,6 +273,11 @@ class TrackhubCreationDirector:
         # Prepare the trackhub exporter
         trackhub_exporter = self._get_trackhub_exporter()
         self._prepare_trackhub_destination_folder(trackhub_exporter)
+        # Export trackhub
+        trackhub_builder.accept_exporter(trackhub_exporter)
+        self._logger.info("Trackhub '{}' export to '{}' - COMPLETED"
+                          .format(self._get_trackhub_descriptor().get_track(),
+                                  trackhub_exporter.track_hub_destination_folder))
 
 
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
