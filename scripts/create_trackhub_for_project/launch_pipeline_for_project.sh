@@ -12,3 +12,4 @@ source scripts/commons/helper_functions.sh
 function mylogger() {
     logger "[Trackhub] $@"
 }
+
