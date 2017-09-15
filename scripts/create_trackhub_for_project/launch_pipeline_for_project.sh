@@ -13,3 +13,5 @@ function mylogger() {
     logger "[Trackhub] $@"
 }
 
+# Command line parameters
+PROJECT_DESCRIPTION_DATA_FILE=$1
