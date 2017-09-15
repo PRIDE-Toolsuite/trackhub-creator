@@ -261,11 +261,17 @@ class TrackhubCreationDirector:
     def _process_assemblies(self, trackhub_builder):
         ...
 
+    @abc.abstractmethod
+    def _prepare_trackhub_destination_folder(self, trackhub_exporter):
+        ...
+
     def _create_trackhub(self):
         # Instantiate the trackhub builder we are going to use
         trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
         # Process and prepare the assemblies with their respective tracks
         self._process_assemblies(trackhub_builder)
+        # Prepare the trackhub exporter
+        # TODO
 
 
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
