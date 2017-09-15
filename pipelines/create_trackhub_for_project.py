@@ -393,7 +393,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
 
     # Override
     def _get_trackhub_exporter(self):
-        pass
+        self._get_logger().info("Default trackhub exporter - 'TrackHubLocalFilesystemExporter'")
+        return trackhubs.TrackHubLocalFilesystemExporter()
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
