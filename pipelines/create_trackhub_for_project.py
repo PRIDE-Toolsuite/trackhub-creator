@@ -249,6 +249,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         # Pipeline result object
         self.__pipeline_result_object = PipelineResult()
         self.__trackhub_descriptor = None
+        self.__trackhub_exporter = None
 
     def __get_valid_project_tracks(self):
         """
@@ -394,8 +395,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
 
     # Override
     def _get_trackhub_exporter(self):
-        self._get_logger().info("Default trackhub exporter - 'TrackHubLocalFilesystemExporter'")
-        return trackhubs.TrackHubLocalFilesystemExporter()
+        if not self.__trackhub_exporter:
+            self._get_logger().info("Default trackhub exporter - 'TrackHubLocalFilesystemExporter'")
+            self.__trackhub_exporter = trackhubs.TrackHubLocalFilesystemExporter()
+        return self.__trackhub_exporter
 
     # Override
     def _prepare_trackhub_destination_folder(self, trackhub_exporter):
