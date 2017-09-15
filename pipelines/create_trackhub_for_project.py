@@ -391,6 +391,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                                    trackhub_track_short_label,
                                    trackhub_track_long_label)
 
+    # Override
+    def _get_trackhub_exporter(self):
+        pass
+
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
