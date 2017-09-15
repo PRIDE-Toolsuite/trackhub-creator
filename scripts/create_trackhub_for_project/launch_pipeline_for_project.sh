@@ -5,3 +5,6 @@
 #
 # Manuel Bernal Llinares <mbdebian@gmail.com>
 
+# Include helpers
+source scripts/commons/helper_functions.sh
+
