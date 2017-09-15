@@ -410,8 +410,6 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self._get_logger().warning(error_message)
             self.__pipeline_result_object.add_error_message(error_message)
             return False
-        # Run PoGo for every project track (.pogo file)
-        self._get_pogo_results_for_input_data()
         # Use default trackhub creation workflow
         self._create_trackhub()
         return True
