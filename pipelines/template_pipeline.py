@@ -320,7 +320,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             # Main .bed track with PTMs
             bed_ptm_file_path = pogo_results[taxonomy].get_pogo_result_main_ptm_bed_file_path()
             trackhub_track_main_with_ptm = self._get_trackhub_track_for_taxonomy_id(taxonomy)
-            trackhub_track_main_with_ptm = "{} with PTMs".format(trackhub_track_main_with_ptm.get_track())
+            trackhub_track_main_with_ptm.set_track("{} with PTMs".format(trackhub_track_main_with_ptm.get_track()))
             trackhub_track_main_with_ptm.set_big_data_url(bed_ptm_file_path)
             trackhub_track_main_with_ptm.set_type(bed_ptm_file_path)
             # Add tracks
