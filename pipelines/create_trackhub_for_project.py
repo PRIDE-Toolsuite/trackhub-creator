@@ -414,7 +414,13 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self.__pipeline_result_object.add_error_message(error_message)
             return False
         # Use default trackhub creation workflow
-        self._create_trackhub()
+        try:
+            self._create_trackhub()
+        except Exception as e:
+            # I know this is too generic but, for this iteration of the software it is completely fine
+            self.__pipeline_result_object.add_error_message(str(e))
+            self.set_pipeline_status_fail()
+            return False
         # Fill in the pipeline report
         self.__pipeline_result_object.hub_descriptor_file_path = \
             self._get_trackhub_exporter()\
