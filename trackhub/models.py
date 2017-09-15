@@ -84,7 +84,7 @@ class TrackHubExportSummary:
 class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-        self.export_summary = None
+        self.export_summary = TrackHubExportSummary()
 
     @abstractmethod
     def export_simple_trackhub(self, track_hub_builder):
