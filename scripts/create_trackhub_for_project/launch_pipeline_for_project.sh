@@ -8,3 +8,7 @@
 # Include helpers
 source scripts/commons/helper_functions.sh
 
+# Logging with prefix
+function mylogger() {
+    logger "[Trackhub] $@"
+}
