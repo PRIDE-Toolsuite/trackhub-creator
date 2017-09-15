@@ -19,6 +19,7 @@ from abc import ABCMeta, abstractmethod
 # Application imports
 import config_manager
 from toolbox import general
+from .exceptions import TrackHubLocalFilesystemExporterException
 from . import config_manager as module_config_manager
 
 
@@ -130,8 +131,15 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
 
     def export_simple_trackhub(self, trackhub_builder):
         file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
+        self.export_summary.track_hub_root_folder = self.track_hub_destination_folder
+        self.export_summary.track_hub_descriptor_file_path = file_trackhub_descriptor
         # TODO - Tell clients when you're not exporting anything
-        if not self.export_summary.export_performed and not os.path.isfile(file_trackhub_descriptor):
+        if os.path.isfile(file_trackhub_descriptor):
+            error_message = "Trackhub Export to '{}' ABORTED, there already is a trackhub there"\
+                .format(self.track_hub_destination_folder)
+            self.logger.warning(error_message)
+            self.export_summary.errors.append(error_message)
+        else:
             self.logger.info("Export Simple TrackHub to '{}'".format(self.track_hub_destination_folder))
             # Check / Create destination folder
             general.check_create_folders([self.track_hub_destination_folder])
@@ -188,8 +196,6 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
             self.logger.info("Genomes file with per-assembly data exported to '{}'".format(genomes_file_path))
             # Prepare summary object
             self.export_summary.export_performed = True
-            self.export_summary.track_hub_root_folder = self.track_hub_destination_folder
-            self.export_summary.track_hub_descriptor_file_path = file_trackhub_descriptor
             self.logger.info("Trackhub export summary prepared")
         return self.export_summary
 
