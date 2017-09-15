@@ -8,6 +8,9 @@
 # Include helpers
 source scripts/commons/helper_functions.sh
 
+# Commands
+PWD=$(which pwd)
+
 # Logging with prefix
 function mylogger() {
     logger "[Trackhub] $@"
