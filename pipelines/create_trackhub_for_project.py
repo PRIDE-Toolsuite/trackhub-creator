@@ -411,9 +411,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             return False
         # Run PoGo for every project track (.pogo file)
         self._get_pogo_results_for_input_data()
-        # TODO - Create Trackhub descriptor
-        # TODO - Populate assemblies with the PoGo run results
-        # TODO - Export Trackhub
+        # Use default trackhub creation workflow
+        self._create_trackhub()
         return True
 
     def _after(self):
