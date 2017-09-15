@@ -258,7 +258,7 @@ class TrackhubCreationDirector:
         ...
 
     @abc.abstractmethod
-    def _get_assemblies(self, trackhub_builder):
+    def _process_assemblies(self, trackhub_builder):
         ...
 
     def _create_trackhub(self):
@@ -317,7 +317,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
                                              ",".join([bed_file_path, bed_ptm_file_path])))
         return trackhub_builder
 
-    def _get_assemblies(self, trackhub_builder):
+    def _process_assemblies(self, trackhub_builder):
         self._get_assemblies_from_pogo_results()
 
 
