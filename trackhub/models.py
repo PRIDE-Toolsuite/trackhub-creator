@@ -127,7 +127,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
         return non_empty_file_tracks
 
     @abstractmethod
-    def export_simple_trackhub(self, track_hub_builder):
+    def export_simple_trackhub(self, trackhub_builder):
         file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
         if not self.export_summary and not os.path.isfile(file_trackhub_descriptor):
             self.logger.info("Export Simple TrackHub to '{}'".format(self.track_hub_destination_folder))
