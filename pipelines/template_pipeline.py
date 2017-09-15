@@ -258,7 +258,7 @@ class TrackhubCreationDirector:
         ...
 
     @abc.abstractmethod
-    def _get_assemblies(self):
+    def _get_assemblies(self, trackhub_builder):
         ...
 
     def _create_trackhub(self):
@@ -286,10 +286,9 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id):
         ...
 
-    def _get_assemblies_from_pogo_results(self):
+    def _get_assemblies_from_pogo_results(self, trackhub_builder):
         pogo_results = self._get_pogo_results_for_input_data()
         self._get_logger().info("Processing #{} Taxonomies from PoGo results".format(len(pogo_results)))
-        trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
         for taxonomy in pogo_results:
             ensembl_species_entry = ensembl.service\
                 .get_service()\
@@ -318,7 +317,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
                                              ",".join([bed_file_path, bed_ptm_file_path])))
         return trackhub_builder
 
-    def _get_assemblies(self):
+    def _get_assemblies(self, trackhub_builder):
         self._get_assemblies_from_pogo_results()
 
 
