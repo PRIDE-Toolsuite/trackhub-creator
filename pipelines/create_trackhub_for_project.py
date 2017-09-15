@@ -415,6 +415,11 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             return False
         # Use default trackhub creation workflow
         self._create_trackhub()
+        # Fill in the pipeline report
+        self.__pipeline_result_object.hub_descriptor_file_path = \
+            self._get_trackhub_exporter()\
+                .export_summary\
+                .track_hub_descriptor_file_path
         return True
 
     def _after(self):
