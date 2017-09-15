@@ -128,6 +128,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
 
     def export_simple_trackhub(self, trackhub_builder):
         file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
+        # TODO - Tell clients when you're not exporting anything
         if not self.export_summary and not os.path.isfile(file_trackhub_descriptor):
             self.logger.info("Export Simple TrackHub to '{}'".format(self.track_hub_destination_folder))
             # Check / Create destination folder
