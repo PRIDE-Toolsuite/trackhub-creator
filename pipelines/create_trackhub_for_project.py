@@ -267,7 +267,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
 
     def __get_index_project_track_for_taxonomy_id(self):
         if not self.__indexed_project_tracks_by_taxonomy_id:
-            self._get_logger().debug("Indexing #{} valid project tracks".format(self.__get_valid_project_tracks()))
+            self._get_logger().debug("Indexing #{} valid project tracks".format(len(self.__get_valid_project_tracks())))
             for project_track in self.__get_valid_project_tracks():
                 if project_track.get_track_species() in self.__indexed_project_tracks_by_taxonomy_id:
                     self._get_logger()\
