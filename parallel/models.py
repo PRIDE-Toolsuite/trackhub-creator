@@ -48,6 +48,7 @@ class ParallelRunnerManagerFactory:
         return ParallelRunnerManager()
 
 
+# Parallel Runner Managers
 class ParallelRunnerManager:
     def __init__(self):
         self._logger = config_manager \
