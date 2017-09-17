@@ -21,7 +21,6 @@ import config_manager
 from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadException, NoMoreAliveRunnersException
 
 
-# Execution of commands
 class CommandLineRunnerFactory:
     @staticmethod
     def get_command_line_runner():
@@ -159,6 +158,7 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
         return self._done
 
 
+# Execution of commands
 class CommandLineRunner(ParallelRunner):
     def __init__(self):
         super().__init__()
