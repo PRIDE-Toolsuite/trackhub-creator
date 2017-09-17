@@ -72,14 +72,6 @@ class ParallelRunnerManager:
         self._logger.debug("Runners started, clearing out the runners container")
         self.__runners.clear()
 
-    def wait_all(self):
-        self._logger.debug("Waiting for all #{} runners to finish".format(len(self.__alive_runners)))
-        try:
-            while True:
-                self.get_next_finished_runner()
-        except NoMoreAliveRunnersException as e:
-            self._logger.debug("All runners are (should be) finished")
-
     def get_next_finished_runner(self):
         if not self.__alive_runners:
             raise NoMoreAliveRunnersException("No more runners left! They've all finished")
@@ -102,6 +94,14 @@ class ParallelRunnerManager:
             time.sleep(random.randint(0, 10))
             counter += 1
         return runner_found
+
+    def wait_all(self):
+        self._logger.debug("Waiting for all #{} runners to finish".format(len(self.__alive_runners)))
+        try:
+            while True:
+                self.get_next_finished_runner()
+        except NoMoreAliveRunnersException as e:
+            self._logger.debug("All runners are (should be) finished")
 
     def get_not_started_runners(self):
         return set(self.__runners)
