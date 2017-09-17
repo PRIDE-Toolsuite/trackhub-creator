@@ -21,6 +21,7 @@ import config_manager
 from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadException, NoMoreAliveRunnersException
 
 
+# Abstract Factories
 class CommandLineRunnerFactory:
     @staticmethod
     def get_command_line_runner():
