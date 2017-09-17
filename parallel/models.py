@@ -113,6 +113,7 @@ class ParallelRunnerManager:
         return set(self.__finished_runners)
 
 
+# Parallel Runners
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def __init__(self):
         super().__init__()
