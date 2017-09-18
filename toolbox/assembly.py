@@ -21,10 +21,11 @@ class AssemblyMappingServiceFactory:
     pass
 
 
+# Assembly Mapping Services
 class AssemblyMappingService(metaclass=abc.ABCMeta):
     def __init__(self):
-        self._logger = config_manager\
-            .get_app_config_manager()\
+        self._logger = config_manager \
+            .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     @abc.abstractmethod
@@ -35,6 +36,7 @@ class AssemblyMappingService(metaclass=abc.ABCMeta):
         :return: its corresponding UCSC assembly name
         """
         ...
+
 
 class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
     pass
