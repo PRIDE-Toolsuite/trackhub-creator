@@ -22,7 +22,10 @@ class AssemblyMappingServiceFactory:
 
 
 class AssemblyMappingService(metaclass=abc.ABCMeta):
-    pass
+    def __init__(self):
+        self._logger = config_manager\
+            .get_app_config_manager()\
+            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
 
 class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
