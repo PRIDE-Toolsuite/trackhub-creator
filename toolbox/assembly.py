@@ -12,6 +12,8 @@ This toolbox models assembly mapping services between Ensembl and UCSC
 """
 
 import abc
+import json
+import requests
 # Application imports
 import config_manager
 from exceptions import AppException
@@ -90,7 +92,14 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
         return self._CONFIG_URL_ASSEMBLY_MAPPING_DATA
 
     def _get_raw_assembly_data_object(self):
-        pass
+        if not self.__raw_assembly_data_object
+            self._logger.info("Loading Assembly Mapping data between Ensembl and UCSC from '{}'"
+                              .format(self.__get_url_assembly_mapping_data()))
+            self.__raw_assembly_data_object = json.loads(requests.get(self.__get_url_assembly_mapping_data()).content)
+            self._logger.info("#{} assembly mapping entries between Ensembl and UCSC loaded from '{}"
+                              .format(len(self.__raw_assembly_data_object),
+                                      self.__get_url_assembly_mapping_data()))
+        return self.__raw_assembly_data_object
 
     def _get_index_by_accession_ensembl_assembly(self):
         pass
