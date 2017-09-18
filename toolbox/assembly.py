@@ -85,7 +85,9 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
         self.url_assembly_mapping_data = None
 
     def __get_url_assembly_mapping_data(self):
-        pass
+        if self.url_assembly_mapping_data:
+            return self.url_assembly_mapping_data
+        return self._CONFIG_URL_ASSEMBLY_MAPPING_DATA
 
     def _get_raw_assembly_data_object(self):
         pass
