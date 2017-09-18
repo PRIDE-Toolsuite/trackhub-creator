@@ -49,6 +49,20 @@ class Assembly:
         self.id = id
         self.base_count = base_count
 
+class MappingEntry:
+    """
+    As mapping entry, as received from the mapping file, looks like this:
+    {
+        "assembly_name": "KH",
+        "assembly_level": "chromosome",
+        "assembly_accession": "GCA_000224145.1",
+        "assembly_id": 2,
+        "base_count": 115227500,
+        "assembly_ucsc": "ci2"
+    }
+    """
+    pass
+
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
