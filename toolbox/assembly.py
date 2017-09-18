@@ -150,7 +150,7 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
             # I will cache the content of the file, as it's too small to cause problems
         return self.__raw_assembly_data_object
 
-    def _get_index_by_accession_ensembl_assembly(self):
+    def _get_index_by_ensembl_accession_mapping_entry(self):
         # WARNING - This index can be based on the assumption that the raw mapping data is Ensembl centric, which means
         # every Ensembl assembly accession appears only once, and it has a unique mapping to UCSC, that's not
         # necessarily the case the other way around
@@ -167,9 +167,6 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
                 self.__index_by_accession_ensembl_assembly[mapping_entry.get_ensembl_assembly_accession()] = \
                     mapping_entry
         return self.__index_by_accession_ensembl_assembly
-
-    def _get_index_by_ensembl_accession_ucsc_assembly(self):
-        pass
 
     def get_ucsc_assembly_for_ensembl_assembly_accession(self):
         pass
