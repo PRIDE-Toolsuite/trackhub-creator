@@ -63,6 +63,7 @@ class MappingEntry:
     """
     # Mapping keys
     _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_NAME = 'assembly_name'
+    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBY_LEVEL = 'assembly_level'
 
     def __init__(self, mapping_entry_object):
         self.mapping_entry_object = mapping_entry_object
