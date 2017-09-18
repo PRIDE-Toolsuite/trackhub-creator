@@ -32,6 +32,7 @@ class AssemblyMappingServiceFromStaticFileException(AssemblyMappingServiceExcept
 
 # Assembly model
 class Assembly:
+    # TODO - Due to the nature of the mapping data provided in this first iteration, I won't use this model
     _ASSEMBLY_DATABASE_ENSEMBL = 'Ensembl'
     _ASSEMBLY_DATABASE_UCSC = 'UCSC'
 
