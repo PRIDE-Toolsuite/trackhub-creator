@@ -168,8 +168,17 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
                     mapping_entry
         return self.__index_by_accession_ensembl_assembly
 
-    def get_ucsc_assembly_for_ensembl_assembly_accession(self):
-        pass
+    def get_ucsc_assembly_for_ensembl_assembly_accession(self, ensembl_assembly_accession):
+        mapping_entry = getattr(self._get_index_by_ensembl_accession_mapping_entry(), ensembl_assembly_accession, None)
+        if not mapping_entry:
+            raise AssemblyMappingServiceFromStaticFileException("NOT FOUND - Ensembl Assembly Accession '{}' "
+                                                                "in the Ensembl - UCSC mapping data!"
+                                                                .format(ensembl_assembly_accession))
+        if not mapping_entry.get_ucsc_assembly_name():
+            raise AssemblyMappingServiceFromStaticFileException("NULL MAPPING to UCSC - Ensembl Assembly Accession '{}'"
+                                                                " in the Ensembl - UCSC mapping data!"
+                                                                .format(ensembl_assembly_accession))
+        return mapping_entry.get_ucsc_assembly_name()
 
 
 class AssemblyMappingServiceFromEnsembl(AssemblyMappingService):
