@@ -66,6 +66,7 @@ class MappingEntry:
     _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBY_LEVEL = 'assembly_level'
     _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBY_ACCESSION = 'assembly_accession'
     _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBY_ID = 'assembly_id'
+    _MAPPING_ENTRY_KEY_ENSEMBL_BASE_COUNT = 'base_count'
 
     def __init__(self, mapping_entry_object):
         self.mapping_entry_object = mapping_entry_object
