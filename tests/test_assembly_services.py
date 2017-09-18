@@ -20,7 +20,7 @@ from toolbox.assembly import AssemblyMappingServiceFactory
 class TestAssemblyMappingServices(unittest.TestCase):
     def test_ensembl_species_has_mapping(self):
         ensembl_service = ensembl.service.get_service()
-        sample_ncbi_taxonomies = [9606, 10090]
+        sample_ncbi_taxonomies = ['9606', '10090']
         species_data_service = ensembl_service.get_species_data_service()
         assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
         for taxonomy_id in sample_ncbi_taxonomies:
