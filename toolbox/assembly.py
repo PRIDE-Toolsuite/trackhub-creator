@@ -23,6 +23,11 @@ class AssemblyMappingServiceException(AppException):
         super().__init__(value)
 
 
+class AssemblyMappingServiceFromStaticFileException(AssemblyMappingServiceException):
+    def __init__(self, value):
+        super().__init__(value)
+
+
 # Abstract Factory
 class AssemblyMappingServiceFactory:
     pass
