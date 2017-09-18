@@ -61,7 +61,8 @@ class MappingEntry:
         "assembly_ucsc": "ci2"
     }
     """
-    pass
+    def __init__(self, mapping_entry_object):
+        self.mapping_entry_object = mapping_entry_object
 
 
 # Abstract Factory
