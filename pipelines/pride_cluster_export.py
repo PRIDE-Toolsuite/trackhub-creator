@@ -25,7 +25,6 @@ import trackhub.models as trackhubs
 import trackhub.registry as trackhub_registry
 from pogo.models import PogoRunResult
 from toolbox import general as general_toolbox
-from toolbox.assembly import AssemblyMappingServiceFactory
 from . import exceptions as pipeline_exceptions
 from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
 
@@ -529,7 +528,6 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                   trackhub_description_url)
 
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
-        assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
         for taxonomy in pogo_run_results:
             ensembl_species_entry = \
                 ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy)
@@ -538,10 +536,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                 # Ensembl, but just in case, if it ever happens, it will be logged
                 self._get_logger().warning("Ensembl has no entry for taxonomy '{}', SKIPPING".format(taxonomy))
                 continue
-            # We can't use Ensembl Assemblies any more, they have to be translated to UCSC assemblies
-            # genome_assembly = ensembl_species_entry.get_assembly()
-            genome_assembly = assembly_mapping_service \
-                .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_entry.get_assembly_accession())
+            genome_assembly = ensembl_species_entry.get_assembly()
             self._get_logger().info("Populating Assembly '{}' for Taxonomy '{}'".format(genome_assembly, taxonomy))
             # TODO - How are we going to annotate these tracks? We need a meeting on this
 

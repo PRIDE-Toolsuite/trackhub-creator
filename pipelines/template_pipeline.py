@@ -18,7 +18,7 @@ import trackhub.models as trackhubs
 import ensembl.service
 import ensembl.data_downloader
 from toolbox import general
-from toolbox.assembly import AssemblyMappingServiceFactory
+# from toolbox.assembly import AssemblyMappingServiceFactory
 
 
 # The config manager singleton is just an example that only makes sense for specialized pipeline modules, not really for
@@ -305,7 +305,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _get_assemblies_from_pogo_results(self, trackhub_builder):
         pogo_results = self._get_pogo_results_for_input_data()
         self._get_logger().info("Processing #{} Taxonomies from PoGo results".format(len(pogo_results)))
-        assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
+        # assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
         for taxonomy in pogo_results:
             ensembl_species_entry = ensembl.service\
                 .get_service()\
@@ -315,9 +315,9 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
                 self._get_logger().error("Ensembl has NO ENTRY for taxonomy ID {} - SKIP -".format(taxonomy))
                 continue
             # We can't use Ensembl Assemblies any more, they have to be translated to UCSC assemblies
-            # genome_assembly = ensembl_species_entry.get_assembly()
-            genome_assembly = assembly_mapping_service\
-                .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_entry.get_assembly_accession())
+            genome_assembly = ensembl_species_entry.get_assembly()
+            #genome_assembly = assembly_mapping_service\
+            #    .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_entry.get_assembly_accession())
             # Main .bed track
             bed_file_path = pogo_results[taxonomy].get_pogo_result_main_bed_file_path()
             trackhub_track_main = self._get_trackhub_track_for_taxonomy_id(taxonomy)

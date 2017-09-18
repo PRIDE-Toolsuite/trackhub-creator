@@ -18,7 +18,9 @@ import shutil
 from abc import ABCMeta, abstractmethod
 # Application imports
 import config_manager
+import ensembl.service
 from toolbox import general
+from toolbox.assembly import AssemblyMappingServiceFactory
 from .exceptions import TrackHubLocalFilesystemExporterException
 from . import config_manager as module_config_manager
 
@@ -135,7 +137,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
         self.export_summary.track_hub_descriptor_file_path = file_trackhub_descriptor
         # TODO - Tell clients when you're not exporting anything
         if os.path.isfile(file_trackhub_descriptor):
-            error_message = "Trackhub Export to '{}' ABORTED, there already is a trackhub there"\
+            error_message = "Trackhub Export to '{}' ABORTED, there already is a trackhub there" \
                 .format(self.track_hub_destination_folder)
             self.logger.warning(error_message)
             self.export_summary.errors.append(error_message)
@@ -152,18 +154,30 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
             # TODO - cutting some corners here to get the first iteration up and running as soon as possible. Supporting
             # TODO - more complex genomes.txt files is not as critical as getting the 'tracks' the right way
             assembly_mapping = {}
+            assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
+            ensembl_species_service = ensembl.service.get_service().get_species_data_service()
             for assembly in trackhub_builder.assemblies:
+                ucsc_assembly = assembly_mapping_service \
+                    .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_service
+                                                                      .get_species_entry_for_assembly(assembly)
+                                                                      .get_assembly_accession())
+                self.logger.warning("Ensembl Assembly '{}' --- mapped_to ---> UCSC Assembly '{}'"
+                                    .format(assembly, ucsc_assembly))
                 tracks_with_non_empty_bed_files = \
                     self.__get_tracks_with_non_empty_bed_files(assembly,
                                                                trackhub_builder.assemblies[assembly].track_collector)
                 if not tracks_with_non_empty_bed_files:
-                    self.logger.warning("Assembly '{}' contains ALL EMPTY BIG DATA FILE TRACKS -- SKIPPED --"
-                                        .format(assembly))
+                    self.logger.warning("Assembly '{} ({})' contains ALL EMPTY BIG DATA FILE TRACKS -- SKIPPED --"
+                                        .format(assembly,
+                                                ucsc_assembly))
                     continue
-                assembly_folder = os.path.join(self.track_hub_destination_folder, assembly)
+                assembly_folder = os.path.join(self.track_hub_destination_folder, ucsc_assembly)
                 # Create the folder for the assembly
                 general.check_create_folders([assembly_folder])
-                self.logger.info("For Assembly '{}', trackhub folder created at '{}'".format(assembly, assembly_folder))
+                self.logger.info("For Assembly '{} ({})', trackhub folder created at '{}'"
+                                 .format(assembly,
+                                         ucsc_assembly,
+                                         assembly_folder))
                 # Per track in its track collector, we'll process only those tracks with non-empty big data files
                 for track in tracks_with_non_empty_bed_files:
                     # Copy track file to assembly folder
@@ -176,15 +190,17 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                     new_big_data_url = big_data_file_name
                     track.set_big_data_url(new_big_data_url)
                     self.logger.info(
-                        "Assembly '{}' ---> Data for track '{}' prepared, track information updated"
-                            .format(assembly, track.get_track()))
+                        "Assembly '{} ({})' ---> Data for track '{}' prepared, track information updated"
+                            .format(assembly,
+                                    ucsc_assembly,
+                                    track.get_track()))
                 # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
                 track_collector_exporter.export_from_track_collection(tracks_with_non_empty_bed_files)
                 # Add assembly entry to genomes.txt files within trackhub root folder
-                assembly_mapping[assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
-                                                          os.path.basename(trackdb_file_path))
+                assembly_mapping[ucsc_assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
+                                                               os.path.basename(trackdb_file_path))
             self.logger.info("Assembly data collected and exported to its corresponding subfolders")
             # Export data to genomes.txt file
             genomes_file_path = os.path.join(self.track_hub_destination_folder, 'genomes.txt')
