@@ -61,6 +61,7 @@ class MappingEntry:
         "assembly_ucsc": "ci2"
     }
     """
+    # Mapping keys
     _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_NAME = 'assembly_name'
 
     def __init__(self, mapping_entry_object):
