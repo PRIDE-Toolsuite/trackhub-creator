@@ -87,6 +87,9 @@ class MappingEntry:
     def get_ensembl_assembly_base_count(self):
         pass
 
+    def get_ucsc_assembly_name(self):
+        pass
+
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
