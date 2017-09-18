@@ -84,6 +84,9 @@ class MappingEntry:
     def get_ensembl_assembly_id(self):
         pass
 
+    def get_ensembl_base_count(self):
+        pass
+
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
