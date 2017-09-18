@@ -63,10 +63,10 @@ class MappingEntry:
     """
     # Mapping keys
     _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_NAME = 'assembly_name'
-    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBY_LEVEL = 'assembly_level'
-    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBY_ACCESSION = 'assembly_accession'
-    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBY_ID = 'assembly_id'
-    _MAPPING_ENTRY_KEY_ENSEMBL_BASE_COUNT = 'base_count'
+    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_LEVEL = 'assembly_level'
+    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_ACCESSION = 'assembly_accession'
+    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_ID = 'assembly_id'
+    _MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_BASE_COUNT = 'base_count'
     _MAPPING_ENTRY_KEY_UCSC_ASSEMBLY_NAME = 'assembly_ucsc'
 
     def __init__(self, mapping_entry_object):
