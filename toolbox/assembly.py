@@ -94,7 +94,7 @@ class MappingEntry:
         return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_BASE_COUNT)
 
     def get_ucsc_assembly_name(self):
-        pass
+        return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_UCSC_ASSEMBLY_NAME)
 
 
 # Abstract Factory
