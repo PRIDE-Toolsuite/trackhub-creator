@@ -82,6 +82,9 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
         self.__index_by_accession_ensembl_assembly = None
         self.__index_by_ensembl_accession_ucsc_assembly = None
 
+    def __get_url_assembly_mapping_data(self):
+        pass
+
     def _get_raw_assembly_data_object(self):
         pass
 
