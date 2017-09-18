@@ -18,8 +18,6 @@ from toolbox.assembly import AssemblyMappingServiceFactory
 
 
 class TestAssemblyMappingServices(unittest.TestCase):
-
-
     def test_ensembl_species_has_mapping(self):
         ensembl_service = ensembl.service.get_service()
         sample_ncbi_taxonomies = [9606, 10090]
@@ -34,3 +32,6 @@ class TestAssemblyMappingServices(unittest.TestCase):
                                          .get_ucsc_assembly_for_ensembl_assembly_accession(
                                              ensembl_species_data_entry.get_assembly_accession())))
 
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
