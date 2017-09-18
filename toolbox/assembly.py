@@ -72,6 +72,9 @@ class MappingEntry:
     def __init__(self, mapping_entry_object):
         self.mapping_entry_object = mapping_entry_object
 
+    def get_ensembl_assembly_name(self):
+        pass
+
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
