@@ -16,3 +16,9 @@ import unittest
 import ensembl.service
 import toolbox.assembly
 
+
+class TestAssemblyMappingServices(unittest.TestCase):
+
+    def setUp(self):
+        self.ensembl_service = ensembl.service.get_service()
+
