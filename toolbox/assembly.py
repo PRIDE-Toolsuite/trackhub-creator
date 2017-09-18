@@ -29,6 +29,9 @@ class AssemblyMappingServiceFromStaticFileException(AssemblyMappingServiceExcept
 
 
 # Assembly model
+class Assembly:
+    pass
+
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
