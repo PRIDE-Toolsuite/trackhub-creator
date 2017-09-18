@@ -88,7 +88,7 @@ class MappingEntry:
         return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_ACCESSION)
 
     def get_ensembl_assembly_id(self):
-        pass
+        return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_ID)
 
     def get_ensembl_assembly_base_count(self):
         pass
