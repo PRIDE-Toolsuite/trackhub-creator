@@ -72,6 +72,12 @@ class MappingEntry:
     def __init__(self, mapping_entry_object):
         self.mapping_entry_object = mapping_entry_object
 
+    def __get_value_for_key_or_default(self, key, default='---NOT_SET---'):
+        # I could have used 'getattr' but I wrote this method to avoid myself repeating '---NOT_SET---' at the callers
+        if key in self.mapping_entry_object:
+            return self.mapping_entry_object[key]
+        return default
+
     def get_ensembl_assembly_name(self):
         pass
 
