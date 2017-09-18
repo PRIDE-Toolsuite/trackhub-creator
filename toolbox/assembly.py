@@ -55,6 +55,11 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
     _CONFIG_URL_ASSEMBLY_MAPPING_DATA = \
         'https://github.com/Proteogenomics/assembly-mapping-data/raw/master/ensembl_ucsc_assembly_mapping.json'
 
+    def __init__(self):
+        self._logger = config_manager \
+            .get_app_config_manager() \
+            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+
 
 class AssemblyMappingServiceFromEnsembl(AssemblyMappingService):
     pass
