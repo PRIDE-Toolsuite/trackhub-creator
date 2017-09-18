@@ -112,7 +112,7 @@ class AssemblyMappingService(metaclass=abc.ABCMeta):
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     @abc.abstractmethod
-    def map_ensembl_to_ucsc(self, ensembl_assembly_accession):
+    def get_ucsc_assembly_for_ensembl_assembly_accession(self, ensembl_assembly_accession):
         """
         Given an Ensembl Assembly Accession, get its corresponding UCSC Assembly name
         :param ensembl_assembly_accession: Ensembl assembly accession
