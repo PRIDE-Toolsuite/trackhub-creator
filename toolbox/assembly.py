@@ -75,7 +75,7 @@ class MappingEntry:
     def __get_value_for_key_or_default(self, key, default='---NOT_SET---'):
         # I could have used 'getattr' but I wrote this method to avoid myself repeating '---NOT_SET---' at the callers
         if key in self.mapping_entry_object:
-            value = self.mapping_entry_object[key]
+            return self.mapping_entry_object[key]
         return default
 
     def get_ensembl_assembly_name(self):
@@ -85,7 +85,7 @@ class MappingEntry:
         return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_LEVEL)
 
     def get_ensembl_assembly_accession(self):
-        return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_ACCESSION)
+        return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_ACCESSION, None)
 
     def get_ensembl_assembly_id(self):
         return self.__get_value_for_key_or_default(self._MAPPING_ENTRY_KEY_ENSEMBL_ASSEMBLY_ID)
@@ -160,6 +160,7 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
             self.__index_by_accession_ensembl_assembly = {}
             for raw_mapping_entry in self._get_raw_assembly_data_object():
                 mapping_entry = MappingEntry(raw_mapping_entry)
+                self._logger.debug("ENSEMBL MAPPING ENTRY ---> '{}' - Accession '{}'".format(json.dumps(raw_mapping_entry), mapping_entry.get_ensembl_assembly_accession()))
                 if not mapping_entry.get_ensembl_assembly_accession():
                     self._logger.error("SKIPPING ENSEMBL ASSEMBLY ACCESSION ENTRY with 'NULL' ACCESSION -> '{}',"
                                        .format(json.dumps(raw_mapping_entry)))
