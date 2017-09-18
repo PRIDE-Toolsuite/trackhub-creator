@@ -164,7 +164,8 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
                     self._logger.error("DUPLICATED ENSEMBL ASSEMBLY ACCESSION ENTRY!!! '{}',"
                                        " the one already in the index is '{}' - MAPPING ENTRY SKIPPED"
                                        .format(json.dumps(raw_mapping_entry),
-                                               json.dumps(self.__index_by_accession_ensembl_assembly
+                                               json.dumps(self.__index_by_accession_ensembl_assembly[
+                                                              mapping_entry.get_ensembl_assembly_accession()]
                                                           .mapping_entry_object)))
                 self.__index_by_accession_ensembl_assembly[mapping_entry.get_ensembl_assembly_accession()] = \
                     mapping_entry
