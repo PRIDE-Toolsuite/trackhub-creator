@@ -99,6 +99,7 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
             self._logger.info("#{} assembly mapping entries between Ensembl and UCSC loaded from '{}"
                               .format(len(self.__raw_assembly_data_object),
                                       self.__get_url_assembly_mapping_data()))
+            # I will cache the content of the file, as it's too small to cause problems
         return self.__raw_assembly_data_object
 
     def _get_index_by_accession_ensembl_assembly(self):
