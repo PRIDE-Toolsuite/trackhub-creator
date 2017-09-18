@@ -160,7 +160,6 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
             self.__index_by_accession_ensembl_assembly = {}
             for raw_mapping_entry in self._get_raw_assembly_data_object():
                 mapping_entry = MappingEntry(raw_mapping_entry)
-                self._logger.debug("ENSEMBL MAPPING ENTRY ---> '{}' - Accession '{}'".format(json.dumps(raw_mapping_entry), mapping_entry.get_ensembl_assembly_accession()))
                 if not mapping_entry.get_ensembl_assembly_accession():
                     self._logger.error("SKIPPING ENSEMBL ASSEMBLY ACCESSION ENTRY with 'NULL' ACCESSION -> '{}',"
                                        .format(json.dumps(raw_mapping_entry)))
