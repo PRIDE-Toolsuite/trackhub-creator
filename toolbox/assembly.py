@@ -30,7 +30,7 @@ class AssemblyMappingServiceFromStaticFileException(AssemblyMappingServiceExcept
 
 # Assembly model
 class Assembly:
-    pass
+    _ASSEMBLY_DATABASE_ENSEMBL = 'Ensembl'
 
 
 # Abstract Factory
