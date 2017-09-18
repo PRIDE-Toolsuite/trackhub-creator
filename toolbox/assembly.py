@@ -33,6 +33,20 @@ class Assembly:
     _ASSEMBLY_DATABASE_ENSEMBL = 'Ensembl'
     _ASSEMBLY_DATABASE_UCSC = 'UCSC'
 
+    def __init__(self, database = _ASSEMBLY_DATABASE_ENSEMBL,
+                 name = '---NOT_SET---',
+                 accession = '---NOT_SET---',
+                 level = '---NOT_SET---',
+                 id = '---NOT_SET---',
+                 base_count = '---NOT_SET---'):
+        self.database = database
+        self.name = name
+        self.accession = accession
+        self.level = level
+        self.id = id
+        self.base_count = base_count
+        
+
 
 
 # Abstract Factory
