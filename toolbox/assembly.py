@@ -30,7 +30,7 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
 
 
 class AssemblyMappingServiceFromEnsembl(AssemblyMappingService):
-    class
+    pass
 
 
 if __name__ == '__main__':
