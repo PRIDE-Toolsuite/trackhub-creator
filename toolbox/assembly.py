@@ -88,6 +88,9 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
     def _get_index_by_accession_ensembl_assembly(self):
         pass
 
+    def _get_index_by_ensembl_accession_ucsc_assembly(self):
+        pass
+
 class AssemblyMappingServiceFromEnsembl(AssemblyMappingService):
     pass
 
