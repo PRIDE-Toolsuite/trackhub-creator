@@ -11,10 +11,15 @@
 This toolbox models assembly mapping services between Ensembl and UCSC
 """
 
+import abc
 # Application imports
 import config_manager
 
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
+    pass
+
+
+class AssemblyMappingService(metaclass=abc.ABCMeta):
     pass
