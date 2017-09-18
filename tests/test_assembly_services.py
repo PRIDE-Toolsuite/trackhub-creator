@@ -10,3 +10,9 @@
 """
 Unit tests for assembly services
 """
+
+import unittest
+# Application imports
+import ensembl.service
+import toolbox.assembly
+
