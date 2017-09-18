@@ -45,8 +45,6 @@ class Assembly:
         self.level = level
         self.id = id
         self.base_count = base_count
-        
-
 
 
 # Abstract Factory
@@ -80,6 +78,10 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+        self.__raw_assembly_data_object = None
+        self.__index_by_accession_ensembl_assembly = None
+        self.__index_by_ensembl_accession_ucsc_assembly = None
+
 
 
 class AssemblyMappingServiceFromEnsembl(AssemblyMappingService):
