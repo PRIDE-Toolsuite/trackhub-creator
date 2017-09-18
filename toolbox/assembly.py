@@ -33,12 +33,12 @@ class Assembly:
     _ASSEMBLY_DATABASE_ENSEMBL = 'Ensembl'
     _ASSEMBLY_DATABASE_UCSC = 'UCSC'
 
-    def __init__(self, database = _ASSEMBLY_DATABASE_ENSEMBL,
-                 name = '---NOT_SET---',
-                 accession = '---NOT_SET---',
-                 level = '---NOT_SET---',
-                 id = '---NOT_SET---',
-                 base_count = '---NOT_SET---'):
+    def __init__(self, database=_ASSEMBLY_DATABASE_ENSEMBL,
+                 name='---NOT_SET---',
+                 accession='---NOT_SET---',
+                 level='---NOT_SET---',
+                 id='---NOT_SET---',
+                 base_count='---NOT_SET---'):
         self.database = database
         self.name = name
         self.accession = accession
@@ -82,7 +82,11 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
         self.__index_by_accession_ensembl_assembly = None
         self.__index_by_ensembl_accession_ucsc_assembly = None
 
+    def _get_raw_assembly_data_object(self):
+        pass
 
+    def _get_index_by_accession_ensembl_assembly(self):
+        pass
 
 class AssemblyMappingServiceFromEnsembl(AssemblyMappingService):
     pass
