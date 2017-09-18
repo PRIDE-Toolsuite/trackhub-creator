@@ -84,7 +84,7 @@ class MappingEntry:
     def get_ensembl_assembly_id(self):
         pass
 
-    def get_ensembl_base_count(self):
+    def get_ensembl_assembly_base_count(self):
         pass
 
 
