@@ -31,6 +31,8 @@ class AssemblyMappingServiceFromStaticFileException(AssemblyMappingServiceExcept
 # Assembly model
 class Assembly:
     _ASSEMBLY_DATABASE_ENSEMBL = 'Ensembl'
+    _ASSEMBLY_DATABASE_UCSC = 'UCSC'
+
 
 
 # Abstract Factory
