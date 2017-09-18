@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This toolbox models assembly mapping services between Ensembl and UCSC
 """
