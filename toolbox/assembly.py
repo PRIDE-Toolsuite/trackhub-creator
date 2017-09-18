@@ -160,6 +160,10 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
             self.__index_by_accession_ensembl_assembly = {}
             for raw_mapping_entry in self._get_raw_assembly_data_object():
                 mapping_entry = MappingEntry(raw_mapping_entry)
+                if not mapping_entry.get_ensembl_assembly_accession():
+                    self._logger.error("SKIPPING ENSEMBL ASSEMBLY ACCESSION ENTRY with 'NULL' ACCESSION -> '{}',"
+                                       .format(json.dumps(raw_mapping_entry)))
+                    continue
                 if mapping_entry.get_ensembl_assembly_accession() in self.__index_by_accession_ensembl_assembly:
                     self._logger.error("DUPLICATED ENSEMBL ASSEMBLY ACCESSION ENTRY!!! '{}',"
                                        " the one already in the index is '{}' - MAPPING ENTRY SKIPPED"
@@ -167,6 +171,7 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
                                                json.dumps(self.__index_by_accession_ensembl_assembly[
                                                               mapping_entry.get_ensembl_assembly_accession()]
                                                           .mapping_entry_object)))
+                    continue
                 self.__index_by_accession_ensembl_assembly[mapping_entry.get_ensembl_assembly_accession()] = \
                     mapping_entry
         return self.__index_by_accession_ensembl_assembly
