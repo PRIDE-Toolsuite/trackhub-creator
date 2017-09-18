@@ -99,7 +99,9 @@ class MappingEntry:
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
-    pass
+    @staticmethod
+    def get_assembly_mapping_service():
+        return AssemblyMappingServiceFromStaticFile()
 
 
 # Assembly Mapping Services
