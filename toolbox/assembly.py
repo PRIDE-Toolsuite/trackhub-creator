@@ -140,7 +140,7 @@ class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
         return self._CONFIG_URL_ASSEMBLY_MAPPING_DATA
 
     def _get_raw_assembly_data_object(self):
-        if not self.__raw_assembly_data_object
+        if not self.__raw_assembly_data_object:
             self._logger.info("Loading Assembly Mapping data between Ensembl and UCSC from '{}'"
                               .format(self.__get_url_assembly_mapping_data()))
             self.__raw_assembly_data_object = json.loads(requests.get(self.__get_url_assembly_mapping_data()).content)
