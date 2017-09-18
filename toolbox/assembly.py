@@ -27,6 +27,14 @@ class AssemblyMappingService(metaclass=abc.ABCMeta):
             .get_app_config_manager()\
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
+    @abc.abstractmethod
+    def map_ensembl_to_ucsc(self, ensembl_assembly_accession):
+        """
+        Given an Ensembl Assembly Accession, get its corresponding UCSC Assembly name
+        :param ensembl_assembly_accession: Ensembl assembly accession
+        :return: its corresponding UCSC assembly name
+        """
+        ...
 
 class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
     pass
