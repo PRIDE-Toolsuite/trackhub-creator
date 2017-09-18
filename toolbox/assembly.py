@@ -75,6 +75,9 @@ class MappingEntry:
     def get_ensembl_assembly_name(self):
         pass
 
+    def get_ensembl_assembly_level(self):
+        pass
+
 
 # Abstract Factory
 class AssemblyMappingServiceFactory:
