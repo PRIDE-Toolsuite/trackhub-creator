@@ -10,3 +10,6 @@
 """
 This toolbox models assembly mapping services between Ensembl and UCSC
 """
+
+# Application imports
+import config_manager
