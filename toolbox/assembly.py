@@ -14,8 +14,13 @@ This toolbox models assembly mapping services between Ensembl and UCSC
 import abc
 # Application imports
 import config_manager
+from exceptions import AppException
+
 
 # Exceptions
+class AssemblyMappingServiceException(AppException):
+    def __init__(self, value):
+        super().__init__(value)
 
 
 # Abstract Factory
