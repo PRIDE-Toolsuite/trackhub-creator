@@ -23,3 +23,7 @@ class AssemblyMappingServiceFactory:
 
 class AssemblyMappingService(metaclass=abc.ABCMeta):
     pass
+
+
+class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
+    pass
