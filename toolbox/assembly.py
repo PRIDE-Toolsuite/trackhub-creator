@@ -28,6 +28,8 @@ class AssemblyMappingServiceFromStaticFileException(AssemblyMappingServiceExcept
         super().__init__(value)
 
 
+# Assembly model
+
 # Abstract Factory
 class AssemblyMappingServiceFactory:
     pass
