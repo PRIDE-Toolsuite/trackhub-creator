@@ -20,7 +20,7 @@ from abc import ABCMeta, abstractmethod
 import config_manager
 import ensembl.service
 from toolbox import general
-from toolbox.assembly import AssemblyMappingServiceFactory
+from toolbox.assembly import AssemblyMappingServiceFactory, AssemblyMappingServiceException
 from .exceptions import TrackHubLocalFilesystemExporterException
 from . import config_manager as module_config_manager
 
@@ -157,10 +157,15 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
             assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
             ensembl_species_service = ensembl.service.get_service().get_species_data_service()
             for assembly in trackhub_builder.assemblies:
-                ucsc_assembly = assembly_mapping_service \
-                    .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_service
-                                                                      .get_species_entry_for_assembly(assembly)
-                                                                      .get_assembly_accession())
+                try:
+                    ucsc_assembly = assembly_mapping_service \
+                        .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_service
+                                                                          .get_species_entry_for_assembly(assembly)
+                                                                          .get_assembly_accession())
+                except AssemblyMappingServiceException as e:
+                    self.logger.error("ERROR while mapping Ensembl Assembly '{}' - SKIPPING THIS ASSEMBLY - xxx> '{}'"
+                                      .format(assembly, e.value()))
+                    continue
                 self.logger.warning("Ensembl Assembly '{}' --- mapped_to ---> UCSC Assembly '{}'"
                                     .format(assembly, ucsc_assembly))
                 tracks_with_non_empty_bed_files = \
