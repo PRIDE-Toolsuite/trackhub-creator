@@ -164,7 +164,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                                                           .get_assembly_accession())
                 except AssemblyMappingServiceException as e:
                     self.logger.error("ERROR while mapping Ensembl Assembly '{}' - SKIPPING THIS ASSEMBLY - xxx> '{}'"
-                                      .format(assembly, e.value()))
+                                      .format(assembly, e.value))
                     continue
                 self.logger.warning("Ensembl Assembly '{}' --- mapped_to ---> UCSC Assembly '{}'"
                                     .format(assembly, ucsc_assembly))
