@@ -89,10 +89,11 @@ class TrackHubExportSummary:
 class TrackHubExporter(metaclass=ABCMeta):
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
-        self.export_summary = TrackHubExportSummary()
+        self.export_summary = None
 
     @abstractmethod
     def export_simple_trackhub(self, track_hub_builder):
+        # I know, I should avoid returning 'None'
         return self.export_summary
 
 
@@ -104,6 +105,8 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
         self.track_hub_destination_folder = os.path.join(
             config_manager.get_app_config_manager().get_session_working_dir(),
             'track_hub')
+        # By default we're working with an empty export summary
+        self.export_summary = TrackHubExportSummary()
 
     def __get_tracks_with_non_empty_bed_files(self, assembly, track_collector):
         non_empty_file_tracks = []
