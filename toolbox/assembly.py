@@ -124,7 +124,7 @@ class AssemblyMappingService(metaclass=abc.ABCMeta):
 class AssemblyMappingServiceFromStaticFile(AssemblyMappingService):
     # Default URL to get the assembly mapping data
     _CONFIG_URL_ASSEMBLY_MAPPING_DATA = \
-        'https://github.com/Proteogenomics/assembly-mapping-data/raw/master/ensembl_ucsc_assembly_mapping.json'
+        'https://raw.githubusercontent.com/Proteogenomics/assembly-mapping-data/master/ensembl_ucsc_assembly_mapping.json'
 
     def __init__(self):
         self._logger = config_manager \
