@@ -199,9 +199,9 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                     track.set_big_data_url(new_big_data_url)
                     self.logger.info(
                         "Assembly '{} ({})' ---> Data for track '{}' prepared, track information updated"
-                            .format(assembly,
-                                    ucsc_assembly,
-                                    track.get_track()))
+                        .format(assembly,
+                                ucsc_assembly,
+                                track.get_track()))
                 # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
