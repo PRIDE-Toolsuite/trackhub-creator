@@ -290,6 +290,8 @@ class ConfigManager(DirectorConfigurationManager):
 
 
 class PrideClusterExporter(PogoBasedPipelineDirector):
+    # TODO - Now that this is working with assembly mapping, it needs to be refactored to use
+    # TODO - TrackhubCreationPogoBasedDirector defined workflow
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH = 'pride_cluster_file_path'
     __CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL = 'all'
