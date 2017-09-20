@@ -202,6 +202,8 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                         .format(assembly,
                                 ucsc_assembly,
                                 track.get_track()))
+                    # Apparently, 'blank spaces' are not allowed in the track names (UCSC)
+                    track.set_track(track.get_track().replace(' ', '_'))
                 # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
