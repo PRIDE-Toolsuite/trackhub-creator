@@ -23,7 +23,7 @@ import ensembl.service
 import ensembl.data_downloader
 import trackhub.models as trackhubs
 import trackhub.registry as trackhub_registry
-from pogo.models import PogoRunResult
+from pogo.models import PogoRunResult, PogoRunnerFactory
 from parallel.models import CommandLineRunnerFactory, ParallelRunnerManagerFactory
 from toolbox import general as general_toolbox
 from . import exceptions as pipeline_exceptions
@@ -440,7 +440,10 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                 self._get_logger().error("SKIP TAXONOMY ID #{}, GTF file NOT FOUND to use with PoGo".format(taxonomy))
                 continue
             # Prepare PoGo run command
-            command_line_runner = CommandLineRunnerFactory.get_command_line_runner()
+            pogo_runner = PogoRunnerFactory.get_pogo_runner(taxonomy,
+                                                            pogo_parameter_file_input,
+                                                            pogo_parameter_protein_sequence_file_path,
+                                                            pogo_parameter_gtf_file_path)
             command_line_runner.command = "time {} -species {} -fasta {} -gtf {} -in {}" \
                 .format(config_manager.get_app_config_manager().get_pogo_binary_file_path(),
                         taxonomy,
@@ -453,7 +456,8 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                     .format(pogo_parameter_file_input,
                                             pogo_parameter_protein_sequence_file_path,
                                             pogo_parameter_gtf_file_path,
-                                            pogo_command))
+                                            command_line_runner.command))
+            parallel_run_manager.add_runner(command_line_runner)
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
             # Run PoGo
             # TODO - This is a place for future improvement by running PoGo in parallel for all the files. Obviously,
