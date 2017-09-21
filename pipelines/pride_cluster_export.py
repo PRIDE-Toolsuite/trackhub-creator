@@ -692,15 +692,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             # Create the trackhub
             self._create_trackhub()
             # TODO - Convert files to BigBed format, this will be addressed in the future
-            # Create trackhub structure
-            trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
-            self.__populate_assemblies(trackhub_builder, pogo_run_results)
-            # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination
-            # folder for this trackhub
-            trackhub_exporter = self._get_trackhub_exporter()
-            self._prepare_trackhub_destination_folder(trackhub_exporter)
-            # Export trackhub to destination folder
-            self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
             # Sync Data and get public URL
             self.__sync_filesystem(trackhub_exporter)
             # Publish trackhub
