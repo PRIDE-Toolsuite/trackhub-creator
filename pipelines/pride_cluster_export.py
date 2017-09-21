@@ -488,6 +488,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
 
+    # Override
     def _get_trackhub_descriptor(self):
         # TODO - Some of these values are hardcoded here, but they could be parameterized later if needed
         trackhub_title = "PRIDE Cluster Release {}" \
