@@ -24,6 +24,7 @@ import ensembl.data_downloader
 import trackhub.models as trackhubs
 import trackhub.registry as trackhub_registry
 from pogo.models import PogoRunResult
+from parallel.models import CommandLineRunnerFactory
 from toolbox import general as general_toolbox
 from . import exceptions as pipeline_exceptions
 from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
