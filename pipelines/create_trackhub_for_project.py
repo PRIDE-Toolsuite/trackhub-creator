@@ -237,7 +237,6 @@ class PipelineResult:
 
 
 class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
-    # TODO
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super().__init__(runner_id)
