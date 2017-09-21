@@ -312,11 +312,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
     def _get_configuration_manager(self):
         return self.__config_manager
 
-    def __get_cluster_file_exporter_result_mapping(self):
-        if not self.__cluster_file_exporter_result_mapping:
-            self.__cluster_file_exporter_result_mapping = self.__map_cluster_file_exporter_result_files()
-        return self.__cluster_file_exporter_result_mapping
-
     def __map_cluster_file_exporter_result_files(self):
         cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
         # Prepare empty result map
@@ -359,6 +354,11 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                 else:
                     self._get_logger().warning("Ignoring cluster-file-exporter non-result file '{}'".format(file))
         return cluster_file_exporter_result_mapping
+
+    def __get_cluster_file_exporter_result_mapping(self):
+        if not self.__cluster_file_exporter_result_mapping:
+            self.__cluster_file_exporter_result_mapping = self.__map_cluster_file_exporter_result_files()
+        return self.__cluster_file_exporter_result_mapping
 
 
     def __run_cluster_file_exporter(self):
@@ -649,6 +649,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         return self.__trackhub_registry_service
 
     def __register_trackhub(self, trackhub_builder, trackhub_exporter):
+        # TODO - This could be externalized to the 'Trackhub' module
         if self.__get_trackhub_public_url(trackhub_exporter) == '':
             self._get_logger().warning("THIS TRACKHUB WILL NOT BE PUBLISHED, "
                                        "a trackhub public URL could not be worked out")
