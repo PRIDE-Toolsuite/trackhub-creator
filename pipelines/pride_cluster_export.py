@@ -455,7 +455,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                              .format(pogo_runner.pogo_input_file,
                                                      pogo_runner.protein_sequence_file_path,
                                                      pogo_runner.gtf_file_path,
-                                                     pogo_runner._get_pogo_run_command()))
+                                                     pogo_runner.get_pogo_run_command()))
                     # We skip this file / taxonomy, as we have ONE .pogo file per taxonomy
                     continue
         except:

@@ -152,7 +152,7 @@ class PogoRunner(ParallelRunner):
             validation_ok = False
         return validation_ok
 
-    def _get_pogo_run_command(self):
+    def get_pogo_run_command(self):
         pogo_parameter_species = ''
         if self.ncbi_taxonomy_id:
             pogo_parameter_species = " -species {} ".format(self.ncbi_taxonomy_id)
@@ -224,7 +224,7 @@ class PogoRunnerLocalThread(PogoRunner):
 
     def _get_command_line_runner(self):
         command_line_runner = CommandLineRunnerFactory.get_multithread_command_line_runner()
-        command_line_runner.command = self._get_pogo_run_command()
+        command_line_runner.command = self.get_pogo_run_command()
         command_line_runner.timeout = module_config_manager.get_configuration_service().get_pogo_run_timeout()
         return command_line_runner
 
