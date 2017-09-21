@@ -449,41 +449,18 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
         try:
             while True:
                 pogo_runner = parallel_run_manager.get_next_finished_runner()
+                if not pogo_runner.is_success():
+                    self._get_logger().error("ERROR running PoGo on input file '{}', "
+                                             "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
+                                             .format(pogo_runner.pogo_input_file,
+                                                     pogo_runner.protein_sequence_file_path,
+                                                     pogo_runner.gtf_file_path,
+                                                     pogo_runner._get_pogo_run_command()))
+                    # We skip this file / taxonomy, as we have ONE .pogo file per taxonomy
+                    continue
         except:
-            pass
-            pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
-            # Run PoGo
-            # TODO - This is a place for future improvement by running PoGo in parallel for all the files. Obviously,
-            # TODO - I haven't done it straight away because the right way to do it, as PoGo is very memory hungry,
-            # TODO - is to distribute the PoGo runs across multiple nodes, and this kind of means using our LSF
-            # TODO - facilities, that means the PoGo run should be encapsulated as a 'bsub' job, and the pipeline should
-            # TODO - handle the submission of the jobs and their possible outcomes and status states. A complex task for
-            # TODO - a pipeline that it is not even clear yet how it's going to do many of the things it is going to do
-            try:
-                stdout, stderr = pogo_command_subprocess \
-                    .communicate(timeout=config_manager.get_app_config_manager().get_pogo_run_timeout())
-            except subprocess.TimeoutExpired as e:
-                self._get_logger().error("TIMEOUT ERROR while running PoGo on input file '{}', "
-                                         "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
-                                         .format(pogo_parameter_file_input,
-                                                 pogo_parameter_protein_sequence_file_path,
-                                                 pogo_parameter_gtf_file_path,
-                                                 pogo_command))
-                pogo_command_subprocess.kill()
-                stdout, stderr = pogo_command_subprocess.communicate()
-                # TODO - How to signal this error? we just skip the file? It looks like it
-                continue
-            if pogo_command_subprocess.poll() and (pogo_command_subprocess.returncode != 0):
-                # ERROR
-                self._get_logger().error("ERROR running PoGo on input file '{}', "
-                                         "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
-                                         .format(pogo_parameter_file_input,
-                                                 pogo_parameter_protein_sequence_file_path,
-                                                 pogo_parameter_gtf_file_path,
-                                                 pogo_command))
-                # TODO - We skip the file?
-                continue
             # TODO - Successful PoGo run
+            pass
             if taxonomy in pogo_run_results:
                 self._get_logger().error("DUPLICATED TAXONOMY ENTRY ERROR "
                                          "when registering successful run of PoGo on input file '{}', "
