@@ -23,8 +23,9 @@ import ensembl.service
 import ensembl.data_downloader
 import trackhub.models as trackhubs
 import trackhub.registry as trackhub_registry
-from pogo.models import PogoRunResult, PogoRunnerFactory
+from pogo.models import PogoRunnerFactory
 from parallel.models import CommandLineRunnerFactory, ParallelRunnerManagerFactory
+from parallel.exceptions import NoMoreAliveRunnersException
 from toolbox import general as general_toolbox
 from . import exceptions as pipeline_exceptions
 from pipelines.template_pipeline import TrackhubCreationPogoBasedDirector, DirectorConfigurationManager
@@ -482,7 +483,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                 self._get_logger().info("Successful PoGo run for taxonomy #{}".format(pogo_runner.ncbi_taxonomy_id))
                 # Add the result object to the results
                 pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
-        except:
+        except NoMoreAliveRunnersException as e:
             self._get_logger().info("--- All PoGo runners have been processed ---")
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
