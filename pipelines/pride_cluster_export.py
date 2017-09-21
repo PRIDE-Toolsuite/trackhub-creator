@@ -444,20 +444,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                                             pogo_parameter_file_input,
                                                             pogo_parameter_protein_sequence_file_path,
                                                             pogo_parameter_gtf_file_path)
-            command_line_runner.command = "time {} -species {} -fasta {} -gtf {} -in {}" \
-                .format(config_manager.get_app_config_manager().get_pogo_binary_file_path(),
-                        taxonomy,
-                        pogo_parameter_protein_sequence_file_path,
-                        pogo_parameter_gtf_file_path,
-                        pogo_parameter_file_input)
-            # Log how we are going to run PoGo
-            self._get_logger().info("Running PoGo on input file '{}', "
-                                    "with protein sequence file '{}' and GTF file '{}'. PoGo command '{}'"
-                                    .format(pogo_parameter_file_input,
-                                            pogo_parameter_protein_sequence_file_path,
-                                            pogo_parameter_gtf_file_path,
-                                            command_line_runner.command))
-            parallel_run_manager.add_runner(command_line_runner)
+            parallel_run_manager.add_runner(pogo_runner)
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
             # Run PoGo
             # TODO - This is a place for future improvement by running PoGo in parallel for all the files. Obviously,
