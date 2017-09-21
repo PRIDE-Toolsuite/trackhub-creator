@@ -24,7 +24,7 @@ import ensembl.data_downloader
 import trackhub.models as trackhubs
 import trackhub.registry as trackhub_registry
 from pogo.models import PogoRunResult
-from parallel.models import CommandLineRunnerFactory
+from parallel.models import CommandLineRunnerFactory, ParallelRunnerManagerFactory
 from toolbox import general as general_toolbox
 from . import exceptions as pipeline_exceptions
 from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
@@ -416,6 +416,8 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
     def _get_pogo_results_for_input_data(self, cluster_file_exporter_result_mapping):
         # Prepare results object, it is a map like (taxonomy_id, PogoRunResult)
         pogo_run_results = {}
+        # Parallelization of PoGo
+        parallel_run_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
         # Get an instance of the Ensembl data downloader
         ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for taxonomy in cluster_file_exporter_result_mapping:
