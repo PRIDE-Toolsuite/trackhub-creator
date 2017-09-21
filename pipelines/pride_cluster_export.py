@@ -707,6 +707,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             self.__register_trackhub(self._get_trackhub_builder(None), self._get_trackhub_exporter())
         except pipeline_exceptions.PipelineDirectorException as e:
             # It will be the helpers logging the exception
+            self.set_pipeline_status_fail()
             return False
         return True
 
