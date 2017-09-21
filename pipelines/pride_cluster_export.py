@@ -372,6 +372,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
             )
         self._get_logger().info("cluster-file-exporter command: '{}'".format(cluster_file_exporter_command))
         command_line_runner = CommandLineRunnerFactory.get_command_line_runner()
+        command_line_runner.command = cluster_file_exporter_command
         # Run cluster file exporter
         cluster_file_exporter_subprocess = subprocess.Popen(cluster_file_exporter_command,
                                                             shell=True)
