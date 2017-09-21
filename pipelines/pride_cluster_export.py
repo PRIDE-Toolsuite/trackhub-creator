@@ -702,7 +702,9 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             # Sync Data and get public URL
             self.__sync_filesystem(self._get_trackhub_exporter())
             # Publish trackhub
-            self.__register_trackhub(trackhub_builder, trackhub_exporter)
+            # TODO - WARNING - I know the call to self._get_trackhub_builder(None) is DEEPLY WRONG, I need to rethink
+            # TODO - this workflow
+            self.__register_trackhub(self._get_trackhub_builder(None), self._get_trackhub_exporter())
         except pipeline_exceptions.PipelineDirectorException as e:
             # It will be the helpers logging the exception
             return False
