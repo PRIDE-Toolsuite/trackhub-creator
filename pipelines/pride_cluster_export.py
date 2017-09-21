@@ -373,20 +373,14 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
         self._get_logger().info("cluster-file-exporter command: '{}'".format(cluster_file_exporter_command))
         command_line_runner = CommandLineRunnerFactory.get_command_line_runner()
         command_line_runner.command = cluster_file_exporter_command
-        # Run cluster file exporter
-        cluster_file_exporter_subprocess = subprocess.Popen(cluster_file_exporter_command,
-                                                            shell=True)
-        try:
-            stdout, stderr = \
-                cluster_file_exporter_subprocess.communicate(
-                    timeout=self._get_configuration_manager().get_cluster_file_exporter_run_timeout())
-        except subprocess.TimeoutExpired as e:
-            self._get_logger().error("TIMEOUT ({} seconds) while running cluster-file-exporter, KILLING subprocess")
-            cluster_file_exporter_subprocess.kill()
-            stdout, stderr = cluster_file_exporter_subprocess.communicate()
-            return False
-        if cluster_file_exporter_subprocess.poll() and (cluster_file_exporter_subprocess.returncode != 0):
-            self._get_logger().error("An ERROR occurred while running cluster-file-exporter")
+        command_line_runner.start()
+        command_line_runner.wait()
+        if not command_line_runner.command_success:
+            self._get_logger().error("An ERROR occurred while running cluster-file-exporter, "
+                                     "return code #{}, STDOUT '{}', STDERR '{}'"
+                                     .format(command_line_runner.command_return_code,
+                                             command_line_runner.get_stdout().decode(),
+                                             command_line_runner.get_stderr().decode()))
             return False
         return True
 
