@@ -303,6 +303,8 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
         self.__trackhub_registry_service = None
         self.__trackhub_destination_folder = None
+        self.__trackhub_descriptor = None
+        self.__trackhub_exporter = None
 
     def _get_configuration_manager(self):
         return self.__config_manager
