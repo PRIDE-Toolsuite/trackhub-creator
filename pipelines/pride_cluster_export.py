@@ -680,10 +680,10 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                 if not self.__run_cluster_file_exporter():
                     self.set_pipeline_status_fail()
                     return False
-            # Process cluster-file-exporter result files
-            cluster_file_exporter_result_mapping = self.__map_cluster_file_exporter_result_files()
-            if not cluster_file_exporter_result_mapping:
+            # Process cluster-file-exporter result files, to check if we can map them
+            if not self.__get_cluster_file_exporter_result_mapping():
                 self._get_logger().error("ERROR processing cluster-file-exporter result files")
+                self.set_pipeline_status_fail()
                 return False
             self._get_logger().info("PRIDE Cluster File Exporter run completed")
             pogo_run_results = self._get_pogo_results_for_input_data(
