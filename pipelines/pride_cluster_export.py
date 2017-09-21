@@ -437,8 +437,8 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
             # PoGo parameter GTF file
             pogo_parameter_gtf_file_path = self._get_pogo_gtf_file_path_for_taxonomy(taxonomy)
             if not pogo_parameter_gtf_file_path:
-                self._get_logger().error("GTF file NOT FOUND to use with PoGo")
-                return False
+                self._get_logger().error("SKIP TAXONOMY ID #{}, GTF file NOT FOUND to use with PoGo".format(taxonomy))
+                continue
             # Prepare PoGo run command
             pogo_command = "time {} -species {} -fasta {} -gtf {} -in {}" \
                 .format(config_manager.get_app_config_manager().get_pogo_binary_file_path(),
