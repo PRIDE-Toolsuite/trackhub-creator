@@ -557,7 +557,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
         # I don't need to, but it makes sense to do it
         return trackhub_builder
 
-    def __get_trackhub_exporter(self):
+    def _get_trackhub_exporter(self):
         self._get_logger().info("Default trackhub exporter - 'TrackHubExporterPrideClusterFtp'")
         return trackhubs.TrackHubExporterPrideClusterFtp()
 
@@ -724,7 +724,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
             self.__populate_assemblies(trackhub_builder, pogo_run_results)
             # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination
             # folder for this trackhub
-            trackhub_exporter = self.__get_trackhub_exporter()
+            trackhub_exporter = self._get_trackhub_exporter()
             self.__prepare_trackhub_destination_folder(trackhub_exporter)
             # Export trackhub to destination folder
             self.__export_trackhub_to_destination_folder(trackhub_builder, trackhub_exporter)
