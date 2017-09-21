@@ -521,60 +521,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                                    trackhub_track_short_label,
                                    trackhub_track_long_label)
 
-    # TODO - REMOVE, this method will disappear when the pipeline is integrated with 'TrackhubCreationPogoBasedDirector'
-    def __populate_assemblies(self, trackhub_builder, pogo_run_results):
-        for taxonomy in pogo_run_results:
-            ensembl_species_entry = \
-                ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy)
-            if not ensembl_species_entry:
-                # This is kind of non-sense because PoGo run results only contain results for taxonomies that are on
-                # Ensembl, but just in case, if it ever happens, it will be logged
-                self._get_logger().warning("Ensembl has no entry for taxonomy '{}', SKIPPING".format(taxonomy))
-                continue
-            genome_assembly = ensembl_species_entry.get_assembly()
-            self._get_logger().info("Populating Assembly '{}' for Taxonomy '{}'".format(genome_assembly, taxonomy))
-            # TODO - How are we going to annotate these tracks? We need a meeting on this
-
-            # Main .bed track to assembly
-            main_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_bed_file_path()
-            track_main_bed_file = trackhubs.BaseTrack("{}".format(ensembl_species_entry.get_display_name()),
-                                                      "PRIDE Cluster Track - '{}'".format(
-                                                          ensembl_species_entry.get_display_name()),
-                                                      "PRIDE Cluster Track for main .bed file, species '{}'".format(
-                                                          ensembl_species_entry.get_display_name()))
-            track_main_bed_file.set_big_data_url(main_bed_file_path)
-            track_main_bed_file.set_type(main_bed_file_path)
-            self._get_logger().debug("Assembly '{}', compiling main .bed track information".format(genome_assembly))
-
-            # Main PTM .bed track to assembly
-            main_ptm_bed_file_path = pogo_run_results[taxonomy].get_pogo_result_main_ptm_bed_file_path()
-            track_main_bed_with_ptm_file = trackhubs.BaseTrack(
-                "{} with PTMs".format(ensembl_species_entry.get_display_name()),
-                "PRIDE Cluster Track (with PTMs) - '{}'".format(
-                    ensembl_species_entry.get_display_name()),
-                "PRIDE Cluster Track for main .bed file with PTMs, species '{}'"
-                    .format(
-                    ensembl_species_entry.get_display_name()))
-            track_main_bed_with_ptm_file.set_big_data_url(main_ptm_bed_file_path)
-            track_main_bed_with_ptm_file.set_type(main_ptm_bed_file_path)
-            self._get_logger().debug("Assembly '{}', compiling main .bed PTM track information".format(genome_assembly))
-            # Add tracks
-            self._get_logger().debug(
-                "Assembly '{}', adding main .bed track information, main .bed file '{}'"
-                    .format(genome_assembly,
-                            track_main_bed_file.get_big_data_url()))
-            trackhub_builder.add_track_to_assembly(genome_assembly, track_main_bed_file)
-
-            self._get_logger().debug(
-                "Assembly '{}', adding main .bed with PTM track information, main .bed with PTM file '{}'"
-                    .format(genome_assembly,
-                            track_main_bed_with_ptm_file.get_big_data_url()))
-            trackhub_builder.add_track_to_assembly(genome_assembly, track_main_bed_with_ptm_file)
-            self._get_logger().debug("Assembly '{}', tracks added to the assembly".format(genome_assembly))
-
-        # I don't need to, but it makes sense to do it
-        return trackhub_builder
-
     def _get_trackhub_exporter(self):
         self._get_logger().info("Default trackhub exporter - 'TrackHubExporterPrideClusterFtp'")
         return trackhubs.TrackHubExporterPrideClusterFtp()
