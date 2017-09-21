@@ -672,7 +672,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                     self._get_logger().error(error_msg)
                     raise pipeline_exceptions.PipelineDirectorException(error_msg)
             else:
-                self._get_logger().warning("This session was launch with DO NOT REGISTER Trackhub flag set, "
+                self._get_logger().warning("This session was launched with DO NOT REGISTER Trackhub flag set, "
                                            "thus, this trackhub will not be registered")
 
     def _run_pipeline(self):
