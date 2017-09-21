@@ -395,36 +395,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             return False
         return True
 
-    def __runmode_test_run_cluster_file_exporter(self):
-        """
-        This method is a helper that I'm using for building this pipeline, it is not even clear whether this pipeline
-        will have a "testing / development mode" where the most expensive parts of it are dummied, that's why I don't
-        think the code will stay, thus, I'm not spending much time on getting this code fit in the software in a
-        sensible way
-        :return: True if success on preparing the dummy data, False otherwise
-        """
-        cluster_file_exporter_destination_folder = self \
-            ._get_configuration_manager() \
-            .get_cluster_file_exporter_destination_folder()
-        rsync_source_folder = os.path.join(config_manager.get_app_config_manager().get_folder_resources(),
-                                           os.path.join("tests",
-                                                        "cluster-file-exporter"))
-        # Rsync the dummy data into the destination folder
-        rsync_command = "rsync -vah --progress --stats {}/ {}/" \
-            .format(rsync_source_folder, cluster_file_exporter_destination_folder)
-        rsync_subprocess = subprocess.Popen(rsync_command, shell=True)
-        try:
-            # TODO - WARNING - OMG! Magic number there!
-            stdout, stderr = rsync_subprocess.communicate(timeout=600)
-        except subprocess.TimeoutExpired as e:
-            self._get_logger().error(
-                "TIMEOUT error while rsyncing dummy cluster-file-exporter data, KILLING subprocess")
-            rsync_subprocess.kill()
-            stdout, stderr = rsync_subprocess.wait()
-            return False
-        return True
-
-    # Override
     def _get_pogo_results_for_input_data(self):
         cluster_file_exporter_result_mapping = self.__get_cluster_file_exporter_result_mapping()
         # Prepare results object, it is a map like (taxonomy_id, PogoRunResult)
@@ -559,6 +529,35 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             trackhub_exporter.track_hub_destination_folder = self.__trackhub_destination_folder
         self._get_logger().info("PRIDE Cluster trackhub destination folder at '{}'")
         return self.__trackhub_destination_folder
+
+    def __runmode_test_run_cluster_file_exporter(self):
+        """
+        This method is a helper that I'm using for building this pipeline, it is not even clear whether this pipeline
+        will have a "testing / development mode" where the most expensive parts of it are dummied, that's why I don't
+        think the code will stay, thus, I'm not spending much time on getting this code fit in the software in a
+        sensible way
+        :return: True if success on preparing the dummy data, False otherwise
+        """
+        cluster_file_exporter_destination_folder = self \
+            ._get_configuration_manager() \
+            .get_cluster_file_exporter_destination_folder()
+        rsync_source_folder = os.path.join(config_manager.get_app_config_manager().get_folder_resources(),
+                                           os.path.join("tests",
+                                                        "cluster-file-exporter"))
+        # Rsync the dummy data into the destination folder
+        rsync_command = "rsync -vah --progress --stats {}/ {}/" \
+            .format(rsync_source_folder, cluster_file_exporter_destination_folder)
+        rsync_subprocess = subprocess.Popen(rsync_command, shell=True)
+        try:
+            # TODO - WARNING - OMG! Magic number there!
+            stdout, stderr = rsync_subprocess.communicate(timeout=600)
+        except subprocess.TimeoutExpired as e:
+            self._get_logger().error(
+                "TIMEOUT error while rsyncing dummy cluster-file-exporter data, KILLING subprocess")
+            rsync_subprocess.kill()
+            stdout, stderr = rsync_subprocess.wait()
+            return False
+        return True
 
     def __sync_filesystem(self, trackhub_exporter):
         if self._get_configuration_manager().is_do_sync():
