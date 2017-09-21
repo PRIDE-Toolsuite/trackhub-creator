@@ -422,6 +422,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             return False
         return True
 
+    # Override
     def _get_pogo_results_for_input_data(self):
         cluster_file_exporter_result_mapping = self.__get_cluster_file_exporter_result_mapping()
         # Prepare results object, it is a map like (taxonomy_id, PogoRunResult)
@@ -685,7 +686,9 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                 self._get_logger().error("ERROR processing cluster-file-exporter result files")
                 self.set_pipeline_status_fail()
                 return False
-            self._get_logger().info("PRIDE Cluster File Exporter run completed")
+            self._get_logger().info("[--- PRIDE Cluster File Exporter run completed ---]")
+            # Create the trackhub
+            self._create_trackhub()
             pogo_run_results = self._get_pogo_results_for_input_data(
                 cluster_file_exporter_result_mapping)
             self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
