@@ -311,47 +311,49 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         return self.__config_manager
 
     def __map_cluster_file_exporter_result_files(self):
-        cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
-        # Prepare empty result map
-        cluster_file_exporter_result_mapping = {}
-        for root, dirs, files in \
-                os.walk(cluster_file_exporter_folder):
-            for file in files:
-                if file.startswith(
-                        self._get_configuration_manager().get_cluster_file_exporter_result_file_name_prefix()):
-                    self._get_logger().info("Mapping result file '{}'".format(file))
-                    result_file_path = os.path.join(cluster_file_exporter_folder, file)
-                    # Taxonomy corner case 'pride_cluster_peptides_ALL.tsv'
-                    result_file_taxonomy = self.__CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL
-                    if 'ALL' not in file:
-                        result_file_taxonomy = \
-                            file.split(self._get_configuration_manager()
-                                       .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
-                    result_file_extension = file[file.rfind('.') + 1:]
-                    # Check the taxonomy for the result map
-                    if result_file_taxonomy not in cluster_file_exporter_result_mapping:
-                        cluster_file_exporter_result_mapping[result_file_taxonomy] = {}
-                    # Check the file extension - cluster-file-exporter result file
-                    if result_file_extension == self._get_configuration_manager() \
-                            .get_cluster_file_exporter_result_file_extension():
-                        if self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH in \
-                                cluster_file_exporter_result_mapping[result_file_taxonomy]:
-                            self._get_logger().error("DUPLICATED entry for file '{}'".format(file))
-                            return None
-                        cluster_file_exporter_result_mapping[result_file_taxonomy][
-                            self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH] = result_file_path
-                    # Check the file extension - cluster-file-exporter PoGo file
-                    if result_file_extension == self._get_configuration_manager() \
-                            .get_cluster_file_exporter_pogo_file_extension():
-                        if self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH in \
-                                cluster_file_exporter_result_mapping[result_file_taxonomy]:
-                            self._get_logger().error("DUPLICATED entry for file '{}'".format(file))
-                            return None
-                        cluster_file_exporter_result_mapping[result_file_taxonomy][
-                            self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH] = result_file_path
-                else:
-                    self._get_logger().warning("Ignoring cluster-file-exporter non-result file '{}'".format(file))
-        return cluster_file_exporter_result_mapping
+        if not self.__cluster_file_exporter_result_mapping:
+            cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
+            # Prepare empty result map
+            cluster_file_exporter_result_mapping = {}
+            for root, dirs, files in \
+                    os.walk(cluster_file_exporter_folder):
+                for file in files:
+                    if file.startswith(
+                            self._get_configuration_manager().get_cluster_file_exporter_result_file_name_prefix()):
+                        self._get_logger().info("Mapping result file '{}'".format(file))
+                        result_file_path = os.path.join(cluster_file_exporter_folder, file)
+                        # Taxonomy corner case 'pride_cluster_peptides_ALL.tsv'
+                        result_file_taxonomy = self.__CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL
+                        if 'ALL' not in file:
+                            result_file_taxonomy = \
+                                file.split(self._get_configuration_manager()
+                                           .get_cluster_file_exporter_result_file_name_prefix())[1].split('_')[0]
+                        result_file_extension = file[file.rfind('.') + 1:]
+                        # Check the taxonomy for the result map
+                        if result_file_taxonomy not in cluster_file_exporter_result_mapping:
+                            cluster_file_exporter_result_mapping[result_file_taxonomy] = {}
+                        # Check the file extension - cluster-file-exporter result file
+                        if result_file_extension == self._get_configuration_manager() \
+                                .get_cluster_file_exporter_result_file_extension():
+                            if self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH in \
+                                    cluster_file_exporter_result_mapping[result_file_taxonomy]:
+                                self._get_logger().error("DUPLICATED entry for file '{}'".format(file))
+                                return None
+                            cluster_file_exporter_result_mapping[result_file_taxonomy][
+                                self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_PRIDE_CLUSTER_FILE_PATH] = result_file_path
+                        # Check the file extension - cluster-file-exporter PoGo file
+                        if result_file_extension == self._get_configuration_manager() \
+                                .get_cluster_file_exporter_pogo_file_extension():
+                            if self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH in \
+                                    cluster_file_exporter_result_mapping[result_file_taxonomy]:
+                                self._get_logger().error("DUPLICATED entry for file '{}'".format(file))
+                                return None
+                            cluster_file_exporter_result_mapping[result_file_taxonomy][
+                                self.__CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH] = result_file_path
+                    else:
+                        self._get_logger().warning("Ignoring cluster-file-exporter non-result file '{}'".format(file))
+            self.__cluster_file_exporter_result_mapping = cluster_file_exporter_result_mapping
+        return self.__cluster_file_exporter_result_mapping
 
     def __run_cluster_file_exporter(self):
         # time java -Xmx12G -jar
