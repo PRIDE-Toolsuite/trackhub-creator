@@ -476,6 +476,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
 
+    # TODO - REMOVE THIS WHEN INTEGRATING WITH THE SUPERCLASS 'TrackhubCreationPogoBasedDirector'
     def _get_trackhub_builder(self, trackhub_descriptor):
         # TODO - Implement more complex logic for instantiating a trackhub builder, e.g. setting up the trackhub
         # TODO - destination folder from whatever comes in as a command line parameter
