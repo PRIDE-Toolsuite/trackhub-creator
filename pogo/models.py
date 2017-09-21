@@ -192,10 +192,18 @@ class PogoRunner(ParallelRunner):
                                            command_line_runner.get_stdout().decode('utf8'),
                                            command_line_runner.get_stderr().decode('utf8')))
                 self._set_failed_to_run_pogo()
-            # Successful run of PoGo
-            self._set_success_to_run_pogo()
-            self._logger.info("PoGo SUCCESS on input file '{}', command '{}'"
-                              .format(self.pogo_input_file, command_line_runner.command))
+            finally:
+                self._stdout = command_line_runner.get_stdout()
+                self._stderr = command_line_runner.get_stderr()
+            if not command_line_runner.command_success:
+                self._set_failed_to_run_pogo()
+                self._logger.error("PoGo FAILED on input file '{}', command '{}'"
+                                   .format(self.pogo_input_file, command_line_runner.command))
+            else:
+                # Successful run of PoGo
+                self._set_success_to_run_pogo()
+                self._logger.info("PoGo SUCCESS on input file '{}', command '{}'"
+                                  .format(self.pogo_input_file, command_line_runner.command))
 
     def get_pogo_run_result(self):
         if not self.is_done():
