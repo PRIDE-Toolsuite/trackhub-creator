@@ -528,6 +528,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             self.__trackhub_exporter = trackhubs.TrackHubExporterPrideClusterFtp()
         return self.__trackhub_exporter
 
+    # Override
     def _prepare_trackhub_destination_folder(self, trackhub_exporter):
         if not self.__trackhub_destination_folder:
             # Check if anything was specified
