@@ -395,6 +395,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             return False
         return True
 
+    # Override
     def _get_pogo_results_for_input_data(self):
         cluster_file_exporter_result_mapping = self.__get_cluster_file_exporter_result_mapping()
         # Prepare results object, it is a map like (taxonomy_id, PogoRunResult)
