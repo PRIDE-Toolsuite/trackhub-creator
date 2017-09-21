@@ -521,9 +521,12 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                                    trackhub_track_short_label,
                                    trackhub_track_long_label)
 
+    # Override
     def _get_trackhub_exporter(self):
-        self._get_logger().info("Default trackhub exporter - 'TrackHubExporterPrideClusterFtp'")
-        return trackhubs.TrackHubExporterPrideClusterFtp()
+        if not self.__trackhub_exporter:
+            self._get_logger().info("Default trackhub exporter - 'TrackHubExporterPrideClusterFtp'")
+            self.__trackhub_exporter = trackhubs.TrackHubExporterPrideClusterFtp()
+        return self.__trackhub_exporter
 
     def _prepare_trackhub_destination_folder(self, trackhub_exporter):
         if not self.__trackhub_destination_folder:
