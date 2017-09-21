@@ -446,6 +446,11 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                                             pogo_parameter_gtf_file_path)
             parallel_run_manager.add_runner(pogo_runner)
         parallel_run_manager.start_runners()
+        try:
+            while True:
+                pass
+        except:
+            pass
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
             # Run PoGo
             # TODO - This is a place for future improvement by running PoGo in parallel for all the files. Obviously,
