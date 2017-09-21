@@ -498,6 +498,12 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                   trackhub_email,
                                   trackhub_description_url)
 
+    # Override
+    def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id):
+        # TODO
+        pass
+
+    # TODO - REMOVE, this method will disappear when the pipeline is integrated with 'TrackhubCreationPogoBasedDirector'
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
         for taxonomy in pogo_run_results:
             ensembl_species_entry = \
