@@ -550,6 +550,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         self._get_logger().info("PRIDE Cluster trackhub destination folder at '{}'")
         return self.__trackhub_destination_folder
 
+    # TODO - REMOVE THIS
     def __export_trackhub_to_destination_folder(self, trackhub_builder, trackhub_exporter):
         self._get_logger().info("Exporting PRIDE Cluster Trackhub to destination '{}'".format(
             trackhub_exporter.track_hub_destination_folder))
@@ -672,6 +673,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                     == self._get_configuration_manager().RUNNING_MODE_TEST:
                 # Run cluster-file-exporter (dummy step)
                 if not self.__runmode_test_run_cluster_file_exporter():
+                    self.set_pipeline_status_fail()
                     return False
             else:
                 # Run cluster-file-exporter (for real)
