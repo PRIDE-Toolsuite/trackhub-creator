@@ -12,6 +12,7 @@ This module manages the configuration for the running pipeline
 """
 
 import os
+import uuid
 import time
 import logging
 import importlib
@@ -182,7 +183,8 @@ class AppConfigManager(ConfigurationManager):
             except HpcServiceException as e:
                 lsf_jobid = "-NO_JOB_ID-"
         self.__session_id = time.strftime('%Y.%m.%d_%H.%M') \
-                            + lsf_jobid \
+                            + lsf_jobid + "-" \
+                            + str(uuid.uuid4()) \
                             + "-" \
                             + get_pipeline_name()
         # TODO config, folder_run, etc.
