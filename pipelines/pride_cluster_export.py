@@ -691,9 +691,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             self._get_logger().info("[--- PRIDE Cluster File Exporter run completed ---]")
             # Create the trackhub
             self._create_trackhub()
-            pogo_run_results = self._get_pogo_results_for_input_data(
-                cluster_file_exporter_result_mapping)
-            self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
             # TODO - Convert files to BigBed format, this will be addressed in the future
             # Create trackhub structure
             trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
