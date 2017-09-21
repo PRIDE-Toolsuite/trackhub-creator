@@ -284,7 +284,7 @@ class ConfigManager(DirectorConfigurationManager):
         Maximum amount of time we should wait when running the Filesystem Synchronization script
         :return: time out in seconds
         """
-        return 300
+        return 600
 
     def get_pride_cluster_description_url(self):
         # Default PRIDE Cluster URL
