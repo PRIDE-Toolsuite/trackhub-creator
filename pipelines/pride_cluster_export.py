@@ -301,6 +301,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         runner_id = "{}-{}".format(__name__, time.time())
         super(PrideClusterExporter, self).__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
+        self.__cluster_file_exporter_result_mapping = None
         self.__trackhub_registry_service = None
         self.__trackhub_destination_folder = None
         self.__trackhub_descriptor = None
