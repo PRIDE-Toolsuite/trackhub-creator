@@ -312,6 +312,11 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
     def _get_configuration_manager(self):
         return self.__config_manager
 
+    def __get_cluster_file_exporter_result_mapping(self):
+        if not self.__cluster_file_exporter_result_mapping:
+            self.__cluster_file_exporter_result_mapping = self.__map_cluster_file_exporter_result_files()
+        return self.__cluster_file_exporter_result_mapping
+
     def __map_cluster_file_exporter_result_files(self):
         cluster_file_exporter_folder = self._get_configuration_manager().get_cluster_file_exporter_destination_folder()
         # Prepare empty result map
@@ -354,11 +359,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                 else:
                     self._get_logger().warning("Ignoring cluster-file-exporter non-result file '{}'".format(file))
         return cluster_file_exporter_result_mapping
-
-    def __get_cluster_file_exporter_result_mapping(self):
-        if not self.__cluster_file_exporter_result_mapping:
-            self.__cluster_file_exporter_result_mapping = self.__map_cluster_file_exporter_result_files()
-        return self.__cluster_file_exporter_result_mapping
 
 
     def __run_cluster_file_exporter(self):
