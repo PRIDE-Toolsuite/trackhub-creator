@@ -372,6 +372,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                 self._get_configuration_manager().get_cluster_file_exporter_output_log_file_path()
             )
         self._get_logger().info("cluster-file-exporter command: '{}'".format(command_line_runner.command))
+        command_line_runner.timeout = self._get_configuration_manager().get_cluster_file_exporter_run_timeout()
         command_line_runner.start()
         command_line_runner.wait()
         if not command_line_runner.command_success:
