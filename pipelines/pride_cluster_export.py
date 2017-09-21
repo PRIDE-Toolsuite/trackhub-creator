@@ -307,6 +307,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         self.__trackhub_destination_folder = None
         self.__trackhub_descriptor = None
         self.__trackhub_exporter = None
+        self.__trackhub_builder = None
 
     def _get_configuration_manager(self):
         return self.__config_manager
@@ -693,7 +694,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             self._create_trackhub()
             # TODO - Convert files to BigBed format, this will be addressed in the future
             # Sync Data and get public URL
-            self.__sync_filesystem(trackhub_exporter)
+            self.__sync_filesystem(self._get_trackhub_exporter())
             # Publish trackhub
             self.__register_trackhub(trackhub_builder, trackhub_exporter)
         except pipeline_exceptions.PipelineDirectorException as e:
