@@ -448,7 +448,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
         parallel_run_manager.start_runners()
         try:
             while True:
-                pass
+                pogo_runner = parallel_run_manager.get_next_finished_runner()
         except:
             pass
             pogo_command_subprocess = subprocess.Popen(pogo_command, shell=True)
