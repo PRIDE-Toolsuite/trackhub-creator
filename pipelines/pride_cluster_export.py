@@ -468,16 +468,11 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                                      pogo_runner.get_pogo_run_command()))
                     # Skip this pogo file, but this error is very unlikely to happen... in an ideal world ^_^
                     continue
+                self._get_logger().info("Successful PoGo run for taxonomy #{}".format(pogo_runner.ncbi_taxonomy_id))
+                # Add the result object to the results
+                pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
         except:
-            # Build the pogo result object
-            # TODO - Successful PoGo run
-            pass
-            pogo_run_results_object = PogoRunResult(taxonomy,
-                                                    pogo_parameter_file_input,
-                                                    pogo_parameter_protein_sequence_file_path,
-                                                    pogo_parameter_gtf_file_path)
-            # Add the result object to the results
-            pogo_run_results[taxonomy] = pogo_run_results_object
+            self._get_logger().info("--- All PoGo runners have been processed ---")
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
 
