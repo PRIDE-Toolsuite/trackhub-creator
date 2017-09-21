@@ -458,21 +458,20 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                                                      pogo_runner.get_pogo_run_command()))
                     # We skip this file / taxonomy, as we have ONE .pogo file per taxonomy
                     continue
+                if taxonomy in pogo_run_results:
+                    self._get_logger().error("DUPLICATED TAXONOMY ENTRY ERROR "
+                                             "when registering successful run of PoGo on input file '{}', "
+                                             "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
+                                             .format(pogo_runner.pogo_input_file,
+                                                     pogo_runner.protein_sequence_file_path,
+                                                     pogo_runner.gtf_file_path,
+                                                     pogo_runner.get_pogo_run_command()))
+                    # Skip this pogo file, but this error is very unlikely to happen... in an ideal world ^_^
+                    continue
         except:
+            # Build the pogo result object
             # TODO - Successful PoGo run
             pass
-            if taxonomy in pogo_run_results:
-                self._get_logger().error("DUPLICATED TAXONOMY ENTRY ERROR "
-                                         "when registering successful run of PoGo on input file '{}', "
-                                         "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
-                                         .format(pogo_parameter_file_input,
-                                                 pogo_parameter_protein_sequence_file_path,
-                                                 pogo_parameter_gtf_file_path,
-                                                 pogo_command))
-                # TODO - Let me guess! we skip this entry then, even if it's been successful because it is a duplicated
-                # TODO - taxonomy, which is a weird error that I don't think will happen
-                continue
-            # Build the pogo result object
             pogo_run_results_object = PogoRunResult(taxonomy,
                                                     pogo_parameter_file_input,
                                                     pogo_parameter_protein_sequence_file_path,
