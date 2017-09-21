@@ -482,7 +482,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
         # TODO - destination folder from whatever comes in as a command line parameter
         return trackhubs.SimpleTrackHubBuilder(trackhub_descriptor)
 
-    def __get_trackhub_descriptor(self):
+    def _get_trackhub_descriptor(self):
         # TODO - Some of these values are hardcoded here, but they could be parameterized later if needed
         trackhub_title = "PRIDE Cluster Release {}" \
             .format(self._get_configuration_manager().get_cluster_file_exporter_version_parameter())
@@ -714,7 +714,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
             self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
             # TODO - Convert files to BigBed format, this will be addressed in the future
             # Create trackhub structure
-            trackhub_builder = self._get_trackhub_builder(self.__get_trackhub_descriptor())
+            trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
             self.__populate_assemblies(trackhub_builder, pogo_run_results)
             # Compute the destination folder for this trackhub (including the 'latest' link) and prepare Destination
             # folder for this trackhub
