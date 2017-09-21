@@ -413,7 +413,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
             return False
         return True
 
-    def __run_pogo_on_pride_cluster_file_exporter_results(self, cluster_file_exporter_result_mapping):
+    def _get_pogo_results_for_input_data(self, cluster_file_exporter_result_mapping):
         # Prepare results object, it is a map like (taxonomy_id, PogoRunResult)
         pogo_run_results = {}
         # Get an instance of the Ensembl data downloader
@@ -737,7 +737,7 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
                 self._get_logger().error("ERROR processing cluster-file-exporter result files")
                 return False
             self._get_logger().info("PRIDE Cluster File Exporter run completed")
-            pogo_run_results = self.__run_pogo_on_pride_cluster_file_exporter_results(
+            pogo_run_results = self._get_pogo_results_for_input_data(
                 cluster_file_exporter_result_mapping)
             self._get_logger().info("PoGo results obtained for #{} taxonomies".format(len(pogo_run_results)))
             # TODO - Convert files to BigBed format, this will be addressed in the future
