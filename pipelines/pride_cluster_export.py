@@ -27,7 +27,7 @@ from pogo.models import PogoRunResult, PogoRunnerFactory
 from parallel.models import CommandLineRunnerFactory, ParallelRunnerManagerFactory
 from toolbox import general as general_toolbox
 from . import exceptions as pipeline_exceptions
-from pipelines.template_pipeline import PogoBasedPipelineDirector, DirectorConfigurationManager
+from pipelines.template_pipeline import TrackhubCreationPogoBasedDirector, DirectorConfigurationManager
 
 # Globals
 __configuration_file = None
@@ -290,7 +290,7 @@ class ConfigManager(DirectorConfigurationManager):
         return 'https://www.ebi.ac.uk/pride/cluster/#/'
 
 
-class PrideClusterExporter(PogoBasedPipelineDirector):
+class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
     # TODO - Now that this is working with assembly mapping, it needs to be refactored to use
     # TODO - TrackhubCreationPogoBasedDirector defined workflow
     __CLUSTER_FILE_EXPORTER_RESULT_MAP_KEY_POGO_FILE_PATH = 'pogo_file_path'
@@ -500,8 +500,22 @@ class PrideClusterExporter(PogoBasedPipelineDirector):
 
     # Override
     def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id):
-        # TODO
-        pass
+        # Default values
+        trackhub_track_title = "- Non-Ensembl Taxonomy ID {} -".format(taxonomy_id)
+        trackhub_track_short_label = "- THIS TAXONOMY HAS NOT BEEN FOUND ON ENSEMBL -"
+        trackhub_track_long_label = "- THIS TRACK HAS BEEN BUILT ON A TAXONOMY THAT IS NOT AVAILABLE ON ENSEMBL -"
+        ensembl_species_entry = \
+            ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy_id)
+        if ensembl_species_entry:
+            trackhub_track_title = "{}"\
+                .format(ensembl_species_entry.get_display_name())
+            trackhub_track_short_label = "PRIDE Cluster Track - '{}'"\
+                .format(ensembl_species_entry.get_display_name())
+            trackhub_track_long_label = "PRIDE Cluster Track for main .bed file, species '{}'"\
+                .format(ensembl_species_entry.get_display_name())
+        return trackhubs.BaseTrack(trackhub_track_title,
+                                   trackhub_track_short_label,
+                                   trackhub_track_long_label)
 
     # TODO - REMOVE, this method will disappear when the pipeline is integrated with 'TrackhubCreationPogoBasedDirector'
     def __populate_assemblies(self, trackhub_builder, pogo_run_results):
