@@ -126,6 +126,8 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
         self._done = False
         self._error = False
         self._shutdown = False
+        # Return information (this could be an entity on its own in the next iteration)
+        self._error_messages = []
 
     @abc.abstractmethod
     def _run(self):
