@@ -153,6 +153,9 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def is_done(self):
         return self._done
 
+    def is_error(self):
+        return self._error
+
 
 # Execution of commands
 class CommandLineRunner(ParallelRunner):
