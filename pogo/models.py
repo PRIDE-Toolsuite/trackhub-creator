@@ -19,7 +19,7 @@ import config_manager as main_app_config_manager
 from parallel.models import ParallelRunner, CommandLineRunnerFactory
 from parallel.exceptions import CommandLineRunnerException
 from . import config_manager as module_config_manager
-from .exceptions import PogoRunnerFactoryException, PogoRunnerException
+from .exceptions import PogoRunnerException
 
 
 class PogoRunResult:
@@ -153,6 +153,12 @@ class PogoRunner(ParallelRunner):
                                .format(module_config_manager.get_configuration_service().get_pogo_binary_file_path()))
             validation_ok = False
         return validation_ok
+
+    def get_stdout(self):
+        # Never give it back until the runner is done with whatever it is doing
+        if not self._done:
+            raise PogoRunnerException("PoGo Runner is NOT DONE doing its job, thus 'stdout' is NOT AVAILABLE")
+        return self._stdout
 
     def get_pogo_run_command(self):
         pogo_parameter_species = ''
