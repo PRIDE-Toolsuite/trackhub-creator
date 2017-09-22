@@ -138,6 +138,7 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
             # This code is running on a separated thread, so this class, as top level 'client', must log the error for
             # the application
             self._logger.error("Parallel Runner failed ---> '{}'".format(e.value))
+            self._error = True
         finally:
             self._done = True
 
