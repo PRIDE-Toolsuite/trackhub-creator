@@ -122,8 +122,6 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}-{}".format(__name__, type(self).__name__, threading.current_thread().getName()))
-        self._stdout = b' '
-        self._stderr = b' '
         self._done = False
         self._shutdown = False
 
@@ -151,18 +149,6 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
         self._logger.debug("--- WAIT ---")
         self.join()
 
-    def get_stdout(self):
-        # Never give it back until the runner is done with whatever it is doing
-        if not self._done:
-            raise ParallelRunnerException("Runner is NOT DONE doing its job, thus 'stdout' is NOT AVAILABLE")
-        return self._stdout
-
-    def get_stderr(self):
-        # Never give it back until the runner is done with whatever it is doing
-        if not self._done:
-            raise ParallelRunnerException("Runner is NOT DONE doing its job, thus 'stderr' is NOT AVAILABLE")
-        return self._stderr
-
     def is_done(self):
         return self._done
 
@@ -174,11 +160,25 @@ class CommandLineRunner(ParallelRunner):
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+        self._stdout = b' '
+        self._stderr = b' '
         self.command = None
         self.command_success = False
         self.command_return_code = 0
         self.timeout = None
         self.current_working_directory = None
+
+    def get_stdout(self):
+        # Never give it back until the runner is done with whatever it is doing
+        if not self._done:
+            raise ParallelRunnerException("Runner is NOT DONE doing its job, thus 'stdout' is NOT AVAILABLE")
+        return self._stdout
+
+    def get_stderr(self):
+        # Never give it back until the runner is done with whatever it is doing
+        if not self._done:
+            raise ParallelRunnerException("Runner is NOT DONE doing its job, thus 'stderr' is NOT AVAILABLE")
+        return self._stderr
 
 
 class CommandLineRunnerAsThread(CommandLineRunner):
