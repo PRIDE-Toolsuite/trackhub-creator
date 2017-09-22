@@ -116,6 +116,7 @@ class ParallelRunnerManager:
 
 # Parallel Runners
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
+    # TODO - Refactor This, as responsibilities are a little bit mixed up
     def __init__(self):
         super().__init__()
         self._logger = config_manager \
