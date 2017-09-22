@@ -123,6 +123,7 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
             .get_app_config_manager() \
             .get_logger_for("{}.{}-{}".format(__name__, type(self).__name__, threading.current_thread().getName()))
         self._done = False
+        self._error = False
         self._shutdown = False
 
     @abc.abstractmethod
