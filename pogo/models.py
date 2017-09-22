@@ -160,6 +160,12 @@ class PogoRunner(ParallelRunner):
             raise PogoRunnerException("PoGo Runner is NOT DONE doing its job, thus 'stdout' is NOT AVAILABLE")
         return self._stdout
 
+    def get_stderr(self):
+        # Never give it back until the runner is done with whatever it is doing
+        if not self._done:
+            raise PogoRunnerException("PoGo Runner is NOT DONE doing its job, thus 'stderr' is NOT AVAILABLE")
+        return self._stderr
+
     def get_pogo_run_command(self):
         pogo_parameter_species = ''
         if self.ncbi_taxonomy_id:
