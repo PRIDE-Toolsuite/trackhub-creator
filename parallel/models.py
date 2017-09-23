@@ -50,6 +50,10 @@ class ParallelRunnerManagerFactory:
 
 # Parallel Runner Managers
 class ParallelRunnerManager:
+    """
+    This class models a manager for parallel runners, that will handle common operations on them like starting the
+    runners, waiting for them to finish or getting the next one that finished.
+    """
     # TODO - Include an 'auto_start' flag to start runners as they are added to the manager
     def __init__(self):
         self._logger = config_manager \
