@@ -86,6 +86,11 @@ class ParallelRunnerManager:
         self.__runners.clear()
 
     def get_next_finished_runner(self):
+        """
+        Get the next runner that finishes
+        :return: ParallelRunner
+        :exception: NoMoreAliveRunnersException when there are no more runners running
+        """
         if not self.__alive_runners:
             raise NoMoreAliveRunnersException("No more runners left! They've all finished")
         runner_found = None
