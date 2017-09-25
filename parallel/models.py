@@ -133,6 +133,10 @@ class ParallelRunnerManager:
         return set(self.__runners)
 
     def get_alive_runners(self):
+        """
+        Get those runners that are running
+        :return:
+        """
         return set(self.__alive_runners)
 
     def get_finished_runners(self):
