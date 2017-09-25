@@ -188,6 +188,10 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
             self._done = True
 
     def cancel(self):
+        """
+        'Try' to cancel the current running kernel
+        :return: no return value
+        """
         self._logger.debug("--- CANCEL ---")
         self._shutdown = True
         self._stop()
