@@ -68,7 +68,7 @@ class Service:
     def __init__(self, configuration_object, configuration_file):
         self._logger = config_manager.get_app_config_manager()\
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
-        self._get_logger().debug("Using configuration file '{}'".format(configuration_file))
+        self._logger.debug("Using configuration file '{}'".format(configuration_file))
         self.__config_manager = ConfigurationManager(configuration_object, configuration_file)
         # Ensembl Release Number
         self.__release_number = None
@@ -78,21 +78,18 @@ class Service:
     def __request_release_number(self):
         request_url = self._get_config_manager().get_api_server() + "/info/data/?"
         current_release_data = rest.make_rest_request(request_url)
-        self._get_logger().debug("Request Release Number response from Ensembl - '{}'".format(current_release_data))
-        self._get_logger().info(
+        self._logger.debug("Request Release Number response from Ensembl - '{}'".format(current_release_data))
+        self._logger.info(
             "This session is working with Ensembl Release {}".format(current_release_data['releases'][0]))
         return current_release_data['releases'][0]
 
     def __request_species_data(self):
         request_url = self._get_config_manager().get_api_server() + "/info/species?"
-        self._get_logger().debug("Requesting Species Data to Ensembl, url '{}'".format(request_url))
+        self._logger.debug("Requesting Species Data to Ensembl, url '{}'".format(request_url))
         return rest.make_rest_request(request_url)
 
     def _get_config_manager(self):
         return self.__config_manager
-
-    def _get_logger(self):
-        return self._logger
 
     def get_release_number(self):
         """
