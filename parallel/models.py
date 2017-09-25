@@ -216,6 +216,9 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
 
 # Execution of commands
 class CommandLineRunner(ParallelRunner):
+    """
+    This class models a parallel kernel that executes a command
+    """
     def __init__(self):
         super().__init__()
         self._logger = config_manager \
