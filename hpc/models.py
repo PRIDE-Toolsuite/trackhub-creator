@@ -82,7 +82,7 @@ class HpcServiceLsf(HpcService):
         """
         If specified when the current job was launched, get the file where the standard output for the current job is
         being redirected
-        :return: absolute path to the file where the standard ouput for this job is being redirected
+        :return: absolute path to the file where the standard ouput for the current job is being redirected
         """
         if os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT):
             # Assume it is a relative path to the current working dir
@@ -90,6 +90,11 @@ class HpcServiceLsf(HpcService):
         return ""
 
     def get_current_job_file_output_error(self):
+        """
+        If specified when the current job was launched, get the file where the standard error output for the current job
+        is being redirected
+        :return: absolute path to the file where the standard error ouput for the current job is being redirected
+        """
         if os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR):
             # Assume it is a relative path to the current working dir
             return os.path.abspath(os.environ.get(HpcServiceLsf._LSF_ENVIRONMENT_VAR_FILE_OUTPUT_ERROR))
