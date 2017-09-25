@@ -25,6 +25,10 @@ from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadExcept
 class CommandLineRunnerFactory:
     @staticmethod
     def get_command_line_runner():
+        """
+        This method will 'autoselect' the right command line runner to instantiate.
+        :return: a CommandLineRunner instance
+        """
         # This is the automatic selector between command line runners
         # TODO - This Factory is creating only local runners in the first iteration
         return CommandLineRunnerAsThread()
