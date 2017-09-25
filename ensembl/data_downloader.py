@@ -418,7 +418,7 @@ class DataDownloadService:
     def get_local_path_root_ensembl_repo(self):
         """
         Get the local root folder where all ensembl data releases are going to be made locally available
-        :return: the local folder that will contain all Ensembl releases data
+        :return: the local folder that will contain all Ensembl releases data, e.g. .../resources/ensembl
         """
         if self.__local_path_ensembl_repo is None:
             # For improved reading and code maintenance later
