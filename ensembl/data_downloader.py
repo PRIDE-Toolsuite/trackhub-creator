@@ -428,6 +428,10 @@ class DataDownloadService:
         return self.__local_path_ensembl_repo
 
     def get_local_path_ensembl_release(self):
+        """
+        Get the local root folder where all Ensembl data for a particular release is going to be made available
+        :return: the local folder that will contain all Ensembl data for a particular release
+        """
         if self.__local_path_ensembl_release is None:
             self.__local_path_ensembl_release = os.path.join(self.get_local_path_root_ensembl_repo(),
                                                              self.get_ensembl_release_name())
