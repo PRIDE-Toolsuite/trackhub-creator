@@ -97,6 +97,14 @@ class SpeciesService:
         return {property_getter(data_item): data_item for data_item in data}
 
     def __index_data_by_taxonomy_ensembl_special_case(self, data):
+        """
+        This is an indexer that deals with Ensembl special case where they have multiple species entries for a given
+        taxonomy id. It will index the species entries keeping, for those taxonomies with multiple entries, only the
+        main 'root' entry, discarding the other ones, as they are supposed to represent aliases, e.g. see the case of
+        Ensembl species entries for mouse at http://rest.ensembl.org/info/species?content-type=application/json
+        :param data: raw Ensembl species data object
+        :return: species entries indexed by taxonomy id
+        """
         indexed_data = {}
         for data_item in data:
             if data_item.get_ncbi_taxonomy_id() not in indexed_data:
