@@ -413,6 +413,12 @@ class DataDownloadService:
                               self._get_configuration_manager().get_folder_name_protein_sequences())
 
     def __get_subpath_genome_reference_for_species(self, taxonomy_id):
+        """
+        Get the subpath to the folder, within an Ensembl release, that contains the genome reference files for the given
+        ncbi taxonomy id, e.g. gtf/species.name (usual structure on Ensembl)
+        :param taxonomy_id: ncbi taxonomy id
+        :return: subpath to the genome reference files for that taxonomy id within an Ensembl release
+        """
         # The subpath is gtf/species.name
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_gtf(),
                               self._get_ensembl_service()
