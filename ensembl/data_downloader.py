@@ -386,6 +386,12 @@ class DataDownloadService:
         general.create_latest_symlink_overwrite(self.get_local_path_ensembl_release())
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
+        """
+        Within an Ensembl release path, get the subpath for protein sequence data given an ncbi taxonomy id,
+        e.g. the pattern on Ensembl is like 'fasta/species.name'
+        :param taxonomy_id: ncbi taxonomy id
+        :return: subpath under an Ensembl release
+        """
         # The subpath is fasta/species.name
         self._get_logger().debug("__get_subpath_fasta_for_species for taxonomy id '{}'".format(taxonomy_id))
         return "{}/{}".format(self._get_configuration_manager().get_folder_name_fasta(),
