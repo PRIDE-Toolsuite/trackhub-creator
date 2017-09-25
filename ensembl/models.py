@@ -17,6 +17,10 @@ import config_manager
 
 
 class Species:
+    """
+    This class models an Ensembl 'Species' object, example of these kind of objects can be found at
+    http://rest.ensembl.org/info/species?content-type=application/json
+    """
     def __init__(self, ensembl_species_entry):
         self.__ensembl_species_entry = ensembl_species_entry
         self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
