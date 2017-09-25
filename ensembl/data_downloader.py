@@ -429,7 +429,8 @@ class DataDownloadService:
 
     def get_local_path_ensembl_release(self):
         """
-        Get the local root folder where all Ensembl data for a particular release is going to be made available
+        Get the local root folder where all Ensembl data for a particular release is going to be made available,
+        e.g. .../resources/ensembl/release-90
         :return: the local folder that will contain all Ensembl data for a particular release
         """
         if self.__local_path_ensembl_release is None:
