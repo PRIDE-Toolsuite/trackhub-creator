@@ -76,7 +76,7 @@ class Species:
 
 class SpeciesService:
     def __init__(self, species_data):
-        self.__logger = config_manager.get_app_config_manager()\
+        self._logger = config_manager.get_app_config_manager()\
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
         # I've changed this, we store the original species data, and then we offer two different views
         self.__ensembl_species_data_raw = species_data
@@ -93,7 +93,7 @@ class SpeciesService:
         getter for that property
         :return: a dictionary of the given data objects where the key is the indexed property
         """
-        self._get_logger().debug("Creating index on getter '{}' for #{} entries".format(property_getter, len(data)))
+        self._logger.debug("Creating index on getter '{}' for #{} entries".format(property_getter, len(data)))
         return {property_getter(data_item): data_item for data_item in data}
 
     def __index_data_by_taxonomy_ensembl_special_case(self, data):
@@ -105,25 +105,22 @@ class SpeciesService:
                 # Keep the one with aliases, that seems to be the main one for Ensembl
                 if data_item.get_aliases():
                     if indexed_data[data_item.get_ncbi_taxonomy_id()].get_aliases():
-                        self._get_logger().error("ENSEMBL SPECIES INDEXING ERROR, already existing species entry '{}' "
+                        self._logger.error("ENSEMBL SPECIES INDEXING ERROR, already existing species entry '{}' "
                                                  "will not be replaced by non-empty aliases entry '{}'"
-                                                 .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
+                                             .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
                                                          str(data_item)))
                     else:
-                        self._get_logger().warning("ENSEMBL SPECIES INDEX REPLACEMENT, of existing entry '{}' "
+                        self._logger.warning("ENSEMBL SPECIES INDEX REPLACEMENT, of existing entry '{}' "
                                                    "by new entry '{}'"
-                                                   .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
+                                               .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
                                                            str(data_item)))
                         indexed_data[data_item.get_ncbi_taxonomy_id()] = data_item
                 else:
-                    self._get_logger().warning("ALREADY INDEXED ENSEMBL SPECIES ENTRY '{}' "
+                    self._logger.warning("ALREADY INDEXED ENSEMBL SPECIES ENTRY '{}' "
                                                "WILL NOT BE REPLACED by '{}'"
-                                               .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
+                                           .format(str(indexed_data[data_item.get_ncbi_taxonomy_id()]),
                                                        str(data_item)))
         return indexed_data
-
-    def _get_logger(self):
-        return self.__logger
 
     def _get_species_data_dao(self):
         """
@@ -172,7 +169,7 @@ class SpeciesService:
         :param taxonomy_id: taxonomy ID
         :return: the species entry or None if not found
         """
-        self._get_logger().debug("get_species_entry_for_taxonomy_id ---> taxonomy id '{}'".format(taxonomy_id))
+        self._logger.debug("get_species_entry_for_taxonomy_id ---> taxonomy id '{}'".format(taxonomy_id))
         if taxonomy_id in self._get_index_taxonomy_id():
             return self._get_index_taxonomy_id()[taxonomy_id]
         return None
@@ -183,7 +180,7 @@ class SpeciesService:
         :param assembly: assembly
         :return: the species entry or None if not found
         """
-        self._get_logger().debug("get_species_entry_for_assembly '{}'".format(assembly))
+        self._logger.debug("get_species_entry_for_assembly '{}'".format(assembly))
         if assembly in self._get_index_assembly():
             return self._get_index_assembly()[assembly]
         return None
