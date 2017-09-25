@@ -53,6 +53,12 @@ class HpcService(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def get_current_job_file_logs(self):
+        """
+        The current job file logs are usually a couple of files where all the standard output and the standard error are
+        redirected during the execution of the current job, thus, this method will find out which files are those,
+        if they've been specified when launching the current job
+        :return: absolute path to the log files for the current job
+        """
         ...
 
 
