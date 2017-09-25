@@ -387,7 +387,7 @@ class DataDownloadService:
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         """
-        Within an Ensembl release path, get the subpath for protein sequence data given an ncbi taxonomy id,
+        Within an Ensembl release path, get the subpath for protein sequences data given an ncbi taxonomy id,
         e.g. the pattern on Ensembl is like 'fasta/species.name'
         :param taxonomy_id: ncbi taxonomy id
         :return: subpath under an Ensembl release
@@ -401,6 +401,12 @@ class DataDownloadService:
                               .get_name())
 
     def __get_subpath_protein_sequence_for_species(self, taxonomy_id):
+        """
+        Get the subpath to the folder, within an Ensembl release, that contains the protein sequence files for the given
+        ncbi taxonomy id, e.g. fasta/species.name/pep (usually on Ensembl)
+        :param taxonomy_id: ncbi taxonomy id
+        :return: subpath to the protein sequences for that taxonomy id within an Ensembl release
+        """
         # The subpath is fasta/species.name/pep
         self._get_logger().debug("__get_subpath_protein_sequence_for_species for taxonomy id '{}'".format(taxonomy_id))
         return "{}/{}".format(self.__get_subpath_fasta_for_species(taxonomy_id),
