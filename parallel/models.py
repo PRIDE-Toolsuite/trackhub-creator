@@ -126,6 +126,10 @@ class ParallelRunnerManager:
             self._logger.debug("All runners are (should be) finished")
 
     def get_not_started_runners(self):
+        """
+        Get those runners that haven't started to run yet
+        :return: a set of runners
+        """
         return set(self.__runners)
 
     def get_alive_runners(self):
