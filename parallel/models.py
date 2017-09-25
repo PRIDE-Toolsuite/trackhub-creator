@@ -18,7 +18,10 @@ import threading
 import subprocess
 # App imports
 import config_manager
-from .exceptions import ParallelRunnerException, CommandLineRunnerAsThreadException, NoMoreAliveRunnersException
+from .exceptions import ParallelRunnerException, \
+    CommandLineRunnerAsThreadException, \
+    NoMoreAliveRunnersException, \
+    CommandIsNotDoneYet
 
 
 # Abstract Factories
@@ -233,9 +236,14 @@ class CommandLineRunner(ParallelRunner):
         self.current_working_directory = None
 
     def get_stdout(self):
+        """
+        The standard output of the command is piped to this process, so it can be retrieved when the subprocess is done
+        :return: anything the command wrote on the standard output
+        :exception:
+        """
         # Never give it back until the runner is done with whatever it is doing
         if not self._done:
-            raise ParallelRunnerException("Runner is NOT DONE doing its job, thus 'stdout' is NOT AVAILABLE")
+            raise CommandIsNotDoneYet("Runner is NOT DONE doing its job, thus 'stdout' is NOT AVAILABLE")
         return self._stdout
 
     def get_stderr(self):
