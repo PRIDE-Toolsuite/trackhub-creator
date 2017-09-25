@@ -479,6 +479,10 @@ class DataDownloadService:
         return self.__remote_path_ensembl_release
 
     def get_ensembl_release_name(self):
+        """
+        Get the current Ensembl release name, e.g. 'release-90'
+        :return: current Ensembl release name
+        """
         if self.__ensembl_release_name is None:
             ensembl_service = ensembl.service.get_service()
             self.__ensembl_release_name = "{}{}" \
