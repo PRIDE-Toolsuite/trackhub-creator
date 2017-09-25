@@ -366,6 +366,10 @@ class DataDownloadService:
         self.__prepare_local_ensembl_repository()
 
     def __prepare_local_ensembl_repository(self):
+        """
+        This helper makes sure that the local folder structure for receiving Ensembl data is available.
+        :return: no return value
+        """
         self._get_logger().debug("Preparing local Ensembl repository, root folder - '{}'"
                                  .format(self.get_local_path_root_ensembl_repo()))
         general.check_create_folders([self.get_local_path_root_ensembl_repo()])
