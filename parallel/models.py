@@ -114,6 +114,10 @@ class ParallelRunnerManager:
         return runner_found
 
     def wait_all(self):
+        """
+        Wait for all runners to finish.
+        :return: no value returned
+        """
         self._logger.debug("Waiting for all #{} runners to finish".format(len(self.__alive_runners)))
         try:
             while True:
