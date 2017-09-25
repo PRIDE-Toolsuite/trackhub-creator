@@ -176,7 +176,10 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
     def run(self):
         self._logger.debug("--- START ---")
         try:
-            self._run()
+            if not self._shutdown:
+                self._run()
+            else:
+                self._logger.warning("--- ABORTED ---")
         except ParallelRunnerException as e:
             # This code is running on a separated thread, so this class, as top level 'client', must log the error for
             # the application
