@@ -45,14 +45,11 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
-        self.__logger = config_manager.get_app_config_manager()\
+        self._logger = config_manager.get_app_config_manager()\
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
-    def _get_logger(self):
-        return self.__logger
-
     def get_api_server(self):
-        self._get_logger().debug(
+        self._logger.debug(
             "get_api_server, from configuration object '{}'".format(self._get_configuration_object()))
         try:
             return self._get_configuration_object()[self._CONFIG_KEY_SERVICE][self._CONFIG_KEY_ENSEMBL_API][
