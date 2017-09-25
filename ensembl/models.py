@@ -23,12 +23,6 @@ class Species:
     """
     def __init__(self, ensembl_species_entry):
         self.__ensembl_species_entry = ensembl_species_entry
-        self.__logger = config_manager\
-            .get_app_config_manager()\
-            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
-
-    def _get_logger(self):
-        return self.__logger
 
     def _get_value_for_key_or_default(self, key, default_value='-not_available-'):
         if key in self.get_ensembl_species_entry():
