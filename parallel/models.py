@@ -167,6 +167,10 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def _run(self):
+        """
+        Parallel kernel defined by subclasses
+        :return: no return value
+        """
         ...
 
     def run(self):
