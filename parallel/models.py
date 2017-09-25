@@ -197,6 +197,10 @@ class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
         self._stop()
 
     def wait(self):
+        """
+        Wait for the current parallel kernel to finish
+        :return: no return value
+        """
         self._logger.debug("--- WAIT ---")
         self.join()
 
