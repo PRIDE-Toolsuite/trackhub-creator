@@ -254,6 +254,9 @@ class CommandLineRunner(ParallelRunner):
 
 
 class CommandLineRunnerAsThread(CommandLineRunner):
+    """
+    This class models a parallel kernel that executes a command as a thread
+    """
     def __init__(self):
         super().__init__()
         self._logger = config_manager \
