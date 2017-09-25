@@ -74,6 +74,10 @@ class ParallelRunnerManager:
         self.__runners.add(runner)
 
     def start_runners(self):
+        """
+        Start all the runners that have not been started yet on this manager.
+        :return: no return value
+        """
         self._logger.debug("Starting #{} Runners".format(len(self.__runners)))
         for runner in self.__runners:
             runner.start()
