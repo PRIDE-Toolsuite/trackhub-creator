@@ -416,6 +416,10 @@ class DataDownloadService:
         return self.__config_manager
 
     def get_local_path_root_ensembl_repo(self):
+        """
+        Get the local root folder where all ensembl data releases are going to be made locally available
+        :return: the local folder that will contain all Ensembl releases data
+        """
         if self.__local_path_ensembl_repo is None:
             # For improved reading and code maintenance later
             resources_folder_path = os.path.abspath(config_manager.get_app_config_manager().get_folder_resources())
