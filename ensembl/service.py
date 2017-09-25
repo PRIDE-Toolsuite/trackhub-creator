@@ -45,7 +45,8 @@ class ConfigurationManager(config_manager.ConfigurationManager):
 
     def __init__(self, configuration_object, configuration_file):
         super(ConfigurationManager, self).__init__(configuration_object, configuration_file)
-        self.__logger = config_manager.get_app_config_manager().get_logger_for(__name__)
+        self.__logger = config_manager.get_app_config_manager()\
+            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def _get_logger(self):
         return self.__logger
