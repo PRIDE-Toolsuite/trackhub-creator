@@ -45,6 +45,10 @@ class HpcService(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def get_current_job_id(self):
+        """
+        Get the current Job ID that is running the current process
+        :return: current job ID
+        """
         ...
 
     @abc.abstractmethod
