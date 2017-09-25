@@ -149,6 +149,9 @@ class ParallelRunnerManager:
 
 # Parallel Runners
 class ParallelRunner(threading.Thread, metaclass=abc.ABCMeta):
+    """
+    This class models a thread that executes a parallel kernel, confined within a method delegated to subclasses.
+    """
     # TODO - Refactor This, as responsibilities are a little bit mixed up
     def __init__(self):
         super().__init__()
