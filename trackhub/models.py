@@ -298,6 +298,10 @@ class TrackCollector:
 
 
 class SimpleTrackCollector(TrackCollector):
+    """
+    This track collector models the simplest track collection scheme defined in the UCSC documentation
+    at https://genome.ucsc.edu/goldenpath/help/trackDb/trackDbHub.html
+    """
     def __init__(self):
         super().__init__()
 
