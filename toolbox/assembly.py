@@ -49,6 +49,7 @@ class Assembly:
         self.id = id
         self.base_count = base_count
 
+
 class MappingEntry:
     """
     As mapping entry, as received from the mapping file, looks like this:
