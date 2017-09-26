@@ -135,6 +135,10 @@ class ProjectTrackDescriptor:
 
 
 class ProjectTrackhubDescriptor:
+    """
+    This class models the trackhub as described by the given project description data, see sample project description
+    information at the top of this module
+    """
     # Project Data File keys
     _PROJECT_DATA_FILE_KEY_TRACKHUB_NAME = 'trackHubName'
     _PROJECT_DATA_FILE_KEY_TRACKHUB_SHORT_LABEL = 'trackHubShortLabel'
