@@ -6,6 +6,8 @@ python_install
 
 # Ignore logs from application runs
 logs/*log
+# And logs from cluster-file-exporter runs
+log/*
 
 # Ignore python cache
 __pycache__
