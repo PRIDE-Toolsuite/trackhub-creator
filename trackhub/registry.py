@@ -84,6 +84,10 @@ class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter)
 
 
 class TrackhubRegistryService:
+    """
+    This class models a wrapper for the trackhubregistry.org service API,
+    as specified at https://www.trackhubregistry.org/docs/management/overview
+    """
     __TRACKHUB_REGISTRY_API_SUBPATH_LOGIN = '/api/login'
     __TRACKHUB_REGISTRY_API_SUBPATH_LOGOUT = '/api/logout'
     __TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB = '/api/trackhub'
