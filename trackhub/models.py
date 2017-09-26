@@ -270,6 +270,10 @@ class SimpleTrackHubBuilder(TrackHubBuilder):
 
 # Modeling TrackHubs
 class TrackHubGenomeAssembly:
+    """
+    This class models an entry in the 'genomes.txt' file present in a trackhub, it consists of the assembly name and a
+    track collector for that assembly
+    """
     def __init__(self, assembly, track_collector):
         # Let's try the Pythonist way, attributes are public by default
         self.track_collector = track_collector
