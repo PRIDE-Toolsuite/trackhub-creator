@@ -22,3 +22,4 @@ PIPELINE_PARAMETERS='ncbi_taxonomy_ids=2,179,197,234,235,253,266,274,287,292,294
 mylogger "Starting Ensembl data collection for PRIDE Taxonomies '${PIPELINE_PARAMETERS}'"
 mylogger "Current directory is $($PWD)"
 mylogger "<--- Running ensembl_data_collector --->"
+time python_install/bin/python ./main_app.py -a ${PIPELINE_PARAMETERS} ensembl_data_collector
