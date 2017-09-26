@@ -262,6 +262,10 @@ class TrackHubBuilder(metaclass=ABCMeta):
 
 
 class SimpleTrackHubBuilder(TrackHubBuilder):
+    """
+    This trackhub builder implements the factory methods for putting together a simple trackhub, i.e. using a simple
+    track collector, and a particular method of the trackhub visitor for exporting
+    """
     def __init__(self, track_hub_descriptor):
         super().__init__(track_hub_descriptor)
 
