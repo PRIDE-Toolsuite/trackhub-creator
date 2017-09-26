@@ -150,6 +150,10 @@ class TrackhubRegistryService:
         # Analyze response
         return self.__analyze_success_trackhub_registration(response)
 
+    def update_trackhub(self, trackhub_registry_model):
+        # TODO
+        pass
+
     def is_trackhub_already_registered(self, trackhub_registry_model):
         # TODO
         pass
