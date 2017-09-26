@@ -296,6 +296,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         return self.__valid_project_tracks
 
     def __get_index_project_track_for_taxonomy_id(self):
+        """
+        Get the project tracks indexed by taxonomy id
+        :return: map (taxonomy_id, project_track)
+        """
         if not self.__indexed_project_tracks_by_taxonomy_id:
             self.__indexed_project_tracks_by_taxonomy_id = {}
             self._get_logger().debug("Indexing #{} valid project tracks".format(len(self.__get_valid_project_tracks())))
