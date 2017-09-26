@@ -22,6 +22,9 @@ from . import exceptions as trackhub_exceptions
 
 # Registry request body model
 class TrackhubRegistryRequestBodyModel:
+    """
+    This class models the payload used to register a trackub at http://trackhubregistry.org
+    """
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(
             "{}.{}".format(__name__, type(self).__name__))
@@ -59,6 +62,10 @@ class TrackhubRegistryRequestBodyModel:
 
 # Visitor to export the trackhub as an instance of TrackhubRegistryRequestBodyModel
 class TrackhubRegistryRequestBodyModelExporter(trackhub_models.TrackHubExporter):
+    """
+    This visitor of trackhub builders will create a TrackhubRegistryRequestBodyModel as a product from the information
+    present in the builder
+    """
     def __init__(self):
         super().__init__()
 
