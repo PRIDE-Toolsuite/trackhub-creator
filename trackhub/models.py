@@ -58,6 +58,10 @@ class TrackCollectorExporter(metaclass=ABCMeta):
 
 
 class TrackCollectorFileExporter(TrackCollectorExporter):
+    """
+    This track collector exporter is specialised on simple track collectors and it will export their information to a
+    file (usually this is the 'trackDb.txt' file that is present within every assembly in a trackhub)
+    """
     def __init__(self, destination_file_path):
         super(TrackCollectorFileExporter, self).__init__()
         self.destination_file_path = destination_file_path
