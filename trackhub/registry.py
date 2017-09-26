@@ -150,6 +150,10 @@ class TrackhubRegistryService:
         # Analyze response
         return self.__analyze_success_trackhub_registration(response)
 
+    def is_trackhub_already_registered(self, trackhub_registry_model):
+        # TODO
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
