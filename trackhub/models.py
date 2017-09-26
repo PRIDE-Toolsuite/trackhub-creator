@@ -87,6 +87,9 @@ class TrackHubExportSummary:
 
 
 class TrackHubExporter(metaclass=ABCMeta):
+    """
+    A trackhub exporter materializes all the parts held together by a trackhub builder into a trackhub structure
+    """
     def __init__(self):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.export_summary = None
