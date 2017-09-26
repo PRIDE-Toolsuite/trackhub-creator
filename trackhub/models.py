@@ -143,6 +143,12 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
         return non_empty_file_tracks
 
     def export_simple_trackhub(self, trackhub_builder):
+        """
+        When exporting a simple trackhub from a (simple) trackhub builder, those tracks with empty .bed files will be
+        skipped
+        :param trackhub_builder: a TrackhubBuilder that holds all the trackhub parts together
+        :return: a report of the export process as a TrackHubExportSummary
+        """
         file_trackhub_descriptor = os.path.join(self.track_hub_destination_folder, 'hub.txt')
         self.export_summary.track_hub_root_folder = self.track_hub_destination_folder
         self.export_summary.track_hub_descriptor_file_path = file_trackhub_descriptor
