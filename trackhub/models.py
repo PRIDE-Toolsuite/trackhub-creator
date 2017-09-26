@@ -101,6 +101,11 @@ class TrackHubExporter(metaclass=ABCMeta):
 
 
 class TrackHubLocalFilesystemExporter(TrackHubExporter):
+    """
+    This trackhub exporter will recreate a trackhub in a given location of the filesystem, by exporting all the parts
+    held together by a trackhub builder, in this case ONLY a simple trackhub builder is supported at this iteration of
+    the software development lifecycle
+    """
     def __init__(self):
         super().__init__()
         # The default destination folder for exporting the trackhub is located within the current session working
