@@ -277,6 +277,11 @@ class TrackHubGenomeAssembly:
 
 
 class TrackCollector:
+    """
+    A track collector is an entity that holds related tracks together, and it also provides a context for those tracks,
+    which will determine how they are exported into a trackhub later on, by the visitor passed to this track collector
+    and its implementation of the visit method.
+    """
     def __init__(self):
         # List of tracks in this track collector
         self.__tracks = []
