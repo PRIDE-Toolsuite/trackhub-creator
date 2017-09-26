@@ -241,6 +241,10 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
 
 
 class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
+    """
+    This is a file system based trackhub exporter specialised on PRIDE Cluster trackhubs, so it will set up the
+    particular location where the new trackhub has to be exported to.
+    """
     def __init__(self):
         super().__init__()
         # Default destination folder for pride cluster trackhubs
