@@ -268,6 +268,10 @@ class TrackhubCreationDirector:
         ...
 
     def _create_trackhub(self):
+        """
+        Implements a default director for building a trackhub, it can be overriden subclasses or not used at all.
+        :return: no return value
+        """
         # Instantiate the trackhub builder we are going to use
         trackhub_builder = self._get_trackhub_builder(self._get_trackhub_descriptor())
         # Process and prepare the assemblies with their respective tracks
