@@ -262,6 +262,10 @@ class PipelineResult:
 
 
 class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
+    """
+    Given a project description file that contains the information specified at the beginning of this module, this
+    pipeline creates a trackhub for all the project defined tracks
+    """
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super().__init__(runner_id)
