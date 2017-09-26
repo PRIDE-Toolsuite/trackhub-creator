@@ -237,6 +237,10 @@ class TrackHubExporterPrideClusterFtp(TrackHubLocalFilesystemExporter):
 
 # TrackHub Builders
 class TrackHubBuilder(metaclass=ABCMeta):
+    """
+    A trackhub builder puts together all the parts that make a trackhub: the descriptor (hub.txt) and the assemblies
+    with their corresponding track collectors
+    """
     def __init__(self, track_hub_descriptor):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.track_hub = track_hub_descriptor
