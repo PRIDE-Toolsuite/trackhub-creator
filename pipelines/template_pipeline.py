@@ -287,6 +287,10 @@ class TrackhubCreationDirector:
 
 
 class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreationDirector):
+    """
+    This is a pipeline director base class for those pipelines devoted to creating trackhubs based on running PoGo on
+    input data for producing .bed files
+    """
     def __init__(self, runner_id=None):
         super().__init__(runner_id)
         TrackhubCreationDirector.__init__(self)
