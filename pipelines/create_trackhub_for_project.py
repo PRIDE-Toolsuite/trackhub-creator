@@ -226,6 +226,12 @@ class PipelineResult:
         self.status = self._VALUE_STATUS_ERROR
 
     def add_error_message(self, error_message):
+        """
+        Adds an error message to the pipeline report. As this report is the final word on how the pipeline performed,
+        the first error message that is set will set the status of the pipeline as 'failed'
+        :param error_message: error message
+        :return: no return value
+        """
         # This is the report on the final result from running the pipeline
         self.set_status_error()
         self.error_messages.append(error_message)
