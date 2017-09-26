@@ -87,6 +87,7 @@ class EnsemblDataCollector(Director):
         return result
 
     def _run_pipeline(self):
+        # TODO - I can easily parallelize this using the parallel module
         # Main pipeline algorithm
         self._get_logger().info("[START]---> Pipeline run")
         self._get_logger().info("Collecting Ensembl data for NCBI Taxonomies: {}"
