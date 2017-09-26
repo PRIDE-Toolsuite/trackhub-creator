@@ -96,12 +96,16 @@ class EnsemblDataCollector(Director):
         for ncbi_taxonomy_id in self._get_configuration_manager().get_ncbi_taxonomy_ids():
             downloaded_protein_sequences = ensembl_downloader_service \
                 .get_protein_sequences_for_species(ncbi_taxonomy_id)
-            if not self.__check_downloaded_files(downloaded_protein_sequences):
-                return False
             downloaded_gtf_files = ensembl_downloader_service \
                 .get_genome_reference_for_species(ncbi_taxonomy_id)
-            if not self.__check_downloaded_files(downloaded_gtf_files):
-                return False
+            if not downloaded_protein_sequences:
+                self._get_logger().error("MISSING protein sequence data for taxonomy ID #{}".format(ncbi_taxonomy_id))
+            else:
+                self.__check_downloaded_files(downloaded_protein_sequences)
+            if not downloaded_gtf_files:
+                self._get_logger().error("MISSING genome reference data for taxonomy ID #{}".format(ncbi_taxonomy_id))
+            else:
+                self.__check_downloaded_files(downloaded_gtf_files)
         return True
 
 
