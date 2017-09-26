@@ -302,6 +302,12 @@ class SimpleTrackCollector(TrackCollector):
 
 # Model for a Track
 class BaseTrack:
+    """
+    Base class for modeling a trackhub track.
+    On this iteration of the software, we are dealing with simple tracks, in the future it may need refactoring, but
+    this class is modeling the core information common to all possible tracks, from the simplest ones to the more
+    complex, at least according to the documentation available up to the date when this module was developed.
+    """
     _SEPARATOR_CHAR = ' '
 
     def __init__(self, track, short_label, long_label):
