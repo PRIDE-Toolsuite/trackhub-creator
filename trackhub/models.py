@@ -79,6 +79,9 @@ class TrackCollectorFileExporter(TrackCollectorExporter):
 
 # TrackHub Exporters
 class TrackHubExportSummary:
+    """
+    Summary report about the process of exporting a trackhub
+    """
     def __init__(self):
         self.errors = []
         self.export_performed = False
