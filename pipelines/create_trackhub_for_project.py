@@ -245,6 +245,11 @@ class PipelineResult:
         self.success_messages.append(success_message)
 
     def add_log_files(self, log_files):
+        """
+        Add all the log files produce by the pipeline to its final report
+        :param log_files: a list of log files to add
+        :return: no return value
+        """
         self.file_path_log_files.extend(log_files)
 
     def __str__(self):
