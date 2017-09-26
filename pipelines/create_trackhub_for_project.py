@@ -283,6 +283,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         """
         This helper creates a list of valid trackhub tracks from the given project, i.e. tracks that meet this cirteria:
             - Its taxonomy ID is available on Ensembl
+        The list of valid tracks is cached, so it won't change between multiple calls
         :return: a list of valid trackhub tracks for the given project
         """
         if not self.__valid_project_tracks:
