@@ -206,7 +206,9 @@ class ProjectTrackhubDescriptor:
 
 
 class PipelineResult:
-    # TODO
+    """
+    This class models the pipeline report that will be made available at the end of the pipeline execution
+    """
     _VALUE_STATUS_SUCCESS = 'SUCCESS'
     _VALUE_STATUS_ERROR = 'ERROR'
 
