@@ -356,6 +356,9 @@ class BaseTrack:
 
 # Model for a trackhub
 class TrackHub:
+    """
+    This class models the kind of data that can be found in the 'hub.txt' within a trackhub
+    """
     _SEPARATOR_CHAR = ' '
 
     def __init__(self, hub, short_label, long_label, email, description_url):
