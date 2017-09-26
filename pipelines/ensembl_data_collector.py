@@ -67,6 +67,9 @@ class ConfigManager(DirectorConfigurationManager):
 
 
 class EnsemblDataCollector(Director):
+    """
+    This pipeline collects data from the latest Ensembl release for the given taxonomies
+    """
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super(EnsemblDataCollector, self).__init__(runner_id)
