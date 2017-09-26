@@ -462,6 +462,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
         return True
 
     def _after(self):
+        """
+        Dump to a file the pipeline report
+        :return: no return value
+        """
         if not self.is_pipeline_status_ok():
             self._get_logger().warning("This Pipeline is finishing with NON-OK status.")
         report_files = [self.__config_manager.get_file_path_trackhub_creation_report()]
