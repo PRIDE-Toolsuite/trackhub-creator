@@ -151,7 +151,8 @@ class TrackhubRegistryService:
         return self.__analyze_success_trackhub_registration(response)
 
     def register_update_trackhub(self, trackhub_registry_model):
-        # TODO
+        # TODO - I'm not sure I need these extra methods, as the API says on its documentation that registering an
+        # TODO - existing owned trackhub, would update it
         pass
 
     def update_trackhub(self, trackhub_registry_model):
