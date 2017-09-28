@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This module offers converters between different formats
 """
