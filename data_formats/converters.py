@@ -10,3 +10,7 @@
 """
 This module offers converters between different formats
 """
+
+
+class BedToBigBed:
+    pass
