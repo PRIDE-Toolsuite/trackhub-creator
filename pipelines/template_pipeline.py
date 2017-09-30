@@ -243,6 +243,7 @@ class TrackhubCreationDirector:
     """
 
     def __init__(self):
+        # TODO - Find a way to remove the logger and you have a Mix-in, i.e. legal multiple inheritance, hahaha!
         self._logger = config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
