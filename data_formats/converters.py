@@ -33,14 +33,14 @@ class FileDataFormatConverter(DataFormatConverter):
         super().__init__()
         self.file_path_source = ''
 
-    @abc.abstractmethod
-    def _get_command_line_runner(self):
-        ...
-
 
 class BedToBigBedConverter(FileDataFormatConverter):
     def __init__(self):
         super().__init__()
+
+    @abc.abstractmethod
+    def _get_command_line_runner(self):
+        ...
 
     def _run(self):
         pass
