@@ -10,3 +10,5 @@
 """
 Exceptions module
 """
+
+from exceptions import AppException
