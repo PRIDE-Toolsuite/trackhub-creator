@@ -18,3 +18,7 @@ class DataFormatConverterFactoryException(AppException):
     def __init__(self, value):
         super().__init__(value)
 
+
+class DataFormatConverter(AppException):
+    def __init__(self, value):
+        super().__init__(value)
