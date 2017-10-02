@@ -27,7 +27,8 @@ class DataFormatConverter(ParallelRunner):
 
 
 class FileDataFormatConverter(DataFormatConverter):
-    pass
+    def __init__(self):
+        super().__init__()
 
 
 class BedToBigBedMultithreadedConverter(FileDataFormatConverter):
