@@ -11,6 +11,7 @@
 This module offers converters between different formats
 """
 
+import abc
 # App imports
 import config_manager
 from parallel.models import ParallelRunner
@@ -31,6 +32,10 @@ class FileDataFormatConverter(DataFormatConverter):
     def __init__(self):
         super().__init__()
         self.file_path_source = ''
+
+    @abc.abstractmethod
+    def _get_command_line_runner(self):
+        ...
 
 
 class BedToBigBedMultithreadedConverter(FileDataFormatConverter):
