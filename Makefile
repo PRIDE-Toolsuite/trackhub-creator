@@ -39,6 +39,10 @@ bin/pogo/pogo: tmp
 	@mkdir -p bin/pogo
 	@cp tmp/pogo/PoGo/src/PoGo bin/pogo/pogo
 
+bin/ucsc/bedToBigBed:
+
+	
+
 tmp:
 	@mkdir tmp
 
