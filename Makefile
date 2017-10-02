@@ -55,13 +55,13 @@ endif
 tmp:
 	@mkdir tmp
 
-install_dev: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
+install_dev: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo bin/ucsc/bedToBigBed
 	@echo "Preparing submodules to follow their 'master' branch..."
 	@git submodule foreach git checkout master
 
-install: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo
+install: python_install install_requirements bin/cluster-file-exporter/cluster-file-exporter.jar bin/pogo/pogo bin/ucsc/bedToBigBed
 
-install_lsf: lsf_python_install lsf_install_requirements bin/lsf-cluster-file-exporter bin/pogo/pogo
+install_lsf: lsf_python_install lsf_install_requirements bin/lsf-cluster-file-exporter bin/pogo/pogo bin/ucsc/bedToBigBed
 
 update_requirements_file:
 	@python_install/bin/pipreqs --use-local --savepath requirements.txt $(PWD)
