@@ -15,6 +15,7 @@ import abc
 # App imports
 import config_manager
 from parallel.models import ParallelRunner, CommandLineRunnerFactory
+from .exceptions import DataFormatConversionNotFinished
 
 
 # Factories
@@ -26,6 +27,15 @@ class DataFormatConverterFactory:
 class DataFormatConverter(ParallelRunner):
     def __init__(self):
         super().__init__()
+        self.conversion_status_error = False
+
+    @abc.abstractmethod
+    def _get_conversion_details(self):
+        ...
+
+    def is_conversion_ok(self):
+        if not self.is_done():
+            raise DataFormatConversionNotFinished()
 
 
 class FileDataFormatConverter(DataFormatConverter):
