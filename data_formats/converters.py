@@ -26,9 +26,9 @@ class DataFormatConverter(ParallelRunner):
         # TODO
 
 
-class FileDataFormatConverter:
+class FileDataFormatConverter(DataFormatConverter):
     pass
 
 
-class BedToBigBedMultithreadedConverter:
+class BedToBigBedMultithreadedConverter(FileDataFormatConverter):
     pass
