@@ -32,4 +32,5 @@ class FileDataFormatConverter(DataFormatConverter):
 
 
 class BedToBigBedMultithreadedConverter(FileDataFormatConverter):
-    pass
+    def __init__(self):
+        super().__init__()
