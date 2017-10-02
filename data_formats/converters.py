@@ -35,7 +35,7 @@ class DataFormatConverter(ParallelRunner):
 
     def is_conversion_ok(self):
         if not self.is_done():
-            raise DataFormatConversionNotFinished()
+            raise DataFormatConversionNotFinished(self._get_conversion_details)
 
 
 class FileDataFormatConverter(DataFormatConverter):
@@ -48,6 +48,10 @@ class FileDataFormatConverter(DataFormatConverter):
 class BedToBigBedConverter(FileDataFormatConverter):
     def __init__(self):
         super().__init__()
+
+    def _get_conversion_details(self):
+        # TODO
+        pass
 
     @abc.abstractmethod
     def _get_command_line_runner(self):
