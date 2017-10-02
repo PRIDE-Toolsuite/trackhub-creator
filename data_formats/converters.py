@@ -23,7 +23,6 @@ class DataFormatConverterFactory:
 class DataFormatConverter(ParallelRunner):
     def __init__(self):
         super().__init__()
-        # TODO
 
 
 class FileDataFormatConverter(DataFormatConverter):
@@ -34,3 +33,7 @@ class FileDataFormatConverter(DataFormatConverter):
 class BedToBigBedMultithreadedConverter(FileDataFormatConverter):
     def __init__(self):
         super().__init__()
+
+    def _run(self):
+        pass
+        # TODO
