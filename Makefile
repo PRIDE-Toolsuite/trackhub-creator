@@ -43,7 +43,7 @@ bin/pogo/pogo: tmp
 	@cp tmp/pogo/PoGo/src/PoGo bin/pogo/pogo
 
 bin/ucsc/bedToBigBed:
-    @make -p bin/ucsc
+    @mkdir -p bin/ucsc
 ifeq ($(OS),Linux)
 	@echo "[UCSC] Downloading bedToBigBed for Linux"
 	@wget -O bin/ucsc/bedToBigBed http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedToBigBed
