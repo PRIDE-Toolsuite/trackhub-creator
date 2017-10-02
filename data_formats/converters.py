@@ -15,13 +15,15 @@ from parallel.models import ParallelRunner
 
 
 # Possible base class for data format converters
-class DataFormatConverter:
-    pass
+class DataFormatConverter(ParallelRunner):
+    def __init__(self):
+        super().__init__()
+        # TODO
 
 
 class FileDataFormatConverter:
     pass
 
 
-class BedToBigBed:
+class BedToBigBedMultithreadedConverter:
     pass
