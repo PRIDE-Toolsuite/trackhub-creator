@@ -1,3 +1,6 @@
+# OS Detection
+OS := $(shell uname -s)
+
 lsf_install_requirements: install_requirements
 	@echo -e "\n[LSF] Requirements installed <---\n\n"
 
@@ -39,13 +42,13 @@ bin/pogo/pogo: tmp
 	@mkdir -p bin/pogo
 	@cp tmp/pogo/PoGo/src/PoGo bin/pogo/pogo
 
+ifeq ($(OS),Linux)
 bin/ucsc/bedToBigBed:
-	@mkdir -p bin/ucsc
-	UNAME_S := $(shell uname -s)
-	ifeq ($(UNAME_S),Linux)
-		@echo -e "[UCSC] Downloading bedToBigBed for Linux"
-	else
-		@echo -e "[UCSC] Downloading bedToBigBed for Mac OS X"
+	@echo "[UCSC] Downloading bedToBigBed for Linux"
+else
+bin/ucsc/bedToBigBed:
+	@echo "[UCSC] Downloading bedToBigBed for Mac OS X"
+endif
 
 tmp:
 	@mkdir tmp
