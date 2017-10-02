@@ -41,8 +41,8 @@ class DataFormatConverter(ParallelRunner):
 class FileDataFormatConverter(DataFormatConverter):
     def __init__(self):
         super().__init__()
-        self.path_source = ''
-        self.path_destination = ''
+        self.file_path_source = ''
+        self.file_path_destination = ''
 
 
 class BedToBigBedConverter(FileDataFormatConverter):
