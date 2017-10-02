@@ -50,10 +50,6 @@ class BedToBigBedConverter(FileDataFormatConverter):
     def __init__(self):
         super().__init__()
 
-    def _get_conversion_details(self):
-        # TODO
-        pass
-
     @abc.abstractmethod
     def _get_command_line_runner(self):
         ...
@@ -72,6 +68,10 @@ class BedToBigBedMultithreadedConverter(BedToBigBedConverter):
         super().__init__()
         self._logger = config_manager.get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+
+    def _get_conversion_details(self):
+        # TODO
+        pass
 
     def _get_command_line_runner(self):
         return CommandLineRunnerFactory.get_multithread_command_line_runner()
