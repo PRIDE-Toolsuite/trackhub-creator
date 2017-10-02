@@ -40,8 +40,12 @@ bin/pogo/pogo: tmp
 	@cp tmp/pogo/PoGo/src/PoGo bin/pogo/pogo
 
 bin/ucsc/bedToBigBed:
-
-	
+	@mkdir -p bin/ucsc
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		@echo -e "[UCSC] Downloading bedToBigBed for Linux"
+	else
+		@echo -e "[UCSC] Downloading bedToBigBed for Mac OS X"
 
 tmp:
 	@mkdir tmp
