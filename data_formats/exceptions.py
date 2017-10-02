@@ -24,6 +24,11 @@ class DataFormatConverterException(ParallelRunnerException):
         super().__init__(value)
 
 
+class DataFormatConversionNotFinished(DataFormatConverterException):
+    def __init__(self, value):
+        super().__init__(value)
+
+
 class FileDataFormatConverterException(DataFormatConverterException):
     def __init__(self, value):
         super().__init__(value)
