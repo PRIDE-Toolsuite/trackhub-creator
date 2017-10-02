@@ -42,11 +42,10 @@ bin/pogo/pogo: tmp
 	@mkdir -p bin/pogo
 	@cp tmp/pogo/PoGo/src/PoGo bin/pogo/pogo
 
-ifeq ($(OS),Linux)
 bin/ucsc/bedToBigBed:
+ifeq ($(OS),Linux)
 	@echo "[UCSC] Downloading bedToBigBed for Linux"
 else
-bin/ucsc/bedToBigBed:
 	@echo "[UCSC] Downloading bedToBigBed for Mac OS X"
 endif
 
