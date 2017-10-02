@@ -44,7 +44,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
 
     def _run(self):
         pass
-        # TODO
+        # TODO - Conversion algorithm goes here
 
 class BedToBigBedMultithreadedConverter(BedToBigBedConverter):
     def __init__(self):
