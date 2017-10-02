@@ -46,10 +46,15 @@ class BedToBigBedConverter(FileDataFormatConverter):
         pass
         # TODO - Conversion algorithm goes here
 
+
 class BedToBigBedMultithreadedConverter(BedToBigBedConverter):
     def __init__(self):
-        self._logger = config_manager.get_app_config_manager()\
+        self._logger = config_manager.get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def _get_command_line_runner(self):
         return CommandLineRunnerFactory.get_multithread_command_line_runner()
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
