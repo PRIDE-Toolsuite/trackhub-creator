@@ -12,5 +12,10 @@ This module offers converters between different formats
 """
 
 
+# Possible base class for data format converters
+class DataFormatConverter:
+    pass
+
+
 class BedToBigBed:
     pass
