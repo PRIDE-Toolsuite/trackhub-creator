@@ -14,6 +14,11 @@ This module offers converters between different formats
 from parallel.models import ParallelRunner
 
 
+# Factories
+class DataFormatConverterFactory:
+    pass
+
+
 # Possible base class for data format converters
 class DataFormatConverter(ParallelRunner):
     def __init__(self):
