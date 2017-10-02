@@ -56,5 +56,9 @@ class BedToBigBedMultithreadedConverter(BedToBigBedConverter):
         return CommandLineRunnerFactory.get_multithread_command_line_runner()
 
 
+class BedToBigBedHpcConverter(BedToBigBedConverter):
+    pass
+
+
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
