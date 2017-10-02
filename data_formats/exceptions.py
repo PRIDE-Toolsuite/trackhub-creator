@@ -23,6 +23,10 @@ class DataFormatConverterException(AppException):
     def __init__(self, value):
         super().__init__(value)
 
-class FileDataFormatConverterException(AppException):
+class FileDataFormatConverterException(DataFormatConverterException):
+    def __init__(self, value):
+        super().__init__(value)
+
+class BedToBigBedMultithreadedConverterException(FileDataFormatConverterException):
     def __init__(self, value):
         super().__init__(value)
