@@ -32,3 +32,7 @@ class FileDataFormatConverterException(DataFormatConverterException):
 class BedToBigBedMultithreadedConverterException(FileDataFormatConverterException):
     def __init__(self, value):
         super().__init__(value)
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
