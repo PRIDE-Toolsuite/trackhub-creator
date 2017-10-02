@@ -43,7 +43,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
         ...
 
     def _run(self):
-        # TODO - Conversion algorithm goes here
+        # TODO - Conversion algorithm goes here -
         # TODO - Sort the .bed file
         # TODO - Fetch chromosome sizes for this .bed file
         # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
