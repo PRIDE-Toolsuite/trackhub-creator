@@ -41,12 +41,15 @@ class FileDataFormatConverter(DataFormatConverter):
 class BedToBigBedConverter(FileDataFormatConverter):
     def __init__(self):
         super().__init__()
+
+    def _run(self):
+        pass
+        # TODO
+
+class BedToBigBedMultithreadedConverter(BedToBigBedConverter):
+    def __init__(self):
         self._logger = config_manager.get_app_config_manager()\
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def _get_command_line_runner(self):
         return CommandLineRunnerFactory.get_multithread_command_line_runner()
-
-    def _run(self):
-        pass
-        # TODO
