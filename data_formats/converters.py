@@ -38,7 +38,7 @@ class FileDataFormatConverter(DataFormatConverter):
         ...
 
 
-class BedToBigBedMultithreadedConverter(FileDataFormatConverter):
+class BedToBigBedConverter(FileDataFormatConverter):
     def __init__(self):
         super().__init__()
         self._logger = config_manager.get_app_config_manager()\
