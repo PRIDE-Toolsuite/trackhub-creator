@@ -12,6 +12,7 @@ This module offers converters between different formats
 """
 
 # App imports
+import config_manager
 from parallel.models import ParallelRunner
 
 
