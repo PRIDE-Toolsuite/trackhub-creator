@@ -11,15 +11,15 @@
 Exceptions module
 """
 
-from exceptions import AppException
+from parallel.exceptions import ParallelRunnerException
 
 
-class DataFormatConverterFactoryException(AppException):
+class DataFormatConverterFactoryException(ParallelRunnerException):
     def __init__(self, value):
         super().__init__(value)
 
 
-class DataFormatConverterException(AppException):
+class DataFormatConverterException(ParallelRunnerException):
     def __init__(self, value):
         super().__init__(value)
 
