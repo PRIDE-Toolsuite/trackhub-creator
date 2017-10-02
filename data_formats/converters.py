@@ -11,9 +11,15 @@
 This module offers converters between different formats
 """
 
+from parallel.models import ParallelRunner
+
 
 # Possible base class for data format converters
 class DataFormatConverter:
+    pass
+
+
+class FileDataFormatConverter:
     pass
 
 
