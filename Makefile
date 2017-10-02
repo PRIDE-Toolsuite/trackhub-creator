@@ -51,6 +51,7 @@ else
 	@echo "[UCSC] Downloading bedToBigBed for Mac OS X"
 	@wget -O bin/ucsc/bedToBigBed http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bedToBigBed
 endif
+	@chmod 750 bin/ucsc/bedToBigBed
 
 tmp:
 	@mkdir tmp
