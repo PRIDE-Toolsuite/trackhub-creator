@@ -105,6 +105,10 @@ class Service:
             self.__species_data_service = SpeciesService(self.__request_species_data())
         return self.__species_data_service
 
+    def get_chromosome_sizes_for_taxonomy(self, taxonomy_id):
+        # TODO
+        pass
+
     def get_ucsc_chromosome_sizes_for_taxonomy(self, taxonomy_id):
         # TODO
         pass
