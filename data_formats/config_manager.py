@@ -56,7 +56,9 @@ class ConfigurationService(config_manager.ConfigurationManager):
         Get absolute path to the binary tool to convert from 'bed' file to 'bigBed' file format
         :return: absolute path to 'bed to bigBed' conversion tool
         """
-        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(), os.path.join(self._CONFIG_UCSC_TOOLSUITE_SUBFOLDER_NAME, ))
+        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(),
+                            os.path.join(self._CONFIG_UCSC_TOOLSUITE_SUBFOLDER_NAME,
+                                         self._CONFIG_UCSC_TOOLSUITE_BEDTOBIGBED_BINARY_FILE_NAME))
 
 
 if __name__ == '__main__':
