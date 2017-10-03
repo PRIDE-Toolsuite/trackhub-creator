@@ -30,6 +30,8 @@ class DataFormatConverter(ParallelRunner):
     def __init__(self):
         super().__init__()
         self.conversion_status_error = False
+        self._stdout = []
+        self._stderr = []
 
     @abc.abstractmethod
     def get_conversion_output(self):
