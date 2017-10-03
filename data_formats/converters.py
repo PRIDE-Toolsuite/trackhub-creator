@@ -64,7 +64,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
     def _get_command_line_runner(self):
         ...
 
-    def _sort_bed_file(self, bed_file_path):
+    def _sort_bed_file(self, bed_file_path, sorted_bed_file_path):
         pass
 
     def _fetch_chromosome_sizes(self, taxonomy_id):
