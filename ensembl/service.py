@@ -114,7 +114,23 @@ class Service:
 
     def get_ucsc_chromosome_sizes_for_taxonomy(self, taxonomy_id):
         # TODO
-        pass
+        result = {}
+        for chromosome, length in self.get_chromosome_sizes_for_taxonomy(taxonomy_id):
+            try:
+                int(chromosome)
+                result["chr{}".format(chromosome)] = length
+                continue
+            except ValueError:
+                pass
+            if (chromosome == 'MT') \
+                    or (chromosome == 'X') \
+                    or (chromosome == 'Y'):
+                result["chr{}".format(chromosome[0])] = length
+                continue
+            # Scaffolding chromosomes are not included
+            self._logger.warning("For taxonomy ID #{}, skipping scaffolding chromosome length entry ({}, {})"
+                                 .format(taxonomy_id, chromosome, length))
+        return result
 
 
 if __name__ == '__main__':
