@@ -356,8 +356,8 @@ class BaseTrack:
     """
     _SEPARATOR_CHAR = ' '
     # Big Data file extensions
-    _BIG_DATA_FILE_BED_EXTENSION = '.bed'
-    _BIG_DATA_FILE_BIGBED_EXTENSION = '.bb'
+    _BIG_DATA_FILE_EXTENSION_BED = '.bed'
+    _BIG_DATA_FILE_EXTENSION_BIGBED = '.bb'
 
     def __init__(self, track, short_label, long_label):
         # Client side of the model
