@@ -13,10 +13,15 @@ Unit tests for Ensembl module
 
 import unittest
 # App modules
+import config_manager
 import ensembl.service
 
 
 class TestEnsemblService(unittest.TestCase):
+    def setUp(self):
+        self.logger = config_manager.get_app_config_manager() \
+            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+
     def test_test(self):
         """
         This test has been used just for setting up the unit testing subsystem.
@@ -29,6 +34,13 @@ class TestEnsemblService(unittest.TestCase):
         service = ensembl.service.get_service()
         current_release_number = service.get_release_number()
         print("Current release number ---> {}".format(current_release_number))
+
+    def test_chromosome_sizes(self):
+        taxonomy_ids = ['9606', '10090']
+        for taxonomy in taxonomy_ids:
+            chromosome_sizes = ensembl.service.get_service().get_chromosome_sizes_for_taxonomy(taxonomy)
+            self.assertIsNotNone(chromosome_sizes, "We got chromosome sizes")
+            self.logger.debug("Chromosome sizes for taxonomy '{}' ---> '{}'".format(taxonomy, str(chromosome_sizes)))
 
 
 if __name__ == '__main__':
