@@ -41,6 +41,10 @@ class ConfigurationService(config_manager.ConfigurationManager):
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def get_timeout_bed_to_bigbed(self):
+        """
+        Timeout for the conversion from bed to bigBed file format
+        :return: timeout in seconds
+        """
         return 3600
 
 
