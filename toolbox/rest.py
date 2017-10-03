@@ -14,7 +14,7 @@ Toolbox related to REST services
 import requests
 
 
-def make_rest_request(url):
+def make_rest_request_content_type_json(url):
     response = requests.get(url, headers={"Content-Type": "application/json"})
     if not response.ok:
         response.raise_for_status()
