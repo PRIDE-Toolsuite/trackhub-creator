@@ -24,6 +24,8 @@ from .exceptions import DataFormatConversionNotFinished
 class DataFormatConverterFactory:
     @staticmethod
     def get_bed_to_bigbed_converter(taxonomy_id, input_bed_file_path, output_big_bed_file_path):
+        # TODO - Improve the logic to automatically select between the different available strategies for this kind of
+        # TODO - conversion
         converter = BedToBigBedMultithreadedConverter()
         converter.taxonomy_id = taxonomy_id
         converter.file_path_source = input_bed_file_path
