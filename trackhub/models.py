@@ -426,6 +426,11 @@ class BaseTrack:
     def get_type(self):
         return self.__type
 
+    def get_type_string(self):
+        if self.get_type() == self._TRACK_TYPE_BIGBED:
+            return "{} {}".format(self.get_type(), self.__bigbed_addon)
+        return self.get_type()
+
     def get_big_data_url(self):
         return self.__big_data_url
 
