@@ -110,7 +110,7 @@ class Service:
         response_content = rest.make_rest_request_content_type_json(request_url)
         regions = response_content["top_level_region"]
         regions.sort(key=lambda r: r["name"])
-        return {r["name"]: r["length"] for r in regions}
+        return {region["name"]: region["length"] for region in regions}
 
     def get_ucsc_chromosome_sizes_for_taxonomy(self, taxonomy_id):
         # TODO
