@@ -42,6 +42,13 @@ class TestEnsemblService(unittest.TestCase):
             self.assertIsNotNone(chromosome_sizes, "We got chromosome sizes")
             self.logger.debug("Chromosome sizes for taxonomy '{}' ---> '{}'".format(taxonomy, str(chromosome_sizes)))
 
+    def test_ucsc_chromosome_sizes(self):
+        taxonomy_ids = ['9606', '10090']
+        for taxonomy in taxonomy_ids:
+            chromosome_sizes = ensembl.service.get_service().get_ucsc_chromosome_sizes_for_taxonomy(taxonomy)
+            self.assertIsNotNone(chromosome_sizes, "We got chromosome sizes")
+            self.logger.debug("Chromosome sizes for taxonomy '{}' ---> '{}'".format(taxonomy, str(chromosome_sizes)))
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
