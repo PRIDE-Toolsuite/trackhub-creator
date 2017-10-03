@@ -79,7 +79,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
         file_path_chromosome_sizes = "chromosome_sizes_{}.txt".format(self.taxonomy_id)
         # TODO - Conversion algorithm goes here -
         # TODO - Sort the .bed file
-
+        runner_sort = self._sort_bed_file(self.file_path_source, file_path_sorted_bed)
         # TODO - Fetch chromosome sizes for this .bed file
         # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
         pass
