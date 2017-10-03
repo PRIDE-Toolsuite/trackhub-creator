@@ -128,7 +128,7 @@ class Service:
                 result["chr{}".format(chromosome[0])] = length
                 continue
             # Scaffolding chromosomes are not included
-            self._logger.warning("For taxonomy ID #{}, skipping scaffolding chromosome length entry ({}, {})"
+            self._logger.warning("For taxonomy ID #{}, SKIPPING scaffolding chromosome length entry ({}, {})"
                                  .format(taxonomy_id, chromosome, length))
         return result
 
