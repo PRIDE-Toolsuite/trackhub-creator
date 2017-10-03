@@ -97,7 +97,8 @@ class BedToBigBedConverter(FileDataFormatConverter):
         chromosome_sizes = self._fetch_and_dump_chromosome_sizes(self.taxonomy_id, file_path_chromosome_sizes)
         runner_sort.wait()
         if not runner_sort.command_success:
-
+            self.conversion_status_error = True
+            return False
         # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
         pass
 
