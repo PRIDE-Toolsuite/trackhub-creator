@@ -16,4 +16,4 @@ import config_manager
 
 # Configuration file and configuration service singleton
 __configuration_file = None
-
+__configuration_service = None
