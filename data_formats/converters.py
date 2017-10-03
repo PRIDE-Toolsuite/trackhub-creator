@@ -14,6 +14,7 @@ This module offers converters between different formats
 import abc
 # App imports
 import config_manager
+import ensembl.service as ensembl_service
 from . import config_manager as module_config_manager
 from parallel.models import ParallelRunner, CommandLineRunnerFactory
 from .exceptions import DataFormatConversionNotFinished
@@ -72,13 +73,16 @@ class BedToBigBedConverter(FileDataFormatConverter):
         return runner
 
     def _fetch_chromosome_sizes(self, taxonomy_id, chromosome_sizes_file_path):
-        pass
+        chromosome_sizes = ensembl_service.get_service().get_ucsc_chromosome_sizes_for_taxonomy(taxonomy_id)
+        with open(chromosome_sizes_file_path, 'w') as wf:
+            for chromosome, size in chromosome_sizes.items():
+                wf.write("{}\t{}".format(chromosome, size))
 
     def _run(self):
         file_path_sorted_bed = "{}_sorted.bed".format(self.file_path_source[:self.file_path_source.rfind('.')])
         file_path_chromosome_sizes = "chromosome_sizes_{}.txt".format(self.taxonomy_id)
         # TODO - Conversion algorithm goes here -
-        # TODO - Sort the .bed file
+        # Sort the .bed file
         runner_sort = self._sort_bed_file(self.file_path_source, file_path_sorted_bed)
         # TODO - Fetch chromosome sizes for this .bed file
         # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
