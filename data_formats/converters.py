@@ -136,8 +136,10 @@ class BedToBigBedMultithreadedConverter(BedToBigBedConverter):
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
     def _get_conversion_details(self):
-        # TODO
-        pass
+        return "'bed' to 'bigBed' multithreaded converter, for taxonomy ID #{}, input file '{}', output file '{}'"\
+            .format(self.taxonomy_id,
+                    self.file_path_source,
+                    self.file_path_destination)
 
     def _get_command_line_runner(self):
         return CommandLineRunnerFactory.get_multithread_command_line_runner()
