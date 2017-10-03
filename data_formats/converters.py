@@ -66,7 +66,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
         self.taxonomy_id = ''
 
     @staticmethod
-    def get_bed_to_bigbed_conversion_command(self, input_file_path, chromosome_sizes_file_path, output_file_path):
+    def get_bed_to_bigbed_conversion_command(input_file_path, chromosome_sizes_file_path, output_file_path):
         return "time {} {} {} {}" \
             .format(
                 module_config_manager.get_configuration_service().get_file_path_binary_bed_to_bigbed_conversion_tool(),
@@ -105,8 +105,19 @@ class BedToBigBedConverter(FileDataFormatConverter):
         if not runner_sort.command_success:
             self.conversion_status_error = True
             return False
-        # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
-        pass
+        # Use bedToBigBed utility to create the .bb (bigBed) file
+        runner_conversion = self._get_command_line_runner()
+        runner_conversion.command = self.get_bed_to_bigbed_conversion_command(self.file_path_source,
+                                                                              file_path_chromosome_sizes,
+                                                                              self.file_path_destination)
+        runner_conversion.start()
+        runner_conversion.wait()
+        self._stdout.append(runner_conversion.get_stdout())
+        self._stderr.append(runner_conversion.get_stderr())
+        if not runner_conversion.command_success:
+            self.conversion_status_error = True
+            return False
+        return True
 
 
 # Leaves - actual implementations
