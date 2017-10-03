@@ -358,6 +358,8 @@ class BaseTrack:
     # Big Data file extensions
     _BIG_DATA_FILE_EXTENSION_BED = '.bed'
     _BIG_DATA_FILE_EXTENSION_BIGBED = '.bb'
+    # Track Types
+    _TRACK_TYPE_BED = 'bed'
 
     def __init__(self, track, short_label, long_label):
         # Client side of the model
