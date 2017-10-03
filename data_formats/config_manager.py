@@ -27,4 +27,8 @@ def set_configuration_file(config_file):
 
 
 class ConfigurationService(config_manager.ConfigurationManager):
-    pass
+    def __init__(self, configuration_object, configuration_file):
+        super().__init__(configuration_object, configuration_file)
+        self.logger = config_manager.get_app_config_manager()\
+            .get_logger_for("{}.{}".format(__name__, type(self).__name__))
+
