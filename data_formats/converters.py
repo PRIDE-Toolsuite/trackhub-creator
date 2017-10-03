@@ -72,7 +72,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
         runner.start()
         return runner
 
-    def _fetch_chromosome_sizes(self, taxonomy_id, chromosome_sizes_file_path):
+    def _fetch_and_dump_chromosome_sizes(self, taxonomy_id, chromosome_sizes_file_path):
         chromosome_sizes = ensembl_service.get_service().get_ucsc_chromosome_sizes_for_taxonomy(taxonomy_id)
         with open(chromosome_sizes_file_path, 'w') as wf:
             for chromosome, size in chromosome_sizes.items():
@@ -86,7 +86,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
         # Sort the .bed file
         runner_sort = self._sort_bed_file(self.file_path_source, file_path_sorted_bed)
         # Fetch chromosome sizes for this .bed file
-        chromosome_sizes = self._fetch_chromosome_sizes(self.taxonomy_id, file_path_chromosome_sizes)
+        chromosome_sizes = self._fetch_and_dump_chromosome_sizes(self.taxonomy_id, file_path_chromosome_sizes)
         # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
         pass
 
