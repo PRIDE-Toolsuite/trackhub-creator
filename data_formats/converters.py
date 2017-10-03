@@ -100,6 +100,8 @@ class BedToBigBedConverter(FileDataFormatConverter):
         # Fetch chromosome sizes for this .bed file
         chromosome_sizes = self._fetch_and_dump_chromosome_sizes(self.taxonomy_id, file_path_chromosome_sizes)
         runner_sort.wait()
+        self._stdout.append(runner_sort.get_stdout())
+        self._stderr.append(runner_sort.get_stderr())
         if not runner_sort.command_success:
             self.conversion_status_error = True
             return False
