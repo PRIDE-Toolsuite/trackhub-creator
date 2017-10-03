@@ -35,6 +35,8 @@ def get_configuration_service():
 
 
 class ConfigurationService(config_manager.ConfigurationManager):
+    _CONFIG_UCSC_TOOLSUITE_SUBFOLDER_NAME = 'ucsc'
+
     def __init__(self, configuration_object, configuration_file):
         super().__init__(configuration_object, configuration_file)
         self.logger = config_manager.get_app_config_manager() \
