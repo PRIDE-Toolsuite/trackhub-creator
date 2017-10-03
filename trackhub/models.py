@@ -21,7 +21,7 @@ import config_manager
 import ensembl.service
 from toolbox import general
 from toolbox.assembly import AssemblyMappingServiceFactory, AssemblyMappingServiceException
-from .exceptions import TrackHubLocalFilesystemExporterException
+from .exceptions import UnknownBigDataFileType
 from . import config_manager as module_config_manager
 
 
@@ -380,8 +380,13 @@ class BaseTrack:
                     key_value_to_str_if_not_none('longLabel', self.get_long_label(), self._SEPARATOR_CHAR, ''))
 
     def __identify_track_type_from_file(self, file_path):
-        # TODO - We return the default type right now, but this will change in the future
-        return 'bed'
+        # TODO - I should not identify the file type by looking at the extension, but by looking at the content via a
+        # TODO - specialised handler. It will be done like this at this iteration of the software
+        if file_path.endswith(self._BIG_DATA_FILE_EXTENSION_BED):
+            return self._TRACK_TYPE_BED
+        if file_path.endswith(self._BIG_DATA_FILE_EXTENSION_BIGBED):
+            return self._TRACK_TYPE_BIGBED
+        raise UnknownBigDataFileType("Unknown big data file type for '{}'".format(file_path))
 
     def set_type(self, file_path):
         self.__type = self.__identify_track_type_from_file(file_path)
