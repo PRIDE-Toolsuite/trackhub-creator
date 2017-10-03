@@ -11,6 +11,7 @@
 Module wide configuration management
 """
 
+import os
 # Application imports
 import config_manager
 
@@ -36,6 +37,7 @@ def get_configuration_service():
 
 class ConfigurationService(config_manager.ConfigurationManager):
     _CONFIG_UCSC_TOOLSUITE_SUBFOLDER_NAME = 'ucsc'
+    _CONFIG_UCSC_TOOLSUITE_BEDTOBIGBED_BINARY_FILE_NAME = 'bedToBigBed'
 
     def __init__(self, configuration_object, configuration_file):
         super().__init__(configuration_object, configuration_file)
@@ -54,7 +56,7 @@ class ConfigurationService(config_manager.ConfigurationManager):
         Get absolute path to the binary tool to convert from 'bed' file to 'bigBed' file format
         :return: absolute path to 'bed to bigBed' conversion tool
         """
-        pass
+        return os.path.join(config_manager.get_app_config_manager().get_folder_bin(), os.path.join(self._CONFIG_UCSC_TOOLSUITE_SUBFOLDER_NAME, ))
 
 
 if __name__ == '__main__':
