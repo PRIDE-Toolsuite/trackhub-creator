@@ -388,14 +388,14 @@ class BaseTrack:
         if file_path.endswith(self._BIG_DATA_FILE_EXTENSION_BED):
             with open(file_path) as f:
                 for line in f:
-                    number_of_columns = line.strip().split('\t')
+                    number_of_columns = len(line.strip().split('\t'))
                     if number_of_columns < 3:
                         raise BaseTrackException("BED format requires, at least, 3 columns, "
                                                  "only #{} identified in file '{}', sampled line '{}'"
                                                  .format(str(number_of_columns),
                                                          file_path,
                                                          line.strip()))
-                    elif (number_of_columns > 12):
+                    elif number_of_columns > 12:
                         self.__bigbed_addon = "{} +".format(str(number_of_columns))
                     else:
                         self.__bigbed_addon = str(number_of_columns)
