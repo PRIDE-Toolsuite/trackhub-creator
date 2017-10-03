@@ -67,6 +67,9 @@ class BedToBigBedConverter(FileDataFormatConverter):
     def _sort_bed_file(self, bed_file_path):
         pass
 
+    def _fetch_chromosome_sizes(self, taxonomy_id):
+        pass
+
     def _run(self):
         # TODO - Conversion algorithm goes here -
         # TODO - Sort the .bed file
