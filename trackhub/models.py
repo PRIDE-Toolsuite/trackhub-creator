@@ -211,6 +211,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 for track in tracks_with_non_empty_bed_files:
                     # Copy track file to assembly folder
                     # TODO - source of this
+                    # TODO - Instead of copying the file, if it is a BED file, perform conversion
                     big_data_file_name = os.path.basename(track.get_big_data_url())
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     shutil.copy(track.get_big_data_url(), destination_file_path)
