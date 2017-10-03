@@ -32,6 +32,10 @@ class DataFormatConverter(ParallelRunner):
         self.conversion_status_error = False
 
     @abc.abstractmethod
+    def get_conversion_output(self):
+        ...
+
+    @abc.abstractmethod
     def _get_conversion_details(self):
         ...
 
@@ -87,6 +91,9 @@ class BedToBigBedConverter(FileDataFormatConverter):
         runner_sort = self._sort_bed_file(self.file_path_source, file_path_sorted_bed)
         # Fetch chromosome sizes for this .bed file
         chromosome_sizes = self._fetch_and_dump_chromosome_sizes(self.taxonomy_id, file_path_chromosome_sizes)
+        runner_sort.wait()
+        if not runner_sort.command_success:
+
         # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
         pass
 
