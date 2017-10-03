@@ -65,7 +65,10 @@ class BedToBigBedConverter(FileDataFormatConverter):
         ...
 
     def _sort_bed_file(self, bed_file_path, sorted_bed_file_path):
-        pass
+        runner = self._get_command_line_runner()
+        runner.command = "time sort -k1,1 -k2,2n {} > {}".format(bed_file_path, sorted_bed_file_path)
+        runner.start()
+        return runner
 
     def _fetch_chromosome_sizes(self, taxonomy_id, chromosome_sizes_file_path):
         pass
