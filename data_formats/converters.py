@@ -33,9 +33,10 @@ class DataFormatConverter(ParallelRunner):
         self._stdout = []
         self._stderr = []
 
-    @abc.abstractmethod
     def get_conversion_output(self):
-        ...
+        if not self.is_done():
+            raise DataFormatConversionNotFinished("{} - NOT FINISHED YET".format(self._get_conversion_details))
+        return "\n".join(self._stdout)
 
     @abc.abstractmethod
     def get_conversion_output_error(self):
