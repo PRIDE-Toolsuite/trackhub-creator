@@ -115,7 +115,7 @@ class Service:
     def get_ucsc_chromosome_sizes_for_taxonomy(self, taxonomy_id):
         # TODO
         result = {}
-        for chromosome, length in self.get_chromosome_sizes_for_taxonomy(taxonomy_id):
+        for chromosome, length in self.get_chromosome_sizes_for_taxonomy(taxonomy_id).items():
             try:
                 int(chromosome)
                 result["chr{}".format(chromosome)] = length
