@@ -40,6 +40,9 @@ class ConfigurationService(config_manager.ConfigurationManager):
         self.logger = config_manager.get_app_config_manager() \
             .get_logger_for("{}.{}".format(__name__, type(self).__name__))
 
+    def get_timeout_bed_to_bigbed(self):
+        return 3600
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
