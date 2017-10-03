@@ -14,6 +14,7 @@ This module offers converters between different formats
 import abc
 # App imports
 import config_manager
+from . import config_manager as module_config_manager
 from parallel.models import ParallelRunner, CommandLineRunnerFactory
 from .exceptions import DataFormatConversionNotFinished
 
@@ -49,6 +50,15 @@ class FileDataFormatConverter(DataFormatConverter):
 class BedToBigBedConverter(FileDataFormatConverter):
     def __init__(self):
         super().__init__()
+
+    @staticmethod
+    def get_bed_to_bigbed_conversion_command(self, input_file_path, chromosome_sizes_file_path, output_file_path):
+        return "time {} {} {} {}" \
+            .format(
+                module_config_manager.get_configuration_service().get_file_path_binary_bed_to_bigbed_conversion_tool(),
+                input_file_path,
+                chromosome_sizes_file_path,
+                output_file_path)
 
     @abc.abstractmethod
     def _get_command_line_runner(self):
