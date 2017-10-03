@@ -64,6 +64,9 @@ class BedToBigBedConverter(FileDataFormatConverter):
     def _get_command_line_runner(self):
         ...
 
+    def _sort_bed_file(self, bed_file_path):
+        pass
+
     def _run(self):
         # TODO - Conversion algorithm goes here -
         # TODO - Sort the .bed file
