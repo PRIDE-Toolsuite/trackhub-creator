@@ -355,6 +355,7 @@ class BaseTrack:
     complex, at least according to the documentation available up to the date when this module was developed.
     """
     _SEPARATOR_CHAR = ' '
+    # Big Data file extensions
 
     def __init__(self, track, short_label, long_label):
         # Client side of the model
