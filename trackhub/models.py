@@ -377,7 +377,7 @@ class BaseTrack:
     def __str__(self):
         return "{}{}{}{}{}" \
             .format(key_value_to_str_if_not_none('track', self.get_track(), self._SEPARATOR_CHAR, '\n'),
-                    key_value_to_str_if_not_none('type', self.get_type(), self._SEPARATOR_CHAR, '\n'),
+                    key_value_to_str_if_not_none('type', self.get_type_string(), self._SEPARATOR_CHAR, '\n'),
                     key_value_to_str_if_not_none('bigDataUrl', self.get_big_data_url(), self._SEPARATOR_CHAR, '\n'),
                     key_value_to_str_if_not_none('shortLabel', self.get_short_label(), self._SEPARATOR_CHAR, '\n'),
                     key_value_to_str_if_not_none('longLabel', self.get_long_label(), self._SEPARATOR_CHAR, ''))
