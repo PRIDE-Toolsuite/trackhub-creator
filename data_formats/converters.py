@@ -74,8 +74,10 @@ class BedToBigBedConverter(FileDataFormatConverter):
         pass
 
     def _run(self):
+        file_path_sorted_bed = "{}_sorted.bed".format(self.file_path_source[:self.file_path_source.rfind('.')])
         # TODO - Conversion algorithm goes here -
         # TODO - Sort the .bed file
+        
         # TODO - Fetch chromosome sizes for this .bed file
         # TODO - Use bedToBigBed utility to create the .bb (bigBed) file
         pass
