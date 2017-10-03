@@ -36,6 +36,10 @@ class DataFormatConverter(ParallelRunner):
         ...
 
     @abc.abstractmethod
+    def get_conversion_output_error(self):
+        ...
+
+    @abc.abstractmethod
     def _get_conversion_details(self):
         ...
 
