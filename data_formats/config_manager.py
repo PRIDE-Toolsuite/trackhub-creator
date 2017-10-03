@@ -47,6 +47,9 @@ class ConfigurationService(config_manager.ConfigurationManager):
         """
         return 3600
 
+    def get_file_path_binary_bed_to_bigbed_conversion_tool(self):
+        pass
+
 
 if __name__ == '__main__':
     print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
