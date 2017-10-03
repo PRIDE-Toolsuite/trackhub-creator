@@ -22,7 +22,13 @@ from .exceptions import DataFormatConversionNotFinished
 
 # Factories
 class DataFormatConverterFactory:
-    pass
+    @staticmethod
+    def get_bed_to_bigbed_converter(taxonomy_id, input_bed_file_path, output_big_bed_file_path):
+        converter = BedToBigBedMultithreadedConverter()
+        converter.taxonomy_id = taxonomy_id
+        converter.file_path_source = input_bed_file_path
+        converter.file_path_destination = output_big_bed_file_path
+        return converter
 
 
 # Possible base class for data format converters
