@@ -21,7 +21,7 @@ import config_manager
 import ensembl.service
 from toolbox import general
 from toolbox.assembly import AssemblyMappingServiceFactory, AssemblyMappingServiceException
-from .exceptions import UnknownBigDataFileType
+from .exceptions import UnknownBigDataFileType, BaseTrackException
 from . import config_manager as module_config_manager
 
 
@@ -370,6 +370,9 @@ class BaseTrack:
         # Builder side of the model
         self.__type = None
         self.__big_data_url = None
+        # TODO - warning - shitty modeling here...
+        # This field reflects the <3, 12> [+/.]
+        self.__bigbed_addon = None
 
     def __str__(self):
         return "{}{}{}{}{}" \
@@ -383,6 +386,19 @@ class BaseTrack:
         # TODO - I should not identify the file type by looking at the extension, but by looking at the content via a
         # TODO - specialised handler. It will be done like this at this iteration of the software
         if file_path.endswith(self._BIG_DATA_FILE_EXTENSION_BED):
+            with open(file_path) as f:
+                for line in f:
+                    number_of_columns = line.strip().split('\t')
+                    if number_of_columns < 3:
+                        raise BaseTrackException("BED format requires, at least, 3 columns, "
+                                                 "only #{} identified in file '{}', sampled line '{}'"
+                                                 .format(str(number_of_columns),
+                                                         file_path,
+                                                         line.strip()))
+                    elif (number_of_columns > 12):
+                        self.__bigbed_addon = "{} +".format(str(number_of_columns))
+                    else:
+                        self.__bigbed_addon = str(number_of_columns)
             return self._TRACK_TYPE_BED
         if file_path.endswith(self._BIG_DATA_FILE_EXTENSION_BIGBED):
             return self._TRACK_TYPE_BIGBED
@@ -393,6 +409,7 @@ class BaseTrack:
 
     def set_big_data_url(self, big_data_url):
         self.__big_data_url = big_data_url
+        self.set_type(big_data_url)
 
     def get_track(self):
         return self.__track
