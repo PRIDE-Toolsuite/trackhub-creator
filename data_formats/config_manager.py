@@ -48,6 +48,10 @@ class ConfigurationService(config_manager.ConfigurationManager):
         return 3600
 
     def get_file_path_binary_bed_to_bigbed_conversion_tool(self):
+        """
+        Get absolute path to the binary tool to convert from 'bed' file to 'bigBed' file format
+        :return: absolute path to 'bed to bigBed' conversion tool
+        """
         pass
 
 
