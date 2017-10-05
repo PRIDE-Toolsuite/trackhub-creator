@@ -231,6 +231,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                                                                            destination_file_path)
                         converter.start()
                         converter.wait()
+                        # TODO - Parallelize this conversion
                     else:
                         shutil.copy(track.get_big_data_url(), destination_file_path)
                     # TODO - update the big data url with either the copied file or the newly built .bb (bigBed) file
