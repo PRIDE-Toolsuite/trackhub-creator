@@ -117,7 +117,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
             return False
         # Use bedToBigBed utility to create the .bb (bigBed) file
         runner_conversion = self._get_command_line_runner()
-        runner_conversion.command = self.get_bed_to_bigbed_conversion_command(self.file_path_source,
+        runner_conversion.command = self.get_bed_to_bigbed_conversion_command(file_path_sorted_bed,
                                                                               file_path_chromosome_sizes,
                                                                               self.file_path_destination)
         runner_conversion.start()
