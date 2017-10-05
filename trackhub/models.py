@@ -240,6 +240,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                                       converter.get_conversion_output_error()))
                             # TODO - Skip the track
                         # TODO - Parallelize this conversion
+                        # TODO - This code is now working, refactor it for leveraging parallelization in file conversion
                     else:
                         shutil.copy(track.get_big_data_url(), destination_file_path)
                     # TODO - update the big data url with either the copied file or the newly built .bb (bigBed) file
