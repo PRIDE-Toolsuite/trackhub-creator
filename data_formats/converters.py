@@ -97,7 +97,7 @@ class BedToBigBedConverter(FileDataFormatConverter):
         chromosome_sizes = ensembl_service.get_service().get_ucsc_chromosome_sizes_for_taxonomy(taxonomy_id)
         with open(chromosome_sizes_file_path, 'w') as wf:
             for chromosome, size in chromosome_sizes.items():
-                wf.write("{}\t{}".format(chromosome, size))
+                wf.write("{}\t{}\n".format(chromosome, size))
         return chromosome_sizes
 
     def _run(self):
