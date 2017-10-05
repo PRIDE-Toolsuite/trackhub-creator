@@ -386,6 +386,8 @@ class BaseTrack:
         # TODO - warning - shitty modeling here...
         # This field reflects the <3, 12> [+/.]
         self.__bigbed_addon = None
+        # NCBI Taxonomy for this track, this will be useful later
+        self.taxonomy_id = None
 
     def __str__(self):
         return "{}{}{}{}{}" \
