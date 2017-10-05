@@ -11,6 +11,7 @@
 This module offers converters between different formats
 """
 
+import os
 import abc
 # App imports
 import config_manager
@@ -101,7 +102,8 @@ class BedToBigBedConverter(FileDataFormatConverter):
 
     def _run(self):
         file_path_sorted_bed = "{}_sorted.bed".format(self.file_path_source[:self.file_path_source.rfind('.')])
-        file_path_chromosome_sizes = "chromosome_sizes_{}.txt".format(self.taxonomy_id)
+        file_path_chromosome_sizes = os.path.join(os.path.dirname(file_path_sorted_bed),
+                                                  "chromosome_sizes_{}.txt".format(self.taxonomy_id))
         # - Conversion algorithm goes here -
         # Sort the .bed file
         runner_sort = self._sort_bed_file(self.file_path_source, file_path_sorted_bed)
