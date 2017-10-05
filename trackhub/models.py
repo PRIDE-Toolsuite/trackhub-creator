@@ -364,7 +364,7 @@ class BaseTrack:
     _BIG_DATA_FILE_EXTENSION_BIGBED = '.bb'
     # Track Types
     TRACK_TYPE_BED = 'bed'
-    _TRACK_TYPE_BIGBED = 'bigBed'
+    TRACK_TYPE_BIGBED = 'bigBed'
 
     def __init__(self, track, short_label, long_label):
         # Client side of the model
@@ -405,7 +405,7 @@ class BaseTrack:
                         self.__bigbed_addon = str(number_of_columns)
             return self.TRACK_TYPE_BED
         if file_path.endswith(self._BIG_DATA_FILE_EXTENSION_BIGBED):
-            return self._TRACK_TYPE_BIGBED
+            return self.TRACK_TYPE_BIGBED
         raise UnknownBigDataFileType("Unknown big data file type for '{}'".format(file_path))
 
     def set_type(self, file_path):
@@ -431,7 +431,7 @@ class BaseTrack:
         return self.__type
 
     def get_type_string(self):
-        if self.get_type() == self._TRACK_TYPE_BIGBED:
+        if self.get_type() == self.TRACK_TYPE_BIGBED:
             return "{} {}".format(self.get_type(), self.__bigbed_addon)
         return self.get_type()
 
