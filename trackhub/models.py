@@ -20,6 +20,7 @@ from abc import ABCMeta, abstractmethod
 import config_manager
 import ensembl.service
 from toolbox import general
+from data_formats.converters import DataFormatConverterFactory
 from toolbox.assembly import AssemblyMappingServiceFactory, AssemblyMappingServiceException
 from .exceptions import UnknownBigDataFileType, BaseTrackException
 from . import config_manager as module_config_manager
