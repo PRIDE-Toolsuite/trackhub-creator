@@ -231,6 +231,14 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                                                                            destination_file_path)
                         converter.start()
                         converter.wait()
+                        if converter.conversion_status_error:
+                            self.logger.error("ERROR Converting 'bed' to 'bigBed', SKIPPING TRACK '{}' for taxonomy #{}"
+                                              " ---> STDOUT: {} --- STDERR: {}"
+                                              .format(track.get_track(),
+                                                      track.taxonomy_id,
+                                                      converter.get_conversion_output(),
+                                                      converter.get_conversion_output_error()))
+                            # TODO - Skip the track
                         # TODO - Parallelize this conversion
                     else:
                         shutil.copy(track.get_big_data_url(), destination_file_path)
