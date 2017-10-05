@@ -222,6 +222,8 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                         destination_file_path = \
                             os.path.join(assembly_folder,
                                          "{}.bb".format(big_data_file_name[:big_data_file_name.rfind(".")]))
+                        # The new name for the big data file
+                        big_data_file_name = os.path.basename(destination_file_path)
                     else:
                         shutil.copy(track.get_big_data_url(), destination_file_path)
                     # TODO - update the big data url with either the copied file or the newly built .bb (bigBed) file
