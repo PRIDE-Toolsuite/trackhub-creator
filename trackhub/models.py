@@ -214,7 +214,11 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                     # Instead of copying the file, if it is a BED file, perform conversion -
                     # Get the original big data url
                     big_data_file_name = os.path.basename(track.get_big_data_url())
-                    # TODO - if track type is BED, workout the destination file as bigbed and do not copy the data, convert it
+                    # if track type is BED, workout the destination file as bigbed and do not copy the data, convert it
+                    if track.get_type() == BaseTrack.TRACK_TYPE_BED:
+                        pass
+                    else:
+                        pass
                     # TODO - update the big data url with either the copied file or the newly built .bb (bigBed) file
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     shutil.copy(track.get_big_data_url(), destination_file_path)
