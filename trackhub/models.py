@@ -255,8 +255,12 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
-                # TODO - Add the tracks to the collector
-                track_collector_exporter.export_from_track_collection(tracks_with_non_empty_bed_files)
+                # Add successful tracks
+                track_collector_exporter.export_from_track_collection([track for track, converter
+                                                                       in track_converter_map.items()
+                                                                       if not converter
+                                                                       or (not converter.wait()
+                                                                           and converter.is_conversion_ok())])
                 # Add assembly entry to genomes.txt files within trackhub root folder
                 assembly_mapping[ucsc_assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
                                                                os.path.basename(trackdb_file_path))
