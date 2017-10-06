@@ -249,10 +249,10 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                     track.get_track()))
                     # Apparently, 'blank spaces' are not allowed in the track names (UCSC)
                     track.set_track(track.get_track().replace(' ', '_'))
-
                 # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
+                # TODO - Add the tracks to the collector
                 track_collector_exporter.export_from_track_collection(tracks_with_non_empty_bed_files)
                 # Add assembly entry to genomes.txt files within trackhub root folder
                 assembly_mapping[ucsc_assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
