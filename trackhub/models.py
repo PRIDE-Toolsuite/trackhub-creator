@@ -212,6 +212,10 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 # The following map will contain the tracks that are ready for being added to the collector. If a track
                 # has no converter associated, then it can be added with no problem, but if it has a converter, we need
                 # to wait for it to finish the conversion process before we can add the track to the collector
+                # TODO - Apparently, there's usually just a couple of tracks per assembly (without PTMs and with PTMs),
+                # TODO - this part can be parallelized even further by making a map <assembly, <track, converter>> that
+                # TODO - will contain all the processed tracks for all the assemblies, so all the conversions happen in
+                # TODO - parallel. Then, iterating over this would produce the final genomes.txt file
                 track_converter_map = {}
                 for track in tracks_with_non_empty_bed_files:
                     # Copy track file to assembly folder
