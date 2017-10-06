@@ -59,7 +59,7 @@ class DataFormatConverter(ParallelRunner):
     def is_conversion_ok(self):
         if not self.is_done():
             raise DataFormatConversionNotFinished("{} - NOT FINISHED YET".format(self._get_conversion_details))
-        return self.conversion_status_error or super().is_error()
+        return not (self.conversion_status_error or super().is_error())
 
 
 class FileDataFormatConverter(DataFormatConverter):
