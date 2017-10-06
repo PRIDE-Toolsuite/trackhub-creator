@@ -222,7 +222,8 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                     # Default destination for the big data file is just copying it
                     destination_file_path = os.path.join(assembly_folder, big_data_file_name)
                     # if track type is BED, workout the destination file as bigbed and do not copy the data, convert it
-                    if (track.get_type() == BaseTrack.TRACK_TYPE_BED)\
+                    converter = None
+                    if (track.get_type() == BaseTrack.TRACK_TYPE_BED) \
                             and track.taxonomy_id:
                         destination_file_path = \
                             os.path.join(assembly_folder,
@@ -249,6 +250,8 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                     track.get_track()))
                     # Apparently, 'blank spaces' are not allowed in the track names (UCSC)
                     track.set_track(track.get_track().replace(' ', '_'))
+                    # Add the track to the map
+                    track_converter_map[track] = converter
                 # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
