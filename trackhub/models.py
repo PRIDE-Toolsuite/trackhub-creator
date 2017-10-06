@@ -256,11 +256,24 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
                 # Add successful tracks
-                track_collector_exporter.export_from_track_collection([track for track, converter
-                                                                       in track_converter_map.items()
-                                                                       if not converter
-                                                                       or (not converter.wait()
-                                                                           and converter.is_conversion_ok())])
+                successful_tracks = []
+                for track, converter in track_converter_map.items():
+                    if converter:
+                        converter.wait()
+                        if not converter.is_conversion_ok():
+                            self.logger.error("SKIP TRACK for Assembly '{} ({})' ---> "
+                                              "Track '{}' Big Data File FAILED conversion process - "
+                                              "STDOUT '{}', STDERR '{}'"
+                                              .format(assembly,
+                                                      ucsc_assembly,
+                                                      track.get_track(),
+                                                      converter.get_conversion_output(),
+                                                      converter.get_conversion_output_error()))
+                            # Skip this track
+                            continue
+                    # Add the track to the successful tracks list
+                    successful_tracks.append(track)
+                track_collector_exporter.export_from_track_collection(successful_tracks)
                 # Add assembly entry to genomes.txt files within trackhub root folder
                 assembly_mapping[ucsc_assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
                                                                os.path.basename(trackdb_file_path))
