@@ -238,7 +238,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                         converter.start()
                     else:
                         shutil.copy(track.get_big_data_url(), destination_file_path)
-                    # TODO - update the big data url with either the copied file or the newly built .bb (bigBed) file
+                    # Update the big data url with either the copied file or the newly built .bb (bigBed) file
                     # Modify the track (irreversible) to point to the big data file relative to the trackDB.txt file
                     # path
                     new_big_data_url = big_data_file_name
