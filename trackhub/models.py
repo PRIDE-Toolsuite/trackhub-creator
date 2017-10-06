@@ -209,6 +209,9 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                          ucsc_assembly,
                                          assembly_folder))
                 # Per track in its track collector, we'll process only those tracks with non-empty big data files
+                # The following map will contain the tracks that are ready for being added to the collector. If a track
+                # has no converter associated, then it can be added with no problem, but if it has a converter, we need
+                # to wait for it to finish the conversion process before we can add the track to the collector
                 track_converter_map = {}
                 for track in tracks_with_non_empty_bed_files:
                     # Copy track file to assembly folder
