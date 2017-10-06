@@ -209,6 +209,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                          ucsc_assembly,
                                          assembly_folder))
                 # Per track in its track collector, we'll process only those tracks with non-empty big data files
+                track_converter_map = {}
                 for track in tracks_with_non_empty_bed_files:
                     # Copy track file to assembly folder
                     # TODO - source of this
@@ -255,6 +256,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                     track.get_track()))
                     # Apparently, 'blank spaces' are not allowed in the track names (UCSC)
                     track.set_track(track.get_track().replace(' ', '_'))
+
                 # Export trackDB.txt with the current set of 'valid' tracks
                 trackdb_file_path = os.path.join(assembly_folder, 'trackDb.txt')
                 track_collector_exporter = TrackCollectorFileExporter(trackdb_file_path)
