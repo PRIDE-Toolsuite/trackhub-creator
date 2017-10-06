@@ -233,18 +233,8 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                         converter = DataFormatConverterFactory.get_bed_to_bigbed_converter(track.taxonomy_id,
                                                                                            track.get_big_data_url(),
                                                                                            destination_file_path)
+                        # We start the converter
                         converter.start()
-                        converter.wait()
-                        if converter.conversion_status_error:
-                            self.logger.error("ERROR Converting 'bed' to 'bigBed', SKIPPING TRACK '{}' for taxonomy #{}"
-                                              " ---> STDOUT: {} --- STDERR: {}"
-                                              .format(track.get_track(),
-                                                      track.taxonomy_id,
-                                                      converter.get_conversion_output(),
-                                                      converter.get_conversion_output_error()))
-                            # TODO - Skip the track
-                        # TODO - Parallelize this conversion
-                        # TODO - This code is now working, refactor it for leveraging parallelization in file conversion
                     else:
                         shutil.copy(track.get_big_data_url(), destination_file_path)
                     # TODO - update the big data url with either the copied file or the newly built .bb (bigBed) file
