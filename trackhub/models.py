@@ -409,6 +409,7 @@ class BaseTrack:
     _BIG_DATA_FILE_EXTENSION_BIGBED = '.bb'
     # Big Data file format information
     _BIG_DATA_BED_MAX_NUMBER_OF_COLUMNS = 12
+    _BIG_DATA_BED_MIN_NUMBER_OF_COLUMNS = 3
     # Track Types
     TRACK_TYPE_BED = 'bed'
     TRACK_TYPE_BIGBED = 'bigBed'
