@@ -45,7 +45,7 @@ class DataFormatConverter(ParallelRunner):
     def get_conversion_output(self):
         if not self.is_done():
             raise DataFormatConversionNotFinished("{} - NOT FINISHED YET".format(self._get_conversion_details))
-        return "\n".join(self._stdout)
+        return "\n".join([item.decode() for item in self._stdout])
 
     def get_conversion_output_error(self):
         if not self.is_done():
