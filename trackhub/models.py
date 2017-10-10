@@ -319,6 +319,7 @@ class TrackHubBuilder(metaclass=ABCMeta):
         self.logger = config_manager.get_app_config_manager().get_logger_for(__name__)
         self.track_hub = track_hub_descriptor
         self.assemblies = {}
+        self.invalid_assemblies = {}
 
     @abstractmethod
     def _create_track_collector(self):
