@@ -201,6 +201,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                     self.logger.warning("Assembly '{} ({})' contains ALL EMPTY BIG DATA FILE TRACKS -- SKIPPED --"
                                         .format(assembly,
                                                 ucsc_assembly))
+                    trackhub_builder.invalidate_assembly(assembly)
                     continue
                 assembly_folder = os.path.join(self.track_hub_destination_folder, ucsc_assembly)
                 # Create the folder for the assembly
