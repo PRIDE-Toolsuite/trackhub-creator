@@ -342,7 +342,7 @@ class TrackHubBuilder(metaclass=ABCMeta):
         else:
             self.logger.warning("INVALIDATING Assembly '{}', that contains #{} tracks: {}"
                               .format(assembly,
-                                      len(self.assemblies[assembly]),
+                                      len(self.assemblies.track_collector.get_tracks()),
                                       ",".join([track.get_track() for track in self.assemblies[assembly]])))
             self.invalid_assemblies[assembly] = self.assemblies[assembly]
             self.assemblies.pop(assembly)
