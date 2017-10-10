@@ -12,6 +12,7 @@ This module models the trackhub registry
 """
 
 import json
+import time
 import requests
 # App imports
 import config_manager
@@ -140,12 +141,22 @@ class TrackhubRegistryService:
                                               self.__TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB)
         self.logger.debug("REGISTER TRACKHUB, endpoint '{}', payload '{}'".format(api_register_endpoint, payload))
         try:
-            # Register Trackhub
-            response = requests.post(api_register_endpoint,
-                                     headers=headers, json=payload, verify=True)
-            if not response.ok:
-                raise trackhub_exceptions.TrackhubRegistryServiceException(
-                    "TRACKHUB REGISTRATION ERROR '{}', HTTP status '{}'".format(response.text, response.status_code))
+            try_counter = 10
+            while try_counter:
+                try_counter -= 1
+                self.logger.error("<--- TRACKHUB REGISTRATION ATTEMPT (#{} attempts left) --->".format(try_counter))
+                # Register Trackhub
+                response = requests.post(api_register_endpoint,
+                                         headers=headers, json=payload, verify=True)
+                if response.ok:
+                    self.logger.info("HOLY CRAP! Trackhub REGISTERED!, #{} attempts left".format(try_counter))
+                    break
+                if not response.ok and (not try_counter):
+                    raise trackhub_exceptions.TrackhubRegistryServiceException(
+                        "TRACKHUB REGISTRATION ERROR '{}', HTTP status '{}'"
+                            .format(response.text, response.status_code))
+                self.logger.error("<xxx FAILED ATTEMPT to Register Trackhub !!! xxx>")
+                time.sleep(10)
         finally:
             self.__logout()
         # Analyze response
