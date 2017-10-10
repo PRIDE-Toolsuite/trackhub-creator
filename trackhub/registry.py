@@ -51,6 +51,7 @@ class TrackhubRegistryRequestBodyModel:
         return {'url': self.url,
                 'public': self.public,
                 'type': self.type}
+        # TODO - Refactor this once the testing with trackhubregistry.org is done and verified
         # ,'assemblies': self.assembly_accession_map}
 
     def __str__(self):
