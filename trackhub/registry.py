@@ -156,7 +156,8 @@ class TrackhubRegistryService:
                     raise trackhub_exceptions.TrackhubRegistryServiceException(
                         "TRACKHUB REGISTRATION ERROR '{}', HTTP status '{}'"
                             .format(response.text, response.status_code))
-                self.logger.error("<xxx FAILED ATTEMPT to Register Trackhub !!! xxx>")
+                self.logger.error("<xxx FAILED ATTEMPT to Register Trackhub !!! xxx> HTTP Status '{}' - Response: '{}'"
+                                  .format(response.status_code, response.text))
                 # TODO - magic number here!!! OMG!!!
                 time.sleep(10)
         finally:
