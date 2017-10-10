@@ -141,6 +141,7 @@ class TrackhubRegistryService:
                                               self.__TRACKHUB_REGISTRY_API_SUBPATH_TRACKHUB)
         self.logger.debug("REGISTER TRACKHUB, endpoint '{}', payload '{}'".format(api_register_endpoint, payload))
         try:
+            # TODO - magic number here!!! OMG!!!
             try_counter = 10
             while try_counter:
                 try_counter -= 1
@@ -156,6 +157,7 @@ class TrackhubRegistryService:
                         "TRACKHUB REGISTRATION ERROR '{}', HTTP status '{}'"
                             .format(response.text, response.status_code))
                 self.logger.error("<xxx FAILED ATTEMPT to Register Trackhub !!! xxx>")
+                # TODO - magic number here!!! OMG!!!
                 time.sleep(10)
         finally:
             self.__logout()
