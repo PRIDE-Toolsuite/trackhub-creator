@@ -331,6 +331,20 @@ class TrackHubBuilder(metaclass=ABCMeta):
             self.assemblies[assembly] = TrackHubGenomeAssembly(assembly, self._create_track_collector())
         self.assemblies[assembly].track_collector.add_track(track)
 
+    def invalidate_assembly(self, assembly):
+        if assembly not in self.assemblies:
+            self.logger.error("CANNOT Invalidate assembly '{}', because it is not present in this builder"
+                              .format(assembly))
+        elif assembly in self.invalid_assemblies:
+            self.logger.error("ALREADY INVALID assembly '{}'".format(assembly))
+        else:
+            self.logger.warning("INVALIDATING Assembly '{}', that contains #{} tracks: {}"
+                              .format(assembly,
+                                      len(self.assemblies[assembly]),
+                                      ",".join([track.get_track() for track in self.assemblies[assembly]])))
+            self.invalid_assemblies[assembly] = self.assemblies[assembly]
+            self.assemblies.pop(assembly)
+
     @abstractmethod
     def accept_exporter(self, trackhub_exporter):
         ...
