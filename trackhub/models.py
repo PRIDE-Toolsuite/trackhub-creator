@@ -181,7 +181,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
             assembly_mapping = {}
             assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
             ensembl_species_service = ensembl.service.get_service().get_species_data_service()
-            for assembly in trackhub_builder.assemblies:
+            for assembly in dict(trackhub_builder.assemblies):
                 try:
                     ucsc_assembly = assembly_mapping_service \
                         .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_service
@@ -190,6 +190,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 except AssemblyMappingServiceException as e:
                     self.logger.error("ERROR while mapping Ensembl Assembly '{}' - SKIPPING THIS ASSEMBLY - xxx> '{}'"
                                       .format(assembly, e.value))
+                    trackhub_builder.invalidate_assembly(assembly)
                     continue
                 self.logger.warning("Ensembl Assembly '{}' --- mapped_to ---> UCSC Assembly '{}'"
                                     .format(assembly, ucsc_assembly))
