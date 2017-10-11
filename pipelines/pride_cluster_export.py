@@ -611,7 +611,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             # To calculate the relative path, we remove the root part of the trackhub folder path,
             # e.g. '/nfs/pride/pride-cluster/trackhubs' from '/nfs/pride/pride-cluster/trackhubs/2017-08'
             # to obtain '/2017-08' that we can attach to the end of the base public URL for the trackhubs
-            relative_path = ''
             # Default base folder is the parent folder of the trackhub destination folder
             base_folder = os.path.dirname(self.__trackhub_destination_folder)
             if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
