@@ -616,13 +616,13 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             if self._get_configuration_manager().get_folder_pride_cluster_trackhubs():
                 # If a pride cluster folder has been specified, we do it relative to that
                 base_folder = self._get_configuration_manager().get_folder_pride_cluster_trackhubs()
-            relative_path = self.__trackhub_destination_folder.replace(base_folder, '')
+            # relative_path = self.__trackhub_destination_folder.replace(base_folder, '')
             # URL to the hub.txt file within the root of the trackhub
-            trackhub_public_url = "{}{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
-                                                   relative_path,
-                                                   os.path.basename(trackhub_exporter
-                                                                    .export_summary
-                                                                    .track_hub_descriptor_file_path))
+            trackhub_public_url = "{}/{}/{}".format(self._get_configuration_manager().get_url_pride_cluster_trackhubs(),
+                                                    "latest",
+                                                    os.path.basename(trackhub_exporter
+                                                                     .export_summary
+                                                                     .track_hub_descriptor_file_path))
         self._get_logger().info("Trackhub Public URL is '{}'".format(trackhub_public_url))
         return trackhub_public_url
 
