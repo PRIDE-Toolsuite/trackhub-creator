@@ -442,7 +442,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                                                      pogo_runner.get_pogo_run_command()))
                     # We skip this file / taxonomy, as we have ONE .pogo file per taxonomy
                     continue
-                if taxonomy in pogo_run_results:
+                if pogo_runner.ncbi_taxonomy_id in pogo_run_results:
                     self._get_logger().error("DUPLICATED TAXONOMY ENTRY ERROR "
                                              "when registering successful run of PoGo on input file '{}', "
                                              "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
