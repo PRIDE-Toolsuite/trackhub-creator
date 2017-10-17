@@ -289,7 +289,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
             with open(genomes_file_path, 'w') as wf:
                 for assembly in assembly_mapping:
                     wf.write("genome {}\n"
-                             "trackDb {}\n"
+                             "trackDb {}\n\n"
                              .format(assembly, assembly_mapping[assembly]))
             self.logger.info("Genomes file with per-assembly data exported to '{}'".format(genomes_file_path))
             # Prepare summary object
