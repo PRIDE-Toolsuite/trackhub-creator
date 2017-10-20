@@ -17,7 +17,7 @@ can be seen on this sample:
   "trackHubType" : "PROTEOMICS",
   "trackHubEmail" : "pride-support@ebi.ac.uk",
   "trackHubInternalAbsolutePath" : "...",
-  "TrackhubCreationReportFilePath": "...",
+  "trackhubCreationReportFilePath": "...",
   "trackMaps" : [ {
     "trackName" : "PXD000625_10090_Original",
     "trackShortLabel" : "<a href=\"http://www.ebi.ac.uk/pride/archive/projects/PXD000625\">PXD000625</a> - Mus musc...",
@@ -146,7 +146,7 @@ class ProjectTrackhubDescriptor:
     _PROJECT_DATA_FILE_KEY_TRACKHUB_HUB_TYPE = 'trackHubType'
     _PROJECT_DATA_FILE_KEY_TRACKHUB_EMAIL = 'trackHubEmail'
     _PROJECT_DATA_FILE_KEY_TRACKHUB_INTERNAL_ABSOLUTE_PATH = 'trackHubInternalAbsolutePath'
-    _PROJECT_DATA_FILE_KEY_TRACKHUB_REPORT_FILE = 'TrackhubCreationReportFilePath'
+    _PROJECT_DATA_FILE_KEY_TRACKHUB_REPORT_FILE = 'trackhubCreationReportFilePath'
     _PROJECT_DATA_FILE_KEY_TRACKHUB_SECTION_TRACKMAPS = 'trackMaps'
 
     def __init__(self, project_data_file_path):
