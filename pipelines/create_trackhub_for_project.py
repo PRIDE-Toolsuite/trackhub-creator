@@ -22,7 +22,7 @@ can be seen on this sample:
     "trackName" : "PXD000625_10090_Original",
     "trackShortLabel" : "<a href=\"http://www.ebi.ac.uk/pride/archive/projects/PXD000625\">PXD000625</a> - Mus musc...",
     "trackLongLabel" : "Experimental design For the label-free proteome analysis 17 mice were used composed of 5 ...",
-    "trackSpecie" : "10090",
+    "trackSpecies" : "10090",
     "pogoFile" : "..."
   } ]
 }
@@ -107,7 +107,7 @@ class ProjectTrackDescriptor:
     _PROJECT_DATA_FILE_KEY_TRACK_NAME = 'trackName'
     _PROJECT_DATA_FILE_KEY_TRACK_SHORT_LABEL = 'trackShortLabel'
     _PROJECT_DATA_FILE_KEY_TRACK_LONG_LABEL = 'trackLongLabel'
-    _PROJECT_DATA_FILE_KEY_TRACK_SPECIES = 'trackSpecie'
+    _PROJECT_DATA_FILE_KEY_TRACK_SPECIES = 'trackSpecies'
     _PROJECT_DATA_FILE_KEY_TRACK_POGO_FILE_PATH = 'pogoFile'
 
     def __init__(self, project_track_descriptor_object):
