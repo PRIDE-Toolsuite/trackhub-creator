@@ -383,7 +383,12 @@ class DataDownloadService:
             self._get_logger().debug("Creating folder if it doesn't exist - '{}'"
                                      .format(self.get_local_path_ensembl_release()))
             general.check_create_folders([self.get_local_path_ensembl_release()])
-        general.create_latest_symlink_overwrite(self.get_local_path_ensembl_release())
+        # When running multiple instances of the pipeline, this may potentially create a race condition between the
+        # different instances of the pipeline wanting to update the 'latest' symlink that points to the current Ensembl
+        # release. Taking into account that this applications is not using that symlink to access the latest Ensembl
+        # release data, but a service wrapper that finds out which is the latest release, it can be safely removed from
+        # here.
+        # general.create_latest_symlink_overwrite(self.get_local_path_ensembl_release())
 
     def __get_subpath_fasta_for_species(self, taxonomy_id):
         """
