@@ -27,12 +27,10 @@ def make_rest_request_content_type_json(url):
         n_attempts -= 1
         response = requests.get(url, headers={"Content-Type": "application/json"})
         if response.ok:
-            break
+            return response.json()
         # Random wait - TODO - Another magic number!!!
         time.sleep(random.randint(10))
-    if not response.ok:
-        response.raise_for_status()
-    return response.json()
+    response.raise_for_status()
 
 
 if __name__ == '__main__':
