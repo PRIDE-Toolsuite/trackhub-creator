@@ -21,7 +21,7 @@ random.seed(time.time())
 
 def make_rest_request_content_type_json(url):
     # TODO - Magic number here!!!
-    n_attempts = 10
+    n_attempts = 42
     response = None
     while n_attempts:
         n_attempts -= 1
