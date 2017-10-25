@@ -29,6 +29,8 @@ def make_rest_request_content_type_json(url):
             response = requests.get(url, headers={"Content-Type": "application/json"})
         except Exception as e:
             # Any possible exception counts towards the attempt counter
+            # Random wait - TODO - Another magic number!!!
+            time.sleep(random.randint(30))
             continue
         if response.ok:
             return response.json()
