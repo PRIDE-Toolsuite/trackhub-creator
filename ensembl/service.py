@@ -106,6 +106,8 @@ class Service:
         return self.__species_data_service
 
     def get_chromosome_sizes_for_taxonomy(self, taxonomy_id):
+        # TODO - Add multiple attempts with random wait between them, sometimes github fails or
+        # TODO - limits the number of requests
         request_url = "{}/{}/{}".format(self._get_config_manager().get_api_server(), "info/assembly", taxonomy_id)
         response_content = rest.make_rest_request_content_type_json(request_url)
         regions = response_content["top_level_region"]
