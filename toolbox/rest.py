@@ -11,11 +11,15 @@
 Toolbox related to REST services
 """
 
+import time
+import random
 import requests
+
+# Initialize pseudo-random number generator
+random.seed(time.time())
 
 
 def make_rest_request_content_type_json(url):
-    # TODO - Add multiple attempts with random timeouts
     # TODO - Magic number here!!!
     n_attempts = 10
     response = None
@@ -24,7 +28,8 @@ def make_rest_request_content_type_json(url):
         response = requests.get(url, headers={"Content-Type": "application/json"})
         if response.ok:
             break
-        # TODO - Random wait
+        # Random wait - TODO - Another magic number!!!
+        time.sleep(random.randint(10))
     if not response.ok:
         response.raise_for_status()
     return response.json()
