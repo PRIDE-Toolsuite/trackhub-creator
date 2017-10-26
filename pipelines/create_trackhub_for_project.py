@@ -246,7 +246,12 @@ class PipelineResult:
         self.success_messages.append(success_message)
 
     def add_warning_message(self, warning_message):
-        pass
+        """
+        This will add messages to the pipeline report, but it doesn't change its status.
+        :param warning_message: warning message to add
+        :return: no return value
+        """
+        self.warning_messages.append(warning_message)
 
     def add_log_files(self, log_files):
         """
