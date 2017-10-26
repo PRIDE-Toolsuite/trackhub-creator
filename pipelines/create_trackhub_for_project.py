@@ -245,6 +245,9 @@ class PipelineResult:
         """
         self.success_messages.append(success_message)
 
+    def add_warning_message(self, warning_message):
+        pass
+
     def add_log_files(self, log_files):
         """
         Add all the log files produce by the pipeline to its final report
