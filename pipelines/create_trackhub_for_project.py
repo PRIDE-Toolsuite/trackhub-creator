@@ -264,6 +264,7 @@ class PipelineResult:
     def __str__(self):
         return json.dumps({'status': self.status,
                            'success_messages': self.success_messages,
+                           'warning_messages': self.warning_messages,
                            'error_messages': self.error_messages,
                            'hub_descriptor_file_path': self.hub_descriptor_file_path,
                            'pipeline_session_working_dir': self.file_path_pipeline_session,
