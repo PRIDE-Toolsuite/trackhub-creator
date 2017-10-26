@@ -211,6 +211,7 @@ class PipelineResult:
     """
     _VALUE_STATUS_SUCCESS = 'SUCCESS'
     _VALUE_STATUS_ERROR = 'ERROR'
+    _VALUE_STATUS_WARNING = 'WARNING'
 
     def __init__(self):
         self.status = self._VALUE_STATUS_SUCCESS
