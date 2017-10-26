@@ -410,6 +410,11 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                 pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
         except NoMoreAliveRunnersException as e:
             self._get_logger().debug("All PoGo runners results collected!")
+        if len(pogo_run_results) == 0:
+            message = "ALL PoGo files FAILED for this project!!!"
+            self._get_logger().error(message)
+            self.__pipeline_result_object.add_error_message(message)
+            self.set_pipeline_status_fail()
         return pogo_run_results
 
     # Override
