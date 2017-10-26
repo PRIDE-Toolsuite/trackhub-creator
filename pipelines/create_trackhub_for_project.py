@@ -248,11 +248,14 @@ class PipelineResult:
 
     def add_warning_message(self, warning_message):
         """
-        This will add messages to the pipeline report, but it doesn't change its status.
+        This will add warning messages to the pipeline report, setting the status to 'WARNING' if it wasn't in 'ERROR'
+        status.
         :param warning_message: warning message to add
         :return: no return value
         """
         self.warning_messages.append(warning_message)
+        if self.status != self._VALUE_STATUS_ERROR:
+            self.status = self._VALUE_STATUS_WARNING
 
     def add_log_files(self, log_files):
         """
