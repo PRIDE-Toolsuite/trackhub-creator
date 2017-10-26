@@ -307,6 +307,10 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                 if ensembl_service.get_species_data_service().get_species_entry_for_taxonomy_id(
                         project_track_descriptor.get_track_species()):
                     self.__valid_project_tracks.append(project_track_descriptor)
+                else:
+                    self.__pipeline_result_object\
+                        .add_warning_message("MISSING Taxonomy #{} on Ensembl"
+                                             .format(project_track_descriptor.get_track_species()))
         return self.__valid_project_tracks
 
     def __get_index_project_track_for_taxonomy_id(self):
