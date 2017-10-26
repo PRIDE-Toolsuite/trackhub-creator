@@ -216,6 +216,7 @@ class PipelineResult:
         self.status = self._VALUE_STATUS_SUCCESS
         self.error_messages = []
         self.success_messages = []
+        self.warning_messages = []
         self.hub_descriptor_file_path = ""
         # Absolute file path to the folder that represents the running session of the pipeline
         self.file_path_pipeline_session = ""
