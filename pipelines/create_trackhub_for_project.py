@@ -391,13 +391,13 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             while True:
                 pogo_runner = parallel_run_manager.get_next_finished_runner()
                 if not pogo_runner.is_success():
-                    message = "PoGo FAILED running on file '{}' - SKIPPING its results"\
-                        .format(pogo_runner.pogo_input_file)
+                    message = "PoGo FAILED running on file '{}', taxonomy #{} - SKIPPING its results"\
+                        .format(pogo_runner.pogo_input_file, pogo_runner.ncbi_taxonomy_id)
                     self._get_logger().error(message)
                     self.__pipeline_result_object.add_warning_message(message)
                     continue
                 if pogo_runner.ncbi_taxonomy_id in pogo_run_results:
-                    message = "DUPLICATED taxonomy ID '{}' when registering PoGo success on file '{}'" \
+                    message = "DUPLICATED taxonomy ID #{} when registering PoGo success on file '{}'" \
                               " - SKIPPING its results"\
                         .format(pogo_runner.ncbi_taxonomy_id,
                                 pogo_runner.pogo_input_file)
