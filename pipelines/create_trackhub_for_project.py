@@ -490,7 +490,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self.__pipeline_result_object.add_warning_message(message)
         for message in self._get_trackhub_exporter().export_summary.errors:
             self.__pipeline_result_object.add_error_message(message)
-        
+        if self._get_trackhub_exporter().export_summary.errors:
+            self.set_pipeline_status_fail()
         return True
 
     def _after(self):
