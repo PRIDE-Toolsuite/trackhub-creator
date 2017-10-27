@@ -280,14 +280,15 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                     if converter:
                         converter.wait()
                         if not converter.is_conversion_ok():
-                            self.logger.error("SKIP TRACK for Assembly '{} ({})' ---> "
-                                              "Track '{}' Big Data File FAILED conversion process - "
-                                              "STDOUT '{}', STDERR '{}'"
-                                              .format(assembly,
-                                                      ucsc_assembly,
-                                                      track.get_track(),
-                                                      converter.get_conversion_output(),
-                                                      converter.get_conversion_output_error()))
+                            message = "SKIP TRACK for Assembly '{} ({})' " \
+                                      "---> Track '{}' Big Data File FAILED conversion process " \
+                                      "- STDOUT '{}', STDERR '{}'".format(assembly,
+                                                                          ucsc_assembly,
+                                                                          track.get_track(),
+                                                                          converter.get_conversion_output(),
+                                                                          converter.get_conversion_output_error())
+                            self.export_summary.warnings.append(message)
+                            self.logger.error(message)
                             # Skip this track
                             continue
                     # Add the track to the successful tracks list
@@ -296,7 +297,12 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 # Add assembly entry to genomes.txt files within trackhub root folder
                 assembly_mapping[ucsc_assembly] = os.path.join(os.path.basename(os.path.dirname(trackdb_file_path)),
                                                                os.path.basename(trackdb_file_path))
-            self.logger.info("Assembly data collected and exported to its corresponding subfolders")
+            if not assembly_mapping:
+                message = "ALL Assemblies in this project are INVALID"
+                self.export_summary.errors.append(message)
+                self.logger.error(message)
+            else:
+                self.logger.info("Assembly data collected and exported to its corresponding subfolders")
             # Export data to genomes.txt file
             genomes_file_path = os.path.join(self.track_hub_destination_folder, 'genomes.txt')
             with open(genomes_file_path, 'w') as wf:
