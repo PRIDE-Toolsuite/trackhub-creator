@@ -210,9 +210,10 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                     self.__get_tracks_with_non_empty_bed_files(assembly,
                                                                trackhub_builder.assemblies[assembly].track_collector)
                 if not tracks_with_non_empty_bed_files:
-                    self.logger.warning("Assembly '{} ({})' contains ALL EMPTY BIG DATA FILE TRACKS -- SKIPPED --"
-                                        .format(assembly,
-                                                ucsc_assembly))
+                    message = "Assembly '{} ({})' contains ALL EMPTY BIG DATA FILE TRACKS -- SKIPPED --"\
+                        .format(assembly,ucsc_assembly)
+                    self.export_summary.warnings.append(message)
+                    self.logger.warning(message)
                     trackhub_builder.invalidate_assembly(assembly)
                     continue
                 assembly_folder = os.path.join(self.track_hub_destination_folder, ucsc_assembly)
