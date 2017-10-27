@@ -22,7 +22,7 @@ import ensembl.service
 from toolbox import general
 from data_formats.converters import DataFormatConverterFactory
 from toolbox.assembly import AssemblyMappingServiceFactory, AssemblyMappingServiceException
-from .exceptions import UnknownBigDataFileType, BaseTrackException
+from .exceptions import UnknownBigDataFileType, BaseTrackException, TrackHubLocalFilesystemExporterException
 from . import config_manager as module_config_manager
 
 
@@ -153,6 +153,10 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 self.logger.warning(message)
                 continue
             non_empty_file_tracks.append(track)
+        if not non_empty_file_tracks:
+            message = "All tracks contain INVALID BIG DATA FILES!!!"
+            self.export_summary.errors.append(message)
+            self.logger.error(message)
         return non_empty_file_tracks
 
     def export_simple_trackhub(self, trackhub_builder):
