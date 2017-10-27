@@ -301,8 +301,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 message = "ALL Assemblies in this project are INVALID"
                 self.export_summary.errors.append(message)
                 self.logger.error(message)
-            else:
-                self.logger.info("Assembly data collected and exported to its corresponding subfolders")
+            self.logger.info("Assembly data collected and exported to its corresponding subfolders")
             # Export data to genomes.txt file
             genomes_file_path = os.path.join(self.track_hub_destination_folder, 'genomes.txt')
             with open(genomes_file_path, 'w') as wf:
