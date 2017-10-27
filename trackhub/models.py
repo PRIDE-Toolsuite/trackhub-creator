@@ -129,9 +129,11 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
         non_empty_file_tracks = []
         for track in track_collector.get_tracks():
             if not track.get_big_data_url():
-                self.logger.warning("Assembly '{}' contains a track '{}' with NO BIG DATA URL, -- SKIPPED --"
-                                    .format(assembly,
-                                            track.get_track()))
+                message = "Assembly '{}' contains a track '{}' with NO BIG DATA URL, -- SKIPPED --"\
+                    .format(assembly,
+                            track.get_track())
+                self.export_summary.warnings.append(message)
+                self.logger.warning(message)
                 continue
             if not os.path.exists(track.get_big_data_url()):
                 self.logger.warning("Assembly '{}' contains a track '{}' with AN INVALID BIG DATA URL '{}', "
