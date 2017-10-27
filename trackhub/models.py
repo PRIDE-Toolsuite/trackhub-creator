@@ -197,11 +197,13 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                                                                           .get_species_entry_for_assembly(assembly)
                                                                           .get_assembly_accession())
                 except AssemblyMappingServiceException as e:
-                    self.logger.error("ERROR while mapping Ensembl Assembly '{}' - SKIPPING THIS ASSEMBLY - xxx> '{}'"
-                                      .format(assembly, e.value))
+                    message = "ERROR while mapping Ensembl Assembly '{}' - SKIPPING THIS ASSEMBLY - xxx> '{}'"\
+                        .format(assembly, e.value)
+                    self.export_summary.warnings.append(message)
+                    self.logger.error(message)
                     trackhub_builder.invalidate_assembly(assembly)
                     continue
-                self.logger.warning("Ensembl Assembly '{}' --- mapped_to ---> UCSC Assembly '{}'"
+                self.logger.info("Ensembl Assembly '{}' --- mapped_to ---> UCSC Assembly '{}'"
                                     .format(assembly, ucsc_assembly))
                 tracks_with_non_empty_bed_files = \
                     self.__get_tracks_with_non_empty_bed_files(assembly,
