@@ -145,11 +145,12 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
                 continue
             big_file_stat_info = os.stat(track.get_big_data_url())
             if big_file_stat_info.st_size == 0:
-                self.logger.warning("Assembly '{}' contains a track '{}' with AN EMPTY BIG DATA FILE at '{}', "
-                                    "-- SKIPPED --"
-                                    .format(assembly,
-                                            track.get_track(),
-                                            track.get_big_data_url()))
+                message = "Assembly '{}' contains a track '{}' with AN EMPTY BIG DATA FILE at '{}', -- SKIPPED --"\
+                    .format(assembly,
+                            track.get_track(),
+                            track.get_big_data_url())
+                self.export_summary.warnings.append(message)
+                self.logger.warning(message)
                 continue
             non_empty_file_tracks.append(track)
         return non_empty_file_tracks
