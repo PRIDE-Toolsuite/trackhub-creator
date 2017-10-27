@@ -90,6 +90,7 @@ class TrackHubExportSummary:
     def __init__(self):
         self.errors = []
         self.warnings = []
+        self.infos = []
         self.export_performed = False
         self.track_hub_root_folder = None
         self.track_hub_descriptor_file_path = None
