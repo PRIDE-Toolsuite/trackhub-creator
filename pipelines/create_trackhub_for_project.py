@@ -486,6 +486,11 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self._get_trackhub_exporter()\
                 .export_summary\
                 .track_hub_descriptor_file_path
+        for message in self._get_trackhub_exporter().export_summary.warnings:
+            self.__pipeline_result_object.add_warning_message(message)
+        for message in self._get_trackhub_exporter().export_summary.errors:
+            self.__pipeline_result_object.add_error_message(message)
+        
         return True
 
     def _after(self):
