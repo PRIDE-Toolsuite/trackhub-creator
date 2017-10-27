@@ -156,7 +156,7 @@ class TrackHubLocalFilesystemExporter(TrackHubExporter):
             non_empty_file_tracks.append(track)
         if not non_empty_file_tracks:
             message = "All tracks contain INVALID BIG DATA FILES!!!"
-            self.export_summary.errors.append(message)
+            self.export_summary.warnings.append(message)
             self.logger.error(message)
         return non_empty_file_tracks
 
