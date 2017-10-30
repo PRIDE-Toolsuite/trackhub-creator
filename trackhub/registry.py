@@ -172,7 +172,7 @@ class TrackhubRegistryService:
 
     def update_trackhub(self, trackhub_registry_model):
         # TODO
-        pass
+        raise NotImplementedError("This method is NOT SUPPORTED in this version of the application")
 
     def is_trackhub_already_registered(self, trackhub_registry_model):
         # TODO
