@@ -69,7 +69,8 @@ class PipelineData:
     """
     This class models the data used by the pipeline, and given as input of it in the command line parameter
     """
-    pass
+    # Keys
+    _PIPELINE_DATA_KEY_TRACKHUB_URL = 'trackhubUrl'
 
 
 # Pipeline Director
