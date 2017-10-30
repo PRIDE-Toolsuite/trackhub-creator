@@ -237,6 +237,8 @@ class TrackhubPublisher(Director):
             self.__pipeline_result_object.add_error_message(str(e))
             self.set_pipeline_status_fail()
             return False
+        # Fill in the report
+        self.__pipeline_result_object.trackhub_url = self.__pipeline_data_object.get_trackhub_url()
         # TODO
 
     def _after(self):
