@@ -71,6 +71,8 @@ class PipelineData:
     """
     # Keys
     _PIPELINE_DATA_KEY_TRACKHUB_URL = 'trackhubUrl'
+    _PIPELINE_DATA_KEY_PUBLIC = 'public'
+
 
 
 # Pipeline Director
