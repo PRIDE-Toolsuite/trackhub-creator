@@ -30,6 +30,7 @@ import time
 import json
 # Application imports
 import config_manager
+from trackhub.registry import TrackhubRegistryRequestBodyModel
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
 # Globals
@@ -221,8 +222,12 @@ class TrackhubPublisher(Director):
         return True
 
     def __publish_trackhub(self):
+        # Build the trackhub profile
+        trackhub_profile = TrackhubRegistryRequestBodyModel()
+        trackhub_profile.url = self.__pipeline_data_object.get_trackhub_url()
+        trackhub_profile.type = self.__pipeline_data_object.get_trackhub_type()
+        trackhub_profile.public = self.__pipeline_data_object.get_trackhub_public_flag_value()
         # TODO
-        pass
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
