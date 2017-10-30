@@ -231,6 +231,8 @@ class TrackhubPublisher(Director):
         # Pipeline result object
         self.__pipeline_result_object = PipelineResult()
         self.__trackhub_descriptor = None
+        # Trackhub registry
+        self.__trackhub_registry_service = None
 
     def _before(self):
         self.__pipeline_result_object.file_path_pipeline_session = config_manager.get_app_config_manager() \
