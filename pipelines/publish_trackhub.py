@@ -91,6 +91,8 @@ class PipelineData:
             return self._get_pipeline_data_object()[key]
         return default
 
+    def get_trackhub_url(self):
+        return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL)
 
 # Pipeline Director
 class TrackhubPublisher(Director):
