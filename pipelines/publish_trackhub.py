@@ -43,7 +43,7 @@ class ConfigManager(DirectorConfigurationManager):
     #   trackhub_description=input_file.json
 
     # Command Line Argument keys
-    _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DATA_FILE = 'trackhub_description'
+    _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE = 'trackhub_description'
 
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         super().__init__(configuration_object, configuration_file, pipeline_arguments)
@@ -52,8 +52,11 @@ class ConfigManager(DirectorConfigurationManager):
         self.__running_mode = None
 
     def _get_allowed_configuration_keys(self):
-        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DATA_FILE}
+        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE}
 
+    def get_trackhub_descriptor_file_path(self):
+        return self._get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE)
 
 
 # Pipeline Director
