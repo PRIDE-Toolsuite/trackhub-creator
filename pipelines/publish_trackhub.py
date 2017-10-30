@@ -262,7 +262,8 @@ class TrackhubPublisher(Director):
         trackhub_profile.url = self.__pipeline_data_object.get_trackhub_url()
         trackhub_profile.type = self.__pipeline_data_object.get_trackhub_type()
         trackhub_profile.public = self.__pipeline_data_object.get_trackhub_public_flag_value()
-        # TODO
+        # Get the service and register the trackhub
+        self.__get_trackhub_registration_service().register_trackhub(trackhub_profile)
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
