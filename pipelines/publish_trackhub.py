@@ -20,6 +20,8 @@ And this file contains the following information:
     "pipelineReportFilePath": "pipeline.report"
 }
 
-
+Description of parameters:
+    pipelineReportFilePath  ->  Absolute path to a JSON formatted file that contains information about the pipeline
+                                execution
 """
 
