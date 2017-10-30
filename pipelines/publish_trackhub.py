@@ -214,9 +214,11 @@ class TrackhubPublisher(Director):
 
     def _before(self):
         pass
+        # TODO
 
     def _run_pipeline(self):
         pass
+        # TODO
 
     def _after(self):
         """
