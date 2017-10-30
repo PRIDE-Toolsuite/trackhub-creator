@@ -97,7 +97,8 @@ class PipelineData:
     def get_trackhub_public_flag_value(self):
         return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL, default='0')
 
-    
+    def get_trackhub_type(self):
+        return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL, default='PROTEOMICS')
 
 # Pipeline Director
 class TrackhubPublisher(Director):
