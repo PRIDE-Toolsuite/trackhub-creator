@@ -30,3 +30,6 @@ __configuration_file = None
 __pipeline_arguments = None
 __pipeline_director = None
 
+
+# TODO Pipeline Singleton Accessors
+
