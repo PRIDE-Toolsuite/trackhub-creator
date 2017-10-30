@@ -38,6 +38,28 @@ __pipeline_director = None
 
 
 # TODO Pipeline Singleton Accessors
+def set_configuration_file(config_file):
+    global __configuration_file
+    if __configuration_file is None:
+        __configuration_file = config_file
+    return __configuration_file
+
+
+def set_pipeline_arguments(pipeline_arguments):
+    global __pipeline_arguments
+    if __pipeline_arguments is None:
+        __pipeline_arguments = pipeline_arguments
+    return __pipeline_arguments
+
+
+def get_pipeline_director():
+    global __pipeline_director
+    if __pipeline_director is None:
+        __pipeline_director = TrackhubPublisher(config_manager.read_config_from_file(__configuration_file),
+                                                        __configuration_file,
+                                                        __pipeline_arguments)
+    return __pipeline_director
+
 
 # Pipeline Configuration Manager
 class ConfigManager(DirectorConfigurationManager):
