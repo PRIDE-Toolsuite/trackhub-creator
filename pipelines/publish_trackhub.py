@@ -65,9 +65,6 @@ class ConfigManager(DirectorConfigurationManager):
                             "pipeline-publish_trackhub.report")
 
 
-class TrackhubDescription:
-    pass
-
 
 # Pipeline Director
 class TrackhubPublisher(Director):
