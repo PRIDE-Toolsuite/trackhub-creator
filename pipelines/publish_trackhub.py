@@ -51,6 +51,9 @@ class ConfigManager(DirectorConfigurationManager):
         self.__pipeline_arguments_object = None
         self.__running_mode = None
 
+    def _get_allowed_configuration_keys(self):
+        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DATA_FILE}
+
 
 
 # Pipeline Director
