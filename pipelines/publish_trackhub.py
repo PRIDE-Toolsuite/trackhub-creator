@@ -123,6 +123,9 @@ class PipelineData:
     def get_trackhub_type(self):
         return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL, default='PROTEOMICS')
 
+    def get_file_path_pipeline_report(self):
+        return self._get_value_for_key(self._PIPELINE_DATA_KEY_PIPELINE_REPORT_FILE_PATH)
+
 
 class PipelineResult:
     """
@@ -216,8 +219,8 @@ class TrackhubPublisher(Director):
         if not self.is_pipeline_status_ok():
             self._get_logger().warning("This Pipeline is finishing with NON-OK status.")
         report_files = [self.__config_manager.get_file_path_pipeline_report()]
-        if self.__ \
-                and self.__project_trackhub_descriptor.get_trackhub_report_file_path():
+        if self.__pipeline_data_object \
+                and self.__pipeline_data_object.get_trackhub_report_file_path():
             report_files.append(self.__project_trackhub_descriptor.get_trackhub_report_file_path())
         for report_file in report_files:
             self._get_logger().info("Dumping Pipeline Report to '{}'".format(report_file))
