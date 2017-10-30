@@ -98,6 +98,17 @@ class ConfigManager(DirectorConfigurationManager):
         return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
                             "pipeline-publish_trackhub.report")
 
+    def get_trackhub_registry_url(self):
+        return self._get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL)
+
+    def get_trackhub_registry_username(self):
+        return self._get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME)
+
+    def get_trackhub_registry_password(self):
+        return self._get_value_for_pipeline_argument_key(
+            self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD)
+
 
 class PipelineData:
     """
@@ -223,7 +234,7 @@ class TrackhubPublisher(Director):
         self.__trackhub_descriptor = None
 
     def _before(self):
-        self.__pipeline_result_object.file_path_pipeline_session = config_manager.get_app_config_manager()\
+        self.__pipeline_result_object.file_path_pipeline_session = config_manager.get_app_config_manager() \
             .get_session_working_dir()
         # Add this pipeline session log files to the final report
         self.__pipeline_result_object.add_log_files(config_manager.get_app_config_manager().get_session_log_files())
