@@ -203,8 +203,26 @@ class TrackhubPublisher(Director):
         runner_id = "{}-{}".format(__name__, time.time())
         super().__init__(runner_id)
         self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
-        self.__trackhub_descriptor = None
+        self.__pipeline_data_object = PipelineData(self.__config_manager.get_trackhub_descriptor_file_path())
         # Pipeline result object
         self.__pipeline_result_object = PipelineResult()
         self.__trackhub_descriptor = None
+
+    def _after(self):
+        """
+        Dump to a file the pipeline report
+        :return: no return value
+        """
+        if not self.is_pipeline_status_ok():
+            self._get_logger().warning("This Pipeline is finishing with NON-OK status.")
+        report_files = [self.__config_manager.get_file_path_pipeline_report()]
+        if self.__ \
+                and self.__project_trackhub_descriptor.get_trackhub_report_file_path():
+            report_files.append(self.__project_trackhub_descriptor.get_trackhub_report_file_path())
+        for report_file in report_files:
+            self._get_logger().info("Dumping Pipeline Report to '{}'".format(report_file))
+            with open(report_file, 'w') as f:
+                f.write(str(self.__pipeline_result_object))
+        return True
+
 
