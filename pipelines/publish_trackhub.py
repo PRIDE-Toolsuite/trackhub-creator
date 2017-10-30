@@ -215,6 +215,9 @@ class TrackhubPublisher(Director):
     def _before(self):
         pass
 
+    def _run_pipeline(self):
+        pass
+
     def _after(self):
         """
         Dump to a file the pipeline report
