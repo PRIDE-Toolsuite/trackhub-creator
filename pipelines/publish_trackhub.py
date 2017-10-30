@@ -68,6 +68,12 @@ class ConfigManager(DirectorConfigurationManager):
     # Command Line Arguments for this pipeline look like
     #   # This is a JSON formatted file that contains all the relevant information needed for publishing the trackhub
     #   trackhub_description=input_file.json
+    #   # Trackhub registry URL, if not specified, the default URL from the trackhub service will be used
+    #   trackhub_registry_url=https://www.trackhubregistry.org
+    #   # Trackhub registry credentials
+    #   trackhub_registry_username=username
+    #   trackhub_registry_password=password
+    # TODO on the new command line parameters
 
     # Command Line Argument keys
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE = 'trackhub_description'
