@@ -65,6 +65,12 @@ class ConfigManager(DirectorConfigurationManager):
                             "pipeline-publish_trackhub.report")
 
 
+class PipelineData:
+    """
+    This class models the data used by the pipeline, and given as input of it in the command line parameter
+    """
+    pass
+
 
 # Pipeline Director
 class TrackhubPublisher(Director):
