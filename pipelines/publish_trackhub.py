@@ -30,6 +30,7 @@ import time
 import json
 # Application imports
 import config_manager
+import trackhub.registry as trackhub_registry
 from trackhub.registry import TrackhubRegistryRequestBodyModel
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
@@ -233,6 +234,19 @@ class TrackhubPublisher(Director):
         self.__trackhub_descriptor = None
         # Trackhub registry
         self.__trackhub_registry_service = None
+
+    def __get_trackhub_registration_service(self):
+        # Cache the registry service instance, we only need one
+        if not self.__trackhub_registry_service:
+            self.__trackhub_registry_service = \
+                trackhub_registry.TrackhubRegistryService(
+                    self.__config_manager.get_trackhub_registry_username(),
+                    self.__config_manager.get_trackhub_registry_password())
+            # Set the registry base URL, if set, use default otherwise
+            if self.__config_manager.get_trackhub_registry_url():
+                self.__trackhub_registry_service.trackhub_registry_base_url = \
+                    self.__config_manager.get_trackhub_registry_url()
+        return self.__trackhub_registry_service
 
     def _before(self):
         self.__pipeline_result_object.file_path_pipeline_session = config_manager.get_app_config_manager() \
