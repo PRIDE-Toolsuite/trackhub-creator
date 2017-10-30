@@ -75,6 +75,10 @@ class PipelineData:
     _PIPELINE_DATA_KEY_TRACKHUB_TYPE = 'type'
     _PIPELINE_DATA_KEY_PIPELINE_REPORT_FILE_PATH = 'pipelineReportFilePath'
 
+    def __init__(self, pipeline_data_file_path):
+        self.__pipeline_data_file_path = pipeline_data_file_path
+        self.__pipeline_data_object = None
+
 
 # Pipeline Director
 class TrackhubPublisher(Director):
