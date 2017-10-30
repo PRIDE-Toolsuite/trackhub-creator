@@ -73,7 +73,6 @@ class ConfigManager(DirectorConfigurationManager):
     #   # Trackhub registry credentials
     #   trackhub_registry_username=username
     #   trackhub_registry_password=password
-    # TODO on the new command line parameters
 
     # Command Line Argument keys
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE = 'trackhub_description'
