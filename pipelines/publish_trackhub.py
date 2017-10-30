@@ -85,6 +85,12 @@ class PipelineData:
             self.__pipeline_data_object = json.load(self.__pipeline_data_file_path)
         return self.__pipeline_data_object
 
+    def _get_value_for_key(self, key, default=""):
+        # TODO - I should start thinking about refactoring this out
+        if key in self._get_pipeline_data_object():
+            return self._get_pipeline_data_object()[key]
+        return default
+
 
 # Pipeline Director
 class TrackhubPublisher(Director):
