@@ -25,7 +25,9 @@ Description of parameters:
                                 execution
 """
 
+import os
 # Application imports
+import config_manager
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
 
 # Globals
@@ -57,6 +59,11 @@ class ConfigManager(DirectorConfigurationManager):
     def get_trackhub_descriptor_file_path(self):
         return self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE)
+
+    def get_file_path_pipeline_report(self):
+        return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
+                            "pipeline-publish_trackhub.report")
+
 
 
 # Pipeline Director
