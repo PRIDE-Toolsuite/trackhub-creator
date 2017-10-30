@@ -8,5 +8,5 @@
 # 
 
 """
-Document your module here
+This pipeline publishes the given trackhub to trackhubregistry.org
 """
