@@ -217,6 +217,9 @@ class TrackhubPublisher(Director):
             .get_session_working_dir()
         # Add this pipeline session log files to the final report
         self.__pipeline_result_object.add_log_files(config_manager.get_app_config_manager().get_session_log_files())
+        if self.__config_manager.get_trackhub_descriptor_file_path():
+            self._get_logger().info("Reading Pipeline input data from file at '{}'"
+                                    .format(self.__config_manager.get_trackhub_descriptor_file_path()))
         # TODO
 
     def _run_pipeline(self):
