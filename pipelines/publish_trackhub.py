@@ -16,7 +16,10 @@ And this file contains the following information:
 {
     "trackhubUrl": "Name for the trackhub being published",
     "public": "1",
-    "type": "PROTEOMICS"
+    "type": "PROTEOMICS",
+    "pipelineReportFilePath": "pipeline.report"
 }
+
+
 """
 
