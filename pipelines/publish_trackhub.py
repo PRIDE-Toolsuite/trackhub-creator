@@ -195,4 +195,6 @@ class PipelineResult:
 
 # Pipeline Director
 class TrackhubPublisher(Director):
-    pass
+    """
+    Given input data regarding trackhub details, this pipeline will publish that trackhub
+    """
