@@ -100,6 +100,77 @@ class PipelineData:
     def get_trackhub_type(self):
         return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL, default='PROTEOMICS')
 
+
+class PipelineResult:
+    """
+    This class models the pipeline report that will be made available at the end of the pipeline execution
+    """
+    _VALUE_STATUS_SUCCESS = 'SUCCESS'
+    _VALUE_STATUS_ERROR = 'ERROR'
+    _VALUE_STATUS_WARNING = 'WARNING'
+
+    def __init__(self):
+        self.status = self._VALUE_STATUS_SUCCESS
+        self.error_messages = []
+        self.success_messages = []
+        self.warning_messages = []
+        self.trackhub_url = ""
+        # Absolute file path to the folder that represents the running session of the pipeline
+        self.file_path_pipeline_session = ""
+        # Absolute file path to the log files that belong to the running session of the pipeline
+        self.file_path_log_files = []
+
+    def set_status_error(self):
+        self.status = self._VALUE_STATUS_ERROR
+
+    def add_error_message(self, error_message):
+        """
+        Adds an error message to the pipeline report. As this report is the final word on how the pipeline performed,
+        the first error message that is set will set the status of the pipeline as 'failed'
+        :param error_message: error message
+        :return: no return value
+        """
+        # This is the report on the final result from running the pipeline
+        self.set_status_error()
+        self.error_messages.append(error_message)
+
+    def add_success_message(self, success_message):
+        """
+        This will add messages to the pipeline report, but it doesn't change its status.
+        :param success_message: message to add
+        :return: no return value
+        """
+        self.success_messages.append(success_message)
+
+    def add_warning_message(self, warning_message):
+        """
+        This will add warning messages to the pipeline report, setting the status to 'WARNING' if it wasn't in 'ERROR'
+        status.
+        :param warning_message: warning message to add
+        :return: no return value
+        """
+        self.warning_messages.append(warning_message)
+        if self.status != self._VALUE_STATUS_ERROR:
+            self.status = self._VALUE_STATUS_WARNING
+
+    def add_log_files(self, log_files):
+        """
+        Add all the log files produce by the pipeline to its final report
+        :param log_files: a list of log files to add
+        :return: no return value
+        """
+        self.file_path_log_files.extend(log_files)
+
+    def __str__(self):
+        return json.dumps({'status': self.status,
+                           'success_messages': self.success_messages,
+                           'warning_messages': self.warning_messages,
+                           'error_messages': self.error_messages,
+                           'trackhub_url': self.trackhub_url,
+                           'pipeline_session_working_dir': self.file_path_pipeline_session,
+                           'log_files': self.file_path_log_files})
+
+
 # Pipeline Director
 class TrackhubPublisher(Director):
     pass
