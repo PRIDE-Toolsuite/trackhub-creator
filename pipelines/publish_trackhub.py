@@ -38,7 +38,10 @@ __pipeline_director = None
 
 # Pipeline Configuration Manager
 class ConfigManager(DirectorConfigurationManager):
-    pass
+    # Command Line Arguments for this pipeline look like
+    #   # This is a JSON formatted file that contains all the relevant information needed for publishing the trackhub
+    #   trackhub_description=input_file.json
+
 
 
 # Pipeline Director
