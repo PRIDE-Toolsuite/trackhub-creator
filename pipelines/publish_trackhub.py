@@ -26,6 +26,7 @@ Description of parameters:
 """
 
 import os
+import json
 # Application imports
 import config_manager
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
@@ -78,6 +79,11 @@ class PipelineData:
     def __init__(self, pipeline_data_file_path):
         self.__pipeline_data_file_path = pipeline_data_file_path
         self.__pipeline_data_object = None
+
+    def _get_pipeline_data_object(self):
+        if not self.__pipeline_data_object:
+            self.__pipeline_data_object = json.load(self.__pipeline_data_file_path)
+        return self.__pipeline_data_object
 
 
 # Pipeline Director
