@@ -213,7 +213,8 @@ class TrackhubPublisher(Director):
         self.__trackhub_descriptor = None
 
     def _before(self):
-        pass
+        self.__pipeline_result_object.file_path_pipeline_session = config_manager.get_app_config_manager()\
+            .get_session_working_dir()
         # TODO
 
     def _run_pipeline(self):
