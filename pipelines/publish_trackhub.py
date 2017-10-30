@@ -25,6 +25,9 @@ Description of parameters:
                                 execution
 """
 
+# Application imports
+from pipelines.template_pipeline import Director, DirectorConfigurationManager
+
 # Globals
 __configuration_file = None
 __pipeline_arguments = None
@@ -34,3 +37,5 @@ __pipeline_director = None
 # TODO Pipeline Singleton Accessors
 
 # Pipeline Configuration Manager
+class ConfigManager(DirectorConfigurationManager):
+    pass
