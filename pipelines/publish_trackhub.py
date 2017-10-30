@@ -230,6 +230,8 @@ class TrackhubPublisher(Director):
             self._get_logger().warning(error_message)
             self.__pipeline_result_object.add_error_message(error_message)
             return False
+        # Fill in the report
+        self.__pipeline_result_object.trackhub_url = self.__pipeline_data_object.get_trackhub_url()
         try:
             self.__publish_trackhub()
         except Exception as e:
@@ -237,9 +239,7 @@ class TrackhubPublisher(Director):
             self.__pipeline_result_object.add_error_message(str(e))
             self.set_pipeline_status_fail()
             return False
-        # Fill in the report
-        self.__pipeline_result_object.trackhub_url = self.__pipeline_data_object.get_trackhub_url()
-        # TODO
+        return True
 
     def _after(self):
         """
