@@ -26,6 +26,7 @@ Description of parameters:
 """
 
 import os
+import time
 import json
 # Application imports
 import config_manager
@@ -198,3 +199,12 @@ class TrackhubPublisher(Director):
     """
     Given input data regarding trackhub details, this pipeline will publish that trackhub
     """
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
+        runner_id = "{}-{}".format(__name__, time.time())
+        super().__init__(runner_id)
+        self.__config_manager = ConfigManager(configuration_object, configuration_file, pipeline_arguments)
+        self.__trackhub_descriptor = None
+        # Pipeline result object
+        self.__pipeline_result_object = PipelineResult()
+        self.__trackhub_descriptor = None
+
