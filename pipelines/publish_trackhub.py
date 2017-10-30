@@ -221,7 +221,11 @@ class TrackhubPublisher(Director):
         return True
 
     def _run_pipeline(self):
-        pass
+        if not self.is_pipeline_status_ok():
+            error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
+            self._get_logger().warning(error_message)
+            self.__pipeline_result_object.add_error_message(error_message)
+            return False
         # TODO
 
     def _after(self):
