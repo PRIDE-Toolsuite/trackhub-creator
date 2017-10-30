@@ -57,8 +57,8 @@ def get_pipeline_director():
     global __pipeline_director
     if __pipeline_director is None:
         __pipeline_director = TrackhubPublisher(config_manager.read_config_from_file(__configuration_file),
-                                                        __configuration_file,
-                                                        __pipeline_arguments)
+                                                __configuration_file,
+                                                __pipeline_arguments)
     return __pipeline_director
 
 
@@ -202,6 +202,7 @@ class TrackhubPublisher(Director):
     """
     Given input data regarding trackhub details, this pipeline will publish that trackhub
     """
+
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super().__init__(runner_id)
@@ -210,6 +211,9 @@ class TrackhubPublisher(Director):
         # Pipeline result object
         self.__pipeline_result_object = PipelineResult()
         self.__trackhub_descriptor = None
+
+    def _before(self):
+        pass
 
     def _after(self):
         """
@@ -227,5 +231,3 @@ class TrackhubPublisher(Director):
             with open(report_file, 'w') as f:
                 f.write(str(self.__pipeline_result_object))
         return True
-
-
