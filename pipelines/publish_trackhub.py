@@ -39,3 +39,8 @@ __pipeline_director = None
 # Pipeline Configuration Manager
 class ConfigManager(DirectorConfigurationManager):
     pass
+
+
+# Pipeline Director
+class TrackhubPublisher(Director):
+    pass
