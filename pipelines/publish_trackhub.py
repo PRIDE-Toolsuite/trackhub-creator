@@ -217,6 +217,7 @@ class TrackhubPublisher(Director):
             .get_session_working_dir()
         # Add this pipeline session log files to the final report
         self.__pipeline_result_object.add_log_files(config_manager.get_app_config_manager().get_session_log_files())
+        # TODO Check that the trackhub URL is valid
         return True
 
     def _run_pipeline(self):
