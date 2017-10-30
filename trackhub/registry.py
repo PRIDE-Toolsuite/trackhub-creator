@@ -168,7 +168,7 @@ class TrackhubRegistryService:
     def register_update_trackhub(self, trackhub_registry_model):
         # TODO - I'm not sure I need these extra methods, as the API says on its documentation that registering an
         # TODO - existing owned trackhub, would update it
-        pass
+        raise NotImplementedError("This method is NOT SUPPORTED in this version of the application")
 
     def update_trackhub(self, trackhub_registry_model):
         # TODO
