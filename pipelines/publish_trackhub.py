@@ -220,6 +220,10 @@ class TrackhubPublisher(Director):
         # TODO Check that the trackhub URL is valid
         return True
 
+    def __publish_trackhub(self):
+        # TODO
+        pass
+
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
             error_message = "--- ABORT Pipeline Execution ---, the previous stage failed"
