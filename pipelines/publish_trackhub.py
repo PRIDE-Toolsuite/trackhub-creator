@@ -42,6 +42,9 @@ class ConfigManager(DirectorConfigurationManager):
     #   # This is a JSON formatted file that contains all the relevant information needed for publishing the trackhub
     #   trackhub_description=input_file.json
 
+    # Command Line Argument keys
+    _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DATA_FILE = 'trackhub_description'
+
 
 
 # Pipeline Director
