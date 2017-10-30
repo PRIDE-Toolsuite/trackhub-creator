@@ -25,3 +25,8 @@ Description of parameters:
                                 execution
 """
 
+# Globals
+__configuration_file = None
+__pipeline_arguments = None
+__pipeline_director = None
+
