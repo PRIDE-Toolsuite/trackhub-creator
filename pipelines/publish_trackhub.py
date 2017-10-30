@@ -33,3 +33,4 @@ __pipeline_director = None
 
 # TODO Pipeline Singleton Accessors
 
+# Pipeline Configuration Manager
