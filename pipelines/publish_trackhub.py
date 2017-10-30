@@ -298,3 +298,7 @@ class TrackhubPublisher(Director):
             with open(report_file, 'w') as f:
                 f.write(str(self.__pipeline_result_object))
         return True
+
+
+if __name__ == '__main__':
+    print("ERROR: This script is part of a pipeline collection and it is not meant to be run in stand alone mode")
