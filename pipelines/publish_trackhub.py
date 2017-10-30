@@ -230,6 +230,13 @@ class TrackhubPublisher(Director):
             self._get_logger().warning(error_message)
             self.__pipeline_result_object.add_error_message(error_message)
             return False
+        try:
+            self.__publish_trackhub()
+        except Exception as e:
+            # I know this is too generic but, for this iteration of the software it is completely fine
+            self.__pipeline_result_object.add_error_message(str(e))
+            self.set_pipeline_status_fail()
+            return False
         # TODO
 
     def _after(self):
