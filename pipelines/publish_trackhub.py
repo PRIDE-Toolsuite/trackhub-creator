@@ -45,6 +45,12 @@ class ConfigManager(DirectorConfigurationManager):
     # Command Line Argument keys
     _CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DATA_FILE = 'trackhub_description'
 
+    def __init__(self, configuration_object, configuration_file, pipeline_arguments):
+        super().__init__(configuration_object, configuration_file, pipeline_arguments)
+        # Lazy Process command line arguments
+        self.__pipeline_arguments_object = None
+        self.__running_mode = None
+
 
 
 # Pipeline Director
