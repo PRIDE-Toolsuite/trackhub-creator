@@ -220,8 +220,8 @@ class TrackhubPublisher(Director):
             self._get_logger().warning("This Pipeline is finishing with NON-OK status.")
         report_files = [self.__config_manager.get_file_path_pipeline_report()]
         if self.__pipeline_data_object \
-                and self.__pipeline_data_object.get_trackhub_report_file_path():
-            report_files.append(self.__project_trackhub_descriptor.get_trackhub_report_file_path())
+                and self.__pipeline_data_object.get_file_path_pipeline_report():
+            report_files.append(self.__pipeline_data_object.get_file_path_pipeline_report())
         for report_file in report_files:
             self._get_logger().info("Dumping Pipeline Report to '{}'".format(report_file))
             with open(report_file, 'w') as f:
