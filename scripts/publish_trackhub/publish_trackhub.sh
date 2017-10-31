@@ -15,3 +15,6 @@ PWD=$(which pwd)
 function mylogger() {
     logger "[Publish_Trackhub] $@"
 }
+
+# Command line parameters
+CMD_PARAM_TRACKHUB_REGISTRY_URL=$1
