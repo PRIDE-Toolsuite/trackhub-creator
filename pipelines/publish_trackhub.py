@@ -116,7 +116,7 @@ class PipelineData:
     """
     # Keys
     _PIPELINE_DATA_KEY_TRACKHUB_URL = 'trackhubUrl'
-    _PIPELINE_DATA_KEY_TRACKHUB_PUBLIC = 'public'
+    _PIPELINE_DATA_KEY_TRACKHUB_PUBLIC = 'publicVisibility'
     _PIPELINE_DATA_KEY_TRACKHUB_TYPE = 'type'
     _PIPELINE_DATA_KEY_PIPELINE_REPORT_FILE_PATH = 'pipelineReportFilePath'
 
