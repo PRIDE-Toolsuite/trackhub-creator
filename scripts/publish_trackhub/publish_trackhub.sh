@@ -21,3 +21,7 @@ CMD_PARAM_TRACKHUB_REGISTRY_URL=$1
 CMD_PARAM_TRACKHUB_REGISTRY_USERNAME=$2
 CMD_PARAM_TRACKHUB_REGISTRY_PASSWORD=$3
 CMD_PARAM_TRACKHUB_DESCRIPTION_DATA_FILE=$4
+
+mylogger "Publishing Trackhub described by '${CMD_PARAM_TRACKHUB_DESCRIPTION_DATA_FILE}'"
+mylogger "Current directory is $($PWD)"
+mylogger "<--- Running publish_trackhub --->"
