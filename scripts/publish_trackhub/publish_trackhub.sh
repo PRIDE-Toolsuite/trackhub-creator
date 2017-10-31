@@ -18,3 +18,5 @@ function mylogger() {
 
 # Command line parameters
 CMD_PARAM_TRACKHUB_REGISTRY_URL=$1
+CMD_PARAM_TRACKHUB_REGISTRY_USERNAME=$2
+
