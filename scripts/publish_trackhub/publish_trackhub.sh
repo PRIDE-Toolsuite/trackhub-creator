@@ -8,3 +8,6 @@
 # Include helpers
 source scripts/commons/helper_functions.sh
 
+# Commands
+PWD=$(which pwd)
+
