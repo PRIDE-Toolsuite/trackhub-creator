@@ -89,7 +89,10 @@ class ConfigManager(DirectorConfigurationManager):
         self.__running_mode = None
 
     def _get_allowed_configuration_keys(self):
-        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE}
+        return {self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_DESCRIPTOR_FILE,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_USERNAME,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_PASSWORD,
+                self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL}
 
     def get_trackhub_descriptor_file_path(self):
         return self._get_value_for_pipeline_argument_key(
