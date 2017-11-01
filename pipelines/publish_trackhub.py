@@ -166,6 +166,7 @@ class PipelineResult:
         self.success_messages = []
         self.warning_messages = []
         self.trackhub_url = ""
+        self.trackhub_registration_analysis = None
         # Absolute file path to the folder that represents the running session of the pipeline
         self.file_path_pipeline_session = ""
         # Absolute file path to the log files that belong to the running session of the pipeline
@@ -218,6 +219,7 @@ class PipelineResult:
                            'warning_messages': self.warning_messages,
                            'error_messages': self.error_messages,
                            'trackhub_url': self.trackhub_url,
+                           'trackhub_registration_analysis': self.trackhub_registration_analysis,
                            'pipeline_session_working_dir': self.file_path_pipeline_session,
                            'log_files': self.file_path_log_files})
 
@@ -266,8 +268,9 @@ class TrackhubPublisher(Director):
         trackhub_profile.url = self.__pipeline_data_object.get_trackhub_url()
         trackhub_profile.type = self.__pipeline_data_object.get_trackhub_type()
         trackhub_profile.public = self.__pipeline_data_object.get_trackhub_public_flag_value()
-        # Get the service and register the trackhub
-        self.__get_trackhub_registration_service().register_trackhub(trackhub_profile)
+        # Get the service and register the trackhub, attaching the response to the report
+        self.__pipeline_result_object.trackhub_registration_analysis = \
+            self.__get_trackhub_registration_service().register_trackhub(trackhub_profile)
 
     def _run_pipeline(self):
         if not self.is_pipeline_status_ok():
