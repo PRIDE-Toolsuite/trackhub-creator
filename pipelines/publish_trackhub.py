@@ -27,9 +27,9 @@ Description of parameters:
 
 import os
 import time
-import json
 # Application imports
 import config_manager
+import toolbox.general as general_toolbox
 import trackhub.registry as trackhub_registry
 from trackhub.registry import TrackhubRegistryRequestBodyModel
 from pipelines.template_pipeline import Director, DirectorConfigurationManager
@@ -126,7 +126,7 @@ class PipelineData:
 
     def _get_pipeline_data_object(self):
         if not self.__pipeline_data_object:
-            self.__pipeline_data_object = json.load(self.__pipeline_data_file_path)
+            self.__pipeline_data_object = general_toolbox.read_json(self.__pipeline_data_file_path)
         return self.__pipeline_data_object
 
     def _get_value_for_key(self, key, default=""):
