@@ -19,9 +19,9 @@ python_install:
 	@virtualenv -p `which python3` python_install
 
 bin/maven:
-	@cd tmp; wget http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
-	@cd tmp; tar xzvf apache-maven-3.5.0-bin.tar.gz
-	@mv tmp/apache-maven-3.5.0 bin/maven
+	@cd tmp; wget http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz
+	@cd tmp; tar xzvf apache-maven-3.5.2-bin.tar.gz
+	@mv tmp/apache-maven-3.5.2 bin/maven
 
 bin/lsf-cluster-file-exporter: tmp bin/maven
 	@cd tmp; git clone https://github.com/PRIDE-Cluster/cluster-file-exporter.git
