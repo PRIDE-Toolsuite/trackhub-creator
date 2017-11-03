@@ -97,6 +97,10 @@ class ConfigManager(DirectorConfigurationManager):
         return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
                             "trackhub_creation.report")
 
+    def get_relative_path_to_project_description(self):
+        # TODO - This could be made configurable in the future
+        return "docs/index.html"
+
 
 # Models for dealing with the data file that describes the project
 class ProjectTrackDescriptor:
@@ -280,6 +284,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
     Given a project description file that contains the information specified at the beginning of this module, this
     pipeline creates a trackhub for all the project defined tracks
     """
+
     def __init__(self, configuration_object, configuration_file, pipeline_arguments):
         runner_id = "{}-{}".format(__name__, time.time())
         super().__init__(runner_id)
@@ -308,7 +313,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                         project_track_descriptor.get_track_species()):
                     self.__valid_project_tracks.append(project_track_descriptor)
                 else:
-                    self.__pipeline_result_object\
+                    self.__pipeline_result_object \
                         .add_warning_message("MISSING Taxonomy #{} on Ensembl"
                                              .format(project_track_descriptor.get_track_species()))
         return self.__valid_project_tracks
@@ -323,7 +328,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             self._get_logger().debug("Indexing #{} valid project tracks".format(len(self.__get_valid_project_tracks())))
             for project_track in self.__get_valid_project_tracks():
                 if project_track.get_track_species() in self.__indexed_project_tracks_by_taxonomy_id:
-                    self._get_logger()\
+                    self._get_logger() \
                         .error("ERROR DUPLICATED TAXONOMY indexing project track '{}', "
                                "another project track, '{}' is in the index - SKIP -"
                                .format(project_track.get_track_name(),
@@ -399,14 +404,14 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             while True:
                 pogo_runner = parallel_run_manager.get_next_finished_runner()
                 if not pogo_runner.is_success():
-                    message = "PoGo FAILED running on file '{}', taxonomy #{} - SKIPPING its results"\
+                    message = "PoGo FAILED running on file '{}', taxonomy #{} - SKIPPING its results" \
                         .format(pogo_runner.pogo_input_file, pogo_runner.ncbi_taxonomy_id)
                     self._get_logger().error(message)
                     self.__pipeline_result_object.add_warning_message(message)
                     continue
                 if pogo_runner.ncbi_taxonomy_id in pogo_run_results:
                     message = "DUPLICATED taxonomy ID #{} when registering PoGo success on file '{}'" \
-                              " - SKIPPING its results"\
+                              " - SKIPPING its results" \
                         .format(pogo_runner.ncbi_taxonomy_id,
                                 pogo_runner.pogo_input_file)
                     self._get_logger().error(message)
@@ -483,8 +488,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             return False
         # Fill in the pipeline report
         self.__pipeline_result_object.hub_descriptor_file_path = \
-            self._get_trackhub_exporter()\
-                .export_summary\
+            self._get_trackhub_exporter() \
+                .export_summary \
                 .track_hub_descriptor_file_path
         for message in self._get_trackhub_exporter().export_summary.warnings:
             self.__pipeline_result_object.add_warning_message(message)
