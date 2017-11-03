@@ -143,10 +143,10 @@ class PipelineData:
         return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL)
 
     def get_trackhub_public_flag_value(self):
-        return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL, default='0')
+        return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_PUBLIC, default='0')
 
     def get_trackhub_type(self):
-        return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_URL, default='PROTEOMICS')
+        return self._get_value_for_key(self._PIPELINE_DATA_KEY_TRACKHUB_TYPE, default='PROTEOMICS')
 
     def get_file_path_pipeline_report(self):
         return self._get_value_for_key(self._PIPELINE_DATA_KEY_PIPELINE_REPORT_FILE_PATH)
