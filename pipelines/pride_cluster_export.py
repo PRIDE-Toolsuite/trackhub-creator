@@ -132,6 +132,12 @@ class ConfigManager(DirectorConfigurationManager):
         return self._get_value_for_pipeline_argument_key(
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS)
 
+    def get_url_pride_cluster_description(self):
+        description_path = "docs/index.html"
+        if self.get_url_pride_cluster_trackhubs():
+            return "{}/{}".format(self.get_url_pride_cluster_trackhubs(), description_path)
+        return description_path
+
     def get_trackhub_registry_url(self):
         return self._get_value_for_pipeline_argument_key(self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_TRACKHUB_REGISTRY_URL)
 
