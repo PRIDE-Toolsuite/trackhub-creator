@@ -294,7 +294,8 @@ class ConfigManager(DirectorConfigurationManager):
 
     def get_pride_cluster_description_url(self):
         # Default PRIDE Cluster URL
-        return 'https://www.ebi.ac.uk/pride/cluster/#/'
+        # return 'https://www.ebi.ac.uk/pride/cluster/#/'
+        return self.get_url_pride_cluster_description()
 
 
 class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
@@ -365,7 +366,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         if not self.__cluster_file_exporter_result_mapping:
             self.__cluster_file_exporter_result_mapping = self.__map_cluster_file_exporter_result_files()
         return self.__cluster_file_exporter_result_mapping
-
 
     def __run_cluster_file_exporter(self):
         # time java -Xmx12G -jar
@@ -492,11 +492,11 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         ensembl_species_entry = \
             ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy_id)
         if ensembl_species_entry:
-            trackhub_track_title = "{}"\
+            trackhub_track_title = "{}" \
                 .format(ensembl_species_entry.get_display_name())
-            trackhub_track_short_label = "PRIDE Cluster Track - '{}'"\
+            trackhub_track_short_label = "PRIDE Cluster Track - '{}'" \
                 .format(ensembl_species_entry.get_display_name())
-            trackhub_track_long_label = "PRIDE Cluster Track for main .bed file, species '{}'"\
+            trackhub_track_long_label = "PRIDE Cluster Track for main .bed file, species '{}'" \
                 .format(ensembl_species_entry.get_display_name())
         return trackhubs.BaseTrack(trackhub_track_title,
                                    trackhub_track_short_label,
