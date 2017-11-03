@@ -97,7 +97,7 @@ class ConfigManager(DirectorConfigurationManager):
         return os.path.join(config_manager.get_app_config_manager().get_session_working_dir(),
                             "trackhub_creation.report")
 
-    def get_relative_path_to_project_description(self):
+    def get_project_description_url(self):
         # TODO - This could be made configurable in the future
         return "docs/index.html"
 
@@ -440,7 +440,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                                    self.__project_trackhub_descriptor.get_trackhub_short_label(),
                                    self.__project_trackhub_descriptor.get_trackhub_long_label(),
                                    self.__project_trackhub_descriptor.get_trackhub_email(),
-                                   self.__config_manager.get_relative_path_to_project_description())
+                                   self.__config_manager.get_project_description_url())
         return self.__trackhub_descriptor
 
     # Override
