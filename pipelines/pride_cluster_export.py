@@ -133,6 +133,10 @@ class ConfigManager(DirectorConfigurationManager):
             self._CONFIG_COMMAND_LINE_ARGUMENT_KEY_URL_PRIDE_CLUSTER_TRACKHUBS)
 
     def get_url_pride_cluster_description(self):
+        """
+        This URL points to a document that describes the pipeline for publishing PRIDE Cluster data as a trackhub
+        :return: string
+        """
         description_path = "docs/trackhubs/index.html"
         if self.get_url_pride_cluster_trackhubs():
             return "{}/{}".format(self.get_url_pride_cluster_trackhubs(), description_path)
