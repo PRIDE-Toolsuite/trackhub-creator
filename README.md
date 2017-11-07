@@ -111,6 +111,11 @@ where
 - _hub_descriptor_file_path_, absolute path to the _hub.txt_ file created as part of the trackhub for the given project.
 
 ## Trackhub Publishing / Registering / Update Pipeline
+This pipeline registers a trackhub at [Trackhub Registry](https://www.trackhubregistry.org/) and it can be launched by the script at
+> scripts/publish_trackhub/publish_trackhub.sh
+
+providing the following parameters
+- _user name_, this is the user name to be used for registering the trackhub at the [Trackhub Registry](https://www.trackhubregistry.org/).
 
 # Application Architecture
 
