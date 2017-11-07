@@ -106,7 +106,7 @@ where
 - _success_messages_, a list of informative messages about the creation of the trackhub for the given project.
 - _warning_messages_, a list of messages raising issues about the trackhub creation for the given project.
 - _error_messages_, a list of messages stating the errors that rendered the trackhub creation process for the given project impossible.
-- _pipeline_session_working_dir_
+- _pipeline_session_working_dir_, this is the working directory used by the application when running this pipeline.
 - _log_files_
 - _hub_descriptor_file_path_
 
