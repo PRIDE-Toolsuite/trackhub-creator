@@ -86,6 +86,19 @@ The following is a sample project description file content passed to this pipeli
 }
 ```
 
+_trackhubCreationReportFilePath_ points to a file where the pipeline, once it is done running, will dump a JSON formatted report on the trackhub creation process, as it can be seen in the sample underneath these lines.
+```json
+{
+"status": "SUCCESS", 
+"success_messages": [], 
+"error_messages": [],
+"warning_messages": [], 
+"pipeline_session_working_dir": "...", 
+"log_files": [], 
+"hub_descriptor_file_path": "..."
+}
+```
+
 ## Trackhub Publishing / Registering / Update Pipeline
 
 # Application Architecture
