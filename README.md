@@ -133,6 +133,10 @@ where
 - _type_, this is the 'type' information to be assigned to the trakchub being published, if not included in the file, the default value is 'PROTEOMICS'.
 - _pipelineReportFilePath_, absolute path to the file where the pipeline should provide a report on the process. As sample of that report content can be seen underneath these lines.
 
+```json
+
+```
+
 # Application Architecture
 
 ### Contact
