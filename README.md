@@ -91,8 +91,8 @@ _trackhubCreationReportFilePath_ points to a file where the pipeline, once it is
 {
 "status": "SUCCESS", 
 "success_messages": [], 
-"error_messages": [],
 "warning_messages": [], 
+"error_messages": [],
 "pipeline_session_working_dir": "...", 
 "log_files": [], 
 "hub_descriptor_file_path": "..."
@@ -104,8 +104,8 @@ where
     - _WARNING_, some project data failed to process but a trackhub was created with at least one track. More information can be found in the accompanying messages within this report.
     - _ERROR_, a trackhub could not be created for the given project data. More information can be found in the accompanying messages within this report.
 - _success_messages_, a list of informative messages about the creation of the trackhub for the given project.
-- _error_messages_
-- _warning_messages_
+- _warning_messages_, a list of messages raising issues about the trackhub creation for the given project.
+- _error_messages_, 
 - _pipeline_session_working_dir_
 - _log_files_
 - _hub_descriptor_file_path_
