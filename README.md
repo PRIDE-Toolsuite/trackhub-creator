@@ -119,6 +119,10 @@ providing the following parameters
 - _password_, to be used for registering the trackhub at the [Trackhub Registry](https://www.trackhubregistry.org/).
 - _trackhub description data file_, this file describes the trackhub to be publish by this pipeline, as it can be seen in following sample file content.
 
+```json
+
+```
+
 # Application Architecture
 
 ### Contact
