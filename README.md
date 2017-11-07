@@ -32,6 +32,8 @@ The following pipelines are shipped with the application:
 
 ## PRIDE Project Trackhub Creation Pipeline
 
+## Trackhub Publishing / Registering / Update Pipeline
+
 # Application Architecture
 
 ### Contact
