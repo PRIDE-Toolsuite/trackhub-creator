@@ -108,7 +108,7 @@ where
 - _**error_messages**_, a list of messages stating the errors that rendered the trackhub creation process for the given project impossible.
 - _**pipeline_session_working_dir**_, this is the working directory used by the application when running this pipeline.
 - _**log_files**_, the list of absolute paths to all the log files related to the pipeline run for the given project, as with the working directory, this information is included in the report for forensic purposes.
-- _hub_descriptor_file_path_, absolute path to the _hub.txt_ file created as part of the trackhub for the given project.
+- _**hub_descriptor_file_path**_, absolute path to the _hub.txt_ file created as part of the trackhub for the given project.
 
 ## Trackhub Publishing / Registering / Update Pipeline
 This pipeline registers a trackhub at [Trackhub Registry](https://www.trackhubregistry.org/) and it can be launched by the script at
