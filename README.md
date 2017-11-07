@@ -150,7 +150,7 @@ where
     - _SUCCESS_, the trackhub was successfully published / updated.
     - _WARNING_, the trackhub was published / updated, but some errors occurred.
     - _ERROR_, the trackhub could not be published / updated.
-- _success_messages_, a list of informative messages about the trackhub publishing process.
+- _**success_messages**_, a list of informative messages about the trackhub publishing process.
 - _warning_messages_, a list of messages raising issues about the trackhub publishing process.
 - _error_messages_, a list of messages stating the errors that rendered the trackhub publishing process.
 - _pipeline_session_working_dir_, this is the working directory used by the application when running this pipeline.
