@@ -153,7 +153,7 @@ where
 - _**success_messages**_, a list of informative messages about the trackhub publishing process.
 - _**warning_messages**_, a list of messages raising issues about the trackhub publishing process.
 - _**error_messages**_, a list of messages stating the errors that rendered the trackhub publishing process.
-- _pipeline_session_working_dir_, this is the working directory used by the application when running this pipeline.
+- _**pipeline_session_working_dir**_, this is the working directory used by the application when running this pipeline.
 - _trackhub_url_, URL of the _hub.txt_ trackhub file.
 - _log_files_, the list of absolute paths to all the log files related to the pipeline run for the given project, as with the working directory, this information is included in the report for forensic purposes.
 
