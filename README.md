@@ -98,6 +98,17 @@ _trackhubCreationReportFilePath_ points to a file where the pipeline, once it is
 "hub_descriptor_file_path": "..."
 }
 ```
+where
+- _status_, will be
+    - _SUCCESS_
+    - _WARNING_
+    - _ERROR_
+- _success_messages_
+- _error_messages_
+- _warning_messages_
+- _pipeline_session_working_dir_
+- _log_files_
+- _hub_descriptor_file_path_
 
 ## Trackhub Publishing / Registering / Update Pipeline
 
