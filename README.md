@@ -116,6 +116,7 @@ This pipeline registers a trackhub at [Trackhub Registry](https://www.trackhubre
 
 providing the following parameters
 - _user name_, this is the user name to be used for registering the trackhub at the [Trackhub Registry](https://www.trackhubregistry.org/).
+- _password_, to be used for registering the trackhub at the [Trackhub Registry](https://www.trackhubregistry.org/).
 
 # Application Architecture
 
