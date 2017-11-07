@@ -66,6 +66,26 @@ scripts/create_trackhub_for_project/launch_pipeline_for_project.sh
 ```
 and the only parameter it needs is the absolute path to a JSON formatted file that contains all the information related to the project being processed and the trackhub that is going to be created, e.g. title, long and short description, etc.
 
+The following is a sample project description file content passed to this pipeline as a parameter
+```json
+{
+  "trackHubName" : "PXD000625",
+  "trackHubShortLabel" : "<a href=\"http://www.ebi.ac.uk/pride/archive/projects/PXD000625\">PXD000625</a> - Hepatoc...",
+  "trackHubLongLabel" : "Experimental design For the label-free ...",
+  "trackHubType" : "PROTEOMICS",
+  "trackHubEmail" : "pride-support@ebi.ac.uk",
+  "trackHubInternalAbsolutePath" : "...",
+  "trackhubCreationReportFilePath": "...",
+  "trackMaps" : [ {
+    "trackName" : "PXD000625_10090_Original",
+    "trackShortLabel" : "<a href=\"http://www.ebi.ac.uk/pride/archive/projects/PXD000625\">PXD000625</a> - Mus musc...",
+    "trackLongLabel" : "Experimental design For the label-free proteome analysis 17 mice were used composed of 5 ...",
+    "trackSpecies" : "10090",
+    "pogoFile" : "..."
+  } ]
+}
+```
+
 ## Trackhub Publishing / Registering / Update Pipeline
 
 # Application Architecture
