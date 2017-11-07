@@ -60,6 +60,11 @@ It will create a subfolder at [PRIDE Cluster Trackhubs FTP](http://ftp.pride.ebi
 More information on the process of creating a trackhub for  [PRIDE Cluster Trackhubs FTP](http://ftp.pride.ebi.ac.uk/pride/data/cluster/trackhubs/) as 'YYYY-MM', with the year and month information of the trackhub creation, and update a 'latest' link that points to the last created trackhub for [PRIDE Cluster](https://www.ebi.ac.uk/pride/cluster/#/) can be found [here](http://ftp.pride.ebi.ac.uk/pride/data/cluster/docs/trackhubs/).
 
 ## PRIDE Project Trackhub Creation Pipeline
+This pipeline creates a trackhub for the given PRIDE project. It is launched by the script
+```
+scripts/create_trackhub_for_project/launch_pipeline_for_project.sh
+```
+and the only parameter it needs is the absolute path to a JSON formatted file that contains all the information related to the project being processed and the trackhub that is going to be created, e.g. title, long and short description, etc.
 
 ## Trackhub Publishing / Registering / Update Pipeline
 
