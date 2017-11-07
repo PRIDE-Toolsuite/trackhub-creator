@@ -21,7 +21,7 @@ time python_install/bin/python main_app.py -a pipeline_cmd_param1=pipeline_cmd_p
 This command will time the execution of the application, using the application's _Python virtual environment_ to run the given pipeline with the given command line _key=value_ parameters.
 
 The following pipelines are shipped with the application:
-- _ensembl_data_collector_
+- _**ensembl_data_collector**_
 - _pride_cluster_export_
 - _create_trackhub_for_project_
 - _publish_trackhub_
