@@ -122,13 +122,14 @@ providing the following parameters
 ```json
 {
     "trackhubUrl": "http://host.com/hub.txt",
-    "public": "1",
+    "publicVisibility": "1",
     "type": "PROTEOMICS",
     "pipelineReportFilePath": "pipeline.report"
 }
 ```
 where
 - _trackhubUrl_ is the public URL of the _hub.txt_ file for the trackhub to be published.
+- _publicVisibility_, configures whether the trackhub being published is going to be public or private, if not included in the file, the default value is 'private'.
 
 # Application Architecture
 
