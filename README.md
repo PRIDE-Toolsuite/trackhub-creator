@@ -28,6 +28,8 @@ The following pipelines are shipped with the application:
 
 ## Enemsebl Data Collector Pipeline
 
+## PRIDE Cluster Export Pipeline
+
 # Application Architecture
 
 ### Contact
