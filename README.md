@@ -146,7 +146,7 @@ where
 }
 ```
 where
-- _status_, represents three possible outcomes on how the pipeline worked out
+- _**status**_, represents three possible outcomes on how the pipeline worked out
     - _SUCCESS_, the trackhub was successfully published / updated.
     - _WARNING_, the trackhub was published / updated, but some errors occurred.
     - _ERROR_, the trackhub could not be published / updated.
