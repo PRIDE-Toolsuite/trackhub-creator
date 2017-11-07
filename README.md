@@ -127,6 +127,8 @@ providing the following parameters
     "pipelineReportFilePath": "pipeline.report"
 }
 ```
+where
+- _trackhubUrl_ is the public URL of the _hub.txt_ file for the trackhub to be published.
 
 # Application Architecture
 
