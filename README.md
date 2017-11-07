@@ -9,9 +9,9 @@ as this repository uses submodules, some of them will require having the access 
 Once the source code has been checked out, this software counts on a _Makefile_ for doing a lot of DevOps related heavy lifting.
 
 There are two main installation targets:
-- _install_, this is the usual installation target used when preparing a development setup of the application, or a production installation that doesn't have into account the possible presence of an HPC environment.
-A _Python virtual environment_ will be prepared with all the application requirements, also, external tools needed by the application will be collected and made available.
-- _install_lsf_, like the other installation target, this one will do the same, but taking into account the possible presence of an HPC environment.
+- _**install**_, this is the usual installation target used when preparing a development setup of the application, or a production installation that doesn't have into account the possible presence of an HPC environment.
+A _**Python virtual environment**_ will be prepared with all the application requirements, also, external tools needed by the application will be collected and made available.
+- _**install_lsf**_, like the other installation target, this one will do the same, but taking into account the possible presence of an HPC environment.
 
 # Using the Pipelines shipped with the application
 For running any pipeline shipped with the application (or added to it), from the root folder of the application, the following command must be issued
