@@ -47,6 +47,17 @@ scripts/ensembl_data_collector/launch_pipeline_for_pride_taxonomies.sh
 ```
 
 ## PRIDE Cluster Export Pipeline
+This pipeline creates and registers / updates a trackhub for PRIDE Cluster data.
+
+It is launched by the following script
+```
+scripts/pride-cluster-export/ebi-lsf-launch-pipeline.sh
+```
+as a job on the HPC environment.
+
+It will create a subfolder at [PRIDE Cluster Trackhubs FTP](http://ftp.pride.ebi.ac.uk/pride/data/cluster/trackhubs/) as 'YYYY-MM', with the year and month information of the trackhub creation, and update a 'latest' link that points to the last created trackhub for [PRIDE Cluster](https://www.ebi.ac.uk/pride/cluster/#/).
+
+More information on the process of creating a trackhub for  [PRIDE Cluster Trackhubs FTP](http://ftp.pride.ebi.ac.uk/pride/data/cluster/trackhubs/) as 'YYYY-MM', with the year and month information of the trackhub creation, and update a 'latest' link that points to the last created trackhub for [PRIDE Cluster](https://www.ebi.ac.uk/pride/cluster/#/) can be found [here](http://ftp.pride.ebi.ac.uk/pride/data/cluster/docs/trackhubs/).
 
 ## PRIDE Project Trackhub Creation Pipeline
 
