@@ -53,7 +53,7 @@ It is launched by the following script
 ```
 scripts/pride-cluster-export/ebi-lsf-launch-pipeline.sh
 ```
-as a job on the HPC environment.
+straight away or as a job on the HPC environment.
 
 It will create a subfolder at [PRIDE Cluster Trackhubs FTP](http://ftp.pride.ebi.ac.uk/pride/data/cluster/trackhubs/) as 'YYYY-MM', with the year and month information of the trackhub creation, and update a 'latest' link that points to the last created trackhub for [PRIDE Cluster](https://www.ebi.ac.uk/pride/cluster/#/).
 
