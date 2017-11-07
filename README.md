@@ -101,8 +101,8 @@ _trackhubCreationReportFilePath_ points to a file where the pipeline, once it is
 where
 - _status_, represents three possible outcomes on how the pipeline worked out
     - _SUCCESS_, all the project data has been successfully processed and the trackhub created.
-    - _WARNING_, some project data failed to process but a trackhub was created with at least one track.
-    - _ERROR_
+    - _WARNING_, some project data failed to process but a trackhub was created with at least one track. More information can be found in the accompanying messages within this report.
+    - _ERROR_, a trackhub could not be created for the given project data. More information can be found in the accompanying messages within this report.
 - _success_messages_
 - _error_messages_
 - _warning_messages_
