@@ -105,7 +105,7 @@ where
     - _ERROR_, a trackhub could not be created for the given project data. More information can be found in the accompanying messages within this report.
 - _success_messages_, a list of informative messages about the creation of the trackhub for the given project.
 - _warning_messages_, a list of messages raising issues about the trackhub creation for the given project.
-- _error_messages_, 
+- _error_messages_, a list of messages stating the errors that rendered the trackhub creation process for the given project impossible.
 - _pipeline_session_working_dir_
 - _log_files_
 - _hub_descriptor_file_path_
