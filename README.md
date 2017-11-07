@@ -104,7 +104,7 @@ where
     - _WARNING_, some project data failed to process but a trackhub was created with at least one track. More information can be found in the accompanying messages within this report.
     - _ERROR_, a trackhub could not be created for the given project data. More information can be found in the accompanying messages within this report.
 - _**success_messages**_, a list of informative messages about the creation of the trackhub for the given project.
-- _warning_messages_, a list of messages raising issues about the trackhub creation for the given project.
+- _**warning_messages**_, a list of messages raising issues about the trackhub creation for the given project.
 - _error_messages_, a list of messages stating the errors that rendered the trackhub creation process for the given project impossible.
 - _pipeline_session_working_dir_, this is the working directory used by the application when running this pipeline.
 - _log_files_, the list of absolute paths to all the log files related to the pipeline run for the given project, as with the working directory, this information is included in the report for forensic purposes.
