@@ -115,7 +115,7 @@ This pipeline registers a trackhub at [Trackhub Registry](https://www.trackhubre
 > scripts/publish_trackhub/publish_trackhub.sh
 
 providing the following parameters
-- _user name_, this is the user name to be used for registering the trackhub at the [Trackhub Registry](https://www.trackhubregistry.org/).
+- _**user name**_, this is the user name to be used for registering the trackhub at the [Trackhub Registry](https://www.trackhubregistry.org/).
 - _password_, to be used for registering the trackhub at the [Trackhub Registry](https://www.trackhubregistry.org/).
 - _trackhub description data file_, this file describes the trackhub to be publish by this pipeline, as it can be seen in following sample file content.
 
