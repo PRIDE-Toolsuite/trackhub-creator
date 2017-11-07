@@ -14,6 +14,18 @@ A _Python virtual environment_ will be prepared with all the application require
 - _install_lsf_, like the other installation target, this one will do the same, but taking into account the possible presence of an HPC environment.
 
 # Using the Pipelines shipped with the application
+For running any pipeline shipped with the application (or added to it), from the root folder of the application, the following command must be issued
+```
+time python_install/bin/python main_app.py -a pipeline_cmd_param1=pipeline_cmd_param1_value,...,pipeline_cmd_paramN=pipeline_cmd_paramN_value <pipeline_name>
+```
+This command will time the execution of the application, using the application's _Python virtual environment_ to run the given pipeline with the given command line _key=value_ parameters.
+
+The following pipelines are shipped with the application:
+- _ensembl_data_collector_
+- _pride_cluster_export_
+- _create_trackhub_for_project_
+- _publish_trackhub_
+
 # Application Architecture
 # Contact
 Manuel Bernal Llinares
