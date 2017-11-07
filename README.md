@@ -148,6 +148,7 @@ where
 where
 - _status_, represents three possible outcomes on how the pipeline worked out
     - _SUCCESS_, the trackhub was successfully published / updated.
+    - _WARNING_, the trackhub was published / updated, but some errors occurred.
 
 # Application Architecture
 
