@@ -103,7 +103,7 @@ where
     - _SUCCESS_, all the project data has been successfully processed and the trackhub created.
     - _WARNING_, some project data failed to process but a trackhub was created with at least one track. More information can be found in the accompanying messages within this report.
     - _ERROR_, a trackhub could not be created for the given project data. More information can be found in the accompanying messages within this report.
-- _success_messages_
+- _success_messages_, a list of informative messages about the creation of the trackhub for the given project.
 - _error_messages_
 - _warning_messages_
 - _pipeline_session_working_dir_
