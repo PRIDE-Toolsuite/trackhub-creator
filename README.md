@@ -30,6 +30,8 @@ The following pipelines are shipped with the application:
 
 ## PRIDE Cluster Export Pipeline
 
+## PRIDE Project Trackhub Creation Pipeline
+
 # Application Architecture
 
 ### Contact
