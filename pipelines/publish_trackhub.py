@@ -15,7 +15,7 @@ A JSON formatted file is given as a parameter to the pipeline
 And this file contains the following information:
 {
     "trackhubUrl": "Name for the trackhub being published",
-    "public": "1",
+    "publicVisibility": "1",
     "type": "PROTEOMICS",
     "pipelineReportFilePath": "pipeline.report"
 }
