@@ -24,7 +24,7 @@ The following pipelines are shipped with the application:
 - _**ensembl_data_collector**_
 - _**pride_cluster_export**_
 - _**create_trackhub_for_project**_
-- _publish_trackhub_
+- _**publish_trackhub**_
 
 ## Enemsebl Data Collector Pipeline
 Other pipelines shipped with this application, e.g. _create_trackhub_for_project_, use Ensembl protein sequence and genome reference files as part of the _trackhub_ creation process, this files are mirrored locally in the application from the latest [Ensembl](https://www.ensembl.org/info/data/ftp/index.html) release, as the same application can be running different pipelines in parallel, this pipeline is recommended to be used in order to avoid race conditions mirroring those files.
