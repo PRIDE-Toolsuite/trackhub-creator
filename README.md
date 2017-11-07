@@ -26,6 +26,8 @@ The following pipelines are shipped with the application:
 - _create_trackhub_for_project_
 - _publish_trackhub_
 
+## Enemsebl Data Collector Pipeline
+
 # Application Architecture
 
 ### Contact
