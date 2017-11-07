@@ -1,4 +1,3 @@
-# Overview
 # How to set up the application
 First thing, check out the application code using the _--recursive_ flag like
 ```
