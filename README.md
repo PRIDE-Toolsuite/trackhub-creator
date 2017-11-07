@@ -10,7 +10,7 @@ Once the source code has been checked out, this software counts on a _Makefile_ 
 
 There are two main installation targets:
 - _**install**_, this is the usual installation target used when preparing a development setup of the application, or a production installation that doesn't have into account the possible presence of an HPC environment.
-A _**Python virtual environment**_ will be prepared with all the application requirements, also, external tools needed by the application will be collected and made available.
+A _Python virtual environment_ will be prepared with all the application requirements, also, external tools needed by the application will be collected and made available.
 - _**install_lsf**_, like the other installation target, this one will do the same, but taking into account the possible presence of an HPC environment.
 
 # Using the Pipelines shipped with the application
