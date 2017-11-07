@@ -23,7 +23,7 @@ This command will time the execution of the application, using the application's
 The following pipelines are shipped with the application:
 - _**ensembl_data_collector**_
 - _**pride_cluster_export**_
-- _create_trackhub_for_project_
+- _**create_trackhub_for_project**_
 - _publish_trackhub_
 
 ## Enemsebl Data Collector Pipeline
