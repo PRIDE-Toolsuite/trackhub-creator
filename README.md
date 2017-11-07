@@ -36,7 +36,15 @@ time python_install/bin/python main_app.py -a ncbi_taxonomy_ids=10090,9606 ensem
 Those files will be made locally available at 
 > resources/ensembl/release-XX
 
-within the application folder where _XX_ is the latest Ensembl Release Number.
+within the application folder, where _XX_ is the latest Ensembl Release Number.
+
+There is a launch script specific to PRIDE data, that collects Ensembl data for all the taxonomies present in PRIDE, it can be found at
+> scripts/ensembl_data_collector
+
+and it can be launched either straight away or as an HPC job
+```
+scripts/ensembl_data_collector/launch_pipeline_for_pride_taxonomies.sh 
+```
 
 ## PRIDE Cluster Export Pipeline
 
