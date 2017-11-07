@@ -120,7 +120,12 @@ providing the following parameters
 - _trackhub description data file_, this file describes the trackhub to be publish by this pipeline, as it can be seen in following sample file content.
 
 ```json
-
+{
+    "trackhubUrl": "http://host.com/hub.txt",
+    "public": "1",
+    "type": "PROTEOMICS",
+    "pipelineReportFilePath": "pipeline.report"
+}
 ```
 
 # Application Architecture
