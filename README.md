@@ -153,6 +153,7 @@ where
 - _success_messages_, a list of informative messages about the trackhub publishing process.
 - _warning_messages_, a list of messages raising issues about the trackhub publishing process.
 - _error_messages_, a list of messages stating the errors that rendered the trackhub publishing process.
+- _pipeline_session_working_dir_, this is the working directory used by the application when running this pipeline.
 
 # Application Architecture
 
