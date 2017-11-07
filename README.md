@@ -134,8 +134,20 @@ where
 - _pipelineReportFilePath_, absolute path to the file where the pipeline should provide a report on the process. As sample of that report content can be seen underneath these lines.
 
 ```json
-
+{
+"status": "...", 
+"success_messages": []
+"warning_messages": [], 
+"error_messages": [], 
+"pipeline_session_working_dir": "...", 
+"trackhub_url": "...", 
+"log_files": [], 
+"trackhub_registration_analysis": []
+}
 ```
+where
+- _status_, represents three possible outcomes on how the pipeline worked out
+    - _SUCCESS_, the trackhub was successfully published / updated.
 
 # Application Architecture
 
