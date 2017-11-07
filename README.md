@@ -131,7 +131,7 @@ where
 - _**trackhubUrl**_ is the public URL of the _hub.txt_ file for the trackhub to be published.
 - _**publicVisibility**_, configures whether the trackhub being published is going to be public or private, if not included in the file, the default value is 'private'.
 - _**type**_, this is the 'type' information to be assigned to the trakchub being published, if not included in the file, the default value is 'PROTEOMICS'.
-- _pipelineReportFilePath_, absolute path to the file where the pipeline should provide a report on the process. As sample of that report content can be seen underneath these lines.
+- _**pipelineReportFilePath**_, absolute path to the file where the pipeline should provide a report on the process. As sample of that report content can be seen underneath these lines.
 
 ```json
 {
