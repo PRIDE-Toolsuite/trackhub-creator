@@ -160,6 +160,7 @@ where
 - _**log_files**_, the list of absolute paths to all the log files related to the pipeline run for the given project, as with the working directory, this information is included in the report for forensic purposes.
 
 # For Developers
+## Application Architecture
 
 # Final Notes
 The default Trackhub Registry service used by the pipelines is the one at [www.trackhubregistry.org](https://www.trackhubregistry.org/).
