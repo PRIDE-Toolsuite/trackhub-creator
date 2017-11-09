@@ -162,6 +162,7 @@ where
 # For Developers
 ## Application Architecture
 ## Unit Testing
+## Extending the Application with more Pipelines
 
 # Final Notes
 The default Trackhub Registry service used by the pipelines is the one at [www.trackhubregistry.org](https://www.trackhubregistry.org/).
