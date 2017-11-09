@@ -227,6 +227,8 @@ class PipelineResult:
         self.file_path_pipeline_session = ""
         # Absolute file path to the log files that belong to the running session of the pipeline
         self.file_path_log_files = []
+        # Ensembl Release used for creating the trackhub
+        self.ensembl_release = ""
 
     def set_status_error(self):
         self.status = self._VALUE_STATUS_ERROR
@@ -275,6 +277,7 @@ class PipelineResult:
                            'warning_messages': self.warning_messages,
                            'error_messages': self.error_messages,
                            'hub_descriptor_file_path': self.hub_descriptor_file_path,
+                           'ensembl_release': self.ensembl_release,
                            'pipeline_session_working_dir': self.file_path_pipeline_session,
                            'log_files': self.file_path_log_files})
 
@@ -353,6 +356,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             config_manager.get_app_config_manager().get_session_working_dir()
         # Add this pipeline session log files to the final report
         self.__pipeline_result_object.add_log_files(config_manager.get_app_config_manager().get_session_log_files())
+        # Add information about the Ensembl Release being used
+        self.__pipeline_result_object.ensembl_release = str(ensembl.service.get_service().get_release_number())
         if self.__config_manager.get_project_data_file_path():
             self._get_logger().info("Reading Project Trackhub Descriptor from file at '{}'"
                                     .format(self.__config_manager.get_project_data_file_path()))
