@@ -207,6 +207,9 @@ Examples on how to extend the application with more pipelines can be taken from 
 - _pride_cluster_export_
 - _publish_trackhub_
 
+#### /pogo
+[PoGo](https://github.com/cschlaffner/PoGo) is used by the application to create the _Bed_ files that will be part (as _BigBed_) of the newly created trackhub. This module implements the models for working with this external tool.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
