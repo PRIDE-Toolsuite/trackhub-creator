@@ -222,7 +222,10 @@ Launching helper scripts for the different pipelines are provided here as either
 Some of the scripts already linked to the application (some of them are private, so the corresponding access rights are required)
 
 ##### commons/helper_functions.sh
-Public common helper functions. 
+Public common helper functions.
+
+##### commons-priv/*
+General environment cleaning and preparation scripts that are private, as they contain sensitive information.
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
