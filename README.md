@@ -247,6 +247,10 @@ A launcher script for the pipeline that, given a project trackhub description fi
 >
 > publish_trackhub.sh <trackhub_registry_username> <trackhub_registry_password> <absolute_path_to_project_trackhub_description_file>
 
+#### /tests
+All unit tests shipped with the application are in this folder, and they can be triggered by the following command within the application root folder
+> make tests
+
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
