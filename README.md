@@ -159,5 +159,7 @@ where
 # Final Notes
 The default Trackhub Registry service used by the pipelines is the one at [www.trackhubregistry.org](https://www.trackhubregistry.org/).
 
+Please, for more detailed documentation refer to the [wiki pages](https://github.com/Proteogenomics/trackhub-creator/wiki/Developer-Documentation) of this reposiroty.
+
 ### Contact
 Manuel Bernal Llinares
