@@ -182,6 +182,9 @@ It is a placeholder for documentation related to the application, although the g
 #### /download_manager
 This module contains a _Download Manager_ for the application, that will grab files from the internet in a multithreaded way. An example on how to use this module for downloading files from the internet can be found in the _unit tests_.
 
+#### /ensembl
+Ensembl services, through a [REST API](https://rest.ensembl.org), are used for processing _species_ data, and gathering _protein sequence_ and _genome reference_ files, e.g. for producing _Bed_ files that are part of the _trackhub_ creation process. This module contains service wrappers for accessing all that information and automatically grab those data files from the internet. 
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
