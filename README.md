@@ -213,6 +213,9 @@ Examples on how to extend the application with more pipelines can be taken from 
 #### /resources
 This folder is a _well known_ location for the application, it is devoted to resources (mainly data assets) used by the application when running a pipeline, e.g. the mirrored Ensembl data.
 
+#### /run
+Everytime a pipeline is launched with this application, a new session is started, and a **unique** _working directory_ is created for that session to mess with, within this folder.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
