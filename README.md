@@ -219,6 +219,8 @@ Everytime a pipeline is launched with this application, a new session is started
 #### /scripts
 Launching helper scripts for the different pipelines are provided here as either a private or public submodule link, depending on whether they contain sensitive information or not.
 
+They all have to be called from the application root directory to work correctly, and some of them already contain an HPC job profile definition.
+
 Some of the scripts already linked to the application (some of them are private, so the corresponding access rights are required)
 
 ##### commons/helper_functions.sh
