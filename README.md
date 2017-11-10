@@ -176,6 +176,9 @@ This is a helper module that contains _helpers_ for dealing with different data 
 
 As for most of the modules that are shipped with the application, it counts on a _config_manager_ that manages module wide configuration.
 
+#### /docs
+It is a placeholder for documentation related to the application, although the general preference is having all the documentation available on-line, it may be useful for documenting some parts of the application itself from the point of view of the processing it models, or some external tools used by the application.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
