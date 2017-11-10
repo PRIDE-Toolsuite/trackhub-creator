@@ -229,6 +229,9 @@ Public common helper functions.
 ##### commons-priv/*
 General environment cleaning and preparation scripts that are private, as they contain sensitive information.
 
+##### ensembl_data_collector/launch_pipeline_for_pride_taxonomies.sh
+When using this application with [PRIDE](https://www.ebi.ac.uk/pride/archive/) data, this pipeline will mirror all the Ensembl required data locally, for all the taxonomies that are used in PRIDE and available on Ensembl, this way we avoid race conditions when running the application in parallel for multiple projects or PRIDE Cluster data.
+
 ##### create_trackhub_for_project/launch_pipeline_for_project.sh
 This helper script will launch the trackhub creation pipeline for the given project.
 >usage:
