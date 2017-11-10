@@ -251,6 +251,9 @@ A launcher script for the pipeline that, given a project trackhub description fi
 All unit tests shipped with the application are in this folder, and they can be triggered by the following command within the application root folder
 > make tests
 
+#### /toolbox
+The Toolbox module contains helper functions for dealing with _assemblies_, _rest requests_, _folders_, etc.
+
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
