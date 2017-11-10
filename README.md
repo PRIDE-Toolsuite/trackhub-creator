@@ -264,9 +264,6 @@ Is the main entry point for running the application, and '--help' can be used to
 Application _Python_ dependencies are managed via the _requirements.txt_ file, and they can be automatically updated by the following command
 > make update_requirements_file
 
-## Unit Testing
-## Extending the Application with more Pipelines
-
 # Final Notes
 The default Trackhub Registry service used by the pipelines is the one at [www.trackhubregistry.org](https://www.trackhubregistry.org/).
 
