@@ -254,6 +254,9 @@ All unit tests shipped with the application are in this folder, and they can be 
 #### /toolbox
 The Toolbox module contains helper functions for dealing with _assemblies_, _rest requests_, _folders_, etc.
 
+#### /trackhub
+An abstraction layer modeling trackhubs, tracks and the registration service is implemented by this module. As it is the case of other modules, it counts on a _Configuration Manager_ for modifying some aspects of its business logic.
+
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
