@@ -179,6 +179,9 @@ As for most of the modules that are shipped with the application, it counts on a
 #### /docs
 It is a placeholder for documentation related to the application, although the general preference is having all the documentation available on-line, it may be useful for documenting some parts of the application itself from the point of view of the processing it models, or some external tools used by the application.
 
+#### /download_manager
+This module contains a _Download Manager_ for the application, that will grab files from the internet in a multithreaded way. An example on how to use this module for downloading files from the internet can be found in the _unit tests_.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
