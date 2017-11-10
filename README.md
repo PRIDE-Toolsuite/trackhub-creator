@@ -257,6 +257,8 @@ The Toolbox module contains helper functions for dealing with _assemblies_, _res
 #### /trackhub
 An abstraction layer modeling trackhubs, tracks and the registration service is implemented by this module. As it is the case of other modules, it counts on a _Configuration Manager_ for modifying some aspects of its business logic.
 
+### main_app.py
+Is the main entry point for running the application, and '--help' can be used to obtain more information on the supported parameters.
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
