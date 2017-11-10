@@ -183,7 +183,12 @@ It is a placeholder for documentation related to the application, although the g
 This module contains a _Download Manager_ for the application, that will grab files from the internet in a multithreaded way. An example on how to use this module for downloading files from the internet can be found in the _unit tests_.
 
 #### /ensembl
-Ensembl services, through a [REST API](https://rest.ensembl.org), are used for processing _species_ data, and gathering _protein sequence_ and _genome reference_ files, e.g. for producing _Bed_ files that are part of the _trackhub_ creation process. This module contains service wrappers for accessing all that information and automatically grab those data files from the internet. 
+Ensembl services, through a [REST API](https://rest.ensembl.org), are used for processing _species_ data, and gathering _protein sequence_ and _genome reference_ files, e.g. for producing _Bed_ files that are part of the _trackhub_ creation process. This module contains service wrappers for accessing all that information and automatically grab those data files from the internet.
+
+####  /hpc
+An HPC environment may be present when running the application, this module models the detection and interaction with such an environment. This is useful in cases when, for example, we want to parallelize subtasks by fully leveraging the computing system available.
+
+As with other modules in the application, it counts on a _Configuration Manager_ to shape some aspects of the module. 
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
