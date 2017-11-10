@@ -188,7 +188,14 @@ Ensembl services, through a [REST API](https://rest.ensembl.org), are used for p
 ####  /hpc
 An HPC environment may be present when running the application, this module models the detection and interaction with such an environment. This is useful in cases when, for example, we want to parallelize subtasks by fully leveraging the computing system available.
 
-As with other modules in the application, it counts on a _Configuration Manager_ to shape some aspects of the module. 
+As with other modules in the application, it counts on a _Configuration Manager_ to shape some aspects of the module.
+
+#### /logs
+Everytime the application is launched, a _session_ is started, and two log files are created, associated with that running session, with two different suffixes:
+- _debug_, contains all log messages down to _debug_ level.
+- _info_, contains only those log messages that are _info_ or upper logging level.
+
+
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
