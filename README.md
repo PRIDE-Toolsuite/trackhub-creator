@@ -260,6 +260,10 @@ An abstraction layer modeling trackhubs, tracks and the registration service is 
 ### main_app.py
 Is the main entry point for running the application, and '--help' can be used to obtain more information on the supported parameters.
 
+## Managing Dependencies
+Application _Python_ dependencies are managed via the _requirements.txt_ file, and they can be automatically updated by the following command
+> make update_requirements_file
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
