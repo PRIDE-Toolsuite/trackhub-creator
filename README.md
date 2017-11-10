@@ -195,7 +195,8 @@ Everytime the application is launched, a _session_ is started, and two log files
 - _debug_, contains all log messages down to _debug_ level.
 - _info_, contains only those log messages that are _info_ or upper logging level.
 
-
+#### /parallel
+Within this module, base classes and factories provide scaffolding for parallelizing subtasks as either separated threads (at this iteration of the software) or HPC jobs. A simple _Manager_ implementation is provided for dealing with launching multiple parallel subtasks and waiting for them to finish, as well as error handling.
 
 ## Unit Testing
 ## Extending the Application with more Pipelines
