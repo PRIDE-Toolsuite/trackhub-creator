@@ -216,6 +216,14 @@ This folder is a _well known_ location for the application, it is devoted to res
 #### /run
 Everytime a pipeline is launched with this application, a new session is started, and a **unique** _working directory_ is created for that session to mess with, within this folder.
 
+#### /scripts
+Launching helper scripts for the different pipelines are provided here as either a private or public submodule link, depending on whether they contain sensitive information or not.
+
+Some of the scripts already linked to the application (some of them are private, so the corresponding access rights are required)
+
+##### commons/helper_functions.sh
+Public common helper functions. 
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
