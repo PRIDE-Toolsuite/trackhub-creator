@@ -227,6 +227,12 @@ Public common helper functions.
 ##### commons-priv/*
 General environment cleaning and preparation scripts that are private, as they contain sensitive information.
 
+##### create_trackhub_for_project/launch_pipeline_for_project.sh
+This helper script will launch the trackhub creation pipeline for the given project.
+>usage:
+>
+> launch_pipeline_for_project.sh <absolute_path_to_json_formatted_project_description_file>
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
