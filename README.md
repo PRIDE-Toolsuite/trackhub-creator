@@ -166,6 +166,11 @@ Along the following lines, there is a description of the different folders that 
 #### /bin
 Contains well known locations to the binary files of the external tools used by the application, e.g. _cluster-file-exporter_, _PoGo_, etc.
 
+#### /config
+This folders holds all the configuration files, application and module wide, usually in JSON format.
+
+There is a linked submodule, _private_, that contains sensitive configuration data, hosted in a private repository.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
