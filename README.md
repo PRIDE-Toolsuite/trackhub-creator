@@ -198,6 +198,15 @@ Everytime the application is launched, a _session_ is started, and two log files
 #### /parallel
 Within this module, base classes and factories provide scaffolding for parallelizing subtasks as either separated threads (at this iteration of the software) or HPC jobs. A simple _Manager_ implementation is provided for dealing with launching multiple parallel subtasks and waiting for them to finish, as well as error handling.
 
+#### /pipelines
+Available pipelines **must** be placed in this folder, and they should follow a similar structure to the one in _template_pipeline.py_, also using it as the "abstract base" definition of a pipeline for best integration results.
+
+Examples on how to extend the application with more pipelines can be taken from the ones already shipped with the application in this iteration:
+- _create_trackhub_for_project_
+- _ensembl_data_collector_
+- _pride_cluster_export_
+- _publish_trackhub_
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
