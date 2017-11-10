@@ -238,6 +238,9 @@ This helper script will launch the trackhub creation pipeline for the given proj
 ##### ensembl_data_collector/launch_pipeline_for_pride_taxonomies.sh
 When using this application with [PRIDE](https://www.ebi.ac.uk/pride/archive/) data, this pipeline will mirror all the Ensembl required data locally, for all the taxonomies that are used in PRIDE and available on Ensembl, this way we avoid race conditions when running the application in parallel for multiple projects or PRIDE Cluster data.
 
+##### pride-cluster-export/ebi-lsf-launch-pipeline.sh
+This is the main launching script for the pipeline that creates and publishes / updates a trackhub for PRIDE Cluster data. All the other scripts in this same folder are helpers supporting this one.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
