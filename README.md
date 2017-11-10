@@ -161,6 +161,11 @@ where
 
 # For Developers
 ## Application Architecture
+Along the following lines, there is a description of the different folders that are part of the application.
+
+#### /bin
+Contains well known locations to the binary files of the external tools used by the application, e.g. _cluster-file-exporter_, _PoGo_, etc.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
