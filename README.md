@@ -210,6 +210,9 @@ Examples on how to extend the application with more pipelines can be taken from 
 #### /pogo
 [PoGo](https://github.com/cschlaffner/PoGo) is used by the application to create the _Bed_ files that will be part (as _BigBed_) of the newly created trackhub. This module implements the models for working with this external tool.
 
+#### /resources
+This folder is a _well known_ location for the application, it is devoted to resources (mainly data assets) used by the application when running a pipeline, e.g. the mirrored Ensembl data.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
