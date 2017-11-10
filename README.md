@@ -171,6 +171,11 @@ This folders holds all the configuration files, application and module wide, usu
 
 There is a linked submodule, _private_, that contains sensitive configuration data, hosted in a private repository.
 
+#### /data_formats
+This is a helper module that contains _helpers_ for dealing with different data formats. At this iteration of the software, it mainly provides file format conversion for _Bed_ files into _BigBed_ files.
+
+As for most of the modules that are shipped with the application, it counts on a _config_manager_ that manages module wide configuration.
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
