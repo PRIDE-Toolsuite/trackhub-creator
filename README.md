@@ -241,6 +241,13 @@ When using this application with [PRIDE](https://www.ebi.ac.uk/pride/archive/) d
 ##### pride-cluster-export/ebi-lsf-launch-pipeline.sh
 This is the main launching script for the pipeline that creates and publishes / updates a trackhub for PRIDE Cluster data. All the other scripts in this same folder are helpers supporting this one.
 
+##### publish_trackhub/publish_trackhub.sh
+A launcher script for the pipeline that, given a project trackhub description file, it will publish / update it on the [Trackhub Registry](https://www.trackhubregistry.org/).
+>usage:
+>
+> publish_trackhub.sh <trackhub_registry_username> <trackhub_registry_password> <absolute_path_to_project_trackhub_description_file>
+
+
 ## Unit Testing
 ## Extending the Application with more Pipelines
 
