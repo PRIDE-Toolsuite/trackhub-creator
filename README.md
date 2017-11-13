@@ -14,6 +14,7 @@ A _Python virtual environment_ will be prepared with all the application require
 
 And two main cleaning (all) targets:
 - _**clean_all**_, this will remove everything (running sessions, logs, external tools...) leaving the application as it would be after being cloned from its repository.
+- _**lsf_clean_all**_, it performs the same 'cleaning' process as _clean_all_, but aware of a possible HPC environment.
 
 # Using the Pipelines shipped with the application
 For running any pipeline shipped with the application (or added to it), from the root folder of the application, the following command must be issued
