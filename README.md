@@ -12,6 +12,9 @@ There are two main installation targets:
 A _Python virtual environment_ will be prepared with all the application requirements, also, external tools needed by the application will be collected and made available.
 - _**install_lsf**_, like the other installation target, this one will do the same, but taking into account the possible presence of an HPC environment.
 
+And two main cleaning (all) targets:
+- _**clean_all**_, this will remove everything (running sessions, logs, external tools...) leaving the application as it would be after being cloned from its repository.
+
 # Using the Pipelines shipped with the application
 For running any pipeline shipped with the application (or added to it), from the root folder of the application, the following command must be issued
 ```
