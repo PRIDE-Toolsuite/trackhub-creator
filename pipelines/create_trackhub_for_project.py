@@ -390,6 +390,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
     # Helpers
     # Override
     def _get_pogo_results_for_input_data(self):
+        # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
         # This is a map (project_track_descriptor, PogoRunResult)
         pogo_run_results = {}
         parallel_run_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
