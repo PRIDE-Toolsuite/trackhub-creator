@@ -312,6 +312,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
         ...
 
     def _get_assemblies_from_pogo_results(self, trackhub_builder):
+        # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
         pogo_results = self._get_pogo_results_for_input_data()
         self._get_logger().info("Processing #{} Taxonomies from PoGo results".format(len(pogo_results)))
         # assembly_mapping_service = AssemblyMappingServiceFactory.get_assembly_mapping_service()
