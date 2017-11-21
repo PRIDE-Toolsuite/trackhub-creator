@@ -23,6 +23,7 @@ from .exceptions import PogoRunnerException
 
 
 class PogoRunResult:
+    # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
     def __init__(self,
                  ncbi_taxonomy_id=None,
                  pogo_source_file_path=None,
