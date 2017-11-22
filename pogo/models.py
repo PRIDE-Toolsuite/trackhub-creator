@@ -251,8 +251,9 @@ class PogoRunnerLocalThread(PogoRunner):
                  ncbi_taxonomy_id=None,
                  pogo_input_file=None,
                  protein_sequence_file_path=None,
-                 gtf_file_path=None):
-        super().__init__(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path)
+                 gtf_file_path=None,
+                 mm_gap=None):
+        super().__init__(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path, mm_gap)
         self._logger = main_app_config_manager \
             .get_app_config_manager() \
             .get_logger_for("{}.{}-{}".format(__name__, type(self).__name__, threading.current_thread().getName()))
