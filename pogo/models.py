@@ -118,7 +118,6 @@ class PogoRunnerFactory:
 
 
 class PogoRunner(ParallelRunner):
-    # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
     def __init__(self,
                  ncbi_taxonomy_id=None,
                  pogo_input_file=None,
