@@ -109,7 +109,6 @@ class PogoRunResult:
 class PogoRunnerFactory:
     @staticmethod
     def get_pogo_runner(ncbi_taxonomy_id, pogo_input_file, protein_sequence_file_path, gtf_file_path, mm_gap=None):
-        # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
         # TODO - In the future, more PoGo runners will be implemented
         return PogoRunnerLocalThread(ncbi_taxonomy_id,
                                      pogo_input_file,
