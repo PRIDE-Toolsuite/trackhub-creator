@@ -429,6 +429,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                 self._get_logger().info("PoGo SUCCESS for taxonomy '{}', input file '{}'"
                                         .format(pogo_runner.ncbi_taxonomy_id,
                                                 pogo_runner.pogo_input_file))
+                # TODO - Every taxonomy now has a list of PoGo runners
                 pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
         except NoMoreAliveRunnersException as e:
             self._get_logger().debug("All PoGo runners results collected!")
