@@ -54,6 +54,7 @@ class PogoRunResult:
 
     @property
     def ncbi_taxonomy_id(self):
+        # TODO - This property could be removed
         return self.pogo_runner.ncbi_taxonomy_id
 
     @property
