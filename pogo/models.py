@@ -49,6 +49,40 @@ class PogoRunResult:
         self.set_pogo_source_file_path(pogo_source_file_path)
 
     def __generate_pogo_result_file_paths(self, pogo_source_file_path):
+        """
+        Given a full path to a source file, e.g. /nfs/fullpath/PXD001110-9606.pogo, and the fact that PoGo generates
+        result files by appending to the source file name different extensions, e.g.
+            PXD001110-9606.pogo.bed
+            PXD001110-9606.pogo.gct
+            PXD001110-9606.pogo_no-ptm.bed
+            PXD001110-9606.pogo_out.gtf
+            PXD001110-9606.pogo_patch_hapl_scaff.bed
+            PXD001110-9606.pogo_patch_hapl_scaff.gct
+            PXD001110-9606.pogo_patch_hapl_scaff_no-ptm.bed
+            PXD001110-9606.pogo_patch_hapl_scaff_out.gtf
+            PXD001110-9606.pogo_patch_hapl_scaff_ptm.bed
+            PXD001110-9606.pogo_ptm.bed
+            PXD001110-9606.pogo_ptm_sorted.bed
+            PXD001110-9606.pogo_sorted.bed
+            PXD001110-9606.pogo_unmapped.txt
+        being the extensions: .bed, .gct, _no-ptm.bed, _out.gtf, _patch_hapl_scaff.bed ... etc.
+        This method collects all the result files based on being them files that start with the source file name
+        'PXD001110-9606.pogo', and it will create a map (file_suffix, file_full_path), e.g.
+            {
+                ...
+                '_patch_hapl_scaff.bed': '/nfs/fullpath/PXD001110-9606.pogo_patch_hapl_scaff.bed'
+                ...
+            }
+        This means, for the current use case where we could be running PoGo specifying parameters like '-mm' that will
+        produce files with different (extended) suffixes, e.g. _1MM_patch_hapl_scaff.bed, in the same folder as other
+        PoGo runners with different parameters, this method will also map the other runners result files available at
+        the time of performing the file system scan. THIS IS PERFECTLY OK, DON'T PANIC, because whe you use the getters
+        for full paths to the result files for a particular runner, only the ones belonging to that runner will be
+        picked up from the map, e.g. if this is a runner with '-mm' parameter active, only those '_1MM_*" files will be
+        returned as result.
+        :param pogo_source_file_path:
+        :return:
+        """
         self.__pogo_result_file_paths = {}
         pogo_results_folder_path = os.path.dirname(pogo_source_file_path)
         pogo_source_file_name = os.path.basename(pogo_source_file_path)
