@@ -59,6 +59,10 @@ class ConfigurationService(config_manager.ConfigurationManager):
     def get_pogo_result_file_extension_for_main_ptm_bed_file(self):
         return self._CONFIG_POGO_RESULT_FILE_EXTENSION_MAIN_PTM_BED
 
+    # Methods for extension modifiers in case of running pogo with different parameters
+    def get_pogo_result_file_extension_modifier_for_mm_gap(self, mm_gap_value):
+        return "_{}MM".format(mm_gap_value)
+
     def get_pogo_run_timeout(self):
         """
         This method is duplicating the one at the application wide configuration manager at this stage and iteration
