@@ -113,7 +113,7 @@ class PogoRunResult:
                     # I need the full path for the pogo result file path
                     self.__pogo_result_file_paths[pogo_result_file_extension] = os.path.join(pogo_results_folder_path,
                                                                                              pogo_result_file_path)
-                    self._get_logger().info(
+                    self.__logger.info(
                         "PoGo run result '{}' ---> '{}', at full path '{}'".format(pogo_result_file_extension,
                                                                                    pogo_result_file_path,
                                                                                    self.__pogo_result_file_paths[
@@ -123,9 +123,6 @@ class PogoRunResult:
         if file_extension in self.__pogo_result_file_paths:
             return self.__pogo_result_file_paths[file_extension]
         return None
-
-    def _get_logger(self):
-        return self.__logger
 
     def get_pogo_result_main_bed_file_path(self):
         return self.__get_pogo_result_file_path(
