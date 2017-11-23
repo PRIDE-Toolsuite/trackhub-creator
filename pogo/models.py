@@ -26,11 +26,7 @@ class PogoRunResult:
     # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
     # TODO - This needs refactoring to make it pythonist compliant
     def __init__(self,
-                 ncbi_taxonomy_id=None,
-                 pogo_source_file_path=None,
-                 protein_sequence_file_path=None,
-                 gtf_file_path=None,
-                 pogo_runner=None):
+                 pogo_runner):
         """
         Just the constructor, I had this implemented as syntactic sugar, but I was wrong
         :param ncbi_taxonomy_id: ncbi taxonomy id for this PoGo run results
@@ -44,11 +40,7 @@ class PogoRunResult:
         # Map<pogo_result_file_extension, pogo_result_file_path>
         self.__pogo_result_file_paths = {}
         self.__pogo_source_file_path = None
-        # I knew this was going to give me trouble
-        self.set_ncbi_taxonomy_id(ncbi_taxonomy_id)
-        self.set_protein_sequence_file_path(protein_sequence_file_path)
-        self.set_gtf_file_path(gtf_file_path)
-        self.__pogo_runner = None
+        self.__pogo_runner = pogo_runner
 
     @property
     def pogo_runner(self):
@@ -287,11 +279,7 @@ class PogoRunner(ParallelRunner):
         if not self.is_done():
             raise PogoRunnerException("PoGo runner IS NOT FINISHED YET, thus, results can't be retrieved")
         if not self.__pogo_run_result:
-            self.__pogo_run_result = PogoRunResult(self.ncbi_taxonomy_id,
-                                                   self.pogo_input_file,
-                                                   self.protein_sequence_file_path,
-                                                   self.gtf_file_path,
-                                                   self)
+            self.__pogo_run_result = PogoRunResult(self)
         return self.__pogo_run_result
 
     def is_success(self):
