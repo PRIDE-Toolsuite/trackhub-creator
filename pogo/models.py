@@ -49,7 +49,10 @@ class PogoRunResult:
         self.set_protein_sequence_file_path(protein_sequence_file_path)
         self.set_gtf_file_path(gtf_file_path)
         self.set_pogo_source_file_path(pogo_source_file_path)
-        self.pogo_runner = pogo_runner
+
+    @property
+    def pogo_runner(self):
+        return self.__pogo_runner
 
     @property
     def ncbi_taxonomy_id(self):
