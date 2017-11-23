@@ -120,8 +120,11 @@ class PogoRunResult:
         return extension_modifier
 
     def get_pogo_result_main_bed_file_path(self):
-        return self.__get_pogo_result_file_path(
-            module_config_manager.get_configuration_service().get_pogo_result_file_extension_for_main_bed_file())
+        pogo_result_file_extension = "{}{}"\
+            .format(self.__get_pogo_result_extension_modifiers_arranged(),
+                    module_config_manager.get_configuration_service()
+                    .get_pogo_result_file_extension_for_main_bed_file())
+        return self.__get_pogo_result_file_path(pogo_result_file_extension)
 
     def get_pogo_result_main_ptm_bed_file_path(self):
         return self.__get_pogo_result_file_path(
