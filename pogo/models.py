@@ -274,7 +274,8 @@ class PogoRunner(ParallelRunner):
             self.__pogo_run_result = PogoRunResult(self.ncbi_taxonomy_id,
                                                    self.pogo_input_file,
                                                    self.protein_sequence_file_path,
-                                                   self.gtf_file_path)
+                                                   self.gtf_file_path,
+                                                   self)
         return self.__pogo_run_result
 
     def is_success(self):
