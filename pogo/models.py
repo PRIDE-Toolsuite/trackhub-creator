@@ -112,7 +112,12 @@ class PogoRunResult:
         return None
 
     def __get_pogo_result_extension_modifiers_arranged(self):
-        pass
+        extension_modifier = ''
+        # Check for mm_gap
+        if self.pogo_runner.mm_gap:
+            extension_modifier += module_config_manager.get_configuration_service()\
+                .get_pogo_result_file_extension_modifier_for_mm_gap(self.pogo_runner.mm_gap)
+        return extension_modifier
 
     def get_pogo_result_main_bed_file_path(self):
         return self.__get_pogo_result_file_path(
