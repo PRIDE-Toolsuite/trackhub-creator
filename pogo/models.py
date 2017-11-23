@@ -128,18 +128,6 @@ class PogoRunResult:
     def _get_logger(self):
         return self.__logger
 
-    def set_ncbi_taxonomy_id(self, taxonomy_id):
-        self.__ncbi_taxonomy_id = taxonomy_id
-
-    def set_protein_sequence_file_path(self, protein_sequence_file_path):
-        self.__protein_sequence_file_path = protein_sequence_file_path
-
-    def set_gtf_file_path(self, gtf_file_path):
-        self.__gtf_file_path = gtf_file_path
-
-    def get_ncbi_taxonomy_id(self):
-        return self.__ncbi_taxonomy_id
-
     def get_pogo_result_main_bed_file_path(self):
         return self.__get_pogo_result_file_path(
             module_config_manager.get_configuration_service().get_pogo_result_file_extension_for_main_bed_file())
