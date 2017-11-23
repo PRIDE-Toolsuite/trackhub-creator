@@ -328,6 +328,8 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
             genome_assembly = ensembl_species_entry.get_assembly()
             #genome_assembly = assembly_mapping_service\
             #    .get_ucsc_assembly_for_ensembl_assembly_accession(ensembl_species_entry.get_assembly_accession())
+            # TODO - Now you have to iterate over the pogo results associated with each taxonomy and create a couple of
+            # TODO - tracks for each one
             # Main .bed track
             bed_file_path = pogo_results[taxonomy].get_pogo_result_main_bed_file_path()
             trackhub_track_main = self._get_trackhub_track_for_taxonomy_id(taxonomy)
