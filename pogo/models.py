@@ -55,6 +55,10 @@ class PogoRunResult:
     def ncbi_taxonomy_id(self):
         return self.pogo_runner.ncbi_taxonomy_id
 
+    @property
+    def protein_sequence_file_path(self):
+        return self.pogo_runner.protein_sequence_file_path
+
     def __generate_pogo_result_file_paths(self, pogo_source_file_path):
         """
         Given a full path to a source file, e.g. /nfs/fullpath/PXD001110-9606.pogo, and the fact that PoGo generates
