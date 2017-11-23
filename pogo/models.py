@@ -58,6 +58,7 @@ class PogoRunResult:
 
     @property
     def protein_sequence_file_path(self):
+        # TODO - This property could be removed
         return self.pogo_runner.protein_sequence_file_path
 
     @property
