@@ -403,6 +403,7 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                                                                               pogo_input_file_path,
                                                                               pogo_protein_sequence_file_path,
                                                                               pogo_gtf_file_path))
+            # TODO - Add another runner for '-mm 1'
         self._get_logger().debug("Running PoGo for #{} Project Tracks".format(len(self.__get_valid_project_tracks())))
         parallel_run_manager.start_runners()
         self._get_logger().debug("Processing PoGo runners results")
