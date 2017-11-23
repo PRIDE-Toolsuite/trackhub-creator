@@ -52,21 +52,6 @@ class PogoRunResult:
             # Regenerate pogo result file paths
             self.__generate_pogo_result_file_paths(pogo_runner.pogo_input_file)
 
-    @property
-    def ncbi_taxonomy_id(self):
-        # TODO - This property could be removed
-        return self.pogo_runner.ncbi_taxonomy_id
-
-    @property
-    def protein_sequence_file_path(self):
-        # TODO - This property could be removed
-        return self.pogo_runner.protein_sequence_file_path
-
-    @property
-    def gtf_file_path(self):
-        # TODO - This property could be removed
-        return self.pogo_runner.gtf_file_path
-
     def __generate_pogo_result_file_paths(self, pogo_source_file_path):
         """
         Given a full path to a source file, e.g. /nfs/fullpath/PXD001110-9606.pogo, and the fact that PoGo generates
