@@ -63,6 +63,7 @@ class PogoRunResult:
 
     @property
     def gtf_file_path(self):
+        # TODO - This property could be removed
         return self.pogo_runner.gtf_file_path
 
     def __generate_pogo_result_file_paths(self, pogo_source_file_path):
