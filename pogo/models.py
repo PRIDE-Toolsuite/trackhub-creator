@@ -47,10 +47,9 @@ class PogoRunResult:
 
     @pogo_runner.setter
     def pogo_runner(self, pogo_runner):
-        if not self.__pogo_runner or (self.__pogo_runner != pogo_runner):
-            self.__pogo_runner = pogo_runner
-            # Regenerate pogo result file paths
-            self.__generate_pogo_result_file_paths(pogo_runner.pogo_input_file)
+        self.__pogo_runner = pogo_runner
+        # Regenerate pogo result file paths
+        self.__generate_pogo_result_file_paths(pogo_runner.pogo_input_file)
 
     def __generate_pogo_result_file_paths(self, pogo_source_file_path):
         """
