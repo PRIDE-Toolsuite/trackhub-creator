@@ -39,7 +39,7 @@ class PogoRunResult:
             "{}.{}".format(__name__, type(self).__name__))
         # Map<pogo_result_file_extension, pogo_result_file_path>
         self.__pogo_result_file_paths = {}
-        self.__pogo_runner = pogo_runner
+        self.pogo_runner = pogo_runner
 
     @property
     def pogo_runner(self):
