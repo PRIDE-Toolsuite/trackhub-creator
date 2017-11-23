@@ -416,6 +416,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                     self._get_logger().error(message)
                     self.__pipeline_result_object.add_warning_message(message)
                     continue
+                # TODO - The following check doesn't apply anymore, as we'll have multiple PoGo runners for the same
+                # TODO - taxonomy
                 if pogo_runner.ncbi_taxonomy_id in pogo_run_results:
                     message = "DUPLICATED taxonomy ID #{} when registering PoGo success on file '{}'" \
                               " - SKIPPING its results" \
