@@ -24,11 +24,13 @@ from .exceptions import PogoRunnerException
 
 class PogoRunResult:
     # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
+    # TODO - This needs refactoring to make it pythonist compliant
     def __init__(self,
                  ncbi_taxonomy_id=None,
                  pogo_source_file_path=None,
                  protein_sequence_file_path=None,
-                 gtf_file_path=None):
+                 gtf_file_path=None,
+                 mm_gap=None):
         """
         Just the constructor, I had this implemented as syntactic sugar, but I was wrong
         :param ncbi_taxonomy_id: ncbi taxonomy id for this PoGo run results
