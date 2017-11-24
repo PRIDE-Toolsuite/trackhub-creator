@@ -459,19 +459,11 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                                                      pogo_runner.get_pogo_run_command()))
                     # We skip this file / taxonomy, as we have ONE .pogo file per taxonomy
                     continue
-                if pogo_runner.ncbi_taxonomy_id in pogo_run_results:
-                    self._get_logger().error("DUPLICATED TAXONOMY ENTRY ERROR "
-                                             "when registering successful run of PoGo on input file '{}', "
-                                             "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
-                                             .format(pogo_runner.pogo_input_file,
-                                                     pogo_runner.protein_sequence_file_path,
-                                                     pogo_runner.gtf_file_path,
-                                                     pogo_runner.get_pogo_run_command()))
-                    # Skip this pogo file, but this error is very unlikely to happen... in an ideal world ^_^
-                    continue
+                if pogo_runner.ncbi_taxonomy_id not in pogo_run_results:
+                    pogo_run_results[pogo_runner.ncbi_taxonomy_id] = []
                 self._get_logger().info("Successful PoGo run for taxonomy #{}".format(pogo_runner.ncbi_taxonomy_id))
                 # Add the result object to the results
-                pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
+                pogo_run_results[pogo_runner.ncbi_taxonomy_id].append(pogo_runner.get_pogo_run_result())
         except NoMoreAliveRunnersException as e:
             self._get_logger().info("--- All PoGo runners have been processed ---")
         # Return the results for running PoGo for the given cluster-file-exporter result files
