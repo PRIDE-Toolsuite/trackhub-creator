@@ -421,21 +421,13 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
                     self._get_logger().error(message)
                     self.__pipeline_result_object.add_warning_message(message)
                     continue
-                # TODO - The following check doesn't apply anymore, as we'll have multiple PoGo runners for the same
-                # TODO - taxonomy
-                if pogo_runner.ncbi_taxonomy_id in pogo_run_results:
-                    message = "DUPLICATED taxonomy ID #{} when registering PoGo success on file '{}'" \
-                              " - SKIPPING its results" \
-                        .format(pogo_runner.ncbi_taxonomy_id,
-                                pogo_runner.pogo_input_file)
-                    self._get_logger().error(message)
-                    self.__pipeline_result_object.add_warning_message(message)
-                    continue
+                if pogo_runner.ncbi_taxonomy_id not in pogo_run_results:
+                    pogo_run_results[pogo_runner.ncbi_taxonomy_id] = []
                 self._get_logger().info("PoGo SUCCESS for taxonomy '{}', input file '{}'"
                                         .format(pogo_runner.ncbi_taxonomy_id,
                                                 pogo_runner.pogo_input_file))
-                # TODO - Every taxonomy now has a list of PoGo run results
-                pogo_run_results[pogo_runner.ncbi_taxonomy_id] = pogo_runner.get_pogo_run_result()
+                # Every taxonomy now has a list of PoGo run results
+                pogo_run_results[pogo_runner.ncbi_taxonomy_id].append(pogo_runner.get_pogo_run_result())
         except NoMoreAliveRunnersException as e:
             self._get_logger().debug("All PoGo runners results collected!")
         if len(pogo_run_results) == 0:
