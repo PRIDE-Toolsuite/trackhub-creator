@@ -412,8 +412,6 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         pogo_run_results = {}
         # Parallelization of PoGo
         parallel_run_manager = ParallelRunnerManagerFactory.get_parallel_runner_manager()
-        # Get an instance of the Ensembl data downloader
-        ensembl_downloader_service = ensembl.data_downloader.get_data_download_service()
         for taxonomy in cluster_file_exporter_result_mapping:
             if taxonomy == self.__CLUSTER_FILE_EXPORTER_TAXONOMY_KEY_ALL:
                 self._get_logger().warning("SKIPPING PoGo for taxonomy {}".format(taxonomy))
