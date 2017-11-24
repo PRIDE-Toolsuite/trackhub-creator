@@ -462,7 +462,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                 self._get_logger().info("Successful PoGo run for taxonomy #{}".format(pogo_runner.ncbi_taxonomy_id))
                 # Add the result object to the results
                 pogo_run_results[pogo_runner.ncbi_taxonomy_id].append(pogo_runner.get_pogo_run_result())
-        except NoMoreAliveRunnersException as e:
+        except NoMoreAliveRunnersException:
             self._get_logger().info("--- All PoGo runners have been processed ---")
         # Return the results for running PoGo for the given cluster-file-exporter result files
         return pogo_run_results
