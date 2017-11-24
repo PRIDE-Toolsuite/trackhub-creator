@@ -462,6 +462,8 @@ class TrackhubCreatorForProject(TrackhubCreationPogoBasedDirector):
             trackhub_track_title = project_track.get_track_name()
             trackhub_track_short_label = project_track.get_track_short_label()
             trackhub_track_long_label = project_track.get_track_long_label()
+        trackhub_track_title = "{}{}".format(trackhub_track_title,
+                                             self._get_trackhub_track_name_modifiers_based_on_pogo_run(pogo_run_result))
         return trackhubs.BaseTrack(trackhub_track_title,
                                    trackhub_track_short_label,
                                    trackhub_track_long_label)
