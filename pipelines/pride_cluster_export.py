@@ -488,7 +488,7 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                                   trackhub_description_url)
 
     # Override
-    def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id):
+    def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id, pogo_run_result):
         # Default values
         trackhub_track_title = "- Non-Ensembl Taxonomy ID {} -".format(taxonomy_id)
         trackhub_track_short_label = "- THIS TAXONOMY HAS NOT BEEN FOUND ON ENSEMBL -"
