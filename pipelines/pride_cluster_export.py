@@ -433,12 +433,19 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
             if not pogo_parameter_gtf_file_path:
                 self._get_logger().error("SKIP TAXONOMY ID #{}, GTF file NOT FOUND to use with PoGo".format(taxonomy))
                 continue
-            # Prepare PoGo run command
-            pogo_runner = PogoRunnerFactory.get_pogo_runner(taxonomy,
-                                                            pogo_parameter_file_input,
-                                                            pogo_parameter_protein_sequence_file_path,
-                                                            pogo_parameter_gtf_file_path)
-            parallel_run_manager.add_runner(pogo_runner)
+            # Prepare PoGo runner
+            parallel_run_manager.add_runner(PogoRunnerFactory
+                                            .get_pogo_runner(taxonomy,
+                                                             pogo_parameter_file_input,
+                                                             pogo_parameter_protein_sequence_file_path,
+                                                             pogo_parameter_gtf_file_path))
+            # Prepare PoGo runner with gap '-mm 1'
+            parallel_run_manager.add_runner(PogoRunnerFactory
+                                            .get_pogo_runner(taxonomy,
+                                                             pogo_parameter_file_input,
+                                                             pogo_parameter_protein_sequence_file_path,
+                                                             pogo_parameter_gtf_file_path,
+                                                             '1'))
         parallel_run_manager.start_runners()
         try:
             while True:
