@@ -308,7 +308,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
         ...
 
     @abc.abstractmethod
-    def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id):
+    def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id, pogo_run_result):
         ...
 
     def _get_trackhub_track_name_modifiers_based_on_pogo_run(self, pogo_run_result):
