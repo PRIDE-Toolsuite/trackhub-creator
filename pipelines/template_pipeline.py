@@ -314,7 +314,7 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _get_trackhub_track_name_modifiers_based_on_pogo_run(self, pogo_run_result):
         modifiers = ''
         if pogo_run_result.pogo_runner.mm_gap:
-            modifiers = " with 'Missmatch (-mm) {}'".format(pogo_run_result.pogo_runner.mm_gap)
+            modifiers = "with 'Missmatch (-mm) {}'".format(pogo_run_result.pogo_runner.mm_gap)
         return modifiers
 
     def _get_assemblies_from_pogo_results(self, trackhub_builder):
