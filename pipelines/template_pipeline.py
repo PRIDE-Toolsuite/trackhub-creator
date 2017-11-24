@@ -311,6 +311,9 @@ class TrackhubCreationPogoBasedDirector(PogoBasedPipelineDirector, TrackhubCreat
     def _get_trackhub_track_for_taxonomy_id(self, taxonomy_id):
         ...
 
+    def _get_trackhub_track_name_modifiers_based_on_pogo_run(self, pogo_run_results):
+        pass
+
     def _get_assemblies_from_pogo_results(self, trackhub_builder):
         # TODO - Needs to be extended for abstracting from results files from '-mm' parameter use
         pogo_results = self._get_pogo_results_for_input_data()
