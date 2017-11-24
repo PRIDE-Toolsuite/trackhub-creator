@@ -496,8 +496,9 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
         ensembl_species_entry = \
             ensembl.service.get_service().get_species_data_service().get_species_entry_for_taxonomy_id(taxonomy_id)
         if ensembl_species_entry:
-            trackhub_track_title = "{}" \
-                .format(ensembl_species_entry.get_display_name())
+            trackhub_track_title = "{} {}" \
+                .format(ensembl_species_entry.get_display_name(),
+                        self._get_trackhub_track_name_modifiers_based_on_pogo_run(pogo_run_result))
             trackhub_track_short_label = "PRIDE Cluster Track - '{}'" \
                 .format(ensembl_species_entry.get_display_name())
             trackhub_track_long_label = "PRIDE Cluster Track for main .bed file, species '{}'" \
