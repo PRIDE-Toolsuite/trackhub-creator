@@ -450,11 +450,14 @@ class PrideClusterExporter(TrackhubCreationPogoBasedDirector):
                 pogo_runner = parallel_run_manager.get_next_finished_runner()
                 if not pogo_runner.is_success():
                     self._get_logger().error("ERROR running PoGo on input file '{}', "
-                                             "with protein sequence file '{}' and GTF file '{}' ---> Command: {}"
+                                             "with protein sequence file '{}' and GTF file '{}' ---> Command: {},"
+                                             " STDOUT: {} ; STDERR: {}"
                                              .format(pogo_runner.pogo_input_file,
                                                      pogo_runner.protein_sequence_file_path,
                                                      pogo_runner.gtf_file_path,
-                                                     pogo_runner.get_pogo_run_command()))
+                                                     pogo_runner.get_pogo_run_command(),
+                                                     pogo_runner.get_stdout(),
+                                                     pogo_runner.get_stderr()))
                     # We skip this file / taxonomy, as we have ONE .pogo file per taxonomy
                     continue
                 if pogo_runner.ncbi_taxonomy_id not in pogo_run_results:
