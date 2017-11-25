@@ -336,7 +336,7 @@ class AppConfigManager(ConfigurationManager):
         This is a general, application wide timeout parameter to use straight away or as a reference.
         :return: time out in seconds
         """
-        return 7200
+        return 86400
 
 
 if __name__ == '__main__':
